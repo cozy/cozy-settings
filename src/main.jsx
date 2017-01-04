@@ -23,7 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
           <Route
             path='account'
             component={(props) =>
-              <p>Hello World</p>
+              <p>Account</p>
+            }
+          />
+          <Route
+            path='connectedDevices'
+            component={(props) =>
+              <p>Connected devices</p>
+            }
+          />
+          <Route
+            path='storage'
+            component={(props) =>
+              <p>Storage</p>
+            }
+          />
+          <Route
+            path='emailNotifications'
+            component={(props) =>
+              <p>Email Notifications</p>
             }
           />
         </Route>

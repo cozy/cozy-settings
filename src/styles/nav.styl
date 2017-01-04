@@ -21,6 +21,18 @@
     background: embedurl("../assets/icons/icon-people.svg") em(24px) center no-repeat
     &.active
       background-image: embedurl("../assets/icons/icon-people-active.svg")
+  .set-cat-devices
+    background: embedurl("../assets/icons/icon-phone.svg") em(24px) center no-repeat
+    &.active
+      background-image: embedurl("../assets/icons/icon-phone-active.svg")
+  .set-cat-storage
+    background: embedurl("../assets/icons/icon-box.svg") em(24px) center no-repeat
+    &.active
+      background-image: embedurl("../assets/icons/icon-box-active.svg")
+  .set-cat-notif
+    background: embedurl("../assets/icons/icon-email-notif.svg") em(24px) center no-repeat
+    &.active
+      background-image: embedurl("../assets/icons/icon-email-notif-active.svg")
 
 
 @media (max-width: (1023/basefont)rem)
@@ -45,4 +57,7 @@
         color       grey-08
 
     .set-cat-account
+    .set-cat-devices
+    .set-cat-storage
+    .set-cat-notif
       background-position center top

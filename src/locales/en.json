@@ -1,5 +1,8 @@
 {
   "Nav": {
-    "account": "Account"
+    "account": "Account",
+    "connected_devices": "Connected devices",
+    "storage": "Storage",
+    "email_notifications": "Email notifications"
   }
 }

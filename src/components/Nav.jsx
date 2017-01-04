@@ -12,6 +12,21 @@ const Nav = ({ t }) => (
           { t('Nav.account') }
         </Link>
       </li>
+      <li class={styles['set-nav-item']}>
+        <Link to='/connectedDevices' class={styles['set-cat-devices']} activeClassName={styles['active']}>
+          { t('Nav.connected_devices') }
+        </Link>
+      </li>
+      <li class={styles['set-nav-item']}>
+        <Link to='/storage' class={styles['set-cat-storage']} activeClassName={styles['active']}>
+          { t('Nav.storage') }
+        </Link>
+      </li>
+      <li class={styles['set-nav-item']}>
+        <Link to='/emailNotifications' class={styles['set-cat-notif']} activeClassName={styles['active']}>
+          { t('Nav.email_notifications') }
+        </Link>
+      </li>
     </ul>
   </nav>
 )
