@@ -1,5 +1,5 @@
 {
-  "App": {
-    "welcome": "Hello World!"
+  "Nav": {
+    "account": "Account"
   }
 }
