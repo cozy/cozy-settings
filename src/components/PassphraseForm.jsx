@@ -37,7 +37,9 @@ const PassphraseForm = ({ t, children, submitting, currentPassphrase, newPassphr
       step='1' min='0' max='100'
       value={newPassphrase.strength.percentage}
       class={styles[`pw-${newPassphrase.strength.label}`]} />
-    <a href='#'>{t('AccountView.password.reset_link')}</a>
+    <a href='#' class={styles['reset-link']}>
+      {t('AccountView.password.reset_link')}
+    </a>
     <div class={styles['coz-form-controls']}>
       <button
         role='button'

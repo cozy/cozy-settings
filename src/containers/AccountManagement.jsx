@@ -23,9 +23,9 @@ export default class AccountManagement extends Component {
     return (
       <AccountView
         onPassphraseSubmit={(values) => this.updatePassphrase(values)}
+        notifier={Notifier}
         {...this.state}
         {...this.context}
-        notifier={Notifier}
       />
     )
   }
