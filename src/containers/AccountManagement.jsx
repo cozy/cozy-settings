@@ -39,8 +39,13 @@ export default class AccountManagement extends Component {
         Notifier.info(t('AccountView.password.success'))
       })
       .catch(error => { // eslint-disable-line
+        const errors = error.errors
         this.setState({ submitting: false })
-        Notifier.error(t('AccountView.password.server_error'))
+        if (errors.length && errors[0].detail === 'Invalid passphrase') {
+          Notifier.error(t('AccountView.password.wrong_password'))
+        } else {
+          Notifier.error(t('AccountView.password.server_error'))
+        }
       })
   }
 }
