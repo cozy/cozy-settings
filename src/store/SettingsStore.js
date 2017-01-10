@@ -4,12 +4,15 @@ export default class SettingsStore {
   updatePassphrase (currentPassphrase, newPassphrase) {
     return this.fetchURLEncoded(
       'PUT',
-      `/auth/passphrase`,
-      `current-passphrase=${currentPassphrase}&new-passphrase=${newPassphrase}`
+      `http://cozy.local:8080/auth/passphrase`,
+      {
+        'current-passphrase': currentPassphrase,
+        'new-passphrase': newPassphrase
+      }
     ).then(response => {
       return response.status === 200
         ? response
-        : Promise.reject(response)
+        : response.json().then(Promise.reject.bind(Promise))
     })
   }
 
@@ -35,6 +38,12 @@ export default class SettingsStore {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
+    }
+    if (body && typeof body === 'object') {
+      // convert Object to urlEncoded
+      params.body = Object.keys(body).map(function (k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(body[k])
+      }).join('&')
     }
     return fetch(url, params)
   }
