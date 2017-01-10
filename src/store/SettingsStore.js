@@ -1,10 +1,14 @@
 /* global fetch */
 
 export default class SettingsStore {
+  constructor (stackDomain) {
+    this.stackDomain = stackDomain
+  }
+
   updatePassphrase (currentPassphrase, newPassphrase) {
     return this.fetchURLEncoded(
       'PUT',
-      `http://cozy.local:8080/auth/passphrase`,
+      `${this.stackDomain}/auth/passphrase`,
       {
         'current-passphrase': currentPassphrase,
         'new-passphrase': newPassphrase

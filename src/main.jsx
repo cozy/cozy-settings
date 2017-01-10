@@ -16,8 +16,10 @@ import AccountManagement from './containers/AccountManagement'
 const context = window.context
 const lang = document.documentElement.getAttribute('lang') || 'en'
 
+const stackDomain = 'http://cozy.local:8080'
+
 // store
-const store = new SettingsStore()
+const store = new SettingsStore(stackDomain)
 
 document.addEventListener('DOMContentLoaded', () => {
   render((
