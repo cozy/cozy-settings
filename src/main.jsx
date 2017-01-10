@@ -32,9 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <Redirect from='/' to='account' />
             <Route
               path='account'
-              component={(props) =>
-                <AccountManagement {...props} />
-              }
+              component={AccountManagement}
             />
             <Route
               path='connectedDevices'

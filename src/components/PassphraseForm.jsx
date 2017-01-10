@@ -43,6 +43,7 @@ const PassphraseForm = ({ t, children, submitting, currentPassphrase, newPassphr
     <div class={styles['coz-form-controls']}>
       <button
         role='button'
+        class={styles['primary']}
         aria-busy={submitting ? 'true' : 'false'}
         onClick={submitPassphrase}
         disabled={!isFormValid}
