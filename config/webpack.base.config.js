@@ -8,7 +8,7 @@ const pkg = require(path.resolve(__dirname, '../package.json'))
 const build = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/main'),
+  entry: ['whatwg-fetch', path.resolve(__dirname, '../src/main')],
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: build ? 'app.[hash].js' : 'app.js'
