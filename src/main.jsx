@@ -7,7 +7,7 @@ import { render } from 'react-dom'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
 import { I18n } from './plugins/preact-polyglot'
 
-import AccountStore from './store/AccountStore'
+import SettingsStore from './store/SettingsStore'
 import Provider from './store/Provider'
 
 import App from './components/App'
@@ -17,7 +17,7 @@ const context = window.context
 const lang = document.documentElement.getAttribute('lang') || 'en'
 
 // store
-const store = new AccountStore()
+const store = new SettingsStore()
 
 document.addEventListener('DOMContentLoaded', () => {
   render((
