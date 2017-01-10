@@ -30,7 +30,7 @@ class Notification extends Component {
 
   componentWillUnmount () {
     this.base.removeEventListener('transitionend', this.close, false)
-    this.base.classList.remove('coz-notification--closing')
+    this.base.classList.remove('coz-alert--closing')
     if (this.closeTimer) {
       clearTimeout(this.closeTimer)
     }
@@ -38,7 +38,7 @@ class Notification extends Component {
 
   beginClosing () {
     this.base.addEventListener('transitionend', this.close, false)
-    this.base.classList.add('coz-notification--closing')
+    this.base.classList.add('coz-alert--closing')
   }
 
   close () {
@@ -48,8 +48,8 @@ class Notification extends Component {
   render () {
     const { message, type } = this.props
     return (
-      <div className={['coz-notification', 'coz-notification--' + type].join(' ')}>
-        <div className='coz-notification-title'>{message}</div>
+      <div className={['coz-alert', 'coz-alert--' + type].join(' ')}>
+        <div className='coz-alert-title'>{message}</div>
       </div>
     )
   }
@@ -97,7 +97,7 @@ export default class Notifier extends Component {
 
   render () {
     return (
-      <div className='coz-notifier'>
+      <div className='coz-alerter'>
         {this.state.notifications.map(notif => (
           <Notification
             type={notif.type}
