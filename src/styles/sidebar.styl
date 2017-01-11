@@ -1,10 +1,4 @@
 @require 'cozy-ui'
 
-.set-sidebar
-  width            em(220px)
-  border-right     1px solid grey-09
-  background-color grey-10
-
-  @media (max-width: (1023/basefont)rem)
-    border-top  1px solid grey-09
-    border-left none
+:local
+    @extend $sidebar

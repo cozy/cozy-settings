@@ -1,0 +1,37 @@
+@import 'cozy-ui'
+
+:local
+    @extend         $form
+    @extend         $form-text
+    @extend         $form-button
+    @extend         $form-progress
+
+    .visibility
+        text-transform  uppercase
+        position        absolute
+        cursor          pointer
+        right           0
+        font-weight     bold
+
+    .reset-link
+        margin-top      .5em
+
+    progress
+        &.pw-weak
+            color   pomegranate
+            &::-webkit-progress-value
+                background    pomegranate
+            &::-moz-progress-bar
+                background    pomegranate
+        &.pw-moderate
+            color   orange
+            &::-webkit-progress-value
+                background    texas-rose
+            &::-moz-progress-bar
+                background    texas-rose
+        &.pw-strong
+            color   green
+            &::-webkit-progress-value
+                background    emerald
+            &::-moz-progress-bar
+                background    emerald
