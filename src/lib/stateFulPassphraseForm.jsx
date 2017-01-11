@@ -21,6 +21,23 @@ export default function stateFulPassphraseForm () {
         }
       }
 
+      componentWillReceiveProps (nextProps) {
+        // errors returned by the server
+        const currentPassErrors = nextProps.currentPassErrors || []
+        let error = null
+        if (currentPassErrors.length) error = true
+        this.setState(prevState => {
+          return Object.assign({}, prevState, {
+            error: error,
+            currentPassphrase: Object.assign(
+              {},
+              prevState.currentPassphrase,
+              {errors: currentPassErrors}
+            )
+          })
+        })
+      }
+
       render () {
         return (
           <WrappedForm {...this.props} {...this.state} />
@@ -56,6 +73,7 @@ export default function stateFulPassphraseForm () {
 
       handleChange (name, target) {
         let stateUpdate
+        if (this.state.error) this.resetErrors()
         stateUpdate = {
           dirty: target.value !== '',
           value: target.value
@@ -79,17 +97,34 @@ export default function stateFulPassphraseForm () {
       }
 
       handleSubmit () {
-        const { t } = this.context
         const data = this.getData()
         if (this.props.onPassphraseSubmit && data) {
           if (this.state.newPassphrase.strength.label === 'weak') {
-            this.props.notifier.error(
-              t('AccountView.password.password_too_weak')
-            )
+            this.setState(prevState => {
+              return Object.assign({}, prevState, {
+                error: true,
+                newPassphrase: Object.assign(
+                  {},
+                  prevState.newPassphrase,
+                  {errors: ['password_too_weak']}
+                )
+              })
+            })
           } else {
+            if (this.state.error) this.resetErrors()
             this.props.onPassphraseSubmit(data)
           }
         }
+      }
+
+      resetErrors () {
+        this.setState(prevState => {
+          return Object.assign({}, prevState, {
+            error: null,
+            currentPassphrase: Object.assign({}, prevState.currentPassphrase, {errors: []}),
+            newPassphrase: Object.assign({}, prevState.newPassphrase, {errors: []})
+          })
+        })
       }
 
       getData () {

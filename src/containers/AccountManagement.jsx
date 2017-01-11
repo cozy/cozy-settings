@@ -14,8 +14,8 @@ export default class AccountManagement extends Component {
     this.store = this.context.store
 
     this.state = {
-      submitting: false,
-      error: null
+      passphraseSubmitting: false,
+      passphraseErrors: null
     }
   }
 
@@ -23,7 +23,6 @@ export default class AccountManagement extends Component {
     return (
       <AccountView
         onPassphraseSubmit={(values) => this.updatePassphrase(values)}
-        notifier={Notifier}
         {...this.state}
         {...this.context}
       />
@@ -32,17 +31,17 @@ export default class AccountManagement extends Component {
 
   updatePassphrase (values) {
     const { t } = this.context
-    this.setState({ submitting: true })
+    this.setState({ passphraseSubmitting: true, passphraseErrors: null })
     this.store.updatePassphrase(values.currentPassphrase, values.newPassphrase)
       .then(response => {
-        this.setState({ submitting: false })
+        this.setState({ passphraseSubmitting: false })
         Notifier.info(t('AccountView.password.success'))
       })
       .catch(error => { // eslint-disable-line
-        const errors = error.errors
-        this.setState({ submitting: false })
+        const errors = error.errors || []
+        this.setState({ passphraseSubmitting: false })
         if (errors.length && errors[0].detail === 'Invalid passphrase') {
-          Notifier.error(t('AccountView.password.wrong_password'))
+          this.setState({ passphraseErrors: ['wrong_password'] })
         } else {
           Notifier.error(t('AccountView.password.server_error'))
         }
