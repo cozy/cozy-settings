@@ -73,7 +73,7 @@ export default function stateFulPassphraseForm () {
 
       handleChange (name, target) {
         let stateUpdate
-        if (this.state.error) this.resetErrors()
+        this.resetErrors()
         stateUpdate = {
           dirty: target.value !== '',
           value: target.value
@@ -111,13 +111,14 @@ export default function stateFulPassphraseForm () {
               })
             })
           } else {
-            if (this.state.error) this.resetErrors()
+            this.resetErrors()
             this.props.onPassphraseSubmit(data)
           }
         }
       }
 
       resetErrors () {
+        if (this.state.error == null) return
         this.setState(prevState => {
           return Object.assign({}, prevState, {
             error: null,
