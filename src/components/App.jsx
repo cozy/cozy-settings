@@ -5,7 +5,7 @@ import { translate } from '../plugins/preact-polyglot'
 import classNames from 'classnames'
 
 import Sidebar from './Sidebar'
-import Notifier from './Notifier'
+import Alerter from './Alerter'
 
 const App = ({ t, children }) => (
   <div className={classNames(styles['set-wrapper'], styles['coz-sticky'])}>
@@ -15,7 +15,7 @@ const App = ({ t, children }) => (
     <main className={styles['set-content']}>
       { children }
     </main>
-    <Notifier />
+    <Alerter />
   </div>
 )
 
