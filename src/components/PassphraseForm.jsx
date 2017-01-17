@@ -6,7 +6,7 @@ import stateFulPassphraseForm from '../lib/stateFulPassphraseForm'
 const PassphraseForm = ({ t, children, passphraseSubmitting, currentPassphrase, newPassphrase, submitPassphrase, isFormValid }) => (
   <div className={styles['coz-form']}>
     <h3>{t('AccountView.password.title')}</h3>
-    <label>{t('AccountView.password.current_label')}
+    <label className={styles['coz-label']}>{t('AccountView.password.current_label')}
       <a
         onClick={currentPassphrase.toggleVisibility}
         className={styles['visibility']}
@@ -27,7 +27,7 @@ const PassphraseForm = ({ t, children, passphraseSubmitting, currentPassphrase, 
         <p className={styles['coz-errors']}>{t(`AccountView.password.${e}`)}</p>
       ))
     }
-    <label>{t('AccountView.password.new_label')}
+    <label className={styles['coz-label']}>{t('AccountView.password.new_label')}
       <a onClick={newPassphrase.toggleVisibility} className={styles['visibility']}>
         {newPassphrase.visible ? 'Hide' : 'Show'}
       </a>

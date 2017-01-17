@@ -18,6 +18,20 @@
       "wrong_password": "Current password seems wrong.",
       "success": "Your password has been changed",
       "reset_link": "Forgot your current password?"
+    },
+    "email" : {
+      "title" : "Email",
+      "label": "Your email is used for notifications or password recovery.",
+      "placeholder": "georges@abitb.ol"
+    },
+    "username" : {
+      "title" : "Username",
+      "label": "Your username will be displayed when you share files with people or invite them to events.",
+      "placeholder": "abitbol2000"
+    },
+    "lang" : {
+      "title" : "Language",
+      "label": "This will be the language used in your interface."
     }
   }
 }
