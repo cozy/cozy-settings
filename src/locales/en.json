@@ -22,13 +22,11 @@
     "email" : {
       "title" : "Email",
       "label": "Cozy needs you email to send you notifications and allow you to recover your password",
-      "placeholder": "john@wayne.com",
       "error" : "The email address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     },
     "username" : {
       "title" : "Username",
-      "label": "Your username will be displayed when you share files with Cozy users.",
-      "placeholder": "abitbol2000"
+      "label": "Your username will be displayed when you share files with Cozy users."
     },
     "lang" : {
       "title" : "Language",

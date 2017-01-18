@@ -1,4 +1,4 @@
-import styles from '../styles/passphraseForm'
+import styles from '../styles/selectBox'
 
 import React from 'react'
 import ReactMarkdown from 'react-markdown'

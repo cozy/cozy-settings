@@ -14,10 +14,12 @@ const AccountView = (props) => {
       <h2>{t('AccountView.title')}</h2>
       <InputText
         InputData='email'
+        SetValue='john@wayne.com'
         t={t}
       />
       <InputText
         InputData='username'
+        SetValue='Marion'
         t={t}
       />
       <PassphraseForm
