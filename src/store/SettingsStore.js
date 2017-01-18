@@ -6,15 +6,15 @@ export default class SettingsStore {
   }
 
   updatePassphrase (currentPassphrase, newPassphrase) {
-    return this.fetchURLEncoded(
+    return this.fetch(
       'PUT',
-      `${this.stackDomain}/auth/passphrase`,
+      `${this.stackDomain}/settings/passphrase`,
       {
-        'current-passphrase': currentPassphrase,
-        'new-passphrase': newPassphrase
+        'current_passphrase': currentPassphrase,
+        'new_passphrase': newPassphrase
       }
     ).then(response => {
-      return response.status === 200
+      return (response.status === 200 || response.status === 204)
         ? response
         : response.json().then(Promise.reject.bind(Promise))
     })

@@ -8,7 +8,7 @@ const AccountView = (props) => {
   // specific to passphrase form
   const { onPassphraseSubmit, passphraseErrors, passphraseSubmitting } = props
   return (
-    <div class={styles['account-view']}>
+    <div className={styles['account-view']}>
       <h2>{t('AccountView.title')}</h2>
       <PassphraseForm
         onPassphraseSubmit={onPassphraseSubmit}

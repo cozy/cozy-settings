@@ -6,7 +6,7 @@
 import { h, Component } from 'preact'
 
 import AccountView from '../components/AccountView'
-import Notifier from '../components/Notifier'
+import Alerter from '../components/Alerter'
 
 export default class AccountManagement extends Component {
   constructor (props, context) {
@@ -35,7 +35,7 @@ export default class AccountManagement extends Component {
     this.store.updatePassphrase(values.currentPassphrase, values.newPassphrase)
       .then(response => {
         this.setState({ passphraseSubmitting: false })
-        Notifier.info(t('AccountView.password.success'))
+        Alerter.success(t('AccountView.password.success'))
       })
       .catch(error => { // eslint-disable-line
         const errors = error.errors || []
@@ -43,7 +43,7 @@ export default class AccountManagement extends Component {
         if (errors.length && errors[0].detail === 'Invalid passphrase') {
           this.setState({ passphraseErrors: ['wrong_password'] })
         } else {
-          Notifier.error(t('AccountView.password.server_error'))
+          Alerter.error(t('AccountView.password.server_error'))
         }
       })
   }
