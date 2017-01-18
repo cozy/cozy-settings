@@ -21,17 +21,27 @@
     },
     "email" : {
       "title" : "Email",
-      "label": "Your email is used for notifications or password recovery.",
-      "placeholder": "georges@abitb.ol"
+      "label": "Cozy needs you email to send you notifications and allow you to recover your password",
+      "placeholder": "john@wayne.com",
+      "error" : "The email address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     },
     "username" : {
       "title" : "Username",
-      "label": "Your username will be displayed when you share files with people or invite them to events.",
+      "label": "Your username will be displayed when you share files with Cozy users.",
       "placeholder": "abitbol2000"
     },
     "lang" : {
       "title" : "Language",
-      "label": "This will be the language used in your interface."
+      "label": "This will be the language used in your Cozy.",
+      "contrib" : "Interested in helping translate Cozy? [Check out how you can **give us a hand** on that](%{url})</a>.",
+      "english" : {
+        "value" : "en",
+        "text" : "English"
+      },
+      "french" : {
+        "value" : "fr",
+        "text" : "Français"
+      }
     }
   }
 }
