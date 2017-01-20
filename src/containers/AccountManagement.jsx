@@ -14,9 +14,13 @@ export default class AccountManagement extends Component {
     this.store = this.context.store
 
     this.state = {
+      isFetching: false,
       passphraseSubmitting: false,
-      passphraseErrors: null
+      passphraseErrors: null,
+      instance: {}
     }
+
+    this.fetchAccountInfos()
   }
 
   render () {
@@ -44,6 +48,29 @@ export default class AccountManagement extends Component {
           this.setState({ passphraseErrors: ['wrong_password'] })
         } else {
           Alerter.error(t('AccountView.password.server_error'))
+        }
+      })
+  }
+
+  fetchAccountInfos () {
+    const { t } = this.context
+    this.setState({ isFetching: true })
+    this.store.fetchSettingsInstance()
+      .then(response => {
+        this.setState({
+          isFetching: false,
+          instance: response.data.attributes
+        })
+      })
+      .catch(error => {
+        const errors = error.errors || []
+        this.setState({
+          isFetching: false
+        })
+        if (errors.length && errors[0].detail) {
+          Alerter.error(t(`AccountView.instance.${errors[0].detail}`))
+        } else {
+          Alerter.error(t('AccountView.instance.server_error'))
         }
       })
   }

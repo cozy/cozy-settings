@@ -20,6 +20,17 @@ export default class SettingsStore {
     })
   }
 
+  fetchSettingsInstance () {
+    return this.fetch(
+      'GET',
+      `${this.stackDomain}/settings/instance`
+    ).then(response => {
+      return (response.status === 200 || response.status === 204)
+        ? response.json().then(Promise.resolve.bind(Promise))
+        : response.json().then(Promise.reject.bind(Promise))
+    })
+  }
+
   fetch (method, url, body) {
     let params = {
       method: method,

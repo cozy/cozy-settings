@@ -8,18 +8,23 @@ import SelectBox from './SelectBox'
 const AccountView = (props) => {
   const { t } = props
   // specific to passphrase form
-  const { onPassphraseSubmit, passphraseErrors, passphraseSubmitting } = props
+  const { onPassphraseSubmit, passphraseErrors, passphraseSubmitting, isFetching, instance } = props
+
+  if (isFetching) {
+    return <p>Loading...</p>
+  }
+
   return (
     <div className={styles['account-view']}>
       <h2>{t('AccountView.title')}</h2>
       <InputText
         InputData='email'
-        SetValue='john@wayne.com'
+        SetValue={instance.email || ''}
         t={t}
       />
       <InputText
         InputData='username'
-        SetValue='Marion'
+        SetValue={instance.username || ''}
         t={t}
       />
       <PassphraseForm
@@ -30,6 +35,7 @@ const AccountView = (props) => {
       />
       <SelectBox
         InputData='lang'
+        SetValue={instance.locale || ''}
         t={t}
       />
     </div>
