@@ -27,6 +27,7 @@ export default class AccountManagement extends Component {
     return (
       <AccountView
         onPassphraseSubmit={(values) => this.updatePassphrase(values)}
+        updateInfos={(values) => this.updateInfos(values)}
         {...this.state}
         {...this.context}
       />
@@ -52,6 +53,22 @@ export default class AccountManagement extends Component {
       })
   }
 
+  updateInfos (input) {
+    const { t } = this.context
+    this.setState({ infosSubmitting: true, infosErrors: null })
+    let newInstance = Object.assign({}, this.state.instance)
+    newInstance.data.attributes[input.target.name] = input.target.value
+    this.store.updateInfos(newInstance)
+      .then(response => {
+        this.setState({ infosSubmitting: false })
+        Alerter.success(t('AccountView.infos.success'))
+      })
+      .catch(error => { // eslint-disable-line
+        this.setState({ infosSubmitting: false })
+        Alerter.error(t('AccountView.infos.server_error'))
+      })
+  }
+
   fetchAccountInfos () {
     const { t } = this.context
     this.setState({ isFetching: true })
@@ -59,7 +76,7 @@ export default class AccountManagement extends Component {
       .then(response => {
         this.setState({
           isFetching: false,
-          instance: response.data.attributes
+          instance: response
         })
       })
       .catch(error => {

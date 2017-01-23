@@ -3,29 +3,33 @@ import styles from '../styles/selectBox'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
-const langs = ['en', 'fr']
+const LANGS_OPTIONS = ['en', 'fr']
 
-const Option = ({t, InputData, OptionValue, SetValue}) => (
+const Option = ({t, inputData, optionValue, setValue}) => (
   <option
-    value={OptionValue}
-    selected={SetValue === OptionValue}
+    value={optionValue}
+    selected={setValue === optionValue}
   >
-    {t(`AccountView.${InputData}.${OptionValue}.text`)}
+    {t(`AccountView.${inputData}.${optionValue}.text`)}
   </option>
 )
 
-const SelectBox = ({t, InputData, SetValue}) => (
+const SelectBox = ({t, inputData, setValue, infosSubmitting, updateInfos}) => (
   <div className={styles['coz-form']}>
-    <h3>{t(`AccountView.${InputData}.title`)}</h3>
+    <h3>{t(`AccountView.${inputData}.title`)}</h3>
     <label className={styles['coz-desc']}>
-      {t(`AccountView.${InputData}.label`)}
+      {t(`AccountView.${inputData}.label`)}
     </label>
-    <select>
+    <select
+      name={inputData}
+      onBlur={updateInfos}
+      >
       {
-        langs.map(function (lang) {
+        LANGS_OPTIONS.map(function (lang) {
           return <Option
-            OptionValue={lang}
-            InputData={InputData}
+            optionValue={lang}
+            inputData={inputData}
+            setValue={setValue}
             t={t}
           />
         })
@@ -33,7 +37,7 @@ const SelectBox = ({t, InputData, SetValue}) => (
     </select>
     <p className={styles['coz-desc']}>
       <ReactMarkdown source={
-        t(`AccountView.${InputData}.contrib`, {
+        t(`AccountView.${inputData}.contrib`, {
           url: 'http://cozy.io'
         })
       } />
