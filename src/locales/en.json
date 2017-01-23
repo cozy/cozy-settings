@@ -32,12 +32,10 @@
       "title" : "Language",
       "label": "This will be the language used in your Cozy.",
       "contrib" : "Interested in helping translate Cozy? [Check out how you can **give us a hand** on that](%{url})</a>.",
-      "english" : {
-        "value" : "en",
+      "en" : {
         "text" : "English"
       },
-      "french" : {
-        "value" : "fr",
+      "fr" : {
         "text" : "Français"
       }
     }

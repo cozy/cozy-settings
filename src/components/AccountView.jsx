@@ -18,13 +18,13 @@ const AccountView = (props) => {
     <div className={styles['account-view']}>
       <h2>{t('AccountView.title')}</h2>
       <InputText
-        InputData='email'
-        SetValue={instance.email || ''}
+        inputData='email'
+        setValue={instance.email || ''}
         t={t}
       />
       <InputText
-        InputData='username'
-        SetValue={instance.username || ''}
+        inputData='username'
+        setValue={instance.username || ''}
         t={t}
       />
       <PassphraseForm
@@ -34,8 +34,8 @@ const AccountView = (props) => {
         t={t}
       />
       <SelectBox
-        InputData='lang'
-        SetValue={instance.locale || ''}
+        inputData='lang'
+        setValue={instance.locale || ''}
         t={t}
       />
     </div>
