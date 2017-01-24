@@ -61,7 +61,10 @@ export default class AccountManagement extends Component {
       newInstance.data.attributes[input.target.name] = input.target.value
       this.store.updateInfos(newInstance)
       .then(response => {
-        this.setState({ infosSubmitting: false })
+        this.setState({
+          infosSubmitting: false,
+          instance: response
+        })
         Alerter.success(t('AccountView.infos.success'))
       })
       .catch(error => { // eslint-disable-line

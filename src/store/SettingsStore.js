@@ -27,7 +27,7 @@ export default class SettingsStore {
       instance
     ).then(response => {
       return (response.status === 200 || response.status === 204)
-        ? response
+        ? response.json()
         : response.json().then(Promise.reject.bind(Promise))
     })
   }
@@ -38,7 +38,7 @@ export default class SettingsStore {
       `${this.stackDomain}/settings/instance`
     ).then(response => {
       return (response.status === 200 || response.status === 204)
-        ? response.json().then(Promise.resolve.bind(Promise))
+        ? response.json()
         : response.json().then(Promise.reject.bind(Promise))
     })
   }
