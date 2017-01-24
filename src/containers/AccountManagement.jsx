@@ -56,9 +56,10 @@ export default class AccountManagement extends Component {
   updateInfos (input) {
     const { t } = this.context
     this.setState({ infosSubmitting: true, infosErrors: null })
-    let newInstance = Object.assign({}, this.state.instance)
-    newInstance.data.attributes[input.target.name] = input.target.value
-    this.store.updateInfos(newInstance)
+    if (this.state.instance.data.attributes[input.target.name] !== input.target.value) {
+      let newInstance = Object.assign({}, this.state.instance)
+      newInstance.data.attributes[input.target.name] = input.target.value
+      this.store.updateInfos(newInstance)
       .then(response => {
         this.setState({ infosSubmitting: false })
         Alerter.success(t('AccountView.infos.success'))
@@ -67,6 +68,7 @@ export default class AccountManagement extends Component {
         this.setState({ infosSubmitting: false })
         Alerter.error(t('AccountView.infos.server_error'))
       })
+    }
   }
 
   fetchAccountInfos () {
