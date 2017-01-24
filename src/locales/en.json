@@ -21,7 +21,8 @@
     },
     "infos": {
       "success": "Your informations has been changed",
-      "server_error": "Something went wrong. Your informations has not been saved."
+      "server_error": "Something went wrong. Your informations has not been saved.",
+      "empty": "This field cannot be empty"
     },
     "email" : {
       "title" : "Email",

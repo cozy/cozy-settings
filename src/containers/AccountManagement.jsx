@@ -7,6 +7,7 @@ import { h, Component } from 'preact'
 
 import AccountView from '../components/AccountView'
 import Alerter from '../components/Alerter'
+import emailHelper from '../lib/emailHelper'
 
 export default class AccountManagement extends Component {
   constructor (props, context) {
@@ -53,10 +54,30 @@ export default class AccountManagement extends Component {
       })
   }
 
+  validInfos (input) {
+    const { t } = this.context
+    // Check if field is empty or not
+    if (input.target.value !== '') {
+      // If not empty…
+      if (input.target.type === 'text') {
+        return true
+      } else if ((input.target.type === 'email') && (emailHelper.validate(input.target.value))) {
+        return true
+      } else {
+        Alerter.error(t('AccountView.email.error'))
+        return false
+      }
+    } else {
+      Alerter.error(t('AccountView.infos.empty'))
+      return false
+    }
+  }
+
   updateInfos (input) {
     const { t } = this.context
-    this.setState({ infosSubmitting: true, infosErrors: null })
-    if (this.state.instance.data.attributes[input.target.name] !== input.target.value) {
+    if ((this.validInfos(input)) &&
+        (this.state.instance.data.attributes[input.target.name] !== input.target.value)) {
+      this.setState({ infosSubmitting: true, infosErrors: null })
       let newInstance = Object.assign({}, this.state.instance)
       newInstance.data.attributes[input.target.name] = input.target.value
       this.store.updateInfos(newInstance)
