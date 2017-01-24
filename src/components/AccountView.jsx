@@ -3,6 +3,7 @@ import styles from '../styles/accountView'
 import React from 'react'
 import PassphraseForm from './PassphraseForm'
 import InputText from './InputText'
+import InputEmail from './InputEmail'
 import SelectBox from './SelectBox'
 
 const AccountView = (props) => {
@@ -19,7 +20,7 @@ const AccountView = (props) => {
   return (
     <div className={styles['account-view']}>
       <h2>{t('AccountView.title')}</h2>
-      <InputText
+      <InputEmail
         inputData='email'
         setValue={attributes.email || ''}
         updateInfos={updateInfos}
