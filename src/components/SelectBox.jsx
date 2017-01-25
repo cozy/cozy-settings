@@ -38,9 +38,7 @@ const SelectBox = ({t, inputData, setValue, infosSubmitting, updateInfos}) => (
     <p className={styles['coz-desc']}>
       <ReactMarkdown
         source={
-          t(`AccountView.${inputData}.contrib`, {
-            url: 'https://www.transifex.com/cozy/'
-          })
+          t(`AccountView.${inputData}.contrib`)
         }
         renderers={{Link: props => <a href={props.href} target='_blank'>{props.children}</a>}}
       />
