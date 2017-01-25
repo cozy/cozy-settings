@@ -36,7 +36,7 @@
     "locale" : {
       "title" : "Language",
       "label": "This will be the language used in your Cozy.",
-      "contrib" : "Interested in helping translate Cozy? [Check out how you can **give us a hand** on that](%{url})</a>.",
+      "contrib" : "Interested in helping translate Cozy? [Check out how you can **give us a hand** on that](%{url}).",
       "en" : {
         "text" : "English"
       },

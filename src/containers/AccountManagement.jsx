@@ -57,20 +57,16 @@ export default class AccountManagement extends Component {
   validInfos (input) {
     const { t } = this.context
     // Check if field is empty or not
-    if (input.target.value !== '') {
-      // If not empty…
-      if (input.target.type === 'text') {
-        return true
-      } else if ((input.target.type === 'email') && (emailHelper.validate(input.target.value))) {
-        return true
-      } else {
-        Alerter.error(t('AccountView.email.error'))
-        return false
-      }
-    } else {
+    if (input.target.value === '') {
       Alerter.error(t('AccountView.infos.empty'))
       return false
     }
+    if ((input.target.type === 'email') && (!emailHelper.isValidEmail(input.target.value))) {
+      Alerter.error(t('AccountView.email.error'))
+      return false
+    }
+
+    return true
   }
 
   updateInfos (input) {
