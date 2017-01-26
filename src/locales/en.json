@@ -18,6 +18,31 @@
       "wrong_password": "Current password seems wrong.",
       "success": "Your password has been changed",
       "reset_link": "Forgot your current password?"
+    },
+    "infos": {
+      "success": "Your informations has been changed",
+      "server_error": "Something went wrong. Your informations has not been saved.",
+      "empty": "This field cannot be empty"
+    },
+    "email" : {
+      "title" : "Email",
+      "label": "Cozy needs you email to send you notifications and allow you to recover your password",
+      "error" : "The email address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
+    },
+    "public_name" : {
+      "title" : "Username",
+      "label": "Your username will be displayed when you share files with Cozy users."
+    },
+    "locale" : {
+      "title" : "Language",
+      "label": "This will be the language used in your Cozy.",
+      "contrib" : "Interested in helping translate Cozy? [Check out how you can **give us a hand** on that](https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937).",
+      "en" : {
+        "text" : "English"
+      },
+      "fr" : {
+        "text" : "Français"
+      }
     }
   }
 }

@@ -20,6 +20,29 @@ export default class SettingsStore {
     })
   }
 
+  updateInfos (instance) {
+    return this.fetch(
+      'PUT',
+      `${this.stackDomain}/settings/instance`,
+      instance
+    ).then(response => {
+      return (response.status === 200 || response.status === 204)
+        ? response.json()
+        : response.json().then(Promise.reject.bind(Promise))
+    })
+  }
+
+  fetchSettingsInstance () {
+    return this.fetch(
+      'GET',
+      `${this.stackDomain}/settings/instance`
+    ).then(response => {
+      return (response.status === 200 || response.status === 204)
+        ? response.json()
+        : response.json().then(Promise.reject.bind(Promise))
+    })
+  }
+
   fetch (method, url, body) {
     let params = {
       method: method,
