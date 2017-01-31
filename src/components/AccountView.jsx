@@ -15,7 +15,7 @@ const AccountView = (props) => {
     return <p>Loading...</p>
   }
 
-  const attributes = instance.data.attributes
+  const attributes = instance.data && instance.data.attributes || {}
 
   return (
     <div className={styles['account-view']}>
