@@ -2,7 +2,7 @@ import 'babel-polyfill'
 
 import './styles/main'
 
-import 'cozy-bar'
+import cozy from 'cozy-bar'
 
 import React from 'react'
 import { render } from 'react-dom'
