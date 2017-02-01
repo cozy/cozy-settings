@@ -75,6 +75,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
+    "cozy-bar": "3.0.0-beta3",
     "cozy-ui": "3.0.0-beta2",
     "node-polyglot": "^2.2.0",
     "preact": "^7.1.0",
