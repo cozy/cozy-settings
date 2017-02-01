@@ -2,6 +2,8 @@ import 'babel-polyfill'
 
 import './styles/main'
 
+import 'cozy-bar'
+
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
@@ -20,6 +22,10 @@ const stackDomain = 'http://cozy.local:8080'
 
 // store
 const store = new SettingsStore(stackDomain)
+
+cozy.bar.init({
+  appName: 'Settings'
+})
 
 document.addEventListener('DOMContentLoaded', () => {
   render((
