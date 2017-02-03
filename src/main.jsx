@@ -6,40 +6,45 @@ import cozy from 'cozy-bar'
 
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
 import { I18n } from './plugins/preact-polyglot'
 
-import SettingsStore from './store/SettingsStore'
-import Provider from './store/Provider'
+import settingsApp from './reducers'
 
 import App from './components/App'
-import AccountManagement from './containers/AccountManagement'
+import Account from './containers/Account'
 
 const context = window.context
 const lang = document.documentElement.getAttribute('lang') || 'en'
 
 const stackDomain = 'http://cozy.local:8080'
 
-// store
-const store = new SettingsStore(stackDomain)
-
 cozy.bar.init({
   appName: 'Settings'
 })
+
+const loggerMiddleware = createLogger()
+
+const store = createStore(
+  settingsApp,
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
+)
 
 document.addEventListener('DOMContentLoaded', () => {
   render((
     <Provider store={store}>
       <I18n context={context} lang={lang}>
         <Router history={hashHistory}>
-          <Route component={(props) =>
-            <App {...props} />}
-          >
+          <Route component={App}>
             <Redirect from='/' to='account' />
-            <Route
-              path='account'
-              component={AccountManagement}
-            />
+            <Route path='account' component={Account} />
             <Route
               path='connectedDevices'
               component={(props) =>
