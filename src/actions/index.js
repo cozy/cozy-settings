@@ -4,6 +4,7 @@ export const FETCH_INFOS_FAILURE = 'FETCH_INFOS_FAILURE'
 export const UPDATE_INFO = 'UPDATE_INFO'
 export const UPDATE_INFO_SUCCESS = 'UPDATE_INFO_SUCCESS'
 export const UPDATE_INFO_FAILURE = 'UPDATE_INFO_FAILURE'
+export const RESET_INFO_FIELD = 'RESET_INFO_FIELD'
 export const SET_LANG = 'SET_LANG'
 
 export const fetchInfos = () => {
@@ -27,6 +28,9 @@ export const updateInfo = (field, value) => {
     cozyFetch('PUT', '/settings/instance', newInstance)
       .then(instance => {
         dispatch({ type: UPDATE_INFO_SUCCESS, field, instance })
+        setTimeout(() => {
+          dispatch({ type: RESET_INFO_FIELD, field })
+        }, 3000)
         if (field === 'locale') {
           dispatch({ type: SET_LANG, lang: value })
         }

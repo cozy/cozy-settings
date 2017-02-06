@@ -4,7 +4,8 @@ import {
   FETCH_INFOS_SUCCESS,
   UPDATE_INFO,
   UPDATE_INFO_SUCCESS,
-  UPDATE_INFO_FAILURE
+  UPDATE_INFO_FAILURE,
+  RESET_INFO_FIELD
 } from '../actions'
 
 const createField = (name) => {
@@ -37,6 +38,8 @@ const createField = (name) => {
     switch (action.type) {
       case UPDATE_INFO_SUCCESS:
         return true
+      case RESET_INFO_FIELD:
+        return false
       default:
         return state
     }
