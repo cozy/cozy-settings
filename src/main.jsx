@@ -6,7 +6,7 @@ import cozy from 'cozy-bar'
 
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import { Provider, connect } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
@@ -14,14 +14,10 @@ import { Router, Route, Redirect, hashHistory } from 'react-router'
 import { I18n } from './plugins/preact-polyglot'
 
 import settingsApp from './reducers'
+import { fetchInfos } from './actions'
 
 import App from './components/App'
 import Account from './containers/Account'
-
-const context = window.context
-const lang = document.documentElement.getAttribute('lang') || 'en'
-
-const stackDomain = 'http://cozy.local:8080'
 
 cozy.bar.init({
   appName: 'Settings'
@@ -37,14 +33,23 @@ const store = createStore(
   )
 )
 
+const ConnectedI18n = connect(state => ({
+  context: state.ui.context,
+  lang: state.ui.lang
+}))(I18n)
+
 document.addEventListener('DOMContentLoaded', () => {
   render((
     <Provider store={store}>
-      <I18n context={context} lang={lang}>
+      <ConnectedI18n>
         <Router history={hashHistory}>
           <Route component={App}>
             <Redirect from='/' to='account' />
-            <Route path='account' component={Account} />
+            <Route
+              path='account'
+              component={Account}
+              onEnter={() => store.dispatch(fetchInfos())}
+            />
             <Route
               path='connectedDevices'
               component={(props) =>
@@ -65,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             />
           </Route>
         </Router>
-      </I18n>
+      </ConnectedI18n>
     </Provider>
   ), document.querySelector('[role=application]'))
 })

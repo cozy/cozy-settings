@@ -1,0 +1,57 @@
+import { combineReducers } from 'redux'
+
+import {
+  FETCH_INFOS_SUCCESS,
+  UPDATE_INFO,
+  UPDATE_INFO_SUCCESS,
+  UPDATE_INFO_FAILURE
+} from '../actions'
+
+const createField = (name) => {
+  const value = (state = '', action) => {
+    switch (action.type) {
+      case FETCH_INFOS_SUCCESS:
+        return action.instance.data.attributes[name]
+      case UPDATE_INFO:
+        return name !== action.field ? state : action.value
+      default:
+        return state
+    }
+  }
+
+  const submitting = (state = false, action) => {
+    if (name !== action.field) return state
+    switch (action.type) {
+      case UPDATE_INFO:
+        return true
+      case UPDATE_INFO_SUCCESS:
+      case UPDATE_INFO_FAILURE:
+        return false
+      default:
+        return state
+    }
+  }
+
+  const saved = (state = false, action) => {
+    if (name !== action.field) return state
+    switch (action.type) {
+      case UPDATE_INFO_SUCCESS:
+        return true
+      default:
+        return state
+    }
+  }
+
+  return combineReducers({
+    value,
+    submitting,
+    saved
+  })
+}
+
+const fields = combineReducers({
+  email: createField('email'),
+  locale: createField('locale')
+})
+
+export default fields

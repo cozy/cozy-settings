@@ -1,18 +1,24 @@
 import styles from '../styles/inputText'
 
 import React from 'react'
+import classNames from 'classnames'
+import { translate } from '../plugins/preact-polyglot'
 
-const InputText = ({t, inputData, setValue, infosSubmitting, updateInfos}) => (
-  <div className={styles['coz-form']}>
-    <h3>{t(`AccountView.${inputData}.title`)}</h3>
-    <label className={styles['coz-desc']}>{t(`AccountView.${inputData}.label`)}</label>
+const InputText = ({ t, name, type = 'text', value, submitting, saved, onChange }) => (
+  <div className={classNames(styles['coz-form'], styles['set-field'], {
+      [styles['set-field-loading']]: submitting,
+      [styles['set-field-saved']]: saved
+    })}>
+    <h3>{t(`AccountView.${name}.title`)}</h3>
+    <label className={styles['coz-desc']}>{t(`AccountView.${name}.label`)}</label>
     <input
-      type='text'
-      value={setValue}
-      name={inputData}
-      onBlur={updateInfos}
+      type={type}
+      value={value}
+      name={name}
+      onBlur={e => onChange(name, e.target.value)}
+      aria-busy={submitting}
     />
   </div>
 )
 
-export default InputText
+export default translate()(InputText)

@@ -4,8 +4,7 @@ import React from 'react'
 import { translate } from '../plugins/preact-polyglot'
 import PassphraseForm from './PassphraseForm'
 import InputText from './InputText'
-import InputEmail from './InputEmail'
-import SelectBox from './SelectBox'
+import Select from './Select'
 
 // const AccountView = (props) => {
 //   const { t } = props
@@ -21,13 +20,6 @@ import SelectBox from './SelectBox'
 //   return (
 //     <div className={styles['account-view']}>
 //       <h2>{t('AccountView.title')}</h2>
-//       <InputEmail
-//         inputData='email'
-//         setValue={attributes.email || ''}
-//         updateInfos={updateInfos}
-//         infosSubmitting={infosSubmitting}
-//         t={t}
-//       />
 //       <InputText
 //         inputData='public_name'
 //         setValue={attributes.public_name || ''}
@@ -52,10 +44,12 @@ import SelectBox from './SelectBox'
 //   )
 // }
 
-const AccountView = ({ t }) => (
+const AccountView = ({ t, fields, isFetching, onFieldChange }) => (
   <div className={styles['account-view']}>
+    { isFetching && <p>Loading...</p> }
     <h2>{t('AccountView.title')}</h2>
-
+    <InputText name='email' type='email' {...fields.email} onChange={onFieldChange} />
+    <Select name='locale' {...fields.locale} onChange={onFieldChange} />
   </div>
 )
 

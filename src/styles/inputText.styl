@@ -1,5 +1,32 @@
 @import 'cozy-ui'
 
 :local
-    @extend         $form
-    @extend         $form-text
+    @extend $form
+    @extend $form-text
+    @extend $form-select
+
+.set-field
+    &:after
+        opacity 0
+        transition: opacity 3s ease-in-out
+
+.set-field-loading
+    &:after
+        @extend $icon-spinner-small-blue
+        opacity 1
+
+
+.set-field-saved
+    &:after
+        @extend $icon
+        @extend $icon-16
+        opacity 1
+        background-image embedurl("../assets/icons/icon-checked.svg")
+
+.set-field-loading
+.set-field-saved
+    &:after
+        position absolute
+        bottom   0
+        right    0
+        margin   .9em .75em

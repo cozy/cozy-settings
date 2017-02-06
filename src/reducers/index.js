@@ -1,7 +1,13 @@
 import { combineReducers } from 'redux'
 
-const settingsApp = combineReducers({
+import fields from './fields'
+import instance from './instance'
+import ui from './ui'
 
+const settingsApp = combineReducers({
+  instance,
+  fields,
+  ui
 })
 
 export default settingsApp
