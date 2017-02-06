@@ -1,7 +1,6 @@
 import styles from '../styles/inputText'
 
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import classNames from 'classnames'
 import { translate } from '../plugins/preact-polyglot'
 
@@ -38,14 +37,6 @@ const Select = ({ t, name, value, submitting, saved, onChange }) => (
         />
       ))}
     </select>
-    <p className={styles['coz-desc']}>
-      <ReactMarkdown
-        source={
-          t(`AccountView.${name}.contrib`)
-        }
-        renderers={{Link: props => <a href={props.href} target='_blank'>{props.children}</a>}}
-      />
-    </p>
   </div>
 )
 
