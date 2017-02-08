@@ -13,29 +13,29 @@ const initialState = {
 }
 
 class PassphraseForm extends Component {
-  handleCurrentInput = e => {
+  constructor (props) {
+    super(props)
+    this.state = initialState
+  }
+
+  handleCurrentInput (e) {
     this.setState({
       currentPassword: e.target.value
     })
   }
 
-  handleNewInput = e => {
+  handleNewInput (e) {
     this.setState({
       newPassword: e.target.value,
       strength: passwordHelper.getStrength(e.target.value)
     })
   }
 
-  handleSubmit = e => {
+  handleSubmit (e) {
     this.props.onSubmit(this.state.currentPassword, this.state.newPassword)
       .then(() => {
         this.setState(initialState)
       })
-  }
-
-  constructor (props) {
-    super(props)
-    this.state = initialState
   }
 
   render () {
@@ -50,7 +50,7 @@ class PassphraseForm extends Component {
           name='current_password'
           value={currentPassword}
           inError={errors.currentPassword !== undefined}
-          onInput={this.handleCurrentInput}
+          onInput={e => this.handleCurrentInput(e)}
         />
         {errors.currentPassword && <p className={styles['coz-errors']}>{t(errors.currentPassword)}</p>}
         <label className={styles['coz-label']}>{t('AccountView.new_password.label')}</label>
@@ -58,7 +58,7 @@ class PassphraseForm extends Component {
           name='new_password'
           value={newPassword}
           inError={errors.newPassword !== undefined}
-          onInput={this.handleNewInput}
+          onInput={e => this.handleNewInput(e)}
         />
         <progress
           step='1' min='0' max='100'
@@ -75,7 +75,7 @@ class PassphraseForm extends Component {
             role='button'
             className={styles['primary']}
             aria-busy={submitting ? 'true' : 'false'}
-            onClick={this.handleSubmit}
+            onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
           >
             Save

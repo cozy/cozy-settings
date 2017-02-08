@@ -1,7 +1,7 @@
 import styles from '../styles/app'
 
 import React from 'react'
-import { translate } from '../plugins/preact-polyglot'
+import { translate } from 'cozy-ui/react/helpers/i18n'
 import classNames from 'classnames'
 
 import Sidebar from './Sidebar'

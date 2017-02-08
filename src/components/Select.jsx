@@ -1,7 +1,4 @@
-import styles from '../styles/fields'
-
 import React from 'react'
-import classNames from 'classnames'
 import { translate } from 'cozy-ui/react/helpers/i18n'
 import Field from './Field'
 

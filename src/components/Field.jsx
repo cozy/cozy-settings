@@ -6,9 +6,9 @@ import { translate } from 'cozy-ui/react/helpers/i18n'
 
 const Field = ({ t, name, submitting, saved, errors, children }) => (
   <div className={classNames(styles['coz-form'], styles['set-field'], {
-      [styles['set-field-loading']]: submitting,
-      [styles['set-field-saved']]: saved
-    })}>
+    [styles['set-field-loading']]: submitting,
+    [styles['set-field-saved']]: saved
+  })}>
     <h3>{t(`AccountView.${name}.title`)}</h3>
     <label className={styles['coz-desc']}>
       {t(`AccountView.${name}.label`)}

@@ -1,3 +1,5 @@
+/* global fetch */
+
 import emailHelper from '../lib/emailHelper'
 
 export const FETCH_INFOS = 'FETCH_INFOS'
@@ -19,7 +21,7 @@ export const fetchInfos = () => {
       .then(instance => {
         dispatch({ type: FETCH_INFOS_SUCCESS, instance })
       })
-      .catch(error => {
+      .catch(() => {
         dispatch({ type: FETCH_INFOS_FAILURE, error: 'AccountView.infos.server_error' })
       })
   }
@@ -49,7 +51,7 @@ export const updateInfo = (field, value) => {
           dispatch({ type: SET_LANG, lang: value })
         }
       })
-      .catch(error => {
+      .catch(() => {
         dispatch({ type: UPDATE_INFO_FAILURE, error: 'AccountView.infos.server_error' })
       })
   }
@@ -62,22 +64,21 @@ export const updatePassphrase = (current, newVal) => {
       'current_passphrase': current,
       'new_passphrase': newVal
     }).then(instance => {
-        dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
-      })
-      .catch(error => {
-        const errors = error.errors || []
-        if (errors.length && errors[0].detail === 'Invalid passphrase') {
-          dispatch({
-            type: UPDATE_PASSPHRASE_FAILURE,
-            errors: { currentPassword: 'AccountView.password.wrong_password' }
-          })
-        } else {
-          dispatch({
-            type: UPDATE_PASSPHRASE_FAILURE,
-            errors: { global: 'AccountView.password.server_error' }
-          })
-        }
-      })
+      dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
+    }).catch(error => {
+      const errors = error.errors || []
+      if (errors.length && errors[0].detail === 'Invalid passphrase') {
+        dispatch({
+          type: UPDATE_PASSPHRASE_FAILURE,
+          errors: { currentPassword: 'AccountView.password.wrong_password' }
+        })
+      } else {
+        dispatch({
+          type: UPDATE_PASSPHRASE_FAILURE,
+          errors: { global: 'AccountView.password.server_error' }
+        })
+      }
+    })
   }
 }
 
