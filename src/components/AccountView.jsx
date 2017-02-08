@@ -2,17 +2,21 @@ import styles from '../styles/accountView'
 
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { translate } from '../plugins/preact-polyglot'
+import { translate } from 'cozy-ui/react/helpers/i18n'
 import PassphraseForm from './PassphraseForm'
-import InputText from './InputText'
+import Input from './Input'
 import Select from './Select'
 
-const AccountView = ({ t, fields, isFetching, onFieldChange }) => (
+const LANG_OPTIONS = ['en', 'fr']
+
+const AccountView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit }) => (
   <div className={styles['account-view']}>
     { isFetching && <p>Loading...</p> }
     <h2>{t('AccountView.title')}</h2>
-    <InputText name='email' type='email' {...fields.email} onChange={onFieldChange} />
-    <Select name='locale' {...fields.locale} onChange={onFieldChange} />
+    <Input name='email' type='email' {...fields.email} onChange={onFieldChange} />
+    <Input name='public_name' type='text' {...fields.public_name} onChange={onFieldChange} />
+    <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
+    <Select name='locale' options={LANG_OPTIONS} {...fields.locale} onChange={onFieldChange} />
     <p className={styles['account-view-desc']}>
       <ReactMarkdown
         source={

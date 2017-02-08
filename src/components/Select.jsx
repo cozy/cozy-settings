@@ -1,43 +1,28 @@
-import styles from '../styles/inputText'
+import styles from '../styles/fields'
 
 import React from 'react'
 import classNames from 'classnames'
-import { translate } from '../plugins/preact-polyglot'
+import { translate } from 'cozy-ui/react/helpers/i18n'
+import Field from './Field'
 
-const LANGS_OPTIONS = ['en', 'fr']
-
-const Option = ({t, name, optionValue, value}) => (
-  <option
-    value={optionValue}
-    selected={value === optionValue}
-  >
-    {t(`AccountView.${name}.${optionValue}.text`)}
-  </option>
-)
-
-const Select = ({ t, name, value, submitting, saved, onChange }) => (
-  <div className={classNames(styles['coz-form'], styles['set-field'], {
-      [styles['set-field-loading']]: submitting,
-      [styles['set-field-saved']]: saved
-    })}>
-    <h3>{t(`AccountView.${name}.title`)}</h3>
-    <label className={styles['coz-desc']}>
-      {t(`AccountView.${name}.label`)}
-    </label>
-    <select
-      name={name}
-      onBlur={e => onChange(name, e.target.value)}
+const Select = ({ t, name, value, options, onChange }) => (
+  <select
+    name={name}
+    onBlur={e => onChange(name, e.target.value)}
+    >
+    {options.map(optionValue => (
+      <option
+        value={optionValue}
+        selected={value === optionValue}
       >
-      {LANGS_OPTIONS.map(lang => (
-        <Option
-          optionValue={lang}
-          name={name}
-          value={value}
-          t={t}
-        />
-      ))}
-    </select>
-  </div>
+        {t(`AccountView.${name}.${optionValue}.text`)}
+      </option>
+    ))}
+  </select>
 )
 
-export default translate()(Select)
+export default translate()(props => (
+  <Field {...props}>
+    <Select {...props} />
+  </Field>
+))

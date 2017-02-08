@@ -8,11 +8,11 @@ import {
   RESET_INFO_FIELD
 } from '../actions'
 
-const createField = (name) => {
+const createField = name => {
   const value = (state = '', action) => {
     switch (action.type) {
       case FETCH_INFOS_SUCCESS:
-        return action.instance.data.attributes[name]
+        return action.instance.data.attributes[name] || ''
       case UPDATE_INFO:
         return name !== action.field ? state : action.value
       default:
@@ -45,16 +45,31 @@ const createField = (name) => {
     }
   }
 
+  const errors = (state = [], action) => {
+    if (name !== action.field) return state
+    switch (action.type) {
+      case UPDATE_INFO:
+      case UPDATE_INFO_SUCCESS:
+        return []
+      case UPDATE_INFO_FAILURE:
+        return [action.error]
+      default:
+        return state
+    }
+  }
+
   return combineReducers({
     value,
     submitting,
-    saved
+    saved,
+    errors
   })
 }
 
 const fields = combineReducers({
   email: createField('email'),
-  locale: createField('locale')
+  locale: createField('locale'),
+  public_name: createField('public_name')
 })
 
 export default fields

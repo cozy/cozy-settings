@@ -12,15 +12,19 @@
     "title": "Account",
     "password": {
       "title": "Password",
-      "current_label": "Enter your current password",
-      "current_placeholder": "Current password",
-      "new_label": "Enter your new password",
-      "new_placeholder": "New password",
       "server_error": "Something went wrong. Your password has not been saved.",
       "password_too_weak": "Your password is too weak. You should add an uppercase, a number, a special character or a longer password.",
       "wrong_password": "Current password seems wrong.",
       "success": "Your password has been changed",
       "reset_link": "Forgot your current password?"
+    },
+    "current_password": {
+      "label": "Enter your current password",
+      "placeholder": "Current password"
+    },
+    "new_password": {
+      "label": "Enter your new password",
+      "placeholder": "New password"
     },
     "infos": {
       "success": "Your informations has been changed",
