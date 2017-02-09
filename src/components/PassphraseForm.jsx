@@ -1,69 +1,89 @@
-import styles from '../styles/passphraseForm'
+import styles from '../styles/fields'
 
-import React from 'react'
-import stateFulPassphraseForm from '../lib/stateFulPassphraseForm'
+import React, { Component } from 'react'
+import { translate } from 'cozy-ui/react/helpers/i18n'
 
-const PassphraseForm = ({ t, children, passphraseSubmitting, currentPassphrase, newPassphrase, submitPassphrase, isFormValid }) => (
-  <div className={styles['coz-form']}>
-    <h3>{t('AccountView.password.title')}</h3>
-    <label className={styles['coz-label']}>{t('AccountView.password.current_label')}
-      <a
-        onClick={currentPassphrase.toggleVisibility}
-        className={styles['visibility']}
-      >
-        {currentPassphrase.visible ? 'Hide' : 'Show'}
-      </a>
-    </label>
-    <input
-      type={currentPassphrase.visible ? 'text' : 'password'}
-      placeholder={t('AccountView.password.current_placeholder')}
-      value={currentPassphrase.value}
-      onInput={currentPassphrase.onInput}
-      onChange={currentPassphrase.onChange}
-      className={currentPassphrase.errors.length ? styles['error'] : ''}
-    />
-    {currentPassphrase.errors.length !== 0 &&
-      currentPassphrase.errors.map(e => (
-        <p className={styles['coz-errors']}>{t(`AccountView.password.${e}`)}</p>
-      ))
-    }
-    <label className={styles['coz-label']}>{t('AccountView.password.new_label')}
-      <a onClick={newPassphrase.toggleVisibility} className={styles['visibility']}>
-        {newPassphrase.visible ? 'Hide' : 'Show'}
-      </a>
-    </label>
-    <input
-      type={newPassphrase.visible ? 'text' : 'password'}
-      placeholder={t('AccountView.password.new_placeholder')}
-      value={newPassphrase.value}
-      onInput={newPassphrase.onInput}
-      onChange={newPassphrase.onChange}
-      className={newPassphrase.errors.length ? styles['error'] : ''}
-    />
-    <progress
-      step='1' min='0' max='100'
-      value={newPassphrase.strength.percentage}
-      className={styles[`pw-${newPassphrase.strength.label}`]} />
-    {newPassphrase.errors.length !== 0 &&
-      newPassphrase.errors.map(e => (
-        <p className={styles['coz-errors']}>{t(`AccountView.password.${e}`)}</p>
-      ))
-    }
-    <a href='#' className={styles['reset-link']}>
-      {t('AccountView.password.reset_link')}
-    </a>
-    <div className={styles['coz-form-controls']}>
-      <button
-        role='button'
-        className={styles['primary']}
-        aria-busy={passphraseSubmitting ? 'true' : 'false'}
-        onClick={submitPassphrase}
-        disabled={!isFormValid}
-      >
-        Save
-      </button>
-    </div>
-  </div>
-)
+import { PasswordInput } from './Input'
+import passwordHelper from '../lib/passwordHelper'
 
-export default stateFulPassphraseForm()(PassphraseForm)
+const initialState = {
+  currentPassword: '',
+  newPassword: '',
+  strength: { percentage: 0, label: 'weak' }
+}
+
+class PassphraseForm extends Component {
+  constructor (props) {
+    super(props)
+    this.state = initialState
+  }
+
+  handleCurrentInput (e) {
+    this.setState({
+      currentPassword: e.target.value
+    })
+  }
+
+  handleNewInput (e) {
+    this.setState({
+      newPassword: e.target.value,
+      strength: passwordHelper.getStrength(e.target.value)
+    })
+  }
+
+  handleSubmit (e) {
+    this.props.onSubmit(this.state.currentPassword, this.state.newPassword)
+      .then(() => {
+        this.setState(initialState)
+      })
+  }
+
+  render () {
+    const { t, errors, submitting } = this.props
+    const { currentPassword, newPassword, strength } = this.state
+    const canSubmit = newPassword !== '' && strength.label !== 'weak'
+    return (
+      <div className={styles['coz-form']}>
+        <h3>{t('AccountView.password.title')}</h3>
+        <label className={styles['coz-label']}>{t('AccountView.current_password.label')}</label>
+        <PasswordInput
+          name='current_password'
+          value={currentPassword}
+          inError={errors.currentPassword !== undefined}
+          onInput={e => this.handleCurrentInput(e)}
+        />
+        {errors.currentPassword && <p className={styles['coz-errors']}>{t(errors.currentPassword)}</p>}
+        <label className={styles['coz-label']}>{t('AccountView.new_password.label')}</label>
+        <PasswordInput
+          name='new_password'
+          value={newPassword}
+          inError={errors.newPassword !== undefined}
+          onInput={e => this.handleNewInput(e)}
+        />
+        <progress
+          step='1' min='0' max='100'
+          value={strength.percentage}
+          className={styles[`pw-${strength.label}`]}
+        />
+        {errors.newPassword && <p className={styles['coz-errors']}>{t(errors.newPassword)}</p>}
+        {errors.global && <p className={styles['coz-errors']}>{t(errors.global)}</p>}
+        <a href='#' className={styles['password-reset-link']}>
+          {t('AccountView.password.reset_link')}
+        </a>
+        <div className={styles['coz-form-controls']}>
+          <button
+            role='button'
+            className={styles['primary']}
+            aria-busy={submitting ? 'true' : 'false'}
+            onClick={e => this.handleSubmit(e)}
+            disabled={!canSubmit}
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default translate()(PassphraseForm)

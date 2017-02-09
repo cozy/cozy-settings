@@ -1,21 +1,50 @@
 @import 'cozy-ui'
 
 :local
-    @extend         $form
-    @extend         $form-text
-    @extend         $form-button
-    @extend         $form-progress
-    @extend         $form-select
+    @extend $form
+    @extend $form-text
+    @extend $form-button
+    @extend $form-progress
+    @extend $form-select
 
-    .visibility
+    .password-visibility
         text-transform  uppercase
         position        absolute
         cursor          pointer
         right           0
+        top             em(-31px)
         font-weight     bold
 
-    .reset-link
+    .password-reset-link
         margin-top      .5em
+
+    .set-field
+        &:after
+            opacity 0
+            transition: opacity 3s ease-in-out
+
+    .set-field-loading
+        &:after
+            @extend $icon-spinner-small-blue
+            opacity 1
+
+
+    .set-field-saved
+        &:after
+            @extend $icon
+            @extend $icon-16
+            opacity 1
+            background-image embedurl("../assets/icons/icon-checked.svg")
+
+    .set-field-loading
+    .set-field-saved
+        select
+            background-image none
+        &:after
+            position absolute
+            bottom   0
+            right    0
+            margin   .9em .75em
 
     progress
         &.pw-weak

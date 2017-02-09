@@ -1,54 +1,31 @@
 import styles from '../styles/accountView'
 
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import { translate } from 'cozy-ui/react/helpers/i18n'
 import PassphraseForm from './PassphraseForm'
-import InputText from './InputText'
-import InputEmail from './InputEmail'
-import SelectBox from './SelectBox'
+import Input from './Input'
+import Select from './Select'
 
-const AccountView = (props) => {
-  const { t } = props
-  // specific to passphrase form
-  const { onPassphraseSubmit, passphraseErrors, passphraseSubmitting, updateInfos, infosSubmitting, isFetching, instance } = props
+const LANG_OPTIONS = ['en', 'fr']
 
-  if (isFetching) {
-    return <p>Loading...</p>
-  }
-
-  const attributes = instance.data && instance.data.attributes || {}
-
-  return (
-    <div className={styles['account-view']}>
-      <h2>{t('AccountView.title')}</h2>
-      <InputEmail
-        inputData='email'
-        setValue={attributes.email || ''}
-        updateInfos={updateInfos}
-        infosSubmitting={infosSubmitting}
-        t={t}
+const AccountView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit }) => (
+  <div className={styles['account-view']}>
+    { isFetching && <p>Loading...</p> }
+    <h2>{t('AccountView.title')}</h2>
+    <Input name='email' type='email' {...fields.email} onChange={onFieldChange} />
+    <Input name='public_name' type='text' {...fields.public_name} onChange={onFieldChange} />
+    <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
+    <Select name='locale' options={LANG_OPTIONS} {...fields.locale} onChange={onFieldChange} />
+    <p className={styles['account-view-desc']}>
+      <ReactMarkdown
+        source={
+          t(`AccountView.locale.contrib`)
+        }
+        renderers={{Link: props => <a href={props.href} target='_blank'>{props.children}</a>}}
       />
-      <InputText
-        inputData='public_name'
-        setValue={attributes.public_name || ''}
-        updateInfos={updateInfos}
-        infosSubmitting={infosSubmitting}
-        t={t}
-      />
-      <PassphraseForm
-        onPassphraseSubmit={onPassphraseSubmit}
-        currentPassErrors={passphraseErrors || []}
-        passphraseSubmitting={passphraseSubmitting}
-        t={t}
-      />
-      <SelectBox
-        inputData='locale'
-        setValue={attributes.locale || ''}
-        updateInfos={updateInfos}
-        infosSubmitting={infosSubmitting}
-        t={t}
-      />
-    </div>
-  )
-}
+    </p>
+  </div>
+)
 
-export default AccountView
+export default translate()(AccountView)
