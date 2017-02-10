@@ -17,9 +17,17 @@
   "version": "3.0.0",
   "licence": "AGPL-3.0",
   "permissions": {
-    "settings/locale": {
-      "description": "Required to display a localized Ui",
-      "access": "read"
+    "settings": {
+      "description": "Required to manage your settings",
+      "type": "io.cozy.settings",
+      "verbs": ["GET", "POST", "PUT"]
+    }
+  },
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
     }
   }
 }
