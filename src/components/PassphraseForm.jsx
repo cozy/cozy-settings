@@ -67,20 +67,20 @@ class PassphraseForm extends Component {
         />
         {errors.newPassword && <p className={styles['coz-errors']}>{t(errors.newPassword)}</p>}
         {errors.global && <p className={styles['coz-errors']}>{t(errors.global)}</p>}
-        <a href='#' className={styles['password-reset-link']}>
-          {t('AccountView.password.reset_link')}
-        </a>
         <div className={styles['coz-form-controls']}>
           <button
             role='button'
-            className={styles['primary']}
+            className={styles['secondary']}
             aria-busy={submitting ? 'true' : 'false'}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
           >
-            Save
+            {t('AccountView.password.submit_label')}
           </button>
         </div>
+        <a href='#' className={styles['password-reset-link']}>
+          {t('AccountView.password.reset_link')}
+        </a>
       </div>
     )
   }
