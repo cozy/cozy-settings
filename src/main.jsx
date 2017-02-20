@@ -12,6 +12,7 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
 import Polyglot from 'node-polyglot'
+import format from 'date-fns/format'
 
 import en from './locales/en'
 import { I18nProvider } from 'cozy-ui/react/helpers/i18n'
@@ -21,6 +22,7 @@ import { fetchInfos } from './actions'
 
 import App from './components/App'
 import Account from './containers/Account'
+import Devices from './containers/Devices'
 
 cozy.bar.init({
   appName: 'Settings'
@@ -62,8 +64,23 @@ const ConnectedI18nProvider = connect(state => {
     }
   }
 
+  //init date format
+  const locales = {
+    en: require('date-fns/locale/en')
+  }
+  if (lang && lang !== 'en') {
+    try {
+      locales[lang] = require(`date-fns/locale/${lang}`)
+    } catch (e) {
+      console.warn(`The "${lang}" locale isn't supported by date-fns`)
+    }
+  }
+
+  let i18nDate = (date, formatStr) => format(date, formatStr, { locale: locales[lang] })
+
   return {
     i18n: polyglot,
+    i18nDate: i18nDate,
     locale: lang
   }
 })(I18nProvider)
@@ -82,9 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             />
             <Route
               path='connectedDevices'
-              component={(props) =>
-                <h2>Connected devices</h2>
-              }
+              component={Devices}
             />
             <Route
               path='storage'
