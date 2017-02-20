@@ -2,8 +2,6 @@ import 'babel-polyfill'
 
 import './styles/main'
 
-import cozy from 'cozy-bar'
-
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
@@ -21,10 +19,6 @@ import { fetchInfos } from './actions'
 
 import App from './components/App'
 import Account from './containers/Account'
-
-cozy.bar.init({
-  appName: 'Settings'
-})
 
 const loggerMiddleware = createLogger()
 
@@ -69,6 +63,15 @@ const ConnectedI18nProvider = connect(state => {
 })(I18nProvider)
 
 document.addEventListener('DOMContentLoaded', () => {
+  const root = document.querySelector('[role=application]')
+  const data = root.dataset
+
+  cozy.bar.init({
+    appName: data.cozyAppName,
+    iconPath: data.cozyIconPath,
+    lang: data.cozyLocale
+  })
+
   render((
     <Provider store={store}>
       <ConnectedI18nProvider>
@@ -102,5 +105,5 @@ document.addEventListener('DOMContentLoaded', () => {
         </Router>
       </ConnectedI18nProvider>
     </Provider>
-  ), document.querySelector('[role=application]'))
+  ), root)
 })
