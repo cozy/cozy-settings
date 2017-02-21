@@ -29,10 +29,10 @@
     flex 0 0 40%
 
 .set-content-header.set-content-file
-    padding-left   em(45px)
+    padding-left   50px
 
 .set-content-cell.set-content-file
-    padding-left   em(45px)
+    padding-left   100px
     font-size(16px)
     white-space    nowrap
     overflow       hidden
@@ -48,6 +48,12 @@
 .set-loading
     @extend $icon-spinner-small-blue
     margin-left 0.5em
+
+.set-device-laptop
+  background embedurl("../assets/icons/icon-device-laptop.svg") 50px center no-repeat
+
+.set-device-phone
+  background embedurl("../assets/icons/icon-device-phone.svg") 50px center no-repeat
 
 @media (max-width: (768/basefont)rem)
     .set-content-header
