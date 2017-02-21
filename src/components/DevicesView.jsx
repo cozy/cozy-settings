@@ -19,7 +19,7 @@ const DevicesView = ({ t, f, isFetching }) => (
         <div className={classNames(styles['set-content-header'], styles['set-content-status'])}>{ t('DevicesView.head_actions') }</div>
       </div>
       <div className={styles['set-content-row']}>
-        <div className={classNames(styles['set-content-cell'], styles['set-content-file'])}>
+        <div className={classNames(styles['set-content-cell'], styles['set-content-file'], styles['set-device-phone'])}>
           ONE
         </div>
         <div className={classNames(styles['set-content-cell'], styles['set-content-date'])}>
