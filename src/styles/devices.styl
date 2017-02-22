@@ -1,7 +1,6 @@
 @import 'cozy-ui'
 
 .devices-view
-
     h2
         horizontally-padded 2em
 
@@ -10,3 +9,7 @@
         background transparent
         vertically-padded   .2em
         horizontally-padded 0
+
+@media (max-width: (768/basefont)rem)
+    .devices-view h2
+        horizontally-padded .8em
