@@ -5,10 +5,12 @@ import classNames from 'classnames'
 import React from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
 
+import Loading from './Loading'
+
 const DevicesView = ({ t, f, isFetching, devices }) => (
   <div className={devicesStyles['devices-view']}>
-    { isFetching && <p>Loading...</p> }
     <h2>{t('DevicesView.title')}</h2>
+    { isFetching && <Loading /> }
     <div className={classNames(
       styles['set-content-table']
     )}>

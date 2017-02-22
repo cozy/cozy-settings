@@ -5,6 +5,9 @@
     "storage": "Storage",
     "email_notifications": "Email notifications"
   },
+  "Loading": {
+    "loading": "Loading"
+  },
   "AccountView": {
     "instance": {
       "server_error": "Something went wrong with the server. Please, reload the page."

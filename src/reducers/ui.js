@@ -5,6 +5,9 @@ import {
   FETCH_INFOS_SUCCESS,
   FETCH_INFOS_FAILURE,
   UPDATE_INFO_FAILURE,
+  FETCH_DEVICES,
+  FETCH_DEVICES_SUCCESS,
+  FETCH_DEVICES_FAILURE,
   SET_LANG
 } from '../actions'
 
@@ -27,9 +30,12 @@ const lang = (state = document.documentElement.getAttribute('lang') || 'en', act
 const isFetching = (state = false, action) => {
   switch (action.type) {
     case FETCH_INFOS:
+    case FETCH_DEVICES:
       return true
     case FETCH_INFOS_SUCCESS:
     case FETCH_INFOS_FAILURE:
+    case FETCH_DEVICES_SUCCESS:
+    case FETCH_DEVICES_FAILURE:
       return false
     default:
       return state
