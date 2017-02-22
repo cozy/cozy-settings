@@ -83,6 +83,7 @@ export const updatePassphrase = (current, newVal) => {
 }
 
 const STACK_DOMAIN = 'http://cozy.local:8080'
+const STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyToken
 
 const cozyFetch = (method, path, body) => {
   let params = {
@@ -90,7 +91,9 @@ const cozyFetch = (method, path, body) => {
     credentials: 'same-origin',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${STACK_TOKEN}`,
+      'credentials': 'include'
     }
   }
   if (body) {
