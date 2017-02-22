@@ -13,6 +13,9 @@ export const SET_LANG = 'SET_LANG'
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
 export const UPDATE_PASSPHRASE_FAILURE = 'UPDATE_PASSPHRASE_FAILURE'
+export const FETCH_DEVICES = 'FETCH_DEVICES'
+export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
+export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
 
 export const fetchInfos = () => {
   return (dispatch, getState) => {
@@ -79,6 +82,22 @@ export const updatePassphrase = (current, newVal) => {
         })
       }
     })
+  }
+}
+
+export const fetchDevices = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: FETCH_DEVICES })
+
+    cozyFetch('GET', '/settings/clients')
+      .then(response => {
+        //transform th raw data into a more digestable format for the app
+        let devices = response.data.map(client => client.attributes)
+        dispatch({ type: FETCH_DEVICES_SUCCESS, devices })
+      })
+      .catch((err) => {
+        dispatch({ type: FETCH_DEVICES_ERROR })
+      })
   }
 }
 

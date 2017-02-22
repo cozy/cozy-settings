@@ -3,12 +3,9 @@ import { connect } from 'react-redux'
 import DevicesView from '../components/DevicesView'
 
 const mapStateToProps = (state, ownProps) => ({
-})
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
+  devices: state.devices
 })
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(DevicesView)

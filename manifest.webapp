@@ -21,6 +21,11 @@
       "description": "Required to manage your settings",
       "type": "io.cozy.settings",
       "verbs": ["GET", "POST", "PUT"]
+    },
+    "oauth": {
+      "description": "Required to manage devices connected to your Cozy",
+      "type": "io.cozy.oauth.clients",
+      "verbs": ["GET", "DELETE"]
     }
   },
   "routes": {

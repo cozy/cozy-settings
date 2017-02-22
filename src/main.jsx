@@ -17,7 +17,7 @@ import en from './locales/en'
 import { I18nProvider } from 'cozy-ui/react/helpers/i18n'
 
 import settingsApp from './reducers'
-import { fetchInfos } from './actions'
+import { fetchInfos, fetchDevices } from './actions'
 
 import App from './components/App'
 import Account from './containers/Account'
@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <Route
               path='connectedDevices'
               component={Devices}
+              onEnter={() => store.dispatch(fetchDevices())}
             />
             <Route
               path='storage'
