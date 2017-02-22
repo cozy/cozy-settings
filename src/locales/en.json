@@ -58,6 +58,7 @@
     "head_name": "Name",
     "head_activity": "Last activity",
     "head_permissions": "Permissions",
-    "head_actions": "Actions"
+    "head_actions": "Actions",
+    "revoke": "revoke"
   }
 }
