@@ -101,8 +101,16 @@ const cozyFetch = (method, path, body) => {
   }
   return fetch(`${STACK_DOMAIN}${path}`, params)
     .then(response => {
+      let data
+      const contentType = response.headers.get('content-type')
+      if (contentType && contentType.indexOf('json') >= 0) {
+        data = response.json()
+      } else {
+        data = response.text()
+      }
+
       return (response.status === 200 || response.status === 204)
-        ? response.json()
-        : response.json().then(Promise.reject.bind(Promise))
+        ? data
+        : data.then(Promise.reject.bind(Promise))
     })
 }
