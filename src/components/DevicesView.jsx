@@ -15,20 +15,20 @@ const DevicesView = ({ t, f, isFetching, devices }) => (
       styles['set-content-table']
     )}>
       <div className={styles['set-content-row']}>
-        <div className={classNames(styles['set-content-header'], styles['set-content-file'])}>{ t('DevicesView.head_name') }</div>
-        <div className={classNames(styles['set-content-header'], styles['set-content-date'])}>{ t('DevicesView.head_activity') }</div>
-        <div className={classNames(styles['set-content-header'], styles['set-content-size'])}>{ t('DevicesView.head_permissions') }</div>
-        <div className={classNames(styles['set-content-header'], styles['set-content-status'])}>{ t('DevicesView.head_actions') }</div>
+        <div className={classNames(styles['set-content-header'], styles['set-content-primary'])}>{ t('DevicesView.head_name') }</div>
+        <div className={classNames(styles['set-content-header'], styles['set-content-secondary'])}>{ t('DevicesView.head_activity') }</div>
+        <div className={classNames(styles['set-content-header'], styles['set-content-secondary'])}>{ t('DevicesView.head_permissions') }</div>
+        <div className={classNames(styles['set-content-header'])}>{ t('DevicesView.head_actions') }</div>
       </div>
       {devices.map(device => (
       <div className={styles['set-content-row']}>
-        <div className={classNames(styles['set-content-cell'], styles['set-content-file'], device.client_kind === 'mobile' ? styles['set-device-phone'] : styles['set-device-laptop'])}>
+        <div className={classNames(styles['set-content-cell'], styles['set-content-primary'], device.client_kind === 'mobile' ? styles['set-device-phone'] : styles['set-device-laptop'])}>
           {device.client_name}
         </div>
-        <div className={classNames(styles['set-content-cell'], styles['set-content-date'])}>
+        <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])}>
 
         </div>
-        <div className={classNames(styles['set-content-cell'], styles['set-content-size'])}>
+        <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])}>
 
         </div>
         <div className={classNames(styles['set-content-cell'])}>
