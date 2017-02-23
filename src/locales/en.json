@@ -8,6 +8,10 @@
   "Loading": {
     "loading": "Loading"
   },
+  "Empty": {
+    "devices_title": "You don't have any connected devices",
+    "devices_text": ""
+  },
   "AccountView": {
     "instance": {
       "server_error": "Something went wrong with the server. Please, reload the page."
