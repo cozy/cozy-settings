@@ -16,6 +16,7 @@ export const UPDATE_PASSPHRASE_FAILURE = 'UPDATE_PASSPHRASE_FAILURE'
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
+export const ALERT_CLOSED = 'ALERT_CLOSED'
 
 export const fetchInfos = () => {
   return (dispatch, getState) => {
@@ -96,7 +97,12 @@ export const fetchDevices = () => {
         dispatch({ type: FETCH_DEVICES_SUCCESS, devices })
       })
       .catch((err) => {
-        dispatch({ type: FETCH_DEVICES_ERROR })
+        dispatch({
+          type: FETCH_DEVICES_FAILURE,
+          alert: {
+            message: 'DevicesView.load_error'
+          }
+        })
       })
   }
 }
@@ -133,3 +139,7 @@ const cozyFetch = (method, path, body) => {
         : data.then(Promise.reject.bind(Promise))
     })
 }
+
+export const alertClosed = () => ({
+  type: ALERT_CLOSED
+})
