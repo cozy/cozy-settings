@@ -59,7 +59,7 @@ const ConnectedI18nProvider = connect(state => {
     }
   }
 
-  //init date format
+  // init date format
   const locales = {
     en: require('date-fns/locale/en')
   }

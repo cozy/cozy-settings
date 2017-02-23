@@ -13,19 +13,19 @@ import Alerter from 'cozy-ui/react/Alerter'
 class App extends Component {
   render ({ t, alert, children }) {
     return (
-    <div className={classNames(styles['set-wrapper'], styles['coz-sticky'])}>
-      { alert && <Alerter
-        type={alert.type}
-        message={t(alert.message, alert.messageData)}
-        onClose={this.props.onAlertAutoClose}
-        />
-      }
-      <Sidebar />
+      <div className={classNames(styles['set-wrapper'], styles['coz-sticky'])}>
+        { alert && <Alerter
+          type={alert.type}
+          message={t(alert.message, alert.messageData)}
+          onClose={this.props.onAlertAutoClose}
+          />
+        }
+        <Sidebar />
 
-      <main className={styles['set-content']}>
-        { children }
-      </main>
-    </div>
+        <main className={styles['set-content']}>
+          { children }
+        </main>
+      </div>
     )
   }
 }

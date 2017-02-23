@@ -92,11 +92,11 @@ export const fetchDevices = () => {
 
     cozyFetch('GET', '/settings/clients')
       .then(response => {
-        //transform th raw data into a more digestable format for the app
+        // transform th raw data into a more digestable format for the app
         let devices = response.data.map(client => client.attributes)
         dispatch({ type: FETCH_DEVICES_SUCCESS, devices })
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch({
           type: FETCH_DEVICES_FAILURE,
           alert: {
