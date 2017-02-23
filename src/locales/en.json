@@ -5,6 +5,13 @@
     "storage": "Storage",
     "email_notifications": "Email notifications"
   },
+  "Loading": {
+    "loading": "Loading"
+  },
+  "Empty": {
+    "devices_title": "You don't have any connected devices",
+    "devices_text": ""
+  },
   "AccountView": {
     "instance": {
       "server_error": "Something went wrong with the server. Please, reload the page."
@@ -52,5 +59,14 @@
         "text" : "Français"
       }
     }
+  },
+  "DevicesView": {
+    "title": "Connected devices",
+    "load_error": "An error occured while loading your devices, please try again later.",
+    "head_name": "Name",
+    "head_activity": "Last activity",
+    "head_permissions": "Permissions",
+    "head_actions": "Actions",
+    "revoke": "revoke"
   }
 }
