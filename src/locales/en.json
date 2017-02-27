@@ -41,7 +41,7 @@
     },
     "email" : {
       "title" : "Email",
-      "label": "Cozy needs you email to send you notifications and allow you to recover your password",
+      "label": "Cozy needs your email to send you notifications and allow you to recover your password",
       "error" : "The email address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     },
     "public_name" : {
