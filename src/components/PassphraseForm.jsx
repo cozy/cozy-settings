@@ -70,7 +70,7 @@ class PassphraseForm extends Component {
         <div className={styles['coz-form-controls']}>
           <button
             role='button'
-            className={styles['secondary']}
+            className={'coz-btn coz-btn--secondary'}
             aria-busy={submitting ? 'true' : 'false'}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
