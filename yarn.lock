@@ -1405,9 +1405,9 @@ cozy-bar@3.0.0-beta3:
     jssha "^2.2.0"
     node-polyglot "^2.2.2"
 
-cozy-ui@3.0.0-beta7:
-  version "3.0.0-beta7"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-3.0.0-beta7.tgz#caaeef5fa7c4c615f3ae20e52ba671cbcb72b187"
+cozy-ui@3.0.0-beta12:
+  version "3.0.0-beta12"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-3.0.0-beta12.tgz#1f67a7b582f7090ce1ff701e159da1b5084f6fba"
   dependencies:
     classnames "^2.2.5"
     md5 "^2.2.0"
