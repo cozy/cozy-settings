@@ -113,12 +113,11 @@ const STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyTok
 const cozyFetch = (method, path, body) => {
   let params = {
     method: method,
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${STACK_TOKEN}`,
-      'credentials': 'include'
+      'Authorization': `Bearer ${STACK_TOKEN}`
     }
   }
   if (body) {
