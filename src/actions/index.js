@@ -72,8 +72,8 @@ export const updatePassphrase = (current, newVal) => {
       dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
       setTimeout(() => {
         dispatch({ type: RESET_PASSPHRASE_FIELD })
-        //the token changes after a password change, so we need to reload the page to get the new one
-        location.reload()
+        // the token changes after a password change, so we need to reload the page to get the new one
+        window.location.reload()
       }, 2000)
     }).catch(error => {
       const errors = error.errors || []
