@@ -69,12 +69,17 @@ export const updatePassphrase = (current, newVal) => {
       'current_passphrase': current,
       'new_passphrase': newVal
     }).then(instance => {
-      dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
+      dispatch({
+        type: UPDATE_PASSPHRASE_SUCCESS,
+        alert: {
+          message: 'AccountView.password.reload'
+        }
+      })
       setTimeout(() => {
         dispatch({ type: RESET_PASSPHRASE_FIELD })
         // the token changes after a password change, so we need to reload the page to get the new one
         window.location.reload()
-      }, 2000)
+      }, 4000)// 4s, a bit longer than the alert message
     }).catch(error => {
       const errors = error.errors || []
       if (errors.length && errors[0].detail === 'Invalid passphrase') {
