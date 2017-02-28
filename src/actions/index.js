@@ -27,7 +27,7 @@ export const fetchInfos = () => {
         dispatch({ type: FETCH_INFOS_SUCCESS, instance })
       })
       .catch(() => {
-        dispatch({ type: FETCH_INFOS_FAILURE, error: 'AccountView.infos.server_error' })
+        dispatch({ type: FETCH_INFOS_FAILURE, error: 'ProfileView.infos.server_error' })
       })
   }
 }
@@ -37,11 +37,11 @@ export const updateInfo = (field, value) => {
     dispatch({ type: UPDATE_INFO, field, value })
     // Check if the field is empty or not
     if (value === '') {
-      dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'AccountView.infos.empty' })
+      dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'ProfileView.infos.empty' })
       return
     }
     if ((field === 'email') && (!emailHelper.isValidEmail(value))) {
-      dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'AccountView.email.error' })
+      dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'ProfileView.email.error' })
       return
     }
     let newInstance = Object.assign({}, getState().instance)
@@ -57,7 +57,7 @@ export const updateInfo = (field, value) => {
         }
       })
       .catch(() => {
-        dispatch({ type: UPDATE_INFO_FAILURE, error: 'AccountView.infos.server_error' })
+        dispatch({ type: UPDATE_INFO_FAILURE, error: 'ProfileView.infos.server_error' })
       })
   }
 }
@@ -85,12 +85,12 @@ export const updatePassphrase = (current, newVal) => {
       if (errors.length && errors[0].detail === 'Invalid passphrase') {
         dispatch({
           type: UPDATE_PASSPHRASE_FAILURE,
-          errors: { currentPassword: 'AccountView.password.wrong_password' }
+          errors: { currentPassword: 'ProfileView.password.wrong_password' }
         })
       } else {
         dispatch({
           type: UPDATE_PASSPHRASE_FAILURE,
-          errors: { global: 'AccountView.password.server_error' }
+          errors: { global: 'ProfileView.password.server_error' }
         })
       }
     })

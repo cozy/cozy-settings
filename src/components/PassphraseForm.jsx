@@ -45,8 +45,8 @@ class PassphraseForm extends Component {
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
     return (
       <div className={styles['coz-form']}>
-        <h3>{t('AccountView.password.title')}</h3>
-        <label className={styles['coz-label']}>{t('AccountView.current_password.label')}</label>
+        <h3>{t('ProfileView.password.title')}</h3>
+        <label className={styles['coz-label']}>{t('ProfileView.current_password.label')}</label>
         <PasswordInput
           name='current_password'
           value={currentPassword}
@@ -54,7 +54,7 @@ class PassphraseForm extends Component {
           onInput={e => this.handleCurrentInput(e)}
         />
         {errors.currentPassword && <p className={styles['coz-errors']}>{t(errors.currentPassword)}</p>}
-        <label className={styles['coz-label']}>{t('AccountView.new_password.label')}</label>
+        <label className={styles['coz-label']}>{t('ProfileView.new_password.label')}</label>
         <PasswordInput
           name='new_password'
           value={newPassword}
@@ -76,11 +76,11 @@ class PassphraseForm extends Component {
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
           >
-            {t('AccountView.password.submit_label')}
+            {t('ProfileView.password.submit_label')}
           </button>
         </div>
         <a href='#' className={styles['password-reset-link']}>
-          {t('AccountView.password.reset_link')}
+          {t('ProfileView.password.reset_link')}
         </a>
       </div>
     )

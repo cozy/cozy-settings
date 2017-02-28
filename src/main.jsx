@@ -20,7 +20,7 @@ import settingsApp from './reducers'
 import { fetchInfos, fetchDevices } from './actions'
 
 import App from './components/App'
-import Account from './containers/Account'
+import Profile from './containers/Profile'
 import Devices from './containers/Devices'
 
 const loggerMiddleware = createLogger()
@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <ConnectedI18nProvider>
         <Router history={hashHistory}>
           <Route component={App}>
-            <Redirect from='/' to='account' />
+            <Redirect from='/' to='profile' />
             <Route
-              path='account'
-              component={Account}
+              path='profile'
+              component={Profile}
               onEnter={() => store.dispatch(fetchInfos())}
             />
             <Route
