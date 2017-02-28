@@ -1,6 +1,6 @@
 {
   "Nav": {
-    "account": "Account",
+    "profile": "Profile",
     "connected_devices": "Connected devices",
     "storage": "Storage",
     "email_notifications": "Email notifications"
@@ -12,11 +12,11 @@
     "devices_title": "You don't have any connected devices",
     "devices_text": ""
   },
-  "AccountView": {
+  "ProfileView": {
     "instance": {
       "server_error": "Something went wrong with the server. Please, reload the page."
     },
-    "title": "Account",
+    "title": "Profile",
     "password": {
       "title": "Password",
       "server_error": "Something went wrong. Your password has not been saved.",

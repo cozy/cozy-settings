@@ -12,7 +12,7 @@ const Select = ({ t, name, value, options, onChange }) => (
         value={optionValue}
         selected={value === optionValue}
       >
-        {t(`AccountView.${name}.${optionValue}.text`)}
+        {t(`ProfileView.${name}.${optionValue}.text`)}
       </option>
     ))}
   </select>

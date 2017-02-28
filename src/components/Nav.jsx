@@ -8,8 +8,8 @@ const Nav = ({ t }) => (
   <nav>
     <ul className={styles['coz-nav']}>
       <li className={styles['coz-nav-item']}>
-        <Link to='/account' className={styles['set-cat-account']} activeClassName={styles['active']}>
-          { t('Nav.account') }
+        <Link to='/profile' className={styles['set-cat-profile']} activeClassName={styles['active']}>
+          { t('Nav.profile') }
         </Link>
       </li>
       <li className={styles['coz-nav-item']}>

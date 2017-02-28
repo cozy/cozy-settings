@@ -9,9 +9,9 @@ const Field = ({ t, name, submitting, saved, errors, children }) => (
     [styles['set-field-loading']]: submitting,
     [styles['set-field-saved']]: saved
   })}>
-    <h3>{t(`AccountView.${name}.title`)}</h3>
+    <h3>{t(`ProfileView.${name}.title`)}</h3>
     <label className={styles['coz-desc']}>
-      {t(`AccountView.${name}.label`)}
+      {t(`ProfileView.${name}.label`)}
     </label>
     {children}
     {errors && errors.length !== 0 && errors.map(error => (
