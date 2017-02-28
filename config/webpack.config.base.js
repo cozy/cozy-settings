@@ -4,14 +4,13 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const pkg = require(path.resolve(__dirname, '../package.json'))
-
-const build = process.env.NODE_ENV === 'production'
+const { extractor } = require('./webpack.vars')
 
 module.exports = {
   entry: ['whatwg-fetch', path.resolve(__dirname, '../src/main')],
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: build ? 'app.[hash].js' : 'app.js'
+    filename: 'app.js'
   },
   resolve: {
     extensions: ['', '.js', '.json']
@@ -30,15 +29,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: [
-          'style-loader',
+        loader: extractor.extract('style', [
           'css-loader?importLoaders=1',
           'postcss-loader'
-        ]
+        ])
       }
     ]
   },
   plugins: [
+    extractor,
     new HtmlWebpackPlugin({
       template: 'src/index.ejs',
       title: pkg.name,
