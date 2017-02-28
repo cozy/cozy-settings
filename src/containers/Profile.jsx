@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import { updateInfo, updatePassphrase } from '../actions'
 
-import AccountView from '../components/AccountView'
+import ProfileView from '../components/ProfileView'
 
 const mapStateToProps = (state, ownProps) => ({
   fields: state.fields,
@@ -21,4 +21,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AccountView)
+)(ProfileView)

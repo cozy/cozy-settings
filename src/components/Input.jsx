@@ -42,7 +42,7 @@ export const PasswordInput = translate()(
           </a>
           <input
             type={visible ? 'text' : 'password'}
-            placeholder={t(`AccountView.${name}.placeholder`)}
+            placeholder={t(`ProfileView.${name}.placeholder`)}
             value={value}
             onInput={onInput}
             className={inError ? styles['error'] : ''}
