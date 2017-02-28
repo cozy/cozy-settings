@@ -3,7 +3,8 @@ import { combineReducers } from 'redux'
 import {
   UPDATE_PASSPHRASE,
   UPDATE_PASSPHRASE_SUCCESS,
-  UPDATE_PASSPHRASE_FAILURE
+  UPDATE_PASSPHRASE_FAILURE,
+  RESET_PASSPHRASE_FIELD
 } from '../actions'
 
 const submitting = (state = false, action) => {
@@ -12,6 +13,17 @@ const submitting = (state = false, action) => {
       return true
     case UPDATE_PASSPHRASE_SUCCESS:
     case UPDATE_PASSPHRASE_FAILURE:
+      return false
+    default:
+      return state
+  }
+}
+
+const saved = (state = false, action) => {
+  switch (action.type) {
+    case UPDATE_PASSPHRASE_SUCCESS:
+      return true
+    case RESET_PASSPHRASE_FIELD:
       return false
     default:
       return state
@@ -32,6 +44,7 @@ const errors = (state = [], action) => {
 
 const passphrase = combineReducers({
   submitting,
+  saved,
   errors
 })
 

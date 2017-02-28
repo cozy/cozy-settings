@@ -1,4 +1,5 @@
 import styles from '../styles/fields'
+import classNames from 'classnames'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
@@ -39,7 +40,7 @@ class PassphraseForm extends Component {
   }
 
   render () {
-    const { t, errors, submitting } = this.props
+    const { t, errors, submitting, saved } = this.props
     const { currentPassword, newPassword, strength } = this.state
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
     return (
@@ -70,7 +71,7 @@ class PassphraseForm extends Component {
         <div className={styles['coz-form-controls']}>
           <button
             role='button'
-            className={'coz-btn coz-btn--secondary'}
+            className={classNames('coz-btn', 'coz-btn--secondary', {[styles['saved']]: saved})}
             aria-busy={submitting ? 'true' : 'false'}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}

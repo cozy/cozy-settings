@@ -13,6 +13,7 @@ export const SET_LANG = 'SET_LANG'
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
 export const UPDATE_PASSPHRASE_FAILURE = 'UPDATE_PASSPHRASE_FAILURE'
+export const RESET_PASSPHRASE_FIELD = 'RESET_PASSPHRASE_FIELD'
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
@@ -69,6 +70,9 @@ export const updatePassphrase = (current, newVal) => {
       'new_passphrase': newVal
     }).then(instance => {
       dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
+      setTimeout(() => {
+        dispatch({ type: RESET_PASSPHRASE_FIELD })
+      }, 3000)
     }).catch(error => {
       const errors = error.errors || []
       if (errors.length && errors[0].detail === 'Invalid passphrase') {
