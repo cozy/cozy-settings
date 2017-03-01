@@ -72,7 +72,7 @@ export const updatePassphrase = (current, newVal) => {
       dispatch({
         type: UPDATE_PASSPHRASE_SUCCESS,
         alert: {
-          message: 'AccountView.password.reload'
+          message: 'ProfileView.password.reload'
         }
       })
       setTimeout(() => {
