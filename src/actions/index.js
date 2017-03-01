@@ -13,6 +13,7 @@ export const SET_LANG = 'SET_LANG'
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
 export const UPDATE_PASSPHRASE_FAILURE = 'UPDATE_PASSPHRASE_FAILURE'
+export const RESET_PASSPHRASE_FIELD = 'RESET_PASSPHRASE_FIELD'
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
@@ -68,7 +69,17 @@ export const updatePassphrase = (current, newVal) => {
       'current_passphrase': current,
       'new_passphrase': newVal
     }).then(instance => {
-      dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
+      dispatch({
+        type: UPDATE_PASSPHRASE_SUCCESS,
+        alert: {
+          message: 'AccountView.password.reload'
+        }
+      })
+      setTimeout(() => {
+        dispatch({ type: RESET_PASSPHRASE_FIELD })
+        // the token changes after a password change, so we need to reload the page to get the new one
+        window.location.reload()
+      }, 4000)// 4s, a bit longer than the alert message
     }).catch(error => {
       const errors = error.errors || []
       if (errors.length && errors[0].detail === 'Invalid passphrase') {
@@ -113,12 +124,11 @@ const STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyTok
 const cozyFetch = (method, path, body) => {
   let params = {
     method: method,
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${STACK_TOKEN}`,
-      'credentials': 'include'
+      'Authorization': `Bearer ${STACK_TOKEN}`
     }
   }
   if (body) {

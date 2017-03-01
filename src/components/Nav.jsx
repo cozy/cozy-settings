@@ -1,4 +1,5 @@
 import styles from '../styles/nav'
+import classNames from 'classnames'
 
 import React from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
@@ -8,22 +9,22 @@ const Nav = ({ t }) => (
   <nav>
     <ul className={styles['coz-nav']}>
       <li className={styles['coz-nav-item']}>
-        <Link to='/profile' className={styles['set-cat-profile']} activeClassName={styles['active']}>
+        <Link to='/profile' className={classNames(styles['set-cat-profile'], styles['coz-nav-link'])} activeClassName={styles['active']}>
           { t('Nav.profile') }
         </Link>
       </li>
       <li className={styles['coz-nav-item']}>
-        <Link to='/connectedDevices' className={styles['set-cat-devices']} activeClassName={styles['active']}>
+        <Link to='/connectedDevices' className={classNames(styles['set-cat-devices'], styles['coz-nav-link'])} activeClassName={styles['active']}>
           { t('Nav.connected_devices') }
         </Link>
       </li>
       <li className={styles['coz-nav-item']}>
-        <Link to='/storage' className={styles['set-cat-storage']} activeClassName={styles['active']}>
+        <Link to='/storage' className={classNames(styles['set-cat-storage'], styles['coz-nav-link'])} activeClassName={styles['active']}>
           { t('Nav.storage') }
         </Link>
       </li>
       <li className={styles['coz-nav-item']}>
-        <Link to='/emailNotifications' className={styles['set-cat-notif']} activeClassName={styles['active']}>
+        <Link to='/emailNotifications' className={classNames(styles['set-cat-notif'], styles['coz-nav-link'])} activeClassName={styles['active']}>
           { t('Nav.email_notifications') }
         </Link>
       </li>
