@@ -18,16 +18,6 @@ const Nav = ({ t }) => (
           { t('Nav.connected_devices') }
         </Link>
       </li>
-      <li className={styles['coz-nav-item']}>
-        <Link to='/storage' className={classNames(styles['set-cat-storage'], styles['coz-nav-link'])} activeClassName={styles['active']}>
-          { t('Nav.storage') }
-        </Link>
-      </li>
-      <li className={styles['coz-nav-item']}>
-        <Link to='/emailNotifications' className={classNames(styles['set-cat-notif'], styles['coz-nav-link'])} activeClassName={styles['active']}>
-          { t('Nav.email_notifications') }
-        </Link>
-      </li>
     </ul>
   </nav>
 )
