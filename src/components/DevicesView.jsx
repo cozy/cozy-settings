@@ -33,11 +33,7 @@ const DevicesView = ({ t, f, isFetching, devices }) => (
             </div>
             <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])} />
             <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])} />
-            <div className={classNames(styles['set-content-cell'])}>
-              <button className={classNames(devicesStyles['coz-btn--revoke'])}>
-                {t('DevicesView.revoke')}
-              </button>
-            </div>
+            <div className={classNames(styles['set-content-cell'])} />
           </div>
         ))}
       </div>
