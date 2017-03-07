@@ -3,7 +3,7 @@
     "profile": "Profile",
     "connected_devices": "Connected devices",
     "storage": "Storage",
-    "email_notifications": "Email notifications"
+    "email_notifications": "E-mail notifications"
   },
   "Loading": {
     "loading": "Loading"
@@ -41,9 +41,9 @@
       "empty": "This field cannot be empty"
     },
     "email" : {
-      "title" : "Email",
-      "label": "Cozy needs your email to send you notifications and allow you to recover your password",
-      "error" : "The email address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
+      "title" : "E-mail",
+      "label": "Cozy needs your e-mail to send you notifications and allow you to recover your password",
+      "error" : "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     },
     "public_name" : {
       "title" : "Username",
@@ -52,7 +52,7 @@
     "locale" : {
       "title" : "Language",
       "label": "This will be the language used in your Cozy.",
-      "contrib" : "Interested in helping translate Cozy? [Check out how you can **give us a hand** on that](https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937).",
+      "contrib" : "Interested in helping translate Cozy? [Check out how you can **give us a hand** on that](%{link}).",
       "en" : {
         "text" : "English"
       },

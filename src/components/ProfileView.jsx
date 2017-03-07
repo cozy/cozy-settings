@@ -19,7 +19,7 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
     <p className={styles['profile-view-desc']}>
       <ReactMarkdown
         source={
-          t(`ProfileView.locale.contrib`)
+          t('ProfileView.locale.contrib', {link: 'https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937'})
         }
         renderers={{Link: props => <a href={props.href} target='_blank'>{props.children}</a>}}
       />
