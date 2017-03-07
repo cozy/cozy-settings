@@ -36,6 +36,11 @@ module.exports = {
       }
     ]
   },
+  postcss: () => {
+    return [
+      require('autoprefixer')(['last 2 versions'])
+    ]
+  },
   plugins: [
     extractor,
     new HtmlWebpackPlugin({
