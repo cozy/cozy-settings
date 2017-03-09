@@ -118,7 +118,7 @@ export const fetchDevices = () => {
   }
 }
 
-const STACK_DOMAIN = 'http://cozy.local:8080'
+const STACK_DOMAIN = '//' + document.querySelector('[role=application]').dataset.cozyDomain
 const STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyToken
 
 const cozyFetch = (method, path, body) => {
