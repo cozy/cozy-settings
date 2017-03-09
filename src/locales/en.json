@@ -19,6 +19,8 @@
     "title": "Profile",
     "password": {
       "title": "Password",
+      "show": "Show",
+      "hide": "Hide",
       "server_error": "Something went wrong. Your password has not been saved.",
       "password_too_weak": "Your password is too weak. You should add an uppercase, a number, a special character or a longer password.",
       "wrong_password": "Current password seems wrong.",
