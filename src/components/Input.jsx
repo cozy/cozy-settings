@@ -38,7 +38,7 @@ export const PasswordInput = translate()(
             onClick={toggleVisibility}
             className={styles['password-visibility']}
           >
-            {visible ? 'Hide' : 'Show'}
+            {visible ? t(`ProfileView.password.hide`) : t(`ProfileView.password.show`)}
           </a>
           <input
             type={visible ? 'text' : 'password'}
