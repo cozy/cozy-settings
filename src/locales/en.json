@@ -1,6 +1,7 @@
 {
   "Nav": {
     "profile": "Profile",
+    "activated_services": "Activated services",
     "connected_devices": "Connected devices",
     "storage": "Storage",
     "email_notifications": "E-mail notifications"
@@ -62,6 +63,14 @@
         "text" : "Français"
       }
     }
+  },
+  "ServicesView": {
+    "title": "Activated services",
+    "load_error": "An error occured while loading your services, please try again later.",
+    "head_name": "Name",
+    "head_activity": "Last activity",
+    "head_permissions": "Permissions",
+    "head_actions": "Actions"
   },
   "DevicesView": {
     "title": "Connected devices",

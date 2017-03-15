@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "cozy-ui": "3.0.0-beta12",
+    "cozy-ui": "3.0.0-beta15",
     "date-fns": "^1.27.2",
     "node-polyglot": "^2.2.0",
     "preact": "^7.1.0",

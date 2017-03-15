@@ -21,6 +21,7 @@ import { fetchInfos, fetchDevices } from './actions'
 
 import App from './components/App'
 import Profile from './containers/Profile'
+import Services from './components/ServicesView'
 import Devices from './containers/Devices'
 
 const loggerMiddleware = createLogger()
@@ -100,6 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
               path='profile'
               component={Profile}
               onEnter={() => store.dispatch(fetchInfos())}
+            />
+            <Route
+              path='activatedServices'
+              component={Services}
             />
             <Route
               path='connectedDevices'
