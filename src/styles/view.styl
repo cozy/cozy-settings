@@ -1,0 +1,33 @@
+@import 'cozy-ui'
+
+.set-view-content
+    padding-left   2em
+    padding-right  2em
+
+    .set-view-title
+        padding  0
+
+    // @TODO CLEAN UP THIS
+    h3
+        margin-bottom  0em
+
+.set-view-content--narrow
+    max-width  32em
+
+.set-view-loading
+    @extend     $icon-spinner-blue
+    @extend     $icon-16
+    margin-left 0.5em
+
+.set-view-title
+    horizontally-padded 2em
+
+    @media (max-width: (768/basefont)rem)
+        .devices-view h2
+            horizontally-padded .8em
+
+.coz-btn--revoke
+    vertically-padded   .2em
+    horizontally-padded 0
+    background transparent
+    color dodger-blue

@@ -1,5 +1,6 @@
 import styles from '../styles/table'
-import devicesStyles from '../styles/devices.styl'
+import viewStyles from '../styles/view.styl'
+
 import classNames from 'classnames'
 
 import React from 'react'
@@ -12,8 +13,8 @@ import Empty from './Empty'
 const getDeviceKindClass = kind => kind === 'mobile' ? styles['set-device-phone'] : styles['set-device-laptop']
 
 const DevicesView = ({ t, f, isFetching, devices }) => (
-  <div className={devicesStyles['devices-view']}>
-    <h2>{t('DevicesView.title')}</h2>
+  <div>
+    <h2 className={viewStyles['set-view-title']}>{t('DevicesView.title')}</h2>
     { isFetching && <Loading /> }
     { !isFetching && devices.length === 0 && <Empty emptyType='devices' />}
     { devices.length > 0 && (
