@@ -75,10 +75,9 @@
   "DevicesView": {
     "title": "Connected devices",
     "load_error": "An error occured while loading your devices, please try again later.",
-    "head_name": "Name",
-    "head_activity": "Last activity",
-    "head_permissions": "Permissions",
-    "head_actions": "Actions",
-    "revoke": "revoke"
+    "head_services": "Services",
+    "head_account": "Account",
+    "head_sync": "Last synchronisation",
+    "head_status": "Status"
   }
 }
