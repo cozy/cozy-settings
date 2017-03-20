@@ -10,12 +10,12 @@ const Field = ({ t, name, submitting, saved, errors, children }) => (
     [styles['set-field-saved']]: saved
   })}>
     <h3>{t(`ProfileView.${name}.title`)}</h3>
-    <label className={styles['coz-desc']}>
+    <label className={styles['coz-form-desc']}>
       {t(`ProfileView.${name}.label`)}
     </label>
     {children}
     {errors && errors.length !== 0 && errors.map(error => (
-      <p className={styles['coz-errors']}>{t(error)}</p>
+      <p className={styles['coz-form-errors']}>{t(error)}</p>
     ))}
   </div>
 )

@@ -1,7 +1,65 @@
 @import 'cozy-ui'
 
+$set-device
+    content         ''
+    display         inline-block
+    width           em(30px)
+    height          em(30px)
+    vertical-align  middle
+
 [role=application]
     @extend $table
+
+    .set-table-service
+    .set-table-account
+    .set-table-sync
+    .set-table-status
+        flex  0 0 25%
+
+    .set-table-name
+        flex 0 0 40%
+
+    .set-table-activity
+    .set-table-permission
+    .set-table-actions
+        flex 0 0 15%
+
+    .set-table-services
+        .coz-table-cell
+            padding  em(8px, 14px) em(32px, 14px)
+
+    .set-table-devices
+        .coz-table-primary
+            padding-left em(80px)
+
+    .coz-table-primary
+        font-size  1rem
+
+    .set-device-laptop
+        background embedurl('../assets/icons/icon-device-laptop.svg') em(32px) center no-repeat
+
+    .set-device-phone
+        background embedurl('../assets/icons/icon-device-phone.svg') em(32px) center no-repeat
+
+    @media (max-width: (768/basefont)rem)
+        .set-table-service
+            flex  0 0 100%
+
+        .set-table-name
+            flex  0 0 70%
+
+        .set-table-actions
+            flex  0 0 30%
+
+        .set-table-account
+        .set-table-sync
+        .set-table-status
+        .set-table-activity
+        .set-table-permission
+            display none
+
+
+// LEGACY CODE
 
 .set-content-table
     text-align left
@@ -21,7 +79,8 @@
     border-bottom   1px solid grey-09
 
 .set-content-primary
-    color grey-08
+    font-size  1rem
+    color      grey-08
 
 .set-content-header
     padding         em(8px, 12px) em(28px, 12px)
@@ -50,10 +109,10 @@
     margin-left 0.5em
 
 .set-device-laptop
-    background embedurl('../assets/icons/icon-device-laptop.svg') 50px center no-repeat
+    background embedurl('../assets/icons/icon-device-laptop.svg') 32px center no-repeat
 
 .set-device-phone
-    background embedurl('../assets/icons/icon-device-phone.svg') 50px center no-repeat
+    background embedurl('../assets/icons/icon-device-phone.svg') 32px center no-repeat
 
 @media (max-width: (768/basefont)rem)
     .set-content-header
