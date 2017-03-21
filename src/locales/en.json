@@ -79,5 +79,9 @@
     "head_account": "Account",
     "head_sync": "Last synchronisation",
     "head_status": "Status"
+  },
+  "soon": {
+    "title": "Coming soon",
+    "description": "This feature is not available yet. For more information, please contact us at contact@cozycloud.cc"
   }
 }
