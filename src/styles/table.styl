@@ -7,6 +7,11 @@ $set-device
     height          em(30px)
     vertical-align  middle
 
+.set-loading
+    @extend $icon-spinner-blue
+    @extend $icon-16
+    margin-left 0.5em
+
 [role=application]
     @extend $table
 
@@ -57,71 +62,3 @@ $set-device
         .set-table-activity
         .set-table-permission
             display none
-
-
-// LEGACY CODE
-
-.set-content-table
-    text-align left
-    color      grey-11
-
-.set-content-header
-.set-content-cell
-    box-sizing  border-box
-    padding     em(15px) em(32px)
-    font-size   14px
-
-.set-content-row
-    display         flex
-    flex-direction  row
-    align-items     center
-    width           100%
-    border-bottom   1px solid grey-09
-
-.set-content-primary
-    font-size  1rem
-    color      grey-08
-
-.set-content-header
-    padding         em(8px, 12px) em(28px, 12px)
-    font-size(12px)
-    text-transform  uppercase
-
-.set-content-primary
-    flex 0 0 40%
-
-.set-content-header.set-content-primary
-    padding-left   50px
-
-.set-content-cell.set-content-primary
-    padding-left   100px
-    font-size      16px
-    white-space    nowrap
-    overflow       hidden
-    text-overflow  ellipsis
-
-.set-content-secondary
-    flex 0 0 15%
-
-.set-loading
-    @extend $icon-spinner-blue
-    @extend $icon-16
-    margin-left 0.5em
-
-.set-device-laptop
-    background embedurl('../assets/icons/icon-device-laptop.svg') 32px center no-repeat
-
-.set-device-phone
-    background embedurl('../assets/icons/icon-device-phone.svg') 32px center no-repeat
-
-@media (max-width: (768/basefont)rem)
-    .set-content-header
-    .set-content-secondary
-        display none
-
-    .set-content-primary
-        flex 0 0 75%
-
-    .set-content-cell.set-content-primary
-        left-padded         61px
-        background-position em(16px) center
