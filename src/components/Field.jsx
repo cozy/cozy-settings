@@ -1,4 +1,5 @@
 import styles from '../styles/fields'
+import viewStyles from '../styles/view'
 
 import React from 'react'
 import classNames from 'classnames'
@@ -9,7 +10,7 @@ const Field = ({ t, name, submitting, saved, errors, children }) => (
     [styles['set-field-loading']]: submitting,
     [styles['set-field-saved']]: saved
   })}>
-    <h3>{t(`ProfileView.${name}.title`)}</h3>
+    <h3 className={viewStyles['set-view-subtitle']}>{t(`ProfileView.${name}.title`)}</h3>
     <label className={styles['coz-form-desc']}>
       {t(`ProfileView.${name}.label`)}
     </label>

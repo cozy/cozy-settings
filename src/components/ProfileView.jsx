@@ -1,4 +1,4 @@
-import viewStyles from '../styles/view.styl'
+import viewStyles from '../styles/view'
 
 import classNames from 'classnames'
 
