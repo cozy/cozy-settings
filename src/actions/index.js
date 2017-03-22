@@ -17,7 +17,6 @@ export const RESET_PASSPHRASE_FIELD = 'RESET_PASSPHRASE_FIELD'
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
-export const ALERT_CLOSED = 'ALERT_CLOSED'
 
 export const fetchInfos = () => {
   return (dispatch, getState) => {
@@ -149,7 +148,3 @@ const cozyFetch = (method, path, body) => {
         : data.then(Promise.reject.bind(Promise))
     })
 }
-
-export const alertClosed = () => ({
-  type: ALERT_CLOSED
-})

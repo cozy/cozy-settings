@@ -8,8 +8,7 @@ import {
   FETCH_DEVICES,
   FETCH_DEVICES_SUCCESS,
   FETCH_DEVICES_FAILURE,
-  SET_LANG,
-  ALERT_CLOSED
+  SET_LANG
 } from '../actions'
 
 const context = (state = window.context || null, action) => {
@@ -56,23 +55,9 @@ const error = (state = null, action) => {
   }
 }
 
-const DEFAULT_ALERT_LEVEL = 'info'
-
-const alert = (state = null, action) => {
-  if (action.alert) {
-    return {
-      message: action.alert.message,
-      messageData: action.alert.messageData,
-      type: action.alert.type || DEFAULT_ALERT_LEVEL
-    }
-  } else if (action.type === ALERT_CLOSED) return null
-  else return state
-}
-
 export default combineReducers({
   isFetching,
   context,
   lang,
-  error,
-  alert
+  error
 })

@@ -1,6 +1,7 @@
 {
   "Nav": {
     "profile": "Profile",
+    "activated_services": "Activated services",
     "connected_devices": "Connected devices",
     "storage": "Storage",
     "email_notifications": "E-mail notifications"
@@ -69,7 +70,18 @@
     "head_name": "Name",
     "head_activity": "Last activity",
     "head_permissions": "Permissions",
-    "head_actions": "Actions",
-    "revoke": "revoke"
+    "head_actions": "Actions"
+  },
+  "ServicesView": {
+    "title": "Activated services",
+    "load_error": "An error occured while loading your services, please try again later.",
+    "head_services": "Services",
+    "head_account": "Account",
+    "head_sync": "Last synchronisation",
+    "head_status": "Status"
+  },
+  "soon": {
+    "title": "Coming soon",
+    "description": "This feature is not available yet. For more information, please contact us at contact@cozycloud.cc"
   }
 }
