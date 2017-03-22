@@ -45,7 +45,7 @@ const DevicesView = ({ t, f, isFetching, devices, openDeviceRevokeModale, device
             <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])} />
             <div className={classNames(styles['set-content-cell'])}>
               <button
-                className={classNames('coz-btn')}
+                className={classNames('coz-btn', devicesStyles['coz-btn--revoke'])}
                 onClick={() => {
                   onDeviceModaleRevoke(device)
                 }}
