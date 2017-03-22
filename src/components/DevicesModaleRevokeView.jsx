@@ -8,7 +8,7 @@ const devicesModaleRevokeView = ({ t, device, revokeDevice, cancelAction }) => {
     description={t('revokeDevice.description', {name: device.client_name})}
     subText={t('revokeDevice.subText')}
     cancelText='cancel'
-    cancelAction={cancelAction}
+    cancelAction={() => cancelAction()}
     validateText={t('revokeDevice.validate')}
     validateType='danger'
     validateAction={() => revokeDevice(device.id)}
