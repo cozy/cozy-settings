@@ -71,5 +71,12 @@
     "head_permissions": "Permissions",
     "head_actions": "Actions",
     "revoke": "revoke"
+  },
+  "revokeDevice": {
+    "title": "Revoke this device",
+    "description": "You're about to unlink %{name}",
+    "subText": "It will immediately stop syncing with this device",
+    "validate": "Revoke device",
+    "error": "Unable to revoke the device, try to reload the page"
   }
 }
