@@ -4,19 +4,19 @@ import {
   FETCH_INFOS,
   FETCH_INFOS_SUCCESS,
   FETCH_INFOS_FAILURE,
-  
+
   UPDATE_INFO_FAILURE,
-  
+
   FETCH_DEVICES,
   FETCH_DEVICES_SUCCESS,
   FETCH_DEVICES_FAILURE,
-  
+
   DEVICE_REVOKE,
   DEVICE_REVOKE_SUCCESS,
   DEVICE_REVOKE_FAILURE,
-  
+
   SET_LANG,
-  
+
   ALERT_CLOSED
 } from '../actions'
 
@@ -40,7 +40,7 @@ const isFetching = (state = false, action) => {
   switch (action.type) {
     case FETCH_INFOS:
     case FETCH_DEVICES:
-    case DEVICE_REVOKE: 
+    case DEVICE_REVOKE:
       return true
     case FETCH_INFOS_SUCCESS:
     case FETCH_INFOS_FAILURE:

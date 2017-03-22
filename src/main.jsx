@@ -19,7 +19,7 @@ import { I18nProvider } from 'cozy-ui/react/helpers/i18n'
 import settingsApp from './reducers'
 import { fetchInfos, fetchDevices } from './actions'
 
-import App     from './components/App'
+import App from './components/App'
 import Profile from './containers/Profile'
 import Devices from './containers/Devices'
 

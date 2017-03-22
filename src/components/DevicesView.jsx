@@ -22,14 +22,14 @@ const DevicesView = ({ t, f, isFetching, devices, openDeviceRevokeModale, device
       <div className={classNames(
         styles['set-content-table']
       )}>
-        {openDeviceRevokeModale && 
-          <DevicesModaleRevokeView 
+        {openDeviceRevokeModale &&
+          <DevicesModaleRevokeView
             cancelAction={onDeviceModaleRevokeClose}
             revokeDevice={devicePerformRevoke}
-            device={deviceToRevoke} 
+            device={deviceToRevoke}
           />
         }
-        
+
         <div className={styles['set-content-row']}>
           <div className={classNames(styles['set-content-header'], styles['set-content-primary'])}>{ t('DevicesView.head_name') }</div>
           <div className={classNames(styles['set-content-header'], styles['set-content-secondary'])}>{ t('DevicesView.head_activity') }</div>
@@ -44,14 +44,14 @@ const DevicesView = ({ t, f, isFetching, devices, openDeviceRevokeModale, device
             <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])} />
             <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])} />
             <div className={classNames(styles['set-content-cell'])}>
-                <button 
-                    className={classNames('coz-btn')}
-                    onClick={() => {
-                        onDeviceModaleRevoke(device)
-                    }}
-                    >
-                    {t('DevicesView.revoke')}
-                </button>
+              <button
+                className={classNames('coz-btn')}
+                onClick={() => {
+                  onDeviceModaleRevoke(device)
+                }}
+              >
+                {t('DevicesView.revoke')}
+              </button>
             </div>
           </div>
         ))}

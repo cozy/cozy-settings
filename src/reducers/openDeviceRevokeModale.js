@@ -2,7 +2,7 @@ import {
   DEVICES_MODALE_REVOKE_OPEN,
   DEVICES_MODALE_REVOKE_CLOSE,
   DEVICE_REVOKE_SUCCESS
-  
+
 } from '../actions'
 
 const openDeviceRevokeModale = (state = false, action) => {
