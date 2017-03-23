@@ -120,10 +120,10 @@ class ServicesView extends Component {
                   <time datetime=''>03 jan 2017, 11:48AM</time>
                 </div>
                 <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-status'])}>
-                  <span className='coz-error coz-error--warning'>Unsynchronised</span>
+                  <span className='coz-error coz-error--warning'>{t('ServicesView.unsync')}</span>
                 </div>
               </div>
-              <p className={viewStyles['set-account-more']}><a href='#'>Access the whole list of services here →</a></p>
+              <p className={viewStyles['set-account-more']}><a>{t('ServicesView.konnector_link')} →</a></p>
             </div>
           </div>
         </div>

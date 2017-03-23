@@ -78,7 +78,9 @@
     "head_services": "Services",
     "head_account": "Account",
     "head_sync": "Last synchronisation",
-    "head_status": "Status"
+    "head_status": "Status",
+    "unsync": "Unsynchronised",
+    "konnector_link": "Access the whole list of services here"
   },
   "soon": {
     "title": "Coming soon",
