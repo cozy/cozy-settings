@@ -44,7 +44,7 @@
     "babel-runtime": "^6.0.0",
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
-    "cozy-bar": "3.0.0-beta11",
+    "cozy-bar": "3.0.0-beta14",
     "cozy-client-js": "^0.1.7",
     "css-loader": "^0.26.0",
     "css-mqpacker": "^4.0.1",
@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "cozy-ui": "3.0.0-beta12",
+    "cozy-ui": "3.0.0-beta18",
     "date-fns": "^1.27.2",
     "node-polyglot": "^2.2.0",
     "preact": "^7.1.0",

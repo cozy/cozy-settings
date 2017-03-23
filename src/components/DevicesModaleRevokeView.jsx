@@ -9,19 +9,17 @@ import classNames from 'classnames'
 import styles from '../styles/devicesModaleRevokeView'
 
 const devicesModaleRevokeView = ({ t, device, revokeDevice, cancelAction }) => {
-  const descriptionText = `${t('revokeDevice.description', {name: device.client_name})}\n\n${t('revokeDevice.subText')}`
-
   return (<Modal
     title={t('revokeDevice.title')}
-    validateText={t('revokeDevice.validate')}
-    validateType='danger'
-    validateAction={() => revokeDevice(device.id)}
-    cancelText='cancel'
-    cancelType='secondary'
-    cancelAction={() => cancelAction()}
+    primaryText={t('revokeDevice.validate')}
+    primaryType='danger'
+    primaryAction={() => revokeDevice(device.id)}
+    secondaryText='cancel'
+    secondaryAction={() => cancelAction()}
     >
     <div className={classNames(styles['coz-modal-content'], styles['coz-modal-revoke-content'])}>
-      <ReactMarkdown source={descriptionText} />
+        <ReactMarkdown source={t('revokeDevice.description', {name: device.client_name})} />
+        <ReactMarkdown source={t('revokeDevice.subText')} className={classNames(styles['icon'], styles['icon-arrows'])} />
     </div>
   </Modal>)
 }
