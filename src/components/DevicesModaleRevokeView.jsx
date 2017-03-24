@@ -18,8 +18,8 @@ const devicesModaleRevokeView = ({ t, device, revokeDevice, cancelAction }) => {
     secondaryAction={() => cancelAction()}
     >
     <div className={classNames(styles['coz-modal-content'], styles['coz-modal-revoke-content'])}>
-        <ReactMarkdown source={t('revokeDevice.description', {name: device.client_name})} />
-        <ReactMarkdown source={t('revokeDevice.subText')} className={classNames(styles['icon'], styles['icon-arrows'])} />
+      <ReactMarkdown source={t('revokeDevice.description', {name: device.client_name})} />
+      <ReactMarkdown source={t('revokeDevice.subText')} className={classNames(styles['icon'], styles['icon-arrows'])} />
     </div>
   </Modal>)
 }
