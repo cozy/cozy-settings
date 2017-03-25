@@ -15,9 +15,7 @@ import {
   DEVICE_REVOKE_SUCCESS,
   DEVICE_REVOKE_FAILURE,
 
-  SET_LANG,
-
-  ALERT_CLOSED
+  SET_LANG
 } from '../actions'
 
 const context = (state = window.context || null, action) => {

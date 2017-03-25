@@ -16,7 +16,6 @@ const settingsApp = combineReducers({
   openDeviceRevokeModale,
   deviceToRevoke,
   passphrase,
-  devices,
   ui,
   alerts: alerterReducer
 })
