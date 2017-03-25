@@ -186,7 +186,3 @@ const cozyFetch = (method, path, body) => {
         : data.then(Promise.reject.bind(Promise))
     })
 }
-
-export const alertClosed = () => ({
-  type: ALERT_CLOSED
-})

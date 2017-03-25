@@ -46,15 +46,15 @@ class PassphraseForm extends Component {
     return (
       <div className={styles['coz-form']}>
         <h3>{t('ProfileView.password.title')}</h3>
-        <label className={styles['coz-label']}>{t('ProfileView.current_password.label')}</label>
+        <label className={styles['coz-form-label']}>{t('ProfileView.current_password.label')}</label>
         <PasswordInput
           name='current_password'
           value={currentPassword}
           inError={errors.currentPassword !== undefined}
           onInput={e => this.handleCurrentInput(e)}
         />
-        {errors.currentPassword && <p className={styles['coz-errors']}>{t(errors.currentPassword)}</p>}
-        <label className={styles['coz-label']}>{t('ProfileView.new_password.label')}</label>
+        {errors.currentPassword && <p className={styles['coz-form-errors']}>{t(errors.currentPassword)}</p>}
+        <label className={styles['coz-form-label']}>{t('ProfileView.new_password.label')}</label>
         <PasswordInput
           name='new_password'
           value={newPassword}
@@ -66,8 +66,8 @@ class PassphraseForm extends Component {
           value={strength.percentage}
           className={styles[`pw-${strength.label}`]}
         />
-        {errors.newPassword && <p className={styles['coz-errors']}>{t(errors.newPassword)}</p>}
-        {errors.global && <p className={styles['coz-errors']}>{t(errors.global)}</p>}
+        {errors.newPassword && <p className={styles['coz-form-errors']}>{t(errors.newPassword)}</p>}
+        {errors.global && <p className={styles['coz-form-errors']}>{t(errors.global)}</p>}
         <div className={styles['coz-form-controls']}>
           <button
             role='button'

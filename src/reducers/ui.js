@@ -67,23 +67,9 @@ const error = (state = null, action) => {
   }
 }
 
-const DEFAULT_ALERT_LEVEL = 'info'
-
-const alert = (state = null, action) => {
-  if (action.alert) {
-    return {
-      message: action.alert.message,
-      messageData: action.alert.messageData,
-      type: action.alert.type || DEFAULT_ALERT_LEVEL
-    }
-  } else if (action.type === ALERT_CLOSED) return null
-  else return state
-}
-
 export default combineReducers({
   isFetching,
   context,
   lang,
-  error,
-  alert
+  error
 })
