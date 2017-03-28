@@ -1,0 +1,61 @@
+@import 'cozy-ui'
+
+.set-view-content
+    padding-left   2rem
+    padding-right  2rem
+
+    .set-view-title
+        padding  0
+
+    .set-view-subtitle
+        margin-bottom  0em
+
+.set-view-content--narrow
+    max-width  32em
+
+.set-view-loading
+    @extend     $icon-spinner-blue
+    @extend     $icon-16
+    margin-left 0.5em
+
+.set-view-title
+    padding  0 2rem
+
+    @media (max-width: (768/basefont)rem)
+        .devices-view h2
+            padding  0 .8em
+
+.coz-btn--revoke
+    vertically-padded    .2em
+    horizontally-padded  0
+    background           transparent
+    color                dodger-blue
+
+.set-account-logo
+    box-sizing        border-box
+    display           inline-block
+    border-radius     4px
+    margin-right      1rem
+    width             3rem
+    height            3rem
+    background-color  grey-11
+    padding           3px
+    vertical-align    middle
+
+    img
+        position   relative
+        top        50%
+        left       50%
+        display    block
+        max-width  100%
+        transform  translateX(-50%) translateY(-50%)
+
+.set-account-more {
+    margin     0
+    padding    em(24px, 14px) em(32px, 14px)
+    font-size  14px
+}
+// @TODO Wait for the functionality to be implemented and then remove the style and class in the component
+.set-soon
+    filter   grayscale(100%)
+    opacity  .5

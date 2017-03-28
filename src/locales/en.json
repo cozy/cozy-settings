@@ -1,6 +1,7 @@
 {
   "Nav": {
     "profile": "Profile",
+    "activated_services": "Activated services",
     "connected_devices": "Connected devices",
     "storage": "Storage",
     "email_notifications": "E-mail notifications"
@@ -71,5 +72,26 @@
     "head_permissions": "Permissions",
     "head_actions": "Actions",
     "revoke": "revoke"
+  },
+  "revokeDevice": {
+    "title": "Revoke this device",
+    "description": "You're about to unlink **%{name}**.",
+    "subText": "It will immediately stop syncing with this device.",
+    "validate": "Revoke device",
+    "error": "Unable to revoke the device, try to reload the page."
+  },
+  "ServicesView": {
+    "title": "Activated services",
+    "load_error": "An error occured while loading your services, please try again later.",
+    "head_services": "Services",
+    "head_account": "Account",
+    "head_sync": "Last synchronisation",
+    "head_status": "Status",
+    "unsync": "Unsynchronised",
+    "konnector_link": "Access the whole list of services here"
+  },
+  "soon": {
+    "title": "Coming soon",
+    "description": "This feature is not available yet. For more information, please contact us at contact@cozycloud.cc"
   }
 }

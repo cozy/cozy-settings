@@ -17,6 +17,11 @@ export const RESET_PASSPHRASE_FIELD = 'RESET_PASSPHRASE_FIELD'
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
+export const DEVICES_MODALE_REVOKE_OPEN = 'DEVICES_MODALE_REVOKE_OPEN'
+export const DEVICES_MODALE_REVOKE_CLOSE = 'DEVICES_MODALE_REVOKE_CLOSE'
+export const DEVICE_REVOKE = 'DEVICE_REVOKE'
+export const DEVICE_REVOKE_SUCCESS = 'DEVICE_REVOKE_SUCCESS'
+export const DEVICE_REVOKE_FAILURE = 'DEVICE_REVOKE_FAILURE'
 export const ALERT_CLOSED = 'ALERT_CLOSED'
 
 export const fetchInfos = () => {
@@ -102,21 +107,53 @@ export const fetchDevices = () => {
     dispatch({ type: FETCH_DEVICES })
 
     cozyFetch('GET', '/settings/clients')
-      .then(response => {
-        // transform th raw data into a more digestable format for the app
-        let devices = response.data.map(client => client.attributes)
-        dispatch({ type: FETCH_DEVICES_SUCCESS, devices })
+    .then(response => {
+      // transform th raw data into a more digestable format for the app
+      let devices = response.data.map((device) => {
+        let deviceData = device.attributes
+        deviceData.id = device.id
+        return deviceData
       })
-      .catch(() => {
-        dispatch({
-          type: FETCH_DEVICES_FAILURE,
-          alert: {
-            message: 'DevicesView.load_error'
-          }
-        })
+      dispatch({ type: FETCH_DEVICES_SUCCESS, devices })
+    })
+    .catch(() => {
+      dispatch({
+        type: FETCH_DEVICES_FAILURE,
+        alert: {
+          message: 'DevicesView.load_error'
+        }
       })
+    })
   }
 }
+
+export const devicePerformRevoke = (deviceId) => {
+  return (dispatch, getState) => {
+    dispatch({ type: DEVICE_REVOKE })
+
+    cozyFetch('DELETE', '/settings/clients/' + deviceId)
+    .then(() => {
+      dispatch({ type: DEVICE_REVOKE_SUCCESS, deviceId })
+    })
+    .catch(() => {
+      dispatch({
+        type: DEVICE_REVOKE_FAILURE,
+        alert: {
+          message: 'revokeDevice.error'
+        }
+      })
+    })
+  }
+}
+
+export const deviceModaleRevokeOpen = (device) => ({
+  type: DEVICES_MODALE_REVOKE_OPEN,
+  device
+})
+
+export const deviceModaleRevokeClose = () => ({
+  type: DEVICES_MODALE_REVOKE_CLOSE
+})
 
 const STACK_DOMAIN = '//' + document.querySelector('[role=application]').dataset.cozyDomain
 const STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyToken
@@ -149,7 +186,3 @@ const cozyFetch = (method, path, body) => {
         : data.then(Promise.reject.bind(Promise))
     })
 }
-
-export const alertClosed = () => ({
-  type: ALERT_CLOSED
-})

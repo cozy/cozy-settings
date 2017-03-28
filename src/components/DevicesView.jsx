@@ -1,5 +1,7 @@
-import styles from '../styles/table'
-import devicesStyles from '../styles/devices.styl'
+import tableStyles from '../styles/table'
+import viewStyles from '../styles/view'
+import devicesStyles from '../styles/devices'
+
 import classNames from 'classnames'
 
 import React from 'react'
@@ -8,34 +10,57 @@ import { translate } from 'cozy-ui/react/helpers/i18n'
 import Loading from './Loading'
 import Empty from './Empty'
 
-// for the icon, we show a phone if it's a phone, and a laptop in all other cases
-const getDeviceKindClass = kind => kind === 'mobile' ? styles['set-device-phone'] : styles['set-device-laptop']
+import DevicesModaleRevokeView from './DevicesModaleRevokeView'
 
-const DevicesView = ({ t, f, isFetching, devices }) => (
-  <div className={devicesStyles['devices-view']}>
-    <h2>{t('DevicesView.title')}</h2>
+// for the icon, we show a phone if it's a phone, and a laptop in all other cases
+const getDeviceKindClass = kind => kind === 'mobile' ? tableStyles['set-device-phone'] : tableStyles['set-device-laptop']
+
+const DevicesView = ({ t, f, isFetching, devices, openDeviceRevokeModale, deviceToRevoke, onDeviceModaleRevoke, onDeviceModaleRevokeClose, devicePerformRevoke }) => (
+  <div role='contentinfo' className={devicesStyles['devices-view']}>
+    <h2 className={viewStyles['set-view-title']}>{t('DevicesView.title')}</h2>
     { isFetching && <Loading /> }
     { !isFetching && devices.length === 0 && <Empty emptyType='devices' />}
-    { devices.length > 0 && (
+    { !isFetching && devices.length > 0 && (
       <div className={classNames(
-        styles['set-content-table']
+        tableStyles['coz-table']
       )}>
-        <div className={styles['set-content-row']}>
-          <div className={classNames(styles['set-content-header'], styles['set-content-primary'])}>{ t('DevicesView.head_name') }</div>
-          <div className={classNames(styles['set-content-header'], styles['set-content-secondary'])}>{ t('DevicesView.head_activity') }</div>
-          <div className={classNames(styles['set-content-header'], styles['set-content-secondary'])}>{ t('DevicesView.head_permissions') }</div>
-          <div className={classNames(styles['set-content-header'])}>{ t('DevicesView.head_actions') }</div>
+        {openDeviceRevokeModale &&
+          <DevicesModaleRevokeView
+            cancelAction={onDeviceModaleRevokeClose}
+            revokeDevice={devicePerformRevoke}
+            device={deviceToRevoke}
+          />
+        }
+
+        <div className={classNames(tableStyles['coz-table-head'], tableStyles['coz-table-row'])}>
+          <div className={classNames(tableStyles['coz-table-header'], tableStyles['set-table-name'])}>{ t('DevicesView.head_name') }</div>
+          <div className={classNames(tableStyles['coz-table-header'], tableStyles['set-table-activity'])}>{ t('DevicesView.head_activity') }</div>
+          <div className={classNames(tableStyles['coz-table-header'], tableStyles['set-table-permission'])}>{ t('DevicesView.head_permissions') }</div>
+          <div className={classNames(tableStyles['coz-table-header'], tableStyles['set-table-actions'])}>{ t('DevicesView.head_actions') }</div>
         </div>
-        {devices.map(device => (
-          <div className={styles['set-content-row']}>
-            <div className={classNames(styles['set-content-cell'], styles['set-content-primary'], getDeviceKindClass(device.client_kind))}>
-              {device.client_name}
-            </div>
-            <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])} />
-            <div className={classNames(styles['set-content-cell'], styles['set-content-secondary'])} />
-            <div className={classNames(styles['set-content-cell'])} />
+        <div className={classNames(tableStyles['coz-table-body'], tableStyles['set-table-devices'])}>
+          <div>
+            {devices.map(device => (
+              <div className={tableStyles['coz-table-row']}>
+                <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-name'], tableStyles['coz-table-primary'], getDeviceKindClass(device.client_kind))}>
+                  {device.client_name}
+                </div>
+                <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-activity'])} />
+                <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-permission'])} />
+                <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-actions'])}>
+                  <button
+                    className={classNames('coz-btn', devicesStyles['coz-btn--revoke'])}
+                    onClick={() => {
+                      onDeviceModaleRevoke(device)
+                    }}
+                  >
+                    {t('DevicesView.revoke')}
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     )}
   </div>
