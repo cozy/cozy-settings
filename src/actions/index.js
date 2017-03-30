@@ -161,7 +161,7 @@ export const deviceModaleRevokeClose = () => ({
 export const installApp = (slug, repourl, isupdate) => {
   return (dispatch, getState) => {
     dispatch({ type: INSTALL_APP })
-    let verb = isupdate ? 'PUT' : 'POST'
+    const verb = isupdate ? 'PUT' : 'POST'
     return cozyFetch(verb, `/apps/${slug}?Source=${encodeURIComponent(repourl)}`)
     .then(response => {
       dispatch({
@@ -212,7 +212,7 @@ const cozyFetch = (method, path, body) => {
         data = response.text()
       }
 
-      return (response.status >= 200 && response.status < 300)
+      return (response.status === 200 || response.status === 202 || response.status === 204)
         ? data
         : data.then(Promise.reject.bind(Promise))
     })
