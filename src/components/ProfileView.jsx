@@ -16,9 +16,27 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
     <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
       { isFetching && <p>Loading...</p> }
       <h2 className={viewStyles['set-view-title']}>{t('ProfileView.title')}</h2>
-      <Input name='email' type='email' {...fields.email} onChange={onFieldChange} />
-      <Input name='public_name' type='text' {...fields.public_name} onChange={onFieldChange} />
-      <Select name='locale' options={LANG_OPTIONS} {...fields.locale} onChange={onFieldChange} />
+      <Input
+        name='email'
+        type='email'
+        label={t('ProfileView.email.title')}
+        description={t('ProfileView.email.label')}
+        {...fields.email}
+        onChange={onFieldChange} />
+      <Input
+        name='public_name'
+        type='text'
+        label={t('ProfileView.public_name.title')}
+        description={t(`ProfileView.public_name.label`)}
+        {...fields.public_name}
+        onChange={onFieldChange} />
+      <Select
+        name='locale'
+        label={t('ProfileView.locale.title')}
+        description={t(`ProfileView.locale.label`)}
+        options={LANG_OPTIONS.map(lang => t(`ProfileView.locale.${lang}.text`))}
+        {...fields.locale}
+        onChange={onFieldChange} />
       <p>
         <ReactMarkdown
           source={
