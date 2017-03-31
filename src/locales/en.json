@@ -80,6 +80,17 @@
     "validate": "Revoke device",
     "error": "Unable to revoke the device, try to reload the page."
   },
+  "InstallView": {
+    "title": "Application installation",
+    "install_error": "An error occured while installing %{slug}",
+    "update_error": "An error occured while updating %{slug}",
+    "install_success": "%{slug} is installing",
+    "update_success": "%{slug} is updating",
+    "update": "Update",
+    "slug": "Slug",
+    "repository_url": "Repository url",
+    "submit": "Submit"
+  },
   "ServicesView": {
     "title": "Activated services",
     "load_error": "An error occured while loading your services, please try again later.",

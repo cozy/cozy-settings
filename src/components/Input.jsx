@@ -5,12 +5,13 @@ import { translate } from 'cozy-ui/react/helpers/i18n'
 import withState from 'cozy-ui/react/helpers/withState'
 import Field from './Field'
 
-const Input = ({ t, name, type = 'text', value, submitting, errors, onChange }) => (
+const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, errors, onChange }) => (
   <input
     type={type}
+    placeholder={placeholder}
     value={value}
     name={name}
-    onBlur={e => onChange(name, e.target.value)}
+    onBlur={e => onChange(name, e.target.type === 'checkbox' ? e.target.checked : e.target.value)}
     className={errors && errors.length !== 0 ? styles['error'] : ''}
     aria-busy={submitting}
   />
