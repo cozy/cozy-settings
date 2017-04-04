@@ -11,7 +11,7 @@ import Select from './Select'
 
 const LANG_OPTIONS = ['en', 'fr']
 
-const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit }) => (
+const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit, onPasswordForgot, onModalClose }) => (
   <div role='contentinfo'>
     <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
       { isFetching && <p>Loading...</p> }
@@ -45,7 +45,7 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
           renderers={{Link: props => <a href={props.href} target='_blank'>{props.children}</a>}}
         />
       </p>
-      <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
+      <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} onForgot={onPasswordForgot} onModalClose={onModalClose} />
     </div>
   </div>
 )

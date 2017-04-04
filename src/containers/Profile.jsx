@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { updateInfo, updatePassphrase } from '../actions'
+import { updateInfo, updatePassphrase, passphraseForgot, modalClose } from '../actions'
 
 import ProfileView from '../components/ProfileView'
 
@@ -15,6 +15,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   onPassphraseSubmit: (current, newVal) => {
     return dispatch(updatePassphrase(current, newVal))
+  },
+  onPasswordForgot: () => {
+    return dispatch(passphraseForgot())
+  },
+  onModalClose: () => {
+    return dispatch(modalClose())
   }
 })
 

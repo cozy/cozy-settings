@@ -38,6 +38,11 @@
       "label": "Enter your new password",
       "placeholder": "New password"
     },
+    "passphrase_new": {
+      "success_title": "Email sent",
+      "success_text": "Check your emails, and follow the instructions to change your password.",
+      "failure_title": "Error"
+    },
     "infos": {
       "success": "Your informations has been changed",
       "server_error": "Something went wrong. Your informations has not been saved.",
