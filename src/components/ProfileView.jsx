@@ -11,7 +11,7 @@ import Select from './Select'
 
 const LANG_OPTIONS = ['en', 'fr']
 
-const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit, onPasswordForgot, onModalClose }) => (
+const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit }) => (
   <div role='contentinfo'>
     <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
       { isFetching && <p>Loading...</p> }
