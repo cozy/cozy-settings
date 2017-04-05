@@ -40,8 +40,8 @@ class PassphraseForm extends Component {
   }
 
   render () {
-    const { t, errors, submitting, saved } = this.props
     const { currentPassword, newPassword, strength } = this.state
+    const { t, errors, submitting, saved } = this.props
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
     return (
       <div className={styles['coz-form']}>
@@ -79,7 +79,11 @@ class PassphraseForm extends Component {
             {t('ProfileView.password.submit_label')}
           </button>
         </div>
-        <a href='#' className={styles['password-reset-link']}>
+
+        <a
+          href='/auth/passphrase_reset'
+          className={styles['password-reset-link']}
+        >
           {t('ProfileView.password.reset_link')}
         </a>
       </div>
