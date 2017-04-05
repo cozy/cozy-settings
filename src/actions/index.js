@@ -128,7 +128,7 @@ export const passphraseForgot = () => {
         type: PASSPHRASE_NEW_REQUEST_FAILURE,
         errors: {
           global: 'ProfileView.password.server_error',
-          cause: error
+          reason: error
         }
       })
     })
