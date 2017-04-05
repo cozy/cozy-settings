@@ -7,8 +7,6 @@ import { translate } from 'cozy-ui/react/helpers/i18n'
 import { PasswordInput } from './Input'
 import passwordHelper from '../lib/passwordHelper'
 
-import Modal from 'cozy-ui/react/Modal'
-
 const initialState = {
   currentPassword: '',
   newPassword: '',
@@ -41,17 +39,9 @@ class PassphraseForm extends Component {
       })
   }
 
-  handleForgot () {
-    this.props.onForgot()
-  }
-
-  modalClose () {
-    this.props.onModalClose()
-  }
-
   render () {
     const { currentPassword, newPassword, strength } = this.state
-    const { t, errors, submitting, saved, passphraseNewRequesting, passphraseNewSuccess, passphraseNewError } = this.props
+    const { t, errors, submitting, saved } = this.props
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
     return (
       <div className={styles['coz-form']}>
@@ -90,37 +80,12 @@ class PassphraseForm extends Component {
           </button>
         </div>
 
-        {!passphraseNewRequesting && <a
-          href='#'
+        <a
+          href='/auth/passphrase_reset'
           className={styles['password-reset-link']}
-          onclick={() => this.handleForgot()}>
+        >
           {t('ProfileView.password.reset_link')}
-        </a>}
-
-        {passphraseNewRequesting &&
-        <span className={styles['passphrase_new_send']}>
-          {t('ProfileView.password.reset_sending')}
-        </span>}
-
-        {passphraseNewSuccess &&
-          <Modal
-            title={t('ProfileView.passphrase_new.success_title')}
-            description={t('ProfileView.passphrase_new.success_text')}
-            primaryText={'ok'}
-            primaryAction={() => this.modalClose()}
-            secondaryAction={() => this.modalClose()}
-            />
-        }
-
-        {passphraseNewError &&
-          <Modal
-            title={t('ProfileView.passphrase_new.failure_title')}
-            description={t('ProfileView.instance.server_error')}
-            primaryText={'ok'}
-            primaryAction={() => this.modalClose()}
-            secondaryAction={() => this.modalClose()}
-            />
-        }
+        </a>
       </div>
     )
   }

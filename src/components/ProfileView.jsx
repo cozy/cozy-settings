@@ -45,7 +45,7 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
           renderers={{Link: props => <a href={props.href} target='_blank'>{props.children}</a>}}
         />
       </p>
-      <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} onForgot={onPasswordForgot} onModalClose={onModalClose} />
+      <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
     </div>
   </div>
 )

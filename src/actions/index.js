@@ -17,15 +17,6 @@ export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
 export const UPDATE_PASSPHRASE_FAILURE = 'UPDATE_PASSPHRASE_FAILURE'
 export const RESET_PASSPHRASE_FIELD = 'RESET_PASSPHRASE_FIELD'
 
-export const PASSPHRASE_NEW_REQUEST = 'PASSPHRASE_NEW_REQUEST'
-export const PASSPHRASE_NEW_REQUEST_SUCCESS = 'PASSPHRASE_NEW_REQUEST_SUCCESS'
-export const PASSPHRASE_NEW_REQUEST_FAILURE = 'PASSPHRASE_NEW_REQUEST_FAILURE'
-
-export const PASSPHRASE_NEW_REQUEST_SUCCESS_MODAL_OPEN = 'PASSPHRASE_NEW_REQUEST_SUCCESS_MODAL_OPEN'
-export const PASSPHRASE_NEW_REQUEST_FAILURE_MODAL_OPEN = 'PASSPHRASE_NEW_REQUEST_FAILURE_MODAL_OPEN'
-
-export const MODAL_CLOSE = 'MODAL_CLOSE'
-
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
@@ -114,30 +105,6 @@ export const updatePassphrase = (current, newVal) => {
     })
   }
 }
-
-export const passphraseForgot = () => {
-  return (dispatch, getState) => {
-    dispatch({type: PASSPHRASE_NEW_REQUEST})
-
-    cozyFetch('POST', '/auth/passphrase_reset')
-    .then(response => {
-      dispatch({type: PASSPHRASE_NEW_REQUEST_SUCCESS})
-    })
-    .catch(error => {
-      dispatch({
-        type: PASSPHRASE_NEW_REQUEST_FAILURE,
-        errors: {
-          global: 'ProfileView.password.server_error',
-          reason: error
-        }
-      })
-    })
-  }
-}
-
-export const modalClose = () => ({
-  type: MODAL_CLOSE
-})
 
 export const fetchDevices = () => {
   return (dispatch, getState) => {
