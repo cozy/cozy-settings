@@ -124,7 +124,13 @@ export const passphraseForgot = () => {
       dispatch({type: PASSPHRASE_NEW_REQUEST_SUCCESS})
     })
     .catch(error => {
-      dispatch({type: PASSPHRASE_NEW_REQUEST_FAILURE})
+      dispatch({
+        type: PASSPHRASE_NEW_REQUEST_FAILURE,
+        errors: {
+          global: 'ProfileView.password.server_error',
+          cause: error
+        }
+      })
     })
   }
 }

@@ -51,35 +51,35 @@ const errors = (state = [], action) => {
 const passphraseNewRequesting = (state = false, action) => {
   switch (action.type) {
     case PASSPHRASE_NEW_REQUEST:
-      return true;
+      return true
     case PASSPHRASE_NEW_REQUEST_SUCCESS:
     case PASSPHRASE_NEW_REQUEST_FAILURE:
     default:
-      return false;
+      return false
   }
 }
 
 const passphraseNewSuccess = (state = false, action) => {
   switch (action.type) {
     case PASSPHRASE_NEW_REQUEST_SUCCESS:
-      return true;
+      return true
     case PASSPHRASE_NEW_REQUEST:
     case PASSPHRASE_NEW_REQUEST_FAILURE:
     case MODAL_CLOSE:
     default:
-      return false;
+      return false
   }
 }
 
 const passphraseNewError = (state = false, action) => {
   switch (action.type) {
     case PASSPHRASE_NEW_REQUEST_FAILURE:
-      return true;
+      return true
     case PASSPHRASE_NEW_REQUEST:
     case PASSPHRASE_NEW_REQUEST_SUCCESS:
     case MODAL_CLOSE:
     default:
-      return false;
+      return false
   }
 }
 
