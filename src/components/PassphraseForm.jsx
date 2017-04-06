@@ -43,6 +43,9 @@ class PassphraseForm extends Component {
     const { currentPassword, newPassword, strength } = this.state
     const { t, errors, submitting, saved } = this.props
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
+    const STACK_DOMAIN = '//' + document.querySelector('[role=application]').dataset.cozyDomain
+    const passphrase_reset_url = STACK_DOMAIN + '/auth/passphrase_reset'
+
     return (
       <div className={styles['coz-form']}>
         <h3>{t('ProfileView.password.title')}</h3>
@@ -81,7 +84,7 @@ class PassphraseForm extends Component {
         </div>
 
         <a
-          href='/auth/passphrase_reset'
+          href={passphrase_reset_url}
           className={styles['password-reset-link']}
         >
           {t('ProfileView.password.reset_link')}
