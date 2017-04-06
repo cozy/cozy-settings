@@ -7,12 +7,12 @@ const Select = ({ t, name, value, options, onChange }) => (
     name={name}
     onBlur={e => onChange(name, e.target.value)}
     >
-    {options.map(optionValue => (
+    {options.map(opt => (
       <option
-        value={optionValue}
-        selected={value === optionValue}
+        value={opt[0].value}
+        selected={value === opt[0].value}
       >
-        {optionValue}
+        {opt[0].text}
       </option>
     ))}
   </select>
