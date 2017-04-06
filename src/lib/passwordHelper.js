@@ -27,9 +27,9 @@ module.exports.getStrength = function (password) {
   (Math.log(Math.pow(possibleChars, password.length)) / (Math.log(2)))
 
   // levels
-  const _at33percent = 64
-  const _at66percent = 128
-  const _at100percent = 192
+  const _at33percent = 50
+  const _at66percent = 100
+  const _at100percent = 150
 
   let strengthLabel = ''
   let strengthPercentage = 0

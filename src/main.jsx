@@ -23,6 +23,7 @@ import App from './components/App'
 import Profile from './containers/Profile'
 import Services from './containers/Services'
 import Devices from './containers/Devices'
+import Installer from './containers/Installer'
 
 const loggerMiddleware = createLogger()
 
@@ -111,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
               path='connectedDevices'
               component={Devices}
               onEnter={() => store.dispatch(fetchDevices())}
+            />
+            <Route
+              path='install'
+              component={Installer}
             />
             <Route
               path='storage'

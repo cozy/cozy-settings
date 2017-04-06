@@ -9,11 +9,14 @@ export const UPDATE_INFO = 'UPDATE_INFO'
 export const UPDATE_INFO_SUCCESS = 'UPDATE_INFO_SUCCESS'
 export const UPDATE_INFO_FAILURE = 'UPDATE_INFO_FAILURE'
 export const RESET_INFO_FIELD = 'RESET_INFO_FIELD'
+
 export const SET_LANG = 'SET_LANG'
+
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
 export const UPDATE_PASSPHRASE_FAILURE = 'UPDATE_PASSPHRASE_FAILURE'
 export const RESET_PASSPHRASE_FIELD = 'RESET_PASSPHRASE_FIELD'
+
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE'
@@ -22,7 +25,11 @@ export const DEVICES_MODALE_REVOKE_CLOSE = 'DEVICES_MODALE_REVOKE_CLOSE'
 export const DEVICE_REVOKE = 'DEVICE_REVOKE'
 export const DEVICE_REVOKE_SUCCESS = 'DEVICE_REVOKE_SUCCESS'
 export const DEVICE_REVOKE_FAILURE = 'DEVICE_REVOKE_FAILURE'
+
 export const ALERT_CLOSED = 'ALERT_CLOSED'
+export const INSTALL_APP = 'INSTALL_APP'
+export const INSTALL_APP_SUCCESS = 'INSTALL_APP_SUCCESS'
+export const INSTALL_APP_FAILURE = 'INSTALL_APP_FAILURE'
 
 export const fetchInfos = () => {
   return (dispatch, getState) => {
@@ -155,6 +162,34 @@ export const deviceModaleRevokeClose = () => ({
   type: DEVICES_MODALE_REVOKE_CLOSE
 })
 
+export const installApp = (slug, repourl, isupdate) => {
+  return (dispatch, getState) => {
+    dispatch({ type: INSTALL_APP })
+    const verb = isupdate ? 'PUT' : 'POST'
+    return cozyFetch(verb, `/apps/${slug}?Source=${encodeURIComponent(repourl)}`)
+    .then(response => {
+      dispatch({
+        type: INSTALL_APP_SUCCESS,
+        alert: {
+          message: `InstallView.${isupdate ? 'update' : 'install'}_success`,
+          messageData: {slug},
+          level: 'success'
+        }
+      })
+    })
+    .catch(() => {
+      dispatch({
+        type: INSTALL_APP_FAILURE,
+        alert: {
+          message: `InstallView.${isupdate ? 'update' : 'install'}_error`,
+          messageData: {slug},
+          level: 'error'
+        }
+      })
+    })
+  }
+}
+
 const STACK_DOMAIN = '//' + document.querySelector('[role=application]').dataset.cozyDomain
 const STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyToken
 
@@ -181,7 +216,7 @@ const cozyFetch = (method, path, body) => {
         data = response.text()
       }
 
-      return (response.status === 200 || response.status === 204)
+      return (response.status === 200 || response.status === 202 || response.status === 204)
         ? data
         : data.then(Promise.reject.bind(Promise))
     })
