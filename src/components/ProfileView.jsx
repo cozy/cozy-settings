@@ -34,10 +34,12 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
         name='locale'
         label={t('ProfileView.locale.title')}
         description={t(`ProfileView.locale.label`)}
-        options={LANG_OPTIONS.map(lang => [{
-          value: lang,
-          text: t(`ProfileView.locale.${lang}.text`)
-        }])}
+        options={LANG_OPTIONS.map(lang => {
+          return {
+            value: lang,
+            text: t(`ProfileView.locale.${lang}.text`)
+          }
+        })}
         {...fields.locale}
         onChange={onFieldChange} />
       <p>

@@ -9,10 +9,10 @@ const Select = ({ t, name, value, options, onChange }) => (
     >
     {options.map(opt => (
       <option
-        value={opt[0].value}
-        selected={value === opt[0].value}
+        value={opt.value}
+        selected={value === opt.value}
       >
-        {opt[0].text}
+        {opt.text}
       </option>
     ))}
   </select>
