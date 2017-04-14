@@ -4,6 +4,7 @@
   "icon": "app-icon.svg",
   "description": "Settings manager for Cozy v3",
   "source": "https://github.com/cozy/cozy-settings.git@build",
+  "editor": "Cozy",
   "developer": {
     "name": "Cozy",
     "url": "https://cozy.io"
