@@ -47,6 +47,7 @@ const ConnectedI18nProvider = connect(state => {
     const dict = require(`./locales/${lang}`)
     polyglot.extend(dict)
     polyglot.locale(lang)
+    cozy.bar.setLocale(lang)
   } catch (e) {
     console.warn(`The dict phrases for "${lang}" can't be loaded`)
   }
