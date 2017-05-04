@@ -47,6 +47,7 @@ export const PasswordInput = translate()(
             value={value}
             onInput={onInput}
             className={inError ? styles['error'] : ''}
+            autocomplete={autocomplete || 'off'}
           />
         </div>
       )
