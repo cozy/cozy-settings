@@ -32,7 +32,7 @@ export const PasswordInput = translate()(
     }
   }))(
     props => {
-      const { t, name, value, onInput, toggleVisibility, visible, inError = false } = props
+      const { t, name, value, onInput, toggleVisibility, visible, autocomplete, inError = false } = props
       return (
         <div className={styles['coz-form-group']}>
           <a
