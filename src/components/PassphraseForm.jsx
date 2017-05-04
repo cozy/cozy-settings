@@ -55,6 +55,7 @@ class PassphraseForm extends Component {
           value={currentPassword}
           inError={errors.currentPassword !== undefined}
           onInput={e => this.handleCurrentInput(e)}
+          autocomplete='current-password'
         />
         {errors.currentPassword && <p className={styles['coz-form-errors']}>{t(errors.currentPassword)}</p>}
         <label className={styles['coz-form-label']}>{t('ProfileView.new_password.label')}</label>
@@ -63,6 +64,7 @@ class PassphraseForm extends Component {
           value={newPassword}
           inError={errors.newPassword !== undefined}
           onInput={e => this.handleNewInput(e)}
+          autocomplete='new-password'
         />
         <progress
           step='1' min='0' max='100'
