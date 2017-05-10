@@ -15,12 +15,6 @@ $set-device
 [role=application]
     @extend $table
 
-    .set-table-service
-    .set-table-account
-    .set-table-sync
-    .set-table-status
-        flex  0 0 25%
-
     .set-table-name
         flex 0 0 40%
 
@@ -28,10 +22,6 @@ $set-device
     .set-table-permission
     .set-table-actions
         flex 0 0 15%
-
-    .set-table-services
-        .coz-table-cell
-            padding  em(8px, 14px) em(32px, 14px)
 
     .set-table-devices
         .coz-table-primary
@@ -47,18 +37,12 @@ $set-device
         background embedurl('../assets/icons/icon-device-phone.svg') em(32px) center no-repeat
 
     @media (max-width: (768/basefont)rem)
-        .set-table-service
-            flex  0 0 100%
-
         .set-table-name
             flex  0 0 70%
 
         .set-table-actions
             flex  0 0 30%
 
-        .set-table-account
-        .set-table-sync
-        .set-table-status
         .set-table-activity
         .set-table-permission
             display none
