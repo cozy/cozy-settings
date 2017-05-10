@@ -21,7 +21,6 @@ import { fetchInfos, fetchDevices } from './actions'
 
 import App from './components/App'
 import Profile from './containers/Profile'
-import Services from './containers/Services'
 import Devices from './containers/Devices'
 import Installer from './containers/Installer'
 
@@ -103,11 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <Route
               path='profile'
               component={Profile}
-              onEnter={() => store.dispatch(fetchInfos())}
-            />
-            <Route
-              path='activatedServices'
-              component={Services}
               onEnter={() => store.dispatch(fetchInfos())}
             />
             <Route
