@@ -1,4 +1,6 @@
-/* global cozy */
+/* global __DEVELOPMENT__ __PIWIK_TRACKER_URL__ __PIWIK_SITEID__ */
+/* global cozy Piwik */
+
 import 'babel-polyfill'
 
 import './styles/main'
@@ -6,7 +8,7 @@ import './styles/main'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { Router, Route, Redirect, hashHistory } from 'react-router'
@@ -26,14 +28,25 @@ import Installer from './containers/Installer'
 
 const loggerMiddleware = createLogger()
 
+if (__DEVELOPMENT__) {
+  // Enables React dev tools for Preact
+  // Cannot use import as we are in a condition
+  require('preact/devtools')
+
+  // Export React to window for the devtools
+  window.React = React
+}
+
+// Enable Redux dev tools
+const composeEnhancers = (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+
 const store = createStore(
   settingsApp,
-  applyMiddleware(
+  composeEnhancers(applyMiddleware(
     thunkMiddleware,
     loggerMiddleware
-  )
+  ))
 )
-
 const polyglot = new Polyglot({
   phrases: en,
   locale: 'en'
@@ -93,10 +106,22 @@ document.addEventListener('DOMContentLoaded', () => {
     lang: data.cozyLocale
   })
 
+  let history = hashHistory
+  try {
+    var PiwikReactRouter = require('piwik-react-router')
+    const piwikTracker = (Piwik.getTracker(), PiwikReactRouter({
+      url: __PIWIK_TRACKER_URL__,
+      siteId: __PIWIK_SITEID__,
+      injectScript: false
+    }))
+    piwikTracker.push(['enableHeartBeatTimer'])
+    history = piwikTracker.connectToHistory(hashHistory)
+  } catch (err) {}
+
   render((
     <Provider store={store}>
       <ConnectedI18nProvider>
-        <Router history={hashHistory}>
+        <Router history={history}>
           <Route component={App}>
             <Redirect from='/' to='profile' />
             <Route

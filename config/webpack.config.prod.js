@@ -13,10 +13,12 @@ module.exports = {
       }
     }),
     new webpack.DefinePlugin({
-      __SERVER__: false,
+      'process.env.NODE_ENV': JSON.stringify('production'),
       __DEVELOPMENT__: false,
       __DEVTOOLS__: false,
-      __STACK_ASSETS__: true
+      __STACK_ASSETS__: true,
+      __PIWIK_SITEID__: 8,
+      __PIWIK_TRACKER_URL__: JSON.stringify('https://piwik.cozycloud.cc')
     })
   ]
 }
