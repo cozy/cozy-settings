@@ -1,0 +1,44 @@
+{
+  "name": "Settings",
+  "slug": "cozy-settings",
+  "icon": "app-icon.svg",
+  "description": "Settings manager for Cozy v3",
+  "source": "https://github.com/cozy/cozy-settings.git@build",
+  "editor": "Cozy",
+  "developer": {
+    "name": "Cozy",
+    "url": "https://cozy.io"
+  },
+  "default_locale": "en",
+  "locales": {
+    "fr": {
+      "description": "Gestionnaire de paramètres pour Cozy v3"
+    }
+  },
+  "version": "3.0.3",
+  "licence": "AGPL-3.0",
+  "permissions": {
+    "settings": {
+      "description": "Required to manage your settings",
+      "type": "io.cozy.settings",
+      "verbs": ["GET", "POST", "PUT"]
+    },
+    "oauth": {
+      "description": "Required to manage devices connected to your Cozy",
+      "type": "io.cozy.oauth.clients",
+      "verbs": ["GET", "DELETE"]
+    },
+    "apps": {
+      "description": "Required by the cozy-bar to display the icons of the apps",
+      "type": "io.cozy.apps",
+      "verbs": ["GET", "POST", "PUT"]
+    }
+  },
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    }
+  }
+}
