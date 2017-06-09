@@ -49,6 +49,14 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
           }
         />
       </p>
+      <Input
+        name='use_tracker'
+        type='checkbox'
+        label={t('ProfileView.use_tracker.title')}
+        description={t('ProfileView.use_tracker.label')}
+        {...fields.use_tracker}
+        onChange={onFieldChange}
+      />
       <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
     </div>
   </div>
