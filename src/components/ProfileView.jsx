@@ -57,6 +57,9 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
         {...fields.use_tracker}
         onChange={onFieldChange}
       />
+      <a href='https://files.cozycloud.cc/cgu.pdf' target='_blank'>
+        {t('ProfileView.cgu_link')}
+      </a>
       <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
     </div>
   </div>

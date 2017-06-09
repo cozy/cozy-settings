@@ -56,6 +56,7 @@
       "title": "Help us to improve our product",
       "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product."
     },
+    "cgu_link": "Be informed about Cozy commitments",
     "locale" : {
       "title" : "Language",
       "label": "This will be the language used in your Cozy.",
