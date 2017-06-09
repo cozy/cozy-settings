@@ -11,7 +11,8 @@ const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, er
     placeholder={placeholder}
     value={value}
     name={name}
-    onBlur={e => onChange(name, e.target.type === 'checkbox' ? e.target.checked : e.target.value)}
+    onBlur={type !== 'checkbox' ? e => onChange(name, e.target.value) : false}
+    onChange={type === 'checkbox' ? e => onChange(name, e.target.checked) : false}
     className={errors && errors.length !== 0 ? styles['error'] : ''}
     aria-busy={submitting}
   />
