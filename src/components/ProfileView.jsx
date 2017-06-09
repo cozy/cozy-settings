@@ -3,8 +3,8 @@ import viewStyles from '../styles/view'
 import classNames from 'classnames'
 
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import { translate } from 'cozy-ui/react/helpers/i18n'
+import ReactMarkdownWrapper from './ReactMarkdownWrapper'
 import PassphraseForm from './PassphraseForm'
 import Input from './Input'
 import Select from './Select'
@@ -43,11 +43,10 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
         {...fields.locale}
         onChange={onFieldChange} />
       <p>
-        <ReactMarkdown
+        <ReactMarkdownWrapper
           source={
             t('ProfileView.locale.contrib', {link: 'https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937'})
           }
-          renderers={{Link: props => <a href={props.href} target='_blank'>{props.children}</a>}}
         />
       </p>
       <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
