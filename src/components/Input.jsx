@@ -3,6 +3,7 @@ import styles from '../styles/fields'
 import React from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
 import withState from 'cozy-ui/react/helpers/withState'
+import Toggle from 'cozy-ui/react/Toggle'
 import Field from './Field'
 
 const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, errors, onChange }) => (
@@ -11,16 +12,26 @@ const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, er
     placeholder={placeholder}
     value={value}
     name={name}
-    onBlur={type !== 'checkbox' ? e => onChange(name, e.target.value) : false}
-    onChange={type === 'checkbox' ? e => onChange(name, e.target.checked) : false}
+    onBlur={e => onChange(name, e.target.value)}
     className={errors && errors.length !== 0 ? styles['error'] : ''}
     aria-busy={submitting}
   />
 )
 
+const SwitchCheckBox = ({name, value, submitting, errors, onChange}) => (
+  <Toggle
+    id={`set-${name.replace(' ', '_')}-toggle`}
+    checked={!!value}
+    onToggle={checked => onChange(name, checked)}
+  />
+)
+
 export default translate()(props => (
   <Field {...props}>
-    <Input {...props} />
+    {props.type === 'checkbox'
+      ? <SwitchCheckBox {...props} />
+      : <Input {...props} />
+    }
   </Field>
 ))
 
