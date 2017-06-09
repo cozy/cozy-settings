@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      __DEVELOPMENT__: true,
       __STACK_ASSETS__: false,
       __PIWIK_SITEID__: 8,
       __PIWIK_DIMENSION_ID_APP__: 1,
