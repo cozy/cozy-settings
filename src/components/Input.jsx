@@ -19,11 +19,13 @@ const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, er
 )
 
 const SwitchCheckBox = ({name, value, submitting, errors, onChange}) => (
-  <Toggle
-    id={`set-${name.replace(' ', '_')}-toggle`}
-    checked={!!value}
-    onToggle={checked => onChange(name, checked)}
-  />
+  <div className={styles['set-toggle']}>
+    <Toggle
+      id={`set-${name.replace(' ', '_')}-toggle`}
+      checked={!!value}
+      onToggle={checked => onChange(name, checked)}
+    />
+  </div>
 )
 
 export default translate()(props => (
