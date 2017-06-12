@@ -52,7 +52,7 @@
       "title" : "Username",
       "label": "Your username will be displayed when you share files with Cozy users."
     },
-    "use_tracker": {
+    "tracking": {
       "title": "Help us to improve our product",
       "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product."
     },

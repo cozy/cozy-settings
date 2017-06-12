@@ -50,11 +50,11 @@ const ProfileView = ({ t, fields, passphrase, isFetching, onFieldChange, onPassp
         />
       </p>
       <Input
-        name='use_tracker'
+        name='tracking'
         type='checkbox'
-        label={t('ProfileView.use_tracker.title')}
-        description={t('ProfileView.use_tracker.label')}
-        {...fields.use_tracker}
+        label={t('ProfileView.tracking.title')}
+        description={t('ProfileView.tracking.label')}
+        {...fields.tracking}
         onChange={onFieldChange}
       />
       <a href='https://files.cozycloud.cc/cgu.pdf' target='_blank'>
