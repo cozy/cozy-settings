@@ -2,5 +2,13 @@
 
 .set-empty
     @extends $empty
+    width 50%
+    margin 0 auto
     &:before
-        background-image  embedurl('../assets/icons/icon-main-app.svg')
+        background-image embedurl('../assets/icons/icon-devices.svg')
+
+    @media (max-width: (1023/basefont)rem)
+      width 70%
+
+    @media (max-width: (768/basefont)rem)
+      width auto
