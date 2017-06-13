@@ -69,7 +69,7 @@ export const updateInfo = (field, value) => {
         }
       })
       .catch(() => {
-        dispatch({ type: UPDATE_INFO_FAILURE, error: 'ProfileView.infos.server_error' })
+        dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'ProfileView.infos.server_error' })
       })
   }
 }
