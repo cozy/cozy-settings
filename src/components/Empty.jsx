@@ -11,7 +11,7 @@ export const Empty = ({ t, emptyType }) => {
         <div className={styles['set-empty']}>
           <h2>{t('Empty.devices.title')}</h2>
           <p>{t('Empty.devices.text')}</p>
-          <p><a className={classNames('coz-btn', 'coz-btn--regular')} href={t('Empty.devices.link.href')}>{t('Empty.devices.link.text')}</a></p>
+          <p><a className={classNames('coz-btn', 'coz-btn--regular')} href={t('Empty.devices.link.href')} target='_blank'>{t('Empty.devices.link.text')}</a></p>
         </div>
       }
     </div>
