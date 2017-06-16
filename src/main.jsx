@@ -1,5 +1,5 @@
-/* global __DEVELOPMENT__ __PIWIK_TRACKER_URL__ __PIWIK_SITEID__ __PIWIK_DIMENSION_ID_APP__ */
-/* global cozy Piwik */
+/* global __DEVELOPMENT__ */
+/* global cozy */
 
 import 'babel-polyfill'
 
