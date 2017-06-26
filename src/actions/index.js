@@ -36,6 +36,10 @@ export const fetchInfos = () => {
     dispatch({ type: FETCH_INFOS })
     cozyFetch('GET', '/settings/instance')
       .then(instance => {
+        // tracking preference is stored as string, convert it to boolean for the checkbox
+        if (instance && instance.data && instance.data.attributes && instance.data.attributes.hasOwnProperty('tracking')) {
+          instance.data.attributes.tracking = instance.data.attributes.tracking === 'true'
+        }
         dispatch({ type: FETCH_INFOS_SUCCESS, instance })
       })
       .catch(() => {
@@ -56,6 +60,8 @@ export const updateInfo = (field, value) => {
       dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'ProfileView.email.error' })
       return
     }
+    // tracking field must be stored as string
+    if (field === 'tracking') value = value.toString()
     let newInstance = Object.assign({}, getState().instance)
     newInstance.data.attributes[field] = value
     cozyFetch('PUT', '/settings/instance', newInstance)
