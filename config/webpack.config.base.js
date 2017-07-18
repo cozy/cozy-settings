@@ -7,13 +7,16 @@ const pkg = require(path.resolve(__dirname, '../package.json'))
 const { extractor } = require('./webpack.vars')
 
 module.exports = {
-  entry: ['whatwg-fetch', path.resolve(__dirname, '../src/main')],
+  entry: {
+    app: path.resolve(__dirname, '../src/index'),
+    services: path.resolve(__dirname, '../src/services')
+  },
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: 'app.js'
+    filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.json']
+    extensions: ['', '.js', '.json', '.yaml']
   },
   devtool: '#source-map',
   module: {
@@ -25,7 +28,11 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json-loader'
+      },
+      {
+        test: /\.yaml$/,
+        loaders: ['json-loader', 'yaml-loader']
       },
       {
         test: /\.css$/,
@@ -44,9 +51,20 @@ module.exports = {
   plugins: [
     extractor,
     new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
+      template: path.resolve(__dirname, '../src/index.ejs'),
       title: pkg.name,
       inject: false,
+      excludeChunks: ['services'],
+      minify: {
+        collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../src/services.ejs'),
+      title: `${pkg.name} services`,
+      filename: 'services/index.html',
+      inject: false,
+      chunks: ['services'],
       minify: {
         collapseWhitespace: true
       }
