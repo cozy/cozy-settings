@@ -1,6 +1,7 @@
-/* global fetch */
+/* global fetch, cozy */
 
 import emailHelper from '../lib/emailHelper'
+import CLAUDY_ACTIONS from '../config/claudyActions'
 
 export const FETCH_INFOS = 'FETCH_INFOS'
 export const FETCH_INFOS_SUCCESS = 'FETCH_INFOS_SUCCESS'
@@ -30,6 +31,70 @@ export const ALERT_CLOSED = 'ALERT_CLOSED'
 export const INSTALL_APP = 'INSTALL_APP'
 export const INSTALL_APP_SUCCESS = 'INSTALL_APP_SUCCESS'
 export const INSTALL_APP_FAILURE = 'INSTALL_APP_FAILURE'
+
+export const FETCH_CLAUDY_INFOS = 'FETCH_CLAUDY_INFOS'
+export const FETCH_CLAUDY_INFOS_SUCCESS = 'FETCH_CLAUDY_INFOS_SUCCESS'
+export const FETCH_CLAUDY_INFOS_FAILURE = 'FETCH_CLAUDY_INFOS_FAILURE'
+
+export const CREATE_INTENT_SERVICE = 'CREATE_INTENT_SERVICE'
+export const CREATE_INTENT_SERVICE_SUCCESS = 'CREATE_INTENT_SERVICE_SUCCESS'
+export const CREATE_INTENT_SERVICE_FAILURE = 'CREATE_INTENT_SERVICE_FAILURE'
+
+export const createIntentService = (intent, window) => {
+  return (dispatch, getState) => {
+    dispatch({ type: CREATE_INTENT_SERVICE })
+    cozy.client.intents.createService(intent, window)
+    .then(service => {
+      const data = service.getData()
+
+      if (typeof service.resizeClient === 'function') {
+        service.resizeClient({
+          maxWidth: 931
+        })
+      } else {
+        console.warn && console.warn('Cannot resize client\'s iframe, cozy-client-js needs to be updated')
+      }
+      if (!data || !data.slug) {
+        dispatch({ type: CREATE_INTENT_SERVICE_FAILURE, error: new Error('Unexpected data from intent') })
+      }
+      dispatch({ type: CREATE_INTENT_SERVICE_SUCCESS, service })
+    })
+    .catch(error => {
+      dispatch({ type: CREATE_INTENT_SERVICE_FAILURE, error })
+    })
+  }
+}
+
+export const fetchClaudyInfos = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: FETCH_CLAUDY_INFOS })
+    cozyFetch('GET', '/settings/context')
+    .then(context => {
+      const contextActions = (context.data && context.data.attributes && context.data.attributes['claudy_actions']) || null
+      let claudyActions = []
+      if (contextActions) {
+        // get an arrays of action
+        claudyActions = contextActions.map(slug => {
+          if (CLAUDY_ACTIONS.hasOwnProperty(slug)) {
+            // adding also the action slug
+            return Object.assign({}, CLAUDY_ACTIONS[slug], { slug })
+          }
+        }).filter(action => action)
+      }
+      cozyFetch('GET', '/apps/')
+      .then(res => {
+        const apps = res.data
+        dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps })
+      })
+      .catch(() => { // return empty list if no apps fetched
+        dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps: [] })
+      })
+    })
+    .catch(error => {
+      dispatch({ type: FETCH_CLAUDY_INFOS_FAILURE, error })
+    })
+  }
+}
 
 export const fetchInfos = () => {
   return (dispatch, getState) => {
