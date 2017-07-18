@@ -1,0 +1,124 @@
+.coz-service-claudy {
+  width: 100%;
+}
+
+.coz-claudy-menu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 2em;
+  padding: .75em;
+  background: var(--pale-grey);
+  border-radius: .3em .3em 0 0;
+  border-bottom: 1px solid var(--silver);
+  overflow: hidden;
+}
+
+.coz-claudy-menu-title {
+  opacity: 1;
+  transition: .2s all ease-in-out;
+}
+
+.coz-claudy-menu-header-back-button {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  background: url('../assets/services/icon-arrow-left.svg') center / 1.5em no-repeat;
+  border: none;
+  cursor: pointer;
+  left: 10em;
+  opacity: 0;
+  transition: .2s all ease-in-out;
+}
+
+.coz-claudy-menu--action-selected .coz-claudy-menu-title {
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: .2s all ease-in-out;
+}
+
+.coz-claudy-menu--action-selected .coz-claudy-menu-header-back-button {
+  opacity: 1;
+  left: 1em;
+  transition: .2s all ease-in-out;
+}
+
+.coz-claudy-menu-title {
+  font-size: 18px;
+  margin: 0;
+}
+
+.coz-claudy-menu-content-wrapper {
+  overflow: hidden;
+}
+
+.coz-claudy-menu-content {
+  display: flex;
+  flex-direction: row;
+  width: 200%; /* actions-list + action-description */
+  padding: .5em 0;
+  transform: translateX(0);
+  transition: .2s transform ease-in-out;
+}
+
+.coz-claudy-menu--action-selected .coz-claudy-menu-content {
+  transform: translateX(-50%);
+  transition: .2s transform ease-in-out;
+}
+
+.coz-claudy-menu-actions-list,
+.coz-claudy-menu-action-description {
+  min-width: 50%;
+  max-width: 50%;
+  padding: 0;
+}
+
+.coz-claudy-menu-action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  height: 3em;
+  color: var(--dodger-blue);
+  padding: .5em 1em;
+}
+
+.coz-claudy-menu-action:hover {
+  background: var(--pale-grey)
+}
+
+.coz-claudy-menu-action-icon {
+  height: 3em;
+  width: 3em;
+}
+
+.coz-claudy-menu-action-title {
+  padding-left: 1em;
+}
+
+.coz-claudy-menu-action-description-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: .5em 1em;
+  color: black;
+  font-weight: 700;
+}
+
+.coz-claudy-menu-action-description-header .coz-claudy-menu-action-title{
+  margin: 0;
+}
+
+.coz-claudy-menu-action-description-content {
+  padding: .5em 1em 1em 1em;
+}
+
+.coz-claudy-menu-action-description-text {
+  margin-top: 0;
+}
+
+.coz-claudy-menu-action-description-button {
+  width: 100%;
+  margin: 0;
+}
