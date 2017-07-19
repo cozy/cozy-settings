@@ -21,25 +21,26 @@ export default class IntentView extends Component {
     }
   }
 
-  terminate (account) {
+  terminate (eventName) {
     const service = this.props.service.instance
-    service.terminate(account)
-  }
-
-  cancel () {
-    const service = this.props.service.instance
-
-    service.cancel
-      ? service.cancel()
-        : service.terminate(null)
+    service.terminate()
   }
 
   render () {
     const { intentType } = this.state
-    const { data, service, claudy } = this.props
+    const { service, claudy } = this.props
+    if (claudy.actions.length && service.instance) {
+      typeof service.instance.resizeClient === 'function' &&
+      service.instance.resizeClient({
+        height: (((claudy.actions.length <= 5 ? claudy.actions.length : 5) * 80) + 16)
+      })
+    }
     switch (intentType) {
       case 'claudy':
-        return <Claudy data={data} claudyInfos={claudy} onClose={() => this.cancel()}/>
+        return <Claudy
+          claudyInfos={claudy}
+          onClose={() => this.terminate()}
+        />
     }
   }
 }

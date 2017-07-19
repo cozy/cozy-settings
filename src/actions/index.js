@@ -45,18 +45,6 @@ export const createIntentService = (intent, window) => {
     dispatch({ type: CREATE_INTENT_SERVICE })
     cozy.client.intents.createService(intent, window)
     .then(service => {
-      const data = service.getData()
-
-      if (typeof service.resizeClient === 'function') {
-        service.resizeClient({
-          maxWidth: 931
-        })
-      } else {
-        console.warn && console.warn('Cannot resize client\'s iframe, cozy-client-js needs to be updated')
-      }
-      if (!data || !data.slug) {
-        dispatch({ type: CREATE_INTENT_SERVICE_FAILURE, error: new Error('Unexpected data from intent') })
-      }
       dispatch({ type: CREATE_INTENT_SERVICE_SUCCESS, service })
     })
     .catch(error => {

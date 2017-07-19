@@ -3,16 +3,19 @@
 }
 
 .coz-claudy-menu-header {
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: calc(100% - 1.5em);
   height: 2em;
   padding: .75em;
   background: var(--pale-grey);
   border-radius: .3em .3em 0 0;
   border-bottom: 1px solid var(--silver);
   overflow: hidden;
+  z-index: 1;
 }
 
 .coz-claudy-menu-title {
@@ -51,6 +54,7 @@
 
 .coz-claudy-menu-content-wrapper {
   overflow: hidden;
+  padding-top: 3.5em; /* header size and padding*/
 }
 
 .coz-claudy-menu-content {
