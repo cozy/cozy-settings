@@ -46,7 +46,7 @@
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "cozy-bar": "^3.0.1",
-    "cozy-client-js": "^0.3.9",
+    "cozy-client-js": "0.3.10",
     "css-loader": "^0.26.0",
     "css-mqpacker": "^4.0.1",
     "csswring": "^5.1.1",
