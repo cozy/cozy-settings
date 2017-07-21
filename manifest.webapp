@@ -39,6 +39,20 @@
       "folder": "/",
       "index": "index.html",
       "public": false
+    },
+    "/services/claudy": {
+      "folder": "/services",
+      "index": "index.html",
+      "public": false
     }
-  }
+  },
+  "intents": [
+    {
+      "action": "CLAUDY",
+      "type": [
+        "io.cozy.settings"
+      ],
+      "href": "/services/claudy"
+    }
+  ]
 }
