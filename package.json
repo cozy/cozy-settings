@@ -1,7 +1,7 @@
 {
   "name": "cozy-settings",
   "version": "3.0.3",
-  "main": "src/main.jsx",
+  "main": "src/index.jsx",
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config.js",
     "clean": "rm -rf build",
@@ -46,7 +46,7 @@
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "cozy-bar": "^3.0.1",
-    "cozy-client-js": "^0.1.7",
+    "cozy-client-js": "0.3.10",
     "css-loader": "^0.26.0",
     "css-mqpacker": "^4.0.1",
     "csswring": "^5.1.1",
@@ -75,13 +75,15 @@
     "stylus": "^0.54.0",
     "stylus-loader": "^2.4.0",
     "svg-sprite-loader": "^0.0.31",
+    "url-loader": "^0.5.9",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.0",
-    "webpack-merge": "^1.0.2"
+    "webpack-merge": "^1.0.2",
+    "yaml-loader": "^0.5.0"
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "cozy-ui": "3.0.0-beta36",
+    "cozy-ui": "3.0.0-beta39",
     "date-fns": "^1.27.2",
     "node-polyglot": "^2.2.0",
     "piwik-react-router": "^0.8.2",

@@ -1,0 +1,24 @@
+@import 'cozy-ui/defaults'
+@import 'cozy-ui'
+
+:root {
+  --charcoal-grey: charcoal-grey;
+  --silver: silver;
+  --pale-grey: pale-grey;
+  --cool-grey: cool-grey;
+  --slate-grey: slate-grey;
+  --dodger-blue: dodger-blue;
+}
+
+@import './services/claudy.css'
+
+.coz-bar-hidden
+  @extend $hidden
+
+.coz-btn-regular
+  @extend $button
+  @extend $button--regular
+
+.coz-btn-close
+  @extend $button
+  @extend $button--close
