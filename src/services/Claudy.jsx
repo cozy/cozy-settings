@@ -139,7 +139,7 @@ export class Claudy extends Component {
                       ? <a
                         href={selectedActionUrl}
                         role='button'
-                        target={selectedAction.link.type === 'external' ? '_blank' : '_self'}
+                        target={selectedAction.link.type === 'external' ? '_blank' : '_parent'}
                         className='coz-btn-regular coz-claudy-menu-action-description-button'
                         onClick={() => this.trackActionLink(selectedAction)}
                       >
