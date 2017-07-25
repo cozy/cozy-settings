@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
 import { shouldEnableTracking, getTracker, configureTracker } from 'cozy-ui/react/helpers/tracker'
 
+const MOBILE_CLIENT_KIND = 'mobile'
+const DESKTOP_CLIENT_KIND = 'desktop'
+
 export class Claudy extends Component {
   constructor (props, context) {
     super(props)
@@ -17,6 +20,8 @@ export class Claudy extends Component {
     this.selectAction = this.selectAction.bind(this)
     this.trackActionLink = this.trackActionLink.bind(this)
     this.goBack = this.goBack.bind(this)
+
+    this.checkIcon = require('../assets/services/icon-check.svg')
   }
 
   componentDidMount () {
@@ -59,7 +64,26 @@ export class Claudy extends Component {
     }
   }
 
+  consolidateActions (claudyInfos) {
+    return claudyInfos.actions.map(action => {
+      switch (action.slug) {
+        case 'desktop':
+          action.complete = !!claudyInfos.devices.find(d => d.client_kind === DESKTOP_CLIENT_KIND)
+          break
+        case 'mobile':
+          action.complete = !!claudyInfos.devices.find(d => d.client_kind === MOBILE_CLIENT_KIND)
+          break
+        default:
+          action.complete = false
+          break
+      }
+      return action
+    })
+  }
+
   selectAction (action) {
+    // don't select already complete action
+    if (action.complete) return
     // if just previously selected
     const usageTracker = this.state.usageTracker
     if (usageTracker) {
@@ -97,6 +121,7 @@ export class Claudy extends Component {
     const { t, claudyInfos, onClose } = this.props
     const { selectedAction, openedAction } = this.state
     const selectedActionUrl = this.computeSelectedActionUrl()
+    const claudyActions = this.consolidateActions(claudyInfos)
     return (
       <div className={`coz-service-claudy ${
         openedAction ? 'coz-claudy-menu--action-selected' : ''}`}>
@@ -108,8 +133,8 @@ export class Claudy extends Component {
         <div className='coz-claudy-menu-content-wrapper'>
           <div className='coz-claudy-menu-content' >
             <div className='coz-claudy-menu-actions-list'>
-              {claudyInfos.actions.map(action => (
-                <a className='coz-claudy-menu-action' onClick={() => this.selectAction(action)}>
+              {claudyActions.map(action => (
+                <a className='coz-claudy-menu-action' data-complete={action.complete} onClick={() => this.selectAction(action)}>
                   <img
                     className='coz-claudy-menu-action-icon'
                     src={this.getIcon(action.icon)}
@@ -117,6 +142,12 @@ export class Claudy extends Component {
                   <p className='coz-claudy-menu-action-title'>
                     {t(`claudy.actions.${action.slug}.title`)}
                   </p>
+                  {action.complete &&
+                    <img
+                      className='coz-claudy-menu-action-check'
+                      src={this.checkIcon}
+                    />
+                  }
                 </a>
               ))}
             </div>

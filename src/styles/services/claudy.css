@@ -88,8 +88,14 @@
   padding: .5em 1em;
 }
 
-.coz-claudy-menu-action:hover {
+.coz-claudy-menu-action:not([data-complete=true]):hover {
   background: var(--pale-grey)
+}
+
+.coz-claudy-menu-action[data-complete=true] {
+  color: var(--emerald);
+  text-decoration: line-through;
+  cursor: default;
 }
 
 .coz-claudy-menu-action-icon {
@@ -97,8 +103,13 @@
   width: 3em;
 }
 
+.coz-claudy-menu-action-check {
+  height: 1.5em;
+  width: 1.5em;
+}
+
 .coz-claudy-menu-action-title {
-  padding-left: 1em;
+  padding: 0 1em;
 }
 
 .coz-claudy-menu-action-description-header {
