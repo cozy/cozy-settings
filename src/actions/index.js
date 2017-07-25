@@ -69,18 +69,33 @@ export const fetchClaudyInfos = () => {
           }
         }).filter(action => action)
       }
-      cozyFetch('GET', '/apps/')
-      .then(res => {
-        const apps = res.data
-        dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps })
-      })
-      .catch(() => { // return empty list if no apps fetched
-        dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps: [] })
-      })
+      dispatch(consolidateClaudyActionsInfos(claudyActions))
     })
     .catch(error => {
       dispatch({ type: FETCH_CLAUDY_INFOS_FAILURE, error })
     })
+  }
+}
+
+export const consolidateClaudyActionsInfos = (claudyActions) => {
+  const ACTIONS_WITH_DEVICES = ['desktop', 'mobile']
+  return async (dispatch, getState) => {
+    let apps
+    // if at least one action requires app links
+    if (claudyActions.find(a => a.link && a.link.type === 'apps')) {
+      try {
+        const appsResponse = await cozyFetch('GET', '/apps/')
+        apps = appsResponse.data
+      } catch (e) {
+        console.warn && console.warn('Cannot fetch client devices infos.')
+        apps = [] // keep list empty if apps cannot be fetched
+      }
+    }
+    // if at least one action requires devices infos
+    if (claudyActions.find(a => ACTIONS_WITH_DEVICES.includes(a.slug))) {
+      await dispatch(fetchDevices())
+    }
+    dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps })
   }
 }
 
