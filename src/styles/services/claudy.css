@@ -88,14 +88,13 @@
   padding: .5em 1em;
 }
 
-.coz-claudy-menu-action:not([data-complete=true]):hover {
+.coz-claudy-menu-action:hover {
   background: var(--pale-grey)
 }
 
 .coz-claudy-menu-action[data-complete=true] {
   color: var(--emerald);
   text-decoration: line-through;
-  cursor: default;
 }
 
 .coz-claudy-menu-action-icon {

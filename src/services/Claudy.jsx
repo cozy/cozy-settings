@@ -82,8 +82,6 @@ export class Claudy extends Component {
   }
 
   selectAction (action) {
-    // don't select already complete action
-    if (action.complete) return
     // if just previously selected
     const usageTracker = this.state.usageTracker
     if (usageTracker) {
