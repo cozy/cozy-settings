@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { fetchClaudyInfos, createIntentService } from '../actions'
+import { fetchClaudyInfos, createIntentService } from '../actions/services'
 
 import IntentView from '../components/IntentView'
 
