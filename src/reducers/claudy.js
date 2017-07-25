@@ -28,6 +28,15 @@ export const apps = (state = [], action) => {
   }
 }
 
+export const collectAccounts = (state = [], action) => {
+  switch (action.type) {
+    case FETCH_CLAUDY_INFOS_SUCCESS:
+      return action.collectAccounts
+    default:
+      return state
+  }
+}
+
 export const devices = (state = [], action) => {
   switch (action.type) {
     case FETCH_DEVICES_SUCCESS:
@@ -58,6 +67,7 @@ export const isFetching = (state = false, action) => {
 const claudy = combineReducers({
   actions,
   apps,
+  collectAccounts,
   devices,
   error,
   isFetching

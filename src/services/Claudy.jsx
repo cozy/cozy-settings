@@ -73,6 +73,9 @@ export class Claudy extends Component {
         case 'mobile':
           action.complete = !!claudyInfos.devices.find(d => d.client_kind === MOBILE_CLIENT_KIND)
           break
+        case 'cozy-collect':
+          action.complete = !!claudyInfos.collectAccounts.length
+          break
         default:
           action.complete = false
           break
