@@ -10,8 +10,18 @@ module.exports = {
     loaders: [
       {
         test: /\.styl$/,
+        exclude: /(services\.styl)/,
         loader: extractor.extract('style', [
-          'css?importLoaders=1&modules',
+          'css-loader?importLoaders=1&modules&localIdentName=[local]--[hash:base64:5]',
+          'postcss',
+          'stylus'
+        ])
+      },
+      {
+        test: /services\.styl$/,
+        include: /(services\.styl)/,
+        loader: extractor.extract('style', [
+          'css-loader?importLoaders=1',
           'postcss',
           'stylus'
         ])
