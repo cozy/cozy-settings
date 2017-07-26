@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux'
 
 import {
-  FETCH_CLAUDY_INFOS,
+  FETCH_CLAUDY_INFOS
+} from '../actions'
+
+import {
   FETCH_CLAUDY_INFOS_SUCCESS,
   FETCH_CLAUDY_INFOS_FAILURE,
   FETCH_DEVICES_SUCCESS
-} from '../actions'
+} from '../actions/services'
 
 export const actions = (state = [], action) => {
   switch (action.type) {
@@ -20,6 +23,15 @@ export const apps = (state = [], action) => {
   switch (action.type) {
     case FETCH_CLAUDY_INFOS_SUCCESS:
       return action.apps
+    default:
+      return state
+  }
+}
+
+export const collectAccounts = (state = [], action) => {
+  switch (action.type) {
+    case FETCH_CLAUDY_INFOS_SUCCESS:
+      return action.collectAccounts
     default:
       return state
   }
@@ -55,6 +67,7 @@ export const isFetching = (state = false, action) => {
 const claudy = combineReducers({
   actions,
   apps,
+  collectAccounts,
   devices,
   error,
   isFetching

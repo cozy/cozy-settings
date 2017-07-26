@@ -73,6 +73,9 @@ export class Claudy extends Component {
         case 'mobile':
           action.complete = !!claudyInfos.devices.find(d => d.client_kind === MOBILE_CLIENT_KIND)
           break
+        case 'cozy-collect':
+          action.complete = !!claudyInfos.collectAccounts.length
+          break
         default:
           action.complete = false
           break
@@ -82,8 +85,6 @@ export class Claudy extends Component {
   }
 
   selectAction (action) {
-    // don't select already complete action
-    if (action.complete) return
     // if just previously selected
     const usageTracker = this.state.usageTracker
     if (usageTracker) {
