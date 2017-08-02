@@ -115,6 +115,7 @@ export const updatePassphrase = (current, newVal) => {
   }
 }
 
+const DISPLAYED_CLIENTS = ['mobile', 'desktop']
 export const fetchDevices = () => {
   return (dispatch, getState) => {
     dispatch({ type: FETCH_DEVICES })
@@ -126,7 +127,7 @@ export const fetchDevices = () => {
         let deviceData = device.attributes
         deviceData.id = device.id
         return deviceData
-      })
+      }).filter(device => DISPLAYED_CLIENTS.includes(device.client_kind))
       dispatch({ type: FETCH_DEVICES_SUCCESS, devices })
     })
     .catch(() => {
