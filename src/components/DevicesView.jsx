@@ -39,7 +39,6 @@ const DevicesView = ({ t, f, isFetching, devices, openDeviceRevokeModale, device
         <div className={classNames(tableStyles['coz-table-body'], tableStyles['set-table-devices'])}>
           <div>
             {devices
-            .filter(device => ['mobile', 'desktop'].indexOf(device.client_kind) !== -1)
             .map(device => (
               <div className={tableStyles['coz-table-row']}>
                 <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-name'], tableStyles['coz-table-primary'], getDeviceKindClass(device.client_kind))}>
