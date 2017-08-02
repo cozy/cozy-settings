@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
 import { shouldEnableTracking, getTracker, configureTracker } from 'cozy-ui/react/helpers/tracker'
 
+import ClaudyAction from './ClaudyAction'
+
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
 
@@ -153,41 +155,12 @@ export class Claudy extends Component {
               ))}
             </div>
             {selectedAction &&
-              <div className='coz-claudy-menu-action-description'>
-                <div className='coz-claudy-menu-action-description-header'>
-                  <img
-                    className='coz-claudy-menu-action-icon'
-                    src={this.getIcon(selectedAction.icon)}
-                  />
-                  <p className='coz-claudy-menu-action-title'>
-                    {t(`claudy.actions.${selectedAction.slug}.title`)}
-                  </p>
-                </div>
-                <div className='coz-claudy-menu-action-description-content'>
-                  <p className='coz-claudy-menu-action-description-text'>
-                    {t(`claudy.actions.${selectedAction.slug}.description`)}
-                  </p>
-                  {selectedActionUrl
-                      ? <a
-                        href={selectedActionUrl}
-                        role='button'
-                        target={selectedAction.link.type === 'external' ? '_blank' : '_parent'}
-                        className='coz-btn-regular coz-claudy-menu-action-description-button'
-                        onClick={() => this.trackActionLink(selectedAction)}
-                      >
-                        {t(`claudy.actions.${selectedAction.slug}.button`)}
-                      </a>
-                    : <a
-                      role='button'
-                      className='coz-btn-regular coz-claudy-menu-action-description-button'
-                      disabled
-                      title={`App ${selectedAction.slug} not found`}
-                    >
-                      {t(`claudy.actions.${selectedAction.slug}.button`)}
-                    </a>
-                  }
-                </div>
-              </div>
+              <ClaudyAction
+                action={selectedAction}
+                iconSrc={this.getIcon(selectedAction.icon)}
+                url={selectedActionUrl}
+                onActionClick={() => this.trackActionLink(selectedAction)}
+              />
             }
           </div>
         </div>
