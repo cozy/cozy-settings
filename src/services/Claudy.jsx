@@ -140,7 +140,9 @@ export class Claudy extends Component {
           <button className='coz-claudy-menu-header-back-button' onClick={this.goBack} />
         </header>
         <div className='coz-claudy-menu-content-wrapper'>
-          <div className='coz-claudy-menu-content' >
+          <div className='coz-claudy-menu-content'
+            ref={(contener) => { this.claudyContener = contener }}
+          >
             <div className='coz-claudy-menu-actions-list'>
               {claudyActions.map(action => (
                 <a className='coz-claudy-menu-action' data-complete={action.complete} onClick={() => this.selectAction(action)}>
@@ -166,6 +168,8 @@ export class Claudy extends Component {
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
+                contener={this.claudyContener}
+                opened={openedAction}
               />
             }
             {SelectedActionComponent &&
@@ -174,6 +178,8 @@ export class Claudy extends Component {
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
+                contener={this.claudyContener}
+                opened={openedAction}
               />
             }
           </div>
