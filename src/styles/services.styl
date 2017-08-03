@@ -11,7 +11,15 @@
   --emerald: emerald;
 }
 
+.set-services[role=service] {
+    width   100%
+    @extend $form
+    @extend $form-text
+    @extend $form-textarea
+}
+
 @import './services/claudy.css'
+@import './services/claudySupport.css'
 
 .coz-bar-hidden
   @extend $hidden
@@ -23,3 +31,7 @@
 .coz-btn-close
   @extend $button
   @extend $button--close
+
+.coz-btn-send
+  @extend $button
+  @extend $button--send

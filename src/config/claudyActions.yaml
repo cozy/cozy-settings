@@ -17,5 +17,4 @@ cozy-collect:
 
 support:
   icon: icon-question-mark.svg
-  link:
-    type: external
+  component: /Support

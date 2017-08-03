@@ -138,10 +138,20 @@
         "button": "Discover Cozy Collect"
       },
       "support": {
-        "title": "How can we help you today?",
-        "description": "Share your idea or your bug on our dedicated interface",
-        "button": "Get access to the support",
-        "link": "https://cozy.io/en/support/"
+        "title": "Contact the Cozy Cloud team support",
+        "fields": {
+          "message": {
+            "title": "Your message",
+            "placeholder": ""
+          },
+          "email": {
+            "title": "Your email",
+            "placeholder": ""
+          }
+        },
+        "button": "Send to the support",
+        "success": "Message successfully sent to the Cozy Cloud team.",
+        "error": "Something went wrong while sending your message."
       }
     }
   }

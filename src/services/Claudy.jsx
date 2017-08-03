@@ -43,9 +43,9 @@ export class Claudy extends Component {
     return require(`../assets/services/claudyActions/${iconName}`)
   }
 
-  computeSelectedActionUrl () {
-    if (!this.state.selectedAction) return null
-    const action = this.state.selectedAction
+  computeSelectedActionUrl (selectedAction) {
+    if (!selectedAction || !selectedAction.link) return null
+    const action = selectedAction
     const { t, claudyInfos } = this.props
     if (action.link.type === 'apps' && action.link.appSlug) {
       if (!claudyInfos.apps || !claudyInfos.apps.length) {
@@ -60,9 +60,11 @@ export class Claudy extends Component {
         console.warn(`No app with slug '${action.link.appSlug}' found on the Cozy.`)
         return null
       }
-    } else {
+    } else if (action.link.type === 'external') {
       const url = t(`claudy.actions.${action.slug}.link`)
       return url
+    } else {
+      return null
     }
   }
 
@@ -123,8 +125,12 @@ export class Claudy extends Component {
   render () {
     const { t, claudyInfos, onClose } = this.props
     const { selectedAction, openedAction } = this.state
-    const selectedActionUrl = this.computeSelectedActionUrl()
+    const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
+    let SelectedActionComponent = null
+    if (selectedAction && selectedAction.component) {
+      SelectedActionComponent = require(`./ClaudyActionComponents${selectedAction.component}.jsx`).default
+    }
     return (
       <div className={`coz-service-claudy ${
         openedAction ? 'coz-claudy-menu--action-selected' : ''}`}>
@@ -154,8 +160,16 @@ export class Claudy extends Component {
                 </a>
               ))}
             </div>
-            {selectedAction &&
+            {selectedAction && !SelectedActionComponent &&
               <ClaudyAction
+                action={selectedAction}
+                iconSrc={this.getIcon(selectedAction.icon)}
+                url={selectedActionUrl}
+                onActionClick={() => this.trackActionLink(selectedAction)}
+              />
+            }
+            {SelectedActionComponent &&
+              <SelectedActionComponent
                 action={selectedAction}
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
