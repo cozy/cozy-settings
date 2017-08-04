@@ -139,19 +139,15 @@
       },
       "support": {
         "title": "Contact the Cozy Cloud team support",
+        "emailDetail": "Your message will be sent from your email address saved in your Cozy settings.",
         "fields": {
           "message": {
             "title": "Your message",
             "placeholder": "Any feedbacks or just want to say hello? Tell us!"
-          },
-          "email": {
-            "title": "Your email",
-            "placeholder": "name@example.com"
           }
         },
         "button": "Send to the support",
         "success": "Message successfully sent to the Cozy Cloud team.",
-        "emailError": "Your email address is not valid.",
         "error": "Something went wrong while sending your message."
       }
     }

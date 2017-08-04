@@ -1,17 +1,15 @@
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
-import { isValidEmail } from '../../lib/emailHelper'
+
+const PRODUCT_BOARD_ADDRESS = 'inbox-71676b3c6daf8cb8@inbound.productboard.com'
 
 export class Support extends Component {
   constructor (props) {
     super(props)
-    const emailFromInstance = props.instanceData && props.instanceData.attributes.email || ''
     this.state = {
       hideContent: false, // to avoid scrollbar in actions list view
-      email: emailFromInstance,
-      message: '',
-      isEmailValid: emailFromInstance && isValidEmail(emailFromInstance) || false
+      message: ''
     }
     this.sendMessage = this.sendMessage.bind(this)
   }
@@ -21,21 +19,13 @@ export class Support extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    // if email from instance and input not already filled
-    if (!this.state.email && nextProps.instanceData) {
-      const email = nextProps.instanceData.attributes.email
-      this.setState({
-        email,
-        isEmailValid: isValidEmail(email)
-      })
-    }
     nextProps.opened !== this.props.opened && nextProps.opened
       ? this.onOpen() : this.onReturn()
   }
 
   resize () {
     typeof this.props.resizeIntent === 'function' && this.props.resizeIntent({
-      height: (31.5 * 16) // 31.5em
+      height: (27.5 * 16) // 27.5em
     }, '.2s .2s ease-out')
   }
 
@@ -62,28 +52,9 @@ export class Support extends Component {
     this.props.contener.addEventListener('transitionend', listenerToHide, false)
   }
 
-  sendMessage () {
-    this.props.onActionClick()
-
-  handleChange (property, value) {
-    const stateUpdate = {}
-    switch (property) {
-      case 'email':
-        stateUpdate.email = value
-        stateUpdate.isEmailValid = isValidEmail(value)
-        break
-      case 'message':
-        stateUpdate.message = value
-        break
-    }
-    this.setState(stateUpdate)
-  }
-
   render () {
     const { t, action, iconSrc } = this.props
-    const { hideContent, email, message, isEmailValid } = this.state
-    const emailError = email && !isEmailValid
-    const isFormNotValid = !email || !message || emailError
+    const { hideContent, message } = this.state
     return (
       <div className='coz-claudy-menu-action-description coz-claudy-menu-action--support'>
         <div className='coz-claudy-menu-action-description-header'>
@@ -104,30 +75,17 @@ export class Support extends Component {
                 value={message}
                 ref={(input) => { this.messageInput = input }}
                 placeholder={t('claudy.actions.support.fields.message.placeholder')}
-                onChange={(e) => { this.handleChange('message', e.target.value) }}
+                onChange={(e) => { this.setState({message: e.target.value}) }}
               />
             </label>
-            <label className='coz-form-label'>
-              {t('claudy.actions.support.fields.email.title')}
-              <input
-                type='email'
-                value={email}
-                className={emailError ? 'error' : ''}
-                ref={(input) => { this.emailInput = input }}
-                placeholder={t('claudy.actions.support.fields.email.placeholder')}
-                onChange={(e) => { this.handleChange('email', e.target.value) }}
-              />
-            </label>
-            {emailError &&
-              <p className='errors'>
-                {t('claudy.actions.support.emailError')}
-              </p>
-            }
+            <p className='coz-claudy-menu-action-description-detail'>
+              {t('claudy.actions.support.emailDetail')}
+            </p>
             <button
               role='button'
               className='coz-btn-regular coz-btn-send'
               onClick={() => this.sendMessage()}
-              disabled={isFormNotValid}
+              disabled={!message}
             >
               {t('claudy.actions.support.button')}
             </button>
