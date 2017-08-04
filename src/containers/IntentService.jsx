@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
 
 import { fetchClaudyInfos, createIntentService } from '../actions/services'
+import { fetchInfos } from '../actions'
 
 import IntentView from '../components/IntentView'
 
 const mapStateToProps = (state, ownProps) => ({
   claudy: state.claudy,
-  service: state.service
+  service: state.service,
+  instance: state.instance
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -15,6 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   fetchClaudy: () => {
     dispatch(fetchClaudyInfos())
+  },
+  fetchInfos: () => {
+    dispatch(fetchInfos())
   }
 })
 

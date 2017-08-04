@@ -123,7 +123,7 @@ export class Claudy extends Component {
   }
 
   render () {
-    const { t, claudyInfos, onClose, resizeIntent, resizeIntentDefault } = this.props
+    const { t, claudyInfos, onClose, resizeIntent, resizeIntentDefault, instanceData } = this.props
     const { selectedAction, openedAction } = this.state
     const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
@@ -173,6 +173,7 @@ export class Claudy extends Component {
             {SelectedActionComponent &&
               <SelectedActionComponent
                 action={selectedAction}
+                instanceData={instanceData}
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}

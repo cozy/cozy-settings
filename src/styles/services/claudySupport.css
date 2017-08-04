@@ -18,6 +18,17 @@
 .set-services .coz-claudy-menu-action--support .coz-form-label .set-services-claudy-textarea,
 .set-services .coz-claudy-menu-action--support .coz-form-label [type=email] {
   margin-top: .5em;
+  font-size: 14px;
+}
+
+.set-services .coz-claudy-menu-action--support .errors {
+  color: var(--pomegranate);
+  font-size: 14px;
+}
+
+.set-services .coz-claudy-menu-action--support .success {
+  color: var(--emerald);
+  font-size: 14px;
 }
 
 .set-services .coz-claudy-menu-action--support .coz-form-label:first-child {

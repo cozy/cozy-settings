@@ -17,6 +17,7 @@ export default class IntentView extends Component {
   componentDidMount () {
     switch (this.state.intentType) {
       case 'claudy':
+        this.props.fetchInfos()
         this.props.fetchClaudy()
     }
   }
@@ -36,7 +37,7 @@ export default class IntentView extends Component {
 
   render () {
     const { intentType } = this.state
-    const { service, claudy } = this.props
+    const { service, claudy, instance } = this.props
     if (claudy.actions.length && service.instance) {
       this.resizeDefaultClaudy()
     }
@@ -44,6 +45,7 @@ export default class IntentView extends Component {
       case 'claudy':
         return <Claudy
           claudyInfos={claudy}
+          instanceData={instance && instance.data}
           onClose={() => this.terminate()}
           resizeIntent={service.instance && service.instance.resizeClient}
           resizeIntentDefault={() => this.resizeDefaultClaudy()}
