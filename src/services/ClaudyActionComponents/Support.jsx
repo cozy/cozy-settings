@@ -19,18 +19,13 @@ export class Support extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    nextProps.opened !== this.props.opened && nextProps.opened
-      ? this.onOpen() : this.onReturn()
-  }
-
-  resize () {
-    typeof this.props.resizeIntent === 'function' && this.props.resizeIntent({
-      height: (27.5 * 16) // 27.5em
-    }, '.2s .2s ease-out')
+    if (nextProps.opened !== this.props.opened) {
+      nextProps.opened ? this.onOpen() : this.onReturn()
+    }
   }
 
   onOpen () {
-    this.resize()
+    this.props.resizeIntent(27.5 * 16) // 27.5em
     this.setState({ hideContent: false })
     const listenerToFocus = (e) => {
       if (e.propertyName === 'transform') {

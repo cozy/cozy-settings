@@ -27,28 +27,16 @@ export default class IntentView extends Component {
     service.terminate()
   }
 
-  resizeDefaultClaudy () {
-    const { service, claudy } = this.props
-    typeof service.instance.resizeClient === 'function' &&
-    service.instance.resizeClient({
-      height: (((claudy.actions.length <= 5 ? claudy.actions.length : 5) * 80) + 16)
-    }, '.2s .2s ease-out')
-  }
-
   render () {
     const { intentType } = this.state
     const { service, claudy, instance } = this.props
-    if (claudy.actions.length && service.instance) {
-      this.resizeDefaultClaudy()
-    }
     switch (intentType) {
       case 'claudy':
         return <Claudy
           claudyInfos={claudy}
           instanceData={instance && instance.data}
           onClose={() => this.terminate()}
-          resizeIntent={service.instance && service.instance.resizeClient}
-          resizeIntentDefault={() => this.resizeDefaultClaudy()}
+          service={service}
         />
     }
   }

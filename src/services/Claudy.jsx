@@ -14,7 +14,8 @@ export class Claudy extends Component {
     super(props)
     this.state = {
       openedAction: null,
-      selectedAction: null
+      selectedAction: null,
+      alreadyResized: false
     }
 
     this.getIcon = this.getIcon.bind(this)
@@ -122,14 +123,32 @@ export class Claudy extends Component {
     this.setState({ openedAction: false })
   }
 
+  resizeClaudy (height) {
+    const { service } = this.props
+    service.instance && typeof service.instance.resizeClient === 'function' &&
+    service.instance.resizeClient({
+      height: height
+    }, '.2s .2s ease-out')
+  }
+
+  resizeDefaultClaudy () {
+    const { claudyInfos } = this.props
+    const actionsLength = claudyInfos.actions.length
+    this.resizeClaudy(((actionsLength <= 5 ? actionsLength : 5) * 80) + 16)
+  }
+
   render () {
     const { t, claudyInfos, onClose, resizeIntent, resizeIntentDefault, instanceData } = this.props
-    const { selectedAction, openedAction } = this.state
+    const { selectedAction, openedAction, alreadyResized } = this.state
     const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
     let SelectedActionComponent = null
     if (selectedAction && selectedAction.component) {
       SelectedActionComponent = require(`./ClaudyActionComponents${selectedAction.component}.jsx`).default
+    }
+    if (!alreadyResized && claudyInfos.actions.length && service.instance) {
+      this.resizeDefaultClaudy() // very first resizing
+      this.setState({ alreadyResized: true })
     }
     return (
       <div className={`coz-service-claudy ${
@@ -178,8 +197,8 @@ export class Claudy extends Component {
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
                 contener={this.claudyContener}
-                resizeIntent={resizeIntent}
-                resizeIntentDefault={resizeIntentDefault}
+                resizeIntent={(height) => this.resizeClaudy(height)}
+                resizeIntentDefault={() => this.resizeDefaultClaudy()}
                 opened={openedAction}
               />
             }
