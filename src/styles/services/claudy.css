@@ -137,13 +137,13 @@
   font-size: 14px;
 }
 
-.coz-claudy-menu-action-description-errors {
+.coz-claudy-menu-action-description-error {
   color: var(--pomegranate);
   font-size: 14px;
 }
 
 .coz-claudy-menu-action-description-success {
-  color: var(--emerald);
+  color: var(--malachite);
   font-size: 14px;
 }
 

@@ -138,18 +138,24 @@
         "button": "Discover Cozy Collect"
       },
       "support": {
-        "title": "Contact the Cozy Cloud team support",
+        "title": "Contact us",
+        "description": "Hi! Can we help you?",
         "emailDetail": "Your message will be sent from your email address saved in your Cozy settings.",
         "fields": {
           "message": {
-            "title": "Your message",
-            "placeholder": "Any feedbacks or just want to say hello? Tell us!"
+            "title": "Your request",
+            "placeholder": "Tell us anything (ask for help, share a feedback or just say hello). We'll be happy to talk to you. "
           }
         },
-        "button": "Send to the support",
-        "success": "Message successfully sent to the Cozy Cloud team.",
-        "error": "Something went wrong while sending your message."
+        "button": "Let's go!",
+        "sending": "Sending...",
+        "success": "👏 Your message has been sent. Thank you!",
+        "error": "An error occured while sending your message"
       }
     }
+  },
+
+  "errors": {
+    "noEmailFound": "No email address found. Please add one in your Cozy settings then try again."
   }
 }

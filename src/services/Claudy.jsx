@@ -138,7 +138,7 @@ export class Claudy extends Component {
   }
 
   render () {
-    const { t, claudyInfos, onClose, resizeIntent, resizeIntentDefault, instanceData } = this.props
+    const { t, claudyInfos, onClose, emailStatus, sendMessageToSupport, service } = this.props
     const { selectedAction, openedAction, alreadyResized } = this.state
     const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
@@ -192,7 +192,6 @@ export class Claudy extends Component {
             {SelectedActionComponent &&
               <SelectedActionComponent
                 action={selectedAction}
-                instanceData={instanceData}
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
@@ -200,6 +199,8 @@ export class Claudy extends Component {
                 resizeIntent={(height) => this.resizeClaudy(height)}
                 resizeIntentDefault={() => this.resizeDefaultClaudy()}
                 opened={openedAction}
+                emailStatus={emailStatus}
+                sendMessageToSupport={sendMessageToSupport}
               />
             }
           </div>

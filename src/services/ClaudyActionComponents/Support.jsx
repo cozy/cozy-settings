@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
-
-const PRODUCT_BOARD_ADDRESS = 'inbox-71676b3c6daf8cb8@inbound.productboard.com'
+import Spinner from 'cozy-ui/react/Spinner'
 
 export class Support extends Component {
   constructor (props) {
@@ -25,7 +24,7 @@ export class Support extends Component {
   }
 
   onOpen () {
-    this.props.resizeIntent(27.5 * 16) // 27.5em
+    this.props.resizeIntent(30 * 16) // 30em
     this.setState({ hideContent: false })
     const listenerToFocus = (e) => {
       if (e.propertyName === 'transform') {
@@ -47,9 +46,14 @@ export class Support extends Component {
     this.props.contener.addEventListener('transitionend', listenerToHide, false)
   }
 
+  sendMessage () {
+    this.props.sendMessageToSupport(this.state.message)
+  }
+
   render () {
-    const { t, action, iconSrc } = this.props
+    const { t, action, iconSrc, emailStatus } = this.props
     const { hideContent, message } = this.state
+    const { isSent, isSending, error } = emailStatus
     return (
       <div className='coz-claudy-menu-action-description coz-claudy-menu-action--support'>
         <div className='coz-claudy-menu-action-description-header'>
@@ -63,6 +67,9 @@ export class Support extends Component {
         </div>
         {!hideContent &&
           <div className='coz-claudy-menu-action-description-content coz-form'>
+            <p className='coz-claudy-menu-action-description-text'>
+              {t(`claudy.actions.support.description`)}
+            </p>
             <label className='coz-form-label'>
               {t('claudy.actions.support.fields.message.title')}
               <textarea
@@ -73,9 +80,29 @@ export class Support extends Component {
                 onChange={(e) => { this.setState({message: e.target.value}) }}
               />
             </label>
-            <p className='coz-claudy-menu-action-description-detail'>
-              {t('claudy.actions.support.emailDetail')}
-            </p>
+            {!isSent && !isSending && !error &&
+              <p className='coz-claudy-menu-action-description-detail'>
+                {t('claudy.actions.support.emailDetail')}
+              </p>
+            }
+            {!isSending && isSent &&
+              <p className='coz-claudy-menu-action-description-success'>
+                {t('claudy.actions.support.success')}
+              </p>
+            }
+            {!isSending && error &&
+              <p className='coz-claudy-menu-action-description-error'>
+                {error.i18n && `${t(error.i18n)}`}
+                {error.message && `${t('claudy.actions.support.error')} : ${error.message}`}
+                {!error.i18n && !error.message && t('claudy.actions.support.error')}
+              </p>
+            }
+            {isSending &&
+              <p className='coz-claudy-menu-action-description-detail'>
+                <Spinner />
+                {t('claudy.actions.support.sending')}
+              </p>
+            }
             <button
               role='button'
               className='coz-btn-regular coz-btn-send'

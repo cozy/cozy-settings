@@ -29,14 +29,15 @@ export default class IntentView extends Component {
 
   render () {
     const { intentType } = this.state
-    const { service, claudy, instance } = this.props
+    const { service, claudy, emailStatus, sendMessageToSupport } = this.props
     switch (intentType) {
       case 'claudy':
         return <Claudy
           claudyInfos={claudy}
-          instanceData={instance && instance.data}
           onClose={() => this.terminate()}
           service={service}
+          emailStatus={emailStatus}
+          sendMessageToSupport={sendMessageToSupport}
         />
     }
   }

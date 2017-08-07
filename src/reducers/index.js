@@ -5,6 +5,7 @@ import passphrase from './passphrase'
 import instance from './instance'
 import claudy from './claudy'
 import service from './service'
+import emailStatus from './emailStatus'
 import devices from './devices'
 import deviceToRevoke from './deviceToRevoke'
 import openDeviceRevokeModale from './openDeviceRevokeModale'
@@ -17,6 +18,7 @@ const settingsApp = combineReducers({
   instance,
   claudy,
   service,
+  emailStatus,
   openDeviceRevokeModale,
   deviceToRevoke,
   passphrase,

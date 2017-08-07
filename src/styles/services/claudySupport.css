@@ -2,6 +2,11 @@
   align-self: flex-end;
 }
 
+.coz-claudy-menu-action--support .coz-claudy-menu-action-description-text {
+  margin-top: .5em;
+  margin-bottom: 0;
+}
+
 .set-services .coz-claudy-menu-action--support .coz-form {
   margin-top: 0;
   margin-bottom: 0;
