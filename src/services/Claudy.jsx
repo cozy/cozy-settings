@@ -160,7 +160,7 @@ export class Claudy extends Component {
         </header>
         <div className='coz-claudy-menu-content-wrapper'>
           <div className='coz-claudy-menu-content'
-            ref={(contener) => { this.claudyContener = contener }}
+            ref={(container) => { this.claudyContainer = container }}
           >
             <div className='coz-claudy-menu-actions-list'>
               {claudyActions.map(action => (
@@ -195,7 +195,7 @@ export class Claudy extends Component {
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
-                contener={this.claudyContener}
+                container={this.claudyContainer}
                 resizeIntent={(height) => this.resizeClaudy(height)}
                 resizeIntentDefault={() => this.resizeDefaultClaudy()}
                 opened={openedAction}

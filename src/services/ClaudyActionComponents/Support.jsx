@@ -32,7 +32,7 @@ export class Support extends Component {
         e.target.removeEventListener('transitionend', listenerToFocus)
       }
     }
-    this.props.contener.addEventListener('transitionend', listenerToFocus, false)
+    this.props.container.addEventListener('transitionend', listenerToFocus, false)
   }
 
   onReturn () {
@@ -43,7 +43,7 @@ export class Support extends Component {
         e.target.removeEventListener('transitionend', listenerToHide)
       }
     }
-    this.props.contener.addEventListener('transitionend', listenerToHide, false)
+    this.props.container.addEventListener('transitionend', listenerToHide, false)
   }
 
   sendMessage () {
