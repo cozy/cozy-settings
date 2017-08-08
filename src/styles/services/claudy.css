@@ -132,7 +132,23 @@
   margin-top: 0;
 }
 
-.coz-claudy-menu-action-description-button {
+.coz-claudy-menu-action-description-detail {
+  color: var(--cool-grey);
+  font-size: 14px;
+}
+
+.coz-claudy-menu-action-description-error {
+  color: var(--pomegranate);
+  font-size: 14px;
+}
+
+.coz-claudy-menu-action-description-success {
+  color: var(--malachite);
+  font-size: 14px;
+}
+
+[role=button].coz-claudy-menu-action-description-button {
+  color: white;
   width: 100%;
   margin: 0;
 }

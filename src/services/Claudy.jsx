@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
 import { shouldEnableTracking, getTracker, configureTracker } from 'cozy-ui/react/helpers/tracker'
 
+import ClaudyAction from './ClaudyAction'
+
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
 
@@ -12,7 +14,8 @@ export class Claudy extends Component {
     super(props)
     this.state = {
       openedAction: null,
-      selectedAction: null
+      selectedAction: null,
+      alreadyResized: false
     }
 
     this.getIcon = this.getIcon.bind(this)
@@ -41,9 +44,9 @@ export class Claudy extends Component {
     return require(`../assets/services/claudyActions/${iconName}`)
   }
 
-  computeSelectedActionUrl () {
-    if (!this.state.selectedAction) return null
-    const action = this.state.selectedAction
+  computeSelectedActionUrl (selectedAction) {
+    if (!selectedAction || !selectedAction.link) return null
+    const action = selectedAction
     const { t, claudyInfos } = this.props
     if (action.link.type === 'apps' && action.link.appSlug) {
       if (!claudyInfos.apps || !claudyInfos.apps.length) {
@@ -58,9 +61,11 @@ export class Claudy extends Component {
         console.warn(`No app with slug '${action.link.appSlug}' found on the Cozy.`)
         return null
       }
-    } else {
+    } else if (action.link.type === 'external') {
       const url = t(`claudy.actions.${action.slug}.link`)
       return url
+    } else {
+      return null
     }
   }
 
@@ -118,11 +123,33 @@ export class Claudy extends Component {
     this.setState({ openedAction: false })
   }
 
+  resizeClaudy (height) {
+    const { service } = this.props
+    service.instance && typeof service.instance.resizeClient === 'function' &&
+    service.instance.resizeClient({
+      height: height
+    }, '.2s .2s ease-out')
+  }
+
+  resizeDefaultClaudy () {
+    const { claudyInfos } = this.props
+    const actionsLength = claudyInfos.actions.length
+    this.resizeClaudy(((actionsLength <= 5 ? actionsLength : 5) * 80) + 16)
+  }
+
   render () {
-    const { t, claudyInfos, onClose } = this.props
-    const { selectedAction, openedAction } = this.state
-    const selectedActionUrl = this.computeSelectedActionUrl()
+    const { t, claudyInfos, onClose, emailStatus, sendMessageToSupport, service } = this.props
+    const { selectedAction, openedAction, alreadyResized } = this.state
+    const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
+    let SelectedActionComponent = null
+    if (selectedAction && selectedAction.component) {
+      SelectedActionComponent = require(`./ClaudyActionComponents${selectedAction.component}.jsx`).default
+    }
+    if (!alreadyResized && claudyInfos.actions.length && service.instance) {
+      this.resizeDefaultClaudy() // very first resizing
+      this.setState({ alreadyResized: true })
+    }
     return (
       <div className={`coz-service-claudy ${
         openedAction ? 'coz-claudy-menu--action-selected' : ''}`}>
@@ -132,7 +159,9 @@ export class Claudy extends Component {
           <button className='coz-claudy-menu-header-back-button' onClick={this.goBack} />
         </header>
         <div className='coz-claudy-menu-content-wrapper'>
-          <div className='coz-claudy-menu-content' >
+          <div className='coz-claudy-menu-content'
+            ref={(container) => { this.claudyContainer = container }}
+          >
             <div className='coz-claudy-menu-actions-list'>
               {claudyActions.map(action => (
                 <a className='coz-claudy-menu-action' data-complete={action.complete} onClick={() => this.selectAction(action)}>
@@ -152,42 +181,27 @@ export class Claudy extends Component {
                 </a>
               ))}
             </div>
-            {selectedAction &&
-              <div className='coz-claudy-menu-action-description'>
-                <div className='coz-claudy-menu-action-description-header'>
-                  <img
-                    className='coz-claudy-menu-action-icon'
-                    src={this.getIcon(selectedAction.icon)}
-                  />
-                  <p className='coz-claudy-menu-action-title'>
-                    {t(`claudy.actions.${selectedAction.slug}.title`)}
-                  </p>
-                </div>
-                <div className='coz-claudy-menu-action-description-content'>
-                  <p className='coz-claudy-menu-action-description-text'>
-                    {t(`claudy.actions.${selectedAction.slug}.description`)}
-                  </p>
-                  {selectedActionUrl
-                      ? <a
-                        href={selectedActionUrl}
-                        role='button'
-                        target={selectedAction.link.type === 'external' ? '_blank' : '_parent'}
-                        className='coz-btn-regular coz-claudy-menu-action-description-button'
-                        onClick={() => this.trackActionLink(selectedAction)}
-                      >
-                        {t(`claudy.actions.${selectedAction.slug}.button`)}
-                      </a>
-                    : <a
-                      role='button'
-                      className='coz-btn-regular coz-claudy-menu-action-description-button'
-                      disabled
-                      title={`App ${selectedAction.slug} not found`}
-                    >
-                      {t(`claudy.actions.${selectedAction.slug}.button`)}
-                    </a>
-                  }
-                </div>
-              </div>
+            {selectedAction && !SelectedActionComponent &&
+              <ClaudyAction
+                action={selectedAction}
+                iconSrc={this.getIcon(selectedAction.icon)}
+                url={selectedActionUrl}
+                onActionClick={() => this.trackActionLink(selectedAction)}
+              />
+            }
+            {SelectedActionComponent &&
+              <SelectedActionComponent
+                action={selectedAction}
+                iconSrc={this.getIcon(selectedAction.icon)}
+                url={selectedActionUrl}
+                onActionClick={() => this.trackActionLink(selectedAction)}
+                container={this.claudyContainer}
+                resizeIntent={(height) => this.resizeClaudy(height)}
+                resizeIntentDefault={() => this.resizeDefaultClaudy()}
+                opened={openedAction}
+                emailStatus={emailStatus}
+                sendMessageToSupport={sendMessageToSupport}
+              />
             }
           </div>
         </div>
