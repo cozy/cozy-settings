@@ -10,6 +10,8 @@ export const isSent = (state = false, action) => {
   switch (action.type) {
     case SEND_EMAIL_SUCCESS:
       return true
+    case SEND_EMAIL:
+      return false
     default:
       return state
   }

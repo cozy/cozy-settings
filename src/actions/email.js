@@ -13,6 +13,12 @@ const CONTACT_ADDRESS = 'contact@cozycloud.cc'
 export function sendMessageToSupport (message) {
   return (dispatch, getState) => {
     dispatch({type: SEND_EMAIL})
+    if (!message) {
+      return dispatch({
+        type: SEND_EMAIL_FAILURE,
+        error: new Error('No message provided.')
+      })
+    }
     return sendEmail([
       {name: 'Contact', email: CONTACT_ADDRESS},
       {name: 'Cozy Product Board', email: PRODUCT_BOARD_ADDRESS}
