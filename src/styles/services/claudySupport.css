@@ -32,7 +32,7 @@
 .set-services-claudy-textarea {
   resize: none;
   overflow: auto;
-  min-height: 10em;
+  min-height: 12em;
 }
 
 .set-services .coz-claudy-menu-action--support [role=button] {

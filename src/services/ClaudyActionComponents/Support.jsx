@@ -51,7 +51,7 @@ export class Support extends Component {
   }
 
   render () {
-    const { t, action, iconSrc, emailStatus } = this.props
+    const { t, iconSrc, emailStatus } = this.props
     const { hideContent, message } = this.state
     const { isSent, isSending, error } = emailStatus
     return (
@@ -62,14 +62,11 @@ export class Support extends Component {
             src={iconSrc}
           />
           <p className='coz-claudy-menu-action-title'>
-            {t(`claudy.actions.${action.slug}.title`)}
+            {t(`claudy.actions.support.description`)}
           </p>
         </div>
         {!hideContent &&
           <div className='coz-claudy-menu-action-description-content coz-form'>
-            <p className='coz-claudy-menu-action-description-text'>
-              {t(`claudy.actions.support.description`)}
-            </p>
             <label className='coz-form-label'>
               {t('claudy.actions.support.fields.message.title')}
               <textarea
