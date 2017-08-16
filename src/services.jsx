@@ -53,7 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
   render((
     <Provider store={store}>
       <I18n lang={lang} dictRequire={(lang) => require(`./locales/${lang}`)}>
-        <IntentService window={window} />
+        <div className='set-services'>
+          <IntentService window={window} />
+        </div>
       </I18n>
     </Provider>
   ), document.querySelector('[role=application]'))
