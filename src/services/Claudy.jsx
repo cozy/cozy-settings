@@ -173,11 +173,18 @@ export class Claudy extends Component {
                   <p className='coz-claudy-menu-action-title'>
                     {t(`claudy.actions.${action.slug}.title`)}
                   </p>
-                  {action.complete &&
+                  {action.complete && action.slug !== 'cozy-collect' &&
                     <img
                       className='coz-claudy-menu-action-check'
                       src={this.checkIcon}
                     />
+                  }
+                  {action.complete && action.slug === 'cozy-collect' &&
+                    <div className='coz-claudy-menu-action-count-wrapper'>
+                      <span className='coz-claudy-menu-action-count'>
+                        {claudyInfos.collectAccounts.length}
+                      </span>
+                    </div>
                   }
                 </a>
               ))}
