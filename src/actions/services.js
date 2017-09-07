@@ -55,8 +55,8 @@ export const consolidateClaudyActionsInfos = (claudyActions) => {
   const ACTIONS_WITH_DEVICES = ['desktop', 'mobile']
   const ACTIONS_WITH_ACCOUNTS = ['cozy-collect']
   return async (dispatch, getState) => {
-    let apps
-    let collectAccounts
+    let apps = []
+    let collectAccounts = []
     // if at least one action requires app links
     if (claudyActions.find(a => a.link && a.link.type === 'apps')) {
       try {

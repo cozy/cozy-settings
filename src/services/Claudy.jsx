@@ -134,7 +134,8 @@ export class Claudy extends Component {
   resizeDefaultClaudy () {
     const { claudyInfos } = this.props
     const actionsLength = claudyInfos.actions.length
-    this.resizeClaudy(((actionsLength <= 5 ? actionsLength : 5) * 80) + 8)
+    // actions.length * action{height} (64px) + header{height} (56px) + content{padding} (2 * 8px)
+    this.resizeClaudy((actionsLength <= 5 ? actionsLength : 5) * 64 + 56 + 2 * 8)
   }
 
   render () {
