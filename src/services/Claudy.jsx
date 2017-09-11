@@ -9,6 +9,8 @@ import ClaudyAction from './ClaudyAction'
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
 
+const CLAUDY_ACTION_COLLECT = 'cozy-collect'
+
 export class Claudy extends Component {
   constructor (props, context) {
     super(props)
@@ -173,11 +175,18 @@ export class Claudy extends Component {
                   <p className='coz-claudy-menu-action-title'>
                     {t(`claudy.actions.${action.slug}.title`)}
                   </p>
-                  {action.complete &&
+                  {action.complete && action.slug !== CLAUDY_ACTION_COLLECT &&
                     <img
                       className='coz-claudy-menu-action-check'
                       src={this.checkIcon}
                     />
+                  }
+                  {action.complete && action.slug === CLAUDY_ACTION_COLLECT &&
+                    <div className='coz-claudy-menu-action-count-wrapper'>
+                      <span className='coz-claudy-menu-action-count'>
+                        {claudyInfos.collectAccounts.length}
+                      </span>
+                    </div>
                   }
                 </a>
               ))}
