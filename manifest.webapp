@@ -40,7 +40,10 @@
     },
     "jobs": {
       "description": "Required to send emails to support",
-      "type": "io.cozy.jobs"
+      "type": "io.cozy.jobs",
+      "verbs": ["POST"],
+      "selector": "worker",
+      "values": ["sendmail"]
     }
   },
   "routes": {
