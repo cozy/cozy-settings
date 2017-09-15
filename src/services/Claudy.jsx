@@ -130,7 +130,7 @@ export class Claudy extends Component {
     service.instance && typeof service.instance.resizeClient === 'function' &&
     service.instance.resizeClient({
       height: height
-    }, '.2s .2s ease-out')
+    }, '.2s ease-out')
   }
 
   resizeDefaultClaudy () {
