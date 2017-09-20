@@ -101,12 +101,6 @@ export class Support extends Component {
                 {!error.i18n && !error.message && t('claudy.actions.support.error')}
               </p>
             }
-            {isSending &&
-              <p className='coz-claudy-menu-action-description-detail'>
-                <Spinner />
-                {t('claudy.actions.support.sending')}
-              </p>
-            }
             <button
               role='button'
               className='coz-btn-regular coz-btn-send'
@@ -114,7 +108,13 @@ export class Support extends Component {
               disabled={!message}
             >
               {t('claudy.actions.support.button')}
+              {/* FIXME: Use cozy-ui <Spinner/> `color` prop, but the generated
+                * css override the color with the default one dur to
+                * css-modules */}
+              {isSending && <Spinner color='white' />}
             </button>
+            {/* FIXME: When sending, a large whitespace appears at the bottom of
+              * the modal, but no element has the corresponding margin */}
           </div>
         }
       </div>
