@@ -7,7 +7,6 @@ export const SEND_EMAIL_SUCCESS = 'SEND_EMAIL_SUCCESS'
 export const SEND_EMAIL_FAILURE = 'SEND_EMAIL_FAILURE'
 
 const STACK_DOMAIN = document.querySelector('[role=application]').dataset.cozyDomain
-const PRODUCT_BOARD_ADDRESS = 'inbox-71676b3c6daf8cb8@inbound.productboard.com'
 const CONTACT_ADDRESS = 'contact@cozycloud.cc'
 
 export function sendMessageToSupport (message) {
@@ -20,8 +19,7 @@ export function sendMessageToSupport (message) {
       })
     }
     return sendEmail([
-      {name: 'Contact', email: CONTACT_ADDRESS},
-      {name: 'Cozy Product Board', email: PRODUCT_BOARD_ADDRESS}
+      {name: 'Contact', email: CONTACT_ADDRESS}
     ], [
       {type: 'text/plain', body: message}
     ], `[cozy-support] Ask support for ${STACK_DOMAIN}`)
