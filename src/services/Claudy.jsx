@@ -17,7 +17,8 @@ export class Claudy extends Component {
     this.state = {
       openedAction: null,
       selectedAction: null,
-      alreadyResized: false
+      alreadyResized: false,
+      alert: null
     }
 
     this.getIcon = this.getIcon.bind(this)
@@ -121,8 +122,13 @@ export class Claudy extends Component {
     }
   }
 
-  goBack () {
-    this.setState({ openedAction: false })
+  goBack (alert) {
+    this.setState({ openedAction: false, alert })
+
+    if (alert) {
+      // In case of alert, we reset it after 30" to make it disappear
+      setTimeout(() => { this.setState({ alert: null }) }, 30 * 1000)
+    }
   }
 
   resizeClaudy (height) {
@@ -142,7 +148,7 @@ export class Claudy extends Component {
 
   render () {
     const { t, claudyInfos, onClose, emailStatus, sendMessageToSupport, service } = this.props
-    const { selectedAction, openedAction, alreadyResized } = this.state
+    const { selectedAction, openedAction, alreadyResized, alert } = this.state
     const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
     let SelectedActionComponent = null
@@ -161,13 +167,10 @@ export class Claudy extends Component {
           <button className='coz-btn-close' onClick={onClose} />
           <button className='coz-claudy-menu-header-back-button' onClick={this.goBack} />
         </header>
-        { // FIXME: We use a `p` tag as long as a `div` will break the support
-          //        component lifecycle (it breaks the componentWillReceiveProps
-          //        call)
-          !emailStatus.isSending && emailStatus.isSent &&
-            <p className='coz-claudy-menu-action-description-success'>
-              {t('claudy.actions.support.success')}
-            </p>
+        {alert &&
+          <div className='coz-claudy-menu-action-description-success'>
+            {alert}
+          </div>
         }
         <div className='coz-claudy-menu-content-wrapper'>
           <div className='coz-claudy-menu-content'

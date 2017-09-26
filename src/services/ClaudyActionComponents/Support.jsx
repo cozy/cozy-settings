@@ -26,7 +26,7 @@ export class Support extends Component {
       // reset message if successfully sent
       this.setState({ message: '' })
       // usually go back on success
-      this.props.onSuccess()
+      this.props.onSuccess(this.props.t('claudy.actions.support.success'))
     }
   }
 
