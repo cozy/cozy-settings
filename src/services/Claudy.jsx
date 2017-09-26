@@ -161,6 +161,11 @@ export class Claudy extends Component {
           <button className='coz-btn-close' onClick={onClose} />
           <button className='coz-claudy-menu-header-back-button' onClick={this.goBack} />
         </header>
+        {!emailStatus.isSending && emailStatus.isSent &&
+          <div className='coz-claudy-menu-action-description-success'>
+            {t('claudy.actions.support.success')}
+          </div>
+        }
         <div className='coz-claudy-menu-content-wrapper'>
           <div className='coz-claudy-menu-content'
             ref={(container) => { this.claudyContainer = container }}
@@ -205,6 +210,7 @@ export class Claudy extends Component {
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
+                onSuccess={this.goBack}
                 container={this.claudyContainer}
                 resizeIntent={(height) => this.resizeClaudy(height)}
                 resizeIntentDefault={() => this.resizeDefaultClaudy()}

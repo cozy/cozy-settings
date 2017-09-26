@@ -22,9 +22,11 @@ export class Support extends Component {
       nextProps.opened ? this.onOpen() : this.onReturn()
     }
 
-    // reset message if successfully sent
     if (nextProps.emailStatus.isSent && this.props.emailStatus.isSending) {
+      // reset message if successfully sent
       this.setState({ message: '' })
+      // usually go back on success
+      this.props.onSuccess()
     }
   }
 
@@ -87,11 +89,6 @@ export class Support extends Component {
               (isSent && !isSending && !error && message)) &&
               <p className='coz-claudy-menu-action-description-detail'>
                 {t('claudy.actions.support.emailDetail')}
-              </p>
-            }
-            {!isSending && isSent && !message &&
-              <p className='coz-claudy-menu-action-description-success'>
-                {t('claudy.actions.support.success')}
               </p>
             }
             {!isSending && error &&
