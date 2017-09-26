@@ -161,10 +161,13 @@ export class Claudy extends Component {
           <button className='coz-btn-close' onClick={onClose} />
           <button className='coz-claudy-menu-header-back-button' onClick={this.goBack} />
         </header>
-        {!emailStatus.isSending && emailStatus.isSent &&
-          <div className='coz-claudy-menu-action-description-success'>
-            {t('claudy.actions.support.success')}
-          </div>
+        { // FIXME: We use a `p` tag as long as a `div` will break the support
+          //        component lifecycle (it breaks the componentWillReceiveProps
+          //        call)
+          !emailStatus.isSending && emailStatus.isSent &&
+            <p className='coz-claudy-menu-action-description-success'>
+              {t('claudy.actions.support.success')}
+            </p>
         }
         <div className='coz-claudy-menu-content-wrapper'>
           <div className='coz-claudy-menu-content'
