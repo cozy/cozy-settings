@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Claudy from '../services/Claudy'
+import Support from '../services/Support'
 
 export default class IntentView extends Component {
   constructor (props) {
@@ -36,6 +37,14 @@ export default class IntentView extends Component {
           claudyInfos={claudy}
           onClose={() => this.terminate()}
           service={service}
+          emailStatus={emailStatus}
+          sendMessageToSupport={sendMessageToSupport}
+        />
+      case 'support':
+        return <Support
+          onClose={() => this.terminate()}
+          service={service}
+          iconSrc={require('../assets/services/claudyActions/icon-question-mark.svg')}
           emailStatus={emailStatus}
           sendMessageToSupport={sendMessageToSupport}
         />
