@@ -22,8 +22,8 @@ export class Support extends Component {
       nextProps.opened ? this.onOpen() : this.onReturn()
     }
 
+    // if message successfully sent
     if (nextProps.emailStatus.isSent && this.props.emailStatus.isSending) {
-      // reset message if successfully sent
       this.setState({ message: '' })
       // usually go back on success
       this.props.onSuccess(this.props.t('claudy.actions.support.success'))
