@@ -1,9 +1,11 @@
 .coz-service-claudy {
   width: 100%;
+  padding-top: 3.5em; /* header size and padding*/
 }
 
 .coz-claudy-menu-header {
   position: fixed;
+  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -54,7 +56,6 @@
 
 .coz-claudy-menu-content-wrapper {
   overflow: hidden;
-  padding-top: 3.5em; /* header size and padding*/
 }
 
 .coz-claudy-menu-content {
@@ -179,7 +180,10 @@ by child elements */
 }
 
 .coz-claudy-menu-action-description-success {
-  color: var(--malachite);
+  margin: 0;
+  padding: 1em;
+  background-color: var(--malachite);
+  color: white;
   font-size: 14px;
 }
 

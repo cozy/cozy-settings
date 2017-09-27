@@ -17,7 +17,8 @@ export class Claudy extends Component {
     this.state = {
       openedAction: null,
       selectedAction: null,
-      alreadyResized: false
+      alreadyResized: false,
+      alert: null
     }
 
     this.getIcon = this.getIcon.bind(this)
@@ -121,8 +122,13 @@ export class Claudy extends Component {
     }
   }
 
-  goBack () {
-    this.setState({ openedAction: false })
+  goBack (alert) {
+    this.setState({ openedAction: false, alert })
+
+    if (alert) {
+      // In case of alert, we reset it after 30" to make it disappear
+      setTimeout(() => { this.setState({ alert: null }) }, 30 * 1000)
+    }
   }
 
   resizeClaudy (height) {
@@ -130,7 +136,7 @@ export class Claudy extends Component {
     service.instance && typeof service.instance.resizeClient === 'function' &&
     service.instance.resizeClient({
       height: height
-    }, '.2s .2s ease-out')
+    }, '.2s ease-out')
   }
 
   resizeDefaultClaudy () {
@@ -142,7 +148,7 @@ export class Claudy extends Component {
 
   render () {
     const { t, claudyInfos, onClose, emailStatus, sendMessageToSupport, service } = this.props
-    const { selectedAction, openedAction, alreadyResized } = this.state
+    const { selectedAction, openedAction, alreadyResized, alert } = this.state
     const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
     let SelectedActionComponent = null
@@ -161,6 +167,11 @@ export class Claudy extends Component {
           <button className='coz-btn-close' onClick={onClose} />
           <button className='coz-claudy-menu-header-back-button' onClick={this.goBack} />
         </header>
+        {alert &&
+          <div className='coz-claudy-menu-action-description-success'>
+            {alert}
+          </div>
+        }
         <div className='coz-claudy-menu-content-wrapper'>
           <div className='coz-claudy-menu-content'
             ref={(container) => { this.claudyContainer = container }}
@@ -205,6 +216,7 @@ export class Claudy extends Component {
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
+                onSuccess={(alert) => this.goBack(alert)}
                 container={this.claudyContainer}
                 resizeIntent={(height) => this.resizeClaudy(height)}
                 resizeIntentDefault={() => this.resizeDefaultClaudy()}

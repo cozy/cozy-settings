@@ -22,9 +22,11 @@ export class Support extends Component {
       nextProps.opened ? this.onOpen() : this.onReturn()
     }
 
-    // reset message if successfully sent
+    // if message successfully sent
     if (nextProps.emailStatus.isSent && this.props.emailStatus.isSending) {
       this.setState({ message: '' })
+      // usually go back on success
+      this.props.onSuccess(this.props.t('claudy.actions.support.success'))
     }
   }
 
@@ -89,22 +91,11 @@ export class Support extends Component {
                 {t('claudy.actions.support.emailDetail')}
               </p>
             }
-            {!isSending && isSent && !message &&
-              <p className='coz-claudy-menu-action-description-success'>
-                {t('claudy.actions.support.success')}
-              </p>
-            }
             {!isSending && error &&
               <p className='coz-claudy-menu-action-description-error'>
                 {error.i18n && `${t(error.i18n)}`}
                 {error.message && `${t('claudy.actions.support.error')} : ${error.message}`}
                 {!error.i18n && !error.message && t('claudy.actions.support.error')}
-              </p>
-            }
-            {isSending &&
-              <p className='coz-claudy-menu-action-description-detail'>
-                <Spinner />
-                {t('claudy.actions.support.sending')}
               </p>
             }
             <button
@@ -114,7 +105,13 @@ export class Support extends Component {
               disabled={!message}
             >
               {t('claudy.actions.support.button')}
+              {/* FIXME: Use cozy-ui <Spinner/> `color` prop, but the generated
+                * css override the color with the default one dur to
+                * css-modules */}
+              {isSending && <Spinner color='white' />}
             </button>
+            {/* FIXME: When sending, a large whitespace appears at the bottom of
+              * the modal, but no element has the corresponding margin */}
           </div>
         }
       </div>
