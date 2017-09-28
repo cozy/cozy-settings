@@ -117,6 +117,21 @@
     "description": "This feature is not available yet. For more information, please contact us at contact@cozycloud.cc"
   },
 
+  "support": {
+    "title": "Hi! Can we help you?",
+    "emailDetail": "Your message will be sent from your email address saved in your Cozy settings.",
+    "fields": {
+      "message": {
+        "title": "Your request",
+        "placeholder": "Tell us anything (ask for help, share a feedback or just say hello). We'll be happy to talk to you. "
+      }
+    },
+    "button": "Let's go!",
+    "sending": "Sending...",
+    "success": "👏 Your message has been sent. Thank you!",
+    "error": "An error occured while sending your message"
+  },
+
   "claudy": {
     "title": "How to drive your Cozy?",
     "actions": {
