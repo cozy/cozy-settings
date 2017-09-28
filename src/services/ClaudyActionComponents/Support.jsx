@@ -98,6 +98,11 @@ export class Support extends Component {
                 {!error.i18n && !error.message && t('claudy.actions.support.error')}
               </p>
             }
+            {isSending &&
+              <p className='coz-claudy-menu-action-description-detail'>
+                {t('claudy.actions.support.sending')}
+              </p>
+            }
             <button
               role='button'
               className='coz-btn-regular coz-btn-send'
