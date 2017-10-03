@@ -67,3 +67,8 @@
   color: var(--malachite);
   font-size: 14px;
 }
+
+.set-services .set-support-form-detail {
+  color: var(--cool-grey);
+  font-size: 14px;
+}
