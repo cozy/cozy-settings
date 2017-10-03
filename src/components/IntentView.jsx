@@ -23,7 +23,7 @@ export default class IntentView extends Component {
     }
   }
 
-  terminate (eventName) {
+  terminate () {
     const service = this.props.service.instance
     service.terminate()
   }
@@ -42,7 +42,6 @@ export default class IntentView extends Component {
         />
       case 'support':
         return <Support
-          onClose={() => this.terminate()}
           service={service}
           iconSrc={require('../assets/services/claudyActions/icon-question-mark.svg')}
           emailStatus={emailStatus}

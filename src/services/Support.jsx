@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
-import Spinner from 'cozy-ui/react/Spinner'
 
 export class Support extends Component {
   constructor (props) {
@@ -24,7 +23,7 @@ export class Support extends Component {
   }
 
   render () {
-    const { t, iconSrc, emailStatus, onClose } = this.props
+    const { t, iconSrc, emailStatus } = this.props
     const { message } = this.state
     const { isSent, isSending, error } = emailStatus
     return (
@@ -37,8 +36,6 @@ export class Support extends Component {
           <p className='set-support-form-header-title'>
             {t(`support.title`)}
           </p>
-          <button className='coz-btn-close' onClick={onClose} />
-
         </div>
         <div className='set-support-form-content coz-form'>
           <label className='coz-form-label'>
@@ -72,7 +69,6 @@ export class Support extends Component {
           }
           {isSending &&
             <p className='set-support-form-detail'>
-              <Spinner />
               {t('support.sending')}
             </p>
           }
@@ -80,6 +76,7 @@ export class Support extends Component {
             role='button'
             className='coz-btn-regular coz-btn-send'
             onClick={() => this.sendMessage()}
+            aria-busy={isSending}
             disabled={!message}
           >
             {t('support.button')}
