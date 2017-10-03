@@ -24,7 +24,7 @@ export class Support extends Component {
   }
 
   render () {
-    const { t, iconSrc, emailStatus, onClose } = this.props
+    const { t, iconSrc, emailStatus } = this.props
     const { message } = this.state
     const { isSent, isSending, error } = emailStatus
     return (
@@ -37,8 +37,6 @@ export class Support extends Component {
           <p className='set-support-form-header-title'>
             {t(`support.title`)}
           </p>
-          <button className='coz-btn-close' onClick={onClose} />
-
         </div>
         <div className='set-support-form-content coz-form'>
           <label className='coz-form-label'>
