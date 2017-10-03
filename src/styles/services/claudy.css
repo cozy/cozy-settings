@@ -185,6 +185,9 @@ by child elements */
   background-color: var(--malachite);
   color: white;
   font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 [role=button].coz-claudy-menu-action-description-button,

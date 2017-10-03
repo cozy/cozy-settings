@@ -85,7 +85,7 @@ export class Support extends Component {
             </label>
             {(
               (!isSent && !isSending && !error) ||
-              (isSent && !isSending && !error && message)) &&
+              (isSent && !isSending && !error)) &&
               <p className='coz-claudy-menu-action-description-detail'>
                 {t('claudy.actions.support.emailDetail')}
               </p>

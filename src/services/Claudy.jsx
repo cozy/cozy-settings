@@ -224,7 +224,7 @@ export class Claudy extends Component {
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
-                onSuccess={(alert) => this.goBack(alert)}
+                onSuccess={this.goBack}
                 container={this.claudyContainer}
                 resizeIntent={(height) => this.resizeClaudy(height)}
                 resizeIntentDefault={() => this.resizeDefaultClaudy()}
