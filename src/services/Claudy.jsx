@@ -168,7 +168,10 @@ export class Claudy extends Component {
           <button className='coz-claudy-menu-header-back-button' onClick={() => this.goBack()} />
         </header>
         {alert &&
-          <div className='coz-claudy-menu-action-description-success'>
+          <div
+            key='coz-claudy-menu-action-description-success'
+            className='coz-claudy-menu-action-description-success'
+          >
             {alert}
           </div>
         }
