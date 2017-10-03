@@ -123,19 +123,24 @@ export class Claudy extends Component {
   }
 
   goBack (alert) {
-    this.setState({ openedAction: false, alert })
+    this.setState({ openedAction: false })
 
     if (alert) {
+      this.setState({ alert })
       // In case of alert, we reset it after 30" to make it disappear
-      setTimeout(() => { this.setState({ alert: null }) }, 30 * 1000)
+      setTimeout(() => {
+        this.setState({ alert: null })
+        this.resizeDefaultClaudy()
+      }, 30 * 1000)
     }
   }
 
   resizeClaudy (height) {
     const { service } = this.props
+    const { alert } = this.state // to add automatically extra size for alert
     service.instance && typeof service.instance.resizeClient === 'function' &&
     service.instance.resizeClient({
-      height: height
+      height: height + (alert ? 44 : 0)
     }, '.2s ease-out')
   }
 
