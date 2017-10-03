@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
-import Spinner from 'cozy-ui/react/Spinner'
 
 export class Support extends Component {
   constructor (props) {
@@ -86,7 +85,7 @@ export class Support extends Component {
             </label>
             {(
               (!isSent && !isSending && !error) ||
-              (isSent && !isSending && !error && message)) &&
+              (isSent && !isSending && !error)) &&
               <p className='coz-claudy-menu-action-description-detail'>
                 {t('claudy.actions.support.emailDetail')}
               </p>
@@ -108,15 +107,10 @@ export class Support extends Component {
               className='coz-btn-regular coz-btn-send'
               onClick={() => this.sendMessage()}
               disabled={!message}
+              aria-busy={isSending}
             >
               {t('claudy.actions.support.button')}
-              {/* FIXME: Use cozy-ui <Spinner/> `color` prop, but the generated
-                * css override the color with the default one dur to
-                * css-modules */}
-              {isSending && <Spinner color='white' />}
             </button>
-            {/* FIXME: When sending, a large whitespace appears at the bottom of
-              * the modal, but no element has the corresponding margin */}
           </div>
         }
       </div>
