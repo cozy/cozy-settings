@@ -26,6 +26,13 @@ export const DEVICE_REVOKE = 'DEVICE_REVOKE'
 export const DEVICE_REVOKE_SUCCESS = 'DEVICE_REVOKE_SUCCESS'
 export const DEVICE_REVOKE_FAILURE = 'DEVICE_REVOKE_FAILURE'
 
+export const FETCH_SESSIONS = 'FETCH_SESSIONS'
+export const FETCH_SESSIONS_SUCCESS = 'FETCH_SESSIONS_SUCCESS'
+export const FETCH_SESSIONS_FAILURE = 'FETCH_SESSIONS_FAILURE'
+export const SESSIONS_DELETE_OTHERS = 'SESSIONS_DELETE_OTHERS'
+export const SESSIONS_DELETE_OTHERS_SUCCESS = 'SESSIONS_DELETE_OTHERS_SUCCESS'
+export const SESSIONS_DELETE_OTHERS_FAILURE = 'SESSIONS_DELETE_OTHERS_FAILURE'
+
 export const ALERT_CLOSED = 'ALERT_CLOSED'
 export const INSTALL_APP = 'INSTALL_APP'
 export const INSTALL_APP_SUCCESS = 'INSTALL_APP_SUCCESS'
@@ -168,6 +175,49 @@ export const deviceModaleRevokeOpen = (device) => ({
 export const deviceModaleRevokeClose = () => ({
   type: DEVICES_MODALE_REVOKE_CLOSE
 })
+
+export const fetchSessions = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: FETCH_SESSIONS })
+    cozyFetch('GET', '/data/io.cozy.sessions.logins/_all_docs?include_docs=true')
+    .then(response => {
+      const sessions = []
+      response.rows.map(row => sessions.push(row.doc))
+      dispatch({ type: FETCH_SESSIONS_SUCCESS, sessions })
+    })
+    .catch(() => {
+      dispatch({
+        type: FETCH_SESSIONS_FAILURE,
+        alert: {
+          message: 'SessionsView.infos.server_error'
+        }
+      })
+    })
+  }
+}
+
+export const deleteOtherSessions = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: SESSIONS_DELETE_OTHERS })
+    cozyFetch('DELETE', '/auth/login/others')
+    .then(() => {
+      dispatch({
+        type: SESSIONS_DELETE_OTHERS_SUCCESS,
+        alert: {
+          message: 'SessionsView.infos.sessions_deleted'
+        }
+      })
+    })
+    .catch(() => {
+      dispatch({
+        type: SESSIONS_DELETE_OTHERS_FAILURE,
+        alert: {
+          message: 'SessionsView.infos.server_error'
+        }
+      })
+    })
+  }
+}
 
 export const installApp = (slug, repourl, isupdate) => {
   return (dispatch, getState) => {
