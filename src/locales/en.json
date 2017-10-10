@@ -79,10 +79,12 @@
     "title": "Connected devices",
     "load_error": "An error occured while loading your devices, please try again later.",
     "head_name": "Name",
+    "head_sync": "Last synchronisation",
     "head_activity": "Last activity",
     "head_permissions": "Permissions",
     "head_actions": "Actions",
-    "revoke": "revoke"
+    "revoke": "revoke",
+    "sync_date_format": "MMM D, YYYY"
   },
   "revokeDevice": {
     "title": "Revoke this device",
