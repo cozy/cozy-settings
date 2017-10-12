@@ -9,13 +9,16 @@ import ClaudyAction from './ClaudyAction'
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
 
+const CLAUDY_ACTION_COLLECT = 'cozy-collect'
+
 export class Claudy extends Component {
   constructor (props, context) {
     super(props)
     this.state = {
       openedAction: null,
       selectedAction: null,
-      alreadyResized: false
+      alreadyResized: false,
+      alert: null
     }
 
     this.getIcon = this.getIcon.bind(this)
@@ -119,27 +122,38 @@ export class Claudy extends Component {
     }
   }
 
-  goBack () {
+  goBack (alert) {
     this.setState({ openedAction: false })
+
+    if (alert) {
+      this.setState({ alert })
+      // In case of alert, we reset it after 30" to make it disappear
+      setTimeout(() => {
+        this.setState({ alert: null })
+        this.resizeDefaultClaudy()
+      }, 30 * 1000)
+    }
   }
 
   resizeClaudy (height) {
     const { service } = this.props
+    const { alert } = this.state // to add automatically extra size for alert
     service.instance && typeof service.instance.resizeClient === 'function' &&
     service.instance.resizeClient({
-      height: height
-    }, '.2s .2s ease-out')
+      height: height + (alert ? 44 : 0)
+    }, '.2s ease-out')
   }
 
   resizeDefaultClaudy () {
     const { claudyInfos } = this.props
     const actionsLength = claudyInfos.actions.length
-    this.resizeClaudy(((actionsLength <= 5 ? actionsLength : 5) * 80) + 8)
+    // actions.length * action{height} (64px) + header{height} (56px) + content{padding} (2 * 8px)
+    this.resizeClaudy((actionsLength <= 5 ? actionsLength : 5) * 64 + 56 + 2 * 8)
   }
 
   render () {
     const { t, claudyInfos, onClose, emailStatus, sendMessageToSupport, service } = this.props
-    const { selectedAction, openedAction, alreadyResized } = this.state
+    const { selectedAction, openedAction, alreadyResized, alert } = this.state
     const selectedActionUrl = this.computeSelectedActionUrl(selectedAction)
     const claudyActions = this.consolidateActions(claudyInfos)
     let SelectedActionComponent = null
@@ -156,8 +170,16 @@ export class Claudy extends Component {
         <header className='coz-claudy-menu-header'>
           <h2 className='coz-claudy-menu-title'>{t('claudy.title')}</h2>
           <button className='coz-btn-close' onClick={onClose} />
-          <button className='coz-claudy-menu-header-back-button' onClick={this.goBack} />
+          <button className='coz-claudy-menu-header-back-button' onClick={() => this.goBack()} />
         </header>
+        {alert &&
+          <div
+            key='coz-claudy-menu-action-description-success'
+            className='coz-claudy-menu-action-description-success'
+          >
+            {alert}
+          </div>
+        }
         <div className='coz-claudy-menu-content-wrapper'>
           <div className='coz-claudy-menu-content'
             ref={(container) => { this.claudyContainer = container }}
@@ -172,11 +194,18 @@ export class Claudy extends Component {
                   <p className='coz-claudy-menu-action-title'>
                     {t(`claudy.actions.${action.slug}.title`)}
                   </p>
-                  {action.complete &&
+                  {action.complete && action.slug !== CLAUDY_ACTION_COLLECT &&
                     <img
                       className='coz-claudy-menu-action-check'
                       src={this.checkIcon}
                     />
+                  }
+                  {action.complete && action.slug === CLAUDY_ACTION_COLLECT &&
+                    <div className='coz-claudy-menu-action-count-wrapper'>
+                      <span className='coz-claudy-menu-action-count'>
+                        {claudyInfos.collectAccounts.length}
+                      </span>
+                    </div>
                   }
                 </a>
               ))}
@@ -195,6 +224,7 @@ export class Claudy extends Component {
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
                 onActionClick={() => this.trackActionLink(selectedAction)}
+                onSuccess={this.goBack}
                 container={this.claudyContainer}
                 resizeIntent={(height) => this.resizeClaudy(height)}
                 resizeIntentDefault={() => this.resizeDefaultClaudy()}

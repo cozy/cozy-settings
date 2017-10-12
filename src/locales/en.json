@@ -79,10 +79,12 @@
     "title": "Connected devices",
     "load_error": "An error occured while loading your devices, please try again later.",
     "head_name": "Name",
+    "head_sync": "Last synchronisation",
     "head_activity": "Last activity",
     "head_permissions": "Permissions",
     "head_actions": "Actions",
-    "revoke": "revoke"
+    "revoke": "revoke",
+    "sync_date_format": "MMM D, YYYY"
   },
   "revokeDevice": {
     "title": "Revoke this device",
@@ -115,6 +117,21 @@
   "soon": {
     "title": "Coming soon",
     "description": "This feature is not available yet. For more information, please contact us at contact@cozycloud.cc"
+  },
+
+  "support": {
+    "title": "Hi! Can we help you?",
+    "emailDetail": "Your message will be sent from your email address saved in your Cozy settings.",
+    "fields": {
+      "message": {
+        "title": "Your request",
+        "placeholder": "Tell us anything (ask for help, share a feedback or just say hello). We'll be happy to talk to you. "
+      }
+    },
+    "button": "Let's go!",
+    "sending": "Sending...",
+    "success": "👏 Your message has been sent. Thank you!",
+    "error": "An error occured while sending your message"
   },
 
   "claudy": {

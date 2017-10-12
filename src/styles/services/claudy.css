@@ -1,9 +1,11 @@
 .coz-service-claudy {
   width: 100%;
+  padding-top: 3.5em; /* header size and padding*/
 }
 
 .coz-claudy-menu-header {
   position: fixed;
+  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -54,7 +56,6 @@
 
 .coz-claudy-menu-content-wrapper {
   overflow: hidden;
-  padding-top: 3.5em; /* header size and padding*/
 }
 
 .coz-claudy-menu-content {
@@ -94,7 +95,22 @@
 
 .coz-claudy-menu-action[data-complete=true] {
   color: var(--emerald);
+}
+
+/* Only for text-decoration property, since it cannot be overwritten
+by child elements */
+.coz-claudy-menu-action[data-complete=true] p {
   text-decoration: line-through;
+}
+
+.coz-claudy-menu-action[data-complete=true]:hover,
+.coz-claudy-menu-action[data-complete=true]:active {
+  text-decoration: none;
+}
+
+.coz-claudy-menu-action[data-complete=true]:hover p,
+.coz-claudy-menu-action[data-complete=true]:active p {
+  text-decoration: underline;
 }
 
 .coz-claudy-menu-action-icon {
@@ -105,6 +121,27 @@
 .coz-claudy-menu-action-check {
   height: 1.5em;
   width: 1.5em;
+}
+
+.coz-claudy-menu-action-count-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100%;
+  align-self: flex-end;
+  flex-grow: 1;
+}
+
+.coz-claudy-menu-action-count {
+  display: block;
+  height: 1.5em;
+  width: 1.5em;
+  margin-top: calc(50% - 1.5em / 2);
+  border-radius: 100%;
+  background: var(--malachite);
+  text-align: center;
+  line-height: 1.5em;
+  color: white;
+  font-weight: 700;
 }
 
 .coz-claudy-menu-action-title {
@@ -143,11 +180,20 @@
 }
 
 .coz-claudy-menu-action-description-success {
-  color: var(--malachite);
+  margin: 0;
+  padding: 1em;
+  background-color: var(--malachite);
+  color: white;
   font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-[role=button].coz-claudy-menu-action-description-button {
+[role=button].coz-claudy-menu-action-description-button,
+[role=button].coz-claudy-menu-action-description-button:visited,
+[role=button].coz-claudy-menu-action-description-button:active,
+[role=button].coz-claudy-menu-action-description-button:hover {
   color: white;
   width: 100%;
   margin: 0;

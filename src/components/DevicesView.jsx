@@ -34,6 +34,7 @@ const DevicesView = ({ t, f, isFetching, devices, openDeviceRevokeModale, device
 
         <div className={classNames(tableStyles['coz-table-head'], tableStyles['coz-table-row'])}>
           <div className={classNames(tableStyles['coz-table-header'], tableStyles['set-table-name'])}>{ t('DevicesView.head_name') }</div>
+          <div className={classNames(tableStyles['coz-table-header'], tableStyles['set-table-date'])}>{ t('DevicesView.head_sync') }</div>
           <div className={classNames(tableStyles['coz-table-header'], tableStyles['set-table-actions'])}>{ t('DevicesView.head_actions') }</div>
         </div>
         <div className={classNames(tableStyles['coz-table-body'], tableStyles['set-table-devices'])}>
@@ -43,6 +44,12 @@ const DevicesView = ({ t, f, isFetching, devices, openDeviceRevokeModale, device
               <div className={tableStyles['coz-table-row']}>
                 <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-name'], tableStyles['coz-table-primary'], getDeviceKindClass(device.client_kind))}>
                   {device.client_name}
+                </div>
+                <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-date'])}>
+                  {device.synchronized_at ? f(
+                    device.synchronized_at,
+                    t('DevicesView.sync_date_format')
+                  ) : '-'}
                 </div>
                 <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-actions'])}>
                   <button

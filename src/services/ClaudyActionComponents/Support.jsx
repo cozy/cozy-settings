@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/helpers/i18n'
-import Spinner from 'cozy-ui/react/Spinner'
 
 export class Support extends Component {
   constructor (props) {
@@ -22,9 +21,11 @@ export class Support extends Component {
       nextProps.opened ? this.onOpen() : this.onReturn()
     }
 
-    // reset message if successfully sent
+    // if message successfully sent
     if (nextProps.emailStatus.isSent && this.props.emailStatus.isSending) {
       this.setState({ message: '' })
+      // usually go back on success
+      this.props.onSuccess(this.props.t('claudy.actions.support.success'))
     }
   }
 
@@ -84,14 +85,9 @@ export class Support extends Component {
             </label>
             {(
               (!isSent && !isSending && !error) ||
-              (isSent && !isSending && !error && message)) &&
+              (isSent && !isSending && !error)) &&
               <p className='coz-claudy-menu-action-description-detail'>
                 {t('claudy.actions.support.emailDetail')}
-              </p>
-            }
-            {!isSending && isSent && !message &&
-              <p className='coz-claudy-menu-action-description-success'>
-                {t('claudy.actions.support.success')}
               </p>
             }
             {!isSending && error &&
@@ -103,7 +99,6 @@ export class Support extends Component {
             }
             {isSending &&
               <p className='coz-claudy-menu-action-description-detail'>
-                <Spinner />
                 {t('claudy.actions.support.sending')}
               </p>
             }
@@ -112,6 +107,7 @@ export class Support extends Component {
               className='coz-btn-regular coz-btn-send'
               onClick={() => this.sendMessage()}
               disabled={!message}
+              aria-busy={isSending}
             >
               {t('claudy.actions.support.button')}
             </button>
