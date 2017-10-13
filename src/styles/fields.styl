@@ -1,103 +1,104 @@
 @import 'cozy-ui'
 
-:local
-    @extend $form
-    @extend $form-text
-    @extend $form-progress
-    @extend $form-select
+[role=application]
+    :local
+        @extend $form
+        @extend $form-text
+        @extend $form-progress
+        @extend $form-select
 
-    .password-visibility
-        text-transform  uppercase
-        position        absolute
-        cursor          pointer
-        right           0
-        top             em(-31px)
-        font-weight     bold
+        .password-visibility
+            text-transform  uppercase
+            position        absolute
+            cursor          pointer
+            right           0
+            top             em(-31px)
+            font-weight     bold
 
-    .password-reset-link
-        margin-top .5em
+        .password-reset-link
+            margin-top .5em
 
-    .coz-form-controls
-        margin  1em 0
-        width   100%
-        padding 0
+        .coz-form-controls
+            margin  1em 0
+            width   100%
+            padding 0
 
-        [role=button]
-            width        100%
-            margin-left  0
-            margin-right 0
+            [role=button]
+                width        100%
+                margin-left  0
+                margin-right 0
 
-    .set-field
-        &.set-field-input:after,
-        &.set-field-checkbox .set-toggle label:after
-            opacity 0
-            transition: opacity 3s ease-in-out
+        .set-field
+            &.set-field-input:after,
+            &.set-field-checkbox .set-toggle label:after
+                opacity 0
+                transition: opacity 3s ease-in-out
 
-    .set-field-loading
-        &.set-field-input:after,
-        &.set-field-checkbox .set-toggle label:after
-            @extend $icon-spinner-blue
-            @extend $icon-16
-            opacity 1
-
-
-    .set-field-saved,
-    .coz-form-controls [role=button].saved
-        &.set-field-input:after,
-        &.set-field-checkbox .set-toggle label:after
-            @extend $icon
-            @extend $icon-16
-            opacity 1
-            background-image embedurl("../assets/icons/icon-checked.svg")
-
-    .set-field-loading
-    .set-field-saved
-        select
-            background-image none
-        &.set-field-input:after
-            position absolute
-            bottom   0
-            right    0
-            margin   .9em .75em
-        &.set-field-checkbox .set-toggle label:after
-            position absolute
-            top      calc(50% - .5em)
-            right    3em
-
-    .set-field-checkbox
-        display         flex
-        flex-direction  row
-        flex-wrap       wrap
-        align-items     center
-        .set-toggle
-            margin-bottom   .5em
-            margin-left     2em
-        .coz-form-desc
-            flex            1 1
-            padding-right   1em
-        .set-field-title
-        .coz-form-errors
-            flex-basis  100%
-        .coz-form-errors
-            margin-top  0
+        .set-field-loading
+            &.set-field-input:after,
+            &.set-field-checkbox .set-toggle label:after
+                @extend $icon-spinner-blue
+                @extend $icon-16
+                opacity 1
 
 
-    progress
-        &.pw-weak
-            color   pomegranate
-            &::-webkit-progress-value
-                background    pomegranate
-            &::-moz-progress-bar
-                background    pomegranate
-        &.pw-moderate
-            color   texas-rose
-            &::-webkit-progress-value
-                background    texas-rose
-            &::-moz-progress-bar
-                background    texas-rose
-        &.pw-strong
-            color   emerald
-            &::-webkit-progress-value
-                background    emerald
-            &::-moz-progress-bar
-                background    emerald
+        .set-field-saved,
+        .coz-form-controls [role=button].saved
+            &.set-field-input:after,
+            &.set-field-checkbox .set-toggle label:after
+                @extend $icon
+                @extend $icon-16
+                opacity 1
+                background-image embedurl("../assets/icons/icon-checked.svg")
+
+        .set-field-loading
+        .set-field-saved
+            select
+                background-image none
+            &.set-field-input:after
+                position absolute
+                bottom   0
+                right    0
+                margin   .9em .75em
+            &.set-field-checkbox .set-toggle label:after
+                position absolute
+                top      calc(50% - .5em)
+                right    3em
+
+        .set-field-checkbox
+            display         flex
+            flex-direction  row
+            flex-wrap       wrap
+            align-items     center
+            .set-toggle
+                margin-bottom   .5em
+                margin-left     2em
+            .coz-form-desc
+                flex            1 1
+                padding-right   1em
+            .set-field-title
+            .coz-form-errors
+                flex-basis  100%
+            .coz-form-errors
+                margin-top  0
+
+
+        progress
+            &.pw-weak
+                color   pomegranate
+                &::-webkit-progress-value
+                    background    pomegranate
+                &::-moz-progress-bar
+                    background    pomegranate
+            &.pw-moderate
+                color   texas-rose
+                &::-webkit-progress-value
+                    background    texas-rose
+                &::-moz-progress-bar
+                    background    texas-rose
+            &.pw-strong
+                color   emerald
+                &::-webkit-progress-value
+                    background    emerald
+                &::-moz-progress-bar
+                    background    emerald
