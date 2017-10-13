@@ -3,6 +3,7 @@
     "profile": "Profile",
     "activated_services": "Activated services",
     "connected_devices": "Connected devices",
+    "sessions": "Connection historic",
     "storage": "Storage",
     "email_notifications": "E-mail notifications"
   },
@@ -85,6 +86,15 @@
     "head_actions": "Actions",
     "revoke": "revoke",
     "sync_date_format": "MMM D, YYYY"
+  },
+  "SessionsView": {
+    "title": "Connection historic",
+    "sync_date_format": "MMM D, YYYY",
+    "delete": "Delete all others sessions",
+    "infos": {
+      "server_error": "Something went wrong with the server. Please, reload the page.",
+      "sessions_deleted": "All others sessions are deleted."
+    }
   },
   "revokeDevice": {
     "title": "Revoke this device",

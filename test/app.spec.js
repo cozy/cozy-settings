@@ -5,8 +5,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-//import { I18nProvider } from 'cozy-ui/react/helpers/i18n'
-//import App from '../src/components/App'
+// import { I18nProvider } from 'cozy-ui/react/helpers/i18n'
+// import App from '../src/components/App'
 
 test('Hello world', () => {
   // const component = renderer.create(

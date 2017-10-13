@@ -9,6 +9,7 @@ import emailStatus from './emailStatus'
 import devices from './devices'
 import deviceToRevoke from './deviceToRevoke'
 import openDeviceRevokeModale from './openDeviceRevokeModale'
+import sessions from './sessions'
 import ui from './ui'
 import alerterReducer from 'cozy-ui/react/Alerter'
 
@@ -22,6 +23,7 @@ const settingsApp = combineReducers({
   openDeviceRevokeModale,
   deviceToRevoke,
   passphrase,
+  sessions,
   ui,
   alerts: alerterReducer
 })
