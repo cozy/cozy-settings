@@ -9,13 +9,12 @@ import SessionsViewRow from './SessionsViewRow'
 
 import { translate } from 'cozy-ui/react/helpers/i18n'
 
-const SessionsView = ({ t, f, isFetching, sessions, deleteOtherSessions }) => {
+const SessionsView = ({ t, f, isFetching, sessions }) => {
   return (
     <div role='contentinfo'>
       <h2 className={viewStyles['set-view-title']}>
         {t('SessionsView.title')}
       </h2>
-      <p className={viewStyles['set-view-title']}><button className={classNames('coz-btn', 'coz-btn--danger')} onClick={() => deleteOtherSessions()}>{t('SessionsView.delete')}</button></p>
       { isFetching && <Loading /> }
       { !isFetching && sessions && (
         <div className={classNames(
