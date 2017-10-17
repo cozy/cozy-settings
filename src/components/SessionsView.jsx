@@ -29,6 +29,11 @@ const SessionsView = ({ t, f, isFetching, sessions }) => {
           <div className={classNames(tableStyles['coz-table-body'])}>
             {
               sessions
+              .sort(function (a, b) {
+                // Turn your strings into dates, and then subtract them
+                // to get a value that is either negative, positive, or zero.
+                return new Date(b.created_at) - new Date(a.created_at)
+              })
               .map(session => (
                 <SessionsViewRow
                   session={session}
