@@ -20,9 +20,10 @@ import { I18nProvider } from 'cozy-ui/react/helpers/i18n'
 import { shouldEnableTracking, getTracker } from 'cozy-ui/react/helpers/tracker'
 
 import settingsApp from './reducers'
-import { fetchInfos, fetchDevices } from './actions'
+import { fetchDevices, fetchInfos, fetchSessions } from './actions'
 
 import App from './components/App'
+import Sessions from './containers/Sessions'
 import Profile from './containers/Profile'
 import Devices from './containers/Devices'
 import Installer from './containers/Installer'
@@ -55,14 +56,18 @@ const polyglot = new Polyglot({
 
 const ConnectedI18nProvider = connect(state => {
   const { context, lang } = state.ui
+  const { locale } = state.fields
+  const hasLocaleChange = lang === locale.value && lang !== polyglot.currentLocale
   // Load global locales
-  try {
-    const dict = require(`./locales/${lang}`)
-    polyglot.extend(dict)
-    polyglot.locale(lang)
-    cozy.bar.setLocale(lang)
-  } catch (e) {
-    console.warn(`The dict phrases for "${lang}" can't be loaded`)
+  if (hasLocaleChange) {
+    try {
+      const dict = require(`./locales/${lang}`)
+      polyglot.extend(dict)
+      polyglot.locale(lang)
+      cozy.bar.setLocale && cozy.bar.setLocale(lang)
+    } catch (e) {
+      console.warn(`The dict phrases for "${lang}" can't be loaded`)
+    }
   }
 
   // Load context locales
@@ -129,6 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
               path='connectedDevices'
               component={Devices}
               onEnter={() => store.dispatch(fetchDevices())}
+            />
+            <Route
+              path='sessions'
+              component={Sessions}
+              onEnter={() => store.dispatch(fetchSessions())}
             />
             <Route
               path='install'
