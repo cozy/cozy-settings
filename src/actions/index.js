@@ -177,22 +177,39 @@ export const deviceModaleRevokeClose = () => ({
 })
 
 export const fetchSessions = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: FETCH_SESSIONS })
-    cozyFetch('GET', '/data/io.cozy.sessions.logins/_all_docs?include_docs=true')
-    .then(response => {
-      const sessions = []
-      response.rows.map(row => sessions.push(row.doc))
-      dispatch({ type: FETCH_SESSIONS_SUCCESS, sessions })
-    })
-    .catch(() => {
+
+    const sessions = []
+    let responseSessions
+    let responseCurrentsSessionsIds
+
+    try {
+      // GET all the sessions
+      responseSessions = await cozyFetch('GET', '/data/io.cozy.sessions.logins/_all_docs?include_docs=true')
+      // Sort allSessions in an array
+      responseSessions.rows.map(row => sessions.push(row.doc))
+      // GET currents sessions id
+      responseCurrentsSessionsIds = await cozyFetch('GET', '/settings/sessions')
+    } catch (error) {
       dispatch({
         type: FETCH_SESSIONS_FAILURE,
         alert: {
           message: 'SessionsView.infos.server_error'
         }
       })
+    }
+
+    // Merge ID and Sessions to inject only currents sessions in the store
+    const currentsSessions = []
+
+    responseCurrentsSessionsIds.data.map((currentSessionId) => {
+      for (let session of sessions) {
+        currentSessionId.id === session.session_id && currentsSessions.push(session)
+      }
     })
+
+    dispatch({ type: FETCH_SESSIONS_SUCCESS, sessions: currentsSessions })
   }
 }
 
@@ -207,6 +224,9 @@ export const deleteOtherSessions = () => {
           message: 'SessionsView.infos.sessions_deleted'
         }
       })
+    })
+    .then(() => {
+      dispatch(fetchSessions())
     })
     .catch(() => {
       dispatch({
