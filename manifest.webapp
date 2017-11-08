@@ -28,6 +28,11 @@
       "type": "io.cozy.sessions.logins",
       "verbs": ["GET"]
     },
+    "current_sessions": {
+      "description": "Required to manage your sessions",
+      "type": "io.cozy.sessions",
+      "verbs": ["GET"]
+    },
     "oauth": {
       "description": "Required to manage devices connected to your Cozy",
       "type": "io.cozy.oauth.clients",
