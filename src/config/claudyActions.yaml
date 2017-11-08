@@ -13,7 +13,7 @@ cozy-collect:
   link:
     type: apps
     appSlug: collect
-    path: '#/discovery/?intro'
+    path: '#/connected/?intro'
 
 support:
   icon: icon-question-mark.svg
