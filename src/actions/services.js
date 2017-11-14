@@ -84,22 +84,7 @@ export const consolidateClaudyActionsInfos = (claudyActions) => {
   }
 }
 
-let cachedAccountsIndex
-function indexAccountsByType () {
-  return cachedAccountsIndex
-    ? Promise.resolve(cachedAccountsIndex)
-    : cozy.client.data.defineIndex(ACCOUNTS_DOCTYPE, ['account_type', 'name'])
-      .then(index => {
-        cachedAccountsIndex = index
-        return Promise.resolve(index)
-      })
-}
-
 export function getAllAccounts () {
-  return indexAccountsByType()
-  .then(index => {
-    return cozy.client.data.query(index, {
-      selector: {'account_type': {'$gt': null}}
-    })
-  })
+  return cozy.client.data.findAll(ACCOUNTS_DOCTYPE)
+  .then(accountsMap => Object.values(accountsMap))
 }
