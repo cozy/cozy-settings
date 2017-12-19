@@ -1,7 +1,7 @@
 import styles from '../styles/loading'
 
 import React from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 
 export const Loading = ({ t }) => {
   return (

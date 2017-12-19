@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 
 export const ClaudyAction = ({ t, action, iconSrc, url, onActionClick }) => {
   return (

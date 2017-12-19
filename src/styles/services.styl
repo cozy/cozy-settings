@@ -1,13 +1,12 @@
-@import 'cozy-ui/defaults'
-@import 'cozy-ui'
+@require 'cozy-ui'
 
 :root {
-  --charcoal-grey: charcoal-grey;
+  --charcoal-grey: charcoalGrey;
   --silver: silver;
-  --pale-grey: pale-grey;
-  --cool-grey: cool-grey;
-  --slate-grey: slate-grey;
-  --dodger-blue: dodger-blue;
+  --pale-grey: paleGrey;
+  --cool-grey: coolGrey;
+  --slate-grey: slateGrey;
+  --dodger-blue: dodgerBlue;
   --pomegranate: pomegranate;
   --emerald: emerald;
   --malachite: malachite;
@@ -25,7 +24,7 @@
 @import './services/support.css'
 
 .coz-bar-hidden
-  @extend $hidden
+  hide()
 
 .coz-btn-regular
   @extend $button

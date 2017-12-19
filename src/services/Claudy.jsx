@@ -1,7 +1,7 @@
 /* global __PIWIK_TRACKER_URL__  __PIWIK_SITEID__ __PIWIK_DIMENSION_ID_APP__ */
 
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 import { shouldEnableTracking, getTracker, configureTracker } from 'cozy-ui/react/helpers/tracker'
 
 import ClaudyAction from './ClaudyAction'
