@@ -6,7 +6,8 @@ import ProfileView from '../components/ProfileView'
 
 const mapStateToProps = (state, ownProps) => ({
   fields: state.fields,
-  passphrase: state.passphrase
+  passphrase: state.passphrase,
+  instance: state.instance
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

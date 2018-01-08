@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import Loading from './Loading'
 import SessionsViewRow from './SessionsViewRow'
 
-import { translate } from 'cozy-ui/react/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 
 class SessionsView extends Component {

@@ -17,7 +17,7 @@ class ProfileView extends Component {
   }
 
   render () {
-    const { t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit } = this.props
+    const { t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit, instance } = this.props
     return (
       <div role='contentinfo'>
         <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
@@ -64,8 +64,8 @@ class ProfileView extends Component {
             {...fields.tracking}
             onChange={onFieldChange}
           />
-          <a href='https://files.cozycloud.cc/cgu.pdf' target='_blank'>
-            {t('ProfileView.cgu_link')}
+          <a href={t('ProfileView.tos.version', {version: instance ? `-${instance.data.attributes.tos}` : ''})} target='_blank'>
+            {t('ProfileView.tos.link')}
           </a>
           <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
         </div>
