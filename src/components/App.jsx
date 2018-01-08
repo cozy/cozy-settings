@@ -2,7 +2,7 @@ import styles from '../styles/app'
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { translate } from 'cozy-ui/react/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 import classNames from 'classnames'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
