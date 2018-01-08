@@ -1,7 +1,7 @@
 import styles from '../styles/fields'
 import viewStyles from '../styles/view'
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 import classNames from 'classnames'
 import Input from './Input'
 

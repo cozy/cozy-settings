@@ -4,7 +4,7 @@ import React from 'react'
 import classNames from 'classnames'
 import parser from 'user-agent-parser'
 
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 
 const SessionsViewRow = ({ f, t, session }) => {
   const ua = parser(session.user_agent)

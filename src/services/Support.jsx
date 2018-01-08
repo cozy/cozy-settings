@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
+import { Button } from 'cozy-ui/react/Button'
+import Icon from 'cozy-ui/react/Icon'
 
 export class Support extends Component {
   constructor (props) {
@@ -72,15 +74,14 @@ export class Support extends Component {
               {t('support.sending')}
             </p>
           }
-          <button
-            role='button'
-            className='coz-btn-regular coz-btn-send'
+          <Button
             onClick={() => this.sendMessage()}
-            aria-busy={isSending}
             disabled={!message}
+            busy={isSending}
           >
+            <Icon icon='paperplane' />
             {t('support.button')}
-          </button>
+          </Button>
         </div>
       </div>
     )

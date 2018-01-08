@@ -1,4 +1,13 @@
 @require 'cozy-ui'
 
-:local
+.o-sidebar
     @extend $sidebar
+    width 14.5em // more place to avoid breaking 'Connected devices'
+
+    /*
+    Since <a> are target as simple link by cozy-ui
+    TODO: This code should be added in cozy-ui for c-nav-link
+    */
+    a
+        color #5d6165!important
+        text-decoration none!important

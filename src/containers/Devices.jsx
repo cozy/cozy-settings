@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { deviceModaleRevokeOpen, deviceModaleRevokeClose, devicePerformRevoke } from '../actions'
+import { deviceModaleRevokeOpen, deviceModaleRevokeClose, devicePerformRevoke, fetchDevices } from '../actions'
 
 import DevicesView from '../components/DevicesView'
 
@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  fetchDevices: () => dispatch(fetchDevices()),
   onDeviceModaleRevoke: (device) => {
     dispatch(deviceModaleRevokeOpen(device))
   },

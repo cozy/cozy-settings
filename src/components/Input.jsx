@@ -1,7 +1,7 @@
 import styles from '../styles/fields'
 
 import React from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 import withState from 'cozy-ui/react/helpers/withState'
 import Toggle from 'cozy-ui/react/Toggle'
 import Field from './Field'

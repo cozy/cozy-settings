@@ -3,7 +3,7 @@ import viewStyles from '../styles/view'
 
 import React from 'react'
 import classNames from 'classnames'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 import ReactMarkdownWrapper from './ReactMarkdownWrapper'
 
 const Field = ({ t, type, label, description, submitting, saved, errors, children }) => (
