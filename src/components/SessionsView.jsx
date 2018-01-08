@@ -8,6 +8,7 @@ import Loading from './Loading'
 import SessionsViewRow from './SessionsViewRow'
 
 import { translate } from 'cozy-ui/react/i18n'
+import { Button } from 'cozy-ui/react/Button'
 
 class SessionsView extends Component {
   componentWillMount () {
@@ -22,12 +23,12 @@ class SessionsView extends Component {
           {t('SessionsView.title')}
         </h2>
         <p className={viewStyles['set-view-title']}>
-          <button
-            className={classNames('coz-btn', 'coz-btn--danger')}
+          <Button
+            theme='danger'
             onClick={() => deleteOtherSessions()}
           >
             {t('SessionsView.delete')}
-          </button>
+          </Button>
         </p>
         {isFetching && <Loading />}
         {!isFetching &&

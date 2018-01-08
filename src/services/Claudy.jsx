@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { shouldEnableTracking, getTracker, configureTracker } from 'cozy-ui/react/helpers/tracker'
+import Icon from 'cozy-ui/react/Icon'
 
 import ClaudyAction from './ClaudyAction'
 
@@ -169,7 +170,12 @@ export class Claudy extends Component {
         openedAction ? 'coz-claudy-menu--action-selected' : ''}`}>
         <header className='coz-claudy-menu-header'>
           <h2 className='coz-claudy-menu-title'>{t('claudy.title')}</h2>
-          <button className='coz-btn-close' onClick={onClose} />
+          <button
+            className='coz-btn-close'
+            onClick={onClose}
+          >
+            <Icon icon='cross' color='#95999D' width='24' height='24' />
+          </button>
           <button className='coz-claudy-menu-header-back-button' onClick={() => this.goBack()} />
         </header>
         {alert &&

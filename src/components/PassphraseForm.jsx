@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
+import { Button } from 'cozy-ui/react/Button'
 
 import { PasswordInput } from './Input'
 import passwordHelper from '../lib/passwordHelper'
@@ -74,15 +75,15 @@ class PassphraseForm extends Component {
         {errors.newPassword && <p className={styles['coz-form-errors']}>{t(errors.newPassword)}</p>}
         {errors.global && <p className={styles['coz-form-errors']}>{t(errors.global)}</p>}
         <div className={styles['coz-form-controls']}>
-          <button
-            role='button'
-            className={classNames('coz-btn', 'coz-btn--secondary', {[styles['saved']]: saved})}
-            aria-busy={submitting ? 'true' : 'false'}
+          <Button
+            className={classNames({[styles['saved']]: saved})}
+            theme='secondary'
+            busy={submitting ? 'true' : 'false'}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
           >
             {t('ProfileView.password.submit_label')}
-          </button>
+          </Button>
         </div>
 
         <a
