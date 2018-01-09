@@ -60,7 +60,7 @@ class DevicesView extends Component {
                     </div>
                     <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-actions'])}>
                       <button
-                        className={classNames('coz-btn', devicesStyles['coz-btn--revoke'])}
+                        className={devicesStyles['coz-btn--revoke']}
                         onClick={() => {
                           onDeviceModaleRevoke(device)
                         }}
