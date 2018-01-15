@@ -73,7 +73,7 @@ class SessionsView extends Component {
                   IP
                 </div>
               </div>
-              <div className={classNames(tableStyles['coz-table-body'])}>
+              <div className={classNames(tableStyles['coz-table-body'], tableStyles['set-table-sessions'])}>
                 {sessions
                   .sort(function (a, b) {
                     // Turn your strings into dates, and then subtract them
