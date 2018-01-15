@@ -32,8 +32,14 @@ $set-device
         flex 0 0 15%
 
     .set-table-devices
+        // quick fix for cozy-ui table layout issue
+        height auto!important //@stylint ignore
         .coz-table-primary
             padding-left em(80px)
+
+    .set-table-sessions
+        // quick fix for cozy-ui table layout issue
+        height auto!important //@stylint ignore
 
     .coz-table-primary
         font-size  1rem
