@@ -64,7 +64,7 @@ class ProfileView extends Component {
             {...fields.tracking}
             onChange={onFieldChange}
           />
-          <a href={t('ProfileView.tos.version', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '201711'})} target='_blank'>
+          <a href={t('ProfileView.tos.version', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})} target='_blank'>
             {t('ProfileView.tos.link')}
           </a>
           <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
