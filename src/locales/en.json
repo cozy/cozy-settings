@@ -90,6 +90,12 @@
     "revoke": "revoke",
     "sync_date_format": "MMM D, YYYY"
   },
+  "StorageView": {
+    "title": "Storage",
+    "load_error": "An error occured while loading your storage information, please try again later.",
+    "storage_title": "Total space",
+    "storage_phrase": "%{diskUsage} GB of %{diskQuota} GB used"
+  },
   "SessionsView": {
     "title": "Connection history",
     "sync_date_format": "MMM D, YYYY",

@@ -10,6 +10,7 @@ import devices from './devices'
 import deviceToRevoke from './deviceToRevoke'
 import openDeviceRevokeModale from './openDeviceRevokeModale'
 import sessions from './sessions'
+import storageData from './storageData'
 import ui from './ui'
 import alerterReducer from 'cozy-ui/react/Alerter'
 
@@ -24,6 +25,7 @@ const settingsApp = combineReducers({
   deviceToRevoke,
   passphrase,
   sessions,
+  storageData,
   ui,
   alerts: alerterReducer
 })
