@@ -38,6 +38,10 @@ export const INSTALL_APP = 'INSTALL_APP'
 export const INSTALL_APP_SUCCESS = 'INSTALL_APP_SUCCESS'
 export const INSTALL_APP_FAILURE = 'INSTALL_APP_FAILURE'
 
+export const FETCH_STORAGE = 'FETCH_STORAGE'
+export const FETCH_STORAGE_SUCCESS = 'FETCH_STORAGE_SUCCESS'
+export const FETCH_STORAGE_FAILURE = 'FETCH_STORAGE_FAILURE'
+
 export const fetchInfos = () => {
   return (dispatch, getState) => {
     dispatch({ type: FETCH_INFOS })
@@ -52,6 +56,32 @@ export const fetchInfos = () => {
       .catch(() => {
         dispatch({ type: FETCH_INFOS_FAILURE, error: 'ProfileView.infos.server_error' })
       })
+  }
+}
+
+export const fetchStorageData = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: FETCH_STORAGE })
+    cozyFetch('GET', '/settings/disk-usage')
+    .then(json => {
+      dispatch({
+        type: FETCH_STORAGE_SUCCESS,
+        storageData: {
+          usage: parseInt(json.data.attributes.used, 10),
+          // TODO Better handling when no quota provided
+          quota: parseInt(json.data.attributes.quota, 10) || 100000000000,
+          isLimited: json.data.attributes.is_limited
+        }
+      })
+    })
+    .catch(() => {
+      dispatch({
+        type: FETCH_STORAGE_FAILURE,
+        alert: {
+          message: 'StorageView.load_error'
+        }
+      })
+    })
   }
 }
 

@@ -11,6 +11,7 @@ import { Alerter } from 'cozy-ui/react/Alerter'
 import Profile from '../containers/Profile'
 import Devices from '../containers/Devices'
 import Sessions from '../containers/Sessions'
+import Storage from '../containers/Storage'
 
 class App extends Component {
   render ({ children }) {
@@ -24,6 +25,7 @@ class App extends Component {
             <Route path='/profile' component={Profile} />
             <Route path='/connectedDevices' component={Devices} />
             <Route path='/sessions' component={Sessions} />
+            <Route path='/storage' component={Storage} />
             <Redirect exact from='/' to='/profile' />
             <Redirect from='*' to='/profile' />
           </Switch>
