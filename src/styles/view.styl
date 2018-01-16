@@ -19,13 +19,53 @@
     margin-left 0.5em
 
 .set-view-title
+.set-view-subtitle
     padding  0 2rem
 
     @media (max-width: (768/basefont)rem)
         .devices-view h2
             padding  0 .8em
 
+.set-view-subtitle
+    margin-bottom 0
+
 .coz-btn--revoke
     padding .2em 0
     background           transparent
     color                dodgerBlue
+
+progress.set-storage-bar[value]
+  /* Reset the default appearance */
+  appearance none
+  background-color paleGrey
+  border solid 1px silver
+  border-radius: 2px
+  color dodgerBlue
+  height 1.5rem
+  margin 0 0 1rem 2rem
+  width calc(100% - 4rem)
+  max-width 30rem
+
+
+progress.set-storage-bar[value]::-webkit-progress-bar
+  background paleGrey
+  border-radius 2px
+
+
+progress.set-storage-bar[value]::-webkit-progress-value
+  background dodgerBlue
+  border-radius 1px
+
+
+progress.set-storage-bar[value]::-moz-progress-bar
+  background dodgerBlue
+  border-radius 1px
+
+
+.set-bar-percent
+    position absolute
+    left 2.5rem
+    padding-top .2rem
+    color white
+    &.--dark
+        color black
