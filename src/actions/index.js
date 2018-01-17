@@ -60,8 +60,30 @@ export const fetchInfos = () => {
 }
 
 export const fetchStorageData = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: FETCH_STORAGE })
+    let offersLink = null
+    try { // should be not blocking
+      const ctx = await cozyFetch('GET', '/settings/context')
+      const instance = await cozyFetch('GET', '/settings/instance')
+      const managerUrl = ctx &&
+        ctx.data &&
+        ctx.data.attributes &&
+        ctx.data.attributes.manager_url
+      const uuid = instance &&
+        instance.data &&
+        instance.data.attributes &&
+        instance.data.attributes.uuid
+      if (managerUrl && uuid) {
+        offersLink = `${managerUrl}/cozy/accounts/${uuid}`
+      }
+    } catch (e) {
+      if (e.error && e.error !== 'Not Found') {
+        console.warn(e)
+      } else if (!e.error) {
+        console.warn(e)
+      }
+    }
     cozyFetch('GET', '/settings/disk-usage')
     .then(json => {
       dispatch({
@@ -70,7 +92,8 @@ export const fetchStorageData = () => {
           usage: parseInt(json.data.attributes.used, 10),
           // TODO Better handling when no quota provided
           quota: parseInt(json.data.attributes.quota, 10) || 100000000000,
-          isLimited: json.data.attributes.is_limited
+          isLimited: json.data.attributes.is_limited,
+          offersLink
         }
       })
     })

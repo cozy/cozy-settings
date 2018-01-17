@@ -94,7 +94,9 @@
     "title": "Storage",
     "load_error": "An error occured while loading your storage information, please try again later.",
     "storage_title": "Total space",
-    "storage_phrase": "%{diskUsage} GB of %{diskQuota} GB used"
+    "storage_phrase": "%{diskUsage} GB of %{diskQuota} GB used",
+    "more_space": "Need more storage space?",
+    "see_offer": "Upgrade my Cozy"
   },
   "SessionsView": {
     "title": "Connection history",
