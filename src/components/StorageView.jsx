@@ -1,4 +1,5 @@
-import styles from '../styles/view'
+import viewStyles from '../styles/view'
+import styles from '../styles/storage'
 
 import React, { Component } from 'react'
 
@@ -6,6 +7,7 @@ import classNames from 'classnames'
 import Loading from './Loading'
 
 import { translate } from 'cozy-ui/react/I18n'
+import { ButtonLink } from 'cozy-ui/react/Button'
 
 class StorageView extends Component {
   componentWillMount () {
@@ -22,11 +24,11 @@ class StorageView extends Component {
       : storageData.usage
     const percent = diskUsage / diskQuota * 100
     return (
-      <div role='contentinfo'>
-        <h2 className={styles['set-view-title']}>
+      <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
+        <h2 className={viewStyles['set-view-title']}>
           {t('StorageView.title')}
         </h2>
-        <h3 className={styles['set-view-subtitle']}>
+        <h3 className={viewStyles['set-view-subtitle']}>
           {t('StorageView.storage_title')}
         </h3>
         {isFetching && <Loading />}
@@ -34,7 +36,7 @@ class StorageView extends Component {
           storageData && (
             <div>
               <h2
-                className={styles['set-view-title']}
+                className={viewStyles['set-view-title']}
               >{t('StorageView.storage_phrase', {
                 diskUsage,
                 diskQuota
@@ -49,6 +51,21 @@ class StorageView extends Component {
               >
                 {`${percent}%`}
               </span>
+              {storageData.offersLink &&
+                <div>
+                  <h3 className={viewStyles['set-view-subtitle']}>
+                    {t('StorageView.more_space')}
+                  </h3>
+                  <ButtonLink
+                    theme='regular'
+                    className={styles['set-offer-button']}
+                    href={storageData.offersLink}
+                    target
+                  >
+                    {t('StorageView.see_offer')}
+                  </ButtonLink>
+                </div>
+              }
             </div>
           )
         }
