@@ -1,10 +1,10 @@
-@import 'cozy-ui'
+@require 'cozy-ui'
 
-.set-wrapper
-    @extend    $app-2panes-sticky
+.o-layout--2panes
+    @extend $app-2panes-sticky
 
-.set-content
-    top-padded(30px)
+.app-content
+    padding-top 30px
 
     @media (max-width: (768/basefont)rem)
-        top-padded(10px)
+        padding-top 10px

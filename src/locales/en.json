@@ -63,7 +63,10 @@
       "title": "Help us to improve our product",
       "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product."
     },
-    "cgu_link": "Be informed about Cozy commitments",
+    "tos": {
+      "link": "Be informed about Cozy commitments",
+      "version": "https://files.cozycloud.cc/TOS%{version}.pdf"
+    },
     "locale" : {
       "title" : "Language",
       "label": "This will be the language used in your Cozy.",
@@ -86,6 +89,14 @@
     "head_actions": "Actions",
     "revoke": "revoke",
     "sync_date_format": "MMM D, YYYY"
+  },
+  "StorageView": {
+    "title": "Storage",
+    "load_error": "An error occured while loading your storage information, please try again later.",
+    "storage_title": "Total space",
+    "storage_phrase": "%{diskUsage} GB of %{diskQuota} GB used",
+    "more_space": "Need more storage space?",
+    "see_offer": "Upgrade my Cozy"
   },
   "SessionsView": {
     "title": "Connection history",

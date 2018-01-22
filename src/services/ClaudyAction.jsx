@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
+import { Button } from 'cozy-ui/react/Button'
 
 export const ClaudyAction = ({ t, action, iconSrc, url, onActionClick }) => {
   return (
@@ -28,14 +29,13 @@ export const ClaudyAction = ({ t, action, iconSrc, url, onActionClick }) => {
           >
             {t(`claudy.actions.${action.slug}.button`)}
           </a>
-          : <a
-            role='button'
-            className='coz-btn-regular coz-claudy-menu-action-description-button'
+          : <Button
+            className='coz-claudy-menu-action-description-button'
             disabled
             title={`App ${action.link.appSlug} not found`}
           >
             {t(`claudy.actions.${action.slug}.button`)}
-          </a>
+          </Button>
         }
       </div>
     </div>

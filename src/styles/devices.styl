@@ -1,19 +1,20 @@
-@import 'cozy-ui'
+@require 'cozy-ui'
 
 .devices-view
     h2
-        horizontally-padded 2em
+        padding 0 2rem
 
     .coz-btn--revoke
-        vertically-padded   .2em
-        horizontally-padded 0
+        padding .2em 0
         background transparent
         border none
-        color dodger-blue
+        color dodgerBlue
+        cursor pointer
         margin-left 0
         font-weight bold
         font-size 1em
+        text-transform uppercase
 
 @media (max-width: (768/basefont)rem)
     .devices-view h2
-        horizontally-padded .8em
+        padding 0 .8rem

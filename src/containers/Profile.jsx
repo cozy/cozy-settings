@@ -1,15 +1,17 @@
 import { connect } from 'react-redux'
 
-import { updateInfo, updatePassphrase } from '../actions'
+import { updateInfo, updatePassphrase, fetchInfos } from '../actions'
 
 import ProfileView from '../components/ProfileView'
 
 const mapStateToProps = (state, ownProps) => ({
   fields: state.fields,
-  passphrase: state.passphrase
+  passphrase: state.passphrase,
+  instance: state.instance
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  fetchInfos: () => dispatch(fetchInfos()),
   onFieldChange: (field, value) => {
     dispatch(updateInfo(field, value))
   },

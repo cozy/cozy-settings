@@ -1,7 +1,7 @@
 import React from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 
-import Modal from 'cozy-ui/react/Modal'
+import Modal, { ModalContent } from 'cozy-ui/react/Modal'
 
 import ReactMarkdown from 'react-markdown'
 
@@ -16,11 +16,12 @@ const devicesModaleRevokeView = ({ t, device, revokeDevice, cancelAction }) => {
     primaryAction={() => revokeDevice(device.id)}
     secondaryText='cancel'
     secondaryAction={() => cancelAction()}
+    dismissAction={() => cancelAction()}
     >
-    <div className={classNames(styles['coz-modal-content'], styles['coz-modal-revoke-content'])}>
+    <ModalContent className={styles['coz-modal-revoke-content']}>
       <ReactMarkdown source={t('revokeDevice.description', {name: device.client_name})} />
       <ReactMarkdown source={t('revokeDevice.subText')} className={classNames(styles['icon'], styles['icon-arrows'])} />
-    </div>
+    </ModalContent>
   </Modal>)
 }
 

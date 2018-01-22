@@ -1,11 +1,11 @@
 import React from 'react'
-import { translate } from 'cozy-ui/react/helpers/i18n'
+import { translate } from 'cozy-ui/react/I18n'
 import Field from './Field'
 
 const Select = ({ t, name, value, options, onChange }) => (
   <select
     name={name}
-    onBlur={e => onChange(name, e.target.value)}
+    onChange={e => onChange(name, e.target.value)}
     >
     {options.map(opt => (
       <option
