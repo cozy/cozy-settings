@@ -96,7 +96,7 @@
     "storage_title": "Total space",
     "storage_phrase": "%{diskUsage} GB of %{diskQuota} GB used",
     "more_space": "Need more storage space?",
-    "see_offer": "Upgrade my Cozy"
+    "see_offer": "Upgrade my storage"
   },
   "SessionsView": {
     "title": "Connection history",
