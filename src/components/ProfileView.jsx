@@ -63,11 +63,12 @@ class ProfileView extends Component {
             description={t(`ProfileView.public_name.label`)}
             {...fields.public_name}
             onChange={onFieldChange} />
+          <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
           <Input
             name='twofa'
             type='checkbox'
             label={t('ProfileView.twofa.title')}
-            description={t('ProfileView.twofa.label', {link: 'http://google.fr'})}
+            description={t('ProfileView.twofa.label', {link: 'https://support.cozy.io/article/114-doubleauthentification'})}
             {...fields.twofa}
             onChange={this.openTwoFAModal}
           />
@@ -101,7 +102,6 @@ class ProfileView extends Component {
           <a href={t('ProfileView.tos.version', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})} target='_blank'>
             {t('ProfileView.tos.link')}
           </a>
-          <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
         </div>
         {
           twoFAModalIsOpen && <Modal
