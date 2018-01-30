@@ -56,7 +56,10 @@
       "error" : "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     },
     "twofa" : {
-      "title": "Cozy two steps authentification",
+      "title": {
+        "activate": "Cozy two steps authentification",
+        "desactivate": "Desactivate two steps authentification"
+      },
       "label": "Because two steps are better than one, improve your Cozy security with an additionnal step. [Check out our assistance website](%{link}).",
       "modal": {
         "protect": "Protect your Cozy with two steps authentification",
@@ -65,8 +68,12 @@
         "secu_description": "Password, that's good, but if it isn't \"complicated\", a thief can easily guess it. Receive a validation code by mail assure the control of your Cozy.",
         "protect_title": "Improve the protection of your data",
         "protect_description": "Even if a thief get your password, you stay the only captain able to connect to your Cozy",
+        "desactivate_title": "Are you sure to disable this option?",
+        "desactivate_description": "On clicking on \"Desactivate\" button, your password will be the only key to access your Cozy. You will delete a security level.",
         "button": {
-          "activate": "Activate authentification"
+          "activate": "Activate authentification",
+          "cancel": "cancel",
+          "desactivate": "desactivate"
         }
       }
     },
