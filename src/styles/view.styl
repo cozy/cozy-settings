@@ -11,6 +11,10 @@
     .set-view-subtitle
         margin-bottom  0em
 
+    .set-view-content-twofa-modal-wrapper
+        .set-view-content-twofa-modal
+          max-width 35rem
+
 .set-view-content--narrow
     max-width  32em
 
@@ -31,9 +35,11 @@
     margin-bottom 0
 
 .set-view-content-twofa
-    &-modal
+    &-modal-content
       &-button
           text-align center
+      &-desactivate-buttons
+          text-align right
     &-point
         display flex
         padding-bottom 10px
