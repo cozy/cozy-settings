@@ -5,6 +5,7 @@
     padding-right  2rem
 
     .set-view-title
+    .set-view-subtitle
         padding  0
 
     .set-view-subtitle
@@ -19,11 +20,31 @@
     margin-left 0.5em
 
 .set-view-title
+.set-view-subtitle
     padding  0 2rem
 
     @media (max-width: (768/basefont)rem)
         .devices-view h2
             padding  0 .8em
+
+.set-view-subtitle
+    margin-bottom 0
+
+.set-view-content-twofa
+    &-modal
+      max-width 35rem !important
+    &-modal-content
+      &-button
+          text-align center
+      &-desactivate-buttons
+          text-align right
+    &-point
+        display flex
+        padding-bottom 10px
+        align-items start
+        &-image
+          width 80px
+          padding-right 10px
 
 .coz-btn--revoke
     padding .2em 0
