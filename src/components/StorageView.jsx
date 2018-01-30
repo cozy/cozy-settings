@@ -49,7 +49,7 @@ class StorageView extends Component {
               <span
                 className={classNames(styles['set-bar-percent'], percent < 5 ? styles['--dark'] : '')}
               >
-                {`${percent}%`}
+                {`${percent.toFixed(2)}%`}
               </span>
               {storageData.offersLink &&
                 <div>
