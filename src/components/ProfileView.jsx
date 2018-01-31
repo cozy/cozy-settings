@@ -322,7 +322,7 @@ const MailConfirmationCode = translate()(({
   onChange,
   email
 }) => (
-  <form>
+  <div>
     <div>
       <h3>{t('ProfileView.twofa.modal.confirmation_title')}</h3>
       <ReactMarkdownWrapper
@@ -338,7 +338,7 @@ const MailConfirmationCode = translate()(({
         type='text'
         {...fields.mail_confirmation_code}
         onChange={onChange}
-        value=''
+        submitting={false}
       />
       <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
         <p>{t('ProfileView.twofa.modal.nocode')}</p>
@@ -364,7 +364,7 @@ const MailConfirmationCode = translate()(({
         {t('ProfileView.twofa.modal.button.validate')}
       </Button>
     </div>
-  </form>
+  </div>
 ))
 
 const Desactivate2FA = translate()(({t, desactivate2FA, closeTwoFADesactivationModal}) => (
