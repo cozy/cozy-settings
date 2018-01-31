@@ -75,8 +75,21 @@ class ProfileView extends Component {
     const root = document.querySelector('[role=application]')
     const data = root.dataset
     const cozyDomain = data.cozyDomain
-    const { t, fields, passphrase, isFetching, onFieldChange, onPassphraseSubmit, instance } = this.props
-    const { twoFAActivationModalIsOpen, twoFADesactivationModalIsOpen, mailConfirmationCodeRequested, mailConfirmationCodeIsValid } = this.state
+    const {
+      t,
+      fields,
+      passphrase,
+      isFetching,
+      onFieldChange,
+      onPassphraseSubmit,
+      instance
+    } = this.props
+    const {
+      twoFAActivationModalIsOpen,
+      twoFADesactivationModalIsOpen,
+      mailConfirmationCodeRequested,
+      mailConfirmationCodeIsValid
+    } = this.state
     return (
       <div role='contentinfo'>
         <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
@@ -163,6 +176,11 @@ class ProfileView extends Component {
                     cozyDomain={cozyDomain}
                     fields={fields}
                     onChange={onFieldChange}
+                    images={{
+                      'twoFaModalBanner': twoFaModalBanner,
+                      'twoFaModalSecu': twoFaModalSecu,
+                      'twoFaModalProtect': twoFaModalProtect
+                    }}
                   />
                 </ModalContent>
               </Modal>
@@ -202,7 +220,8 @@ const Activate2FA = translate()(({
   fields,
   onChange,
   instance,
-  cozyDomain
+  cozyDomain,
+  images
 }) => (
   mailConfirmationCodeRequested
   ? mailConfirmationCodeIsValid
@@ -218,14 +237,18 @@ const Activate2FA = translate()(({
       onChange={onChange}
       email={instance && instance.data.attributes.email}
     />
-  : <ActivationConfirmation activate2FA={activate2FA} />
+  : <ActivationConfirmation activate2FA={activate2FA} images={images} />
 ))
 
-const ActivationConfirmation = translate()(({t, activate2FA}) => (
+const ActivationConfirmation = translate()(({
+  t,
+  activate2FA,
+  images
+}) => (
   <Fragment>
     <img
       alt={t('ProfileView.twofa.title.activate')}
-      src={twoFaModalBanner}
+      src={images.twoFaModalBanner}
     />
     <h3>{t('ProfileView.twofa.modal.protect')}</h3>
     <p>
@@ -237,14 +260,22 @@ const ActivationConfirmation = translate()(({t, activate2FA}) => (
     </p>
     <div className={viewStyles['set-view-content-twofa']}>
       <div className={viewStyles['set-view-content-twofa-point']}>
-        <img className={viewStyles['set-view-content-twofa-point-image']} alt="{t('ProfileView.twofa.modal.secu_title')}" src={twoFaModalSecu} />
+        <img
+          className={viewStyles['set-view-content-twofa-point-image']}
+          alt="{t('ProfileView.twofa.modal.secu_title')}"
+          src={images.twoFaModalSecu}
+        />
         <div>
           <b>{t('ProfileView.twofa.modal.secu_title')}</b>
           <p>{t('ProfileView.twofa.modal.secu_description')}</p>
         </div>
       </div>
       <div className={viewStyles['set-view-content-twofa-point']}>
-        <img className={viewStyles['set-view-content-twofa-point-image']} alt="{t('ProfileView.twofa.modal.protect_title')}" src={twoFaModalProtect} />
+        <img
+          className={viewStyles['set-view-content-twofa-point-image']}
+          alt="{t('ProfileView.twofa.modal.protect_title')}"
+          src={images.twoFaModalProtect}
+        />
         <div>
           <b>{t('ProfileView.twofa.modal.protect_title')}</b>
           <p>{t('ProfileView.twofa.modal.protect_description')}</p>
@@ -291,7 +322,7 @@ const MailConfirmationCode = translate()(({
   onChange,
   email
 }) => (
-  <Fragment>
+  <form>
     <div>
       <h3>{t('ProfileView.twofa.modal.confirmation_title')}</h3>
       <ReactMarkdownWrapper
@@ -314,6 +345,11 @@ const MailConfirmationCode = translate()(({
         <p>{t('ProfileView.twofa.modal.nocode_claude')}<a href='mailto:claude@cozycloud.cc'>claude@cozycloud.cc</a></p>
       </div>
     </div>
+    {
+      !fields.email.value && <p className={styles['coz-form-errors']}>
+        {t('ProfileView.twofa.modal.email')}
+      </p>
+    }
     <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
       <Button
         onClick={closeTwoFAActivationModal}
@@ -323,11 +359,12 @@ const MailConfirmationCode = translate()(({
       </Button>
       <Button
         onClick={() => checkMailConfirmationCode(fields.mail_confirmation_code.value)}
+        disabled={!fields.email.value}
       >
         {t('ProfileView.twofa.modal.button.validate')}
       </Button>
     </div>
-  </Fragment>
+  </form>
 ))
 
 const Desactivate2FA = translate()(({t, desactivate2FA, closeTwoFADesactivationModal}) => (

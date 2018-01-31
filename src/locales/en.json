@@ -78,6 +78,7 @@
         "validation_title": "Congratulations! Your email is confirmed.",
         "validation_description": "Your Cozy is now secured with 2 steps.",
         "validation_logs": "Remember yours identifiers:",
+        "email": "You should provide a valid email address",
         "button": {
           "activate": "Activate authentification",
           "cancel": "cancel",
