@@ -35,11 +35,19 @@
     margin-bottom 0
 
 .set-view-content-twofa
-    &-modal-content
-      &-button
-          text-align center
-      &-desactivate-buttons
-          text-align right
+    &-modal
+      // ugly hack to overide default Input styles
+      &-confirmation-input
+        div,
+        h3
+          margin-top 0 !important
+      &-nocode
+        color #95999d
+      &-content
+        &-button
+            text-align center
+        &-right-buttons
+            text-align right
     &-point
         display flex
         padding-bottom 10px

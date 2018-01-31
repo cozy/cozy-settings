@@ -10,6 +10,9 @@ export const UPDATE_INFO_SUCCESS = 'UPDATE_INFO_SUCCESS'
 export const UPDATE_INFO_FAILURE = 'UPDATE_INFO_FAILURE'
 export const RESET_INFO_FIELD = 'RESET_INFO_FIELD'
 
+export const CHECK_MAIL_CONFIRMATION_CODE = 'CHECK_MAIL_CONFIRMATION_CODE'
+export const CHECK_MAIL_CONFIRMATION_CODE_FAILURE = 'CHECK_MAIL_CONFIRMATION_CODE_FAILURE'
+
 export const SET_LANG = 'SET_LANG'
 
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
@@ -115,6 +118,8 @@ export const updateInfo = (field, value) => {
       dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'ProfileView.email.error' })
       return
     }
+    // mail confirmation code is not sent to the instance
+    if (field === 'mail_confirmation_code') return
     // tracking field must be stored as string
     if (field === 'tracking') value = value.toString()
     let newInstance = Object.assign({}, getState().instance)
@@ -131,6 +136,24 @@ export const updateInfo = (field, value) => {
       })
       .catch(() => {
         dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'ProfileView.infos.server_error' })
+      })
+  }
+}
+
+export const checkMailConfirmationCode = (field, code) => {
+  return (dispatch, getState) => {
+    dispatch({ type: CHECK_MAIL_CONFIRMATION_CODE, code })
+    // Check if the field is empty or not
+    if (code === '') {
+      dispatch({ type: CHECK_MAIL_CONFIRMATION_CODE_FAILURE, field, error: 'ProfileView.infos.empty' })
+      return
+    }
+    cozyFetch('PUT', '/settings/confirm_mail', {'mail_confirmation_code': code})
+      .then(instance => {
+        dispatch(updateInfo('two_fa', true))
+      })
+      .catch(() => {
+        dispatch({ type: CHECK_MAIL_CONFIRMATION_CODE_FAILURE, field, error: 'ProfileView.infos.server_error' })
       })
   }
 }

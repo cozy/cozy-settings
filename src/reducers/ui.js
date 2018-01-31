@@ -7,6 +7,8 @@ import {
 
   UPDATE_INFO_FAILURE,
 
+  CHECK_MAIL_CONFIRMATION_CODE_FAILURE,
+
   FETCH_DEVICES,
   FETCH_DEVICES_SUCCESS,
   FETCH_DEVICES_FAILURE,
@@ -76,6 +78,7 @@ const isFetching = (state = false, action) => {
 const error = (state = null, action) => {
   switch (action.type) {
     case UPDATE_INFO_FAILURE:
+    case CHECK_MAIL_CONFIRMATION_CODE_FAILURE:
       return {
         message: 'error.open_folder',
         cause: action.error,

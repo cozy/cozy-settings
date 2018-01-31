@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { updateInfo, updatePassphrase, fetchInfos } from '../actions'
+import { updateInfo, checkMailConfirmationCode, updatePassphrase, fetchInfos } from '../actions'
 
 import ProfileView from '../components/ProfileView'
 
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   updateInfo: (field, value) => {
     dispatch(updateInfo(field, value))
+  },
+  checkMailConfirmationCode: (field, value) => {
+    dispatch(checkMailConfirmationCode(field, value))
   },
   onPassphraseSubmit: (current, newVal) => {
     return dispatch(updatePassphrase(current, newVal))
