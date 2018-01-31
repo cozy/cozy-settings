@@ -15,9 +15,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onFieldChange: (field, value) => {
     dispatch(updateInfo(field, value))
   },
-  updateInfo: (field, value) => {
-    dispatch(updateInfo(field, value))
-  },
   onPassphraseSubmit: (current, newVal) => {
     return dispatch(updatePassphrase(current, newVal))
   }

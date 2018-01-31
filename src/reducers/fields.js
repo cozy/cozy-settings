@@ -70,8 +70,7 @@ const fields = combineReducers({
   email: createField('email'),
   locale: createField('locale'),
   public_name: createField('public_name'),
-  tracking: createField('tracking'),
-  twofa: createField('twofa')
+  tracking: createField('tracking')
 })
 
 export default fields
