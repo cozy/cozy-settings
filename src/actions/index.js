@@ -33,11 +33,6 @@ export const SESSIONS_DELETE_OTHERS = 'SESSIONS_DELETE_OTHERS'
 export const SESSIONS_DELETE_OTHERS_SUCCESS = 'SESSIONS_DELETE_OTHERS_SUCCESS'
 export const SESSIONS_DELETE_OTHERS_FAILURE = 'SESSIONS_DELETE_OTHERS_FAILURE'
 
-export const ALERT_CLOSED = 'ALERT_CLOSED'
-export const INSTALL_APP = 'INSTALL_APP'
-export const INSTALL_APP_SUCCESS = 'INSTALL_APP_SUCCESS'
-export const INSTALL_APP_FAILURE = 'INSTALL_APP_FAILURE'
-
 export const FETCH_STORAGE = 'FETCH_STORAGE'
 export const FETCH_STORAGE_SUCCESS = 'FETCH_STORAGE_SUCCESS'
 export const FETCH_STORAGE_FAILURE = 'FETCH_STORAGE_FAILURE'
@@ -286,34 +281,6 @@ export const deleteOtherSessions = () => {
         type: SESSIONS_DELETE_OTHERS_FAILURE,
         alert: {
           message: 'SessionsView.infos.server_error'
-        }
-      })
-    })
-  }
-}
-
-export const installApp = (slug, repourl, isupdate) => {
-  return (dispatch, getState) => {
-    dispatch({ type: INSTALL_APP })
-    const verb = isupdate ? 'PUT' : 'POST'
-    return cozyFetch(verb, `/apps/${slug}?Source=${encodeURIComponent(repourl)}`)
-    .then(response => {
-      dispatch({
-        type: INSTALL_APP_SUCCESS,
-        alert: {
-          message: `InstallView.${isupdate ? 'update' : 'install'}_success`,
-          messageData: {slug},
-          level: 'success'
-        }
-      })
-    })
-    .catch(() => {
-      dispatch({
-        type: INSTALL_APP_FAILURE,
-        alert: {
-          message: `InstallView.${isupdate ? 'update' : 'install'}_error`,
-          messageData: {slug},
-          level: 'error'
         }
       })
     })
