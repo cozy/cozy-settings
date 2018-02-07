@@ -26,21 +26,21 @@ class ProfileView extends Component {
           <Input
             name='email'
             type='email'
-            label={t('ProfileView.email.title')}
-            description={t('ProfileView.email.label')}
+            title={t('ProfileView.email.title')}
+            label={t('ProfileView.email.label')}
             {...fields.email}
             onChange={onFieldChange} />
           <Input
             name='public_name'
             type='text'
-            label={t('ProfileView.public_name.title')}
-            description={t(`ProfileView.public_name.label`)}
+            title={t('ProfileView.public_name.title')}
+            label={t(`ProfileView.public_name.label`)}
             {...fields.public_name}
             onChange={onFieldChange} />
           <Select
             name='locale'
-            label={t('ProfileView.locale.title')}
-            description={t(`ProfileView.locale.label`)}
+            title={t('ProfileView.locale.title')}
+            label={t(`ProfileView.locale.label`)}
             options={LANG_OPTIONS.map(lang => {
               return {
                 value: lang,
@@ -59,8 +59,8 @@ class ProfileView extends Component {
           <Input
             name='tracking'
             type='checkbox'
-            label={t('ProfileView.tracking.title')}
-            description={t('ProfileView.tracking.label')}
+            title={t('ProfileView.tracking.title')}
+            label={t('ProfileView.tracking.label')}
             {...fields.tracking}
             onChange={onFieldChange}
           />
