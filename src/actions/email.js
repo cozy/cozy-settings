@@ -9,7 +9,7 @@ export const SEND_EMAIL_FAILURE = 'SEND_EMAIL_FAILURE'
 const STACK_DOMAIN = document.querySelector('[role=application]').dataset.cozyDomain
 const CONTACT_ADDRESS = 'contact@cozycloud.cc'
 
-export function sendMessageToSupport (message) {
+export function sendMessageToSupport (message, t) {
   return (dispatch, getState) => {
     dispatch({type: SEND_EMAIL})
     if (!message) {
@@ -25,6 +25,14 @@ export function sendMessageToSupport (message) {
     ], `[cozy-support] Ask support for ${STACK_DOMAIN}`)
     .then(() => {
       dispatch({type: SEND_EMAIL_SUCCESS})
+      try {
+        return sendEmail(null, [
+          {type: 'text/plain', body: t('support.response_email.body', { message })}
+        ], `[cozy-support] ${t('support.response_email.subject')}`,
+        'noreply')
+      } catch (e) { // ignore errors for this sending
+        console.warn('Something went wrong when copying the support request to the user.')
+      }
     })
     .catch(error => {
       // error if no emails found
@@ -42,13 +50,14 @@ export function sendMessageToSupport (message) {
 
 export function sendEmail (recipientsList, contentParts, subject = '', mode = 'from') {
   if (!contentParts.length) throw new Error('No email content parts found')
-  if (!recipientsList.length) throw new Error('No recipients found')
-  return cozy.client.jobs.create('sendmail', {
+  if (mode === 'from' && !recipientsList.length) throw new Error('No recipients found')
+  const options = {
     mode,
-    to: recipientsList,
     subject,
     parts: contentParts
-  }, {
+  }
+  if (mode === 'from') options.to = recipientsList
+  return cozy.client.jobs.create('sendmail', options, {
     priority: 10,
     max_exec_count: 1
   })

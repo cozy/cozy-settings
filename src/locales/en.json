@@ -149,6 +149,10 @@
         "placeholder": "Tell us anything (ask for help, share a feedback or just say hello). We'll be happy to talk to you. "
       }
     },
+    "response_email": {
+      "subject": "Your request has been correctly received",
+      "body": "Hello,\n\nWe correctly received your support request:\n%{message}\n\nWe are doing our best to respond you as soon as possible.\n\nClaude from Cozy."
+    },
     "button": "Let's go!",
     "sending": "Sending...",
     "success": "👏 Your message has been sent. Thank you!",
