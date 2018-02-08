@@ -58,7 +58,8 @@
     "twofa" : {
       "title": {
         "activate": "Cozy two steps authentification",
-        "desactivate": "Desactivate two steps authentification"
+        "desactivate": "Desactivate two steps authentification",
+        "validation": "Two steps authentification validation"
       },
       "label": "Because two steps are better than one, improve your Cozy security with an additionnal step.<br/>[Check out our assistance website →](%{link})",
       "modal": {
