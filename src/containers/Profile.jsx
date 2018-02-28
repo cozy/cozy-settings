@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 
-import { updateInfo, checkMailConfirmationCode, updatePassphrase, fetchInfos } from '../actions'
+import { updateInfo, checkMailConfirmationCode, fetchInfos } from '../actions'
+
+import { updatePassphrase } from '../actions/passphrase'
 
 import ProfileView from '../components/ProfileView'
 

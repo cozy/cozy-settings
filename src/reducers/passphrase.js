@@ -5,7 +5,7 @@ import {
   UPDATE_PASSPHRASE_SUCCESS,
   UPDATE_PASSPHRASE_FAILURE,
   RESET_PASSPHRASE_FIELD
-} from '../actions'
+} from '../actions/passphrase'
 
 const submitting = (state = false, action) => {
   switch (action.type) {
