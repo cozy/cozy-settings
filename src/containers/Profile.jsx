@@ -2,7 +2,11 @@ import { connect } from 'react-redux'
 
 import { updateInfo, checkMailConfirmationCode, fetchInfos } from '../actions'
 
-import { updatePassphrase } from '../actions/passphrase'
+import {
+  updatePassphrase,
+  updatePassphrase2FAFirst,
+  updatePassphrase2FASecond
+ } from '../actions/passphrase'
 
 import ProfileView from '../components/ProfileView'
 
@@ -23,8 +27,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   checkMailConfirmationCode: (field, value) => {
     dispatch(checkMailConfirmationCode(field, value))
   },
-  onPassphraseSubmit: (current, newVal) => {
+  onPassphraseSimpleSubmit: (current, newVal) => {
     return dispatch(updatePassphrase(current, newVal))
+  },
+  onPassphrase2FAStep1: (current) => {
+    return dispatch(updatePassphrase2FAFirst(current))
+  },
+  onPassphrase2FAStep2: (newVal, twoFactorCode, twoFactorToken) => {
+    return dispatch(updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken))
   }
 })
 
