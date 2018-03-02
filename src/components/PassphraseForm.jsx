@@ -46,6 +46,7 @@ class PassphraseForm extends Component {
     const currentPasswordError = errors && errors.currentPassword
     const globalError = errors && errors.global
     const newPasswordError = errors && errors.newPassword
+    const twoFactorError = errors && errors.wrongTwoFactor
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
     const STACK_DOMAIN = '//' + document.querySelector('[role=application]').dataset.cozyDomain
     const passphraseResetUrl = STACK_DOMAIN + '/auth/passphrase_reset'
@@ -77,6 +78,7 @@ class PassphraseForm extends Component {
         />
         {newPasswordError && <p className={styles['coz-form-errors']}>{t(newPasswordError)}</p>}
         {globalError && <p className={styles['coz-form-errors']}>{t(globalError)}</p>}
+        {twoFactorError && <p className={styles['coz-form-errors']}>{t(twoFactorError)}</p>}
         <div className={styles['coz-form-controls']}>
           <Button
             className={classNames({[styles['saved']]: saved})}

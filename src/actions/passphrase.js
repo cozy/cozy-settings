@@ -95,11 +95,19 @@ export const updatePassphrase2FASecond = (newVal, twoFactorCode, twoFactorToken)
         // the token changes after a password change, so we need to reload the page to get the new one
         window.location.reload()
       }, 4000)// 4s, a bit longer than the alert message
-    }).catch(() => {
-      dispatch({
-        type: UPDATE_PASSPHRASE_2FA_2_FAILURE,
-        errors: { global: 'ProfileView.password.server_error' }
-      })
+    }).catch(error => {
+      const errors = error.errors || []
+      if (errors.length && errors[0].detail === 'Invalid two-factor parameters') {
+        dispatch({
+          type: UPDATE_PASSPHRASE_2FA_2_FAILURE,
+          errors: { wrongTwoFactor: 'ProfileView.password.wrong_two_fa_code' }
+        })
+      } else {
+        dispatch({
+          type: UPDATE_PASSPHRASE_2FA_2_FAILURE,
+          errors: { global: 'ProfileView.password.server_error' }
+        })
+      }
     })
   }
 }
