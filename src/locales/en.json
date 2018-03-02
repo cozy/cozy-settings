@@ -32,6 +32,7 @@
       "server_error": "Something went wrong. Your password has not been saved.",
       "password_too_weak": "Your password is too weak. You should add an uppercase, a number, a special character or a longer password.",
       "wrong_password": "Current password seems wrong.",
+      "wrong_two_fa_code": "The provided two factor code seems wrong.",
       "success": "Your password has been changed.",
       "reset_link": "Forgot your current password?",
       "submit_label": "Change your password",
