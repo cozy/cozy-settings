@@ -191,7 +191,9 @@ class ProfileView extends Component {
             {t('ProfileView.tos.link')}
           </a>
           {
-            twoFAPassphraseModalIsOpen && <Passphrase2FA
+            twoFAPassphraseModalIsOpen &&
+            !passphrase.errors &&
+            <Passphrase2FA
               onPassphrase2FASubmit={this.onPassphrase2FASubmit}
               closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
               instance={instance}
