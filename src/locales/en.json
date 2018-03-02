@@ -32,6 +32,7 @@
       "server_error": "Something went wrong. Your password has not been saved.",
       "password_too_weak": "Your password is too weak. You should add an uppercase, a number, a special character or a longer password.",
       "wrong_password": "Current password seems wrong.",
+      "wrong_two_fa_code": "The provided two factor code seems wrong.",
       "success": "Your password has been changed.",
       "reset_link": "Forgot your current password?",
       "submit_label": "Change your password",
@@ -61,6 +62,10 @@
         "desactivate": "Desactivate two steps authentication",
         "validation": "Two steps authentication validation"
       },
+      "passphrase": {
+        "title": "Two steps authentication",
+        "description": "Your Cozy sent a 6 digits validation code to %{email}.<br/>Entre the code inside to change your password:"
+      },
       "label": "Because two steps are better than one, improve your Cozy security with an additionnal step.<br/>[Check out our assistance website →](%{link})",
       "modal": {
         "code": "code",
@@ -73,7 +78,7 @@
         "desactivate_title": "Are you sure to disable this option?",
         "desactivate_description": "On clicking on \"Desactivate\" button, your password will be the only key to access your Cozy. You will delete a security level.",
         "confirmation_title": "Validation code confirmation",
-        "confirmation_description": "Your Cozy send a 6 digits validation code to %{email}.<br/>Entre the code behind to activate authentication.",
+        "confirmation_description": "Your Cozy sent a 6 digits validation code to %{email}.<br/>Entre the code inside to activate authentication.",
         "nocode": "You do not receive any code?",
         "nocode_claude": "Contact Claude at ",
         "validation_title": "Congratulations! Your email is confirmed.",

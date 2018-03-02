@@ -1,17 +1,17 @@
 import viewStyles from '../styles/view'
-import styles from '../styles/fields'
 
 import classNames from 'classnames'
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
-import { Button } from 'cozy-ui/react/Button'
 import { translate } from 'cozy-ui/react/I18n'
-import Modal, { ModalContent } from 'cozy-ui/react/Modal'
 
 import Input from './Input'
 import PassphraseForm from './PassphraseForm'
 import ReactMarkdownWrapper from './ReactMarkdownWrapper'
 import Select from './Select'
+import Activate2FA from './2FA/Activate2FA'
+import Desactivate2FA from './2FA/Desactivate2FA'
+import Passphrase2FA from './2FA/Passphrase2FA'
 
 const LANG_OPTIONS = ['en', 'fr']
 const twoFaModalBanner = require('../assets/images/double_authent_prez_banner.svg')
@@ -24,6 +24,8 @@ class ProfileView extends Component {
     this.state = {
       twoFAActivationModalIsOpen: false,
       twoFADesactivationModalIsOpen: false,
+      twoFAPassphraseModalIsOpen: false,
+      new2FAPassphrase: null,
       mailConfirmationCodeRequested: false,
       mailConfirmationCodeIsValid: false
     }
@@ -34,6 +36,9 @@ class ProfileView extends Component {
     this.closeTwoFAActivationModal = this.closeTwoFAActivationModal.bind(this)
     this.openTwoFADesactivationModal = this.openTwoFADesactivationModal.bind(this)
     this.closeTwoFADesactivationModal = this.closeTwoFADesactivationModal.bind(this)
+    this.closeTwoFAPassphraseModal = this.closeTwoFAPassphraseModal.bind(this)
+    this.onPassphrase2FAStep1 = this.onPassphrase2FAStep1.bind(this)
+    this.onPassphrase2FASubmit = this.onPassphrase2FASubmit.bind(this)
   }
   componentWillMount () {
     this.props.fetchInfos()
@@ -71,6 +76,34 @@ class ProfileView extends Component {
   closeTwoFADesactivationModal () {
     this.setState({twoFADesactivationModalIsOpen: false})
   }
+  closeTwoFAPassphraseModal () {
+    this.setState((state, props) => ({
+      twoFAPassphraseModalIsOpen: false,
+      new2FAPassphrase: null
+    }))
+  }
+
+  onPassphrase2FAStep1 (current, newVal) {
+    this.setState((state, props) => ({
+      twoFAPassphraseModalIsOpen: true,
+      new2FAPassphrase: newVal
+    }))
+    this.props.onPassphrase2FAStep1(current)
+  }
+
+  onPassphrase2FASubmit (twoFactorCode) {
+    const {
+      onPassphrase2FAStep2,
+      passphrase
+    } = this.props
+    const { twoFactorToken } = passphrase
+    const { new2FAPassphrase } = this.state
+    onPassphrase2FAStep2(new2FAPassphrase, twoFactorCode, twoFactorToken)
+    .then(() => {
+      this.closeTwoFAPassphraseModal()
+    })
+  }
+
   render () {
     const root = document.querySelector('[role=application]')
     const data = root.dataset
@@ -81,12 +114,13 @@ class ProfileView extends Component {
       passphrase,
       isFetching,
       onFieldChange,
-      onPassphraseSubmit,
+      onPassphraseSimpleSubmit,
       instance
     } = this.props
     const {
       twoFAActivationModalIsOpen,
       twoFADesactivationModalIsOpen,
+      twoFAPassphraseModalIsOpen,
       mailConfirmationCodeRequested,
       mailConfirmationCodeIsValid
     } = this.state
@@ -109,7 +143,12 @@ class ProfileView extends Component {
             description={t(`ProfileView.public_name.label`)}
             {...fields.public_name}
             onChange={onFieldChange} />
-          <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
+          <PassphraseForm {...passphrase}
+            onSubmit={fields.two_fa.value
+              ? this.onPassphrase2FAStep1
+              : onPassphraseSimpleSubmit
+            }
+          />
           <Input
             name='two_fa'
             type='checkbox'
@@ -152,240 +191,43 @@ class ProfileView extends Component {
             {t('ProfileView.tos.link')}
           </a>
           {
-            twoFAActivationModalIsOpen && <div className={viewStyles['set-view-content-twofa-modal-wrapper']}>
-              <Modal
-                dismissAction={() => this.closeTwoFAActivationModal()}
-                className={viewStyles['set-view-content-twofa-modal']}
-                title={
-                  t(fields.two_fa.value && mailConfirmationCodeIsValid
-                    ? 'ProfileView.twofa.title.validation'
-                    : 'ProfileView.twofa.title.activate'
-                  )
-                }
-              >
-                <ModalContent
-                  className={viewStyles['set-view-content-twofa-modal-content']}
-                >
-                  <Activate2FA
-                    activate2FA={() => this.activate2FA()}
-                    checkMailConfirmationCode={this.checkMailConfirmationCode}
-                    mailConfirmationCodeRequested={mailConfirmationCodeRequested}
-                    mailConfirmationCodeIsValid={mailConfirmationCodeIsValid}
-                    closeTwoFAActivationModal={() => this.closeTwoFAActivationModal()}
-                    instance={instance}
-                    cozyDomain={cozyDomain}
-                    fields={fields}
-                    onChange={onFieldChange}
-                    images={{
-                      'twoFaModalBanner': twoFaModalBanner,
-                      'twoFaModalSecu': twoFaModalSecu,
-                      'twoFaModalProtect': twoFaModalProtect
-                    }}
-                  />
-                </ModalContent>
-              </Modal>
-            </div>
+            twoFAPassphraseModalIsOpen &&
+            !passphrase.errors &&
+            <Passphrase2FA
+              onPassphrase2FASubmit={this.onPassphrase2FASubmit}
+              closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
+              instance={instance}
+              submitting={passphrase.submitting2FAStep2}
+            />
           }
           {
-            twoFADesactivationModalIsOpen && <div className={viewStyles['set-view-content-twofa-modal-wrapper']}>
-              <Modal
-                dismissAction={() => this.closeTwoFADesactivationModal()}
-                className={viewStyles['set-view-content-twofa-modal']}
-                title={t('ProfileView.twofa.title.desactivate')}
-              >
-                <ModalContent
-                  className={viewStyles['set-view-content-twofa-modal-content']}
-                >
-                  <Desactivate2FA
-                    desactivate2FA={() => this.desactivate2FA()}
-                    closeTwoFADesactivationModal={() => this.closeTwoFADesactivationModal()}
-                  />
-                </ModalContent>
-              </Modal>
-            </div>
+            twoFAActivationModalIsOpen && <Activate2FA
+              activate2FA={() => this.activate2FA()}
+              checkMailConfirmationCode={this.checkMailConfirmationCode}
+              mailConfirmationCodeRequested={mailConfirmationCodeRequested}
+              mailConfirmationCodeIsValid={mailConfirmationCodeIsValid}
+              closeTwoFAActivationModal={() => this.closeTwoFAActivationModal()}
+              instance={instance}
+              cozyDomain={cozyDomain}
+              fields={fields}
+              onChange={onFieldChange}
+              images={{
+                'twoFaModalBanner': twoFaModalBanner,
+                'twoFaModalSecu': twoFaModalSecu,
+                'twoFaModalProtect': twoFaModalProtect
+              }}
+            />
+          }
+          {
+            twoFADesactivationModalIsOpen && <Desactivate2FA
+              desactivate2FA={() => this.desactivate2FA()}
+              closeTwoFADesactivationModal={() => this.closeTwoFADesactivationModal()}
+            />
           }
         </div>
       </div>
     )
   }
 }
-
-const Activate2FA = translate()(({
-  t,
-  activate2FA,
-  checkMailConfirmationCode,
-  mailConfirmationCodeRequested,
-  mailConfirmationCodeIsValid,
-  closeTwoFAActivationModal,
-  fields,
-  onChange,
-  instance,
-  cozyDomain,
-  images
-}) => (
-  mailConfirmationCodeRequested
-  ? mailConfirmationCodeIsValid
-    ? <ActivationConfirmed
-      closeTwoFAActivationModal={closeTwoFAActivationModal}
-      instance={instance}
-      cozyDomain={cozyDomain}
-      />
-    : <MailConfirmationCode
-      checkMailConfirmationCode={checkMailConfirmationCode}
-      closeTwoFAActivationModal={closeTwoFAActivationModal}
-      fields={fields}
-      onChange={onChange}
-      email={instance && instance.data.attributes.email}
-    />
-  : <ActivationConfirmation activate2FA={activate2FA} images={images} />
-))
-
-const ActivationConfirmation = translate()(({
-  t,
-  activate2FA,
-  images
-}) => (
-  <Fragment>
-    <img
-      alt={t('ProfileView.twofa.title.activate')}
-      src={images.twoFaModalBanner}
-    />
-    <h3>{t('ProfileView.twofa.modal.protect')}</h3>
-    <p>
-      <ReactMarkdownWrapper
-        source={
-          t('ProfileView.twofa.modal.change', {link: 'https://support.cozy.io/article/114-doubleauthentification'})
-        }
-      />
-    </p>
-    <div className={viewStyles['set-view-content-twofa']}>
-      <div className={viewStyles['set-view-content-twofa-point']}>
-        <img
-          className={viewStyles['set-view-content-twofa-point-image']}
-          alt="{t('ProfileView.twofa.modal.secu_title')}"
-          src={images.twoFaModalSecu}
-        />
-        <div>
-          <b>{t('ProfileView.twofa.modal.secu_title')}</b>
-          <p>{t('ProfileView.twofa.modal.secu_description')}</p>
-        </div>
-      </div>
-      <div className={viewStyles['set-view-content-twofa-point']}>
-        <img
-          className={viewStyles['set-view-content-twofa-point-image']}
-          alt="{t('ProfileView.twofa.modal.protect_title')}"
-          src={images.twoFaModalProtect}
-        />
-        <div>
-          <b>{t('ProfileView.twofa.modal.protect_title')}</b>
-          <p>{t('ProfileView.twofa.modal.protect_description')}</p>
-        </div>
-      </div>
-    </div>
-    <div className={viewStyles['set-view-content-twofa-modal-content-button']}>
-      <Button
-        onClick={activate2FA}>
-        {t('ProfileView.twofa.modal.button.activate')}
-      </Button>
-    </div>
-  </Fragment>
-))
-
-const ActivationConfirmed = translate()(({
-  t,
-  closeTwoFAActivationModal,
-  instance,
-  cozyDomain
-}) => (
-  <Fragment>
-    <h3>{t('ProfileView.twofa.modal.validation_title')}</h3>
-    <p>{t('ProfileView.twofa.modal.validation_description')}</p>
-    <p>{t('ProfileView.twofa.modal.validation_logs')}</p>
-    <ul>
-      <li>{instance && instance.data.attributes.email}</li>
-      <li>{cozyDomain}</li>
-    </ul>
-    <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
-      <Button
-        onClick={closeTwoFAActivationModal}>
-        {t('ProfileView.twofa.modal.button.terminate')}
-      </Button>
-    </div>
-  </Fragment>
-))
-
-const MailConfirmationCode = translate()(({
-  fields,
-  t,
-  checkMailConfirmationCode,
-  closeTwoFAActivationModal,
-  onChange,
-  email
-}) => (
-  <div>
-    <div>
-      <h3>{t('ProfileView.twofa.modal.confirmation_title')}</h3>
-      <ReactMarkdownWrapper
-        source={
-          t('ProfileView.twofa.modal.confirmation_description', {email: email})
-        }
-      />
-    </div>
-    <label className={styles['coz-form-label']}>{t('ProfileView.twofa.modal.code')}</label>
-    <div className={viewStyles['set-view-content-twofa-modal-confirmation-input']}>
-      <Input
-        name='mail_confirmation_code'
-        type='text'
-        {...fields.mail_confirmation_code}
-        onChange={onChange}
-        submitting={false}
-      />
-      <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
-        <p>{t('ProfileView.twofa.modal.nocode')}</p>
-        <p>{t('ProfileView.twofa.modal.nocode_claude')}<a href='mailto:claude@cozycloud.cc'>claude@cozycloud.cc</a></p>
-      </div>
-    </div>
-    {
-      !fields.email.value && <p className={styles['coz-form-errors']}>
-        {t('ProfileView.twofa.modal.email')}
-      </p>
-    }
-    <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
-      <Button
-        onClick={closeTwoFAActivationModal}
-        theme='secondary'
-      >
-        {t('ProfileView.twofa.modal.button.cancel')}
-      </Button>
-      <Button
-        onClick={() => checkMailConfirmationCode(fields.mail_confirmation_code.value)}
-        disabled={!fields.email.value}
-      >
-        {t('ProfileView.twofa.modal.button.validate')}
-      </Button>
-    </div>
-  </div>
-))
-
-const Desactivate2FA = translate()(({t, desactivate2FA, closeTwoFADesactivationModal}) => (
-  <Fragment>
-    <p><b>{t('ProfileView.twofa.modal.desactivate_title')}</b></p>
-    <p>{t('ProfileView.twofa.modal.desactivate_description')}</p>
-    <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
-      <Button
-        onClick={closeTwoFADesactivationModal}
-        theme='secondary'
-        >
-        {t('ProfileView.twofa.modal.button.cancel')}
-      </Button>
-      <Button
-        onClick={desactivate2FA}
-        theme='danger'
-      >
-        {t('ProfileView.twofa.modal.button.desactivate')}
-      </Button>
-    </div>
-  </Fragment>
-))
 
 export default translate()(ProfileView)
