@@ -64,12 +64,13 @@ const saved = (state = false, action) => {
   }
 }
 
-const errors = (state = [], action) => {
+const errors = (state = null, action) => {
   switch (action.type) {
     case UPDATE_PASSPHRASE:
+    case UPDATE_PASSPHRASE_2FA_1:
     case UPDATE_PASSPHRASE_SUCCESS:
     case UPDATE_PASSPHRASE_2FA_2_SUCCESS:
-      return []
+      return null
     case UPDATE_PASSPHRASE_2FA_1_FAILURE:
     case UPDATE_PASSPHRASE_2FA_2_FAILURE:
     case UPDATE_PASSPHRASE_FAILURE:
