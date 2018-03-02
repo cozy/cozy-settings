@@ -11,6 +11,7 @@ import ReactMarkdownWrapper from './ReactMarkdownWrapper'
 import Select from './Select'
 import Activate2FA from './2FA/Activate2FA'
 import Desactivate2FA from './2FA/Desactivate2FA'
+import Passphrase2FA from './2FA/Passphrase2FA'
 
 const LANG_OPTIONS = ['en', 'fr']
 const twoFaModalBanner = require('../assets/images/double_authent_prez_banner.svg')
@@ -23,6 +24,8 @@ class ProfileView extends Component {
     this.state = {
       twoFAActivationModalIsOpen: false,
       twoFADesactivationModalIsOpen: false,
+      twoFAPassphraseModalIsOpen: false,
+      new2FAPassphrase: null,
       mailConfirmationCodeRequested: false,
       mailConfirmationCodeIsValid: false
     }
@@ -33,6 +36,9 @@ class ProfileView extends Component {
     this.closeTwoFAActivationModal = this.closeTwoFAActivationModal.bind(this)
     this.openTwoFADesactivationModal = this.openTwoFADesactivationModal.bind(this)
     this.closeTwoFADesactivationModal = this.closeTwoFADesactivationModal.bind(this)
+    this.closeTwoFAPassphraseModal = this.closeTwoFAPassphraseModal.bind(this)
+    this.onPassphrase2FAStep1 = this.onPassphrase2FAStep1.bind(this)
+    this.onPassphrase2FASubmit = this.onPassphrase2FASubmit.bind(this)
   }
   componentWillMount () {
     this.props.fetchInfos()
@@ -70,6 +76,34 @@ class ProfileView extends Component {
   closeTwoFADesactivationModal () {
     this.setState({twoFADesactivationModalIsOpen: false})
   }
+  closeTwoFAPassphraseModal () {
+    this.setState((state, props) => ({
+      twoFAPassphraseModalIsOpen: false,
+      new2FAPassphrase: null
+    }))
+  }
+
+  onPassphrase2FAStep1 (current, newVal) {
+    this.setState((state, props) => ({
+      twoFAPassphraseModalIsOpen: true,
+      new2FAPassphrase: newVal
+    }))
+    this.props.onPassphrase2FAStep1(current)
+  }
+
+  onPassphrase2FASubmit (twoFactorCode) {
+    const {
+      onPassphrase2FAStep2,
+      passphrase
+    } = this.props
+    const { twoFactorToken } = passphrase
+    const { new2FAPassphrase } = this.state
+    onPassphrase2FAStep2(new2FAPassphrase, twoFactorCode, twoFactorToken)
+    .then(() => {
+      this.closeTwoFAPassphraseModal()
+    })
+  }
+
   render () {
     const root = document.querySelector('[role=application]')
     const data = root.dataset
@@ -80,12 +114,13 @@ class ProfileView extends Component {
       passphrase,
       isFetching,
       onFieldChange,
-      onPassphraseSubmit,
+      onPassphraseSimpleSubmit,
       instance
     } = this.props
     const {
       twoFAActivationModalIsOpen,
       twoFADesactivationModalIsOpen,
+      twoFAPassphraseModalIsOpen,
       mailConfirmationCodeRequested,
       mailConfirmationCodeIsValid
     } = this.state
@@ -108,7 +143,12 @@ class ProfileView extends Component {
             description={t(`ProfileView.public_name.label`)}
             {...fields.public_name}
             onChange={onFieldChange} />
-          <PassphraseForm {...passphrase} onSubmit={onPassphraseSubmit} />
+          <PassphraseForm {...passphrase}
+            onSubmit={fields.two_fa.value
+              ? this.onPassphrase2FAStep1
+              : onPassphraseSimpleSubmit
+            }
+          />
           <Input
             name='two_fa'
             type='checkbox'
@@ -150,6 +190,14 @@ class ProfileView extends Component {
           <a href={t('ProfileView.tos.version', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})} target='_blank'>
             {t('ProfileView.tos.link')}
           </a>
+          {
+            twoFAPassphraseModalIsOpen && <Passphrase2FA
+              onPassphrase2FASubmit={this.onPassphrase2FASubmit}
+              closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
+              instance={instance}
+              submitting={passphrase.submitting2FAStep2}
+            />
+          }
           {
             twoFAActivationModalIsOpen && <Activate2FA
               activate2FA={() => this.activate2FA()}
