@@ -191,6 +191,7 @@ class ProfileView extends Component {
           {
             twoFAPassphraseModalIsOpen &&
             !passphrase.errors &&
+            !passphrase.submitting &&
             <Passphrase2FA
               onPassphrase2FASubmit={this.onPassphrase2FASubmit}
               closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
