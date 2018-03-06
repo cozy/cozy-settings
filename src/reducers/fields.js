@@ -5,7 +5,6 @@ import {
   UPDATE_INFO,
   UPDATE_INFO_SUCCESS,
   UPDATE_INFO_FAILURE,
-  CHECK_MAIL_CONFIRMATION_CODE_FAILURE,
   RESET_INFO_FIELD
 } from '../actions'
 
@@ -28,7 +27,6 @@ const createField = name => {
         return true
       case UPDATE_INFO_SUCCESS:
       case UPDATE_INFO_FAILURE:
-      case CHECK_MAIL_CONFIRMATION_CODE_FAILURE:
         return false
       default:
         return state
@@ -54,7 +52,6 @@ const createField = name => {
       case UPDATE_INFO_SUCCESS:
         return []
       case UPDATE_INFO_FAILURE:
-      case CHECK_MAIL_CONFIRMATION_CODE_FAILURE:
         return [action.error]
       default:
         return state
@@ -74,8 +71,7 @@ const fields = combineReducers({
   locale: createField('locale'),
   public_name: createField('public_name'),
   tracking: createField('tracking'),
-  two_fa: createField('two_fa'),
-  mail_confirmation_code: createField('mail_confirmation_code')
+  two_fa: createField('two_fa')
 })
 
 export default fields

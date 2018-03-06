@@ -26,12 +26,10 @@ class ProfileView extends Component {
       twoFADesactivationModalIsOpen: false,
       twoFAPassphraseModalIsOpen: false,
       new2FAPassphrase: null,
-      mailConfirmationCodeRequested: false,
       mailConfirmationCodeIsValid: false
     }
     this.activate2FA = this.activate2FA.bind(this)
     this.desactivate2FA = this.desactivate2FA.bind(this)
-    this.checkMailConfirmationCode = this.checkMailConfirmationCode.bind(this)
     this.openTwoFAActivationModal = this.openTwoFAActivationModal.bind(this)
     this.closeTwoFAActivationModal = this.closeTwoFAActivationModal.bind(this)
     this.openTwoFADesactivationModal = this.openTwoFADesactivationModal.bind(this)
@@ -48,27 +46,26 @@ class ProfileView extends Component {
   }
   activate2FA () {
     // TODO: Open the password modal
-    this.props.updateInfo('auth_mode', 'two_factor_mail')
-    this.setState({mailConfirmationCodeRequested: true})
+    this.props.activate2FA()
   }
   desactivate2FA () {
-    // Reset all the info  state
+    this.props.desactivate2FA()
+    // Reset all the info state
     this.props.updateInfo('two_fa', null)
-    this.props.updateInfo('auth_mode', 'basic')
     this.setState({
-      mailConfirmationCodeRequested: false,
       mailConfirmationCodeIsValid: false
     })
     this.closeTwoFADesactivationModal()
   }
-  checkMailConfirmationCode (code) {
-    this.props.checkMailConfirmationCode('mail_confirmation_code', code)
-  }
+
   openTwoFAActivationModal () {
     this.setState({twoFAActivationModalIsOpen: true})
   }
   closeTwoFAActivationModal () {
-    this.setState({twoFAActivationModalIsOpen: false})
+    this.props.cancel2FAActivation()
+    this.setState({
+      twoFAActivationModalIsOpen: false
+    })
   }
   openTwoFADesactivationModal () {
     this.setState({twoFADesactivationModalIsOpen: true})
@@ -115,13 +112,14 @@ class ProfileView extends Component {
       isFetching,
       onFieldChange,
       onPassphraseSimpleSubmit,
-      instance
+      instance,
+      twoFactor,
+      checkTwoFactorCode
     } = this.props
     const {
       twoFAActivationModalIsOpen,
       twoFADesactivationModalIsOpen,
       twoFAPassphraseModalIsOpen,
-      mailConfirmationCodeRequested,
       mailConfirmationCodeIsValid
     } = this.state
     return (
@@ -203,14 +201,13 @@ class ProfileView extends Component {
           {
             twoFAActivationModalIsOpen && <Activate2FA
               activate2FA={() => this.activate2FA()}
-              checkMailConfirmationCode={this.checkMailConfirmationCode}
-              mailConfirmationCodeRequested={mailConfirmationCodeRequested}
+              checkTwoFactorCode={checkTwoFactorCode}
               mailConfirmationCodeIsValid={mailConfirmationCodeIsValid}
               closeTwoFAActivationModal={() => this.closeTwoFAActivationModal()}
               instance={instance}
               cozyDomain={cozyDomain}
-              fields={fields}
-              onChange={onFieldChange}
+              isTwoFactorEnabled={fields.two_fa.value}
+              twoFactor={twoFactor}
               images={{
                 'twoFaModalBanner': twoFaModalBanner,
                 'twoFaModalSecu': twoFaModalSecu,
@@ -221,6 +218,7 @@ class ProfileView extends Component {
           {
             twoFADesactivationModalIsOpen && <Desactivate2FA
               desactivate2FA={() => this.desactivate2FA()}
+              twoFactor={twoFactor}
               closeTwoFADesactivationModal={() => this.closeTwoFADesactivationModal()}
             />
           }

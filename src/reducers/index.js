@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 import fields from './fields'
+import twoFactor from './twoFactor'
 import passphrase from './passphrase'
 import instance from './instance'
 import claudy from './claudy'
@@ -17,6 +18,7 @@ import alerterReducer from 'cozy-ui/react/Alerter'
 const settingsApp = combineReducers({
   devices,
   fields,
+  twoFactor,
   instance,
   claudy,
   service,
