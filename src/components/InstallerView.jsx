@@ -30,13 +30,13 @@ class InstallerView extends Component {
           <h2 className={viewStyles['set-view-title']}>{t('InstallView.title')}</h2>
           <div className={styles['coz-form']}>
             <Input
-              onChange={this.onChange.bind(this)}
+              onBlur={this.onChange.bind(this)}
               label={t('InstallView.repository_url')}
               placeholder='git://github.com/username/repository.git#branch'
               name='url'
             />
             <Input
-              onChange={this.onChange.bind(this)}
+              onBlur={this.onChange.bind(this)}
               label={t('InstallView.slug')}
               name='slug'
             />

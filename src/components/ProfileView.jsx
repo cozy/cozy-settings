@@ -133,14 +133,14 @@ class ProfileView extends Component {
             label={t('ProfileView.email.title')}
             description={t('ProfileView.email.label')}
             {...fields.email}
-            onChange={onFieldChange} />
+            onBlur={onFieldChange} />
           <Input
             name='public_name'
             type='text'
             label={t('ProfileView.public_name.title')}
             description={t(`ProfileView.public_name.label`)}
             {...fields.public_name}
-            onChange={onFieldChange} />
+            onBlur={onFieldChange} />
           <PassphraseForm {...passphrase}
             onSubmit={fields.two_fa.value
               ? this.onPassphrase2FAStep1
