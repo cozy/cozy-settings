@@ -3,12 +3,14 @@ import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 
 import viewStyles from '../../styles/view'
+import styles from '../../styles/fields'
 import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
 
 export const ActivationConfirmation = ({
   t,
   activate2FA,
-  images
+  images,
+  twoFactor
 }) => (
   <Fragment>
     <img
@@ -47,10 +49,18 @@ export const ActivationConfirmation = ({
         </div>
       </div>
     </div>
+    {twoFactor.error && <p className={styles['coz-form-errors']}>
+        {t(twoFactor.error)}
+      </p>
+    }
     <div className={viewStyles['set-view-content-twofa-modal-content-button']}>
       <Button
-        onClick={activate2FA}>
-        {t('ProfileView.twofa.modal.button.activate')}
+        onClick={activate2FA}
+        aria-busy={twoFactor.submitting}
+      >
+        <span>
+          {t('ProfileView.twofa.modal.button.activate')}
+        </span>
       </Button>
     </div>
   </Fragment>

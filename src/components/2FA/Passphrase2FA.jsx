@@ -49,7 +49,7 @@ export class Passphrase2FA extends Component {
             />
             <div className={viewStyles['set-view-content-twofa-modal-confirmation-input']}>
               <Input
-                name='mail_confirmation_code'
+                name='two_factor_mail'
                 type='text'
                 value={twoFactorCode}
                 onChange={(name, value) => this.onChange(value)}
