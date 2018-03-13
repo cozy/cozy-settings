@@ -150,8 +150,8 @@ class ProfileView extends Component {
           <Input
             name='two_fa'
             type='checkbox'
-            label={t('ProfileView.twofa.title.activate')}
-            description={t('ProfileView.twofa.label', {link: 'https://support.cozy.io/article/114-doubleauthentification'})}
+            title={t('ProfileView.twofa.title.activate')}
+            label={t('ProfileView.twofa.label', {link: 'https://support.cozy.io/article/114-doubleauthentification'})}
             {...fields.two_fa}
             onChange={fields.two_fa.value
               ? this.openTwoFADesactivationModal
