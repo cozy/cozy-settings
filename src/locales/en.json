@@ -32,6 +32,7 @@
       "server_error": "Something went wrong. Your password has not been saved.",
       "password_too_weak": "Your password is too weak. You should add an uppercase, a number, a special character or a longer password.",
       "wrong_password": "Current password seems wrong.",
+      "wrong_two_fa_code": "The provided two factor code seems wrong.",
       "success": "Your password has been changed.",
       "reset_link": "Forgot your current password?",
       "submit_label": "Change your password",
@@ -54,6 +55,44 @@
       "title" : "E-mail",
       "label": "Cozy needs your e-mail to send you notifications and allow you to recover your password",
       "error" : "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
+    },
+    "twofa" : {
+      "title": {
+        "activate": "Cozy two steps authentication",
+        "desactivate": "Desactivate two steps authentication",
+        "validation": "Two steps authentication validation"
+      },
+      "passphrase": {
+        "title": "Two steps authentication",
+        "description": "Your Cozy sent a 6 digits validation code to %{email}.<br/>Entre the code inside to change your password:"
+      },
+      "label": "Because two steps are better than one, improve your Cozy security with an additionnal step.<br/>[Check out our assistance website →](%{link})",
+      "modal": {
+        "code": "code",
+        "protect": "Protect your Cozy with two steps authentication",
+        "change": "**What's changing?** Everytime you'll connect to your Cozy, you'll need your password and a validation code.<br/>[Check out our assistance website →](%{link})",
+        "secu_title": "Add an additionnal security level",
+        "secu_description": "Password, that's good, but if it isn't \"complicated\", a thief can easily guess it. Receive a validation code by mail assure the control of your Cozy.",
+        "protect_title": "Improve the protection of your data",
+        "protect_description": "Even if a thief get your password, you stay the only captain able to connect to your Cozy",
+        "desactivate_title": "Are you sure to disable this option?",
+        "desactivate_description": "On clicking on \"Desactivate\" button, your password will be the only key to access your Cozy. You will delete a security level.",
+        "confirmation_title": "Validation code confirmation",
+        "confirmation_description": "Your Cozy sent a 6 digits validation code to %{email}.<br/>Entre the code inside to activate authentication.",
+        "nocode": "You do not receive any code?",
+        "nocode_claude": "Contact Claude at ",
+        "validation_title": "Congratulations! Your email is confirmed.",
+        "validation_description": "Your Cozy is now secured with 2 steps.",
+        "validation_logs": "Remember yours identifiers:",
+        "email": "You should provide a valid email address",
+        "button": {
+          "activate": "Activate authentication",
+          "cancel": "cancel",
+          "desactivate": "desactivate",
+          "validate": "validate",
+          "terminate": "terminate"
+        }
+      }
     },
     "public_name" : {
       "title" : "Username",
@@ -114,17 +153,6 @@
     "validate": "Revoke device",
     "error": "Unable to revoke the device, try to reload the page."
   },
-  "InstallView": {
-    "title": "Application installation",
-    "install_error": "An error occured while installing %{slug}",
-    "update_error": "An error occured while updating %{slug}",
-    "install_success": "%{slug} is installing",
-    "update_success": "%{slug} is updating",
-    "update": "Update",
-    "slug": "Slug",
-    "repository_url": "Repository url",
-    "submit": "Submit"
-  },
   "ServicesView": {
     "title": "Activated services",
     "load_error": "An error occured while loading your services, please try again later.",
@@ -148,6 +176,10 @@
         "title": "Your request",
         "placeholder": "Tell us anything (ask for help, share a feedback or just say hello). We'll be happy to talk to you. "
       }
+    },
+    "response_email": {
+      "subject": "Your request has been correctly received",
+      "body": "Hello,\n\nWe correctly received your support request:\n%{message}\n\nWe are doing our best to respond you as soon as possible.\n\nClaude from Cozy."
     },
     "button": "Let's go!",
     "sending": "Sending...",
