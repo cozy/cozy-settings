@@ -10,12 +10,10 @@ export const UPDATE_INFO_SUCCESS = 'UPDATE_INFO_SUCCESS'
 export const UPDATE_INFO_FAILURE = 'UPDATE_INFO_FAILURE'
 export const RESET_INFO_FIELD = 'RESET_INFO_FIELD'
 
-export const SET_LANG = 'SET_LANG'
+export const CHECK_MAIL_CONFIRMATION_CODE = 'CHECK_MAIL_CONFIRMATION_CODE'
+export const CHECK_MAIL_CONFIRMATION_CODE_FAILURE = 'CHECK_MAIL_CONFIRMATION_CODE_FAILURE'
 
-export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
-export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
-export const UPDATE_PASSPHRASE_FAILURE = 'UPDATE_PASSPHRASE_FAILURE'
-export const RESET_PASSPHRASE_FIELD = 'RESET_PASSPHRASE_FIELD'
+export const SET_LANG = 'SET_LANG'
 
 export const FETCH_DEVICES = 'FETCH_DEVICES'
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS'
@@ -132,41 +130,6 @@ export const updateInfo = (field, value) => {
       .catch(() => {
         dispatch({ type: UPDATE_INFO_FAILURE, field, error: 'ProfileView.infos.server_error' })
       })
-  }
-}
-
-export const updatePassphrase = (current, newVal) => {
-  return (dispatch, getState) => {
-    dispatch({ type: UPDATE_PASSPHRASE })
-    return cozyFetch('PUT', '/settings/passphrase', {
-      'current_passphrase': current,
-      'new_passphrase': newVal
-    }).then(instance => {
-      dispatch({
-        type: UPDATE_PASSPHRASE_SUCCESS,
-        alert: {
-          message: 'ProfileView.password.reload'
-        }
-      })
-      setTimeout(() => {
-        dispatch({ type: RESET_PASSPHRASE_FIELD })
-        // the token changes after a password change, so we need to reload the page to get the new one
-        window.location.reload()
-      }, 4000)// 4s, a bit longer than the alert message
-    }).catch(error => {
-      const errors = error.errors || []
-      if (errors.length && errors[0].detail === 'Invalid passphrase') {
-        dispatch({
-          type: UPDATE_PASSPHRASE_FAILURE,
-          errors: { currentPassword: 'ProfileView.password.wrong_password' }
-        })
-      } else {
-        dispatch({
-          type: UPDATE_PASSPHRASE_FAILURE,
-          errors: { global: 'ProfileView.password.server_error' }
-        })
-      }
-    })
   }
 }
 

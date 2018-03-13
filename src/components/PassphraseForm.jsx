@@ -43,6 +43,10 @@ class PassphraseForm extends Component {
   render () {
     const { currentPassword, newPassword, strength } = this.state
     const { t, errors, submitting, saved } = this.props
+    const currentPasswordError = errors && errors.currentPassword
+    const globalError = errors && errors.global
+    const newPasswordError = errors && errors.newPassword
+    const twoFactorError = errors && errors.wrongTwoFactor
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
     const STACK_DOMAIN = '//' + document.querySelector('[role=application]').dataset.cozyDomain
     const passphraseResetUrl = STACK_DOMAIN + '/auth/passphrase_reset'
@@ -54,16 +58,16 @@ class PassphraseForm extends Component {
         <PasswordInput
           name='current_password'
           value={currentPassword}
-          inError={errors.currentPassword !== undefined}
+          inError={currentPasswordError}
           onInput={e => this.handleCurrentInput(e)}
           autocomplete='current-password'
         />
-        {errors.currentPassword && <p className={styles['coz-form-errors']}>{t(errors.currentPassword)}</p>}
+        {currentPasswordError && <p className={styles['coz-form-errors']}>{t(currentPasswordError)}</p>}
         <label className={styles['coz-form-label']}>{t('ProfileView.new_password.label')}</label>
         <PasswordInput
           name='new_password'
           value={newPassword}
-          inError={errors.newPassword !== undefined}
+          inError={newPasswordError}
           onInput={e => this.handleNewInput(e)}
           autocomplete='new-password'
         />
@@ -72,8 +76,9 @@ class PassphraseForm extends Component {
           value={strength.percentage}
           className={styles[`pw-${strength.label}`]}
         />
-        {errors.newPassword && <p className={styles['coz-form-errors']}>{t(errors.newPassword)}</p>}
-        {errors.global && <p className={styles['coz-form-errors']}>{t(errors.global)}</p>}
+        {newPasswordError && <p className={styles['coz-form-errors']}>{t(newPasswordError)}</p>}
+        {globalError && <p className={styles['coz-form-errors']}>{t(globalError)}</p>}
+        {twoFactorError && <p className={styles['coz-form-errors']}>{t(twoFactorError)}</p>}
         <div className={styles['coz-form-controls']}>
           <Button
             className={classNames({[styles['saved']]: saved})}

@@ -6,13 +6,14 @@ import withState from 'cozy-ui/react/helpers/withState'
 import Toggle from 'cozy-ui/react/Toggle'
 import Field from './Field'
 
-const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, errors, onChange }) => (
+const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, errors, onChange, onBlur }) => (
   <input
     type={type}
     placeholder={placeholder}
     value={value}
     name={name}
-    onBlur={e => onChange(name, e.target.value)}
+    onChange={onChange && (e => onChange(name, e.target.value))}
+    onBlur={onBlur && (e => onBlur(name, e.target.value))}
     className={errors && errors.length !== 0 ? styles['error'] : ''}
     aria-busy={submitting}
   />
