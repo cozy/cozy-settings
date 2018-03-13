@@ -53,6 +53,7 @@ class PassphraseForm extends Component {
         <label className={styles['coz-form-label']}>{t('ProfileView.current_password.label')}</label>
         <PasswordInput
           name='current_password'
+          key='current_password'
           value={currentPassword}
           inError={errors.currentPassword !== undefined}
           onInput={e => this.handleCurrentInput(e)}
@@ -62,6 +63,7 @@ class PassphraseForm extends Component {
         <label className={styles['coz-form-label']}>{t('ProfileView.new_password.label')}</label>
         <PasswordInput
           name='new_password'
+          key='new_password'
           value={newPassword}
           inError={errors.newPassword !== undefined}
           onInput={e => this.handleNewInput(e)}
