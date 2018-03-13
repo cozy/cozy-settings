@@ -1,8 +1,7 @@
 import styles from '../styles/fields'
 
-import React from 'react'
+import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
-import withState from 'cozy-ui/react/helpers/withState'
 import Toggle from 'cozy-ui/react/Toggle'
 import Field from './Field'
 
@@ -38,34 +37,41 @@ export default translate()(props => (
   </Field>
 ))
 
-export const PasswordInput = translate()(
-  withState({
-    visible: false
-  }, (setState) => ({
-    toggleVisibility: () => {
-      setState(state => ({ visible: !state.visible }))
+class PasswordInputComponent extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      visible: false
     }
-  }))(
-    props => {
-      const { t, name, value, onInput, toggleVisibility, visible, autocomplete, inError = false } = props
-      return (
-        <div className={styles['coz-form-group']}>
-          <a
-            onClick={toggleVisibility}
-            className={styles['password-visibility']}
-          >
-            {visible ? t(`ProfileView.password.hide`) : t(`ProfileView.password.show`)}
-          </a>
-          <input
-            type={visible ? 'text' : 'password'}
-            placeholder={t(`ProfileView.${name}.placeholder`)}
-            value={value}
-            onInput={onInput}
-            className={inError ? styles['error'] : ''}
-            autocomplete={autocomplete || 'off'}
-          />
-        </div>
-      )
-    }
-  )
-)
+    this.toggleVisibility = this.toggleVisibility.bind(this)
+  }
+
+  toggleVisibility () {
+    this.setState(state => ({ visible: !state.visible }))
+  }
+
+  render () {
+    const { t, name, value, onInput, autocomplete, inError = false } = this.props
+    const { visible } = this.state
+    return (
+      <div className={styles['coz-form-group']}>
+        <a
+          onClick={this.toggleVisibility}
+          className={styles['password-visibility']}
+        >
+          {visible ? t(`ProfileView.password.hide`) : t(`ProfileView.password.show`)}
+        </a>
+        <input
+          type={visible ? 'text' : 'password'}
+          placeholder={t(`ProfileView.${name}.placeholder`)}
+          value={value}
+          onInput={onInput}
+          className={inError ? styles['error'] : ''}
+          autocomplete={autocomplete || 'off'}
+        />
+      </div>
+    )
+  }
+}
+
+export const PasswordInput = translate()(PasswordInputComponent)
