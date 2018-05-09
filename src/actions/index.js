@@ -68,7 +68,7 @@ export const fetchStorageData = () => {
         instance.data.attributes &&
         instance.data.attributes.uuid
       if (managerUrl && uuid) {
-        offersLink = `${managerUrl}/cozy/accounts/${uuid}`
+        offersLink = `${managerUrl}/cozy/instances/${uuid}/premium`
       }
     } catch (e) {
       if (e.error && e.error !== 'Not Found') {
