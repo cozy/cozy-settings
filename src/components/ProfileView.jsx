@@ -10,6 +10,7 @@ import PassphraseForm from './PassphraseForm'
 import ReactMarkdownWrapper from './ReactMarkdownWrapper'
 import Select from './Select'
 import TwoFA from './2FA'
+import ExportSection from './export/ExportSection'
 
 const LANG_OPTIONS = ['en', 'fr']
 
@@ -28,6 +29,8 @@ class ProfileView extends Component {
       onPassphraseSimpleSubmit,
       instance,
       updateInfo,
+      exportStatus,
+      requestExport,
       twoFactor,
       checkTwoFactorCode,
       activate2FA,
@@ -99,6 +102,11 @@ class ProfileView extends Component {
             label={t('ProfileView.tracking.label', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})}
             {...fields.tracking}
             onChange={onFieldChange}
+          />
+          <ExportSection
+            email={fields.email && fields.email.value}
+            exportStatus={exportStatus}
+            requestExport={requestExport}
           />
         </div>
       </div>

@@ -102,6 +102,19 @@
       "title": "Help us to improve our product",
       "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product.<br/>[Be informed about Cozy commitments](https://files.cozycloud.cc/TOS%{version}.pdf)"
     },
+    "export": {
+      "title": "My data",
+      "label": "Cozy is committed to provide you all your data that it stores about you:",
+      "link": "Download a copy of my data",
+      "server_error": "Something went wrong, pleasy try again or contact us.",
+      "success": "Your request has correctly be sent!",
+      "modal": {
+        "title": "Get back my data",
+        "description": "Cozy is in charge of getting all data that its has about you and to send you an archive to download.<br/><br/>The download link will be sent to you to the __%{email}__ email address when the archive will be available.",
+        "cancel": "Cancel",
+        "CTA": "Send me my data"
+      }
+    },
     "locale" : {
       "title" : "Language",
       "label": "This will be the language used in your Cozy.",
