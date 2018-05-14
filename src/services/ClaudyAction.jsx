@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { translate } from 'cozy-ui/react/I18n'
-import { Button } from 'cozy-ui/react/Button'
+import { Button, ButtonLink } from 'cozy-ui/react/Button'
 
 export const ClaudyAction = ({ t, action, iconSrc, url, onActionClick }) => {
   return (
@@ -20,15 +20,14 @@ export const ClaudyAction = ({ t, action, iconSrc, url, onActionClick }) => {
           {t(`claudy.actions.${action.slug}.description`)}
         </p>
         {url
-          ? <a
+          ? <ButtonLink
             href={url}
-            role='button'
             target={action.link.type === 'external' ? '_blank' : '_parent'}
-            className='coz-btn-regular coz-claudy-menu-action-description-button'
+            className='coz-claudy-menu-action-description-button'
             onClick={onActionClick}
           >
             {t(`claudy.actions.${action.slug}.button`)}
-          </a>
+          </ButtonLink>
           : <Button
             className='coz-claudy-menu-action-description-button'
             disabled
