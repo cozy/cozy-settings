@@ -1,6 +1,7 @@
+/* eslint-disbale */
 import styles from '../styles/app'
 
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'cozy-ui/react/I18n'
 import classNames from 'classnames'
@@ -14,7 +15,15 @@ import Sessions from '../containers/Sessions'
 import Storage from '../containers/Storage'
 
 class App extends Component {
-  render ({ children }) {
+  childContextTypes = {
+    domain: PropTypes.string
+  }
+
+  getChildContext () {
+    return {domain: this.props.domain}
+  }
+
+  render ({ children, domain }) {
     return (
       <div className={classNames(styles['app-wrapper'], styles['o-layout--2panes'])}>
         <Alerter />

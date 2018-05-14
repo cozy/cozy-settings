@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Provider store={store}>
       <EnhancedI18n dictRequire={(lang) => require(`./locales/${lang}`)}>
         <PiwikHashRouter>
-          <App />
+          <App domain={data.cozyDomain} />
         </PiwikHashRouter>
       </EnhancedI18n>
     </Provider>

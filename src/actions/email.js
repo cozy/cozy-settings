@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* global cozy */
 
 import { cozyFetch } from './index'
@@ -51,6 +52,14 @@ export function sendMessageToSupport (subject, message, t) {
       }
     })
   }
+}
+
+export function sendDeleteAccountRequest(subject, message) {
+  return sendEmail(
+    CONTACT_RECIPIENT_LIST,
+    textPlainContentParts(message),
+    subject
+  )
 }
 
 export function sendEmail (recipientsList, contentParts, subject = '', mode = 'from') {
