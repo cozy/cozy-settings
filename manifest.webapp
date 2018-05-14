@@ -1,5 +1,6 @@
 {
   "name": "Settings",
+  "name_prefix": "Cozy",
   "slug": "cozy-settings",
   "icon": "app-icon.svg",
   "description": "Settings manager for Cozy v3",
