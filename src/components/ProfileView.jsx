@@ -96,13 +96,10 @@ class ProfileView extends Component {
             name='tracking'
             type='checkbox'
             title={t('ProfileView.tracking.title')}
-            label={t('ProfileView.tracking.label')}
+            label={t('ProfileView.tracking.label', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})}
             {...fields.tracking}
             onChange={onFieldChange}
           />
-          <a href={t('ProfileView.tos.version', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})} target='_blank'>
-            {t('ProfileView.tos.link')}
-          </a>
         </div>
       </div>
     )
