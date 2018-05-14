@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchStorageData: () => {
     const { t } = ownProps
     dispatch(fetchStorageData()).catch(
-      error => Alerter.error(t('StorageView.load_error'))
+      () => Alerter.error(t('StorageView.load_error'))
     )
   }
 })

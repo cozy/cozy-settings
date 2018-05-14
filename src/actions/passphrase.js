@@ -14,7 +14,7 @@ export const UPDATE_PASSPHRASE_2FA_2 = 'UPDATE_PASSPHRASE_2FA_2'
 export const UPDATE_PASSPHRASE_2FA_2_SUCCESS = 'UPDATE_PASSPHRASE_2FA_2_SUCCESS'
 export const UPDATE_PASSPHRASE_2FA_2_FAILURE = 'UPDATE_PASSPHRASE_2FA_2_FAILURE'
 
-export const updatePassphrase = (current, newVal) => {
+export const updatePassphrase = (current, newVal, callback) => {
   return async (dispatch, getState) => {
     dispatch({ type: UPDATE_PASSPHRASE })
     return cozyFetch('PUT', '/settings/passphrase', {
@@ -22,6 +22,7 @@ export const updatePassphrase = (current, newVal) => {
       'new_passphrase': newVal
     }).then(instance => {
       dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
+      callback()
       setTimeout(() => {
         dispatch({ type: RESET_PASSPHRASE_FIELD })
         // the token changes after a password change, so we need to reload the page to get the new one
@@ -71,7 +72,7 @@ export const updatePassphrase2FAFirst = (current) => {
   }
 }
 
-export const updatePassphrase2FASecond = (newVal, twoFactorCode, twoFactorToken) => {
+export const updatePassphrase2FASecond = (newVal, twoFactorCode, twoFactorToken, callback) => {
   return async (dispatch, getState) => {
     dispatch({ type: UPDATE_PASSPHRASE_2FA_2 })
     return cozyFetch('PUT', '/settings/passphrase', {
@@ -80,6 +81,7 @@ export const updatePassphrase2FASecond = (newVal, twoFactorCode, twoFactorToken)
       'two_factor_passcode': twoFactorCode
     }).then(instance => {
       dispatch({ type: UPDATE_PASSPHRASE_2FA_2_SUCCESS })
+      callback()
       setTimeout(() => {
         dispatch({ type: RESET_PASSPHRASE_FIELD })
         // the token changes after a password change, so we need to reload the page to get the new one
