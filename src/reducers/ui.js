@@ -77,7 +77,6 @@ const error = (state = null, action) => {
   switch (action.type) {
     case UPDATE_INFO_FAILURE:
       return {
-        message: 'error.open_folder',
         cause: action.error,
         critical: true
       }

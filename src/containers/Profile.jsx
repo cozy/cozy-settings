@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
 
+import { translate } from 'cozy-ui/react/I18n'
+import Alerter from 'cozy-ui/react/Alerter'
+
 import { updateInfo, fetchInfos } from '../actions'
 import { checkTwoFactorCode, activate2FA, desactivate2FA, cancel2FAActivation } from '../actions/twoFactor'
 
@@ -39,17 +42,23 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(desactivate2FA(mode))
   },
   onPassphraseSimpleSubmit: (current, newVal) => {
-    return dispatch(updatePassphrase(current, newVal))
+    return dispatch(updatePassphrase(current, newVal)).then(
+      () => Alerter.info(ownProps.t('ProfileView.password.reload'))
+    )
   },
   onPassphrase2FAStep1: (current) => {
     return dispatch(updatePassphrase2FAFirst(current))
   },
   onPassphrase2FAStep2: (newVal, twoFactorCode, twoFactorToken) => {
-    return dispatch(updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken))
+    return dispatch(
+      updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken)
+    ).then(
+      () => Alerter.info(ownProps.t('ProfileView.password.reload'))
+    )
   }
 })
 
-export default connect(
+export default translate()(connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProfileView)
+)(ProfileView))

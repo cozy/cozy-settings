@@ -54,8 +54,8 @@ class PassphraseForm extends Component {
     return (
       <div className={styles['coz-form']}>
         <h3>{t('ProfileView.password.title')}</h3>
-        <label className={styles['coz-form-label']}>{t('ProfileView.current_password.label')}</label>
         <PasswordInput
+          label={t('ProfileView.current_password.label')}
           name='current_password'
           key='current_password'
           value={currentPassword}
@@ -64,8 +64,8 @@ class PassphraseForm extends Component {
           autocomplete='current-password'
         />
         {currentPasswordError && <p className={styles['coz-form-errors']}>{t(currentPasswordError)}</p>}
-        <label className={styles['coz-form-label']}>{t('ProfileView.new_password.label')}</label>
         <PasswordInput
+          label={t('ProfileView.new_password.label')}
           name='new_password'
           key='new_password'
           value={newPassword}
