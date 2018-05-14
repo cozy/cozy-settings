@@ -3,6 +3,7 @@ import styles from '../styles/storage'
 
 import React, { Component } from 'react'
 
+import Alerter from 'cozy-ui/react/Alerter'
 import classNames from 'classnames'
 import Loading from './Loading'
 

@@ -83,7 +83,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "cozy-ui": "^7.0.1",
+    "cozy-ui": "7.22.0",
     "date-fns": "^1.27.2",
     "piwik-react-router": "^0.8.2",
     "preact": "^8.1.0",

@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import Sidebar from './Sidebar'
-import { Alerter } from 'cozy-ui/react/Alerter'
+import Alerter from 'cozy-ui/react/Alerter'
 import Profile from '../containers/Profile'
 import Devices from '../containers/Devices'
 import Sessions from '../containers/Sessions'
