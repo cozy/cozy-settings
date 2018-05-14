@@ -100,11 +100,7 @@
     },
     "tracking": {
       "title": "Help us to improve our product",
-      "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product."
-    },
-    "tos": {
-      "link": "Be informed about Cozy commitments",
-      "version": "https://files.cozycloud.cc/TOS%{version}.pdf"
+      "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product.<br/>[Be informed about Cozy commitments](https://files.cozycloud.cc/TOS%{version}.pdf)"
     },
     "locale" : {
       "title" : "Language",
