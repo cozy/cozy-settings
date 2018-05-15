@@ -1,6 +1,7 @@
 /* global cozy */
 
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import { translate } from 'cozy-ui/react/I18n'
 import ButtonAction from 'cozy-ui/react/ButtonAction'
@@ -25,6 +26,11 @@ class ExportDownload extends Component {
     this.downloadFrame.src = url
   }
 
+  closeModal () {
+    const { history, parent } = this.props
+    history.push(parent)
+  }
+
   render () {
     const { t, exportData } = this.props
     const exportDoc =
@@ -36,7 +42,11 @@ class ExportDownload extends Component {
         : t('ProfileView.export.download.CTA')
 
     return (
-      <Modal className={viewStyles['set-export-modal']} mobileFullscreen>
+      <Modal
+        className={viewStyles['set-export-modal']}
+        secondaryAction={() => this.closeModal()}
+        mobileFullscreen
+      >
         <ModalHeader className={viewStyles['set-export-modal-header']}>
           <h2 className={viewStyles['set-export-modal-title']}>
             {t('ProfileView.export.download.title')}
@@ -89,4 +99,4 @@ class ExportDownload extends Component {
   }
 }
 
-export default translate()(ExportDownload)
+export default translate()(withRouter(ExportDownload))

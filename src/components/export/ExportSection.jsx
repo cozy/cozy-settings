@@ -33,7 +33,14 @@ class ExportSection extends Component {
   }
 
   render () {
-    const { t, email, exportData, exportId, fetchExportData } = this.props
+    const {
+      t,
+      email,
+      exportData,
+      exportId,
+      fetchExportData,
+      parent
+    } = this.props
     const { displayModal } = this.state
     return (
       <div>
@@ -100,6 +107,7 @@ class ExportSection extends Component {
             exportData={exportData}
             exportId={exportId}
             fetchExportData={fetchExportData}
+            parent={parent}
           />
         }
       </div>

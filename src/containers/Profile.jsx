@@ -31,8 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   updateInfo: (field, value) => {
     dispatch(updateInfo(field, value))
   },
-  requestExport: () => {
-    dispatch(requestExport())
+  requestExport: async () => {
+    await dispatch(requestExport())
     Alerter.success(ownProps.t('ProfileView.export.success'))
   },
   fetchExportData: (exportId) => {

@@ -115,6 +115,7 @@ class ProfileView extends Component {
             exportId={exportId}
             requestExport={requestExport}
             fetchExportData={() => fetchExportData(exportId)}
+            parent={'/profile'}
           />
         </div>
       </div>

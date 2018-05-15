@@ -12,7 +12,7 @@ export const requestExport = () => {
   return (dispatch, getState) => {
     dispatch({ type: REQUEST_EXPORT })
     //  we have to send a body due to the JsonAPI
-    cozyFetch('POST', '/move/exports', { data: { attributes: {} } })
+    return cozyFetch('POST', '/move/exports', { data: { attributes: {} } })
     .then(() => {
       dispatch({ type: REQUEST_EXPORT_SUCCESS })
     }).catch(() => {
@@ -24,9 +24,9 @@ export const requestExport = () => {
 export const fetchExportData = (exportId) => {
   return (dispatch, getState) => {
     dispatch({ type: FETCH_EXPORT_DATA })
-    cozyFetch('GET', `/move/exports/${exportId}`)
+    return cozyFetch('GET', `/move/exports/${exportId}`)
     .then(resp => {
-      cozyFetch('GET', `/move/exports/data/${exportId}`)
+      return cozyFetch('GET', `/move/exports/data/${exportId}`)
       .then(() => {
         dispatch({ type: FETCH_EXPORT_DATA_SUCCESS, data: resp.data })
       })
