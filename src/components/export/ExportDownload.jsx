@@ -4,8 +4,11 @@ import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/react/I18n'
 import ButtonAction from 'cozy-ui/react/ButtonAction'
+import Spinner from 'cozy-ui/react/Spinner'
 import Modal, { ModalHeader, ModalDescription } from 'cozy-ui/react/Modal'
+
 import viewStyles from '../../styles/view'
+import formStyles from '../../styles/fields'
 
 class ExportDownload extends Component {
   constructor (props) {
@@ -34,38 +37,53 @@ class ExportDownload extends Component {
 
     return (
       <Modal className={viewStyles['set-export-modal']} mobileFullscreen>
-        <iframe
-          style={{ display: 'none' }}
-          ref={frame => { this.downloadFrame = frame }}
-        />
         <ModalHeader className={viewStyles['set-export-modal-header']}>
           <h2 className={viewStyles['set-export-modal-title']}>
             {t('ProfileView.export.download.title')}
           </h2>
         </ModalHeader>
-        <ModalDescription>
-          {t('ProfileView.export.download.description')}
-          <ButtonAction
-            className={viewStyles['set-export-modal-action']}
-            label={firstElementName}
-            rightIcon='download'
-            onClick={() => this.download()}
+        {exportData.isFetching
+          ? <Spinner
+            className={viewStyles['set-export-modal-spinner']}
+            size='xlarge'
           />
-          {cursors &&
-            cursors.length &&
-            cursors.map((cursor, index) => {
-              return (
-                <ButtonAction
-                  className={viewStyles['set-export-modal-action']}
-                  label={t('ProfileView.export.download.CTA_part', {
-                    number: index + 1
-                  })}
-                  rightIcon='download'
-                  onClick={() => this.download(cursor)}
-                />
-              )
-            })}
-        </ModalDescription>
+          : <div>
+            <iframe
+              style={{ display: 'none' }}
+              ref={frame => { this.downloadFrame = frame }}
+            />
+            <ModalDescription>
+              {exportData.error
+                ? <p className={formStyles['coz-form-errors']}>
+                  {t(exportData.error)}
+                </p>
+                : <div>
+                  {t('ProfileView.export.download.description')}
+                  <ButtonAction
+                    className={viewStyles['set-export-modal-action']}
+                    label={firstElementName}
+                    rightIcon='download'
+                    onClick={() => this.download()}
+                  />
+                  {cursors &&
+                    cursors.length &&
+                    cursors.map((cursor, index) => {
+                      return (
+                        <ButtonAction
+                          className={viewStyles['set-export-modal-action']}
+                          label={t('ProfileView.export.download.CTA_part', {
+                            number: index + 1
+                          })}
+                          rightIcon='download'
+                          onClick={() => this.download(cursor)}
+                        />
+                      )
+                    })}
+                </div>
+              }
+            </ModalDescription>
+          </div>
+        }
       </Modal>
     )
   }

@@ -108,6 +108,7 @@
       "link": "Download a copy of my data",
       "server_error": "Something went wrong, pleasy try again or contact us.",
       "fetch_error": "Something went wrong when fetching your export data. Please try again or contact us.",
+      "missing_error": "The archive seems to be missing or expired. Please try again or contact us.",
       "success": "Your request has correctly be sent!",
       "modal": {
         "title": "Get back my data",
