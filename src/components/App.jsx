@@ -12,6 +12,7 @@ import Profile from '../containers/Profile'
 import Devices from '../containers/Devices'
 import Sessions from '../containers/Sessions'
 import Storage from '../containers/Storage'
+import Exports from '../containers/Exports'
 
 class App extends Component {
   render ({ children }) {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path='/connectedDevices' component={Devices} />
             <Route path='/sessions' component={Sessions} />
             <Route path='/storage' component={Storage} />
+            <Route path='/exports' component={Exports} />
             <Redirect exact from='/' to='/profile' />
             <Redirect from='*' to='/profile' />
           </Switch>
