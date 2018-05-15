@@ -5,7 +5,7 @@ import Alerter from 'cozy-ui/react/Alerter'
 
 import { updateInfo, fetchInfos } from '../actions'
 import { checkTwoFactorCode, activate2FA, desactivate2FA, cancel2FAActivation } from '../actions/twoFactor'
-import { requestExport } from '../actions/export'
+import { requestExport, fetchExportData } from '../actions/export'
 
 import {
   updatePassphrase,
@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => ({
   passphrase: state.passphrase,
   instance: state.instance,
   twoFactor: state.twoFactor,
-  exportStatus: state.exportStatus
+  exportData: state.exportData
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -34,6 +34,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   requestExport: () => {
     dispatch(requestExport())
     Alerter.success(ownProps.t('ProfileView.export.success'))
+  },
+  fetchExportData: (exportId) => {
+    dispatch(fetchExportData(exportId))
   },
   cancel2FAActivation: () => {
     dispatch(cancel2FAActivation())

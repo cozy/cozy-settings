@@ -22,6 +22,7 @@ class ProfileView extends Component {
   render () {
     const {
       t,
+      match,
       fields,
       passphrase,
       isFetching,
@@ -29,7 +30,8 @@ class ProfileView extends Component {
       onPassphraseSimpleSubmit,
       instance,
       updateInfo,
-      exportStatus,
+      exportData,
+      fetchExportData,
       requestExport,
       twoFactor,
       checkTwoFactorCode,
@@ -39,6 +41,10 @@ class ProfileView extends Component {
       onPassphrase2FAStep1,
       onPassphrase2FAStep2
     } = this.props
+    let exportId = null
+    if (match && match.params) {
+      exportId = match.params.exportId
+    }
     return (
       <div role='contentinfo'>
         <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
@@ -105,8 +111,10 @@ class ProfileView extends Component {
           />
           <ExportSection
             email={fields.email && fields.email.value}
-            exportStatus={exportStatus}
+            exportData={exportData}
+            exportId={exportId}
             requestExport={requestExport}
+            fetchExportData={() => fetchExportData(exportId)}
           />
         </div>
       </div>

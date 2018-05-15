@@ -107,12 +107,19 @@
       "label": "Cozy is committed to provide you all your data that it stores about you:",
       "link": "Download a copy of my data",
       "server_error": "Something went wrong, pleasy try again or contact us.",
+      "fetch_error": "Something went wrong when fetching your export data. Please try again or contact us.",
       "success": "Your request has correctly be sent!",
       "modal": {
         "title": "Get back my data",
         "description": "Cozy is in charge of getting all data that its has about you and to send you an archive to download.<br/><br/>The download link will be sent to you to the __%{email}__ email address when the archive will be available.",
         "cancel": "Cancel",
         "CTA": "Send me my data"
+      },
+      "download": {
+        "title": "Download my data",
+        "description": "Here are all the data archive(s) available from your Cozy:",
+        "CTA": "Download the archive",
+        "CTA_part": "Download (part %{number})"
       }
     },
     "locale" : {

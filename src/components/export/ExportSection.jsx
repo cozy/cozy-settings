@@ -7,6 +7,7 @@ import { Button } from 'cozy-ui/react/Button'
 import viewStyles from '../../styles/view'
 import formStyles from '../../styles/fields'
 import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
+import ExportDownload from './ExportDownload'
 
 const exportImage = require('../../assets/images/export-cozy-mail.svg')
 
@@ -32,7 +33,7 @@ class ExportSection extends Component {
   }
 
   render () {
-    const { t, email, exportStatus } = this.props
+    const { t, email, exportData, exportId, fetchExportData } = this.props
     const { displayModal } = this.state
     return (
       <div>
@@ -71,8 +72,8 @@ class ExportSection extends Component {
                   { email }
                 )}
               />
-              {exportStatus.error && <p className={formStyles['coz-form-errors']}>
-                  {t(exportStatus.error)}
+              {exportData.error && <p className={formStyles['coz-form-errors']}>
+                  {t(exportData.error)}
                 </p>
               }
             </ModalDescription>
@@ -86,13 +87,20 @@ class ExportSection extends Component {
               <Button
                 theme='primary'
                 onClick={this.submitExport}
-                busy={exportStatus.submitting}
-                disabled={exportStatus.submitting}
+                busy={exportData.submitting}
+                disabled={exportData.submitting}
               >
                 {t('ProfileView.export.modal.CTA')}
               </Button>
             </ModalFooter>
           </Modal>
+        }
+        {exportId &&
+          <ExportDownload
+            exportData={exportData}
+            exportId={exportId}
+            fetchExportData={fetchExportData}
+          />
         }
       </div>
     )

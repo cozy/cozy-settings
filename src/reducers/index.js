@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 import fields from './fields'
 import twoFactor from './twoFactor'
-import exportStatus from './export'
+import exportData from './export'
 import passphrase from './passphrase'
 import instance from './instance'
 import claudy from './claudy'
@@ -19,7 +19,7 @@ const settingsApp = combineReducers({
   devices,
   fields,
   twoFactor,
-  exportStatus,
+  exportData,
   instance,
   claudy,
   service,
