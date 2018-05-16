@@ -24,6 +24,11 @@
       "type": "io.cozy.settings",
       "verbs": ["GET", "POST", "PUT"]
     },
+    "exports": {
+      "description": "Required to export the Cozy data",
+      "type": "io.cozy.exports",
+      "verbs": ["GET", "POST"]
+    },
     "sessions": {
       "description": "Required to manage your sessions",
       "type": "io.cozy.sessions.logins",

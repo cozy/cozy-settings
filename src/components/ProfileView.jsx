@@ -10,6 +10,7 @@ import PassphraseForm from './PassphraseForm'
 import ReactMarkdownWrapper from './ReactMarkdownWrapper'
 import Select from './Select'
 import TwoFA from './2FA'
+import ExportSection from './export/ExportSection'
 
 const LANG_OPTIONS = ['en', 'fr']
 
@@ -21,6 +22,7 @@ class ProfileView extends Component {
   render () {
     const {
       t,
+      match,
       fields,
       passphrase,
       isFetching,
@@ -28,6 +30,9 @@ class ProfileView extends Component {
       onPassphraseSimpleSubmit,
       instance,
       updateInfo,
+      exportData,
+      fetchExportData,
+      requestExport,
       twoFactor,
       checkTwoFactorCode,
       activate2FA,
@@ -36,6 +41,10 @@ class ProfileView extends Component {
       onPassphrase2FAStep1,
       onPassphrase2FAStep2
     } = this.props
+    let exportId = null
+    if (match && match.params) {
+      exportId = match.params.exportId
+    }
     return (
       <div role='contentinfo'>
         <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
@@ -99,6 +108,14 @@ class ProfileView extends Component {
             label={t('ProfileView.tracking.label', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})}
             {...fields.tracking}
             onChange={onFieldChange}
+          />
+          <ExportSection
+            email={fields.email && fields.email.value}
+            exportData={exportData}
+            exportId={exportId}
+            requestExport={requestExport}
+            fetchExportData={() => fetchExportData(exportId)}
+            parent={'/profile'}
           />
         </div>
       </div>

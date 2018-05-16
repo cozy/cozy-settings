@@ -26,6 +26,7 @@ class App extends Component {
             <Route path='/connectedDevices' component={Devices} />
             <Route path='/sessions' component={Sessions} />
             <Route path='/storage' component={Storage} />
+            <Route path='/exports/:exportId' component={Profile} />
             <Redirect exact from='/' to='/profile' />
             <Redirect from='*' to='/profile' />
           </Switch>
