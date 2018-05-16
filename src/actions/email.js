@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* global cozy */
 
 import { cozyFetch } from './index'
@@ -9,7 +10,13 @@ export const SEND_EMAIL_FAILURE = 'SEND_EMAIL_FAILURE'
 const STACK_DOMAIN = document.querySelector('[role=application]').dataset.cozyDomain
 const CONTACT_ADDRESS = 'contact@cozycloud.cc'
 
-export function sendMessageToSupport (message, t) {
+const CONTACT_RECIPIENT_LIST = [{name: 'Contact', email: CONTACT_ADDRESS}]
+
+function textPlainContentParts (message) {
+  return [{type: 'text/plain', body: message}]
+}
+
+export function sendMessageToSupport (subject, message, t) {
   return (dispatch, getState) => {
     dispatch({type: SEND_EMAIL})
     if (!message) {
@@ -18,12 +25,11 @@ export function sendMessageToSupport (message, t) {
         error: new Error('No message provided.')
       })
     }
-    return sendEmail([
-      {name: 'Contact', email: CONTACT_ADDRESS}
-    ], [
-      {type: 'text/plain', body: message}
-    ], `[cozy-support] Ask support for ${STACK_DOMAIN}`)
-    .then(() => {
+    return sendEmail(
+      CONTACT_RECIPIENT_LIST,
+      textPlainContentParts(message),
+      `[cozy-support] Ask support for ${STACK_DOMAIN}`
+    ).then(() => {
       dispatch({type: SEND_EMAIL_SUCCESS})
       try {
         return sendEmail(null, [
@@ -46,6 +52,14 @@ export function sendMessageToSupport (message, t) {
       }
     })
   }
+}
+
+export function sendDeleteAccountRequest(subject, message) {
+  return sendEmail(
+    CONTACT_RECIPIENT_LIST,
+    textPlainContentParts(message),
+    subject
+  )
 }
 
 export function sendEmail (recipientsList, contentParts, subject = '', mode = 'from') {

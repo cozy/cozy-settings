@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/react/I18n'
 
+import DeleteAccount from './DeleteAccount'
 import Input from './Input'
 import PassphraseForm from './PassphraseForm'
 import ReactMarkdownWrapper from './ReactMarkdownWrapper'
@@ -117,6 +118,7 @@ class ProfileView extends Component {
             fetchExportData={() => fetchExportData(exportId)}
             parent={'/profile'}
           />
+          <p className={viewStyles['set-delete-account']}><DeleteAccount /></p>
         </div>
       </div>
     )
