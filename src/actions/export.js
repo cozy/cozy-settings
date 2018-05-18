@@ -26,13 +26,7 @@ export const fetchExportData = (exportId) => {
     dispatch({ type: FETCH_EXPORT_DATA })
     return cozyFetch('GET', `/move/exports/${exportId}`)
     .then(resp => {
-      return cozyFetch('GET', `/move/exports/data/${exportId}`)
-      .then(() => {
-        dispatch({ type: FETCH_EXPORT_DATA_SUCCESS, data: resp.data })
-      })
-      .catch(() => {
-        dispatch({ type: FETCH_EXPORT_DATA_FAILURE, error: 'ProfileView.export.missing_error' })
-      })
+      dispatch({ type: FETCH_EXPORT_DATA_SUCCESS, data: resp.data })
     }).catch(() => {
       dispatch({ type: FETCH_EXPORT_DATA_FAILURE, error: 'ProfileView.export.fetch_error' })
     })
