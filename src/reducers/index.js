@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 import fields from './fields'
 import twoFactor from './twoFactor'
+import exportData from './export'
 import passphrase from './passphrase'
 import instance from './instance'
 import claudy from './claudy'
@@ -13,12 +14,12 @@ import openDeviceRevokeModale from './openDeviceRevokeModale'
 import sessions from './sessions'
 import storageData from './storageData'
 import ui from './ui'
-import alerterReducer from 'cozy-ui/react/Alerter'
 
 const settingsApp = combineReducers({
   devices,
   fields,
   twoFactor,
+  exportData,
   instance,
   claudy,
   service,
@@ -28,8 +29,7 @@ const settingsApp = combineReducers({
   passphrase,
   sessions,
   storageData,
-  ui,
-  alerts: alerterReducer
+  ui
 })
 
 export default settingsApp

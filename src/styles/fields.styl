@@ -7,13 +7,22 @@
         @extend $form-progress
         @extend $form-select
 
+        .coz-form-label
+            margin 0
+            padding 0
+
         .password-visibility
+            float right
+            text-align right
             text-transform  uppercase
-            position        absolute
             cursor          pointer
-            right           0
-            top             em(-31px)
             font-weight     bold
+
+            &:hover,
+            &:active,
+            &:focus
+                text-decoration none
+
 
         .password-reset-link
             margin-top .5em
@@ -102,3 +111,10 @@
                     background    emerald
                 &::-moz-progress-bar
                     background    emerald
+
+.coz-form-field-header
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items end
+    margin 1rem 0 .5rem

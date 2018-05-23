@@ -1,5 +1,6 @@
 {
   "name": "Settings",
+  "name_prefix": "Cozy",
   "slug": "cozy-settings",
   "icon": "app-icon.svg",
   "description": "Settings manager for Cozy v3",
@@ -22,6 +23,11 @@
       "description": "Required to manage your settings",
       "type": "io.cozy.settings",
       "verbs": ["GET", "POST", "PUT"]
+    },
+    "exports": {
+      "description": "Required to export the Cozy data",
+      "type": "io.cozy.exports",
+      "verbs": ["GET", "POST"]
     },
     "sessions": {
       "description": "Required to manage your sessions",

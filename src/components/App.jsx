@@ -1,20 +1,29 @@
+/* eslint-disbale */
 import styles from '../styles/app'
 
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'cozy-ui/react/I18n'
 import classNames from 'classnames'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import Sidebar from './Sidebar'
-import { Alerter } from 'cozy-ui/react/Alerter'
+import Alerter from 'cozy-ui/react/Alerter'
 import Profile from '../containers/Profile'
 import Devices from '../containers/Devices'
 import Sessions from '../containers/Sessions'
 import Storage from '../containers/Storage'
 
 class App extends Component {
-  render ({ children }) {
+  childContextTypes = {
+    domain: PropTypes.string
+  }
+
+  getChildContext () {
+    return {domain: this.props.domain}
+  }
+
+  render ({ children, domain }) {
     return (
       <div className={classNames(styles['app-wrapper'], styles['o-layout--2panes'])}>
         <Alerter />
@@ -26,6 +35,7 @@ class App extends Component {
             <Route path='/connectedDevices' component={Devices} />
             <Route path='/sessions' component={Sessions} />
             <Route path='/storage' component={Storage} />
+            <Route path='/exports/:exportId' component={Profile} />
             <Redirect exact from='/' to='/profile' />
             <Redirect from='*' to='/profile' />
           </Switch>

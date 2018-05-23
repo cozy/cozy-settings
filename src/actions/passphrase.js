@@ -15,18 +15,13 @@ export const UPDATE_PASSPHRASE_2FA_2_SUCCESS = 'UPDATE_PASSPHRASE_2FA_2_SUCCESS'
 export const UPDATE_PASSPHRASE_2FA_2_FAILURE = 'UPDATE_PASSPHRASE_2FA_2_FAILURE'
 
 export const updatePassphrase = (current, newVal) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: UPDATE_PASSPHRASE })
     return cozyFetch('PUT', '/settings/passphrase', {
       'current_passphrase': current,
       'new_passphrase': newVal
     }).then(instance => {
-      dispatch({
-        type: UPDATE_PASSPHRASE_SUCCESS,
-        alert: {
-          message: 'ProfileView.password.reload'
-        }
-      })
+      dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
       setTimeout(() => {
         dispatch({ type: RESET_PASSPHRASE_FIELD })
         // the token changes after a password change, so we need to reload the page to get the new one
@@ -77,19 +72,14 @@ export const updatePassphrase2FAFirst = (current) => {
 }
 
 export const updatePassphrase2FASecond = (newVal, twoFactorCode, twoFactorToken) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: UPDATE_PASSPHRASE_2FA_2 })
     return cozyFetch('PUT', '/settings/passphrase', {
       'new_passphrase': newVal,
       'two_factor_token': twoFactorToken,
       'two_factor_passcode': twoFactorCode
     }).then(instance => {
-      dispatch({
-        type: UPDATE_PASSPHRASE_2FA_2_SUCCESS,
-        alert: {
-          message: 'ProfileView.password.reload'
-        }
-      })
+      dispatch({ type: UPDATE_PASSPHRASE_2FA_2_SUCCESS })
       setTimeout(() => {
         dispatch({ type: RESET_PASSPHRASE_FIELD })
         // the token changes after a password change, so we need to reload the page to get the new one

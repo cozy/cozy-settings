@@ -135,7 +135,7 @@ by child elements */
   display: block;
   height: 1.5em;
   width: 1.5em;
-  margin-top: calc(50% - 1.5em / 2);
+  margin-top: calc(50% - 2rem);
   border-radius: 100%;
   background: var(--malachite);
   text-align: center;
@@ -190,11 +190,12 @@ by child elements */
   text-overflow: ellipsis;
 }
 
-[role=button].coz-claudy-menu-action-description-button,
-[role=button].coz-claudy-menu-action-description-button:visited,
-[role=button].coz-claudy-menu-action-description-button:active,
-[role=button].coz-claudy-menu-action-description-button:hover {
+.coz-claudy-menu-action-description .coz-claudy-menu-action-description-button,
+.coz-claudy-menu-action-description .coz-claudy-menu-action-description-button:visited,
+.coz-claudy-menu-action-description .coz-claudy-menu-action-description-button:active,
+.coz-claudy-menu-action-description .coz-claudy-menu-action-description-button:hover {
   color: white;
   width: 100%;
   margin: 0;
+  text-decoration: none;
 }

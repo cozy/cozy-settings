@@ -68,7 +68,7 @@ export const fetchStorageData = () => {
         instance.data.attributes &&
         instance.data.attributes.uuid
       if (managerUrl && uuid) {
-        offersLink = `${managerUrl}/cozy/accounts/${uuid}`
+        offersLink = `${managerUrl}/cozy/instances/${uuid}/premium`
       }
     } catch (e) {
       if (e.error && e.error !== 'Not Found') {
@@ -90,13 +90,9 @@ export const fetchStorageData = () => {
         }
       })
     })
-    .catch(() => {
-      dispatch({
-        type: FETCH_STORAGE_FAILURE,
-        alert: {
-          message: 'StorageView.load_error'
-        }
-      })
+    .catch(error => {
+      dispatch({ type: FETCH_STORAGE_FAILURE })
+      throw error
     })
   }
 }
@@ -135,7 +131,7 @@ export const updateInfo = (field, value) => {
 
 const DISPLAYED_CLIENTS = ['mobile', 'desktop']
 export const fetchDevices = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: FETCH_DEVICES })
 
     cozyFetch('GET', '/settings/clients')
@@ -148,32 +144,24 @@ export const fetchDevices = () => {
       }).filter(device => DISPLAYED_CLIENTS.includes(device.client_kind))
       dispatch({ type: FETCH_DEVICES_SUCCESS, devices })
     })
-    .catch(() => {
-      dispatch({
-        type: FETCH_DEVICES_FAILURE,
-        alert: {
-          message: 'DevicesView.load_error'
-        }
-      })
+    .catch(error => {
+      dispatch({ type: FETCH_DEVICES_FAILURE })
+      throw error
     })
   }
 }
 
 export const devicePerformRevoke = (deviceId) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: DEVICE_REVOKE })
 
     cozyFetch('DELETE', '/settings/clients/' + deviceId)
     .then(() => {
       dispatch({ type: DEVICE_REVOKE_SUCCESS, deviceId })
     })
-    .catch(() => {
-      dispatch({
-        type: DEVICE_REVOKE_FAILURE,
-        alert: {
-          message: 'revokeDevice.error'
-        }
-      })
+    .catch(error => {
+      dispatch({ type: DEVICE_REVOKE_FAILURE })
+      throw error
     })
   }
 }
@@ -203,12 +191,8 @@ export const fetchSessions = () => {
       // GET currents sessions id
       responseCurrentsSessionsIds = await cozyFetch('GET', '/settings/sessions')
     } catch (error) {
-      dispatch({
-        type: FETCH_SESSIONS_FAILURE,
-        alert: {
-          message: 'SessionsView.infos.server_error'
-        }
-      })
+      dispatch({ type: FETCH_SESSIONS_FAILURE })
+      throw error
     }
 
     // Merge ID and Sessions to inject only currents sessions in the store
@@ -225,27 +209,18 @@ export const fetchSessions = () => {
 }
 
 export const deleteOtherSessions = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: SESSIONS_DELETE_OTHERS })
     cozyFetch('DELETE', '/auth/login/others')
     .then(() => {
-      dispatch({
-        type: SESSIONS_DELETE_OTHERS_SUCCESS,
-        alert: {
-          message: 'SessionsView.infos.sessions_deleted'
-        }
-      })
+      dispatch({ type: SESSIONS_DELETE_OTHERS_SUCCESS })
     })
     .then(() => {
       dispatch(fetchSessions())
     })
-    .catch(() => {
-      dispatch({
-        type: SESSIONS_DELETE_OTHERS_FAILURE,
-        alert: {
-          message: 'SessionsView.infos.server_error'
-        }
-      })
+    .catch(error => {
+      dispatch({ type: SESSIONS_DELETE_OTHERS_FAILURE })
+      throw error
     })
   }
 }
@@ -276,7 +251,7 @@ export const cozyFetch = (method, path, body) => {
         data = response.text()
       }
 
-      return (response.status === 200 || response.status === 202 || response.status === 204)
+      return (response.status >= 200 && response.status <= 204)
         ? data
         : data.then(Promise.reject.bind(Promise))
     })

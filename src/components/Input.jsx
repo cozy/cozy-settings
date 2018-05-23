@@ -51,16 +51,19 @@ class PasswordInputComponent extends Component {
   }
 
   render () {
-    const { t, name, value, onInput, autocomplete, inError = false } = this.props
+    const { label, t, name, value, onInput, autocomplete, inError = false } = this.props
     const { visible } = this.state
     return (
       <div className={styles['coz-form-group']}>
-        <a
-          onClick={this.toggleVisibility}
-          className={styles['password-visibility']}
-        >
-          {visible ? t(`ProfileView.password.hide`) : t(`ProfileView.password.show`)}
-        </a>
+        <div className={styles['coz-form-field-header']}>
+          { label && <label className={styles['coz-form-label']}>{label}</label> }
+          <a
+            onClick={this.toggleVisibility}
+            className={styles['password-visibility']}
+          >
+            {visible ? t(`ProfileView.password.hide`) : t(`ProfileView.password.show`)}
+          </a>
+        </div>
         <input
           type={visible ? 'text' : 'password'}
           placeholder={t(`ProfileView.${name}.placeholder`)}
