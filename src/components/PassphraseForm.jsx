@@ -85,7 +85,7 @@ class PassphraseForm extends Component {
           <Button
             className={classNames({[styles['saved']]: saved})}
             theme='secondary'
-            busy={submitting ? 'true' : 'false'}
+            busy={submitting}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
           >
