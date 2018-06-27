@@ -98,7 +98,7 @@ class ProfileView extends Component {
           <p>
             <ReactMarkdownWrapper
               source={
-                t('ProfileView.locale.contrib', {link: 'https://support.cozy.io/article/114-doubleauthentification'})
+                t('ProfileView.locale.contrib')
               }
             />
           </p>

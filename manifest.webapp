@@ -3,20 +3,13 @@
   "name_prefix": "Cozy",
   "slug": "cozy-settings",
   "icon": "app-icon.svg",
-  "description": "Settings manager for Cozy v3",
   "source": "https://github.com/cozy/cozy-settings.git@build",
   "editor": "Cozy",
   "developer": {
     "name": "Cozy",
     "url": "https://cozy.io"
   },
-  "default_locale": "en",
-  "locales": {
-    "fr": {
-      "description": "Gestionnaire de paramètres pour Cozy v3"
-    }
-  },
-  "version": "3.0.3",
+  "version": "1.0.0",
   "licence": "AGPL-3.0",
   "permissions": {
     "settings": {
