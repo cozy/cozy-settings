@@ -1,7 +1,7 @@
 {
   "name": "Settings",
   "name_prefix": "Cozy",
-  "slug": "cozy-settings",
+  "slug": "settings",
   "icon": "app-icon.svg",
   "source": "https://github.com/cozy/cozy-settings.git@build",
   "editor": "Cozy",
