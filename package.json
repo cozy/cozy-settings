@@ -1,6 +1,6 @@
 {
   "name": "cozy-settings",
-  "version": "3.0.3",
+  "version": "1.0.0",
   "main": "src/index.jsx",
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config.js",
@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "cozy-ui": "7.22.0",
+    "cozy-ui": "^9.1.0",
     "date-fns": "^1.27.2",
     "piwik-react-router": "^0.8.2",
     "preact": "^8.1.0",
