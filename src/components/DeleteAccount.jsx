@@ -8,6 +8,8 @@ import Button from 'cozy-ui/react/Button'
 import ConfirmModal from './DeleteAccount/ConfirmModal'
 import FormModal from './DeleteAccount/FormModal'
 
+import viewStyles from '../styles/view'
+
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
 const REQUESTING = 'requesting'
@@ -60,14 +62,22 @@ export class DeleteAccount extends Component {
             onSuccess={this.onRequested}
           />
         }
-        <Button
-          busy={status === REQUESTING}
-          disabled={status !== IDLE}
-          extension="full"
-          label={t('DeleteAccount.button.label')}
-          onClick={this.confirm}
-          theme="danger"
-        />
+        <div className={viewStyles['set-view-section']}>
+          <h3>{t('DeleteAccount.title')}</h3>
+          <p className={viewStyles['set-view-section-label']}>
+            {t('DeleteAccount.label')}
+          </p>
+          <p className="u-mt-1">
+            <Button
+              busy={status === REQUESTING}
+              disabled={status !== IDLE}
+              extension="full"
+              label={t('DeleteAccount.button.label')}
+              onClick={this.confirm}
+              theme="danger-outline"
+            />
+          </p>
+        </div>
       </div>
     )
   }
