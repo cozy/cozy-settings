@@ -16,7 +16,7 @@ function textPlainContentParts (message) {
   return [{type: 'text/plain', body: message}]
 }
 
-export function sendMessageToSupport (subject, message, t) {
+export function sendMessageToSupport (message, t) {
   return (dispatch, getState) => {
     dispatch({type: SEND_EMAIL})
     if (!message) {

@@ -1,6 +1,6 @@
 {
   "name": "cozy-settings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.jsx",
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config.js",
@@ -12,7 +12,7 @@
     "prebuild": "npm-run-all clean tx",
     "prewatch": "npm run clean",
     "lint": "standard 'src/**/*.js' 'src/**/*.jsx'",
-    "test": "node --harmony_proxies node_modules/.bin/jest",
+    "test": "jest",
     "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/settings cozy/cozy-app-dev",
     "watch": "NODE_ENV=development webpack --config webpack.config.js --watch --display-modules --display-chunks",
     "watch:server": "NODE_ENV=development webpack-dev-server --config webpack.config.js --port 8090 --display-modules --display-chunks --inline --hot"
@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "cozy-ui": "^9.1.0",
+    "cozy-ui": "10.2.0",
     "date-fns": "^1.27.2",
     "piwik-react-router": "^0.8.2",
     "preact": "^8.1.0",
