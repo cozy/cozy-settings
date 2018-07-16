@@ -13,7 +13,7 @@ const CONTACT_ADDRESS = 'contact@cozycloud.cc'
 const CONTACT_RECIPIENT_LIST = [{name: 'Contact', email: CONTACT_ADDRESS}]
 
 function textPlainContentParts (message) {
-  return [{type: 'text/plain', body: message}]
+  return [{type: 'text/plain', body: message || 'No reason/message provided.'}]
 }
 
 export function sendMessageToSupport (message, t) {
