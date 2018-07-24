@@ -13,7 +13,7 @@ import Select from './Select'
 import TwoFA from './2FA'
 import ExportSection from './export/ExportSection'
 
-const LANG_OPTIONS = ['en', 'fr']
+const LANG_OPTIONS = ['en', 'fr', 'es']
 
 class ProfileView extends Component {
   componentWillMount () {
@@ -90,7 +90,7 @@ class ProfileView extends Component {
             options={LANG_OPTIONS.map(lang => {
               return {
                 value: lang,
-                text: t(`ProfileView.locale.${lang}.text`)
+                text: t(`ProfileView.locale.${lang}`)
               }
             })}
             {...fields.locale}
