@@ -46,8 +46,16 @@ before_install:
 script:
 - yarn test
 - yarn run build
-after_success:
-- test $TRAVIS_BRANCH = "master" && yarn run deploy -- --branch=build
-- test $TRAVIS_BRANCH = "prod" && yarn run deploy -- --branch=latest
-# Temporary feature branches
-- test $TRAVIS_BRANCH = "2fa" && yarn run deploy -- --branch=build_2fa
+deploy:
+  - provider: script
+    repo: cozy/cozy-settings
+    skip-cleanup: true
+    script: yarn cozyPublish
+    on:
+      branch: master
+  - provider: script
+    repo: cozy/cozy-settings
+    skip-cleanup: true
+    script: yarn cozyPublish
+    on:
+      tags: true
