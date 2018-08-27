@@ -53,10 +53,10 @@ export const fetchClaudyInfos = () => {
 
 export const consolidateClaudyActionsInfos = (claudyActions) => {
   const ACTIONS_WITH_DEVICES = ['desktop', 'mobile']
-  const ACTIONS_WITH_ACCOUNTS = ['cozy-collect']
+  const ACTIONS_WITH_ACCOUNTS = ['cozy-collect', 'gather']
   return async (dispatch, getState) => {
     let apps = []
-    let collectAccounts = []
+    let accounts = []
     // if at least one action requires app links
     if (claudyActions.find(a => a.link && a.link.type === 'apps')) {
       try {
@@ -74,13 +74,13 @@ export const consolidateClaudyActionsInfos = (claudyActions) => {
     // if at least one action requires devices infos
     if (claudyActions.find(a => ACTIONS_WITH_ACCOUNTS.includes(a.slug))) {
       try {
-        collectAccounts = await getAllAccounts()
+        accounts = await getAllAccounts()
       } catch (e) {
         console.warn && console.warn('Cannot fetch accounts infos for Claudy.')
-        collectAccounts = [] // keep list empty if apps cannot be fetched
+        accounts = [] // keep list empty if apps cannot be fetched
       }
     }
-    dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps, collectAccounts })
+    dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps, accounts })
   }
 }
 

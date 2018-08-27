@@ -11,6 +11,7 @@ const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
 
 const CLAUDY_ACTION_COLLECT = 'cozy-collect'
+const CLAUDY_ACTION_GATHER = 'gather'
 
 export class Claudy extends Component {
   constructor (props, context) {
@@ -76,14 +77,15 @@ export class Claudy extends Component {
   consolidateActions (claudyInfos) {
     return claudyInfos.actions.map(action => {
       switch (action.slug) {
-        case 'desktop':
+        case DESKTOP_CLIENT_KIND:
           action.complete = !!claudyInfos.devices.find(d => d.client_kind === DESKTOP_CLIENT_KIND)
           break
-        case 'mobile':
+        case MOBILE_CLIENT_KIND:
           action.complete = !!claudyInfos.devices.find(d => d.client_kind === MOBILE_CLIENT_KIND)
           break
-        case 'cozy-collect':
-          action.complete = !!claudyInfos.collectAccounts.length
+        case CLAUDY_ACTION_COLLECT:
+        case CLAUDY_ACTION_GATHER:
+          action.complete = !!claudyInfos.accounts.length
           break
         default:
           action.complete = false
@@ -200,16 +202,16 @@ export class Claudy extends Component {
                   <p className='coz-claudy-menu-action-title'>
                     {t(`claudy.actions.${action.slug}.title`)}
                   </p>
-                  {action.complete && action.slug !== CLAUDY_ACTION_COLLECT &&
+                  {action.complete && ![CLAUDY_ACTION_COLLECT, CLAUDY_ACTION_GATHER].includes(action.slug) &&
                     <img
                       className='coz-claudy-menu-action-check'
                       src={this.checkIcon}
                     />
                   }
-                  {action.complete && action.slug === CLAUDY_ACTION_COLLECT &&
+                  {action.complete && ![CLAUDY_ACTION_COLLECT, CLAUDY_ACTION_GATHER].includes(action.slug) &&
                     <div className='coz-claudy-menu-action-count-wrapper'>
                       <span className='coz-claudy-menu-action-count'>
-                        {claudyInfos.collectAccounts.length}
+                        {claudyInfos.accounts.length}
                       </span>
                     </div>
                   }
