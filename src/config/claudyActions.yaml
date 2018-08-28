@@ -15,6 +15,13 @@ cozy-collect:
     appSlug: collect
     path: '/intro'
 
+gather:
+  icon: icon-bills.svg
+  link:
+    type: apps
+    appSlug: home
+    path: '/intro'
+
 support:
   icon: icon-question-mark.svg
   component: /Support
