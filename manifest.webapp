@@ -83,5 +83,6 @@
       ],
       "href": "/services/support"
     }
-  ]
+  ],
+  "type": "webapp"
 }
