@@ -44,6 +44,8 @@ before_install:
 script:
 - yarn test
 - yarn run build
+before_deploy:
+- yarn add cozy-app-publish
 deploy:
   - provider: script
     repo: cozy/cozy-settings
