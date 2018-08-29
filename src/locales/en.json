@@ -110,7 +110,7 @@
     },
     "twofa" : {
       "title": {
-        "activate": "Cozy two steps authentication",
+        "activate": "Two steps authentication",
         "desactivate": "Desactivate two steps authentication",
         "validation": "Two steps authentication validation"
       },
