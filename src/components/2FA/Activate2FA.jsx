@@ -30,6 +30,7 @@ export const Activate2FA = ({
           : 'ProfileView.twofa.title.activate'
         )
       }
+      size='large'
     >
       <ModalContent
         className={viewStyles['set-view-content-twofa-modal-content']}
