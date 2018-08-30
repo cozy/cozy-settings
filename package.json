@@ -1,6 +1,6 @@
 {
   "name": "cozy-settings",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "main": "src/index.jsx",
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config.js",
