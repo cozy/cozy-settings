@@ -53,7 +53,7 @@ export const fetchClaudyInfos = () => {
 
 export const consolidateClaudyActionsInfos = (claudyActions) => {
   const ACTIONS_WITH_DEVICES = ['desktop', 'mobile']
-  const ACTIONS_WITH_ACCOUNTS = ['cozy-collect', 'gather']
+  const ACTIONS_WITH_ACCOUNTS = ['gather']
   return async (dispatch, getState) => {
     let apps = []
     let accounts = []

@@ -10,7 +10,6 @@ import ClaudyAction from './ClaudyAction'
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
 
-const CLAUDY_ACTION_COLLECT = 'cozy-collect'
 const CLAUDY_ACTION_GATHER = 'gather'
 
 export class Claudy extends Component {
@@ -83,7 +82,6 @@ export class Claudy extends Component {
         case MOBILE_CLIENT_KIND:
           action.complete = !!claudyInfos.devices.find(d => d.client_kind === MOBILE_CLIENT_KIND)
           break
-        case CLAUDY_ACTION_COLLECT:
         case CLAUDY_ACTION_GATHER:
           action.complete = !!claudyInfos.accounts.length
           break
@@ -202,13 +200,13 @@ export class Claudy extends Component {
                   <p className='coz-claudy-menu-action-title'>
                     {t(`claudy.actions.${action.slug}.title`)}
                   </p>
-                  {action.complete && ![CLAUDY_ACTION_COLLECT, CLAUDY_ACTION_GATHER].includes(action.slug) &&
+                  {action.complete && action.slug !== CLAUDY_ACTION_GATHER &&
                     <img
                       className='coz-claudy-menu-action-check'
                       src={this.checkIcon}
                     />
                   }
-                  {action.complete && ![CLAUDY_ACTION_COLLECT, CLAUDY_ACTION_GATHER].includes(action.slug) &&
+                  {action.complete && action.slug !== CLAUDY_ACTION_GATHER &&
                     <div className='coz-claudy-menu-action-count-wrapper'>
                       <span className='coz-claudy-menu-action-count'>
                         {claudyInfos.accounts.length}
