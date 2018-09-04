@@ -8,13 +8,6 @@ mobile:
   link:
     type: external
 
-cozy-collect:
-  icon: icon-bills.svg
-  link:
-    type: apps
-    appSlug: collect
-    path: '/intro'
-
 gather:
   icon: icon-bills.svg
   link:
