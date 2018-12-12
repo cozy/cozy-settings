@@ -1,12 +1,7 @@
 import React from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { NavLink as RouterLink } from 'react-router-dom'
-import Nav, {
-  NavLink,
-  NavItem,
-  NavIcon,
-  NavText
-} from 'cozy-ui/react/Nav'
+import Nav, { NavLink, NavItem, NavIcon, NavText } from 'cozy-ui/react/Nav'
 
 import styles from '../styles/sidebar'
 
@@ -20,7 +15,7 @@ export const Sidebar = ({ t }) => (
     <Nav>
       <NavItem>
         <RouterLink
-          to='/profile'
+          to="/profile"
           className={NavLink.className}
           activeClassName={NavLink.activeClassName}
         >
@@ -30,7 +25,7 @@ export const Sidebar = ({ t }) => (
       </NavItem>
       <NavItem>
         <RouterLink
-          to='/connectedDevices'
+          to="/connectedDevices"
           className={NavLink.className}
           activeClassName={NavLink.activeClassName}
         >
@@ -40,7 +35,7 @@ export const Sidebar = ({ t }) => (
       </NavItem>
       <NavItem>
         <RouterLink
-          to='/sessions'
+          to="/sessions"
           className={NavLink.className}
           activeClassName={NavLink.activeClassName}
         >
@@ -50,7 +45,7 @@ export const Sidebar = ({ t }) => (
       </NavItem>
       <NavItem>
         <RouterLink
-          to='/storage'
+          to="/storage"
           className={NavLink.className}
           activeClassName={NavLink.activeClassName}
         >

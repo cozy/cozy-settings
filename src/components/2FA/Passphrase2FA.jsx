@@ -9,20 +9,20 @@ import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
 import Input from '../Input'
 
 export class Passphrase2FA extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       twoFactorCode: ''
     }
   }
 
-  onChange (newVal) {
-    this.setState((state, props) => ({
+  onChange(newVal) {
+    this.setState(() => ({
       twoFactorCode: newVal
     }))
   }
 
-  render () {
+  render() {
     const {
       t,
       onPassphrase2FASubmit,
@@ -47,28 +47,38 @@ export class Passphrase2FA extends Component {
                 email
               })}
             />
-            <div className={viewStyles['set-view-content-twofa-modal-confirmation-input']}>
+            <div
+              className={
+                viewStyles['set-view-content-twofa-modal-confirmation-input']
+              }
+            >
               <Input
-                name='two_factor_mail'
-                type='text'
+                name="two_factor_mail"
+                type="text"
                 value={twoFactorCode}
                 onChange={(name, value) => this.onChange(value)}
               />
-              <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
+              <div
+                className={viewStyles['set-view-content-twofa-modal-nocode']}
+              >
                 <p>{t('ProfileView.twofa.modal.nocode')}</p>
-                <p>{t('ProfileView.twofa.modal.nocode_claude')}<a href='mailto:claude@cozycloud.cc'>claude@cozycloud.cc</a></p>
+                <p>
+                  {t('ProfileView.twofa.modal.nocode_claude')}
+                  <a href="mailto:claude@cozycloud.cc">claude@cozycloud.cc</a>
+                </p>
               </div>
             </div>
-            {
-              !email && <p className={styles['coz-form-errors']}>
+            {!email && (
+              <p className={styles['coz-form-errors']}>
                 {t('ProfileView.twofa.modal.email')}
               </p>
-            }
-            <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
-              <Button
-                onClick={closeTwoFAPassphraseModal}
-                theme='secondary'
-              >
+            )}
+            <div
+              className={
+                viewStyles['set-view-content-twofa-modal-content-right-buttons']
+              }
+            >
+              <Button onClick={closeTwoFAPassphraseModal} theme="secondary">
                 {t('ProfileView.twofa.modal.button.cancel')}
               </Button>
               <Button
@@ -76,9 +86,7 @@ export class Passphrase2FA extends Component {
                 aria-busy={submitting}
                 disabled={!email}
               >
-                <span>
-                  {t('ProfileView.twofa.modal.button.validate')}
-                </span>
+                <span>{t('ProfileView.twofa.modal.button.validate')}</span>
               </Button>
             </div>
           </ModalContent>

@@ -31,14 +31,12 @@ if (__DEVELOPMENT__) {
 }
 
 // Enable Redux dev tools
-const composeEnhancers = (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+const composeEnhancers =
+  (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
 const store = createStore(
   settingsApp,
-  composeEnhancers(applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
-  ))
+  composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware))
 )
 
 const EnhancedI18n = connect(state => {
@@ -67,13 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
     lang: data.cozyLocale
   })
 
-  render((
+  render(
     <Provider store={store}>
-      <EnhancedI18n dictRequire={(lang) => require(`./locales/${lang}`)}>
+      <EnhancedI18n dictRequire={lang => require(`./locales/${lang}`)}>
         <PiwikHashRouter>
           <App domain={data.cozyDomain} />
         </PiwikHashRouter>
       </EnhancedI18n>
-    </Provider>
-  ), root)
+    </Provider>,
+    root
+  )
 })

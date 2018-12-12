@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/react/I18n'
-import Modal, { ModalHeader, ModalDescription, ModalFooter } from 'cozy-ui/react/Modal'
+import Modal, {
+  ModalHeader,
+  ModalDescription,
+  ModalFooter
+} from 'cozy-ui/react/Modal'
 import { Button } from 'cozy-ui/react/Button'
 
 import viewStyles from '../../styles/view'
@@ -12,7 +16,7 @@ import ExportDownload from './ExportDownload'
 const exportImage = require('../../assets/images/export-cozy-mail.svg')
 
 class ExportSection extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       displayModal: false
@@ -21,18 +25,18 @@ class ExportSection extends Component {
     this.submitExport = this.submitExport.bind(this)
   }
 
-  toggleModal () {
+  toggleModal() {
     this.setState(currentState => ({
       displayModal: !currentState.displayModal
     }))
   }
 
-  submitExport () {
+  submitExport() {
     this.props.requestExport()
     this.toggleModal()
   }
 
-  render () {
+  render() {
     const {
       t,
       email,
@@ -57,7 +61,7 @@ class ExportSection extends Component {
             />
           </p>
         </div>
-        {displayModal &&
+        {displayModal && (
           <Modal
             className={viewStyles['set-export-modal']}
             secondaryAction={this.toggleModal}
@@ -73,27 +77,24 @@ class ExportSection extends Component {
                 {t('ProfileView.export.modal.title')}
               </h2>
             </ModalHeader>
-            <ModalDescription className={viewStyles['set-export-modal-description']}>
+            <ModalDescription
+              className={viewStyles['set-export-modal-description']}
+            >
               <ReactMarkdownWrapper
-                source={t(
-                  'ProfileView.export.modal.description',
-                  { email }
-                )}
+                source={t('ProfileView.export.modal.description', { email })}
               />
-              {exportData.error && <p className={formStyles['coz-form-errors']}>
+              {exportData.error && (
+                <p className={formStyles['coz-form-errors']}>
                   {t(exportData.error)}
                 </p>
-              }
+              )}
             </ModalDescription>
             <ModalFooter className={viewStyles['set-export-modal-footer']}>
-              <Button
-                theme='secondary'
-                onClick={this.toggleModal}
-              >
+              <Button theme="secondary" onClick={this.toggleModal}>
                 {t('ProfileView.export.modal.cancel')}
               </Button>
               <Button
-                theme='primary'
+                theme="primary"
                 onClick={this.submitExport}
                 busy={exportData.submitting}
                 disabled={exportData.submitting}
@@ -102,15 +103,15 @@ class ExportSection extends Component {
               </Button>
             </ModalFooter>
           </Modal>
-        }
-        {exportId &&
+        )}
+        {exportId && (
           <ExportDownload
             exportData={exportData}
             exportId={exportId}
             fetchExportData={fetchExportData}
             parent={parent}
           />
-        }
+        )}
       </div>
     )
   }

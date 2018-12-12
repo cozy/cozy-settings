@@ -15,32 +15,33 @@ const initialState = {
 }
 
 class PassphraseForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = initialState
   }
 
-  handleCurrentInput (e) {
+  handleCurrentInput(e) {
     this.setState({
       currentPassword: e.target.value
     })
   }
 
-  handleNewInput (e) {
+  handleNewInput(e) {
     this.setState({
       newPassword: e.target.value,
       strength: passwordHelper.getStrength(e.target.value)
     })
   }
 
-  handleSubmit (e) {
-    this.props.onSubmit(this.state.currentPassword, this.state.newPassword)
+  handleSubmit() {
+    this.props
+      .onSubmit(this.state.currentPassword, this.state.newPassword)
       .then(() => {
         this.setState(initialState)
       })
   }
 
-  render () {
+  render() {
     const { currentPassword, newPassword, strength } = this.state
     const { t, errors, submitting, saved } = this.props
     const currentPasswordError = errors && errors.currentPassword
@@ -48,7 +49,8 @@ class PassphraseForm extends Component {
     const newPasswordError = errors && errors.newPassword
     const twoFactorError = errors && errors.wrongTwoFactor
     const canSubmit = newPassword !== '' && strength.label !== 'weak'
-    const STACK_DOMAIN = '//' + document.querySelector('[role=application]').dataset.cozyDomain
+    const STACK_DOMAIN =
+      '//' + document.querySelector('[role=application]').dataset.cozyDomain
     const passphraseResetUrl = STACK_DOMAIN + '/auth/passphrase_reset'
 
     return (
@@ -56,35 +58,45 @@ class PassphraseForm extends Component {
         <h3>{t('ProfileView.password.title')}</h3>
         <PasswordInput
           label={t('ProfileView.current_password.label')}
-          name='current_password'
-          key='current_password'
+          name="current_password"
+          key="current_password"
           value={currentPassword}
           inError={currentPasswordError}
           onInput={e => this.handleCurrentInput(e)}
-          autocomplete='current-password'
+          autocomplete="current-password"
         />
-        {currentPasswordError && <p className={styles['coz-form-errors']}>{t(currentPasswordError)}</p>}
+        {currentPasswordError && (
+          <p className={styles['coz-form-errors']}>{t(currentPasswordError)}</p>
+        )}
         <PasswordInput
           label={t('ProfileView.new_password.label')}
-          name='new_password'
-          key='new_password'
+          name="new_password"
+          key="new_password"
           value={newPassword}
           inError={newPasswordError}
           onInput={e => this.handleNewInput(e)}
-          autocomplete='new-password'
+          autocomplete="new-password"
         />
         <progress
-          step='1' min='0' max='100'
+          step="1"
+          min="0"
+          max="100"
           value={strength.percentage}
           className={styles[`pw-${strength.label}`]}
         />
-        {newPasswordError && <p className={styles['coz-form-errors']}>{t(newPasswordError)}</p>}
-        {globalError && <p className={styles['coz-form-errors']}>{t(globalError)}</p>}
-        {twoFactorError && <p className={styles['coz-form-errors']}>{t(twoFactorError)}</p>}
+        {newPasswordError && (
+          <p className={styles['coz-form-errors']}>{t(newPasswordError)}</p>
+        )}
+        {globalError && (
+          <p className={styles['coz-form-errors']}>{t(globalError)}</p>
+        )}
+        {twoFactorError && (
+          <p className={styles['coz-form-errors']}>{t(twoFactorError)}</p>
+        )}
         <div className={styles['coz-form-controls']}>
           <Button
-            className={classNames({[styles['saved']]: saved})}
-            theme='secondary'
+            className={classNames({ [styles['saved']]: saved })}
+            theme="secondary"
             busy={submitting}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
@@ -93,10 +105,7 @@ class PassphraseForm extends Component {
           </Button>
         </div>
 
-        <a
-          href={passphraseResetUrl}
-          className={styles['password-reset-link']}
-        >
+        <a href={passphraseResetUrl} className={styles['password-reset-link']}>
           {t('ProfileView.password.reset_link')}
         </a>
       </div>

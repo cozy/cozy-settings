@@ -20,9 +20,9 @@ export const ActivationConfirmation = ({
     <h3>{t('ProfileView.twofa.modal.protect')}</h3>
     <p>
       <ReactMarkdownWrapper
-        source={
-          t('ProfileView.twofa.modal.change', {link: 'https://support.cozy.io/article/114-doubleauthentification'})
-        }
+        source={t('ProfileView.twofa.modal.change', {
+          link: 'https://support.cozy.io/article/114-doubleauthentification'
+        })}
       />
     </p>
     <div className={viewStyles['set-view-content-twofa']}>
@@ -49,18 +49,12 @@ export const ActivationConfirmation = ({
         </div>
       </div>
     </div>
-    {twoFactor.error && <p className={styles['coz-form-errors']}>
-        {t(twoFactor.error)}
-      </p>
-    }
+    {twoFactor.error && (
+      <p className={styles['coz-form-errors']}>{t(twoFactor.error)}</p>
+    )}
     <div className={viewStyles['set-view-content-twofa-modal-content-button']}>
-      <Button
-        onClick={activate2FA}
-        aria-busy={twoFactor.submitting}
-      >
-        <span>
-          {t('ProfileView.twofa.modal.button.activate')}
-        </span>
+      <Button onClick={activate2FA} aria-busy={twoFactor.submitting}>
+        <span>{t('ProfileView.twofa.modal.button.activate')}</span>
       </Button>
     </div>
   </Fragment>

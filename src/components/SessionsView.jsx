@@ -11,22 +11,19 @@ import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 
 class SessionsView extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.fetchSessions()
   }
 
-  render () {
+  render() {
     const { t, f, isFetching, sessions, deleteOtherSessions } = this.props
     return (
-      <div role='contentinfo'>
+      <div role="contentinfo">
         <h2 className={viewStyles['set-view-title']}>
           {t('SessionsView.title')}
         </h2>
         <p className={viewStyles['set-view-title']}>
-          <Button
-            theme='danger'
-            onClick={() => deleteOtherSessions()}
-          >
+          <Button theme="danger" onClick={() => deleteOtherSessions()}>
             {t('SessionsView.delete')}
           </Button>
         </p>
@@ -73,15 +70,25 @@ class SessionsView extends Component {
                   IP
                 </div>
               </div>
-              <div className={classNames(tableStyles['coz-table-body'], tableStyles['set-table-sessions'])}>
+              <div
+                className={classNames(
+                  tableStyles['coz-table-body'],
+                  tableStyles['set-table-sessions']
+                )}
+              >
                 {sessions
-                  .sort(function (a, b) {
+                  .sort(function(a, b) {
                     // Turn your strings into dates, and then subtract them
                     // to get a value that is either negative, positive, or zero.
                     return new Date(b.created_at) - new Date(a.created_at)
                   })
-                  .map(session => (
-                    <SessionsViewRow session={session} t={t} f={f} />
+                  .map((session, index) => (
+                    <SessionsViewRow
+                      session={session}
+                      t={t}
+                      f={f}
+                      key={index}
+                    />
                   ))}
               </div>
             </div>

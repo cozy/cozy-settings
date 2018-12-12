@@ -19,25 +19,30 @@ class App extends Component {
     domain: PropTypes.string
   }
 
-  getChildContext () {
-    return {domain: this.props.domain}
+  getChildContext() {
+    return { domain: this.props.domain }
   }
 
-  render ({ children, domain }) {
+  render() {
     return (
-      <div className={classNames(styles['app-wrapper'], styles['o-layout--2panes'])}>
+      <div
+        className={classNames(
+          styles['app-wrapper'],
+          styles['o-layout--2panes']
+        )}
+      >
         <Alerter />
         <Sidebar />
 
         <main className={styles['app-content']}>
           <Switch>
-            <Route path='/profile' component={Profile} />
-            <Route path='/connectedDevices' component={Devices} />
-            <Route path='/sessions' component={Sessions} />
-            <Route path='/storage' component={Storage} />
-            <Route path='/exports/:exportId' component={Profile} />
-            <Redirect exact from='/' to='/profile' />
-            <Redirect from='*' to='/profile' />
+            <Route path="/profile" component={Profile} />
+            <Route path="/connectedDevices" component={Devices} />
+            <Route path="/sessions" component={Sessions} />
+            <Route path="/storage" component={Storage} />
+            <Route path="/exports/:exportId" component={Profile} />
+            <Redirect exact from="/" to="/profile" />
+            <Redirect from="*" to="/profile" />
           </Switch>
         </main>
       </div>
@@ -45,7 +50,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   alert: state.ui.alert
 })
 
@@ -53,6 +58,4 @@ const mapStateToProps = (state) => ({
 withRouter is necessary here to deal with redux
 https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 */
-export default translate()(withRouter(connect(
-  mapStateToProps
-)(App)))
+export default translate()(withRouter(connect(mapStateToProps)(App)))

@@ -20,7 +20,7 @@ export const isFetching = (state = null, action) => {
     case CREATE_INTENT_SERVICE:
       return true
     default:
-      return false
+      return state
   }
 }
 

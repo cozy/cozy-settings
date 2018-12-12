@@ -20,19 +20,19 @@ export const Desactivate2FA = ({
         className={viewStyles['set-view-content-twofa-modal-content']}
       >
         <Fragment>
-          <p><b>{t('ProfileView.twofa.modal.desactivate_title')}</b></p>
+          <p>
+            <b>{t('ProfileView.twofa.modal.desactivate_title')}</b>
+          </p>
           <p>{t('ProfileView.twofa.modal.desactivate_description')}</p>
-          <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
-            <Button
-              onClick={closeTwoFADesactivationModal}
-              theme='secondary'
-              >
+          <div
+            className={
+              viewStyles['set-view-content-twofa-modal-content-right-buttons']
+            }
+          >
+            <Button onClick={closeTwoFADesactivationModal} theme="secondary">
               {t('ProfileView.twofa.modal.button.cancel')}
             </Button>
-            <Button
-              onClick={desactivate2FA}
-              theme='danger'
-            >
+            <Button onClick={desactivate2FA} theme="danger">
               {t('ProfileView.twofa.modal.button.desactivate')}
             </Button>
           </div>

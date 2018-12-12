@@ -1,7 +1,4 @@
-import {
-  FETCH_INFOS_SUCCESS,
-  UPDATE_INFO_SUCCESS
-} from '../actions'
+import { FETCH_INFOS_SUCCESS, UPDATE_INFO_SUCCESS } from '../actions'
 
 const instance = (state = null, action) => {
   switch (action.type) {

@@ -22,7 +22,7 @@ export const isSending = (state = false, action) => {
     case SEND_EMAIL:
       return true
     default:
-      return false
+      return state
   }
 }
 

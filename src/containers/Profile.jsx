@@ -4,18 +4,23 @@ import { translate } from 'cozy-ui/react/I18n'
 import Alerter from 'cozy-ui/react/Alerter'
 
 import { updateInfo, fetchInfos } from '../actions'
-import { checkTwoFactorCode, activate2FA, desactivate2FA, cancel2FAActivation } from '../actions/twoFactor'
+import {
+  checkTwoFactorCode,
+  activate2FA,
+  desactivate2FA,
+  cancel2FAActivation
+} from '../actions/twoFactor'
 import { requestExport, fetchExportData } from '../actions/export'
 
 import {
   updatePassphrase,
   updatePassphrase2FAFirst,
   updatePassphrase2FASecond
- } from '../actions/passphrase'
+} from '../actions/passphrase'
 
 import ProfileView from '../components/ProfileView'
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   fields: state.fields,
   passphrase: state.passphrase,
   instance: state.instance,
@@ -35,7 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     await dispatch(requestExport())
     Alerter.success(ownProps.t('ProfileView.export.success'))
   },
-  fetchExportData: (exportId) => {
+  fetchExportData: exportId => {
     dispatch(fetchExportData(exportId))
   },
   cancel2FAActivation: () => {
@@ -44,30 +49,30 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   checkTwoFactorCode: (value, mode) => {
     dispatch(checkTwoFactorCode(value, mode))
   },
-  activate2FA: (mode) => {
+  activate2FA: mode => {
     dispatch(activate2FA(mode))
   },
-  desactivate2FA: (mode) => {
+  desactivate2FA: mode => {
     dispatch(desactivate2FA(mode))
   },
   onPassphraseSimpleSubmit: (current, newVal) => {
-    return dispatch(updatePassphrase(current, newVal)).then(
-      () => Alerter.info(ownProps.t('ProfileView.password.reload'))
+    return dispatch(updatePassphrase(current, newVal)).then(() =>
+      Alerter.info(ownProps.t('ProfileView.password.reload'))
     )
   },
-  onPassphrase2FAStep1: (current) => {
+  onPassphrase2FAStep1: current => {
     return dispatch(updatePassphrase2FAFirst(current))
   },
   onPassphrase2FAStep2: (newVal, twoFactorCode, twoFactorToken) => {
     return dispatch(
       updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken)
-    ).then(
-      () => Alerter.info(ownProps.t('ProfileView.password.reload'))
-    )
+    ).then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
   }
 })
 
-export default translate()(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProfileView))
+export default translate()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProfileView)
+)

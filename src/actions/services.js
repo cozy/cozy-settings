@@ -15,46 +15,53 @@ export const CREATE_INTENT_SERVICE_FAILURE = 'CREATE_INTENT_SERVICE_FAILURE'
 export const ACCOUNTS_DOCTYPE = 'io.cozy.accounts'
 
 export const createIntentService = (intent, window) => {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch({ type: CREATE_INTENT_SERVICE })
-    cozy.client.intents.createService(intent, window)
-    .then(service => {
-      dispatch({ type: CREATE_INTENT_SERVICE_SUCCESS, service })
-    })
-    .catch(error => {
-      dispatch({ type: CREATE_INTENT_SERVICE_FAILURE, error })
-    })
+    cozy.client.intents
+      .createService(intent, window)
+      .then(service => {
+        dispatch({ type: CREATE_INTENT_SERVICE_SUCCESS, service })
+      })
+      .catch(error => {
+        dispatch({ type: CREATE_INTENT_SERVICE_FAILURE, error })
+      })
   }
 }
 
 export const fetchClaudyInfos = () => {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch({ type: FETCH_CLAUDY_INFOS })
     cozyFetch('GET', '/settings/context')
-    .then(context => {
-      const contextActions = (context.data && context.data.attributes && context.data.attributes['claudy_actions']) || null
-      let claudyActions = []
-      if (contextActions) {
-        // get an arrays of action
-        claudyActions = contextActions.map(slug => {
-          if (CLAUDY_ACTIONS.hasOwnProperty(slug)) {
-            // adding also the action slug
-            return Object.assign({}, CLAUDY_ACTIONS[slug], { slug })
-          }
-        }).filter(action => action)
-      }
-      dispatch(consolidateClaudyActionsInfos(claudyActions))
-    })
-    .catch(error => {
-      dispatch({ type: FETCH_CLAUDY_INFOS_FAILURE, error })
-    })
+      .then(context => {
+        const contextActions =
+          (context.data &&
+            context.data.attributes &&
+            context.data.attributes['claudy_actions']) ||
+          null
+        let claudyActions = []
+        if (contextActions) {
+          // get an arrays of action
+          claudyActions = contextActions
+            .map(slug => {
+              if (CLAUDY_ACTIONS.hasOwnProperty(slug)) {
+                // adding also the action slug
+                return Object.assign({}, CLAUDY_ACTIONS[slug], { slug })
+              }
+            })
+            .filter(action => action)
+        }
+        dispatch(consolidateClaudyActionsInfos(claudyActions))
+      })
+      .catch(error => {
+        dispatch({ type: FETCH_CLAUDY_INFOS_FAILURE, error })
+      })
   }
 }
 
-export const consolidateClaudyActionsInfos = (claudyActions) => {
+export const consolidateClaudyActionsInfos = claudyActions => {
   const ACTIONS_WITH_DEVICES = ['desktop', 'mobile']
   const ACTIONS_WITH_ACCOUNTS = ['gather']
-  return async (dispatch, getState) => {
+  return async dispatch => {
     let apps = []
     let accounts = []
     // if at least one action requires app links
@@ -63,7 +70,8 @@ export const consolidateClaudyActionsInfos = (claudyActions) => {
         const appsResponse = await cozyFetch('GET', '/apps/')
         apps = appsResponse.data
       } catch (e) {
-        console.warn && console.warn('Cannot fetch client devices infos for Claudy.')
+        console.warn &&
+          console.warn('Cannot fetch client devices infos for Claudy.')
         apps = [] // keep list empty if apps cannot be fetched
       }
     }
@@ -80,11 +88,17 @@ export const consolidateClaudyActionsInfos = (claudyActions) => {
         accounts = [] // keep list empty if apps cannot be fetched
       }
     }
-    dispatch({ type: FETCH_CLAUDY_INFOS_SUCCESS, claudyActions, apps, accounts })
+    dispatch({
+      type: FETCH_CLAUDY_INFOS_SUCCESS,
+      claudyActions,
+      apps,
+      accounts
+    })
   }
 }
 
-export function getAllAccounts () {
-  return cozy.client.data.findAll(ACCOUNTS_DOCTYPE)
-  .then(accountsMap => Object.values(accountsMap))
+export function getAllAccounts() {
+  return cozy.client.data
+    .findAll(ACCOUNTS_DOCTYPE)
+    .then(accountsMap => Object.values(accountsMap))
 }

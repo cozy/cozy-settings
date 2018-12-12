@@ -30,15 +30,13 @@ if (__DEVELOPMENT__) {
 }
 
 // Enable Redux dev tools
-const composeEnhancers = (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+const composeEnhancers =
+  (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
 // store
 const store = createStore(
   settingsApp,
-  composeEnhancers(applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
-  ))
+  composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware))
 )
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,13 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
     token: data.cozyToken
   })
 
-  render((
+  render(
     <Provider store={store}>
-      <I18n lang={lang} dictRequire={(lang) => require(`./locales/${lang}`)}>
-        <div className='set-services'>
+      <I18n lang={lang} dictRequire={lang => require(`./locales/${lang}`)}>
+        <div className="set-services">
           <IntentService window={window} />
         </div>
       </I18n>
-    </Provider>
-  ), document.querySelector('[role=application]'))
+    </Provider>,
+    document.querySelector('[role=application]')
+  )
 })

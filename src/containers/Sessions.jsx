@@ -6,7 +6,7 @@ import { translate } from 'cozy-ui/react/I18n'
 import Alerter from 'cozy-ui/react/Alerter'
 import SessionsView from '../components/SessionsView'
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   sessions: state.sessions,
   isFetching: state.ui.isFetching
 })
@@ -14,8 +14,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchSessions: () => {
     const { t } = ownProps
-    dispatch(fetchSessions()).catch(
-      () => Alerter.error(t('SessionsView.infos.server_error'))
+    dispatch(fetchSessions()).catch(() =>
+      Alerter.error(t('SessionsView.infos.server_error'))
     )
   },
   deleteOtherSessions: async () => {
@@ -29,7 +29,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 })
 
-export default translate()(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SessionsView))
+export default translate()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SessionsView)
+)

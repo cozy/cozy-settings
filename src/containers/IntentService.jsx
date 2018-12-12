@@ -7,7 +7,7 @@ import { sendMessageToSupport } from '../actions/email'
 
 import IntentView from '../components/IntentView'
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   claudy: state.claudy,
   service: state.service,
   emailStatus: state.emailStatus
@@ -23,12 +23,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchInfos: () => {
     dispatch(fetchInfos())
   },
-  sendMessageToSupport: (message) => {
+  sendMessageToSupport: message => {
     dispatch(sendMessageToSupport(message, ownProps.t))
   }
 })
 
-export default translate()(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(IntentView))
+export default translate()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(IntentView)
+)
