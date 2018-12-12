@@ -13,7 +13,7 @@
     "prebuild": "npm-run-all clean tx",
     "prewatch": "npm run clean",
     "lint": "cozy-scripts lint 'src/**/*.js' 'src/**/*.jsx'",
-    "test": "jest",
+    "test": "cozy-scripts test",
     "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/settings cozy/cozy-app-dev",
     "watch": "NODE_ENV=development webpack --config webpack.config.js --watch --display-modules --display-chunks",
     "watch:server": "NODE_ENV=development webpack-dev-server --config webpack.config.js --port 8090 --display-modules --display-chunks --inline --hot"
@@ -36,13 +36,8 @@
     "babel-core": "^6.0.0",
     "babel-jest": "^18.0.0",
     "babel-loader": "^6.0.0",
-    "babel-plugin-transform-class-properties": "^6.22.0",
-    "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babel-plugin-transform-runtime": "^6.0.0",
     "babel-polyfill": "^6.20.0",
-    "babel-preset-env": "^1.0.2",
-    "babel-preset-react": "^6.16.0",
-    "babel-runtime": "^6.0.0",
+    "babel-preset-cozy-app": "^1.2.2",
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "cozy-bar": "^4.8.5",
@@ -50,15 +45,14 @@
     "css-loader": "^0.26.0",
     "css-mqpacker": "^4.0.1",
     "csswring": "^5.1.1",
-    "enzyme": "^2.7.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint-config-cozy-app": "^1.1.5",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "git-directory-deploy": "^1.5.0",
     "html-webpack-plugin": "^2.24.0",
-    "identity-obj-proxy": "^3.0.0",
     "imports-loader": "^0.7.1",
-    "jest": "^18.0.0",
     "json-loader": "^0.5.0",
     "npm-run-all": "^3.1.0",
     "postcss": "^5.2.0",
@@ -96,20 +90,5 @@
     "redux-thunk": "^2.2.0",
     "user-agent-parser": "^0.6.0",
     "whatwg-fetch": "^2.0.1"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "json",
-      "styl"
-    ],
-    "moduleNameMapper": {
-      "\\.(png|gif|jpe?g|svg)$": "<rootDir>/test/__mocks__/fileMock.js",
-      "styles": "identity-obj-proxy"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!cozy-ui)"
-    ]
   }
 }
