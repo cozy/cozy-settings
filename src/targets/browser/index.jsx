@@ -10,7 +10,7 @@ import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
+import { createLogger } from 'redux-logger'
 
 import I18n from 'cozy-ui/react/I18n'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
@@ -25,9 +25,13 @@ const loggerMiddleware = createLogger()
 const composeEnhancers =
   (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
+const middlewares = [thunkMiddleware]
+
+if (__DEVELOPMENT__) middlewares.push(loggerMiddleware)
+
 const store = createStore(
   settingsApp,
-  composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware))
+  composeEnhancers(applyMiddleware(...middlewares))
 )
 
 const EnhancedI18n = connect(state => {
