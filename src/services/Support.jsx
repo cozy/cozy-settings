@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
-import Icon from 'cozy-ui/react/Icon'
 
 export class Support extends Component {
   constructor(props) {
@@ -74,10 +73,9 @@ export class Support extends Component {
             onClick={() => this.sendMessage()}
             disabled={!message}
             busy={isSending}
-          >
-            <Icon icon="paperplane" />
-            {t('support.button')}
-          </Button>
+            icon="paperplane"
+            label={t('support.button')}
+          />
         </div>
       </div>
     )

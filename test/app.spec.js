@@ -2,8 +2,6 @@
 
 /* eslint-env jest */
 
-import React from 'react'
-
 // import { I18nProvider } from 'cozy-ui/react/I18n'
 // import App from '../src/components/App'
 

@@ -3,7 +3,7 @@
 
 import 'babel-polyfill'
 
-import './styles/main'
+import 'styles/index.styl'
 
 import React from 'react'
 import { render } from 'react-dom'
@@ -13,22 +13,13 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 
 import I18n from 'cozy-ui/react/I18n'
-import PiwikHashRouter from './lib/PiwikHashRouter'
+import PiwikHashRouter from 'lib/PiwikHashRouter'
 
-import settingsApp from './reducers'
+import settingsApp from 'reducers'
 
-import App from './components/App'
+import App from 'components/App'
 
 const loggerMiddleware = createLogger()
-
-if (__DEVELOPMENT__) {
-  // Enables React dev tools for Preact
-  // Cannot use import as we are in a condition
-  require('preact/devtools')
-
-  // Export React to window for the devtools
-  window.React = React
-}
 
 // Enable Redux dev tools
 const composeEnhancers =
@@ -67,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   render(
     <Provider store={store}>
-      <EnhancedI18n dictRequire={lang => require(`./locales/${lang}`)}>
+      <EnhancedI18n dictRequire={lang => require(`locales/${lang}`)}>
         <PiwikHashRouter>
           <App domain={data.cozyDomain} />
         </PiwikHashRouter>

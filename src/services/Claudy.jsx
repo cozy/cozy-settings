@@ -254,7 +254,7 @@ export class Claudy extends Component {
                       />
                     )}
                   {action.complete &&
-                    action.slug !== CLAUDY_ACTION_GATHER && (
+                    action.slug === CLAUDY_ACTION_GATHER && (
                       <div className="coz-claudy-menu-action-count-wrapper">
                         <span className="coz-claudy-menu-action-count">
                           {claudyInfos.accounts.length}

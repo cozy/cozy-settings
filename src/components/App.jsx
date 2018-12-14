@@ -1,10 +1,9 @@
-/* eslint-disbale */
-import styles from '../styles/app'
-
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { hot } from 'react-hot-loader'
 import { translate } from 'cozy-ui/react/I18n'
-import classNames from 'classnames'
+import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
+import { Layout, Main } from 'cozy-ui/react/Layout'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import Sidebar from './Sidebar'
@@ -25,16 +24,11 @@ class App extends Component {
 
   render() {
     return (
-      <div
-        className={classNames(
-          styles['app-wrapper'],
-          styles['o-layout--2panes']
-        )}
-      >
+      <Layout>
         <Alerter />
         <Sidebar />
 
-        <main className={styles['app-content']}>
+        <Main>
           <Switch>
             <Route path="/profile" component={Profile} />
             <Route path="/connectedDevices" component={Devices} />
@@ -44,8 +38,9 @@ class App extends Component {
             <Redirect exact from="/" to="/profile" />
             <Redirect from="*" to="/profile" />
           </Switch>
-        </main>
-      </div>
+        </Main>
+        <IconSprite />
+      </Layout>
     )
   }
 }
@@ -58,4 +53,6 @@ const mapStateToProps = state => ({
 withRouter is necessary here to deal with redux
 https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 */
-export default translate()(withRouter(connect(mapStateToProps)(App)))
+export default hot(module)(
+  translate()(withRouter(connect(mapStateToProps)(App)))
+)

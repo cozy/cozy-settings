@@ -1,6 +1,6 @@
 /* global cozy */
 
-import CLAUDY_ACTIONS from '../config/claudyActions'
+import CLAUDY_ACTIONS from 'config/claudyActions'
 
 import { cozyFetch, fetchDevices } from './index'
 

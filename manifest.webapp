@@ -79,12 +79,12 @@
       "public": false
     },
     "/services/claudy": {
-      "folder": "/services",
+      "folder": "/intents",
       "index": "index.html",
       "public": false
     },
     "/services/support": {
-      "folder": "/services",
+      "folder": "/intents",
       "index": "index.html",
       "public": false
     }
