@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 import { translate } from 'cozy-ui/react/I18n'
@@ -13,7 +14,7 @@ import Devices from '../containers/Devices'
 import Sessions from '../containers/Sessions'
 import Storage from '../containers/Storage'
 
-class App extends Component {
+export class App extends Component {
   childContextTypes = {
     domain: PropTypes.string
   }

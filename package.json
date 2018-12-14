@@ -55,6 +55,7 @@
     "preact": "^8.1.0",
     "preact-compat": "^3.16.0",
     "preact-portal": "^1.1.3",
+    "prop-types": "^15.6.2",
     "react-markdown": "^4.0.4",
     "react-redux": "5.1.1",
     "react-router-dom": "4.2.2",

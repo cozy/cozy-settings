@@ -2,6 +2,21 @@
 
 import emailHelper from '../lib/emailHelper'
 
+export let STACK_DOMAIN = null
+export let STACK_TOKEN = null
+
+if (document.querySelector('[role=application]')) {
+  STACK_DOMAIN =
+    '//' + document.querySelector('[role=application]').dataset.cozyDomain
+  STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyToken
+}
+
+if (!(STACK_TOKEN || STACK_DOMAIN)) {
+  console.error(
+    'Settings need the Cozy URL and the token to work correctly. Elements not found.'
+  )
+}
+
 export const FETCH_INFOS = 'FETCH_INFOS'
 export const FETCH_INFOS_SUCCESS = 'FETCH_INFOS_SUCCESS'
 export const FETCH_INFOS_FAILURE = 'FETCH_INFOS_FAILURE'
@@ -255,11 +270,6 @@ export const deleteOtherSessions = () => {
       })
   }
 }
-
-const STACK_DOMAIN =
-  '//' + document.querySelector('[role=application]').dataset.cozyDomain
-const STACK_TOKEN = document.querySelector('[role=application]').dataset
-  .cozyToken
 
 export const cozyFetch = (method, path, body) => {
   let params = {

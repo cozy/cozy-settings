@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component only should be mounted correctly 1`] = `
+<Layout
+  monoColumn={false}
+>
+  <Alerter
+    into="body"
+  />
+  <Wrapper />
+  <Main>
+    <Switch>
+      <Route
+        component={[Function]}
+        path="/profile"
+      />
+      <Route
+        component={[Function]}
+        path="/connectedDevices"
+      />
+      <Route
+        component={[Function]}
+        path="/sessions"
+      />
+      <Route
+        component={[Function]}
+        path="/storage"
+      />
+      <Route
+        component={[Function]}
+        path="/exports/:exportId"
+      />
+      <Redirect
+        exact={true}
+        from="/"
+        push={false}
+        to="/profile"
+      />
+      <Redirect
+        from="*"
+        push={false}
+        to="/profile"
+      />
+    </Switch>
+  </Main>
+  <IconSprite />
+</Layout>
+`;

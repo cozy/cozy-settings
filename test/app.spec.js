@@ -2,15 +2,14 @@
 
 /* eslint-env jest */
 
-// import { I18nProvider } from 'cozy-ui/react/I18n'
-// import App from '../src/components/App'
+import React from 'react'
+import { shallow } from 'enzyme'
 
-test('Hello world', () => {
-  // const component = renderer.create(
-  //   <I18nProvider lang='en'>
-  //     <App />
-  //   </I18nProvider>
-  // )
-  // const tree = component.toJSON()
-  // expect(tree).toMatchSnapshot()
+import { App } from 'components/App'
+
+describe('App component only', () => {
+  it('should be mounted correctly', () => {
+    const component = shallow(<App />).getElement()
+    expect(component).toMatchSnapshot()
+  })
 })
