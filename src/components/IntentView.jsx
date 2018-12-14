@@ -4,7 +4,7 @@ import Claudy from '../services/Claudy'
 import Support from '../services/Support'
 
 export default class IntentView extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     const { window } = props
     const intentType = window.location.href.match(/.*\/services\/(.*)\?.*/)[1]
@@ -15,7 +15,7 @@ export default class IntentView extends Component {
     this.props.createIntentService(intent, window)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     switch (this.state.intentType) {
       case 'claudy':
         this.props.fetchInfos()
@@ -23,30 +23,34 @@ export default class IntentView extends Component {
     }
   }
 
-  terminate () {
+  terminate() {
     const service = this.props.service.instance
     service.terminate()
   }
 
-  render () {
+  render() {
     const { intentType } = this.state
     const { service, claudy, emailStatus, sendMessageToSupport } = this.props
     switch (intentType) {
       case 'claudy':
-        return <Claudy
-          claudyInfos={claudy}
-          onClose={() => this.terminate()}
-          service={service}
-          emailStatus={emailStatus}
-          sendMessageToSupport={sendMessageToSupport}
-        />
+        return (
+          <Claudy
+            claudyInfos={claudy}
+            onClose={() => this.terminate()}
+            service={service}
+            emailStatus={emailStatus}
+            sendMessageToSupport={sendMessageToSupport}
+          />
+        )
       case 'support':
-        return <Support
-          service={service}
-          iconSrc={require('../assets/services/claudyActions/icon-question-mark.svg')}
-          emailStatus={emailStatus}
-          sendMessageToSupport={sendMessageToSupport}
-        />
+        return (
+          <Support
+            service={service}
+            iconSrc={require('../assets/services/claudyActions/icon-question-mark.svg')}
+            emailStatus={emailStatus}
+            sendMessageToSupport={sendMessageToSupport}
+          />
+        )
     }
   }
 }

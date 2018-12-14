@@ -10,21 +10,36 @@ const SessionsViewRow = ({ f, t, session }) => {
   const ua = parser(session.user_agent)
   return (
     <div className={tableStyles['coz-table-row']}>
-      <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-date'])}>
-        {
-          f(
-            new Date(session.created_at),
-            t('SessionsView.sync_date_format')
-          )
-        }
+      <div
+        className={classNames(
+          tableStyles['coz-table-cell'],
+          tableStyles['set-table-date']
+        )}
+      >
+        {f(new Date(session.created_at), t('SessionsView.sync_date_format'))}
       </div>
-      <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-os'])}>
+      <div
+        className={classNames(
+          tableStyles['coz-table-cell'],
+          tableStyles['set-table-os']
+        )}
+      >
         {session.os}
       </div>
-      <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-browser'])}>
+      <div
+        className={classNames(
+          tableStyles['coz-table-cell'],
+          tableStyles['set-table-browser']
+        )}
+      >
         {ua.browser.name} {ua.browser.major}
       </div>
-      <div className={classNames(tableStyles['coz-table-cell'], tableStyles['set-table-ip'])}>
+      <div
+        className={classNames(
+          tableStyles['coz-table-cell'],
+          tableStyles['set-table-ip']
+        )}
+      >
         {session.ip}
       </div>
     </div>

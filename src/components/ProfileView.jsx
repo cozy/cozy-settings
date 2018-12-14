@@ -16,11 +16,11 @@ import ExportSection from './export/ExportSection'
 const LANG_OPTIONS = ['en', 'fr', 'es']
 
 class ProfileView extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.fetchInfos()
   }
 
-  render () {
+  render() {
     const {
       t,
       match,
@@ -47,29 +47,39 @@ class ProfileView extends Component {
       exportId = match.params.exportId
     }
     return (
-      <div role='contentinfo'>
-        <div className={classNames(viewStyles['set-view-content'], viewStyles['set-view-content--narrow'])}>
-          { isFetching && <p>Loading...</p> }
-          <h2 className={viewStyles['set-view-title']}>{t('ProfileView.title')}</h2>
+      <div role="contentinfo">
+        <div
+          className={classNames(
+            viewStyles['set-view-content'],
+            viewStyles['set-view-content--narrow']
+          )}
+        >
+          {isFetching && <p>Loading...</p>}
+          <h2 className={viewStyles['set-view-title']}>
+            {t('ProfileView.title')}
+          </h2>
           <Input
-            name='email'
-            type='email'
+            name="email"
+            type="email"
             title={t('ProfileView.email.title')}
             label={t('ProfileView.email.label')}
             {...fields.email}
-            onBlur={onFieldChange} />
+            onBlur={onFieldChange}
+          />
           <Input
-            name='public_name'
-            type='text'
+            name="public_name"
+            type="text"
             title={t('ProfileView.public_name.title')}
             label={t(`ProfileView.public_name.label`)}
             {...fields.public_name}
-            onBlur={onFieldChange} />
-          {!fields.two_fa.value &&
-            <PassphraseForm {...passphrase}
+            onBlur={onFieldChange}
+          />
+          {!fields.two_fa.value && (
+            <PassphraseForm
+              {...passphrase}
               onSubmit={onPassphraseSimpleSubmit}
             />
-          }
+          )}
           <TwoFA
             twoFAField={fields.two_fa}
             passphrase={passphrase}
@@ -84,7 +94,7 @@ class ProfileView extends Component {
             updateInfo={updateInfo}
           />
           <Select
-            name='locale'
+            name="locale"
             title={t('ProfileView.locale.title')}
             label={t(`ProfileView.locale.label`)}
             options={LANG_OPTIONS.map(lang => {
@@ -94,19 +104,21 @@ class ProfileView extends Component {
               }
             })}
             {...fields.locale}
-            onChange={onFieldChange} />
+            onChange={onFieldChange}
+          />
           <p>
-            <ReactMarkdownWrapper
-              source={
-                t('ProfileView.locale.contrib')
-              }
-            />
+            <ReactMarkdownWrapper source={t('ProfileView.locale.contrib')} />
           </p>
           <Input
-            name='tracking'
-            type='checkbox'
+            name="tracking"
+            type="checkbox"
             title={t('ProfileView.tracking.title')}
-            label={t('ProfileView.tracking.label', {version: instance && instance.data.attributes.tos ? `-${instance.data.attributes.tos}` : '-201711'})}
+            label={t('ProfileView.tracking.label', {
+              version:
+                instance && instance.data.attributes.tos
+                  ? `-${instance.data.attributes.tos}`
+                  : '-201711'
+            })}
             {...fields.tracking}
             onChange={onFieldChange}
           />
@@ -118,7 +130,9 @@ class ProfileView extends Component {
             fetchExportData={() => fetchExportData(exportId)}
             parent={'/profile'}
           />
-          <p className={viewStyles['set-delete-account']}><DeleteAccount /></p>
+          <p className={viewStyles['set-delete-account']}>
+            <DeleteAccount />
+          </p>
         </div>
       </div>
     )

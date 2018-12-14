@@ -8,20 +8,20 @@ import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
 import Input from '../Input'
 
 export class TwoFactorCode extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       twoFactorCode: ''
     }
   }
 
-  onChange (newVal) {
-    this.setState((state, props) => ({
+  onChange(newVal) {
+    this.setState(() => ({
       twoFactorCode: newVal
     }))
   }
 
-  render () {
+  render() {
     const {
       t,
       checkTwoFactorCode,
@@ -35,16 +35,22 @@ export class TwoFactorCode extends Component {
         <div>
           <h3>{t('ProfileView.twofa.modal.confirmation_title')}</h3>
           <ReactMarkdownWrapper
-            source={
-              t('ProfileView.twofa.modal.confirmation_description', {email: email})
-            }
+            source={t('ProfileView.twofa.modal.confirmation_description', {
+              email: email
+            })}
           />
         </div>
-        <label className={styles['coz-form-label']}>{t('ProfileView.twofa.modal.code')}</label>
-        <div className={viewStyles['set-view-content-twofa-modal-confirmation-input']}>
+        <label className={styles['coz-form-label']}>
+          {t('ProfileView.twofa.modal.code')}
+        </label>
+        <div
+          className={
+            viewStyles['set-view-content-twofa-modal-confirmation-input']
+          }
+        >
           <Input
-            name='two_factor_mail'
-            type='text'
+            name="two_factor_mail"
+            type="text"
             value={twoFactorCode}
             errors={twoFactor.checkError && [twoFactor.checkError]}
             onChange={(name, value) => this.onChange(value)}
@@ -52,14 +58,18 @@ export class TwoFactorCode extends Component {
           />
           <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
             <p>{t('ProfileView.twofa.modal.nocode')}</p>
-            <p>{t('ProfileView.twofa.modal.nocode_claude')}<a href='mailto:claude@cozycloud.cc'>claude@cozycloud.cc</a></p>
+            <p>
+              {t('ProfileView.twofa.modal.nocode_claude')}
+              <a href="mailto:claude@cozycloud.cc">claude@cozycloud.cc</a>
+            </p>
           </div>
         </div>
-        <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
-          <Button
-            onClick={closeTwoFAActivationModal}
-            theme='secondary'
-          >
+        <div
+          className={
+            viewStyles['set-view-content-twofa-modal-content-right-buttons']
+          }
+        >
+          <Button onClick={closeTwoFAActivationModal} theme="secondary">
             {t('ProfileView.twofa.modal.button.cancel')}
           </Button>
           <Button

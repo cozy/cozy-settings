@@ -18,9 +18,12 @@ export const ActivationConfirmed = ({
       <li>{instance && instance.data.attributes.email}</li>
       <li>{cozyDomain}</li>
     </ul>
-    <div className={viewStyles['set-view-content-twofa-modal-content-right-buttons']}>
-      <Button
-        onClick={closeTwoFAActivationModal}>
+    <div
+      className={
+        viewStyles['set-view-content-twofa-modal-content-right-buttons']
+      }
+    >
+      <Button onClick={closeTwoFAActivationModal}>
         {t('ProfileView.twofa.modal.button.terminate')}
       </Button>
     </div>

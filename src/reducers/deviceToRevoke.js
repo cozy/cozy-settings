@@ -1,6 +1,4 @@
-import {
-  DEVICES_MODALE_REVOKE_OPEN
-} from '../actions'
+import { DEVICES_MODALE_REVOKE_OPEN } from '../actions'
 
 const deviceToRevoke = (state = null, action) => {
   switch (action.type) {

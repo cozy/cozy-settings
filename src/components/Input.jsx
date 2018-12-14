@@ -5,7 +5,16 @@ import { translate } from 'cozy-ui/react/I18n'
 import Toggle from 'cozy-ui/react/Toggle'
 import Field from './Field'
 
-const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, errors, onChange, onBlur }) => (
+const Input = ({
+  name,
+  type = 'text',
+  placeholder = '',
+  value,
+  submitting,
+  errors,
+  onChange,
+  onBlur
+}) => (
   <input
     type={type}
     placeholder={placeholder}
@@ -18,7 +27,7 @@ const Input = ({ t, name, type = 'text', placeholder = '', value, submitting, er
   />
 )
 
-const SwitchCheckBox = ({name, value, submitting, errors, onChange}) => (
+const SwitchCheckBox = ({ name, value, onChange }) => (
   <div className={styles['set-toggle']}>
     <Toggle
       id={`set-${name.replace(' ', '_')}-toggle`}
@@ -30,15 +39,16 @@ const SwitchCheckBox = ({name, value, submitting, errors, onChange}) => (
 
 export default translate()(props => (
   <Field {...props}>
-    {props.type === 'checkbox'
-      ? <SwitchCheckBox {...props} />
-      : <Input {...props} />
-    }
+    {props.type === 'checkbox' ? (
+      <SwitchCheckBox {...props} />
+    ) : (
+      <Input {...props} />
+    )}
   </Field>
 ))
 
 class PasswordInputComponent extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       visible: false
@@ -46,22 +56,32 @@ class PasswordInputComponent extends Component {
     this.toggleVisibility = this.toggleVisibility.bind(this)
   }
 
-  toggleVisibility () {
+  toggleVisibility() {
     this.setState(state => ({ visible: !state.visible }))
   }
 
-  render () {
-    const { label, t, name, value, onInput, autocomplete, inError = false } = this.props
+  render() {
+    const {
+      label,
+      t,
+      name,
+      value,
+      onInput,
+      autocomplete,
+      inError = false
+    } = this.props
     const { visible } = this.state
     return (
       <div className={styles['coz-form-group']}>
         <div className={styles['coz-form-field-header']}>
-          { label && <label className={styles['coz-form-label']}>{label}</label> }
+          {label && <label className={styles['coz-form-label']}>{label}</label>}
           <a
             onClick={this.toggleVisibility}
             className={styles['password-visibility']}
           >
-            {visible ? t(`ProfileView.password.hide`) : t(`ProfileView.password.show`)}
+            {visible
+              ? t(`ProfileView.password.hide`)
+              : t(`ProfileView.password.show`)}
           </a>
         </div>
         <input
@@ -70,7 +90,7 @@ class PasswordInputComponent extends Component {
           value={value}
           onInput={onInput}
           className={inError ? styles['error'] : ''}
-          autocomplete={autocomplete || 'off'}
+          autoComplete={autocomplete || 'off'}
         />
       </div>
     )

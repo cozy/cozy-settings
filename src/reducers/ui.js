@@ -4,29 +4,22 @@ import {
   FETCH_INFOS,
   FETCH_INFOS_SUCCESS,
   FETCH_INFOS_FAILURE,
-
   UPDATE_INFO_FAILURE,
-
   FETCH_DEVICES,
   FETCH_DEVICES_SUCCESS,
   FETCH_DEVICES_FAILURE,
-
   DEVICE_REVOKE,
   DEVICE_REVOKE_SUCCESS,
   DEVICE_REVOKE_FAILURE,
-
   FETCH_SESSIONS,
   FETCH_SESSIONS_SUCCESS,
   FETCH_SESSIONS_FAILURE,
-
   FETCH_STORAGE,
   FETCH_STORAGE_SUCCESS,
   FETCH_STORAGE_FAILURE,
-
   SESSIONS_DELETE_OTHERS,
   SESSIONS_DELETE_OTHERS_SUCCESS,
   SESSIONS_DELETE_OTHERS_FAILURE,
-
   SET_LANG
 } from '../actions'
 
@@ -37,7 +30,10 @@ const context = (state = window.context || null, action) => {
   }
 }
 
-const lang = (state = document.documentElement.getAttribute('lang') || 'en', action) => {
+const lang = (
+  state = document.documentElement.getAttribute('lang') || 'en',
+  action
+) => {
   switch (action.type) {
     case SET_LANG:
       return action.lang

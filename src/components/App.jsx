@@ -1,10 +1,10 @@
-/* eslint-disbale */
-import styles from '../styles/app'
-
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { hot } from 'react-hot-loader'
 import { translate } from 'cozy-ui/react/I18n'
-import classNames from 'classnames'
+import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
+import { Layout, Main } from 'cozy-ui/react/Layout'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import Sidebar from './Sidebar'
@@ -14,38 +14,39 @@ import Devices from '../containers/Devices'
 import Sessions from '../containers/Sessions'
 import Storage from '../containers/Storage'
 
-class App extends Component {
+export class App extends Component {
   childContextTypes = {
     domain: PropTypes.string
   }
 
-  getChildContext () {
-    return {domain: this.props.domain}
+  getChildContext() {
+    return { domain: this.props.domain }
   }
 
-  render ({ children, domain }) {
+  render() {
     return (
-      <div className={classNames(styles['app-wrapper'], styles['o-layout--2panes'])}>
+      <Layout>
         <Alerter />
         <Sidebar />
 
-        <main className={styles['app-content']}>
+        <Main>
           <Switch>
-            <Route path='/profile' component={Profile} />
-            <Route path='/connectedDevices' component={Devices} />
-            <Route path='/sessions' component={Sessions} />
-            <Route path='/storage' component={Storage} />
-            <Route path='/exports/:exportId' component={Profile} />
-            <Redirect exact from='/' to='/profile' />
-            <Redirect from='*' to='/profile' />
+            <Route path="/profile" component={Profile} />
+            <Route path="/connectedDevices" component={Devices} />
+            <Route path="/sessions" component={Sessions} />
+            <Route path="/storage" component={Storage} />
+            <Route path="/exports/:exportId" component={Profile} />
+            <Redirect exact from="/" to="/profile" />
+            <Redirect from="*" to="/profile" />
           </Switch>
-        </main>
-      </div>
+        </Main>
+        <IconSprite />
+      </Layout>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   alert: state.ui.alert
 })
 
@@ -53,6 +54,6 @@ const mapStateToProps = (state) => ({
 withRouter is necessary here to deal with redux
 https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 */
-export default translate()(withRouter(connect(
-  mapStateToProps
-)(App)))
+export default hot(module)(
+  translate()(withRouter(connect(mapStateToProps)(App)))
+)

@@ -27,7 +27,7 @@ export class FormModal extends Component {
   setStatus = status => this.setState({ status })
 
   onSuccess = () => {
-    const { onSuccess } = this.props
+    const { onSuccess } = this.props
     this.setStatus(DONE)
     onSuccess && onSuccess()
   }
@@ -70,12 +70,14 @@ export class FormModal extends Component {
           <ModalContent>
             <label>{t('DeleteAccount.modal.form.reason.label')}</label>
             <div className={styles['coz-textarea-wrapper']}>
-                <textarea
-                  aria-busy={isSending}
-                  maxength={REASON_MAXLENGTH}
-                  readonly={isSending}
-                  ref={element => { this.reasonElement = element }}
-                />
+              <textarea
+                aria-busy={isSending}
+                maxength={REASON_MAXLENGTH}
+                readOnly={isSending}
+                ref={element => {
+                  this.reasonElement = element
+                }}
+              />
             </div>
           </ModalContent>
           <ModalFooter className={styles['set-delete-account-form-controls']}>

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar component should be rendered correctly 1`] = `
+<aside
+  className="o-sidebar"
+>
+  <Nav>
+    <NavItem>
+      <NavLink
+        activeClassName="is-active"
+        ariaCurrent="true"
+        className="c-nav-link"
+        to="/profile"
+      >
+        <NavIcon
+          icon="test-file-stub"
+        />
+        <NavText>
+          Profile
+        </NavText>
+      </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink
+        activeClassName="is-active"
+        ariaCurrent="true"
+        className="c-nav-link"
+        to="/connectedDevices"
+      >
+        <NavIcon
+          icon="test-file-stub"
+        />
+        <NavText>
+          Connected devices
+        </NavText>
+      </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink
+        activeClassName="is-active"
+        ariaCurrent="true"
+        className="c-nav-link"
+        to="/sessions"
+      >
+        <NavIcon
+          icon="test-file-stub"
+        />
+        <NavText>
+          Connections
+        </NavText>
+      </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink
+        activeClassName="is-active"
+        ariaCurrent="true"
+        className="c-nav-link"
+        to="/storage"
+      >
+        <NavIcon
+          icon="test-file-stub"
+        />
+        <NavText>
+          Storage
+        </NavText>
+      </NavLink>
+    </NavItem>
+  </Nav>
+</aside>
+`;

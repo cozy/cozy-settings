@@ -1,13 +1,18 @@
 import { connect } from 'react-redux'
 
-import { deviceModaleRevokeOpen, deviceModaleRevokeClose, devicePerformRevoke, fetchDevices } from '../actions'
+import {
+  deviceModaleRevokeOpen,
+  deviceModaleRevokeClose,
+  devicePerformRevoke,
+  fetchDevices
+} from '../actions'
 
 import { translate } from 'cozy-ui/react/I18n'
 
 import Alerter from 'cozy-ui/react/Alerter'
 import DevicesView from '../components/DevicesView'
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   devices: state.devices,
   isFetching: state.ui.isFetching,
   openDeviceRevokeModale: state.openDeviceRevokeModale,
@@ -17,11 +22,11 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchDevices: () => {
     const { t } = ownProps
-    return dispatch(fetchDevices()).catch(
-      () => Alerter.error(t('DevicesView.load_error'))
+    return dispatch(fetchDevices()).catch(() =>
+      Alerter.error(t('DevicesView.load_error'))
     )
   },
-  onDeviceModaleRevoke: (device) => {
+  onDeviceModaleRevoke: device => {
     dispatch(deviceModaleRevokeOpen(device))
   },
   onDeviceModaleRevokeClose: () => {
@@ -29,13 +34,15 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   devicePerformRevoke: deviceId => {
     const { t } = ownProps
-    dispatch(devicePerformRevoke(deviceId)).catch(
-      () => Alerter.error(t('revokeDevice.error'))
+    dispatch(devicePerformRevoke(deviceId)).catch(() =>
+      Alerter.error(t('revokeDevice.error'))
     )
   }
 })
 
-export default translate()(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DevicesView))
+export default translate()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(DevicesView)
+)

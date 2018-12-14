@@ -12,7 +12,7 @@ const twoFaModalProtect = require('../../assets/images/protect_data_point.svg')
 const twoFaModalSecu = require('../../assets/images/niv_secu_point.svg')
 
 class TwoFA extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       twoFAActivationModalIsOpen: false,
@@ -26,23 +26,29 @@ class TwoFA extends Component {
     this.desactivate2FA = this.desactivate2FA.bind(this)
     this.openTwoFAActivationModal = this.openTwoFAActivationModal.bind(this)
     this.closeTwoFAActivationModal = this.closeTwoFAActivationModal.bind(this)
-    this.openTwoFADesactivationModal = this.openTwoFADesactivationModal.bind(this)
-    this.closeTwoFADesactivationModal = this.closeTwoFADesactivationModal.bind(this)
+    this.openTwoFADesactivationModal = this.openTwoFADesactivationModal.bind(
+      this
+    )
+    this.closeTwoFADesactivationModal = this.closeTwoFADesactivationModal.bind(
+      this
+    )
     this.closeTwoFAPassphraseModal = this.closeTwoFAPassphraseModal.bind(this)
     this.onPassphrase2FAStep1 = this.onPassphrase2FAStep1.bind(this)
     this.onPassphrase2FASubmit = this.onPassphrase2FASubmit.bind(this)
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.props.twoFAField.value !== '' && nextProps.twoFAField.value && this.setState({mailConfirmationCodeIsValid: true})
+  componentWillReceiveProps(nextProps) {
+    this.props.twoFAField.value !== '' &&
+      nextProps.twoFAField.value &&
+      this.setState({ mailConfirmationCodeIsValid: true })
   }
 
-  activate2FA () {
+  activate2FA() {
     // TODO: Open the password modal
     this.props.activate2FA()
   }
 
-  desactivate2FA () {
+  desactivate2FA() {
     this.props.desactivate2FA()
     // Reset all the info state
     this.props.updateInfo('two_fa', null)
@@ -52,50 +58,48 @@ class TwoFA extends Component {
     this.closeTwoFADesactivationModal()
   }
 
-  openTwoFAActivationModal () {
-    this.setState({twoFAActivationModalIsOpen: true})
+  openTwoFAActivationModal() {
+    this.setState({ twoFAActivationModalIsOpen: true })
   }
-  closeTwoFAActivationModal () {
+  closeTwoFAActivationModal() {
     this.props.cancel2FAActivation()
     this.setState({
       twoFAActivationModalIsOpen: false
     })
   }
-  openTwoFADesactivationModal () {
-    this.setState({twoFADesactivationModalIsOpen: true})
+  openTwoFADesactivationModal() {
+    this.setState({ twoFADesactivationModalIsOpen: true })
   }
-  closeTwoFADesactivationModal () {
-    this.setState({twoFADesactivationModalIsOpen: false})
+  closeTwoFADesactivationModal() {
+    this.setState({ twoFADesactivationModalIsOpen: false })
   }
-  closeTwoFAPassphraseModal () {
-    this.setState((state, props) => ({
+  closeTwoFAPassphraseModal() {
+    this.setState(() => ({
       twoFAPassphraseModalIsOpen: false,
       new2FAPassphrase: null
     }))
   }
 
-  onPassphrase2FAStep1 (current, newVal) {
-    this.setState((state, props) => ({
+  onPassphrase2FAStep1(current, newVal) {
+    this.setState(() => ({
       twoFAPassphraseModalIsOpen: true,
       new2FAPassphrase: newVal
     }))
     this.props.onPassphrase2FAStep1(current)
   }
 
-  onPassphrase2FASubmit (twoFactorCode) {
-    const {
-      onPassphrase2FAStep2,
-      passphrase
-    } = this.props
+  onPassphrase2FASubmit(twoFactorCode) {
+    const { onPassphrase2FAStep2, passphrase } = this.props
     const { twoFactorToken } = passphrase
     const { new2FAPassphrase } = this.state
-    onPassphrase2FAStep2(new2FAPassphrase, twoFactorCode, twoFactorToken)
-    .then(() => {
-      this.closeTwoFAPassphraseModal()
-    })
+    onPassphrase2FAStep2(new2FAPassphrase, twoFactorCode, twoFactorToken).then(
+      () => {
+        this.closeTwoFAPassphraseModal()
+      }
+    )
   }
 
-  render () {
+  render() {
     const {
       t,
       twoFAField,
@@ -115,35 +119,38 @@ class TwoFA extends Component {
     const cozyDomain = data.cozyDomain
     return (
       <div>
-        {twoFAField.value &&
-          <PassphraseForm {...passphrase}
+        {twoFAField.value && (
+          <PassphraseForm
+            {...passphrase}
             onSubmit={this.onPassphrase2FAStep1}
           />
-        }
+        )}
         <Input
-          name='two_fa'
-          type='checkbox'
+          name="two_fa"
+          type="checkbox"
           title={t('ProfileView.twofa.title.activate')}
-          label={t('ProfileView.twofa.label', {link: 'https://support.cozy.io/article/114-doubleauthentification'})}
+          label={t('ProfileView.twofa.label', {
+            link: 'https://support.cozy.io/article/114-doubleauthentification'
+          })}
           {...twoFAField}
-          onChange={twoFAField.value
-            ? this.openTwoFADesactivationModal
-            : this.openTwoFAActivationModal
+          onChange={
+            twoFAField.value
+              ? this.openTwoFADesactivationModal
+              : this.openTwoFAActivationModal
           }
         />
-        {
-          twoFAPassphraseModalIsOpen &&
+        {twoFAPassphraseModalIsOpen &&
           !passphrase.errors &&
-          !passphrase.submitting &&
-          <Passphrase2FA
-            onPassphrase2FASubmit={this.onPassphrase2FASubmit}
-            closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
-            instance={instance}
-            submitting={passphrase.submitting2FAStep2}
-          />
-        }
-        {
-          twoFAActivationModalIsOpen && <Activate2FA
+          !passphrase.submitting && (
+            <Passphrase2FA
+              onPassphrase2FASubmit={this.onPassphrase2FASubmit}
+              closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
+              instance={instance}
+              submitting={passphrase.submitting2FAStep2}
+            />
+          )}
+        {twoFAActivationModalIsOpen && (
+          <Activate2FA
             activate2FA={() => this.activate2FA()}
             checkTwoFactorCode={checkTwoFactorCode}
             mailConfirmationCodeIsValid={mailConfirmationCodeIsValid}
@@ -153,19 +160,21 @@ class TwoFA extends Component {
             isTwoFactorEnabled={twoFAField.value}
             twoFactor={twoFactor}
             images={{
-              'twoFaModalBanner': twoFaModalBanner,
-              'twoFaModalSecu': twoFaModalSecu,
-              'twoFaModalProtect': twoFaModalProtect
+              twoFaModalBanner: twoFaModalBanner,
+              twoFaModalSecu: twoFaModalSecu,
+              twoFaModalProtect: twoFaModalProtect
             }}
           />
-        }
-        {
-          twoFADesactivationModalIsOpen && <Desactivate2FA
+        )}
+        {twoFADesactivationModalIsOpen && (
+          <Desactivate2FA
             desactivate2FA={() => this.desactivate2FA()}
             twoFactor={twoFactor}
-            closeTwoFADesactivationModal={() => this.closeTwoFADesactivationModal()}
+            closeTwoFADesactivationModal={() =>
+              this.closeTwoFADesactivationModal()
+            }
           />
-        }
+        )}
       </div>
     )
   }
