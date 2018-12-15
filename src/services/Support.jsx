@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
+import Textarea from 'cozy-ui/react/Textarea'
 
 export class Support extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export class Support extends Component {
         <div className="set-support-form-content coz-form">
           <label className="coz-form-label">
             {t('support.fields.message.title')}
-            <textarea
+            <Textarea
               className="set-services-support-form-textarea"
               value={message}
               ref={input => {

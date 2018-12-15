@@ -21,6 +21,8 @@ export const isSending = (state = false, action) => {
   switch (action.type) {
     case SEND_EMAIL:
       return true
+    case SEND_EMAIL_FAILURE:
+      return false
     default:
       return state
   }
