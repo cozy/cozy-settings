@@ -1,8 +1,6 @@
 /* global __DEVELOPMENT__ */
 /* global cozy */
 
-import 'babel-polyfill'
-
 import 'styles/index.styl'
 
 import React from 'react'
