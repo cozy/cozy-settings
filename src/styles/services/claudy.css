@@ -58,6 +58,27 @@
   overflow: hidden;
 }
 
+.coz-btn-close {
+    box-sizing:  border-box;
+    display:  inline-flex;
+    align-items:  center;
+    justify-content:  center;
+    border:  1px solid transparent;
+    border-radius:  2px;
+    min-height:  2.5rem;
+    padding:  .5rem;
+    background:  transparent;
+    vertical-align:  top;
+    text-align:  center;
+    color:  white;
+    font-size:  .875rem;
+    line-height:  1;
+    text-transform:  uppercase;
+    text-decoration:  none;
+    cursor:  pointer;
+  }
+
+
 .coz-claudy-menu-content {
   display: flex;
   flex-direction: row;
