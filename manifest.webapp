@@ -103,6 +103,13 @@
         "io.cozy.settings"
       ],
       "href": "/services/support"
+    },
+    {
+      "action": "REDIRECT",
+      "type": [
+        "io.cozy.settings"
+      ],
+      "href": "/redirect"
     }
   ],
   "type": "webapp"
