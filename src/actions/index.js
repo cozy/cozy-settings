@@ -125,11 +125,20 @@ export const fetchStorageData = () => {
   }
 }
 
-const tryUpdate = async (instance, { tries = 0 }) => {
-  let updatedInstance
-  updatedInstance = await cozyFetch('PUT', '/settings/instance', instance)
-
-  return updatedInstance
+const tryUpdate = async (instance, { retries = 0 }) => {
+  try {
+    return await cozyFetch('PUT', '/settings/instance', instance)
+  } catch (error) {
+    const isConflictError =
+      error.errors && error.errors[0] && error.errors[0].status === '409'
+    if (isConflictError && retries) {
+      const remoteInstance = await cozyFetch('GET', '/settings/instance')
+      remoteInstance.data.attributes = instance.data.attributes
+      return tryUpdate(remoteInstance, { retries: retries - 1 })
+    } else {
+      throw error
+    }
+  }
 }
 
 export const updateInfo = (field, value) => {
@@ -154,14 +163,13 @@ export const updateInfo = (field, value) => {
     }
     // tracking field must be stored as string
     if (field === 'tracking') value = value.toString()
-    const instance = getState().instance
-    const newInstance = Object.assign({}, instance)
-    newInstance.data.attributes[field] = value
+    const instance = { ...getState().instance }
+    instance.data.attributes[field] = value
 
     let updatedInstance
 
     try {
-      updatedInstance = await tryUpdate(newInstance, { tries: 3 })
+      updatedInstance = await tryUpdate(instance, { retries: 3 })
     } catch (error) {
       dispatch({
         type: UPDATE_INFO_FAILURE,
