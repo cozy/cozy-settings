@@ -149,6 +149,8 @@ export const updateInfo = (field, value) => {
     if (field === 'tracking') value = value.toString()
     let newInstance = Object.assign({}, getState().instance)
     newInstance.data.attributes[field] = value
+    // Remove rev to avoid conflicts
+    delete newInstance.data.meta.rev
     cozyFetch('PUT', '/settings/instance', newInstance)
       .then(instance => {
         dispatch({ type: UPDATE_INFO_SUCCESS, field, instance })
