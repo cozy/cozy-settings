@@ -125,8 +125,15 @@ export const fetchStorageData = () => {
   }
 }
 
+const tryUpdate = async (instance, { tries = 0 }) => {
+  let updatedInstance
+  updatedInstance = await cozyFetch('PUT', '/settings/instance', instance)
+
+  return updatedInstance
+}
+
 export const updateInfo = (field, value) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: UPDATE_INFO, field, value })
     // Check if the field is empty or not
     if (value === '') {
@@ -147,27 +154,35 @@ export const updateInfo = (field, value) => {
     }
     // tracking field must be stored as string
     if (field === 'tracking') value = value.toString()
-    let newInstance = Object.assign({}, getState().instance)
+    const instance = getState().instance
+    const newInstance = Object.assign({}, instance)
     newInstance.data.attributes[field] = value
-    // Remove rev to avoid conflicts
-    delete newInstance.data.meta.rev
-    cozyFetch('PUT', '/settings/instance', newInstance)
-      .then(instance => {
-        dispatch({ type: UPDATE_INFO_SUCCESS, field, instance })
-        setTimeout(() => {
-          dispatch({ type: RESET_INFO_FIELD, field })
-        }, 3000)
-        if (field === 'locale') {
-          dispatch({ type: SET_LANG, lang: value })
-        }
+
+    let updatedInstance
+
+    try {
+      updatedInstance = await tryUpdate(newInstance, { tries: 3 })
+    } catch (error) {
+      dispatch({
+        type: UPDATE_INFO_FAILURE,
+        field,
+        error: 'ProfileView.infos.server_error'
       })
-      .catch(() => {
-        dispatch({
-          type: UPDATE_INFO_FAILURE,
-          field,
-          error: 'ProfileView.infos.server_error'
-        })
-      })
+
+      return instance
+    }
+
+    dispatch({ type: UPDATE_INFO_SUCCESS, field, instance })
+
+    setTimeout(() => {
+      dispatch({ type: RESET_INFO_FIELD, field })
+    }, 3000)
+
+    if (field === 'locale') {
+      dispatch({ type: SET_LANG, lang: value })
+    }
+
+    return updatedInstance
   }
 }
 
