@@ -125,8 +125,24 @@ export const fetchStorageData = () => {
   }
 }
 
+const tryUpdate = async (instance, { retries = 0 }) => {
+  try {
+    return await cozyFetch('PUT', '/settings/instance', instance)
+  } catch (error) {
+    const isConflictError =
+      error.errors && error.errors[0] && error.errors[0].status === '409'
+    if (isConflictError && retries) {
+      const remoteInstance = await cozyFetch('GET', '/settings/instance')
+      remoteInstance.data.attributes = instance.data.attributes
+      return tryUpdate(remoteInstance, { retries: retries - 1 })
+    } else {
+      throw error
+    }
+  }
+}
+
 export const updateInfo = (field, value) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({ type: UPDATE_INFO, field, value })
     // Check if the field is empty or not
     if (value === '') {
@@ -147,27 +163,34 @@ export const updateInfo = (field, value) => {
     }
     // tracking field must be stored as string
     if (field === 'tracking') value = value.toString()
-    let newInstance = Object.assign({}, getState().instance)
-    newInstance.data.attributes[field] = value
-    // Remove rev to avoid conflicts
-    delete newInstance.data.meta.rev
-    cozyFetch('PUT', '/settings/instance', newInstance)
-      .then(instance => {
-        dispatch({ type: UPDATE_INFO_SUCCESS, field, instance })
-        setTimeout(() => {
-          dispatch({ type: RESET_INFO_FIELD, field })
-        }, 3000)
-        if (field === 'locale') {
-          dispatch({ type: SET_LANG, lang: value })
-        }
+    const instance = { ...getState().instance }
+    instance.data.attributes[field] = value
+
+    let updatedInstance
+
+    try {
+      updatedInstance = await tryUpdate(instance, { retries: 3 })
+    } catch (error) {
+      dispatch({
+        type: UPDATE_INFO_FAILURE,
+        field,
+        error: 'ProfileView.infos.server_error'
       })
-      .catch(() => {
-        dispatch({
-          type: UPDATE_INFO_FAILURE,
-          field,
-          error: 'ProfileView.infos.server_error'
-        })
-      })
+
+      return instance
+    }
+
+    dispatch({ type: UPDATE_INFO_SUCCESS, field, instance })
+
+    setTimeout(() => {
+      dispatch({ type: RESET_INFO_FIELD, field })
+    }, 3000)
+
+    if (field === 'locale') {
+      dispatch({ type: SET_LANG, lang: value })
+    }
+
+    return updatedInstance
   }
 }
 
