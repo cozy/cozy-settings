@@ -164,6 +164,11 @@ export const updateInfo = (field, value) => {
     // tracking field must be stored as string
     if (field === 'tracking') value = value.toString()
     const instance = { ...getState().instance }
+    // We are actually mutating also getState().instance.data.attributes here.
+    // TODO: Avoid mutation of getState().instance.data.attributes, and check
+    // if the whole form keeps working.
+    // The whole form could be refactored with latests improvements from
+    // CozyCllient and use react-final-form.
     instance.data.attributes[field] = value
 
     let updatedInstance
