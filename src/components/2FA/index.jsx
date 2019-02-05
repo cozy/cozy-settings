@@ -38,8 +38,8 @@ class TwoFA extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.props.twoFAField.value !== '' &&
-      nextProps.twoFAField.value &&
+    !this.props.isTwoFactorEnabled &&
+      nextProps.isTwoFactorEnabled &&
       this.setState({ mailConfirmationCodeIsValid: true })
   }
 
@@ -50,8 +50,6 @@ class TwoFA extends Component {
 
   desactivate2FA() {
     this.props.desactivate2FA()
-    // Reset all the info state
-    this.props.updateInfo('two_fa', null)
     this.setState({
       mailConfirmationCodeIsValid: false
     })
@@ -102,7 +100,7 @@ class TwoFA extends Component {
   render() {
     const {
       t,
-      twoFAField,
+      isTwoFactorEnabled,
       passphrase,
       instance,
       checkTwoFactorCode,
@@ -119,7 +117,7 @@ class TwoFA extends Component {
     const cozyDomain = data.cozyDomain
     return (
       <div>
-        {twoFAField.value && (
+        {isTwoFactorEnabled && (
           <PassphraseForm
             {...passphrase}
             onSubmit={this.onPassphrase2FAStep1}
@@ -132,9 +130,9 @@ class TwoFA extends Component {
           label={t('ProfileView.twofa.label', {
             link: 'https://support.cozy.io/article/114-doubleauthentification'
           })}
-          {...twoFAField}
+          value={isTwoFactorEnabled}
           onChange={
-            twoFAField.value
+            isTwoFactorEnabled
               ? this.openTwoFADesactivationModal
               : this.openTwoFAActivationModal
           }
@@ -157,7 +155,7 @@ class TwoFA extends Component {
             closeTwoFAActivationModal={() => this.closeTwoFAActivationModal()}
             instance={instance}
             cozyDomain={cozyDomain}
-            isTwoFactorEnabled={twoFAField.value}
+            isTwoFactorEnabled={isTwoFactorEnabled}
             twoFactor={twoFactor}
             images={{
               twoFaModalBanner: twoFaModalBanner,

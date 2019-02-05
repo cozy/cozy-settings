@@ -13,6 +13,8 @@ import Select from './Select'
 import TwoFA from './2FA'
 import ExportSection from './export/ExportSection'
 
+import { AUTH_MODE } from 'actions/twoFactor'
+
 const LANG_OPTIONS = ['en', 'fr', 'es']
 
 class ProfileView extends Component {
@@ -46,6 +48,8 @@ class ProfileView extends Component {
     if (match && match.params) {
       exportId = match.params.exportId
     }
+    const isTwoFactorEnabled =
+      fields.auth_mode && fields.auth_mode.value === AUTH_MODE.TWO_FA_MAIL
     return (
       <div role="contentinfo">
         <div
@@ -74,14 +78,14 @@ class ProfileView extends Component {
             {...fields.public_name}
             onBlur={onFieldChange}
           />
-          {!fields.two_fa.value && (
+          {!isTwoFactorEnabled && (
             <PassphraseForm
               {...passphrase}
               onSubmit={onPassphraseSimpleSubmit}
             />
           )}
           <TwoFA
-            twoFAField={fields.two_fa}
+            isTwoFactorEnabled={isTwoFactorEnabled}
             passphrase={passphrase}
             instance={instance}
             checkTwoFactorCode={checkTwoFactorCode}
