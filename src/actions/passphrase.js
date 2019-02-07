@@ -15,7 +15,7 @@ export const UPDATE_PASSPHRASE_2FA_2_SUCCESS = 'UPDATE_PASSPHRASE_2FA_2_SUCCESS'
 export const UPDATE_PASSPHRASE_2FA_2_FAILURE = 'UPDATE_PASSPHRASE_2FA_2_FAILURE'
 
 export const updatePassphrase = (current, newVal) => {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE })
     return cozyFetch('PUT', '/settings/passphrase', {
       current_passphrase: current,
@@ -42,6 +42,7 @@ export const updatePassphrase = (current, newVal) => {
             errors: { global: 'ProfileView.password.server_error' }
           })
         }
+        throw error
       })
   }
 }
