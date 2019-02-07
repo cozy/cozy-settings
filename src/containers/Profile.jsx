@@ -37,8 +37,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(updateInfo(field, value))
   },
   requestExport: async () => {
-    await dispatch(requestExport())
-    Alerter.success(ownProps.t('ProfileView.export.success'))
+    try {
+      await dispatch(requestExport())
+      Alerter.success(ownProps.t('ProfileView.export.success'))
+    } catch (e) {
+      console.error(e)
+    }
   },
   fetchExportData: exportId => {
     dispatch(fetchExportData(exportId))
@@ -56,17 +60,21 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(desactivate2FA(mode))
   },
   onPassphraseSimpleSubmit: (current, newVal) => {
-    return dispatch(updatePassphrase(current, newVal)).then(() =>
-      Alerter.info(ownProps.t('ProfileView.password.reload'))
-    )
+    return dispatch(updatePassphrase(current, newVal))
+      .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
+      .catch(e => console.error(e))
   },
   onPassphrase2FAStep1: current => {
-    return dispatch(updatePassphrase2FAFirst(current))
+    return dispatch(updatePassphrase2FAFirst(current)).catch(e =>
+      console.error(e)
+    )
   },
   onPassphrase2FAStep2: (newVal, twoFactorCode, twoFactorToken) => {
     return dispatch(
       updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken)
-    ).then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
+    )
+      .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
+      .catch(e => console.error(e))
   }
 })
 

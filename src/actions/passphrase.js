@@ -72,6 +72,7 @@ export const updatePassphrase2FAFirst = current => {
             errors: { global: 'ProfileView.password.server_error' }
           })
         }
+        throw error
       })
   }
 }
@@ -112,6 +113,7 @@ export const updatePassphrase2FASecond = (
             errors: { global: 'ProfileView.password.server_error' }
           })
         }
+        throw error
       })
   }
 }
