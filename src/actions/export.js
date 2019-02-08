@@ -32,11 +32,12 @@ export const fetchExportData = exportId => {
       .then(resp => {
         dispatch({ type: FETCH_EXPORT_DATA_SUCCESS, data: resp.data })
       })
-      .catch(() => {
+      .catch(error => {
         dispatch({
           type: FETCH_EXPORT_DATA_FAILURE,
           error: 'ProfileView.export.fetch_error'
         })
+        throw error
       })
   }
 }
