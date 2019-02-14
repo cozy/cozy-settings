@@ -1,4 +1,4 @@
-import { cozyFetch, updateInfo } from './index'
+import { cozyFetch } from './index'
 
 export const ACTIVATE_2FA = 'ACTIVATE_2FA'
 export const ACTIVATE_2FA_FAILURE = 'ACTIVATE_2FA_FAILURE'
@@ -75,8 +75,11 @@ export const checkTwoFactorCode = (code, mode = AUTH_MODE.TWO_FA_MAIL) => {
       auth_mode: mode
     })
       .then(() => {
-        dispatch({ type: CHECK_TWO_FACTOR_CODE_SUCCESS })
-        dispatch(updateInfo('two_fa', true))
+        dispatch({
+          type: CHECK_TWO_FACTOR_CODE_SUCCESS,
+          field: 'auth_mode',
+          value: mode
+        })
       })
       .catch(() => {
         dispatch({

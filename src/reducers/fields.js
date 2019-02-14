@@ -8,11 +8,14 @@ import {
   RESET_INFO_FIELD
 } from '../actions'
 
+import { CHECK_TWO_FACTOR_CODE_SUCCESS } from 'actions/twoFactor'
+
 const createField = name => {
   const value = (state = '', action) => {
     switch (action.type) {
       case FETCH_INFOS_SUCCESS:
         return action.instance.data.attributes[name] || ''
+      case CHECK_TWO_FACTOR_CODE_SUCCESS:
       case UPDATE_INFO:
         return name !== action.field ? state : action.value
       default:
@@ -71,7 +74,7 @@ const fields = combineReducers({
   locale: createField('locale'),
   public_name: createField('public_name'),
   tracking: createField('tracking'),
-  two_fa: createField('two_fa')
+  auth_mode: createField('auth_mode') // read only
 })
 
 export default fields
