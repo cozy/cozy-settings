@@ -109,7 +109,7 @@
       "type": [
         "io.cozy.settings"
       ],
-      "href": "/redirect"
+      "href": "/#/redirect"
     }
   ],
   "type": "webapp"
