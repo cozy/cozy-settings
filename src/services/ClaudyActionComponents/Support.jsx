@@ -23,7 +23,11 @@ export class Support extends Component {
     }
 
     // if message successfully sent
-    if (nextProps.emailStatus.isSent && this.props.emailStatus.isSending) {
+    if (
+      nextProps.emailStatus.isSent &&
+      this.props.emailStatus.isSending &&
+      !this.props.emailStatus.isSent
+    ) {
       this.setState({ message: '' })
       // usually go back on success
       this.props.onSuccess(this.props.t('claudy.actions.support.success'))
