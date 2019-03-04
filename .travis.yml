@@ -4,8 +4,11 @@ matrix:
 node_js:
 - '8'
 branches:
-  except:
-  - build
+ branches:
+   only:
+   - master
+   # tags
+   - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
 env:
   global:
   - CXX=g++-4.8
