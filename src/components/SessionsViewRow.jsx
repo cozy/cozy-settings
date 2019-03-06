@@ -2,12 +2,12 @@ import tableStyles from '../styles/table'
 
 import React from 'react'
 import classNames from 'classnames'
-import parser from 'user-agent-parser'
+import { UAParser } from 'ua-parser-js'
 
 import { translate } from 'cozy-ui/react/I18n'
 
 const SessionsViewRow = ({ f, t, session }) => {
-  const ua = parser(session.user_agent)
+  const ua = UAParser(session.user_agent)
   return (
     <div className={tableStyles['coz-table-row']}>
       <div
