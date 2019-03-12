@@ -26,10 +26,11 @@ export function sendMessageToSupport (message, t) {
         error: new Error('No message provided.')
       })
     }
+    const domain = STACK_DOMAIN.replace('//', '')
     return sendEmail(
       CONTACT_RECIPIENT_LIST,
       textPlainContentParts(message),
-      `[cozy-support] Ask support for ${STACK_DOMAIN}`
+      `[cozy-support] Ask support for ${domain}`
     ).then(() => {
       dispatch({type: SEND_EMAIL_SUCCESS})
       try {
