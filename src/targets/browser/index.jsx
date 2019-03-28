@@ -9,6 +9,7 @@ import { Provider, connect } from 'react-redux'
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
+import CozyClient from 'cozy-client'
 
 import I18n from 'cozy-ui/react/I18n'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
@@ -51,7 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     token: data.cozyToken
   })
 
+  const protocol = window.location.protocol
+  const cozyClient = new CozyClient({
+    uri: `${protocol}//${data.cozyDomain}`,
+    schema: {},
+    token: data.cozyToken
+  })
+
   cozy.bar.init({
+    cozyClient,
     appName: data.cozyAppName,
     appEditor: data.cozyAppEditor,
     iconPath: data.cozyIconPath,
