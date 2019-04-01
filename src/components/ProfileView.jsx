@@ -11,6 +11,7 @@ import PassphraseForm from './PassphraseForm'
 import LanguageSection from './LanguageSection'
 import TwoFA from './2FA'
 import ExportSection from './export/ExportSection'
+import TrackingSection from './TrackingSection'
 
 import { AUTH_MODE } from 'actions/twoFactor'
 
@@ -95,17 +96,9 @@ class ProfileView extends Component {
             updateInfo={updateInfo}
           />
           <LanguageSection fields={fields} onChange={onFieldChange} />
-          <Input
-            name="tracking"
-            type="checkbox"
-            title={t('ProfileView.tracking.title')}
-            label={t('ProfileView.tracking.label', {
-              version:
-                instance && instance.data.attributes.tos
-                  ? `-${instance.data.attributes.tos}`
-                  : '-201711'
-            })}
-            {...fields.tracking}
+          <TrackingSection
+            instance={instance}
+            fields={fields}
             onChange={onFieldChange}
           />
           <ExportSection
