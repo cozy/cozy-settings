@@ -1,4 +1,4 @@
-import styles from '../styles/loading'
+import styles from 'styles/loading'
 
 import React from 'react'
 import { translate } from 'cozy-ui/react/I18n'

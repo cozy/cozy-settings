@@ -7,12 +7,12 @@ import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
 import { Layout, Main } from 'cozy-ui/react/Layout'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
-import Sidebar from './Sidebar'
+import Sidebar from 'components/Sidebar'
 import Alerter from 'cozy-ui/react/Alerter'
-import Profile from '../containers/Profile'
-import Devices from '../containers/Devices'
-import Sessions from '../containers/Sessions'
-import Storage from '../containers/Storage'
+import Profile from 'containers/Profile'
+import Devices from 'containers/Devices'
+import Sessions from 'containers/Sessions'
+import Storage from 'containers/Storage'
 import IntentRedirect from 'services/IntentRedirect'
 
 export class App extends Component {

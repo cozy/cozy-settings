@@ -1,10 +1,10 @@
-import viewStyles from '../styles/view'
-import styles from '../styles/storage'
+import viewStyles from 'styles/view'
+import styles from 'styles/storage'
 
 import React, { Component } from 'react'
 
 import classNames from 'classnames'
-import Loading from './Loading'
+import Loading from 'components/Loading'
 
 import { translate } from 'cozy-ui/react/I18n'
 import { ButtonLink } from 'cozy-ui/react/Button'

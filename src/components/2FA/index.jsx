@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 
-import Input from '../Input'
-import PassphraseForm from '../PassphraseForm'
-import Passphrase2FA from './Passphrase2FA'
-import Activate2FA from './Activate2FA'
-import Desactivate2FA from './Desactivate2FA'
+import Input from 'components/Input'
+import PassphraseForm from 'components/PassphraseForm'
+import Passphrase2FA from 'components/2FA/Passphrase2FA'
+import Activate2FA from 'components/2FA/Activate2FA'
+import Desactivate2FA from 'components/2FA/Desactivate2FA'
 
-const twoFaModalBanner = require('../../assets/images/double_authent_prez_banner.svg')
-const twoFaModalProtect = require('../../assets/images/protect_data_point.svg')
-const twoFaModalSecu = require('../../assets/images/niv_secu_point.svg')
+const twoFaModalBanner = require('assets/images/double_authent_prez_banner.svg')
+const twoFaModalProtect = require('assets/images/protect_data_point.svg')
+const twoFaModalSecu = require('assets/images/niv_secu_point.svg')
 
 class TwoFA extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { translate } from 'cozy-ui/react/I18n'
-import Field from './Field'
+import Field from 'components/Field'
 
 const Select = ({ name, value, options, onChange }) => (
   <select name={name} onChange={e => onChange(name, e.target.value)}>

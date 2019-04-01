@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 
 import { translate } from 'cozy-ui/react/I18n'
 
-import ReactMarkdownWrapper from './ReactMarkdownWrapper'
-import Select from './Select'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import Select from 'components/Select'
 
 const LANG_OPTIONS = ['en', 'fr', 'es']
 

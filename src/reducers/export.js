@@ -7,7 +7,7 @@ import {
   FETCH_EXPORT_DATA,
   FETCH_EXPORT_DATA_FAILURE,
   FETCH_EXPORT_DATA_SUCCESS
-} from '../actions/export'
+} from 'actions/export'
 
 const submitting = (state = false, action) => {
   switch (action.type) {

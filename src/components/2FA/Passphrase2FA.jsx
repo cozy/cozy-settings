@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import Modal, { ModalContent } from 'cozy-ui/react/Modal'
 
-import viewStyles from '../../styles/view'
-import styles from '../../styles/fields'
+import viewStyles from 'styles/view'
+import styles from 'styles/fields'
 import { Button } from 'cozy-ui/react/Button'
-import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
-import Input from '../Input'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import Input from 'components/Input'
 
 export class Passphrase2FA extends Component {
   constructor(props) {

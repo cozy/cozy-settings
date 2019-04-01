@@ -5,12 +5,12 @@ import {
   deviceModaleRevokeClose,
   devicePerformRevoke,
   fetchDevices
-} from '../actions'
+} from 'actions'
 
 import { translate } from 'cozy-ui/react/I18n'
 
 import Alerter from 'cozy-ui/react/Alerter'
-import DevicesView from '../components/DevicesView'
+import DevicesView from 'components/DevicesView'
 
 const mapStateToProps = state => ({
   devices: state.devices,

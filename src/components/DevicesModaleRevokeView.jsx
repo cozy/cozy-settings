@@ -6,7 +6,7 @@ import Modal, { ModalContent } from 'cozy-ui/react/Modal'
 import ReactMarkdown from 'react-markdown'
 
 import classNames from 'classnames'
-import styles from '../styles/devicesModaleRevokeView'
+import styles from 'styles/devicesModaleRevokeView'
 
 const devicesModaleRevokeView = ({ t, device, revokeDevice, cancelAction }) => {
   return (

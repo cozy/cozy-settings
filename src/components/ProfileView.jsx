@@ -1,17 +1,17 @@
-import viewStyles from '../styles/view'
+import viewStyles from 'styles/view'
 
 import classNames from 'classnames'
 import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/react/I18n'
 
-import DeleteAccount from './DeleteAccount'
-import Input from './Input'
-import PassphraseForm from './PassphraseForm'
-import LanguageSection from './LanguageSection'
-import TwoFA from './2FA'
-import ExportSection from './export/ExportSection'
-import TrackingSection from './TrackingSection'
+import DeleteAccount from 'components/DeleteAccount'
+import Input from 'components/Input'
+import PassphraseForm from 'components/PassphraseForm'
+import LanguageSection from 'components/LanguageSection'
+import TwoFA from 'components/2FA'
+import ExportSection from 'components/export/ExportSection'
+import TrackingSection from 'components/TrackingSection'
 
 import { AUTH_MODE } from 'actions/twoFactor'
 

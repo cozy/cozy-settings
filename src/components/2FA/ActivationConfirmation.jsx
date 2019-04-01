@@ -2,9 +2,9 @@ import React, { Fragment } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 
-import viewStyles from '../../styles/view'
-import styles from '../../styles/fields'
-import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
+import viewStyles from 'styles/view'
+import styles from 'styles/fields'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
 export const ActivationConfirmation = ({
   t,

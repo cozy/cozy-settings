@@ -2,7 +2,7 @@
 
 import CLAUDY_ACTIONS from 'config/claudyActions'
 
-import { cozyFetch, fetchDevices } from './index'
+import { cozyFetch, fetchDevices } from 'actions'
 
 export const FETCH_CLAUDY_INFOS = 'FETCH_CLAUDY_INFOS'
 export const FETCH_CLAUDY_INFOS_SUCCESS = 'FETCH_CLAUDY_INFOS_SUCCESS'

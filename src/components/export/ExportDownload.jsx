@@ -8,8 +8,8 @@ import ButtonAction from 'cozy-ui/react/ButtonAction'
 import Spinner from 'cozy-ui/react/Spinner'
 import Modal, { ModalHeader, ModalDescription } from 'cozy-ui/react/Modal'
 
-import viewStyles from '../../styles/view'
-import formStyles from '../../styles/fields'
+import viewStyles from 'styles/view'
+import formStyles from 'styles/fields'
 
 class ExportDownload extends Component {
   constructor(props) {

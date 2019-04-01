@@ -1,11 +1,11 @@
-import tableStyles from '../styles/table'
-import viewStyles from '../styles/view'
+import tableStyles from 'styles/table'
+import viewStyles from 'styles/view'
 
 import React, { Component } from 'react'
 import classNames from 'classnames'
 
-import Loading from './Loading'
-import SessionsViewRow from './SessionsViewRow'
+import Loading from 'components/Loading'
+import SessionsViewRow from 'components/SessionsViewRow'
 
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'

@@ -1,12 +1,12 @@
-import styles from '../styles/fields'
+import styles from 'styles/fields'
 import classNames from 'classnames'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 
-import { PasswordInput } from './Input'
-import passwordHelper from '../lib/passwordHelper'
+import { PasswordInput } from 'components/Input'
+import passwordHelper from 'lib/passwordHelper'
 
 const initialState = {
   currentPassword: '',

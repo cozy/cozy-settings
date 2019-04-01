@@ -3,22 +3,22 @@ import { connect } from 'react-redux'
 import { translate } from 'cozy-ui/react/I18n'
 import Alerter from 'cozy-ui/react/Alerter'
 
-import { updateInfo, fetchInfos } from '../actions'
+import { updateInfo, fetchInfos } from 'actions'
 import {
   checkTwoFactorCode,
   activate2FA,
   desactivate2FA,
   cancel2FAActivation
-} from '../actions/twoFactor'
-import { requestExport, fetchExportData } from '../actions/export'
+} from 'actions/twoFactor'
+import { requestExport, fetchExportData } from 'actions/export'
 
 import {
   updatePassphrase,
   updatePassphrase2FAFirst,
   updatePassphrase2FASecond
-} from '../actions/passphrase'
+} from 'actions/passphrase'
 
-import ProfileView from '../components/ProfileView'
+import ProfileView from 'components/ProfileView'
 
 const mapStateToProps = state => ({
   fields: state.fields,
