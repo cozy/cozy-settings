@@ -8,14 +8,11 @@ import { translate } from 'cozy-ui/react/I18n'
 import DeleteAccount from './DeleteAccount'
 import Input from './Input'
 import PassphraseForm from './PassphraseForm'
-import ReactMarkdownWrapper from './ReactMarkdownWrapper'
-import Select from './Select'
+import LanguageSection from './LanguageSection'
 import TwoFA from './2FA'
 import ExportSection from './export/ExportSection'
 
 import { AUTH_MODE } from 'actions/twoFactor'
-
-const LANG_OPTIONS = ['en', 'fr', 'es']
 
 class ProfileView extends Component {
   componentWillMount() {
@@ -97,22 +94,7 @@ class ProfileView extends Component {
             onPassphrase2FAStep2={onPassphrase2FAStep2}
             updateInfo={updateInfo}
           />
-          <Select
-            name="locale"
-            title={t('ProfileView.locale.title')}
-            label={t(`ProfileView.locale.label`)}
-            options={LANG_OPTIONS.map(lang => {
-              return {
-                value: lang,
-                text: t(`ProfileView.locale.${lang}`)
-              }
-            })}
-            {...fields.locale}
-            onChange={onFieldChange}
-          />
-          <p>
-            <ReactMarkdownWrapper source={t('ProfileView.locale.contrib')} />
-          </p>
+          <LanguageSection fields={fields} onChange={onFieldChange} />
           <Input
             name="tracking"
             type="checkbox"
