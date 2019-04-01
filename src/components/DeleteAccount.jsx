@@ -5,10 +5,10 @@ import { translate } from 'cozy-ui/react/I18n'
 
 import Alerter from 'cozy-ui/react/Alerter'
 import Button from 'cozy-ui/react/Button'
-import ConfirmModal from './DeleteAccount/ConfirmModal'
-import FormModal from './DeleteAccount/FormModal'
+import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
+import FormModal from 'components/DeleteAccount/FormModal'
 
-import viewStyles from '../styles/view'
+import viewStyles from 'styles/view'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'

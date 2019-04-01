@@ -8,12 +8,12 @@ import Modal, {
 } from 'cozy-ui/react/Modal'
 import { Button } from 'cozy-ui/react/Button'
 
-import viewStyles from '../../styles/view'
-import formStyles from '../../styles/fields'
-import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
-import ExportDownload from './ExportDownload'
+import viewStyles from 'styles/view'
+import formStyles from 'styles/fields'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import ExportDownload from 'components/export/ExportDownload'
 
-const exportImage = require('../../assets/images/export-cozy-mail.svg')
+const exportImage = require('assets/images/export-cozy-mail.svg')
 
 class ExportSection extends Component {
   constructor(props) {

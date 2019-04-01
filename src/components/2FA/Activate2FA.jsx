@@ -2,10 +2,10 @@ import React from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import Modal, { ModalContent } from 'cozy-ui/react/Modal'
 
-import viewStyles from '../../styles/view'
-import ActivationConfirmation from './ActivationConfirmation'
-import TwoFactorCode from './TwoFactorCode'
-import ActivationConfirmed from './ActivationConfirmed'
+import viewStyles from 'styles/view'
+import ActivationConfirmation from 'components/2FA/ActivationConfirmation'
+import TwoFactorCode from 'components/2FA/TwoFactorCode'
+import ActivationConfirmed from 'components/2FA/ActivationConfirmed'
 
 export const Activate2FA = ({
   t,

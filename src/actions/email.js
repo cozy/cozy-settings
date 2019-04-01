@@ -1,9 +1,9 @@
 /* eslint-disable */
 /* global cozy */
 
-import { cozyFetch } from './index'
+import { cozyFetch } from 'actions'
 
-import { STACK_DOMAIN } from './'
+import { STACK_DOMAIN } from 'actions'
 
 export const SEND_EMAIL = 'SEND_EMAIL'
 export const SEND_EMAIL_SUCCESS = 'SEND_EMAIL_SUCCESS'

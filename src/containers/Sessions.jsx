@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 
-import { fetchSessions, deleteOtherSessions } from '../actions'
+import { fetchSessions, deleteOtherSessions } from 'actions'
 import { translate } from 'cozy-ui/react/I18n'
 
 import Alerter from 'cozy-ui/react/Alerter'
-import SessionsView from '../components/SessionsView'
+import SessionsView from 'components/SessionsView'
 
 const mapStateToProps = state => ({
   sessions: state.sessions,

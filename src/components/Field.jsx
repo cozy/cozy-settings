@@ -1,10 +1,10 @@
-import styles from '../styles/fields'
-import viewStyles from '../styles/view'
+import styles from 'styles/fields'
+import viewStyles from 'styles/view'
 
 import React from 'react'
 import classNames from 'classnames'
 import { translate } from 'cozy-ui/react/I18n'
-import ReactMarkdownWrapper from './ReactMarkdownWrapper'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
 const Field = ({
   t,

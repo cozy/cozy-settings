@@ -3,12 +3,12 @@ import { translate } from 'cozy-ui/react/I18n'
 import { NavLink as RouterLink } from 'react-router-dom'
 import Nav, { NavLink, NavItem, NavIcon, NavText } from 'cozy-ui/react/Nav'
 
-import styles from '../styles/sidebar'
+import styles from 'styles/sidebar'
 
-import boxIcon from '../assets/icons/icon-box.svg'
-import globeIcon from '../assets/icons/icon-globe.svg'
-import devicesIcon from '../assets/icons/icon-phone.svg'
-import peopleIcon from '../assets/icons/icon-people.svg'
+import boxIcon from 'assets/icons/icon-box.svg'
+import globeIcon from 'assets/icons/icon-globe.svg'
+import devicesIcon from 'assets/icons/icon-phone.svg'
+import peopleIcon from 'assets/icons/icon-people.svg'
 
 export const Sidebar = ({ t }) => (
   <aside className={styles['o-sidebar']}>

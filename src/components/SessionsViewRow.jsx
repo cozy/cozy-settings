@@ -1,4 +1,4 @@
-import tableStyles from '../styles/table'
+import tableStyles from 'styles/table'
 
 import React from 'react'
 import classNames from 'classnames'

@@ -9,7 +9,7 @@ import {
 } from 'cozy-ui/react/helpers/tracker'
 import Icon from 'cozy-ui/react/Icon'
 
-import ClaudyAction from './ClaudyAction'
+import ClaudyAction from 'services/ClaudyAction'
 
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
@@ -32,7 +32,7 @@ export class Claudy extends Component {
     this.trackActionLink = this.trackActionLink.bind(this)
     this.goBack = this.goBack.bind(this)
 
-    this.checkIcon = require('../assets/services/icon-check.svg')
+    this.checkIcon = require('assets/services/icon-check.svg')
   }
 
   componentDidMount() {
@@ -54,7 +54,7 @@ export class Claudy extends Component {
   }
 
   getIcon(iconName) {
-    return require(`../assets/services/claudyActions/${iconName}`)
+    return require(`assets/services/claudyActions/${iconName}`)
   }
 
   computeSelectedActionUrl(selectedAction) {

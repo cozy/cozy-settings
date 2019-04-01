@@ -6,7 +6,7 @@ import {
   UPDATE_INFO_SUCCESS,
   UPDATE_INFO_FAILURE,
   RESET_INFO_FIELD
-} from '../actions'
+} from 'actions'
 
 import { CHECK_TWO_FACTOR_CODE_SUCCESS } from 'actions/twoFactor'
 

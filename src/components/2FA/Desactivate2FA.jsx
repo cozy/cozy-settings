@@ -3,7 +3,7 @@ import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 import Modal, { ModalContent } from 'cozy-ui/react/Modal'
 
-import viewStyles from '../../styles/view'
+import viewStyles from 'styles/view'
 
 export const Desactivate2FA = ({
   t,

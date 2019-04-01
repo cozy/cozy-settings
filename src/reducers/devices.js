@@ -1,4 +1,4 @@
-import { FETCH_DEVICES_SUCCESS, DEVICE_REVOKE_SUCCESS } from '../actions'
+import { FETCH_DEVICES_SUCCESS, DEVICE_REVOKE_SUCCESS } from 'actions'
 
 const devices = (state = [], action) => {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import { cozyFetch } from './index'
+import { cozyFetch } from 'actions'
 
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'

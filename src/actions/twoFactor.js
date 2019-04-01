@@ -1,4 +1,4 @@
-import { cozyFetch } from './index'
+import { cozyFetch } from 'actions'
 
 export const ACTIVATE_2FA = 'ACTIVATE_2FA'
 export const ACTIVATE_2FA_FAILURE = 'ACTIVATE_2FA_FAILURE'

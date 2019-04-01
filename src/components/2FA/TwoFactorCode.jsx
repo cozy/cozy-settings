@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 
-import viewStyles from '../../styles/view'
-import styles from '../../styles/fields'
-import ReactMarkdownWrapper from '../ReactMarkdownWrapper'
-import Input from '../Input'
+import viewStyles from 'styles/view'
+import styles from 'styles/fields'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import Input from 'components/Input'
 
 export class TwoFactorCode extends Component {
   constructor(props) {

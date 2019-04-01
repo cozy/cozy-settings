@@ -1,21 +1,19 @@
-import viewStyles from '../styles/view'
+import viewStyles from 'styles/view'
 
 import classNames from 'classnames'
 import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/react/I18n'
 
-import DeleteAccount from './DeleteAccount'
-import Input from './Input'
-import PassphraseForm from './PassphraseForm'
-import ReactMarkdownWrapper from './ReactMarkdownWrapper'
-import Select from './Select'
-import TwoFA from './2FA'
-import ExportSection from './export/ExportSection'
+import DeleteAccount from 'components/DeleteAccount'
+import Input from 'components/Input'
+import PassphraseForm from 'components/PassphraseForm'
+import LanguageSection from 'components/LanguageSection'
+import TwoFA from 'components/2FA'
+import ExportSection from 'components/export/ExportSection'
+import TrackingSection from 'components/TrackingSection'
 
 import { AUTH_MODE } from 'actions/twoFactor'
-
-const LANG_OPTIONS = ['en', 'fr', 'es']
 
 class ProfileView extends Component {
   componentWillMount() {
@@ -97,33 +95,10 @@ class ProfileView extends Component {
             onPassphrase2FAStep2={onPassphrase2FAStep2}
             updateInfo={updateInfo}
           />
-          <Select
-            name="locale"
-            title={t('ProfileView.locale.title')}
-            label={t(`ProfileView.locale.label`)}
-            options={LANG_OPTIONS.map(lang => {
-              return {
-                value: lang,
-                text: t(`ProfileView.locale.${lang}`)
-              }
-            })}
-            {...fields.locale}
-            onChange={onFieldChange}
-          />
-          <p>
-            <ReactMarkdownWrapper source={t('ProfileView.locale.contrib')} />
-          </p>
-          <Input
-            name="tracking"
-            type="checkbox"
-            title={t('ProfileView.tracking.title')}
-            label={t('ProfileView.tracking.label', {
-              version:
-                instance && instance.data.attributes.tos
-                  ? `-${instance.data.attributes.tos}`
-                  : '-201711'
-            })}
-            {...fields.tracking}
+          <LanguageSection fields={fields} onChange={onFieldChange} />
+          <TrackingSection
+            instance={instance}
+            fields={fields}
             onChange={onFieldChange}
           />
           <ExportSection

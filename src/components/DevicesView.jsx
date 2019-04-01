@@ -1,18 +1,18 @@
-import tableStyles from '../styles/table'
-import viewStyles from '../styles/view'
-import devicesStyles from '../styles/devices'
+import tableStyles from 'styles/table'
+import viewStyles from 'styles/view'
+import devicesStyles from 'styles/devices'
 
 import classNames from 'classnames'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 
-import Loading from './Loading'
+import Loading from 'components/Loading'
 import Empty from 'cozy-ui/react/Empty'
 import { ButtonLink } from 'cozy-ui/react/Button'
-import EmptyIcon from '../assets/icons/icon-devices.svg'
+import EmptyIcon from 'assets/icons/icon-devices.svg'
 
-import DevicesModaleRevokeView from './DevicesModaleRevokeView'
+import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
 
 // for the icon, we show a phone if it's a phone, and a laptop in all other cases
 const getDeviceKindClass = kind =>

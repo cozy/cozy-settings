@@ -1,6 +1,6 @@
 /* global fetch */
 
-import emailHelper from '../lib/emailHelper'
+import emailHelper from 'lib/emailHelper'
 
 export let STACK_DOMAIN = null
 export let STACK_TOKEN = null

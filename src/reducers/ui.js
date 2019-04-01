@@ -21,7 +21,7 @@ import {
   SESSIONS_DELETE_OTHERS_SUCCESS,
   SESSIONS_DELETE_OTHERS_FAILURE,
   SET_LANG
-} from '../actions'
+} from 'actions'
 
 const context = (state = window.context || null, action) => {
   switch (action.type) {

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import { translate } from 'cozy-ui/react/I18n'
 
-import { fetchClaudyInfos, createIntentService } from '../actions/services'
-import { fetchInfos } from '../actions'
-import { sendMessageToSupport } from '../actions/email'
+import { fetchClaudyInfos, createIntentService } from 'actions/services'
+import { fetchInfos } from 'actions'
+import { sendMessageToSupport } from 'actions/email'
 
-import IntentView from '../components/IntentView'
+import IntentView from 'components/IntentView'
 
 const mapStateToProps = state => ({
   claudy: state.claudy,
