@@ -29,7 +29,7 @@
   position: absolute;
   width: 2em;
   height: 2em;
-  background: url('assets/services/icon-arrow-left.svg') center / 1.5em no-repeat;
+  background: url('~assets/services/icon-arrow-left.svg') center / 1.5em no-repeat;
   border: none;
   cursor: pointer;
   left: 10em;
