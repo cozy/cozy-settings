@@ -5,9 +5,9 @@ import React, { Component } from 'react'
 
 import classNames from 'classnames'
 import Loading from 'components/Loading'
+import OffersLink from 'components/OffersLink'
 
 import { translate } from 'cozy-ui/react/I18n'
-import { ButtonLink } from 'cozy-ui/react/Button'
 
 class StorageView extends Component {
   componentWillMount() {
@@ -60,21 +60,7 @@ class StorageView extends Component {
               >
                 {`${percent.toFixed(2)}%`}
               </span>
-              {storageData.offersLink && (
-                <div>
-                  <h3 className={viewStyles['set-view-subtitle']}>
-                    {t('StorageView.more_space')}
-                  </h3>
-                  <ButtonLink
-                    theme="regular"
-                    className={styles['set-offer-button']}
-                    href={storageData.offersLink}
-                    target
-                  >
-                    {t('StorageView.see_offer')}
-                  </ButtonLink>
-                </div>
-              )}
+              <OffersLink storageData={storageData} />
             </div>
           )}
       </div>
