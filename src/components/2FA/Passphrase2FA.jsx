@@ -7,6 +7,7 @@ import styles from 'styles/fields'
 import { Button } from 'cozy-ui/react/Button'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import Input from 'components/Input'
+import settingsConfig from 'config'
 
 export class Passphrase2FA extends Component {
   constructor(props) {
@@ -64,7 +65,9 @@ export class Passphrase2FA extends Component {
                 <p>{t('ProfileView.twofa.modal.nocode')}</p>
                 <p>
                   {t('ProfileView.twofa.modal.nocode_claude')}
-                  <a href="mailto:claude@cozycloud.cc">claude@cozycloud.cc</a>
+                  <a href={`mailto{settingsConfig.contactEmail}`}>
+                    {settingsConfig.contactEmail}
+                  </a>
                 </p>
               </div>
             </div>

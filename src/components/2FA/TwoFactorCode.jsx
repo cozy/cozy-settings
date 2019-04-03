@@ -6,6 +6,7 @@ import viewStyles from 'styles/view'
 import styles from 'styles/fields'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import Input from 'components/Input'
+import settingsConfig from 'config'
 
 export class TwoFactorCode extends Component {
   constructor(props) {
@@ -57,10 +58,13 @@ export class TwoFactorCode extends Component {
             submitting={twoFactor.codeChecking}
           />
           <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
-            <p>{t('ProfileView.twofa.modal.nocode')}</p>
             <p>
+              <span>{t('ProfileView.twofa.modal.nocode')}</span>
+              <br />
               {t('ProfileView.twofa.modal.nocode_claude')}
-              <a href="mailto:claude@cozycloud.cc">claude@cozycloud.cc</a>
+              <a href={`mailto{settingsConfig.contactEmail}`}>
+                {settingsConfig.contactEmail}
+              </a>
             </p>
           </div>
         </div>
