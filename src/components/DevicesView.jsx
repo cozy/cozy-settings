@@ -8,9 +8,7 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 
 import Loading from 'components/Loading'
-import Empty from 'cozy-ui/react/Empty'
-import { ButtonLink } from 'cozy-ui/react/Button'
-import EmptyIcon from 'assets/icons/icon-devices.svg'
+import NoDevicesMessage from 'components/NoDevicesMessage'
 
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
 
@@ -43,18 +41,7 @@ class DevicesView extends Component {
           {t('DevicesView.title')}
         </h2>
         {isFetching && <Loading />}
-        {!isFetching &&
-          devices.length === 0 && (
-            <Empty
-              icon={EmptyIcon}
-              title={t('Empty.devices.title')}
-              text={t('Empty.devices.text')}
-            >
-              <ButtonLink href={t('Empty.devices.link.href')} target>
-                {t('Empty.devices.link.text')}
-              </ButtonLink>
-            </Empty>
-          )}
+        {!isFetching && devices.length === 0 && <NoDevicesMessage />}
         {!isFetching &&
           devices.length > 0 && (
             <div className={classNames(tableStyles['coz-table'])}>
