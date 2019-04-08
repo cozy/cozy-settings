@@ -62,7 +62,7 @@ class PassphraseForm extends Component {
           key="current_password"
           value={currentPassword}
           inError={currentPasswordError}
-          onInput={e => this.handleCurrentInput(e)}
+          onChange={e => this.handleCurrentInput(e)}
           autocomplete="current-password"
         />
         {currentPasswordError && (
@@ -74,7 +74,7 @@ class PassphraseForm extends Component {
           key="new_password"
           value={newPassword}
           inError={newPasswordError}
-          onInput={e => this.handleNewInput(e)}
+          onChange={e => this.handleNewInput(e)}
           autocomplete="new-password"
         />
         <progress
