@@ -18,7 +18,7 @@ const Input = ({
   <input
     type={type}
     placeholder={placeholder}
-    value={value}
+    defaultValue={value}
     name={name}
     onChange={onChange && (e => onChange(name, e.target.value))}
     onBlur={onBlur && (e => onBlur(name, e.target.value))}
