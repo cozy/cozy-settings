@@ -18,13 +18,11 @@ export const ActivationConfirmation = ({
       src={images.twoFaModalBanner}
     />
     <h3>{t('ProfileView.twofa.modal.protect')}</h3>
-    <p>
-      <ReactMarkdownWrapper
-        source={t('ProfileView.twofa.modal.change', {
-          link: 'https://support.cozy.io/article/114-doubleauthentification'
-        })}
-      />
-    </p>
+    <ReactMarkdownWrapper
+      source={t('ProfileView.twofa.modal.change', {
+        link: 'https://support.cozy.io/article/114-doubleauthentification'
+      })}
+    />
     <div className={viewStyles['set-view-content-twofa']}>
       <div className={viewStyles['set-view-content-twofa-point']}>
         <img

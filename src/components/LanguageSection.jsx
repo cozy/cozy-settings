@@ -25,9 +25,7 @@ export class LanguageSection extends PureComponent {
           {...fields.locale}
           onChange={onChange}
         />
-        <p>
-          <ReactMarkdownWrapper source={t('ProfileView.locale.contrib')} />
-        </p>
+        <ReactMarkdownWrapper source={t('ProfileView.locale.contrib')} />
       </div>
     )
   }
