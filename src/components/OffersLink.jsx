@@ -9,7 +9,7 @@ import styles from 'styles/storage'
 
 export class OffersLink extends PureComponent {
   render() {
-    const { storageData, t } = this.const
+    const { storageData, t } = this.props
     return storageData.offersLink ? (
       <div>
         <h3 className={viewStyles['set-view-subtitle']}>
