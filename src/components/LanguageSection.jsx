@@ -10,20 +10,29 @@ const LANG_OPTIONS = ['en', 'fr', 'es']
 export class LanguageSection extends PureComponent {
   render() {
     const { fields, onChange, t } = this.props
+    const fieldProps = {
+      ...fields.locale,
+      title: t('ProfileView.locale.title'),
+      label: t(`ProfileView.locale.label`)
+    }
+    const selectedLocale = fields.locale.value
+    const fieldName = 'locale'
     return (
       <div>
         <Select
-          name="locale"
-          title={t('ProfileView.locale.title')}
-          label={t(`ProfileView.locale.label`)}
+          name={fieldName}
           options={LANG_OPTIONS.map(lang => {
             return {
               value: lang,
-              text: t(`ProfileView.locale.${lang}`)
+              label: t(`ProfileView.locale.${lang}`)
             }
           })}
-          {...fields.locale}
-          onChange={onChange}
+          fieldProps={fieldProps}
+          value={{
+            value: selectedLocale,
+            label: t(`ProfileView.locale.${selectedLocale}`, { _: '' })
+          }}
+          onChange={sel => onChange(fieldName, sel.value)}
         />
         <ReactMarkdownWrapper source={t('ProfileView.locale.contrib')} />
       </div>

@@ -8,6 +8,7 @@ import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
 const Field = ({
   t,
+  className,
   type,
   title,
   label,
@@ -17,7 +18,7 @@ const Field = ({
   children
 }) => (
   <div
-    className={classNames(styles['coz-form'], styles['set-field'], {
+    className={classNames(styles['coz-form'], styles['set-field'], className, {
       [styles['set-field-loading']]: submitting,
       [styles['set-field-saved']]: saved,
       [styles['set-field-input']]: type !== 'checkbox',

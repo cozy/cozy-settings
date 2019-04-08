@@ -1,19 +1,14 @@
 import React from 'react'
+import styles from 'styles/fields'
 import { translate } from 'cozy-ui/react/I18n'
 import Field from 'components/Field'
+import SelectBox from 'cozy-ui/react/SelectBox'
 
-const Select = ({ name, value, options, onChange }) => (
-  <select name={name} onChange={e => onChange(name, e.target.value)}>
-    {options.map((opt, index) => (
-      <option value={opt.value} selected={value === opt.value} key={index}>
-        {opt.text}
-      </option>
-    ))}
-  </select>
-)
-
-export default translate()(props => (
-  <Field {...props}>
-    <Select {...props} />
-  </Field>
-))
+export default translate()(props => {
+  const { fieldProps, ...restProps } = props
+  return (
+    <Field {...fieldProps} className={styles['set-field-select']}>
+      <SelectBox {...restProps} fullwidth />
+    </Field>
+  )
+})
