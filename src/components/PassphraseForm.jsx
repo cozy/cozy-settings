@@ -100,9 +100,8 @@ class PassphraseForm extends Component {
             busy={submitting}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
-          >
-            {t('ProfileView.password.submit_label')}
-          </Button>
+            label={t('ProfileView.password.submit_label')}
+          />
         </div>
 
         <a href={passphraseResetUrl} className={styles['password-reset-link']}>

@@ -23,9 +23,11 @@ class SessionsView extends Component {
           {t('SessionsView.title')}
         </h2>
         <p className={viewStyles['set-view-title']}>
-          <Button theme="danger" onClick={() => deleteOtherSessions()}>
-            {t('SessionsView.delete')}
-          </Button>
+          <Button
+            theme="danger"
+            onClick={() => deleteOtherSessions()}
+            label={t('SessionsView.delete')}
+          />
         </p>
         {isFetching && <Loading />}
         {!isFetching &&

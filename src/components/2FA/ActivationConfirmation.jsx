@@ -53,9 +53,11 @@ export const ActivationConfirmation = ({
       <p className={styles['coz-form-errors']}>{t(twoFactor.error)}</p>
     )}
     <div className={viewStyles['set-view-content-twofa-modal-content-button']}>
-      <Button onClick={activate2FA} aria-busy={twoFactor.submitting}>
-        <span>{t('ProfileView.twofa.modal.button.activate')}</span>
-      </Button>
+      <Button
+        onClick={activate2FA}
+        aria-busy={twoFactor.submitting}
+        label={t('ProfileView.twofa.modal.button.activate')}
+      />
     </div>
   </Fragment>
 )

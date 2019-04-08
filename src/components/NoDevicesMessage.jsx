@@ -16,9 +16,10 @@ export class NoDevicesMessage extends PureComponent {
         title={t('Empty.devices.title')}
         text={t('Empty.devices.text')}
       >
-        <ButtonLink href={t('Empty.devices.link.href')} target>
-          {t('Empty.devices.link.text')}
-        </ButtonLink>
+        <ButtonLink
+          href={t('Empty.devices.link.href')}
+          label={t('Empty.devices.link.text')}
+        />
       </Empty>
     )
   }

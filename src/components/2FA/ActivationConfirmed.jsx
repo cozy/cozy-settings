@@ -23,9 +23,10 @@ export const ActivationConfirmed = ({
         viewStyles['set-view-content-twofa-modal-content-right-buttons']
       }
     >
-      <Button onClick={closeTwoFAActivationModal}>
-        {t('ProfileView.twofa.modal.button.terminate')}
-      </Button>
+      <Button
+        onClick={closeTwoFAActivationModal}
+        label={t('ProfileView.twofa.modal.button.terminate')}
+      />
     </div>
   </Fragment>
 )
