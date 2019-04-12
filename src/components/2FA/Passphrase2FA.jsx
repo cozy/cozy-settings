@@ -81,16 +81,17 @@ export class Passphrase2FA extends Component {
                 viewStyles['set-view-content-twofa-modal-content-right-buttons']
               }
             >
-              <Button onClick={closeTwoFAPassphraseModal} theme="secondary">
-                {t('ProfileView.twofa.modal.button.cancel')}
-              </Button>
+              <Button
+                onClick={closeTwoFAPassphraseModal}
+                theme="secondary"
+                label={t('ProfileView.twofa.modal.button.cancel')}
+              />
               <Button
                 onClick={() => onPassphrase2FASubmit(twoFactorCode)}
                 aria-busy={submitting}
                 disabled={!email}
-              >
-                <span>{t('ProfileView.twofa.modal.button.validate')}</span>
-              </Button>
+                label={t('ProfileView.twofa.modal.button.validate')}
+              />
             </div>
           </ModalContent>
         </Modal>

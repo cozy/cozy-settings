@@ -109,9 +109,9 @@ class ProfileView extends Component {
             fetchExportData={() => fetchExportData(exportId)}
             parent={'/profile'}
           />
-          <p className={viewStyles['set-delete-account']}>
+          <div className={viewStyles['set-delete-account']}>
             <DeleteAccount />
-          </p>
+          </div>
         </div>
       </div>
     )

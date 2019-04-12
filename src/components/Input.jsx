@@ -18,7 +18,7 @@ const Input = ({
   <input
     type={type}
     placeholder={placeholder}
-    value={value}
+    defaultValue={value}
     name={name}
     onChange={onChange && (e => onChange(name, e.target.value))}
     onBlur={onBlur && (e => onBlur(name, e.target.value))}
@@ -66,7 +66,7 @@ class PasswordInputComponent extends Component {
       t,
       name,
       value,
-      onInput,
+      onChange,
       autocomplete,
       inError = false
     } = this.props
@@ -88,7 +88,7 @@ class PasswordInputComponent extends Component {
           type={visible ? 'text' : 'password'}
           placeholder={t(`ProfileView.${name}.placeholder`)}
           value={value}
-          onInput={onInput}
+          onChange={onChange}
           className={inError ? styles['error'] : ''}
           autoComplete={autocomplete || 'off'}
         />

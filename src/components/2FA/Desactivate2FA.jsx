@@ -29,12 +29,16 @@ export const Desactivate2FA = ({
               viewStyles['set-view-content-twofa-modal-content-right-buttons']
             }
           >
-            <Button onClick={closeTwoFADesactivationModal} theme="secondary">
-              {t('ProfileView.twofa.modal.button.cancel')}
-            </Button>
-            <Button onClick={desactivate2FA} theme="danger">
-              {t('ProfileView.twofa.modal.button.desactivate')}
-            </Button>
+            <Button
+              onClick={closeTwoFADesactivationModal}
+              theme="secondary"
+              label={t('ProfileView.twofa.modal.button.cancel')}
+            />
+            <Button
+              onClick={desactivate2FA}
+              theme="danger"
+              label={t('ProfileView.twofa.modal.button.desactivate')}
+            />
           </div>
         </Fragment>
       </ModalContent>

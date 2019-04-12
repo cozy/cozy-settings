@@ -62,7 +62,7 @@ class PassphraseForm extends Component {
           key="current_password"
           value={currentPassword}
           inError={currentPasswordError}
-          onInput={e => this.handleCurrentInput(e)}
+          onChange={e => this.handleCurrentInput(e)}
           autocomplete="current-password"
         />
         {currentPasswordError && (
@@ -74,7 +74,7 @@ class PassphraseForm extends Component {
           key="new_password"
           value={newPassword}
           inError={newPasswordError}
-          onInput={e => this.handleNewInput(e)}
+          onChange={e => this.handleNewInput(e)}
           autocomplete="new-password"
         />
         <progress
@@ -100,9 +100,8 @@ class PassphraseForm extends Component {
             busy={submitting}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
-          >
-            {t('ProfileView.password.submit_label')}
-          </Button>
+            label={t('ProfileView.password.submit_label')}
+          />
         </div>
 
         <a href={passphraseResetUrl} className={styles['password-reset-link']}>

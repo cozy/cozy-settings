@@ -73,15 +73,16 @@ export class TwoFactorCode extends Component {
             viewStyles['set-view-content-twofa-modal-content-right-buttons']
           }
         >
-          <Button onClick={closeTwoFAActivationModal} theme="secondary">
-            {t('ProfileView.twofa.modal.button.cancel')}
-          </Button>
+          <Button
+            onClick={closeTwoFAActivationModal}
+            theme="secondary"
+            label={t('ProfileView.twofa.modal.button.cancel')}
+          />
           <Button
             onClick={() => checkTwoFactorCode(twoFactorCode)}
             disabled={!twoFactorCode}
-          >
-            {t('ProfileView.twofa.modal.button.validate')}
-          </Button>
+            label={t('ProfileView.twofa.modal.button.validate')}
+          />
         </div>
       </div>
     )

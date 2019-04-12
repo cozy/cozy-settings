@@ -90,17 +90,18 @@ class ExportSection extends Component {
               )}
             </ModalDescription>
             <ModalFooter className={viewStyles['set-export-modal-footer']}>
-              <Button theme="secondary" onClick={this.toggleModal}>
-                {t('ProfileView.export.modal.cancel')}
-              </Button>
+              <Button
+                theme="secondary"
+                onClick={this.toggleModal}
+                label={t('ProfileView.export.modal.cancel')}
+              />
               <Button
                 theme="primary"
                 onClick={this.submitExport}
                 busy={exportData.submitting}
                 disabled={exportData.submitting}
-              >
-                {t('ProfileView.export.modal.CTA')}
-              </Button>
+                label={t('ProfileView.export.modal.CTA')}
+              />
             </ModalFooter>
           </Modal>
         )}
