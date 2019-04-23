@@ -9,7 +9,7 @@
     "name": "Cozy",
     "url": "https://cozy.io"
   },
-  "version": "1.7.0",
+  "version": "1.8.0",
   "licence": "AGPL-3.0",
   "permissions": {
     "settings": {
@@ -70,7 +70,9 @@
     "jobs": {
       "description": "Required to send emails to support",
       "type": "io.cozy.jobs",
-      "verbs": ["ALL"]
+      "verbs": [
+        "ALL"
+      ]
     }
   },
   "routes": {
