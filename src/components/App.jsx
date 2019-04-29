@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
+
+import 'cozy-ui/react/stylesheet.css'
+import { IconSprite } from 'cozy-ui/react'
 import { translate } from 'cozy-ui/react/I18n'
-import { Sprite as IconSprite } from 'cozy-ui/react/Icon'
 import { Layout, Main } from 'cozy-ui/react/Layout'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
