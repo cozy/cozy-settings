@@ -8,7 +8,7 @@ export default class IntentView extends Component {
     super(props)
     const { window } = props
     const intentType = window.location.href.match(/.*\/services\/(.*)\?.*/)[1]
-    this.setState({ intentType })
+    this.state = { intentType }
     // Maybe the logic about getting the intent from location.search should be
     // encapsulated in cozy.client.createService
     const intent = window.location.search.split('=')[1]
