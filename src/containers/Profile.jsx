@@ -1,3 +1,5 @@
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
+
 import { connect } from 'react-redux'
 
 import { translate } from 'cozy-ui/react/I18n'

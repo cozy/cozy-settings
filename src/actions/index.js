@@ -1,4 +1,5 @@
 /* global fetch */
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import emailHelper from 'lib/emailHelper'
 

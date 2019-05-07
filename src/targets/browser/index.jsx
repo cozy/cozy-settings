@@ -1,5 +1,6 @@
 /* global __DEVELOPMENT__ */
 /* global cozy */
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import 'styles/index.styl'
 

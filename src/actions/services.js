@@ -1,4 +1,5 @@
 /* global cozy */
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import CLAUDY_ACTIONS from 'config/claudyActions'
 

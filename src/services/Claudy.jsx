@@ -1,4 +1,5 @@
 /* global __PIWIK_TRACKER_URL__  __PIWIK_SITEID__ __PIWIK_DIMENSION_ID_APP__ */
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
