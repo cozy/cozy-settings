@@ -2,6 +2,7 @@
 /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
 import emailHelper from 'lib/emailHelper'
+import { getStackClient } from 'lib/cozyClient'
 
 export let STACK_DOMAIN = null
 export let STACK_TOKEN = null
@@ -303,29 +304,7 @@ export const deleteOtherSessions = () => {
 }
 
 export const cozyFetch = (method, path, body) => {
-  let params = {
-    method: method,
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${STACK_TOKEN}`
-    }
-  }
-  if (body) {
-    params.body = JSON.stringify(body)
-  }
-  return fetch(`${STACK_DOMAIN}${path}`, params).then(response => {
-    let data
-    const contentType = response.headers.get('content-type')
-    if (contentType && contentType.indexOf('json') >= 0) {
-      data = response.json()
-    } else {
-      data = response.text()
-    }
-
-    return response.status >= 200 && response.status <= 204
-      ? data
-      : data.then(Promise.reject.bind(Promise))
-  })
+  return getStackClient()
+    .fetchJSON(method, path, body)
+    .catch(fetchError => fetchError.reason || fetchError)
 }
