@@ -6,7 +6,7 @@ yarn.lock # Remove this one on your app
 
 # Build
 build/
-
+coverage/
 
 # Locales
 **/locales/*
