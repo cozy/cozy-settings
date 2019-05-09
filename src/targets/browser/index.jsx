@@ -9,7 +9,7 @@ import { Provider, connect } from 'react-redux'
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import CozyClient from 'cozy-client'
+import CozyClient, { CozyProvider } from 'cozy-client'
 
 import I18n from 'cozy-ui/react/I18n'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
@@ -68,13 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   render(
-    <Provider store={store}>
-      <EnhancedI18n dictRequire={lang => require(`locales/${lang}`)}>
-        <PiwikHashRouter>
-          <App domain={data.cozyDomain} />
-        </PiwikHashRouter>
-      </EnhancedI18n>
-    </Provider>,
+    <CozyProvider client={cozyClient} store={store}>
+      <Provider store={store}>
+        <EnhancedI18n dictRequire={lang => require(`locales/${lang}`)}>
+          <PiwikHashRouter>
+            <App domain={data.cozyDomain} />
+          </PiwikHashRouter>
+        </EnhancedI18n>
+      </Provider>
+    </CozyProvider>,
     root
   )
 })
