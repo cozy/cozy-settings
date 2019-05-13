@@ -6,8 +6,8 @@ import classNames from 'classnames'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
+import Spinner from 'cozy-ui/react/Spinner'
 
-import Loading from 'components/Loading'
 import NoDevicesMessage from 'components/NoDevicesMessage'
 
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
@@ -40,7 +40,14 @@ class DevicesView extends Component {
         <h2 className={viewStyles['set-view-title']}>
           {t('DevicesView.title')}
         </h2>
-        {isFetching && <Loading />}
+        {isFetching && (
+          <Spinner
+            className={'u-pos-fixed-s'}
+            middle
+            size="xxlarge"
+            loadingType={t('Loading.loading')}
+          />
+        )}
         {!isFetching && devices.length === 0 && <NoDevicesMessage />}
         {!isFetching &&
           devices.length > 0 && (

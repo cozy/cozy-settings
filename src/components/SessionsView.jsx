@@ -4,7 +4,7 @@ import viewStyles from 'styles/view'
 import React, { Component } from 'react'
 import classNames from 'classnames'
 
-import Loading from 'components/Loading'
+import Spinner from 'cozy-ui/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
 
 import { translate } from 'cozy-ui/react/I18n'
@@ -29,7 +29,14 @@ class SessionsView extends Component {
             label={t('SessionsView.delete')}
           />
         </p>
-        {isFetching && <Loading />}
+        {isFetching && (
+          <Spinner
+            className={'u-pos-fixed-s'}
+            middle
+            size="xxlarge"
+            loadingType={t('Loading.loading')}
+          />
+        )}
         {!isFetching &&
           sessions && (
             <div className={classNames(tableStyles['coz-table'])}>
