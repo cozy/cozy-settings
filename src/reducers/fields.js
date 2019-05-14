@@ -8,20 +8,34 @@ import {
   RESET_INFO_FIELD
 } from 'actions'
 
-import { CHECK_TWO_FACTOR_CODE_SUCCESS } from 'actions/twoFactor'
+import {
+  CHECK_TWO_FACTOR_CODE_SUCCESS,
+  AUTH_MODE
+} from 'actions/twoFactor'
+
+/** Special reducer for the auth_mode field */
+const twoFactorValue = (state = '', action) => {
+  switch (action.type) {
+    case CHECK_TWO_FACTOR_CODE_SUCCESS:
+      return AUTH_MODE.TWO_FA_MAIL
+    default:
+      return state
+  }
+}
 
 const createField = name => {
-  const value = (state = '', action) => {
+  const normalValue = (state = '', action) => {
     switch (action.type) {
       case FETCH_INFOS_SUCCESS:
         return action.instance.data.attributes[name] || ''
-      case CHECK_TWO_FACTOR_CODE_SUCCESS:
       case UPDATE_INFO:
         return name !== action.field ? state : action.value
       default:
         return state
     }
   }
+
+  const value = name == 'auth_mode' ? twoFactorValue : normalValue
 
   const submitting = (state = false, action) => {
     if (name !== action.field) return state
