@@ -10,6 +10,7 @@ import {
 
 import {
   CHECK_TWO_FACTOR_CODE_SUCCESS,
+  DESACTIVATE_2FA_SUCCESS,
   AUTH_MODE
 } from 'actions/twoFactor'
 
@@ -18,6 +19,8 @@ const twoFactorValue = (state = '', action) => {
   switch (action.type) {
     case CHECK_TWO_FACTOR_CODE_SUCCESS:
       return AUTH_MODE.TWO_FA_MAIL
+    case DESACTIVATE_2FA_SUCCESS:
+      return AUTH_MODE.BASIC
     default:
       return state
   }
