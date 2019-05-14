@@ -1,5 +1,12 @@
 import { cozyFetch } from 'actions'
 
+/**
+ * The order of actions
+ *
+ * 1. ACTIVATE_FA
+ * 2. CHECK_TWO_FACTOR_CODE
+ */
+
 export const ACTIVATE_2FA = 'ACTIVATE_2FA'
 export const ACTIVATE_2FA_FAILURE = 'ACTIVATE_2FA_FAILURE'
 export const ACTIVATE_2FA_SUCCESS = 'ACTIVATE_2FA_SUCCESS'
