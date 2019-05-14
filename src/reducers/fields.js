@@ -14,8 +14,8 @@ import {
   AUTH_MODE
 } from 'actions/twoFactor'
 
-/** Special reducer for the auth_mode field */
-const twoFactorValue = (state = '', action) => {
+/** Special reducer for the auth_mode value */
+const authModeValue = (state = '', action) => {
   switch (action.type) {
     case CHECK_TWO_FACTOR_CODE_SUCCESS:
       return AUTH_MODE.TWO_FA_MAIL
@@ -38,7 +38,7 @@ const createField = name => {
     }
   }
 
-  const value = name == 'auth_mode' ? twoFactorValue : normalValue
+  const value = name == 'auth_mode' ? authModeValue : normalValue
 
   const submitting = (state = false, action) => {
     if (name !== action.field) return state
