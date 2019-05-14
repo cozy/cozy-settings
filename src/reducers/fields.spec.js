@@ -48,14 +48,17 @@ describe('fields reducer', () => {
     })
   })
 
-  it('should react to two fa actions', () => {
-    state = fields(state, {
-      type: CHECK_TWO_FACTOR_CODE_SUCCESS
+  describe('two fa', () => {  
+    it('should react to two fa actions', () => {
+      state = fields(state, {
+        type: CHECK_TWO_FACTOR_CODE_SUCCESS
+      })
+      expect(state.auth_mode.value).toBe(AUTH_MODE.TWO_FA_MAIL)
+      state = fields(state, {
+        type: DESACTIVATE_2FA_SUCCESS
+      })
+      expect(state.auth_mode.value).toBe(AUTH_MODE.BASIC)
     })
-    expect(state.auth_mode.value).toBe(AUTH_MODE.TWO_FA_MAIL)
-    state = fields(state, {
-      type: DESACTIVATE_2FA_SUCCESS
-    })
-    expect(state.auth_mode.value).toBe(AUTH_MODE.BASIC)
   })
+
 })
