@@ -41,6 +41,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       await dispatch(requestExport())
       Alerter.success(ownProps.t('ProfileView.export.success'))
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e)
     }
   },
@@ -60,21 +61,26 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(desactivate2FA(mode))
   },
   onPassphraseSimpleSubmit: (current, newVal) => {
-    return dispatch(updatePassphrase(current, newVal))
-      .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
-      .catch(e => console.error(e))
+    return (
+      dispatch(updatePassphrase(current, newVal))
+        .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
+        // eslint-disable-next-line no-console
+        .catch(e => console.error(e))
+    )
   },
   onPassphrase2FAStep1: current => {
     return dispatch(updatePassphrase2FAFirst(current)).catch(e =>
+      // eslint-disable-next-line no-console
       console.error(e)
     )
   },
   onPassphrase2FAStep2: (newVal, twoFactorCode, twoFactorToken) => {
-    return dispatch(
-      updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken)
+    return (
+      dispatch(updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken))
+        .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
+        // eslint-disable-next-line no-console
+        .catch(e => console.error(e))
     )
-      .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
-      .catch(e => console.error(e))
   }
 })
 

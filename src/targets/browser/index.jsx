@@ -38,6 +38,7 @@ const EnhancedI18n = connect(state => {
   try {
     cozy.bar.setLocale && cozy.bar.setLocale(lang)
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.warn(`The dict phrases for "${lang}" can't be loaded`)
   }
   return { lang }

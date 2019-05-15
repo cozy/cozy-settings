@@ -12,6 +12,7 @@ if (document.querySelector('[role=application]')) {
 }
 
 if (!(STACK_TOKEN || STACK_DOMAIN)) {
+  // eslint-disable-next-line no-console
   console.error(
     'Settings need the Cozy URL and the token to work correctly. Elements not found.'
   )
@@ -100,8 +101,10 @@ export const fetchStorageData = () => {
       }
     } catch (e) {
       if (e.error && e.error !== 'Not Found') {
+        // eslint-disable-next-line no-console
         console.warn(e)
       } else if (!e.error) {
+        // eslint-disable-next-line no-console
         console.warn(e)
       }
     }
