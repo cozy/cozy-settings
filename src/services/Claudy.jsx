@@ -63,6 +63,7 @@ export class Claudy extends Component {
     const { t, claudyInfos } = this.props
     if (action.link.type === 'apps' && action.link.appSlug) {
       if (!claudyInfos.apps || !claudyInfos.apps.length) {
+        // eslint-disable-next-line no-console
         console.warn('No apps found on the Cozy')
         return null
       }
@@ -73,6 +74,7 @@ export class Claudy extends Component {
         const appUrl = `${app.links.related}${action.link.path || ''}`
         return appUrl
       } else {
+        // eslint-disable-next-line no-console
         console.warn(
           `No app with slug '${action.link.appSlug}' found on the Cozy.`
         )
