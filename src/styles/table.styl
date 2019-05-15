@@ -4,8 +4,8 @@
 $set-device
     content         ''
     display         inline-block
-    width           em(30px)
-    height          em(30px)
+    width           rem(30px)
+    height          rem(30px)
     vertical-align  middle
 
 .set-loading
@@ -48,7 +48,7 @@ $set-device
         // quick fix for cozy-ui table layout issue
         height auto!important //@stylint ignore
         .coz-table-primary
-            padding-left em(80px)
+            padding-left rem(80px)
 
     .set-table-sessions
         // quick fix for cozy-ui table layout issue
@@ -58,10 +58,10 @@ $set-device
         font-size  1rem
 
     .set-device-laptop
-        background embedurl('../assets/icons/icon-device-laptop.svg') em(32px) center no-repeat
+        background embedurl('../assets/icons/icon-device-laptop.svg') rem(32px) center no-repeat
 
     .set-device-phone
-        background embedurl('../assets/icons/icon-device-phone.svg') em(32px) center no-repeat
+        background embedurl('../assets/icons/icon-device-phone.svg') rem(32px) center no-repeat
 
     +small-screen()
         .set-table-name
