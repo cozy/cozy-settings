@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   render(
-    <CozyProvider client={cozyClient} store={store}>
+    <CozyProvider client={cozyClient}>
       <Provider store={store}>
         <EnhancedI18n dictRequire={lang => require(`locales/${lang}`)}>
           <PiwikHashRouter>
