@@ -15,7 +15,7 @@ import sessions from 'reducers/sessions'
 import storageData from 'reducers/storageData'
 import ui from 'reducers/ui'
 
-const settingsApp = combineReducers({
+const appReducer = combineReducers({
   devices,
   fields,
   twoFactor,
@@ -32,4 +32,4 @@ const settingsApp = combineReducers({
   ui
 })
 
-export default settingsApp
+export default appReducer
