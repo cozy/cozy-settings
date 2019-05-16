@@ -9,14 +9,15 @@ import { Provider, connect } from 'react-redux'
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import CozyClient, { CozyProvider } from 'cozy-client'
+import { CozyProvider } from 'cozy-client'
 
 import I18n from 'cozy-ui/react/I18n'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
 
-import settingsApp from 'reducers'
+import appReducer from 'reducers'
 
 import App from 'components/App'
+import cozyClient from 'lib/client'
 
 const loggerMiddleware = createLogger()
 
@@ -28,12 +29,8 @@ const middlewares = [thunkMiddleware]
 
 if (__DEVELOPMENT__) middlewares.push(loggerMiddleware)
 
-const cozyClient = new CozyClient({
-  schema: {}
-})
-
 const store = createStore(
-  settingsApp,
+  appReducer,
   composeEnhancers(applyMiddleware(...middlewares))
 )
 
@@ -72,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   render(
-    <CozyProvider client={cozyClient}>
+    <CozyProvider client={cozyClient} store={store}>
       <Provider store={store}>
         <EnhancedI18n dictRequire={lang => require(`locales/${lang}`)}>
           <PiwikHashRouter>
