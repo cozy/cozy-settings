@@ -29,6 +29,7 @@ export class App extends Component {
   render() {
     return (
       <Layout>
+        { App.renderExtra() }
         <Alerter />
         <Sidebar />
 
@@ -49,6 +50,8 @@ export class App extends Component {
     )
   }
 }
+
+App.renderExtra = () => null
 
 const mapStateToProps = state => ({
   alert: state.ui.alert
