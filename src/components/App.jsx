@@ -18,7 +18,7 @@ import Storage from 'containers/Storage'
 import IntentRedirect from 'services/IntentRedirect'
 
 export class App extends Component {
-  childContextTypes = {
+  static childContextTypes = {
     domain: PropTypes.string
   }
 
