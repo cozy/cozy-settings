@@ -28,6 +28,10 @@ const middlewares = [thunkMiddleware]
 
 if (__DEVELOPMENT__) middlewares.push(loggerMiddleware)
 
+const cozyClient = new CozyClient({
+  schema: {}
+})
+
 const store = createStore(
   settingsApp,
   composeEnhancers(applyMiddleware(...middlewares))
@@ -54,9 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   const protocol = window.location.protocol
-  const cozyClient = new CozyClient({
+  cozyClient.login({
     uri: `${protocol}//${data.cozyDomain}`,
-    schema: {},
     token: data.cozyToken
   })
 
