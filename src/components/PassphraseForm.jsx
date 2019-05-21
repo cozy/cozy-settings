@@ -1,9 +1,10 @@
 import styles from 'styles/fields'
-import classNames from 'classnames'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
+import Icon from 'cozy-ui/react/Icon'
+import palette from 'cozy-ui/stylus/settings/palette.json'
 
 import { PasswordInput } from 'components/Input'
 import passwordHelper from 'lib/passwordHelper'
@@ -95,13 +96,20 @@ class PassphraseForm extends Component {
         )}
         <div className={styles['coz-form-controls']}>
           <Button
-            className={classNames({ [styles['saved']]: saved })}
             theme="secondary"
             busy={submitting}
             onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
             label={t('ProfileView.password.submit_label')}
-          />
+          >
+            {saved && (
+              <Icon
+                className="u-ml-half"
+                icon="check-circleless"
+                color={palette['emerald']}
+              />
+            )}
+          </Button>
         </div>
 
         <a href={passphraseResetUrl} className={styles['password-reset-link']}>

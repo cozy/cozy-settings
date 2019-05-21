@@ -4,7 +4,7 @@ import styles from 'styles/storage'
 import React, { Component } from 'react'
 
 import classNames from 'classnames'
-import Loading from 'components/Loading'
+import Spinner from 'cozy-ui/react/Spinner'
 import OffersLink from 'components/OffersLink'
 
 import { translate } from 'cozy-ui/react/I18n'
@@ -36,7 +36,14 @@ class StorageView extends Component {
         <h3 className={viewStyles['set-view-subtitle']}>
           {t('StorageView.storage_title')}
         </h3>
-        {isFetching && <Loading />}
+        {isFetching && (
+          <Spinner
+            className={'u-pos-fixed-s'}
+            middle
+            size="xxlarge"
+            loadingType={t('Loading.loading')}
+          />
+        )}
         {!isFetching &&
           storageData && (
             <div>
