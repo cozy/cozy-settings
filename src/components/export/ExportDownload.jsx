@@ -45,7 +45,7 @@ class ExportDownload extends Component {
         secondaryAction={() => this.closeModal()}
         mobileFullscreen
       >
-        <ModalHeader className={viewStyles['set-export-modal-header']}>
+        <ModalHeader className="u-ta-center">
           <h2 className={viewStyles['set-export-modal-title']}>
             {t('ProfileView.export.download.title')}
           </h2>
