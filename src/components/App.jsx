@@ -29,7 +29,7 @@ export class App extends Component {
   render() {
     return (
       <Layout>
-        { App.renderExtra() }
+        {App.renderExtra()}
         <Alerter />
         <Sidebar />
 
