@@ -51,6 +51,7 @@ export class App extends Component {
   }
 }
 
+// This is to facilitate the extension of App in apps overrides
 App.renderExtra = () => null
 
 const mapStateToProps = state => ({
