@@ -67,7 +67,7 @@ class ExportSection extends Component {
             secondaryAction={this.toggleModal}
             mobileFullscreen
           >
-            <ModalHeader className={viewStyles['set-export-modal-header']}>
+            <ModalHeader className="u-ta-center u-pr-0">
               <img
                 className={viewStyles['set-export-modal-image']}
                 alt={t('ProfileView.export.modal.title')}
