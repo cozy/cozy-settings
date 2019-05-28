@@ -14,8 +14,9 @@ import openDeviceRevokeModale from 'reducers/openDeviceRevokeModale'
 import sessions from 'reducers/sessions'
 import storageData from 'reducers/storageData'
 import ui from 'reducers/ui'
+import cozyClient from 'lib/client'
 
-const settingsApp = combineReducers({
+const appReducer = combineReducers({
   devices,
   fields,
   twoFactor,
@@ -29,7 +30,8 @@ const settingsApp = combineReducers({
   passphrase,
   sessions,
   storageData,
-  ui
+  ui,
+  cozy: cozyClient.reducer()
 })
 
-export default settingsApp
+export default appReducer

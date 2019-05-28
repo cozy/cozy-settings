@@ -18,7 +18,7 @@ import Storage from 'containers/Storage'
 import IntentRedirect from 'services/IntentRedirect'
 
 export class App extends Component {
-  childContextTypes = {
+  static childContextTypes = {
     domain: PropTypes.string
   }
 
@@ -29,6 +29,7 @@ export class App extends Component {
   render() {
     return (
       <Layout>
+        {App.renderExtra()}
         <Alerter />
         <Sidebar />
 
@@ -49,6 +50,9 @@ export class App extends Component {
     )
   }
 }
+
+// This is to facilitate the extension of App in apps overrides
+App.renderExtra = () => null
 
 const mapStateToProps = state => ({
   alert: state.ui.alert
