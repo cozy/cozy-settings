@@ -2799,10 +2799,10 @@ cozy-realtime@1.2.2:
   resolved "https://registry.yarnpkg.com/cozy-realtime/-/cozy-realtime-1.2.2.tgz#c86cf396e2faf1e92cb2b3cea9d2a69766a2b1ea"
   integrity sha512-zhXFalsOzg4waWoG6j1SiNJiDH4zgxlVje4ZJo/O9iK1BG1E2wJ/dGaKHZs+DiwP10xzqYKI81nQ+L1bE6J5+A==
 
-cozy-scripts@1.13.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/cozy-scripts/-/cozy-scripts-1.13.0.tgz#7e1381496b25123ea767554552c3adb81ee9dc60"
-  integrity sha512-H1W+VZ1yX0Zub10Ho9OAOpFjZekG07Vp0UT+G368/D4xidb6vMtOp8ODz2ucCZwqlJcuHYZSyEP8VGEgdP0lCg==
+cozy-scripts@1.13.1:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/cozy-scripts/-/cozy-scripts-1.13.1.tgz#9ab9fcae59673f5fc208a3740f47d3c0dbb62727"
+  integrity sha512-/0A+Cy0zlrDZr3OX+qaYCKkSMvrMe7ZZFVkO6pbnoRQ3CEH7WC0QxJKSkQbAcdTrziQ31dE3pVj4hvVeLNRcAA==
   dependencies:
     "@babel/core" "7.2.2"
     autoprefixer "9.4.7"
