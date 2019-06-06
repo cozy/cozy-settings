@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
@@ -18,14 +17,6 @@ import Storage from 'containers/Storage'
 import IntentRedirect from 'services/IntentRedirect'
 
 export class App extends Component {
-  static childContextTypes = {
-    domain: PropTypes.string
-  }
-
-  getChildContext() {
-    return { domain: this.props.domain }
-  }
-
   render() {
     return (
       <Layout>
