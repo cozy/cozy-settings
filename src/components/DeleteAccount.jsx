@@ -44,7 +44,7 @@ export class DeleteAccount extends Component {
   }
 
   render = () => {
-    const { cozyUrl, t } = this.props
+    const { t } = this.props
     const { status } = this.state
     return (
       <div>
@@ -57,7 +57,6 @@ export class DeleteAccount extends Component {
         { status === REQUESTING &&
           <FormModal
             dismissAction={this.cancel}
-            domain={this.context.domain}
             onError={this.onError}
             onSuccess={this.onRequested}
           />

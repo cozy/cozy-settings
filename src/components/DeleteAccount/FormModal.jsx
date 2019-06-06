@@ -12,6 +12,8 @@ import Modal, {
   ModalHeader
 } from 'cozy-ui/react/Modal'
 
+import { STACK_DOMAIN } from 'actions'
+
 const DONE = 'done'
 const ERRORED = 'errored'
 const IDLE = 'idle'
@@ -40,7 +42,8 @@ export class FormModal extends Component {
 
   onSend = async event => {
     event.preventDefault()
-    const { domain, t } = this.props
+    const { t } = this.props
+    const domain = STACK_DOMAIN.replace('//', '')
     const reason = this.reasonElement.value
     this.setStatus(SENDING)
     try {
