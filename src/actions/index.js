@@ -91,12 +91,17 @@ export const fetchStorageData = () => {
         ctx.data &&
         ctx.data.attributes &&
         ctx.data.attributes.manager_url
+      const enablePremiumLinks =
+        ctx &&
+        ctx.data &&
+        ctx.data.attributes &&
+        ctx.data.attributes.enable_premium_links
       const uuid =
         instance &&
         instance.data &&
         instance.data.attributes &&
         instance.data.attributes.uuid
-      if (managerUrl && uuid) {
+      if (enablePremiumLinks && managerUrl && uuid) {
         offersLink = `${managerUrl}/cozy/instances/${uuid}/premium`
       }
     } catch (e) {
