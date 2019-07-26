@@ -34,7 +34,7 @@
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
     "babel-preset-cozy-app": "1.5.1",
-    "cozy-bar": "6.28.5",
+    "cozy-bar": "7.6.0",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.9.1",
     "eslint-config-cozy-app": "1.1.9",
