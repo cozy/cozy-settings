@@ -1,4 +1,6 @@
 import { cozyFetch } from 'actions'
+import { WebVaultClient } from 'cozy-keys-lib'
+import client from 'lib/client'
 
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
@@ -14,13 +16,29 @@ export const UPDATE_PASSPHRASE_2FA_2 = 'UPDATE_PASSPHRASE_2FA_2'
 export const UPDATE_PASSPHRASE_2FA_2_SUCCESS = 'UPDATE_PASSPHRASE_2FA_2_SUCCESS'
 export const UPDATE_PASSPHRASE_2FA_2_FAILURE = 'UPDATE_PASSPHRASE_2FA_2_FAILURE'
 
+const getInstanceURL = () => {
+  return client.getStackClient().uri
+}
+
 export const updatePassphrase = (current, newVal) => {
+  const instanceURL = getInstanceURL()
+  const vaultClient = new WebVaultClient(instanceURL)
+
   return dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE })
-    return cozyFetch('PUT', '/settings/passphrase', {
-      current_passphrase: current,
-      new_passphrase: newVal
-    })
+    return vaultClient
+      .login(current)
+      .then(() => {
+        return vaultClient.computeNewHashAndKeys(current, newVal)
+      })
+      .then(newHashAndKeys => {
+        return cozyFetch('PUT', '/settings/passphrase', {
+          current_passphrase: newHashAndKeys.currentPasswordHash,
+          new_passphrase: newHashAndKeys.newPasswordHash,
+          key: newHashAndKeys.newEncryptionKey.encryptedString,
+          iterations: newHashAndKeys.kdfIterations
+        })
+      })
       .then(() => {
         dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
         setTimeout(() => {
@@ -48,11 +66,21 @@ export const updatePassphrase = (current, newVal) => {
 }
 
 export const updatePassphrase2FAFirst = current => {
+  const instanceURL = getInstanceURL()
+  const vaultClient = new WebVaultClient(instanceURL)
+
   return dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE_2FA_1 })
-    return cozyFetch('PUT', '/settings/passphrase', {
-      current_passphrase: current
-    })
+    return vaultClient
+      .login(current)
+      .then(() => {
+        return vaultClient.computeHashedPassword(current)
+      })
+      .then(currentPasswordHash =>
+        cozyFetch('PUT', '/settings/passphrase', {
+          current_passphrase: currentPasswordHash
+        })
+      )
       .then(data => {
         dispatch({
           type: UPDATE_PASSPHRASE_2FA_1_SUCCESS,
@@ -78,17 +106,31 @@ export const updatePassphrase2FAFirst = current => {
 }
 
 export const updatePassphrase2FASecond = (
+  current,
   newVal,
   twoFactorCode,
   twoFactorToken
 ) => {
   return async dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE_2FA_2 })
-    return cozyFetch('PUT', '/settings/passphrase', {
-      new_passphrase: newVal,
-      two_factor_token: twoFactorToken,
-      two_factor_passcode: twoFactorCode
-    })
+
+    const instanceURL = getInstanceURL()
+    const vaultClient = new WebVaultClient(instanceURL)
+
+    return vaultClient
+      .login(current)
+      .then(() => {
+        return vaultClient.computeNewHashAndKeys(current, newVal)
+      })
+      .then(newHashAndKeys => {
+        return cozyFetch('PUT', '/settings/passphrase', {
+          new_passphrase: newHashAndKeys.newPasswordHash,
+          key: newHashAndKeys.newEncryptionKey.encryptedString,
+          iterations: newHashAndKeys.kdfIterations,
+          two_factor_token: twoFactorToken,
+          two_factor_passcode: twoFactorCode
+        })
+      })
       .then(() => {
         dispatch({ type: UPDATE_PASSPHRASE_2FA_2_SUCCESS })
         setTimeout(() => {
