@@ -20,6 +20,40 @@ const getInstanceURL = () => {
   return client.getStackClient().uri
 }
 
+const invalidPasswordErrorAction = {
+  type: UPDATE_PASSPHRASE_FAILURE,
+  errors: { currentPassword: 'ProfileView.password.wrong_password' }
+}
+
+const defaultErrorAction = {
+  type: UPDATE_PASSPHRASE_FAILURE,
+  errors: { global: 'ProfileView.password.server_error' }
+}
+
+const getErrorDetails = error => {
+  const vaultError = error && error.response && error.response.error
+  const stackError =
+    error && error.errors && error.errors[0] && error.errors[0].detail
+
+  return vaultError || stackError
+}
+
+const isInvalidPassword = errorDetails => {
+  const potentialErrors = ['invalid password', 'Invalid passphrase']
+
+  return potentialErrors.includes(errorDetails)
+}
+
+const updatePassphraseFailure = error => {
+  const details = getErrorDetails(error)
+
+  if (isInvalidPassword(details)) {
+    return invalidPasswordErrorAction
+  }
+
+  return defaultErrorAction
+}
+
 export const updatePassphrase = (current, newVal) => {
   const instanceURL = getInstanceURL()
   const vaultClient = new WebVaultClient(instanceURL)
@@ -48,18 +82,9 @@ export const updatePassphrase = (current, newVal) => {
         }, 4000) // 4s, a bit longer than the alert message
       })
       .catch(error => {
-        const errors = error.errors || []
-        if (errors.length && errors[0].detail === 'Invalid passphrase') {
-          dispatch({
-            type: UPDATE_PASSPHRASE_FAILURE,
-            errors: { currentPassword: 'ProfileView.password.wrong_password' }
-          })
-        } else {
-          dispatch({
-            type: UPDATE_PASSPHRASE_FAILURE,
-            errors: { global: 'ProfileView.password.server_error' }
-          })
-        }
+        const action = updatePassphraseFailure(error)
+
+        dispatch(action)
         throw error
       })
   }
@@ -88,18 +113,9 @@ export const updatePassphrase2FAFirst = current => {
         })
       })
       .catch(error => {
-        const errors = error.errors || []
-        if (errors.length && errors[0].detail === 'Invalid passphrase') {
-          dispatch({
-            type: UPDATE_PASSPHRASE_2FA_1_FAILURE,
-            errors: { currentPassword: 'ProfileView.password.wrong_password' }
-          })
-        } else {
-          dispatch({
-            type: UPDATE_PASSPHRASE_2FA_1_FAILURE,
-            errors: { global: 'ProfileView.password.server_error' }
-          })
-        }
+        const action = updatePassphraseFailure(error)
+
+        dispatch(action)
         throw error
       })
   }
