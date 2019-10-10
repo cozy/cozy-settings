@@ -81,6 +81,7 @@ class TwoFA extends Component {
   onPassphrase2FAStep1(current, newVal) {
     this.setState(() => ({
       twoFAPassphraseModalIsOpen: true,
+      currentPassphrase: current,
       new2FAPassphrase: newVal
     }))
     this.props.onPassphrase2FAStep1(current)
@@ -89,12 +90,15 @@ class TwoFA extends Component {
   onPassphrase2FASubmit(twoFactorCode) {
     const { onPassphrase2FAStep2, passphrase } = this.props
     const { twoFactorToken } = passphrase
-    const { new2FAPassphrase } = this.state
-    onPassphrase2FAStep2(new2FAPassphrase, twoFactorCode, twoFactorToken).then(
-      () => {
-        this.closeTwoFAPassphraseModal()
-      }
-    )
+    const { currentPassphrase, new2FAPassphrase } = this.state
+    onPassphrase2FAStep2(
+      currentPassphrase,
+      new2FAPassphrase,
+      twoFactorCode,
+      twoFactorToken
+    ).then(() => {
+      this.closeTwoFAPassphraseModal()
+    })
   }
 
   render() {

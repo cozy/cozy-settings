@@ -74,9 +74,16 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       console.error(e)
     )
   },
-  onPassphrase2FAStep2: (newVal, twoFactorCode, twoFactorToken) => {
+  onPassphrase2FAStep2: (current, newVal, twoFactorCode, twoFactorToken) => {
     return (
-      dispatch(updatePassphrase2FASecond(newVal, twoFactorCode, twoFactorToken))
+      dispatch(
+        updatePassphrase2FASecond(
+          current,
+          newVal,
+          twoFactorCode,
+          twoFactorToken
+        )
+      )
         .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))
