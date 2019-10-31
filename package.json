@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
-    "cozy-client": "6.48.0",
+    "cozy-client": "6.66.0",
     "cozy-client-js": "0.14.2",
     "cozy-keys-lib": "1.9.5",
     "cozy-scripts": "1.13.1",
