@@ -1,4 +1,7 @@
 {
+  "manifest": {
+    "name": "Settings"
+  },
   "DeleteAccount": {
     "title" : "Delete your account",
     "label" : "You can delete you Cozy at anytime. Be careful, once your account is deleted, your data will entirely be deleted, there is no going back.",
