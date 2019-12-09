@@ -12,12 +12,55 @@ import LanguageSection from 'components/LanguageSection'
 import TwoFA from 'components/2FA'
 import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
+import Passphrase2FA from 'components/2FA/Passphrase2FA'
 
 import { AUTH_MODE } from 'actions/twoFactor'
 
 class ProfileView extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      twoFAPassphraseModalIsOpen: false
+    }
+
+    this.onPassphrase2FAStep1 = this.onPassphrase2FAStep1.bind(this)
+    this.onPassphrase2FASubmit = this.onPassphrase2FASubmit.bind(this)
+    this.closeTwoFAPassphraseModal = this.closeTwoFAPassphraseModal.bind(this)
+  }
+
   componentWillMount() {
     this.props.fetchInfos()
+  }
+
+  onPassphrase2FAStep1(current, newVal) {
+    this.setState(() => ({
+      twoFAPassphraseModalIsOpen: true,
+      currentPassphrase: current,
+      new2FAPassphrase: newVal
+    }))
+    this.props.onPassphrase2FAStep1(current)
+  }
+
+  onPassphrase2FASubmit(twoFactorCode) {
+    const { onPassphrase2FAStep2, passphrase } = this.props
+    const { twoFactorToken } = passphrase
+    const { currentPassphrase, new2FAPassphrase } = this.state
+    onPassphrase2FAStep2(
+      currentPassphrase,
+      new2FAPassphrase,
+      twoFactorCode,
+      twoFactorToken
+    ).then(() => {
+      this.closeTwoFAPassphraseModal()
+    })
+  }
+
+  closeTwoFAPassphraseModal() {
+    this.setState(() => ({
+      twoFAPassphraseModalIsOpen: false,
+      new2FAPassphrase: null
+    }))
   }
 
   render() {
@@ -38,10 +81,11 @@ class ProfileView extends Component {
       checkTwoFactorCode,
       activate2FA,
       desactivate2FA,
-      cancel2FAActivation,
-      onPassphrase2FAStep1,
-      onPassphrase2FAStep2
+      cancel2FAActivation
     } = this.props
+
+    const { twoFAPassphraseModalIsOpen } = this.state
+
     let exportId = null
     if (match && match.params) {
       exportId = match.params.exportId
@@ -76,23 +120,33 @@ class ProfileView extends Component {
             {...fields.public_name}
             onBlur={onFieldChange}
           />
-          {!isTwoFactorEnabled && (
-            <PassphraseForm
-              {...passphrase}
-              onSubmit={onPassphraseSimpleSubmit}
-            />
-          )}
+          <PassphraseForm
+            {...passphrase}
+            onSubmit={
+              isTwoFactorEnabled
+                ? this.onPassphrase2FAStep1
+                : onPassphraseSimpleSubmit
+            }
+            isTwoFactorEnabled={isTwoFactorEnabled}
+          />
+          {twoFAPassphraseModalIsOpen &&
+            !passphrase.errors &&
+            !passphrase.submitting && (
+              <Passphrase2FA
+                onPassphrase2FASubmit={this.onPassphrase2FASubmit}
+                closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
+                instance={instance}
+                submitting={passphrase.submitting2FAStep2}
+              />
+            )}
           <TwoFA
             isTwoFactorEnabled={isTwoFactorEnabled}
-            passphrase={passphrase}
             instance={instance}
             checkTwoFactorCode={checkTwoFactorCode}
             twoFactor={twoFactor}
             activate2FA={activate2FA}
             desactivate2FA={desactivate2FA}
             cancel2FAActivation={cancel2FAActivation}
-            onPassphrase2FAStep1={onPassphrase2FAStep1}
-            onPassphrase2FAStep2={onPassphrase2FAStep2}
             updateInfo={updateInfo}
           />
           <LanguageSection fields={fields} onChange={onFieldChange} />
