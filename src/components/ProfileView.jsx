@@ -2,65 +2,24 @@ import viewStyles from 'styles/view'
 
 import classNames from 'classnames'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { translate } from 'cozy-ui/react/I18n'
+import { Text } from 'cozy-ui/react/Text'
+import Button from 'cozy-ui/react/Button'
 
 import DeleteAccount from 'components/DeleteAccount'
 import Input from 'components/Input'
-import PassphraseForm from 'components/PassphraseForm'
 import LanguageSection from 'components/LanguageSection'
 import TwoFA from 'components/2FA'
 import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
-import Passphrase2FA from 'components/2FA/Passphrase2FA'
 
 import { AUTH_MODE } from 'actions/twoFactor'
 
 class ProfileView extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      twoFAPassphraseModalIsOpen: false
-    }
-
-    this.onPassphrase2FAStep1 = this.onPassphrase2FAStep1.bind(this)
-    this.onPassphrase2FASubmit = this.onPassphrase2FASubmit.bind(this)
-    this.closeTwoFAPassphraseModal = this.closeTwoFAPassphraseModal.bind(this)
-  }
-
   componentWillMount() {
     this.props.fetchInfos()
-  }
-
-  onPassphrase2FAStep1(current, newVal) {
-    this.setState(() => ({
-      twoFAPassphraseModalIsOpen: true,
-      currentPassphrase: current,
-      new2FAPassphrase: newVal
-    }))
-    this.props.onPassphrase2FAStep1(current)
-  }
-
-  onPassphrase2FASubmit(twoFactorCode) {
-    const { onPassphrase2FAStep2, passphrase } = this.props
-    const { twoFactorToken } = passphrase
-    const { currentPassphrase, new2FAPassphrase } = this.state
-    onPassphrase2FAStep2(
-      currentPassphrase,
-      new2FAPassphrase,
-      twoFactorCode,
-      twoFactorToken
-    ).then(() => {
-      this.closeTwoFAPassphraseModal()
-    })
-  }
-
-  closeTwoFAPassphraseModal() {
-    this.setState(() => ({
-      twoFAPassphraseModalIsOpen: false,
-      new2FAPassphrase: null
-    }))
   }
 
   render() {
@@ -68,10 +27,8 @@ class ProfileView extends Component {
       t,
       match,
       fields,
-      passphrase,
       isFetching,
       onFieldChange,
-      onPassphraseSimpleSubmit,
       instance,
       updateInfo,
       exportData,
@@ -83,8 +40,6 @@ class ProfileView extends Component {
       desactivate2FA,
       cancel2FAActivation
     } = this.props
-
-    const { twoFAPassphraseModalIsOpen } = this.state
 
     let exportId = null
     if (match && match.params) {
@@ -120,25 +75,17 @@ class ProfileView extends Component {
             {...fields.public_name}
             onBlur={onFieldChange}
           />
-          <PassphraseForm
-            {...passphrase}
-            onSubmit={
-              isTwoFactorEnabled
-                ? this.onPassphrase2FAStep1
-                : onPassphraseSimpleSubmit
-            }
-            isTwoFactorEnabled={isTwoFactorEnabled}
+          <h3>{t('ProfileView.password.title')}</h3>
+          <Text tag="p" className="u-black">
+            Votre cozy est actuellement protégé par un mot de passe.
+          </Text>
+          <Button
+            tag={Link}
+            to="/profile/password"
+            label="Modifier le mot de passe"
+            theme="secondary"
+            className="u-mh-0"
           />
-          {twoFAPassphraseModalIsOpen &&
-            !passphrase.errors &&
-            !passphrase.submitting && (
-              <Passphrase2FA
-                onPassphrase2FASubmit={this.onPassphrase2FASubmit}
-                closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
-                instance={instance}
-                submitting={passphrase.submitting2FAStep2}
-              />
-            )}
           <TwoFA
             isTwoFactorEnabled={isTwoFactorEnabled}
             instance={instance}

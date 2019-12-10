@@ -12,12 +12,6 @@ import {
 } from 'actions/twoFactor'
 import { requestExport, fetchExportData } from 'actions/export'
 
-import {
-  updatePassphrase,
-  updatePassphrase2FAFirst,
-  updatePassphrase2FASecond
-} from 'actions/passphrase'
-
 import ProfileView from 'components/ProfileView'
 
 const mapStateToProps = state => ({
@@ -59,35 +53,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   desactivate2FA: mode => {
     dispatch(desactivate2FA(mode))
-  },
-  onPassphraseSimpleSubmit: (current, newVal) => {
-    return (
-      dispatch(updatePassphrase(current, newVal))
-        .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
-        // eslint-disable-next-line no-console
-        .catch(e => console.error(e))
-    )
-  },
-  onPassphrase2FAStep1: current => {
-    return dispatch(updatePassphrase2FAFirst(current)).catch(e =>
-      // eslint-disable-next-line no-console
-      console.error(e)
-    )
-  },
-  onPassphrase2FAStep2: (current, newVal, twoFactorCode, twoFactorToken) => {
-    return (
-      dispatch(
-        updatePassphrase2FASecond(
-          current,
-          newVal,
-          twoFactorCode,
-          twoFactorToken
-        )
-      )
-        .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
-        // eslint-disable-next-line no-console
-        .catch(e => console.error(e))
-    )
   }
 })
 
