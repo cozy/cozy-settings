@@ -19,6 +19,8 @@ class PassphraseForm extends Component {
   constructor(props) {
     super(props)
     this.state = initialState
+
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleCurrentInput(e) {
@@ -55,7 +57,7 @@ class PassphraseForm extends Component {
     const passphraseResetUrl = STACK_DOMAIN + '/auth/passphrase_reset'
 
     return (
-      <div className={styles['coz-form']}>
+      <form className={styles['coz-form']} onSubmit={this.handleSubmit}>
         <h3>{t('ProfileView.password.title')}</h3>
         <PasswordInput
           label={t('ProfileView.current_password.label')}
@@ -98,7 +100,6 @@ class PassphraseForm extends Component {
           <Button
             theme="secondary"
             busy={submitting}
-            onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
             label={t('ProfileView.password.submit_label')}
           >
@@ -115,7 +116,7 @@ class PassphraseForm extends Component {
         <a href={passphraseResetUrl} className={styles['password-reset-link']}>
           {t('ProfileView.password.reset_link')}
         </a>
-      </div>
+      </form>
     )
   }
 }
