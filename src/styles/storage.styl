@@ -1,27 +1,27 @@
 progress.set-storage-bar[value]
   /* Reset the default appearance */
   appearance none
-  background-color paleGrey
-  border solid 1px silver
+  background-color var(--paleGrey)
+  border solid 1px var(--silver)
   border-radius: 2px
-  color dodgerBlue
+  color var(--dodgerBlue)
   height 1.5rem
   margin 0 0 1rem 0
   width 100%
 
 
 progress.set-storage-bar[value]::-webkit-progress-bar
-  background paleGrey
+  background var(--paleGrey)
   border-radius 2px
 
 
 progress.set-storage-bar[value]::-webkit-progress-value
-  background dodgerBlue
+  background var(--dodgerBlue)
   border-radius 1px
 
 
 progress.set-storage-bar[value]::-moz-progress-bar
-  background dodgerBlue
+  background var(--dodgerBlue)
   border-radius 1px
 
 
@@ -29,12 +29,12 @@ progress.set-storage-bar[value]::-moz-progress-bar
     position absolute
     left 2.5rem
     padding-top .2rem
-    color white
+    color var(--white)
     &.--dark
-        color black
+        color var(--black)
 
 .set-offer-button
-    color white!important //@stylint ignore
+    color var(--white) !important //@stylint ignore
     margin 1rem 0
     width  100%
 
@@ -42,5 +42,5 @@ progress.set-storage-bar[value]::-moz-progress-bar
 .set-offer-button:active
 .set-offer-button:focus
 .set-offer-button:visited
-    color white!important //@stylint ignore
+    color var(--white) !important //@stylint ignore
     text-decoration none!important //@stylint ignore

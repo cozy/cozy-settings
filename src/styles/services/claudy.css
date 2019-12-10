@@ -13,7 +13,7 @@
   width: calc(100% - 1.5em);
   height: 2em;
   padding: .75em;
-  background: var(--pale-grey);
+  background: var(--paleGrey);
   border-radius: .3em .3em 0 0;
   border-bottom: 1px solid var(--silver);
   overflow: hidden;
@@ -107,12 +107,12 @@
   align-items: center;
   cursor: pointer;
   height: 3em;
-  color: var(--dodger-blue);
+  color: var(--dodgerBlue);
   padding: .5em 1em;
 }
 
 .coz-claudy-menu-action:hover {
-  background: var(--pale-grey);
+  background: var(--paleGrey);
 }
 
 .coz-claudy-menu-action[data-complete=true] {
@@ -192,7 +192,7 @@ by child elements */
 }
 
 .coz-claudy-menu-action-description-detail {
-  color: var(--cool-grey);
+  color: var(--coolGrey);
   font-size: 14px;
 }
 

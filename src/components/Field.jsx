@@ -47,7 +47,7 @@ const Field = ({
       )}
       {saved && (
         <Icon
-          icon="check-circleless"
+          icon="check"
           className={classNames(styles['set-field-saved'], 'u-mr-half')}
           color={palette['emerald']}
         />
