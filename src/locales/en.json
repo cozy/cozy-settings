@@ -268,6 +268,12 @@
       "memorize": "**Memorize it well:** In case of loss, you will not be able to recover the encrypted passwords in your cozy.",
       "our_tip": "**Our tip:** Find a short phrase that suits you, for example: "
     },
+    "hint": {
+      "title": "Leave a hint",
+      "placeholder": "Hint",
+      "description": "The hint will be emailed to you if you forget your password, choose a hint that only you can understand",
+      "same_as_password": "Your hint can not be your password"
+    },
     "submit": "Update my password",
     "cancel": "Keep my current password",
     "server_error": "Something went wrong. Your password has not been saved.",

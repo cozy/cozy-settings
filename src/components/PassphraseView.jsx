@@ -22,10 +22,12 @@ const PasswordView = props => {
   const [twoFAModalOpen, setTwoFAModalOpen] = useState(false)
   const [currentPassphrase, setCurrentPassphrase] = useState('')
   const [new2FAPassphrase, setNew2FAPassphrase] = useState('')
+  const [hint, setHint] = useState('')
 
-  const handlePassphrase2FAStep1 = (current, newVal) => {
+  const handlePassphrase2FAStep1 = (current, newVal, hint) => {
     setCurrentPassphrase(current)
     setNew2FAPassphrase(newVal)
+    setHint(hint)
     setTwoFAModalOpen(true)
     onPassphrase2FAStep1(current)
   }
@@ -36,7 +38,8 @@ const PasswordView = props => {
       currentPassphrase,
       new2FAPassphrase,
       twoFactorCode,
-      twoFactorToken
+      twoFactorToken,
+      hint
     ).then(() => setTwoFAModalOpen(false))
   }
 

@@ -7,7 +7,8 @@ import { AUTH_MODE } from 'actions/twoFactor'
 import {
   updatePassphrase,
   updatePassphrase2FAFirst,
-  updatePassphrase2FASecond
+  updatePassphrase2FASecond,
+  updateHint
 } from 'actions/passphrase'
 import { fetchInfos } from 'actions'
 import PassphraseView from 'components/PassphraseView'
@@ -21,9 +22,12 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onPassphraseSimpleSubmit: (current, newVal) => {
+  onPassphraseSimpleSubmit: (currentPassphrase, newPassphrase, hint) => {
     return (
-      dispatch(updatePassphrase(current, newVal))
+      dispatch(updateHint(hint))
+        .then(() =>
+          dispatch(updatePassphrase(currentPassphrase, newPassphrase))
+        )
         .then(() => Alerter.info(ownProps.t('PassphraseView.reload')))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))
@@ -35,16 +39,25 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       console.error(e)
     )
   },
-  onPassphrase2FAStep2: (current, newVal, twoFactorCode, twoFactorToken) => {
+  onPassphrase2FAStep2: (
+    current,
+    newVal,
+    twoFactorCode,
+    twoFactorToken,
+    hint
+  ) => {
     return (
-      dispatch(
-        updatePassphrase2FASecond(
-          current,
-          newVal,
-          twoFactorCode,
-          twoFactorToken
+      dispatch(updateHint(hint))
+        .then(() =>
+          dispatch(
+            updatePassphrase2FASecond(
+              current,
+              newVal,
+              twoFactorCode,
+              twoFactorToken
+            )
+          )
         )
-      )
         .then(() => Alerter.info(ownProps.t('PassphraseView.reload')))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))

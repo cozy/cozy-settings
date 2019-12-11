@@ -16,6 +16,11 @@ export const UPDATE_PASSPHRASE_2FA_2 = 'UPDATE_PASSPHRASE_2FA_2'
 export const UPDATE_PASSPHRASE_2FA_2_SUCCESS = 'UPDATE_PASSPHRASE_2FA_2_SUCCESS'
 export const UPDATE_PASSPHRASE_2FA_2_FAILURE = 'UPDATE_PASSPHRASE_2FA_2_FAILURE'
 
+// hint
+export const UPDATE_HINT = 'UPDATE_HINT'
+export const UPDATE_HINT_SUCCESS = 'UPDATE_HINT_SUCCESS'
+export const UPDATE_HINT_FAILURE = 'UPDATE_HINT_FAILURE'
+
 const getInstanceURL = () => {
   return client.getStackClient().uri
 }
@@ -173,5 +178,23 @@ export const updatePassphrase2FASecond = (
         }
         throw error
       })
+  }
+}
+
+export const updateHint = hint => {
+  return async dispatch => {
+    dispatch({ type: UPDATE_HINT })
+
+    try {
+      await cozyFetch('PUT', '/settings/hint', { hint })
+
+      dispatch({ type: UPDATE_HINT_SUCCESS })
+    } catch (err) {
+      dispatch({
+        type: UPDATE_HINT_FAILURE,
+        errors: { global: 'PassphraseView.server_error' }
+      })
+      throw err
+    }
   }
 }

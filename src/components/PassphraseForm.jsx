@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
 import { MainTitle, SubTitle, Text } from 'cozy-ui/react/Text'
+import Input from 'cozy-ui/react/Input'
 import Icon from 'cozy-ui/react/Icon'
 import Stack from 'cozy-ui/react/Stack'
 import palette from 'cozy-ui/stylus/settings/palette.json'
@@ -18,7 +19,8 @@ import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 const initialState = {
   currentPassword: '',
   newPassword: '',
-  newPasswordRepeat: ''
+  newPasswordRepeat: '',
+  hint: ''
 }
 
 class PassphraseForm extends Component {
@@ -40,14 +42,18 @@ class PassphraseForm extends Component {
     e.preventDefault()
 
     this.props
-      .onSubmit(this.state.currentPassword, this.state.newPassword)
+      .onSubmit(
+        this.state.currentPassword,
+        this.state.newPassword,
+        this.state.hint
+      )
       .then(() => {
         this.setState(initialState)
       })
   }
 
   render() {
-    const { currentPassword, newPassword, newPasswordRepeat } = this.state
+    const { currentPassword, newPassword, newPasswordRepeat, hint } = this.state
     const { t, errors, submitting, saved } = this.props
     const currentPasswordError = errors && errors.currentPassword
     const globalError = errors && errors.global
@@ -58,8 +64,14 @@ class PassphraseForm extends Component {
     const newPasswordTouched = newPassword !== '' && newPasswordRepeat !== ''
     const newPasswordMatch = newPassword === newPasswordRepeat
 
+    const hintSameAsPassword = newPasswordTouched && newPassword === hint
+
     const canSubmit =
-      newPasswordTouched && newPasswordMatch && strength.label !== 'weak'
+      newPasswordTouched &&
+      newPasswordMatch &&
+      strength.label !== 'weak' &&
+      hint &&
+      !hintSameAsPassword
 
     return (
       <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
@@ -139,6 +151,27 @@ class PassphraseForm extends Component {
               <PasswordExample password="Cl4ude€st1Nu@ge" />
             </Text>
           </Stack>
+        </Stack>
+        <Stack spacing="m">
+          <SubTitle tag="label" htmlFor="hint">
+            {t('PassphraseView.hint.title')}
+          </SubTitle>
+          <Stack spacing="xs">
+            <Input
+              value={hint}
+              onChange={this.handleInputChange}
+              placeholder={t('PassphraseView.hint.placeholder')}
+              name="hint"
+              id="hint"
+              error={hintSameAsPassword}
+            />
+            {hintSameAsPassword && (
+              <p className="u-error">
+                {t('PassphraseView.hint.same_as_password')}
+              </p>
+            )}
+          </Stack>
+          <ReactMarkdownWrapper source={t('PassphraseView.hint.description')} />
         </Stack>
         <Stack spacing="xs">
           <Button
