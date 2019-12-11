@@ -22,12 +22,12 @@ const getInstanceURL = () => {
 
 const invalidPasswordErrorAction = {
   type: UPDATE_PASSPHRASE_FAILURE,
-  errors: { currentPassword: 'ProfileView.password.wrong_password' }
+  errors: { currentPassword: 'PassphraseView.current_password.wrong_password' }
 }
 
 const defaultErrorAction = {
   type: UPDATE_PASSPHRASE_FAILURE,
-  errors: { global: 'ProfileView.password.server_error' }
+  errors: { global: 'PassphraseView.server_error' }
 }
 
 const getErrorDetails = error => {
@@ -163,12 +163,12 @@ export const updatePassphrase2FASecond = (
         ) {
           dispatch({
             type: UPDATE_PASSPHRASE_2FA_2_FAILURE,
-            errors: { wrongTwoFactor: 'ProfileView.password.wrong_two_fa_code' }
+            errors: { wrongTwoFactor: 'PassphraseView.wrong_two_fa_code' }
           })
         } else {
           dispatch({
             type: UPDATE_PASSPHRASE_2FA_2_FAILURE,
-            errors: { global: 'ProfileView.password.server_error' }
+            errors: { global: 'PassphraseView.server_error' }
           })
         }
         throw error

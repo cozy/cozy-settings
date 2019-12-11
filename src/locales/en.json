@@ -81,25 +81,7 @@
     },
     "title": "Profile",
     "password": {
-      "title": "Password",
-      "show": "Show",
-      "hide": "Hide",
-      "server_error": "Something went wrong. Your password has not been saved.",
-      "password_too_weak": "Your password is too weak. You should add an uppercase, a number, a special character or a longer password.",
-      "wrong_password": "Current password seems wrong.",
-      "wrong_two_fa_code": "The provided two factor code seems wrong.",
-      "success": "Your password has been changed.",
-      "reset_link": "Forgot your current password?",
-      "submit_label": "Change your password",
-      "reload": "Your password has been changed. The page is going to reload so the change can take effect."
-    },
-    "current_password": {
-      "label": "Enter your current password",
-      "placeholder": "Current password"
-    },
-    "new_password": {
-      "label": "Enter your new password",
-      "placeholder": "New password"
+      "title": "Password"
     },
     "infos": {
       "success": "Your informations has been changed",
@@ -267,6 +249,30 @@
     "head_status": "Status",
     "unsync": "Unsynchronised",
     "konnector_link": "Access the whole list of services here"
+  },
+  "PassphraseView": {
+    "title": "Update my password",
+    "current_password": {
+      "label": "Enter your current password:",
+      "placeholder": "Current password",
+      "wrong_password": "Current password seems wrong."
+    },
+    "new_password": {
+      "label": "Choose a new password:",
+      "placeholder": "New cozy password",
+      "confirmation_placeholder": "Confirm the password",
+      "dont_match": "Password don't match"
+    },
+    "advices": {
+      "strong_password": "**Privilege a strong password:** A long password with numbers and special characters will be impossible to break.",
+      "memorize": "**Memorize it well:** In case of loss, you will not be able to recover the encrypted passwords in your cozy.",
+      "our_tip": "**Our tip:** Find a short phrase that suits you, for example: "
+    },
+    "submit": "Update my password",
+    "cancel": "Keep my current password",
+    "server_error": "Something went wrong. Your password has not been saved.",
+    "wrong_two_fa_code": "The provided two factor code seems wrong.",
+    "reload": "Your password has been changed. The page is going to reload so the change can take effect."
   },
   "soon": {
     "title": "Coming soon",

@@ -1,18 +1,24 @@
-import styles from 'styles/fields'
+import fieldsStyles from 'styles/fields'
+import styles from 'styles/passphrase'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
+import { MainTitle, SubTitle, Text } from 'cozy-ui/react/Text'
 import Icon from 'cozy-ui/react/Icon'
+import Stack from 'cozy-ui/react/Stack'
 import palette from 'cozy-ui/stylus/settings/palette.json'
+import { Link } from 'react-router-dom'
+import PasswordExample from 'components/PasswordExample'
 
-import { PasswordInput } from 'components/Input'
+import { NewPasswordInput } from 'components/Input'
 import passwordHelper from 'lib/passwordHelper'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
 const initialState = {
   currentPassword: '',
   newPassword: '',
-  strength: { percentage: 0, label: 'weak' }
+  newPasswordRepeat: ''
 }
 
 class PassphraseForm extends Component {
@@ -21,22 +27,18 @@ class PassphraseForm extends Component {
     this.state = initialState
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  handleCurrentInput(e) {
+  handleInputChange(e) {
     this.setState({
-      currentPassword: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  handleNewInput(e) {
-    this.setState({
-      newPassword: e.target.value,
-      strength: passwordHelper.getStrength(e.target.value)
-    })
-  }
+  handleSubmit(e) {
+    e.preventDefault()
 
-  handleSubmit() {
     this.props
       .onSubmit(this.state.currentPassword, this.state.newPassword)
       .then(() => {
@@ -45,63 +47,106 @@ class PassphraseForm extends Component {
   }
 
   render() {
-    const { currentPassword, newPassword, strength } = this.state
+    const { currentPassword, newPassword, newPasswordRepeat } = this.state
     const { t, errors, submitting, saved } = this.props
     const currentPasswordError = errors && errors.currentPassword
     const globalError = errors && errors.global
     const newPasswordError = errors && errors.newPassword
     const twoFactorError = errors && errors.wrongTwoFactor
-    const canSubmit = newPassword !== '' && strength.label !== 'weak'
-    const STACK_DOMAIN =
-      '//' + document.querySelector('[role=application]').dataset.cozyDomain
-    const passphraseResetUrl = STACK_DOMAIN + '/auth/passphrase_reset'
+    const strength = passwordHelper.getStrength(newPassword)
+
+    const newPasswordTouched = newPassword !== '' && newPasswordRepeat !== ''
+    const newPasswordMatch = newPassword === newPasswordRepeat
+
+    const canSubmit =
+      newPasswordTouched && newPasswordMatch && strength.label !== 'weak'
 
     return (
-      <form className={styles['coz-form']} onSubmit={this.handleSubmit}>
-        <h3>{t('ProfileView.password.title')}</h3>
-        <PasswordInput
-          label={t('ProfileView.current_password.label')}
-          name="current_password"
-          key="current_password"
-          value={currentPassword}
-          inError={currentPasswordError}
-          onChange={e => this.handleCurrentInput(e)}
-          autocomplete="current-password"
-        />
-        {currentPasswordError && (
-          <p className={styles['coz-form-errors']}>{t(currentPasswordError)}</p>
-        )}
-        <PasswordInput
-          label={t('ProfileView.new_password.label')}
-          name="new_password"
-          key="new_password"
-          value={newPassword}
-          inError={newPasswordError}
-          onChange={e => this.handleNewInput(e)}
-          autocomplete="new-password"
-        />
-        <progress
-          step="1"
-          min="0"
-          max="100"
-          value={strength.percentage}
-          className={styles[`pw-${strength.label}`]}
-        />
-        {newPasswordError && (
-          <p className={styles['coz-form-errors']}>{t(newPasswordError)}</p>
-        )}
-        {globalError && (
-          <p className={styles['coz-form-errors']}>{t(globalError)}</p>
-        )}
-        {twoFactorError && (
-          <p className={styles['coz-form-errors']}>{t(twoFactorError)}</p>
-        )}
-        <div className={styles['coz-form-controls']}>
+      <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
+        <MainTitle className="u-mt-2">{t('PassphraseView.title')}</MainTitle>
+        <Stack spacing="m">
+          <SubTitle tag="label" htmlFor="current-password">
+            {t('PassphraseView.current_password.label')}
+          </SubTitle>
+          <NewPasswordInput
+            name="currentPassword"
+            value={currentPassword}
+            onChange={this.handleInputChange}
+            autoComplete="current-password"
+            id="current-password"
+            placeholder={t('PassphraseView.current_password.placeholder')}
+            error={Boolean(currentPasswordError)}
+          />
+          {currentPasswordError && (
+            <p className="u-error">{t(currentPasswordError)}</p>
+          )}
+        </Stack>
+        <Stack spacing="m">
+          <SubTitle tag="label" htmlFor="new-password">
+            {t('PassphraseView.new_password.label')}
+          </SubTitle>
+          <Stack spacing="xs">
+            <NewPasswordInput
+              name="newPassword"
+              autoComplete="new-password"
+              id="new-password"
+              placeholder={t('PassphraseView.new_password.placeholder')}
+              value={newPassword}
+              onChange={this.handleInputChange}
+              showStrength
+              error={newPasswordTouched && !newPasswordMatch}
+            />
+            <NewPasswordInput
+              name="newPasswordRepeat"
+              autoComplete="new-password"
+              id="new-password-repeat"
+              placeholder={t(
+                'PassphraseView.new_password.confirmation_placeholder'
+              )}
+              value={newPasswordRepeat}
+              onChange={this.handleInputChange}
+              error={newPasswordTouched && !newPasswordMatch}
+            />
+          </Stack>
+          {newPasswordTouched &&
+            !newPasswordMatch && (
+              <p className="u-error">
+                {t('PassphraseView.new_password.dont_match')}
+              </p>
+            )}
+          {newPasswordError && <p className="u-error">{t(newPasswordError)}</p>}
+          {globalError && <p className="u-error">{t(globalError)}</p>}
+          {twoFactorError && <p className="u-error">{t(twoFactorError)}</p>}
+          <Stack
+            spacing="m"
+            tag="ul"
+            className={styles['coz-passphrase-advices']}
+          >
+            <Text tag="li">
+              <ReactMarkdownWrapper
+                source={t('PassphraseView.advices.strong_password')}
+              />
+            </Text>
+            <Text tag="li">
+              <ReactMarkdownWrapper
+                source={t('PassphraseView.advices.memorize')}
+              />
+            </Text>
+            <Text tag="li">
+              <ReactMarkdownWrapper
+                source={t('PassphraseView.advices.our_tip')}
+              />
+              <PasswordExample password="Cl4ude€st1Nu@ge" />
+            </Text>
+          </Stack>
+        </Stack>
+        <Stack spacing="xs">
           <Button
-            theme="secondary"
             busy={submitting}
             disabled={!canSubmit}
-            label={t('ProfileView.password.submit_label')}
+            label={t('PassphraseView.submit')}
+            extension="full"
+            className="u-mb-half"
           >
             {saved && (
               <Icon
@@ -111,12 +156,15 @@ class PassphraseForm extends Component {
               />
             )}
           </Button>
-        </div>
-
-        <a href={passphraseResetUrl} className={styles['password-reset-link']}>
-          {t('ProfileView.password.reset_link')}
-        </a>
-      </form>
+          <Button
+            tag={Link}
+            to="/profile"
+            label={t('PassphraseView.cancel')}
+            theme="secondary"
+            extension="full"
+          />
+        </Stack>
+      </Stack>
     )
   }
 }

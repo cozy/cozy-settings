@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onPassphraseSimpleSubmit: (current, newVal) => {
     return (
       dispatch(updatePassphrase(current, newVal))
-        .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
+        .then(() => Alerter.info(ownProps.t('PassphraseView.reload')))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))
     )
@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           twoFactorToken
         )
       )
-        .then(() => Alerter.info(ownProps.t('ProfileView.password.reload')))
+        .then(() => Alerter.info(ownProps.t('PassphraseView.reload')))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))
     )
