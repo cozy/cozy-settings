@@ -278,7 +278,8 @@
     "cancel": "Keep my current password",
     "server_error": "Something went wrong. Your password has not been saved.",
     "wrong_two_fa_code": "The provided two factor code seems wrong.",
-    "reload": "Your password has been changed. The page is going to reload so the change can take effect."
+    "reload": "Your password has been changed. The page is going to reload so the change can take effect.",
+    "redirect": "Your password has been changed. You are going to be redirected."
   },
   "soon": {
     "title": "Coming soon",

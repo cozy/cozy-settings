@@ -12,6 +12,7 @@ import {
 } from 'actions/passphrase'
 import { fetchInfos } from 'actions'
 import PassphraseView from 'components/PassphraseView'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = state => ({
   fields: state.fields,
@@ -21,13 +22,32 @@ const mapStateToProps = state => ({
   passphrase: state.passphrase
 })
 
-const showSuccessThenReload = t => {
-  Alerter.info(t('PassphraseView.reload'))
+export const getRedirectUrlsFromURLParams = urlParamsStr => {
+  const urlParams = new URLSearchParams(urlParamsStr)
+
+  return {
+    successRedirectUrl: urlParams.get('redirect_success'),
+    cancelRedirectUrl: urlParams.get('redirect_cancel')
+  }
+}
+
+const showSuccessThenReload = (t, location) => {
+  const { successRedirectUrl } = getRedirectUrlsFromURLParams(location.search)
+
+  const translatationKey = successRedirectUrl
+    ? 'PassphraseView.redirect'
+    : 'PassphraseView.reload'
+
+  Alerter.info(t(translatationKey))
 
   setTimeout(() => {
-    // the token changes after a password change, so we need to reload
-    // the page to get the new one
-    window.location.reload()
+    if (successRedirectUrl) {
+      window.location = successRedirectUrl
+    } else {
+      // the token changes after a password change, so we need to reload
+      // the page to get the new one
+      window.location.reload()
+    }
   }, 4000) // 4s, a bit longer than the alert message
 }
 
@@ -38,7 +58,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         .then(() =>
           dispatch(updatePassphrase(currentPassphrase, newPassphrase))
         )
-        .then(() => showSuccessThenReload(ownProps.t))
+        .then(() => showSuccessThenReload(ownProps.t, ownProps.location))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))
     )
@@ -77,6 +97,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 const Password = compose(
+  withRouter,
   translate(),
   connect(
     mapStateToProps,

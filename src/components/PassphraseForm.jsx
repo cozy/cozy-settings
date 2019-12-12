@@ -3,18 +3,20 @@ import styles from 'styles/passphrase'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
-import { Button } from 'cozy-ui/react/Button'
+import { Button, ButtonLink } from 'cozy-ui/react/Button'
 import { MainTitle, SubTitle, Text } from 'cozy-ui/react/Text'
 import Input from 'cozy-ui/react/Input'
 import Icon from 'cozy-ui/react/Icon'
 import Stack from 'cozy-ui/react/Stack'
 import palette from 'cozy-ui/stylus/settings/palette.json'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import compose from 'lodash/flowRight'
 import PasswordExample from 'components/PasswordExample'
 
 import { NewPasswordInput } from 'components/Input'
 import passwordHelper from 'lib/passwordHelper'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import { getRedirectUrlsFromURLParams } from 'containers/Passphrase'
 
 const initialState = {
   currentPassword: '',
@@ -54,7 +56,7 @@ class PassphraseForm extends Component {
 
   render() {
     const { currentPassword, newPassword, newPasswordRepeat, hint } = this.state
-    const { t, errors, submitting, saved } = this.props
+    const { t, errors, submitting, saved, location } = this.props
     const currentPasswordError = errors && errors.currentPassword
     const globalError = errors && errors.global
     const newPasswordError = errors && errors.newPassword
@@ -72,6 +74,8 @@ class PassphraseForm extends Component {
       strength.label !== 'weak' &&
       hint &&
       !hintSameAsPassword
+
+    const { cancelRedirectUrl } = getRedirectUrlsFromURLParams(location.search)
 
     return (
       <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
@@ -189,17 +193,29 @@ class PassphraseForm extends Component {
               />
             )}
           </Button>
-          <Button
-            tag={Link}
-            to="/profile"
-            label={t('PassphraseView.cancel')}
-            theme="secondary"
-            extension="full"
-          />
+          {cancelRedirectUrl ? (
+            <ButtonLink
+              href={cancelRedirectUrl}
+              label={t('PassphraseView.cancel')}
+              theme="secondary"
+              extension="full"
+            />
+          ) : (
+            <Button
+              tag={Link}
+              to="/profile"
+              label={t('PassphraseView.cancel')}
+              theme="secondary"
+              extension="full"
+            />
+          )}
         </Stack>
       </Stack>
     )
   }
 }
 
-export default translate()(PassphraseForm)
+export default compose(
+  translate(),
+  withRouter
+)(PassphraseForm)
