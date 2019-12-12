@@ -80,11 +80,7 @@ export const updatePassphrase = (current, newVal) => {
       })
       .then(() => {
         dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
-        setTimeout(() => {
-          dispatch({ type: RESET_PASSPHRASE_FIELD })
-          // the token changes after a password change, so we need to reload the page to get the new one
-          window.location.reload()
-        }, 4000) // 4s, a bit longer than the alert message
+        dispatch({ type: RESET_PASSPHRASE_FIELD })
       })
       .catch(error => {
         const action = updatePassphraseFailure(error)
@@ -154,11 +150,7 @@ export const updatePassphrase2FASecond = (
       })
       .then(() => {
         dispatch({ type: UPDATE_PASSPHRASE_2FA_2_SUCCESS })
-        setTimeout(() => {
-          dispatch({ type: RESET_PASSPHRASE_FIELD })
-          // the token changes after a password change, so we need to reload the page to get the new one
-          window.location.reload()
-        }, 4000) // 4s, a bit longer than the alert message
+        dispatch({ type: RESET_PASSPHRASE_FIELD })
       })
       .catch(error => {
         const errors = error.errors || []

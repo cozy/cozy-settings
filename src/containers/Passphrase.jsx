@@ -21,6 +21,16 @@ const mapStateToProps = state => ({
   passphrase: state.passphrase
 })
 
+const showSuccessThenReload = t => {
+  Alerter.info(t('PassphraseView.reload'))
+
+  setTimeout(() => {
+    // the token changes after a password change, so we need to reload
+    // the page to get the new one
+    window.location.reload()
+  }, 4000) // 4s, a bit longer than the alert message
+}
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onPassphraseSimpleSubmit: (currentPassphrase, newPassphrase, hint) => {
     return (
@@ -28,7 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         .then(() =>
           dispatch(updatePassphrase(currentPassphrase, newPassphrase))
         )
-        .then(() => Alerter.info(ownProps.t('PassphraseView.reload')))
+        .then(() => showSuccessThenReload(ownProps.t))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))
     )
@@ -58,7 +68,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             )
           )
         )
-        .then(() => Alerter.info(ownProps.t('PassphraseView.reload')))
+        .then(() => showSuccessThenReload(ownProps.t))
         // eslint-disable-next-line no-console
         .catch(e => console.error(e))
     )
