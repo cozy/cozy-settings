@@ -25,9 +25,11 @@ const getInstanceURL = () => {
   return client.getStackClient().uri
 }
 
-const invalidPasswordErrorAction = {
+const invalidPassphraseErrorAction = {
   type: UPDATE_PASSPHRASE_FAILURE,
-  errors: { currentPassword: 'PassphraseView.current_password.wrong_password' }
+  errors: {
+    currentPassphrase: 'PassphraseView.current_passphrase.wrong_passphrase'
+  }
 }
 
 const defaultErrorAction = {
@@ -43,7 +45,7 @@ const getErrorDetails = error => {
   return vaultError || stackError
 }
 
-const isInvalidPassword = errorDetails => {
+const isInvalidPassphrase = errorDetails => {
   const potentialErrors = ['invalid password', 'Invalid passphrase']
 
   return potentialErrors.includes(errorDetails)
@@ -52,23 +54,26 @@ const isInvalidPassword = errorDetails => {
 const updatePassphraseFailure = error => {
   const details = getErrorDetails(error)
 
-  if (isInvalidPassword(details)) {
-    return invalidPasswordErrorAction
+  if (isInvalidPassphrase(details)) {
+    return invalidPassphraseErrorAction
   }
 
   return defaultErrorAction
 }
 
-export const updatePassphrase = (current, newVal) => {
+export const updatePassphrase = (currentPassphrase, newPassphrase) => {
   const instanceURL = getInstanceURL()
   const vaultClient = new WebVaultClient(instanceURL)
 
   return dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE })
     return vaultClient
-      .login(current)
+      .login(currentPassphrase)
       .then(() => {
-        return vaultClient.computeNewHashAndKeys(current, newVal)
+        return vaultClient.computeNewHashAndKeys(
+          currentPassphrase,
+          newPassphrase
+        )
       })
       .then(newHashAndKeys => {
         return cozyFetch('PUT', '/settings/passphrase', {
@@ -91,16 +96,16 @@ export const updatePassphrase = (current, newVal) => {
   }
 }
 
-export const updatePassphrase2FAFirst = current => {
+export const updatePassphrase2FAFirst = currentPassphrase => {
   const instanceURL = getInstanceURL()
   const vaultClient = new WebVaultClient(instanceURL)
 
   return dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE_2FA_1 })
     return vaultClient
-      .login(current)
+      .login(currentPassphrase)
       .then(() => {
-        return vaultClient.computeHashedPassword(current)
+        return vaultClient.computeHashedPassword(currentPassphrase)
       })
       .then(currentPasswordHash =>
         cozyFetch('PUT', '/settings/passphrase', {
@@ -123,8 +128,8 @@ export const updatePassphrase2FAFirst = current => {
 }
 
 export const updatePassphrase2FASecond = (
-  current,
-  newVal,
+  currentPassphrase,
+  newPassphrase,
   twoFactorCode,
   twoFactorToken
 ) => {
@@ -135,9 +140,12 @@ export const updatePassphrase2FASecond = (
     const vaultClient = new WebVaultClient(instanceURL)
 
     return vaultClient
-      .login(current)
+      .login(currentPassphrase)
       .then(() => {
-        return vaultClient.computeNewHashAndKeys(current, newVal)
+        return vaultClient.computeNewHashAndKeys(
+          currentPassphrase,
+          newPassphrase
+        )
       })
       .then(newHashAndKeys => {
         return cozyFetch('PUT', '/settings/passphrase', {

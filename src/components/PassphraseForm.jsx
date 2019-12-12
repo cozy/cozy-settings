@@ -1,4 +1,3 @@
-import fieldsStyles from 'styles/fields'
 import styles from 'styles/passphrase'
 
 import React, { Component } from 'react'
@@ -19,9 +18,9 @@ import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { getRedirectUrlsFromURLParams } from 'containers/Passphrase'
 
 const initialState = {
-  currentPassword: '',
-  newPassword: '',
-  newPasswordRepeat: '',
+  currentPassphrase: '',
+  newPassphrase: '',
+  newPassphraseRepeat: '',
   hint: ''
 }
 
@@ -45,8 +44,8 @@ class PassphraseForm extends Component {
 
     this.props
       .onSubmit(
-        this.state.currentPassword,
-        this.state.newPassword,
+        this.state.currentPassphrase,
+        this.state.newPassphrase,
         this.state.hint
       )
       .then(() => {
@@ -55,25 +54,32 @@ class PassphraseForm extends Component {
   }
 
   render() {
-    const { currentPassword, newPassword, newPasswordRepeat, hint } = this.state
+    const {
+      currentPassphrase,
+      newPassphrase,
+      newPassphraseRepeat,
+      hint
+    } = this.state
+
     const { t, errors, submitting, saved, location } = this.props
-    const currentPasswordError = errors && errors.currentPassword
+    const currentPassphraseError = errors && errors.currentPassphrase
     const globalError = errors && errors.global
     const newPasswordError = errors && errors.newPassword
     const twoFactorError = errors && errors.wrongTwoFactor
-    const strength = passwordHelper.getStrength(newPassword)
+    const strength = passwordHelper.getStrength(newPassphrase)
 
-    const newPasswordTouched = newPassword !== '' && newPasswordRepeat !== ''
-    const newPasswordMatch = newPassword === newPasswordRepeat
+    const newPassphraseTouched =
+      newPassphrase !== '' && newPassphraseRepeat !== ''
 
-    const hintSameAsPassword = newPasswordTouched && newPassword === hint
+    const newPassphraseMatch = newPassphrase === newPassphraseRepeat
+    const hintSameAsPassphrase = newPassphraseTouched && newPassphrase === hint
 
     const canSubmit =
-      newPasswordTouched &&
-      newPasswordMatch &&
+      newPassphraseTouched &&
+      newPassphraseMatch &&
       strength.label !== 'weak' &&
       hint &&
-      !hintSameAsPassword
+      !hintSameAsPassphrase
 
     const { cancelRedirectUrl } = getRedirectUrlsFromURLParams(location.search)
 
@@ -81,53 +87,53 @@ class PassphraseForm extends Component {
       <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
         <MainTitle className="u-mt-2">{t('PassphraseView.title')}</MainTitle>
         <Stack spacing="m">
-          <SubTitle tag="label" htmlFor="current-password">
-            {t('PassphraseView.current_password.label')}
+          <SubTitle tag="label" htmlFor="current-passphrase">
+            {t('PassphraseView.current_passphrase.label')}
           </SubTitle>
           <NewPasswordInput
-            name="currentPassword"
-            value={currentPassword}
+            name="currentPassphrase"
+            value={currentPassphrase}
             onChange={this.handleInputChange}
             autoComplete="current-password"
-            id="current-password"
-            placeholder={t('PassphraseView.current_password.placeholder')}
-            error={Boolean(currentPasswordError)}
+            id="current-passphrase"
+            placeholder={t('PassphraseView.current_passphrase.placeholder')}
+            error={Boolean(currentPassphraseError)}
           />
-          {currentPasswordError && (
-            <p className="u-error">{t(currentPasswordError)}</p>
+          {currentPassphraseError && (
+            <p className="u-error">{t(currentPassphraseError)}</p>
           )}
         </Stack>
         <Stack spacing="m">
-          <SubTitle tag="label" htmlFor="new-password">
-            {t('PassphraseView.new_password.label')}
+          <SubTitle tag="label" htmlFor="new-passphrase">
+            {t('PassphraseView.new_passphrase.label')}
           </SubTitle>
           <Stack spacing="xs">
             <NewPasswordInput
-              name="newPassword"
+              name="newPassphrase"
               autoComplete="new-password"
-              id="new-password"
-              placeholder={t('PassphraseView.new_password.placeholder')}
-              value={newPassword}
+              id="new-passphrase"
+              placeholder={t('PassphraseView.new_passphrase.placeholder')}
+              value={newPassphrase}
               onChange={this.handleInputChange}
               showStrength
-              error={newPasswordTouched && !newPasswordMatch}
+              error={newPassphraseTouched && !newPassphraseMatch}
             />
             <NewPasswordInput
-              name="newPasswordRepeat"
+              name="newPassphraseRepeat"
               autoComplete="new-password"
-              id="new-password-repeat"
+              id="new-passphrase-repeat"
               placeholder={t(
-                'PassphraseView.new_password.confirmation_placeholder'
+                'PassphraseView.new_passphrase.confirmation_placeholder'
               )}
-              value={newPasswordRepeat}
+              value={newPassphraseRepeat}
               onChange={this.handleInputChange}
-              error={newPasswordTouched && !newPasswordMatch}
+              error={newPassphraseTouched && !newPassphraseMatch}
             />
           </Stack>
-          {newPasswordTouched &&
-            !newPasswordMatch && (
+          {newPassphraseTouched &&
+            !newPassphraseMatch && (
               <p className="u-error">
-                {t('PassphraseView.new_password.dont_match')}
+                {t('PassphraseView.new_passphrase.dont_match')}
               </p>
             )}
           {newPasswordError && <p className="u-error">{t(newPasswordError)}</p>}
@@ -140,7 +146,7 @@ class PassphraseForm extends Component {
           >
             <Text tag="li">
               <ReactMarkdownWrapper
-                source={t('PassphraseView.advices.strong_password')}
+                source={t('PassphraseView.advices.strong_passphrase')}
               />
             </Text>
             <Text tag="li">
@@ -167,11 +173,11 @@ class PassphraseForm extends Component {
               placeholder={t('PassphraseView.hint.placeholder')}
               name="hint"
               id="hint"
-              error={hintSameAsPassword}
+              error={hintSameAsPassphrase}
             />
-            {hintSameAsPassword && (
+            {hintSameAsPassphrase && (
               <p className="u-error">
-                {t('PassphraseView.hint.same_as_password')}
+                {t('PassphraseView.hint.same_as_passphrase')}
               </p>
             )}
           </Stack>

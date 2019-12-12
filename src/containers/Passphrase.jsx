@@ -63,15 +63,15 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         .catch(e => console.error(e))
     )
   },
-  onPassphrase2FAStep1: current => {
-    return dispatch(updatePassphrase2FAFirst(current)).catch(e =>
+  onPassphrase2FAStep1: currentPassphrase => {
+    return dispatch(updatePassphrase2FAFirst(currentPassphrase)).catch(e =>
       // eslint-disable-next-line no-console
       console.error(e)
     )
   },
   onPassphrase2FAStep2: (
-    current,
-    newVal,
+    currentPassphrase,
+    newPassphrase,
     twoFactorCode,
     twoFactorToken,
     hint
@@ -81,8 +81,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         .then(() =>
           dispatch(
             updatePassphrase2FASecond(
-              current,
-              newVal,
+              currentPassphrase,
+              newPassphrase,
               twoFactorCode,
               twoFactorToken
             )
@@ -96,7 +96,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchInfos: () => dispatch(fetchInfos())
 })
 
-const Password = compose(
+const Passphrase = compose(
   withRouter,
   translate(),
   connect(
@@ -105,4 +105,4 @@ const Password = compose(
   )
 )(PassphraseView)
 
-export default Password
+export default Passphrase

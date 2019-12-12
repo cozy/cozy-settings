@@ -4,7 +4,7 @@ import Passphrase2FA from 'components/2FA/Passphrase2FA'
 import classNames from 'classnames'
 import viewStyles from 'styles/view'
 
-const PasswordView = props => {
+const PassphraseView = props => {
   const {
     onPassphraseSimpleSubmit,
     onPassphrase2FAStep1,
@@ -21,22 +21,22 @@ const PasswordView = props => {
 
   const [twoFAModalOpen, setTwoFAModalOpen] = useState(false)
   const [currentPassphrase, setCurrentPassphrase] = useState('')
-  const [new2FAPassphrase, setNew2FAPassphrase] = useState('')
+  const [newPassphrase, setNewPassphrase] = useState('')
   const [hint, setHint] = useState('')
 
-  const handlePassphrase2FAStep1 = (current, newVal, hint) => {
-    setCurrentPassphrase(current)
-    setNew2FAPassphrase(newVal)
+  const handlePassphrase2FAStep1 = (currentPassphrase, newPassphrase, hint) => {
+    setCurrentPassphrase(currentPassphrase)
+    setNewPassphrase(newPassphrase)
     setHint(hint)
     setTwoFAModalOpen(true)
-    onPassphrase2FAStep1(current)
+    onPassphrase2FAStep1(currentPassphrase)
   }
 
   const handlePassphrase2FASubmit = twoFactorCode => {
     const { twoFactorToken } = passphrase
     onPassphrase2FAStep2(
       currentPassphrase,
-      new2FAPassphrase,
+      newPassphrase,
       twoFactorCode,
       twoFactorToken,
       hint
@@ -71,4 +71,4 @@ const PasswordView = props => {
   )
 }
 
-export default PasswordView
+export default PassphraseView
