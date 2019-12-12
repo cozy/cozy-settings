@@ -12,7 +12,7 @@ import { Link, withRouter } from 'react-router-dom'
 import compose from 'lodash/flowRight'
 import PasswordExample from 'components/PasswordExample'
 
-import { NewPasswordInput } from 'components/Input'
+import { PassphraseInput } from 'components/Input'
 import passwordHelper from 'lib/passwordHelper'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { getRedirectUrlsFromURLParams } from 'containers/Passphrase'
@@ -89,7 +89,7 @@ class PassphraseForm extends Component {
           <SubTitle tag="label" htmlFor="current-passphrase">
             {t('PassphraseView.current_passphrase.label')}
           </SubTitle>
-          <NewPasswordInput
+          <PassphraseInput
             name="currentPassphrase"
             value={currentPassphrase}
             onChange={this.handleInputChange}
@@ -107,7 +107,7 @@ class PassphraseForm extends Component {
             {t('PassphraseView.new_passphrase.label')}
           </SubTitle>
           <Stack spacing="xs">
-            <NewPasswordInput
+            <PassphraseInput
               name="newPassphrase"
               autoComplete="new-password"
               id="new-passphrase"
@@ -117,7 +117,7 @@ class PassphraseForm extends Component {
               showStrength
               error={newPassphraseTouched && !newPassphraseMatch}
             />
-            <NewPasswordInput
+            <PassphraseInput
               name="newPassphraseRepeat"
               autoComplete="new-password"
               id="new-passphrase-repeat"

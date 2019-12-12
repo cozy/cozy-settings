@@ -52,57 +52,7 @@ export default translate()(props => (
   </Field>
 ))
 
-class PasswordInputComponent extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      visible: false
-    }
-    this.toggleVisibility = this.toggleVisibility.bind(this)
-  }
-
-  toggleVisibility() {
-    this.setState(state => ({ visible: !state.visible }))
-  }
-
-  render() {
-    const {
-      label,
-      t,
-      name,
-      value,
-      onChange,
-      autocomplete,
-      inError = false
-    } = this.props
-    const { visible } = this.state
-    return (
-      <div className={styles['coz-form-group']}>
-        <div className={styles['coz-form-field-header']}>
-          {label && <label className={styles['coz-form-label']}>{label}</label>}
-          <a
-            onClick={this.toggleVisibility}
-            className={styles['password-visibility']}
-          >
-            {visible
-              ? t(`ProfileView.password.hide`)
-              : t(`ProfileView.password.show`)}
-          </a>
-        </div>
-        <input
-          type={visible ? 'text' : 'password'}
-          placeholder={t(`ProfileView.${name}.placeholder`)}
-          value={value}
-          onChange={onChange}
-          className={inError ? styles['error'] : ''}
-          autoComplete={autocomplete || 'off'}
-        />
-      </div>
-    )
-  }
-}
-
-const PasswordStrength = props => {
+const PassphraseStrength = props => {
   const { password, className, ...rest } = props
   const strength = passwordHelper.getStrength(password)
 
@@ -117,8 +67,6 @@ const PasswordStrength = props => {
     />
   )
 }
-
-export const PasswordInput = translate()(PasswordInputComponent)
 
 const HideShowButton = props => {
   const { hidden, ...rest } = props
@@ -142,7 +90,7 @@ const HideShowButton = props => {
     </button>
   )
 }
-export const NewPasswordInput = props => {
+export const PassphraseInput = props => {
   const { className, showStrength, error, ...rest } = props
   const [hidden, setHidden] = useState(true)
 
@@ -161,7 +109,7 @@ export const NewPasswordInput = props => {
         <UIInput {...rest} type={hidden ? 'password' : 'text'} />
       </InputGroup>
       {showStrength ? (
-        <PasswordStrength
+        <PassphraseStrength
           password={props.value}
           className={styles['coz-pwd-input-strength']}
         />
