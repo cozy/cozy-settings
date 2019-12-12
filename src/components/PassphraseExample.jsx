@@ -26,8 +26,8 @@ const getTokenType = char => {
   return tokenTypes.special
 }
 
-const tokenize = password => {
-  const tokens = password.split('').map(char => ({
+const tokenize = passphrase => {
+  const tokens = passphrase.split('').map(char => ({
     char,
     type: getTokenType(char)
   }))
@@ -54,9 +54,9 @@ const Token = props => {
   )
 }
 
-const PasswordExample = props => {
-  const { password, ...rest } = props
-  const tokens = tokenize(password)
+const PassphraseExample = props => {
+  const { passphrase, ...rest } = props
+  const tokens = tokenize(passphrase)
 
   return (
     <span className={styles['coz-passphrase-example']} {...rest}>
@@ -67,4 +67,4 @@ const PasswordExample = props => {
   )
 }
 
-export default PasswordExample
+export default PassphraseExample

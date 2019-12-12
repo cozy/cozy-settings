@@ -10,7 +10,7 @@ import Stack from 'cozy-ui/react/Stack'
 import palette from 'cozy-ui/stylus/settings/palette.json'
 import { Link, withRouter } from 'react-router-dom'
 import compose from 'lodash/flowRight'
-import PasswordExample from 'components/PasswordExample'
+import PassphraseExample from 'components/PassphraseExample'
 
 import { PassphraseInput } from 'components/Input'
 import passwordHelper from 'lib/passwordHelper'
@@ -156,7 +156,7 @@ class PassphraseForm extends Component {
               <ReactMarkdownWrapper
                 source={t('PassphraseView.advices.our_tip')}
               />
-              <PasswordExample password="Cl4ude€st1Nu@ge" />
+              <PassphraseExample passphrase="Cl4ude€st1Nu@ge" />
             </Text>
           </Stack>
         </Stack>
