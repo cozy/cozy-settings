@@ -1,6 +1,6 @@
 import styles from 'styles/fields'
 
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import Toggle from 'cozy-ui/react/Toggle'
 import Icon from 'cozy-ui/react/Icon'

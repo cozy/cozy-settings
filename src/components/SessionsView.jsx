@@ -2,7 +2,6 @@ import tableStyles from 'styles/table'
 import viewStyles from 'styles/view'
 
 import React, { Component } from 'react'
-import classNames from 'classnames'
 
 import Spinner from 'cozy-ui/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
@@ -14,8 +13,7 @@ import {
   TableHead,
   TableBody,
   TableRow,
-  TableHeader,
-  TableCell
+  TableHeader
 } from 'cozy-ui/react/Table'
 
 class SessionsView extends Component {
