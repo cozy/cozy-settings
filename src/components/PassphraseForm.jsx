@@ -64,7 +64,6 @@ class PassphraseForm extends Component {
     const { t, errors, submitting, saved, location } = this.props
     const currentPassphraseError = errors && errors.currentPassphrase
     const globalError = errors && errors.global
-    const newPasswordError = errors && errors.newPassword
     const twoFactorError = errors && errors.wrongTwoFactor
     const strength = passwordHelper.getStrength(newPassphrase)
 
@@ -136,7 +135,6 @@ class PassphraseForm extends Component {
                 {t('PassphraseView.new_passphrase.dont_match')}
               </p>
             )}
-          {newPasswordError && <p className="u-error">{t(newPasswordError)}</p>}
           {globalError && <p className="u-error">{t(globalError)}</p>}
           {twoFactorError && <p className="u-error">{t(twoFactorError)}</p>}
           <Stack
