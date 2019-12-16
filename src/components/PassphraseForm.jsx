@@ -3,10 +3,11 @@ import styles from 'styles/passphrase'
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button, ButtonLink } from 'cozy-ui/react/Button'
-import { MainTitle, SubTitle, Text } from 'cozy-ui/react/Text'
+import { MainTitle, SubTitle } from 'cozy-ui/react/Text'
 import Input from 'cozy-ui/react/Input'
 import Icon from 'cozy-ui/react/Icon'
 import Stack from 'cozy-ui/react/Stack'
+import { UnorderedList, ListItem } from 'cozy-ui/react/UnorderedList'
 import palette from 'cozy-ui/stylus/settings/palette.json'
 import { Link, withRouter } from 'react-router-dom'
 import compose from 'lodash/flowRight'
@@ -137,28 +138,24 @@ class PassphraseForm extends Component {
             )}
           {globalError && <p className="u-error">{t(globalError)}</p>}
           {twoFactorError && <p className="u-error">{t(twoFactorError)}</p>}
-          <Stack
-            spacing="m"
-            tag="ul"
-            className={styles['coz-passphrase-advices']}
-          >
-            <Text tag="li">
+          <UnorderedList className={styles['set-passphrase-advices']}>
+            <ListItem>
               <ReactMarkdownWrapper
                 source={t('PassphraseView.advices.strong_passphrase')}
               />
-            </Text>
-            <Text tag="li">
+            </ListItem>
+            <ListItem>
               <ReactMarkdownWrapper
                 source={t('PassphraseView.advices.memorize')}
               />
-            </Text>
-            <Text tag="li">
+            </ListItem>
+            <ListItem>
               <ReactMarkdownWrapper
                 source={t('PassphraseView.advices.our_tip')}
               />
               <PassphraseExample passphrase="Cl4ude€st1Nu@ge" />
-            </Text>
-          </Stack>
+            </ListItem>
+          </UnorderedList>
         </Stack>
         <Stack spacing="m">
           <SubTitle tag="label" htmlFor="hint">
