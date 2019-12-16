@@ -3,7 +3,7 @@ import styles from 'styles/passphrase'
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button, ButtonLink } from 'cozy-ui/react/Button'
-import { MainTitle, SubTitle } from 'cozy-ui/react/Text'
+import { MainTitle, SubTitle, ErrorMessage } from 'cozy-ui/react/Text'
 import Input from 'cozy-ui/react/Input'
 import Icon from 'cozy-ui/react/Icon'
 import Stack from 'cozy-ui/react/Stack'
@@ -100,7 +100,7 @@ class PassphraseForm extends Component {
             error={Boolean(currentPassphraseError)}
           />
           {currentPassphraseError && (
-            <p className="u-error">{t(currentPassphraseError)}</p>
+            <ErrorMessage>{t(currentPassphraseError)}</ErrorMessage>
           )}
         </Stack>
         <Stack spacing="m">
@@ -132,12 +132,12 @@ class PassphraseForm extends Component {
           </Stack>
           {newPassphraseTouched &&
             !newPassphraseMatch && (
-              <p className="u-error">
+              <ErrorMessage>
                 {t('PassphraseView.new_passphrase.dont_match')}
-              </p>
+              </ErrorMessage>
             )}
-          {globalError && <p className="u-error">{t(globalError)}</p>}
-          {twoFactorError && <p className="u-error">{t(twoFactorError)}</p>}
+          {globalError && <ErrorMessage>{t(globalError)}</ErrorMessage>}
+          {twoFactorError && <ErrorMessage>{t(twoFactorError)}</ErrorMessage>}
           <UnorderedList className={styles['set-passphrase-advices']}>
             <ListItem>
               <ReactMarkdownWrapper
@@ -171,9 +171,9 @@ class PassphraseForm extends Component {
               error={hintSameAsPassphrase}
             />
             {hintSameAsPassphrase && (
-              <p className="u-error">
+              <ErrorMessage>
                 {t('PassphraseView.hint.same_as_passphrase')}
-              </p>
+              </ErrorMessage>
             )}
           </Stack>
           <ReactMarkdownWrapper source={t('PassphraseView.hint.description')} />
