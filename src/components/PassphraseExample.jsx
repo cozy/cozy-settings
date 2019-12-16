@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import styles from 'styles/passphrase'
+import InlineCard from 'cozy-ui/react/InlineCard'
 
 const alphaRegexp = /^[a-z]$/i
 const numberRegexp = /^[0-9]$/
@@ -59,11 +59,11 @@ const PassphraseExample = props => {
   const tokens = tokenize(passphrase)
 
   return (
-    <span className={styles['coz-passphrase-example']} {...rest}>
+    <InlineCard {...rest}>
       {tokens.map((token, index) => (
         <Token key={`${token.char}-${token.type}-${index}`} token={token} />
       ))}
-    </span>
+    </InlineCard>
   )
 }
 
