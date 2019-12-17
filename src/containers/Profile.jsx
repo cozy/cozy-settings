@@ -19,7 +19,8 @@ const mapStateToProps = state => ({
   passphrase: state.passphrase,
   instance: state.instance,
   twoFactor: state.twoFactor,
-  exportData: state.exportData
+  exportData: state.exportData,
+  isFetching: state.ui.isFetching
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -11,9 +11,9 @@ import { UnorderedList, ListItem } from 'cozy-ui/react/UnorderedList'
 import palette from 'cozy-ui/stylus/settings/palette.json'
 import { Link, withRouter } from 'react-router-dom'
 import compose from 'lodash/flowRight'
-import PassphraseExample from 'components/PassphraseExample'
+import PasswordExample from 'cozy-ui/react/PasswordExample'
 
-import { PassphraseInput } from 'components/Input'
+import PasswordInput from 'cozy-ui/react/Labs/PasswordInput'
 import passwordHelper from 'lib/passwordHelper'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { getRedirectUrlsFromURLParams } from 'containers/Passphrase'
@@ -90,7 +90,7 @@ class PassphraseForm extends Component {
           <SubTitle tag="label" htmlFor="current-passphrase">
             {t('PassphraseView.current_passphrase.label')}
           </SubTitle>
-          <PassphraseInput
+          <PasswordInput
             name="currentPassphrase"
             value={currentPassphrase}
             onChange={this.handleInputChange}
@@ -108,7 +108,7 @@ class PassphraseForm extends Component {
             {t('PassphraseView.new_passphrase.label')}
           </SubTitle>
           <Stack spacing="xs">
-            <PassphraseInput
+            <PasswordInput
               name="newPassphrase"
               autoComplete="new-password"
               id="new-passphrase"
@@ -118,7 +118,7 @@ class PassphraseForm extends Component {
               showStrength
               error={newPassphraseTouched && !newPassphraseMatch}
             />
-            <PassphraseInput
+            <PasswordInput
               name="newPassphraseRepeat"
               autoComplete="new-password"
               id="new-passphrase-repeat"
@@ -153,7 +153,7 @@ class PassphraseForm extends Component {
               <ReactMarkdownWrapper
                 source={t('PassphraseView.advices.our_tip')}
               />
-              <PassphraseExample passphrase="Cl4ude€st1Nu@ge" />
+              <PasswordExample password="Cl4ude€st1Nu@ge" />
             </ListItem>
           </UnorderedList>
         </Stack>
