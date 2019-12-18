@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
   passphrase: state.passphrase
 })
 
-export const getRedirectUrlsFromURLParams = urlParamsStr => {
+export const parseRedirectUrlsFromUrlParams = urlParamsStr => {
   const urlParams = new URLSearchParams(urlParamsStr)
 
   return {
@@ -32,7 +32,7 @@ export const getRedirectUrlsFromURLParams = urlParamsStr => {
 }
 
 const showSuccessThenReload = (t, location) => {
-  const { successRedirectUrl } = getRedirectUrlsFromURLParams(location.search)
+  const { successRedirectUrl } = parseRedirectUrlsFromUrlParams(location.search)
 
   const translatationKey = successRedirectUrl
     ? 'PassphraseView.redirect'

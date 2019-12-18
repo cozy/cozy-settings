@@ -16,7 +16,7 @@ import PasswordExample from 'cozy-ui/react/PasswordExample'
 import PasswordInput from 'cozy-ui/react/Labs/PasswordInput'
 import passwordHelper from 'lib/passwordHelper'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import { getRedirectUrlsFromURLParams } from 'containers/Passphrase'
+import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
 
 const initialState = {
   currentPassphrase: '',
@@ -81,7 +81,9 @@ class PassphraseForm extends Component {
       hint &&
       !hintSameAsPassphrase
 
-    const { cancelRedirectUrl } = getRedirectUrlsFromURLParams(location.search)
+    const { cancelRedirectUrl } = parseRedirectUrlsFromUrlParams(
+      location.search
+    )
 
     return (
       <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
