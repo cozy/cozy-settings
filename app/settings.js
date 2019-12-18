@@ -3770,12 +3770,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var cozy_ui_react_I18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("buk/");
 /* harmony import */ var cozy_ui_react_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("KXWi");
-/* harmony import */ var styles_view__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("J+JL");
-/* harmony import */ var styles_view__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styles_view__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var styles_fields__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("Cp2o");
-/* harmony import */ var styles_fields__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(styles_fields__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var components_ReactMarkdownWrapper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("4DAK");
-/* harmony import */ var components_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("efN2");
+/* harmony import */ var cozy_ui_react_Field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("jLsa");
+/* harmony import */ var cozy_ui_react_Text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("kyGY");
+/* harmony import */ var styles_view__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("J+JL");
+/* harmony import */ var styles_view__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styles_view__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var components_ReactMarkdownWrapper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("4DAK");
 /* harmony import */ var config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("sCQG");
 var config__WEBPACK_IMPORTED_MODULE_7___namespace = /*#__PURE__*/__webpack_require__.t("sCQG", 1);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3840,29 +3839,27 @@ function (_Component) {
           twoFactor = _this$props.twoFactor,
           email = _this$props.email;
       var twoFactorCode = this.state.twoFactorCode;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, t('ProfileView.twofa.modal.confirmation_title')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_ReactMarkdownWrapper__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, t('ProfileView.twofa.modal.confirmation_title')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_ReactMarkdownWrapper__WEBPACK_IMPORTED_MODULE_6__["default"], {
         source: t('ProfileView.twofa.modal.confirmation_description', {
           email: email
         })
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: styles_fields__WEBPACK_IMPORTED_MODULE_4___default.a['coz-form-label']
-      }, t('ProfileView.twofa.modal.code')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: styles_view__WEBPACK_IMPORTED_MODULE_3___default.a['set-view-content-twofa-modal-confirmation-input']
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(cozy_ui_react_Field__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        label: t('ProfileView.twofa.modal.code'),
         name: "two_factor_mail",
         type: "text",
         value: twoFactorCode,
-        errors: twoFactor.checkError && [twoFactor.checkError],
-        onChange: function onChange(name, value) {
-          return _this2.onChange(value);
+        onChange: function onChange(e) {
+          return _this2.onChange(e.target.value);
         },
-        submitting: twoFactor.codeChecking
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: styles_view__WEBPACK_IMPORTED_MODULE_3___default.a['set-view-content-twofa-modal-nocode']
+        fullwidth: true,
+        id: "two_factor_mail",
+        error: Boolean(twoFactor.checkError)
+      }), twoFactor.checkError ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(cozy_ui_react_Text__WEBPACK_IMPORTED_MODULE_4__["ErrorMessage"], null, t(twoFactor.checkError)) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: styles_view__WEBPACK_IMPORTED_MODULE_5___default.a['set-view-content-twofa-modal-nocode']
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, t('ProfileView.twofa.modal.nocode')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), t('ProfileView.twofa.modal.nocode_claude'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "mailto{settingsConfig.contactEmail}"
-      }, config__WEBPACK_IMPORTED_MODULE_7__.contactEmail)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: styles_view__WEBPACK_IMPORTED_MODULE_3___default.a['set-view-content-twofa-modal-content-right-buttons']
+      }, config__WEBPACK_IMPORTED_MODULE_7__.contactEmail))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: styles_view__WEBPACK_IMPORTED_MODULE_5___default.a['set-view-content-twofa-modal-content-right-buttons']
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(cozy_ui_react_Button__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         onClick: closeTwoFAActivationModal,
         theme: "secondary",
@@ -4297,7 +4294,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
                 return dispatch(Object(actions_passphrase__WEBPACK_IMPORTED_MODULE_7__["updatePassphrase2FASecond"])(currentPassphrase, newPassphrase, twoFactorCode, twoFactorToken));
 
               case 5:
-                showSuccessThenReload(ownProps.t);
+                showSuccessThenReload(ownProps.t, ownProps.location);
                 _context3.next = 11;
                 break;
 
@@ -4672,8 +4669,8 @@ function (_Component) {
         name: "two_factor_mail",
         type: "text",
         value: twoFactorCode,
-        onChange: function onChange(name, value) {
-          return _this2.onChange(value);
+        onChange: function onChange(e) {
+          return _this2.onChange(e.target.value);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: styles_view__WEBPACK_IMPORTED_MODULE_4___default.a['set-view-content-twofa-modal-nocode']
@@ -5491,8 +5488,6 @@ var submitting = function submitting() {
     case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_PASSPHRASE_FAILURE"]:
     case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_PASSPHRASE_2FA_1_FAILURE"]:
     case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_PASSPHRASE_2FA_1_SUCCESS"]:
-    case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_HINT_SUCCESS"]:
-    case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_HINT_FAILURE"]:
       return false;
 
     default:

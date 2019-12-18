@@ -3311,8 +3311,6 @@ var submitting = function submitting() {
     case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_PASSPHRASE_FAILURE"]:
     case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_PASSPHRASE_2FA_1_FAILURE"]:
     case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_PASSPHRASE_2FA_1_SUCCESS"]:
-    case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_HINT_SUCCESS"]:
-    case actions_passphrase__WEBPACK_IMPORTED_MODULE_1__["UPDATE_HINT_FAILURE"]:
       return false;
 
     default:
