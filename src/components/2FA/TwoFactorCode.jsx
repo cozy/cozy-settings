@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
+import Field from 'cozy-ui/react/Field'
+import { ErrorMessage } from 'cozy-ui/react/Text'
 
 import viewStyles from 'styles/view'
-import styles from 'styles/fields'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import Input from 'components/Input'
 import settingsConfig from 'config'
 
 export class TwoFactorCode extends Component {
@@ -30,6 +30,7 @@ export class TwoFactorCode extends Component {
       twoFactor,
       email
     } = this.props
+
     const { twoFactorCode } = this.state
     return (
       <div>
@@ -41,32 +42,28 @@ export class TwoFactorCode extends Component {
             })}
           />
         </div>
-        <label className={styles['coz-form-label']}>
-          {t('ProfileView.twofa.modal.code')}
-        </label>
-        <div
-          className={
-            viewStyles['set-view-content-twofa-modal-confirmation-input']
-          }
-        >
-          <Input
-            name="two_factor_mail"
-            type="text"
-            value={twoFactorCode}
-            errors={twoFactor.checkError && [twoFactor.checkError]}
-            onChange={(name, value) => this.onChange(value)}
-            submitting={twoFactor.codeChecking}
-          />
-          <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
-            <p>
-              <span>{t('ProfileView.twofa.modal.nocode')}</span>
-              <br />
-              {t('ProfileView.twofa.modal.nocode_claude')}
-              <a href={`mailto{settingsConfig.contactEmail}`}>
-                {settingsConfig.contactEmail}
-              </a>
-            </p>
-          </div>
+        <Field
+          label={t('ProfileView.twofa.modal.code')}
+          name="two_factor_mail"
+          type="text"
+          value={twoFactorCode}
+          onChange={e => this.onChange(e.target.value)}
+          fullwidth
+          id="two_factor_mail"
+          error={Boolean(twoFactor.checkError)}
+        />
+        {twoFactor.checkError ? (
+          <ErrorMessage>{t(twoFactor.checkError)}</ErrorMessage>
+        ) : null}
+        <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
+          <p>
+            <span>{t('ProfileView.twofa.modal.nocode')}</span>
+            <br />
+            {t('ProfileView.twofa.modal.nocode_claude')}
+            <a href={`mailto{settingsConfig.contactEmail}`}>
+              {settingsConfig.contactEmail}
+            </a>
+          </p>
         </div>
         <div
           className={

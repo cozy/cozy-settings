@@ -16,18 +16,25 @@ export const UPDATE_PASSPHRASE_2FA_2 = 'UPDATE_PASSPHRASE_2FA_2'
 export const UPDATE_PASSPHRASE_2FA_2_SUCCESS = 'UPDATE_PASSPHRASE_2FA_2_SUCCESS'
 export const UPDATE_PASSPHRASE_2FA_2_FAILURE = 'UPDATE_PASSPHRASE_2FA_2_FAILURE'
 
+// hint
+export const UPDATE_HINT = 'UPDATE_HINT'
+export const UPDATE_HINT_SUCCESS = 'UPDATE_HINT_SUCCESS'
+export const UPDATE_HINT_FAILURE = 'UPDATE_HINT_FAILURE'
+
 const getInstanceURL = () => {
   return client.getStackClient().uri
 }
 
-const invalidPasswordErrorAction = {
+const invalidPassphraseErrorAction = {
   type: UPDATE_PASSPHRASE_FAILURE,
-  errors: { currentPassword: 'ProfileView.password.wrong_password' }
+  errors: {
+    currentPassphrase: 'PassphraseView.current_passphrase.wrong_passphrase'
+  }
 }
 
 const defaultErrorAction = {
   type: UPDATE_PASSPHRASE_FAILURE,
-  errors: { global: 'ProfileView.password.server_error' }
+  errors: { global: 'PassphraseView.server_error' }
 }
 
 const getErrorDetails = error => {
@@ -38,7 +45,7 @@ const getErrorDetails = error => {
   return vaultError || stackError
 }
 
-const isInvalidPassword = errorDetails => {
+const isInvalidPassphrase = errorDetails => {
   const potentialErrors = ['invalid password', 'Invalid passphrase']
 
   return potentialErrors.includes(errorDetails)
@@ -47,23 +54,26 @@ const isInvalidPassword = errorDetails => {
 const updatePassphraseFailure = error => {
   const details = getErrorDetails(error)
 
-  if (isInvalidPassword(details)) {
-    return invalidPasswordErrorAction
+  if (isInvalidPassphrase(details)) {
+    return invalidPassphraseErrorAction
   }
 
   return defaultErrorAction
 }
 
-export const updatePassphrase = (current, newVal) => {
+export const updatePassphrase = (currentPassphrase, newPassphrase) => {
   const instanceURL = getInstanceURL()
   const vaultClient = new WebVaultClient(instanceURL)
 
   return dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE })
     return vaultClient
-      .login(current)
+      .login(currentPassphrase)
       .then(() => {
-        return vaultClient.computeNewHashAndKeys(current, newVal)
+        return vaultClient.computeNewHashAndKeys(
+          currentPassphrase,
+          newPassphrase
+        )
       })
       .then(newHashAndKeys => {
         return cozyFetch('PUT', '/settings/passphrase', {
@@ -75,11 +85,7 @@ export const updatePassphrase = (current, newVal) => {
       })
       .then(() => {
         dispatch({ type: UPDATE_PASSPHRASE_SUCCESS })
-        setTimeout(() => {
-          dispatch({ type: RESET_PASSPHRASE_FIELD })
-          // the token changes after a password change, so we need to reload the page to get the new one
-          window.location.reload()
-        }, 4000) // 4s, a bit longer than the alert message
+        dispatch({ type: RESET_PASSPHRASE_FIELD })
       })
       .catch(error => {
         const action = updatePassphraseFailure(error)
@@ -90,16 +96,16 @@ export const updatePassphrase = (current, newVal) => {
   }
 }
 
-export const updatePassphrase2FAFirst = current => {
+export const updatePassphrase2FAFirst = currentPassphrase => {
   const instanceURL = getInstanceURL()
   const vaultClient = new WebVaultClient(instanceURL)
 
   return dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE_2FA_1 })
     return vaultClient
-      .login(current)
+      .login(currentPassphrase)
       .then(() => {
-        return vaultClient.computeHashedPassword(current)
+        return vaultClient.computeHashedPassword(currentPassphrase)
       })
       .then(currentPasswordHash =>
         cozyFetch('PUT', '/settings/passphrase', {
@@ -122,8 +128,8 @@ export const updatePassphrase2FAFirst = current => {
 }
 
 export const updatePassphrase2FASecond = (
-  current,
-  newVal,
+  currentPassphrase,
+  newPassphrase,
   twoFactorCode,
   twoFactorToken
 ) => {
@@ -134,9 +140,12 @@ export const updatePassphrase2FASecond = (
     const vaultClient = new WebVaultClient(instanceURL)
 
     return vaultClient
-      .login(current)
+      .login(currentPassphrase)
       .then(() => {
-        return vaultClient.computeNewHashAndKeys(current, newVal)
+        return vaultClient.computeNewHashAndKeys(
+          currentPassphrase,
+          newPassphrase
+        )
       })
       .then(newHashAndKeys => {
         return cozyFetch('PUT', '/settings/passphrase', {
@@ -149,11 +158,7 @@ export const updatePassphrase2FASecond = (
       })
       .then(() => {
         dispatch({ type: UPDATE_PASSPHRASE_2FA_2_SUCCESS })
-        setTimeout(() => {
-          dispatch({ type: RESET_PASSPHRASE_FIELD })
-          // the token changes after a password change, so we need to reload the page to get the new one
-          window.location.reload()
-        }, 4000) // 4s, a bit longer than the alert message
+        dispatch({ type: RESET_PASSPHRASE_FIELD })
       })
       .catch(error => {
         const errors = error.errors || []
@@ -163,15 +168,33 @@ export const updatePassphrase2FASecond = (
         ) {
           dispatch({
             type: UPDATE_PASSPHRASE_2FA_2_FAILURE,
-            errors: { wrongTwoFactor: 'ProfileView.password.wrong_two_fa_code' }
+            errors: { wrongTwoFactor: 'PassphraseView.wrong_two_fa_code' }
           })
         } else {
           dispatch({
             type: UPDATE_PASSPHRASE_2FA_2_FAILURE,
-            errors: { global: 'ProfileView.password.server_error' }
+            errors: { global: 'PassphraseView.server_error' }
           })
         }
         throw error
       })
+  }
+}
+
+export const updateHint = hint => {
+  return async dispatch => {
+    dispatch({ type: UPDATE_HINT })
+
+    try {
+      await cozyFetch('PUT', '/settings/hint', { hint })
+
+      dispatch({ type: UPDATE_HINT_SUCCESS })
+    } catch (err) {
+      dispatch({
+        type: UPDATE_HINT_FAILURE,
+        errors: { global: 'PassphraseView.server_error' }
+      })
+      throw err
+    }
   }
 }

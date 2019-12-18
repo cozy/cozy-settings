@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sidebar component should be rendered correctly 1`] = `
-<aside
+<Sidebar
   className="o-sidebar"
 >
   <Nav>
@@ -66,5 +66,5 @@ exports[`Sidebar component should be rendered correctly 1`] = `
       </NavLink>
     </NavItem>
   </Nav>
-</aside>
+</Sidebar>
 `;

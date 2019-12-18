@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 
 import Input from 'components/Input'
-import PassphraseForm from 'components/PassphraseForm'
-import Passphrase2FA from 'components/2FA/Passphrase2FA'
 import Activate2FA from 'components/2FA/Activate2FA'
 import Desactivate2FA from 'components/2FA/Desactivate2FA'
 
@@ -18,7 +16,6 @@ class TwoFA extends Component {
       twoFAActivationModalIsOpen: false,
       twoFADesactivationModalIsOpen: false,
       twoFAPassphraseModalIsOpen: false,
-      new2FAPassphrase: null,
       mailConfirmationCodeIsValid: false
     }
     // binding
@@ -32,9 +29,6 @@ class TwoFA extends Component {
     this.closeTwoFADesactivationModal = this.closeTwoFADesactivationModal.bind(
       this
     )
-    this.closeTwoFAPassphraseModal = this.closeTwoFAPassphraseModal.bind(this)
-    this.onPassphrase2FAStep1 = this.onPassphrase2FAStep1.bind(this)
-    this.onPassphrase2FASubmit = this.onPassphrase2FASubmit.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -71,41 +65,11 @@ class TwoFA extends Component {
   closeTwoFADesactivationModal() {
     this.setState({ twoFADesactivationModalIsOpen: false })
   }
-  closeTwoFAPassphraseModal() {
-    this.setState(() => ({
-      twoFAPassphraseModalIsOpen: false,
-      new2FAPassphrase: null
-    }))
-  }
-
-  onPassphrase2FAStep1(current, newVal) {
-    this.setState(() => ({
-      twoFAPassphraseModalIsOpen: true,
-      currentPassphrase: current,
-      new2FAPassphrase: newVal
-    }))
-    this.props.onPassphrase2FAStep1(current)
-  }
-
-  onPassphrase2FASubmit(twoFactorCode) {
-    const { onPassphrase2FAStep2, passphrase } = this.props
-    const { twoFactorToken } = passphrase
-    const { currentPassphrase, new2FAPassphrase } = this.state
-    onPassphrase2FAStep2(
-      currentPassphrase,
-      new2FAPassphrase,
-      twoFactorCode,
-      twoFactorToken
-    ).then(() => {
-      this.closeTwoFAPassphraseModal()
-    })
-  }
 
   render() {
     const {
       t,
       isTwoFactorEnabled,
-      passphrase,
       instance,
       checkTwoFactorCode,
       twoFactor
@@ -113,7 +77,6 @@ class TwoFA extends Component {
     const {
       twoFAActivationModalIsOpen,
       twoFADesactivationModalIsOpen,
-      twoFAPassphraseModalIsOpen,
       mailConfirmationCodeIsValid
     } = this.state
     const root = document.querySelector('[role=application]')
@@ -121,12 +84,6 @@ class TwoFA extends Component {
     const cozyDomain = data.cozyDomain
     return (
       <div>
-        {isTwoFactorEnabled && (
-          <PassphraseForm
-            {...passphrase}
-            onSubmit={this.onPassphrase2FAStep1}
-          />
-        )}
         <Input
           name="two_fa"
           type="checkbox"
@@ -141,16 +98,6 @@ class TwoFA extends Component {
               : this.openTwoFAActivationModal
           }
         />
-        {twoFAPassphraseModalIsOpen &&
-          !passphrase.errors &&
-          !passphrase.submitting && (
-            <Passphrase2FA
-              onPassphrase2FASubmit={this.onPassphrase2FASubmit}
-              closeTwoFAPassphraseModal={this.closeTwoFAPassphraseModal}
-              instance={instance}
-              submitting={passphrase.submitting2FAStep2}
-            />
-          )}
         {twoFAActivationModalIsOpen && (
           <Activate2FA
             activate2FA={() => this.activate2FA()}

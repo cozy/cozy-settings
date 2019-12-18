@@ -1,9 +1,10 @@
 import styles from 'styles/fields'
 
-import React, { Component } from 'react'
+import React from 'react'
 import { translate } from 'cozy-ui/react/I18n'
 import Toggle from 'cozy-ui/react/Toggle'
 import Field from 'components/Field'
+import UIInput from 'cozy-ui/react/Input'
 
 const Input = ({
   name,
@@ -15,10 +16,11 @@ const Input = ({
   onChange,
   onBlur
 }) => (
-  <input
+  <UIInput
     type={type}
     placeholder={placeholder}
     defaultValue={value}
+    value={undefined}
     name={name}
     onChange={onChange && (e => onChange(name, e.target.value))}
     onBlur={onBlur && (e => onBlur(name, e.target.value))}
@@ -46,55 +48,3 @@ export default translate()(props => (
     )}
   </Field>
 ))
-
-class PasswordInputComponent extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      visible: false
-    }
-    this.toggleVisibility = this.toggleVisibility.bind(this)
-  }
-
-  toggleVisibility() {
-    this.setState(state => ({ visible: !state.visible }))
-  }
-
-  render() {
-    const {
-      label,
-      t,
-      name,
-      value,
-      onChange,
-      autocomplete,
-      inError = false
-    } = this.props
-    const { visible } = this.state
-    return (
-      <div className={styles['coz-form-group']}>
-        <div className={styles['coz-form-field-header']}>
-          {label && <label className={styles['coz-form-label']}>{label}</label>}
-          <a
-            onClick={this.toggleVisibility}
-            className={styles['password-visibility']}
-          >
-            {visible
-              ? t(`ProfileView.password.hide`)
-              : t(`ProfileView.password.show`)}
-          </a>
-        </div>
-        <input
-          type={visible ? 'text' : 'password'}
-          placeholder={t(`ProfileView.${name}.placeholder`)}
-          value={value}
-          onChange={onChange}
-          className={inError ? styles['error'] : ''}
-          autoComplete={autocomplete || 'off'}
-        />
-      </div>
-    )
-  }
-}
-
-export const PasswordInput = translate()(PasswordInputComponent)

@@ -2,13 +2,19 @@ import tableStyles from 'styles/table'
 import viewStyles from 'styles/view'
 
 import React, { Component } from 'react'
-import classNames from 'classnames'
 
 import Spinner from 'cozy-ui/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
 
 import { translate } from 'cozy-ui/react/I18n'
 import { Button } from 'cozy-ui/react/Button'
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableHeader
+} from 'cozy-ui/react/Table'
 
 class SessionsView extends Component {
   componentWillMount() {
@@ -39,52 +45,24 @@ class SessionsView extends Component {
         )}
         {!isFetching &&
           sessions && (
-            <div className={classNames(tableStyles['coz-table'])}>
-              <div
-                className={classNames(
-                  tableStyles['coz-table-head'],
-                  tableStyles['coz-table-row']
-                )}
-              >
-                <div
-                  className={classNames(
-                    tableStyles['coz-table-header'],
-                    tableStyles['set-table-date']
-                  )}
-                >
-                  Date
-                </div>
-                <div
-                  className={classNames(
-                    tableStyles['coz-table-header'],
-                    tableStyles['set-table-os']
-                  )}
-                >
-                  OS
-                </div>
-                <div
-                  className={classNames(
-                    tableStyles['coz-table-header'],
-                    tableStyles['set-table-browser']
-                  )}
-                >
-                  Browser
-                </div>
-                <div
-                  className={classNames(
-                    tableStyles['coz-table-header'],
-                    tableStyles['set-table-ip']
-                  )}
-                >
-                  IP
-                </div>
-              </div>
-              <div
-                className={classNames(
-                  tableStyles['coz-table-body'],
-                  tableStyles['set-table-sessions']
-                )}
-              >
+            <Table className={tableStyles['coz-table']}>
+              <TableHead>
+                <TableRow>
+                  <TableHeader className={tableStyles['set-table-date']}>
+                    Date
+                  </TableHeader>
+                  <TableHeader className={tableStyles['set-table-os']}>
+                    OS
+                  </TableHeader>
+                  <TableHeader className={tableStyles['set-table-browser']}>
+                    Browser
+                  </TableHeader>
+                  <TableHeader className={tableStyles['set-table-ip']}>
+                    IP
+                  </TableHeader>
+                </TableRow>
+              </TableHead>
+              <TableBody className={tableStyles['set-table-sessions']}>
                 {sessions
                   .sort(function(a, b) {
                     // Turn your strings into dates, and then subtract them
@@ -99,8 +77,8 @@ class SessionsView extends Component {
                       key={index}
                     />
                   ))}
-              </div>
-            </div>
+              </TableBody>
+            </Table>
           )}
       </div>
     )

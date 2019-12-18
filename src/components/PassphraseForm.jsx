@@ -1,123 +1,224 @@
-import styles from 'styles/fields'
+import styles from 'styles/passphrase'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/react/I18n'
-import { Button } from 'cozy-ui/react/Button'
+import { Button, ButtonLink } from 'cozy-ui/react/Button'
+import { MainTitle, SubTitle, ErrorMessage } from 'cozy-ui/react/Text'
+import Input from 'cozy-ui/react/Input'
 import Icon from 'cozy-ui/react/Icon'
+import Stack from 'cozy-ui/react/Stack'
+import { UnorderedList, ListItem } from 'cozy-ui/react/UnorderedList'
 import palette from 'cozy-ui/stylus/settings/palette.json'
+import { Link, withRouter } from 'react-router-dom'
+import compose from 'lodash/flowRight'
+import PasswordExample from 'cozy-ui/react/PasswordExample'
 
-import { PasswordInput } from 'components/Input'
+import PasswordInput from 'cozy-ui/react/Labs/PasswordInput'
 import passwordHelper from 'lib/passwordHelper'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
 
 const initialState = {
-  currentPassword: '',
-  newPassword: '',
-  strength: { percentage: 0, label: 'weak' }
+  currentPassphrase: '',
+  newPassphrase: '',
+  newPassphraseRepeat: '',
+  hint: ''
 }
 
 class PassphraseForm extends Component {
   constructor(props) {
     super(props)
     this.state = initialState
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  handleCurrentInput(e) {
+  handleInputChange(e) {
     this.setState({
-      currentPassword: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  handleNewInput(e) {
-    this.setState({
-      newPassword: e.target.value,
-      strength: passwordHelper.getStrength(e.target.value)
-    })
-  }
+  handleSubmit(e) {
+    e.preventDefault()
 
-  handleSubmit() {
     this.props
-      .onSubmit(this.state.currentPassword, this.state.newPassword)
+      .onSubmit(
+        this.state.currentPassphrase,
+        this.state.newPassphrase,
+        this.state.hint
+      )
       .then(() => {
         this.setState(initialState)
       })
   }
 
   render() {
-    const { currentPassword, newPassword, strength } = this.state
-    const { t, errors, submitting, saved } = this.props
-    const currentPasswordError = errors && errors.currentPassword
+    const {
+      currentPassphrase,
+      newPassphrase,
+      newPassphraseRepeat,
+      hint
+    } = this.state
+
+    const { t, errors, submitting, saved, location } = this.props
+    const currentPassphraseError = errors && errors.currentPassphrase
     const globalError = errors && errors.global
-    const newPasswordError = errors && errors.newPassword
     const twoFactorError = errors && errors.wrongTwoFactor
-    const canSubmit = newPassword !== '' && strength.label !== 'weak'
-    const STACK_DOMAIN =
-      '//' + document.querySelector('[role=application]').dataset.cozyDomain
-    const passphraseResetUrl = STACK_DOMAIN + '/auth/passphrase_reset'
+    const strength = passwordHelper.getStrength(newPassphrase)
+
+    const newPassphraseTouched =
+      newPassphrase !== '' && newPassphraseRepeat !== ''
+
+    const newPassphraseMatch = newPassphrase === newPassphraseRepeat
+    const hintSameAsPassphrase = newPassphraseTouched && newPassphrase === hint
+
+    const canSubmit =
+      newPassphraseTouched &&
+      newPassphraseMatch &&
+      strength.label !== 'weak' &&
+      hint &&
+      !hintSameAsPassphrase
+
+    const { cancelRedirectUrl } = parseRedirectUrlsFromUrlParams(
+      location.search
+    )
 
     return (
-      <div className={styles['coz-form']}>
-        <h3>{t('ProfileView.password.title')}</h3>
-        <PasswordInput
-          label={t('ProfileView.current_password.label')}
-          name="current_password"
-          key="current_password"
-          value={currentPassword}
-          inError={currentPasswordError}
-          onChange={e => this.handleCurrentInput(e)}
-          autocomplete="current-password"
-        />
-        {currentPasswordError && (
-          <p className={styles['coz-form-errors']}>{t(currentPasswordError)}</p>
-        )}
-        <PasswordInput
-          label={t('ProfileView.new_password.label')}
-          name="new_password"
-          key="new_password"
-          value={newPassword}
-          inError={newPasswordError}
-          onChange={e => this.handleNewInput(e)}
-          autocomplete="new-password"
-        />
-        <progress
-          step="1"
-          min="0"
-          max="100"
-          value={strength.percentage}
-          className={styles[`pw-${strength.label}`]}
-        />
-        {newPasswordError && (
-          <p className={styles['coz-form-errors']}>{t(newPasswordError)}</p>
-        )}
-        {globalError && (
-          <p className={styles['coz-form-errors']}>{t(globalError)}</p>
-        )}
-        {twoFactorError && (
-          <p className={styles['coz-form-errors']}>{t(twoFactorError)}</p>
-        )}
-        <div className={styles['coz-form-controls']}>
+      <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
+        <MainTitle className="u-mt-2">{t('PassphraseView.title')}</MainTitle>
+        <Stack spacing="m">
+          <SubTitle tag="label" htmlFor="current-passphrase">
+            {t('PassphraseView.current_passphrase.label')}
+          </SubTitle>
+          <PasswordInput
+            name="currentPassphrase"
+            value={currentPassphrase}
+            onChange={this.handleInputChange}
+            autoComplete="current-password"
+            id="current-passphrase"
+            placeholder={t('PassphraseView.current_passphrase.placeholder')}
+            error={Boolean(currentPassphraseError)}
+          />
+          {currentPassphraseError && (
+            <ErrorMessage>{t(currentPassphraseError)}</ErrorMessage>
+          )}
+        </Stack>
+        <Stack spacing="m">
+          <SubTitle tag="label" htmlFor="new-passphrase">
+            {t('PassphraseView.new_passphrase.label')}
+          </SubTitle>
+          <Stack spacing="xs">
+            <PasswordInput
+              name="newPassphrase"
+              autoComplete="new-password"
+              id="new-passphrase"
+              placeholder={t('PassphraseView.new_passphrase.placeholder')}
+              value={newPassphrase}
+              onChange={this.handleInputChange}
+              showStrength
+              error={newPassphraseTouched && !newPassphraseMatch}
+            />
+            <PasswordInput
+              name="newPassphraseRepeat"
+              autoComplete="new-password"
+              id="new-passphrase-repeat"
+              placeholder={t(
+                'PassphraseView.new_passphrase.confirmation_placeholder'
+              )}
+              value={newPassphraseRepeat}
+              onChange={this.handleInputChange}
+              error={newPassphraseTouched && !newPassphraseMatch}
+            />
+          </Stack>
+          {newPassphraseTouched &&
+            !newPassphraseMatch && (
+              <ErrorMessage>
+                {t('PassphraseView.new_passphrase.dont_match')}
+              </ErrorMessage>
+            )}
+          {globalError && <ErrorMessage>{t(globalError)}</ErrorMessage>}
+          {twoFactorError && <ErrorMessage>{t(twoFactorError)}</ErrorMessage>}
+          <UnorderedList className={styles['set-passphrase-advices']}>
+            <ListItem>
+              <ReactMarkdownWrapper
+                source={t('PassphraseView.advices.strong_passphrase')}
+              />
+            </ListItem>
+            <ListItem>
+              <ReactMarkdownWrapper
+                source={t('PassphraseView.advices.memorize')}
+              />
+            </ListItem>
+            <ListItem>
+              <ReactMarkdownWrapper
+                source={t('PassphraseView.advices.our_tip')}
+              />
+              <PasswordExample password="Cl4ude€st1Nu@ge" />
+            </ListItem>
+          </UnorderedList>
+        </Stack>
+        <Stack spacing="m">
+          <SubTitle tag="label" htmlFor="hint">
+            {t('PassphraseView.hint.title')}
+          </SubTitle>
+          <Stack spacing="xs">
+            <Input
+              value={hint}
+              onChange={this.handleInputChange}
+              placeholder={t('PassphraseView.hint.placeholder')}
+              name="hint"
+              id="hint"
+              error={hintSameAsPassphrase}
+            />
+            {hintSameAsPassphrase && (
+              <ErrorMessage>
+                {t('PassphraseView.hint.same_as_passphrase')}
+              </ErrorMessage>
+            )}
+          </Stack>
+          <ReactMarkdownWrapper source={t('PassphraseView.hint.description')} />
+        </Stack>
+        <Stack spacing="xs">
           <Button
-            theme="secondary"
             busy={submitting}
-            onClick={e => this.handleSubmit(e)}
             disabled={!canSubmit}
-            label={t('ProfileView.password.submit_label')}
+            label={t('PassphraseView.submit')}
+            extension="full"
+            className="u-mb-half"
           >
             {saved && (
               <Icon
                 className="u-ml-half"
-                icon="check-circleless"
+                icon="check"
                 color={palette['emerald']}
               />
             )}
           </Button>
-        </div>
-
-        <a href={passphraseResetUrl} className={styles['password-reset-link']}>
-          {t('ProfileView.password.reset_link')}
-        </a>
-      </div>
+          {cancelRedirectUrl ? (
+            <ButtonLink
+              href={cancelRedirectUrl}
+              label={t('PassphraseView.cancel')}
+              theme="secondary"
+              extension="full"
+            />
+          ) : (
+            <Button
+              tag={Link}
+              to="/profile"
+              label={t('PassphraseView.cancel')}
+              theme="secondary"
+              extension="full"
+            />
+          )}
+        </Stack>
+      </Stack>
     )
   }
 }
 
-export default translate()(PassphraseForm)
+export default compose(
+  translate(),
+  withRouter
+)(PassphraseForm)

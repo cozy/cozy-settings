@@ -2,12 +2,15 @@ import viewStyles from 'styles/view'
 
 import classNames from 'classnames'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { translate } from 'cozy-ui/react/I18n'
+import { Text } from 'cozy-ui/react/Text'
+import Button from 'cozy-ui/react/Button'
+import Spinner from 'cozy-ui/react/Spinner'
 
 import DeleteAccount from 'components/DeleteAccount'
 import Input from 'components/Input'
-import PassphraseForm from 'components/PassphraseForm'
 import LanguageSection from 'components/LanguageSection'
 import TwoFA from 'components/2FA'
 import ExportSection from 'components/export/ExportSection'
@@ -25,10 +28,8 @@ class ProfileView extends Component {
       t,
       match,
       fields,
-      passphrase,
       isFetching,
       onFieldChange,
-      onPassphraseSimpleSubmit,
       instance,
       updateInfo,
       exportData,
@@ -38,16 +39,16 @@ class ProfileView extends Component {
       checkTwoFactorCode,
       activate2FA,
       desactivate2FA,
-      cancel2FAActivation,
-      onPassphrase2FAStep1,
-      onPassphrase2FAStep2
+      cancel2FAActivation
     } = this.props
+
     let exportId = null
     if (match && match.params) {
       exportId = match.params.exportId
     }
     const isTwoFactorEnabled =
       fields.auth_mode && fields.auth_mode.value === AUTH_MODE.TWO_FA_MAIL
+
     return (
       <div role="contentinfo">
         <div
@@ -56,62 +57,75 @@ class ProfileView extends Component {
             viewStyles['set-view-content--narrow']
           )}
         >
-          {isFetching && <p>Loading...</p>}
-          <h2 className={viewStyles['set-view-title']}>
-            {t('ProfileView.title')}
-          </h2>
-          <Input
-            name="email"
-            type="email"
-            title={t('ProfileView.email.title')}
-            label={t('ProfileView.email.label')}
-            {...fields.email}
-            onBlur={onFieldChange}
-          />
-          <Input
-            name="public_name"
-            type="text"
-            title={t('ProfileView.public_name.title')}
-            label={t(`ProfileView.public_name.label`)}
-            {...fields.public_name}
-            onBlur={onFieldChange}
-          />
-          {!isTwoFactorEnabled && (
-            <PassphraseForm
-              {...passphrase}
-              onSubmit={onPassphraseSimpleSubmit}
+          {isFetching && (
+            <Spinner
+              className={'u-pos-fixed-s'}
+              middle
+              size="xxlarge"
+              loadingType={t('Loading.loading')}
             />
           )}
-          <TwoFA
-            isTwoFactorEnabled={isTwoFactorEnabled}
-            passphrase={passphrase}
-            instance={instance}
-            checkTwoFactorCode={checkTwoFactorCode}
-            twoFactor={twoFactor}
-            activate2FA={activate2FA}
-            desactivate2FA={desactivate2FA}
-            cancel2FAActivation={cancel2FAActivation}
-            onPassphrase2FAStep1={onPassphrase2FAStep1}
-            onPassphrase2FAStep2={onPassphrase2FAStep2}
-            updateInfo={updateInfo}
-          />
-          <LanguageSection fields={fields} onChange={onFieldChange} />
-          <TrackingSection
-            instance={instance}
-            fields={fields}
-            onChange={onFieldChange}
-          />
-          <ExportSection
-            email={fields.email && fields.email.value}
-            exportData={exportData}
-            exportId={exportId}
-            requestExport={requestExport}
-            fetchExportData={() => fetchExportData(exportId)}
-            parent={'/profile'}
-          />
-          <div className={viewStyles['set-delete-account']}>
-            <DeleteAccount />
-          </div>
+          {!isFetching && (
+            <>
+              <h2 className={viewStyles['set-view-title']}>
+                {t('ProfileView.title')}
+              </h2>
+              <Input
+                name="email"
+                type="email"
+                title={t('ProfileView.email.title')}
+                label={t('ProfileView.email.label')}
+                {...fields.email}
+                onBlur={onFieldChange}
+              />
+              <Input
+                name="public_name"
+                type="text"
+                title={t('ProfileView.public_name.title')}
+                label={t(`ProfileView.public_name.label`)}
+                {...fields.public_name}
+                onBlur={onFieldChange}
+              />
+              <h3>{t('ProfileView.password.title')}</h3>
+              <Text tag="p" className="u-black">
+                Votre cozy est actuellement protégé par un mot de passe.
+              </Text>
+              <Button
+                tag={Link}
+                to="/profile/password"
+                label="Modifier le mot de passe"
+                theme="secondary"
+                className="u-mh-0"
+              />
+              <TwoFA
+                isTwoFactorEnabled={isTwoFactorEnabled}
+                instance={instance}
+                checkTwoFactorCode={checkTwoFactorCode}
+                twoFactor={twoFactor}
+                activate2FA={activate2FA}
+                desactivate2FA={desactivate2FA}
+                cancel2FAActivation={cancel2FAActivation}
+                updateInfo={updateInfo}
+              />
+              <LanguageSection fields={fields} onChange={onFieldChange} />
+              <TrackingSection
+                instance={instance}
+                fields={fields}
+                onChange={onFieldChange}
+              />
+              <ExportSection
+                email={fields.email && fields.email.value}
+                exportData={exportData}
+                exportId={exportId}
+                requestExport={requestExport}
+                fetchExportData={() => fetchExportData(exportId)}
+                parent={'/profile'}
+              />
+              <div className={viewStyles['set-delete-account']}>
+                <DeleteAccount />
+              </div>
+            </>
+          )}
         </div>
       </div>
     )

@@ -3,11 +3,6 @@
 
 [role=application]
     :local
-        @extend $form
-        @extend $form-text
-        @extend $form-progress
-        @extend $form-select
-
         .coz-form-label
             margin 0
             padding 0
@@ -88,23 +83,23 @@
 
         progress
             &.pw-weak
-                color   pomegranate
+                color   var(--pomegranate)
                 &::-webkit-progress-value
-                    background    pomegranate
+                    background    var(--pomegranate)
                 &::-moz-progress-bar
-                    background    pomegranate
+                    background    var(--pomegranate)
             &.pw-moderate
-                color   texas-rose
+                color   var(--texasRose)
                 &::-webkit-progress-value
-                    background    texasRose
+                    background    var(--texasRose)
                 &::-moz-progress-bar
-                    background    texasRose
+                    background    var(--texasRose)
             &.pw-strong
-                color   emerald
+                color   var(--emerald)
                 &::-webkit-progress-value
-                    background    emerald
+                    background    var(--emerald)
                 &::-moz-progress-bar
-                    background    emerald
+                    background    var(--emerald)
 
 .coz-form-field-header
     display flex
@@ -112,3 +107,25 @@
     justify-content space-between
     align-items flex-end
     margin 1rem 0 .5rem
+
+.coz-input-group
+    input
+        border 0 !important
+
+.coz-pwd-input
+    display flex
+    flex-direction column
+
+.coz-input-group-with-strength
+    border-bottom-left-radius 0
+    border-bottom-right-radius 0
+
+.coz-pwd-input-strength
+    margin 0 !important
+    border-radius 3px !important
+    border-top-left-radius 0 !important
+    border-top-right-radius 0 !important
+    border 1px solid var(--silver) !important
+    border-top 0 !important
+    box-sizing border-box
+    height 4px !important
