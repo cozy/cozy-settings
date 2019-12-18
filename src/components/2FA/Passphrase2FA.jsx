@@ -57,7 +57,7 @@ export class Passphrase2FA extends Component {
                 name="two_factor_mail"
                 type="text"
                 value={twoFactorCode}
-                onChange={(name, value) => this.onChange(value)}
+                onChange={e => this.onChange(e.target.value)}
               />
               <div
                 className={viewStyles['set-view-content-twofa-modal-nocode']}

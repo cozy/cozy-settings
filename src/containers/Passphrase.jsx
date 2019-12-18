@@ -88,7 +88,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           twoFactorToken
         )
       )
-      showSuccessThenReload(ownProps.t)
+      showSuccessThenReload(ownProps.t, ownProps.location)
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
