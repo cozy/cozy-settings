@@ -38,7 +38,8 @@ const showSuccessThenReload = (t, location) => {
     ? 'PassphraseView.redirect'
     : 'PassphraseView.reload'
 
-  Alerter.info(t(translatationKey))
+  const ALERT_DURATION = 4000
+  Alerter.info(t(translatationKey), { duration: ALERT_DURATION })
 
   setTimeout(() => {
     if (successRedirectUrl) {
@@ -48,7 +49,7 @@ const showSuccessThenReload = (t, location) => {
       // the page to get the new one
       window.location.reload()
     }
-  }, 4000) // 4s, a bit longer than the alert message
+  }, ALERT_DURATION)
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
