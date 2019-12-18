@@ -53,46 +53,46 @@ const showSuccessThenReload = (t, location) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onPassphraseSimpleSubmit: (currentPassphrase, newPassphrase, hint) => {
-    return (
-      dispatch(updateHint(hint))
-        .then(() =>
-          dispatch(updatePassphrase(currentPassphrase, newPassphrase))
-        )
-        .then(() => showSuccessThenReload(ownProps.t, ownProps.location))
-        // eslint-disable-next-line no-console
-        .catch(e => console.error(e))
-    )
-  },
-  onPassphrase2FAStep1: currentPassphrase => {
-    return dispatch(updatePassphrase2FAFirst(currentPassphrase)).catch(e =>
+  onPassphraseSimpleSubmit: async (currentPassphrase, newPassphrase, hint) => {
+    try {
+      await dispatch(updateHint(hint))
+      await dispatch(updatePassphrase(currentPassphrase, newPassphrase))
+      showSuccessThenReload(ownProps.t, ownProps.location)
+    } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
-    )
+    }
   },
-  onPassphrase2FAStep2: (
+  onPassphrase2FAStep1: async currentPassphrase => {
+    try {
+      await dispatch(updatePassphrase2FAFirst(currentPassphrase))
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e)
+    }
+  },
+  onPassphrase2FAStep2: async (
     currentPassphrase,
     newPassphrase,
     twoFactorCode,
     twoFactorToken,
     hint
   ) => {
-    return (
-      dispatch(updateHint(hint))
-        .then(() =>
-          dispatch(
-            updatePassphrase2FASecond(
-              currentPassphrase,
-              newPassphrase,
-              twoFactorCode,
-              twoFactorToken
-            )
-          )
+    try {
+      await dispatch(updateHint(hint))
+      await dispatch(
+        updatePassphrase2FASecond(
+          currentPassphrase,
+          newPassphrase,
+          twoFactorCode,
+          twoFactorToken
         )
-        .then(() => showSuccessThenReload(ownProps.t))
-        // eslint-disable-next-line no-console
-        .catch(e => console.error(e))
-    )
+      )
+      showSuccessThenReload(ownProps.t)
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e)
+    }
   },
   fetchInfos: () => dispatch(fetchInfos())
 })
