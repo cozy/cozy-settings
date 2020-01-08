@@ -75,7 +75,7 @@ export class FormModal extends Component {
             <div className={styles['coz-textarea-wrapper']}>
               <textarea
                 aria-busy={isSending}
-                maxength={REASON_MAXLENGTH}
+                maxLength={REASON_MAXLENGTH}
                 readOnly={isSending}
                 ref={element => {
                   this.reasonElement = element
