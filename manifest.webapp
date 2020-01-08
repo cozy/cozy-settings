@@ -9,70 +9,48 @@
     "name": "Cozy",
     "url": "https://cozy.io"
   },
-  "version": "1.13.0",
+  "version": "1.14.0",
   "licence": "AGPL-3.0",
   "permissions": {
     "settings": {
       "description": "Required to manage your settings",
       "type": "io.cozy.settings",
-      "verbs": [
-        "GET",
-        "POST",
-        "PUT"
-      ]
+      "verbs": ["GET", "POST", "PUT"]
     },
     "exports": {
       "description": "Required to export the Cozy data",
       "type": "io.cozy.exports",
-      "verbs": [
-        "GET",
-        "POST"
-      ]
+      "verbs": ["GET", "POST"]
     },
     "sessions": {
       "description": "Required to manage your sessions",
       "type": "io.cozy.sessions.logins",
-      "verbs": [
-        "GET"
-      ]
+      "verbs": ["GET"]
     },
     "current_sessions": {
       "description": "Required to manage your sessions",
       "type": "io.cozy.sessions",
-      "verbs": [
-        "GET"
-      ]
+      "verbs": ["GET"]
     },
     "oauth": {
       "description": "Required to manage devices connected to your Cozy",
       "type": "io.cozy.oauth.clients",
-      "verbs": [
-        "GET",
-        "DELETE"
-      ]
+      "verbs": ["GET", "DELETE"]
     },
     "apps": {
       "description": "Required by the cozy-bar to display the icons of the apps",
       "type": "io.cozy.apps",
-      "verbs": [
-        "GET",
-        "POST",
-        "PUT"
-      ]
+      "verbs": ["GET", "POST", "PUT"]
     },
     "accounts": {
       "description": "Required to manage accounts associated to konnectors",
       "type": "io.cozy.accounts",
-      "verbs": [
-        "GET"
-      ]
+      "verbs": ["GET"]
     },
     "jobs": {
       "description": "Required to send emails to support",
       "type": "io.cozy.jobs",
-      "verbs": [
-        "ALL"
-      ]
+      "verbs": ["ALL"]
     }
   },
   "routes": {
@@ -95,23 +73,17 @@
   "intents": [
     {
       "action": "CLAUDY",
-      "type": [
-        "io.cozy.settings"
-      ],
+      "type": ["io.cozy.settings"],
       "href": "/services/claudy"
     },
     {
       "action": "SUPPORT",
-      "type": [
-        "io.cozy.settings"
-      ],
+      "type": ["io.cozy.settings"],
       "href": "/services/support"
     },
     {
       "action": "REDIRECT",
-      "type": [
-        "io.cozy.settings"
-      ],
+      "type": ["io.cozy.settings"],
       "href": "/#/redirect"
     }
   ],
