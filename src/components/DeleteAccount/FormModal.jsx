@@ -19,7 +19,7 @@ const ERRORED = 'errored'
 const IDLE = 'idle'
 const SENDING = 'sending'
 
-const REASON_MAXLENGTH = 500
+const REASON_MAXLENGTH = 3000
 
 export class FormModal extends Component {
   state = {
