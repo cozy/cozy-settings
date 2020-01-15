@@ -88,12 +88,12 @@ class ProfileView extends Component {
               />
               <h3>{t('ProfileView.password.title')}</h3>
               <Text tag="p" className="u-black">
-                Votre cozy est actuellement protégé par un mot de passe.
+                {t('ProfileView.password.label')}
               </Text>
               <Button
                 tag={Link}
                 to="/profile/password"
-                label="Modifier le mot de passe"
+                label={t('ProfileView.password.cta')}
                 theme="secondary"
                 className="u-mh-0"
               />

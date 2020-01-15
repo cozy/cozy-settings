@@ -81,7 +81,9 @@
     },
     "title": "Profile",
     "password": {
-      "title": "Password"
+      "title": "Password",
+      "label": "Your cozy is currently protected by a password",
+      "cta": "Update my password"
     },
     "infos": {
       "success": "Your informations has been changed",
