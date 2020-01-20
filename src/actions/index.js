@@ -207,7 +207,7 @@ export const updateInfo = (field, value) => {
   }
 }
 
-const DISPLAYED_CLIENTS = ['mobile', 'desktop']
+const DISPLAYED_CLIENTS = ['mobile', 'desktop', 'browser']
 export const fetchDevices = () => {
   return async dispatch => {
     dispatch({ type: FETCH_DEVICES })
