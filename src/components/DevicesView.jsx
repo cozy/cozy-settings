@@ -15,16 +15,24 @@ import {
   TableHeader,
   TableCell
 } from 'cozy-ui/react/Table'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
 import NoDevicesMessage from 'components/NoDevicesMessage'
 
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
+import mobileIcon from 'assets/icons/icon-device-phone.svg'
+import browserIcon from 'assets/icons/icon-device-browser.svg'
+import laptopIcon from 'assets/icons/icon-device-laptop.svg'
 
-// for the icon, we show a phone if it's a phone, and a laptop in all other cases
-const getDeviceKindClass = kind =>
-  kind === 'mobile'
-    ? tableStyles['set-device-phone']
-    : tableStyles['set-device-laptop']
+const deviceKindToIcon = {
+  mobile: mobileIcon,
+  browser: browserIcon
+}
+
+const getDeviceIcon = device => {
+  return deviceKindToIcon[device.client_kind] || laptopIcon
+}
 
 class DevicesView extends Component {
   componentWillMount() {
@@ -96,11 +104,15 @@ class DevicesView extends Component {
                     <TableCell
                       className={classNames(
                         tableStyles['set-table-name'],
-                        tableStyles['coz-table-primary'],
-                        getDeviceKindClass(device.client_kind)
+                        tableStyles['coz-table-primary']
                       )}
                     >
-                      {device.client_name}
+                      <Media>
+                        <Img>
+                          <Icon icon={getDeviceIcon(device)} size={32} />
+                        </Img>
+                        <Bd className="u-ml-1">{device.client_name}</Bd>
+                      </Media>
                     </TableCell>
                     <TableCell className={tableStyles['set-table-date']}>
                       {device.synchronized_at
