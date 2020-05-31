@@ -3117,24 +3117,23 @@ cozy-interapp@0.4.5:
   resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.4.5.tgz#115912a389448ebb8dc532972270b46e15010063"
   integrity sha512-CuiZ4PIrDj+jcK1sCizFNCC9r8+/sgKXLtDgkpKHRHk+q0lhvqz/fQAVPWiIsZAr9WdbfxaBfsJCoHP/41+G1Q==
 
-cozy-keys-lib@1.9.5:
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-1.9.5.tgz#49dfd7e3caa28d2f1d870c18fc6e8b2980b09173"
-  integrity sha512-H4VwQbNj9aF7OMlScCkv7nzyVFIpqlm1uERPzs9opG+ugA8X8B8wD1dzrfnDRg64JqqNd4dLjA4WtUTS5yO8iA==
+cozy-keys-lib@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-3.1.2.tgz#524b4360d8e6008c3f234aeb9bd9730f1d2276fc"
+  integrity sha512-AgCO7otBoUvNs5lYWZquXm/YItM3Go+WseeFx99e6KuYs4219cSlEjzNyHgIGythfXRiBlQjWVuZaK4t/yvaPQ==
   dependencies:
     "@aspnet/signalr" "^1.1.4"
     "@aspnet/signalr-protocol-msgpack" "^1.1.0"
     big-integer "^1.6.44"
     classnames "^2.2.6"
     cozy-device-helper "^1.7.5"
-    cozy-ui "^24.0.0"
     lodash "^4.17.15"
     lunr "^2.3.6"
     microee "^0.0.6"
+    minilog "https://github.com/cozy/minilog.git#master"
     node-forge "^0.9.0"
+    papaparse "^5.1.1"
     prop-types "^15.7.2"
-    react "^16.8.3"
-    react-dom "^16.9.0"
     sweetalert "^2.1.2"
     tldjs "^2.3.1"
     zxcvbn "^4.4.2"
@@ -3249,23 +3248,6 @@ cozy-ui@29.1.1:
     react-pdf "^4.0.5"
     react-select "2.2.0"
     react-swipeable-views "0.13.3"
-
-cozy-ui@^24.0.0:
-  version "24.8.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-24.8.0.tgz#0c1c0c413aabeae0a43902bde49c4981a1e078a6"
-  integrity sha512-ukW/j74XBhfazQzkLAbS/TSJVwf6UaUveARUWwbff5gZGy1JMrWCUZIo6VGOx9K4RJ1W+U3NuKI5Xx/3DBwXBw==
-  dependencies:
-    "@babel/runtime" "^7.3.4"
-    body-scroll-lock "^2.5.8"
-    classnames "^2.2.5"
-    date-fns "^1.28.5"
-    hammerjs "^2.0.8"
-    node-polyglot "^2.2.2"
-    normalize.css "^7.0.0"
-    react-hot-loader "^4.3.11"
-    react-markdown "^4.0.8"
-    react-pdf "^4.0.5"
-    react-select "2.2.0"
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -7923,10 +7905,9 @@ mini-css-extract-plugin@0.5.0:
     schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
 
-minilog@3.1.0:
+minilog@3.1.0, "minilog@git+https://github.com/cozy/minilog.git#master":
   version "3.1.0"
-  resolved "https://registry.yarnpkg.com/minilog/-/minilog-3.1.0.tgz#d2d0f1887ca363d1acf0ea86d5c4df293b3fb675"
-  integrity sha1-0tDxiHyjY9Gs8OqG1cTfKTs/tnU=
+  resolved "git+https://github.com/cozy/minilog.git#f01f7d9dfe20981177dd34b9662c2f077d818f82"
   dependencies:
     microee "0.0.6"
 
@@ -8800,6 +8781,11 @@ pako@~1.0.5:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
   integrity sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==
+
+papaparse@^5.1.1:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.2.0.tgz#97976a1b135c46612773029153dc64995caa3b7b"
+  integrity sha512-ylq1wgUSnagU+MKQtNeVqrPhZuMYBvOSL00DHycFTCxownF95gpLAk1HiHdUW77N8yxRq1qHXLdlIPyBSG9NSA==
 
 parallel-transform@^1.1.0:
   version "1.2.0"
@@ -10228,16 +10214,6 @@ react-dom@16.8.1:
     prop-types "^15.6.2"
     scheduler "^0.13.1"
 
-react-dom@^16.9.0:
-  version "16.12.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
-  integrity sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.18.0"
-
 react-event-listener@^0.6.0:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.6.tgz#758f7b991cad9086dd39fd29fad72127e1d8962a"
@@ -10483,15 +10459,6 @@ react@16.8.1:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.1"
-
-react@^16.8.3:
-  version "16.12.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
-  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
