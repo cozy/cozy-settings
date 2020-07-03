@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import styles from 'styles/deleteAccountFormModal'
 
 import { sendDeleteAccountRequest } from 'actions/email'
 
-import Button from 'cozy-ui/react/Button'
+import Button from 'cozy-ui/transpiled/react/Button'
 import Modal, {
   ModalContent,
   ModalFooter,
   ModalHeader
-} from 'cozy-ui/react/Modal'
+} from 'cozy-ui/transpiled/react/Modal'
 
 import { STACK_DOMAIN } from 'actions'
 

@@ -3,18 +3,18 @@ import viewStyles from 'styles/view'
 
 import React, { Component } from 'react'
 
-import Spinner from 'cozy-ui/react/Spinner'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
 
-import { translate } from 'cozy-ui/react/I18n'
-import { Button } from 'cozy-ui/react/Button'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { Button } from 'cozy-ui/transpiled/react/Button'
 import {
   Table,
   TableHead,
   TableBody,
   TableRow,
   TableHeader
-} from 'cozy-ui/react/Table'
+} from 'cozy-ui/transpiled/react/Table'
 
 class SessionsView extends Component {
   componentWillMount() {

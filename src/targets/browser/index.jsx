@@ -11,7 +11,7 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { CozyProvider } from 'cozy-client'
 
-import I18n from 'cozy-ui/react/I18n'
+import I18n from 'cozy-ui/transpiled/react/I18n'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
 
 import appReducer from 'reducers'

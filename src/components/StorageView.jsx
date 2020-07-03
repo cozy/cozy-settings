@@ -4,10 +4,10 @@ import styles from 'styles/storage'
 import React, { Component } from 'react'
 
 import classNames from 'classnames'
-import Spinner from 'cozy-ui/react/Spinner'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import OffersLink from 'components/OffersLink'
 
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 class StorageView extends Component {
   componentWillMount() {

@@ -1,7 +1,7 @@
 import React from 'react'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import Modal, { ModalContent } from 'cozy-ui/react/Modal'
+import Modal, { ModalContent } from 'cozy-ui/transpiled/react/Modal'
 
 import ReactMarkdown from 'react-markdown'
 

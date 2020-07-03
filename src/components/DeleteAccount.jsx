@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React, { Component } from 'react'
 
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import Alerter from 'cozy-ui/react/Alerter'
-import Button from 'cozy-ui/react/Button'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Button from 'cozy-ui/transpiled/react/Button'
 import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
 import FormModal from 'components/DeleteAccount/FormModal'
 

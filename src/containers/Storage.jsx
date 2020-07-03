@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 
 import { fetchStorageData } from 'actions'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import Alerter from 'cozy-ui/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import StorageView from 'components/StorageView'
 
 const mapStateToProps = state => ({

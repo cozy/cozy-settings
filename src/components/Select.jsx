@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from 'styles/fields'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Field from 'components/Field'
-import SelectBox from 'cozy-ui/react/SelectBox'
+import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
 
 export default translate()(props => {
   const { fieldProps, ...restProps } = props

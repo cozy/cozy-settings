@@ -1,19 +1,23 @@
 import styles from 'styles/passphrase'
 
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/react/I18n'
-import { Button, ButtonLink } from 'cozy-ui/react/Button'
-import { MainTitle, SubTitle, ErrorMessage } from 'cozy-ui/react/Text'
-import Input from 'cozy-ui/react/Input'
-import Icon from 'cozy-ui/react/Icon'
-import Stack from 'cozy-ui/react/Stack'
-import { UnorderedList, ListItem } from 'cozy-ui/react/UnorderedList'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import {
+  MainTitle,
+  SubTitle,
+  ErrorMessage
+} from 'cozy-ui/transpiled/react/Text'
+import Input from 'cozy-ui/transpiled/react/Input'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import Stack from 'cozy-ui/transpiled/react/Stack'
+import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import palette from 'cozy-ui/stylus/settings/palette.json'
 import { Link, withRouter } from 'react-router-dom'
 import compose from 'lodash/flowRight'
-import PasswordExample from 'cozy-ui/react/PasswordExample'
+import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
 
-import PasswordInput from 'cozy-ui/react/Labs/PasswordInput'
+import PasswordInput from 'cozy-ui/transpiled/react/Labs/PasswordInput'
 import passwordHelper from 'lib/passwordHelper'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'

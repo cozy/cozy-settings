@@ -3,10 +3,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { translate } from 'cozy-ui/react/I18n'
-import ButtonAction from 'cozy-ui/react/ButtonAction'
-import Spinner from 'cozy-ui/react/Spinner'
-import Modal, { ModalHeader, ModalDescription } from 'cozy-ui/react/Modal'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import ButtonAction from 'cozy-ui/transpiled/react/ButtonAction'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Modal, {
+  ModalHeader,
+  ModalDescription
+} from 'cozy-ui/transpiled/react/Modal'
 
 import viewStyles from 'styles/view'
 import formStyles from 'styles/fields'

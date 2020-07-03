@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import { translate } from 'cozy-ui/react/I18n'
-import { Button } from 'cozy-ui/react/Button'
-import Modal, { ModalContent } from 'cozy-ui/react/Modal'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { Button } from 'cozy-ui/transpiled/react/Button'
+import Modal, { ModalContent } from 'cozy-ui/transpiled/react/Modal'
 
 import viewStyles from 'styles/view'
 

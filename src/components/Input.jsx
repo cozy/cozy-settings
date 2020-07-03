@@ -1,10 +1,10 @@
 import styles from 'styles/fields'
 
 import React from 'react'
-import { translate } from 'cozy-ui/react/I18n'
-import Toggle from 'cozy-ui/react/Toggle'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Toggle from 'cozy-ui/transpiled/react/Toggle'
 import Field from 'components/Field'
-import UIInput from 'cozy-ui/react/Input'
+import UIInput from 'cozy-ui/transpiled/react/Input'
 
 const Input = ({
   name,

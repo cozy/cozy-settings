@@ -3,9 +3,9 @@ import viewStyles from 'styles/view'
 
 import React from 'react'
 import classNames from 'classnames'
-import { translate } from 'cozy-ui/react/I18n'
-import Spinner from 'cozy-ui/react/Spinner'
-import Icon from 'cozy-ui/react/Icon'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import palette from 'cozy-ui/stylus/settings/palette.json'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
