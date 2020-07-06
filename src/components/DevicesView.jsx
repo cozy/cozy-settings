@@ -5,8 +5,8 @@ import devicesStyles from 'styles/devices'
 import classNames from 'classnames'
 
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/react/I18n'
-import Spinner from 'cozy-ui/react/Spinner'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import {
   Table,
   TableHead,
@@ -14,7 +14,7 @@ import {
   TableRow,
   TableHeader,
   TableCell
-} from 'cozy-ui/react/Table'
+} from 'cozy-ui/transpiled/react/Table'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 

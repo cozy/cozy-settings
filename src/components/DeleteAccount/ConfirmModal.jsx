@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React from 'react'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import Modal, { ModalContent, ModalHeader } from 'cozy-ui/react/Modal'
+import Modal, { ModalContent, ModalHeader } from 'cozy-ui/transpiled/react/Modal'
 
 export const ConfirmModal = props => {
   const { dismissAction, primaryAction, t } = props

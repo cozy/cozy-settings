@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/react/I18n'
-import { Button } from 'cozy-ui/react/Button'
-import Textarea from 'cozy-ui/react/Textarea'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { Button } from 'cozy-ui/transpiled/react/Button'
+import Textarea from 'cozy-ui/transpiled/react/Textarea'
 
 export class Support extends Component {
   constructor(props) {

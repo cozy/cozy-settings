@@ -1,6 +1,6 @@
 import React from 'react'
-import { translate } from 'cozy-ui/react/I18n'
-import Modal, { ModalContent } from 'cozy-ui/react/Modal'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Modal, { ModalContent } from 'cozy-ui/transpiled/react/Modal'
 
 import viewStyles from 'styles/view'
 import ActivationConfirmation from 'components/2FA/ActivationConfirmation'

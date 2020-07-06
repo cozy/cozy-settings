@@ -1,8 +1,13 @@
 import React from 'react'
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { NavLink as RouterLink } from 'react-router-dom'
-import Nav, { NavLink, NavItem, NavIcon, NavText } from 'cozy-ui/react/Nav'
-import UISidebar from 'cozy-ui/react/Sidebar'
+import Nav, {
+  NavLink,
+  NavItem,
+  NavIcon,
+  NavText
+} from 'cozy-ui/transpiled/react/Nav'
+import UISidebar from 'cozy-ui/transpiled/react/Sidebar'
 
 import styles from 'styles/sidebar'
 

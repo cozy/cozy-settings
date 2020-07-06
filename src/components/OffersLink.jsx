@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import { ButtonLink } from 'cozy-ui/react/Button'
-import { translate } from 'cozy-ui/react/I18n'
+import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import viewStyles from 'styles/view'
 import styles from 'styles/storage'

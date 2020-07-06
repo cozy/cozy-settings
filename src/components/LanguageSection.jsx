@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import { translate } from 'cozy-ui/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import Select from 'components/Select'

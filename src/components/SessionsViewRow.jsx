@@ -3,8 +3,8 @@ import tableStyles from 'styles/table'
 import React from 'react'
 import { UAParser } from 'ua-parser-js'
 
-import { translate } from 'cozy-ui/react/I18n'
-import { TableRow, TableCell } from 'cozy-ui/react/Table'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { TableRow, TableCell } from 'cozy-ui/transpiled/react/Table'
 
 const SessionsViewRow = ({ f, t, session }) => {
   const ua = UAParser(session.user_agent)
