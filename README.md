@@ -162,7 +162,6 @@ Cozy Settings is developed by Cozy Cloud and distributed under the [AGPL v3 lice
 [yarn]: https://yarnpkg.com/
 [yarn-install]: https://yarnpkg.com/en/docs/install
 [cozy-ui]: https://github.com/cozy/cozy-ui
-[cozy-client-js]: https://github.com/cozy/cozy-client-js/
 [cozy-stack-docker]: https://github.com/cozy/cozy-stack/blob/master/docs/client-app-dev.md#with-docker
 [doctypes]: https://cozy.github.io/cozy-doctypes/
 [bill-doctype]: https://github.com/cozy/cozy-konnector-libs/blob/master/models/bill.js
