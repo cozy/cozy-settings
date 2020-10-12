@@ -43,43 +43,37 @@ class SessionsView extends Component {
             loadingType={t('Loading.loading')}
           />
         )}
-        {!isFetching &&
-          sessions && (
-            <Table className={tableStyles['coz-table']}>
-              <TableHead>
-                <TableRow>
-                  <TableHeader className={tableStyles['set-table-date']}>
-                    Date
-                  </TableHeader>
-                  <TableHeader className={tableStyles['set-table-os']}>
-                    OS
-                  </TableHeader>
-                  <TableHeader className={tableStyles['set-table-browser']}>
-                    Browser
-                  </TableHeader>
-                  <TableHeader className={tableStyles['set-table-ip']}>
-                    IP
-                  </TableHeader>
-                </TableRow>
-              </TableHead>
-              <TableBody className={tableStyles['set-table-sessions']}>
-                {sessions
-                  .sort(function(a, b) {
-                    // Turn your strings into dates, and then subtract them
-                    // to get a value that is either negative, positive, or zero.
-                    return new Date(b.created_at) - new Date(a.created_at)
-                  })
-                  .map((session, index) => (
-                    <SessionsViewRow
-                      session={session}
-                      t={t}
-                      f={f}
-                      key={index}
-                    />
-                  ))}
-              </TableBody>
-            </Table>
-          )}
+        {!isFetching && sessions && (
+          <Table className={tableStyles['coz-table']}>
+            <TableHead>
+              <TableRow>
+                <TableHeader className={tableStyles['set-table-date']}>
+                  Date
+                </TableHeader>
+                <TableHeader className={tableStyles['set-table-os']}>
+                  OS
+                </TableHeader>
+                <TableHeader className={tableStyles['set-table-browser']}>
+                  Browser
+                </TableHeader>
+                <TableHeader className={tableStyles['set-table-ip']}>
+                  IP
+                </TableHeader>
+              </TableRow>
+            </TableHead>
+            <TableBody className={tableStyles['set-table-sessions']}>
+              {sessions
+                .sort(function(a, b) {
+                  // Turn your strings into dates, and then subtract them
+                  // to get a value that is either negative, positive, or zero.
+                  return new Date(b.created_at) - new Date(a.created_at)
+                })
+                .map((session, index) => (
+                  <SessionsViewRow session={session} t={t} f={f} key={index} />
+                ))}
+            </TableBody>
+          </Table>
+        )}
       </div>
     )
   }

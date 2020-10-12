@@ -54,19 +54,16 @@ export class Support extends Component {
               {t('support.emailDetail')}
             </p>
           )}
-          {!isSending &&
-            isSent &&
-            !message && (
-              <p className="set-support-form-success">{t('support.success')}</p>
-            )}
-          {!isSending &&
-            error && (
-              <p className="set-support-form-error">
-                {error.i18n && `${t(error.i18n)}`}
-                {error.message && `${t('support.error')} : ${error.message}`}
-                {!error.i18n && !error.message && t('support.error')}
-              </p>
-            )}
+          {!isSending && isSent && !message && (
+            <p className="set-support-form-success">{t('support.success')}</p>
+          )}
+          {!isSending && error && (
+            <p className="set-support-form-error">
+              {error.i18n && `${t(error.i18n)}`}
+              {error.message && `${t('support.error')} : ${error.message}`}
+              {!error.i18n && !error.message && t('support.error')}
+            </p>
+          )}
           {isSending && (
             <p className="set-support-form-detail">{t('support.sending')}</p>
           )}

@@ -106,17 +106,16 @@ export class Support extends Component {
                 {t('claudy.actions.support.emailDetail')}
               </p>
             )}
-            {!isSending &&
-              error && (
-                <p className="coz-claudy-menu-action-description-error">
-                  {error.i18n && `${t(error.i18n)}`}
-                  {error.message &&
-                    `${t('claudy.actions.support.error')} : ${error.message}`}
-                  {!error.i18n &&
-                    !error.message &&
-                    t('claudy.actions.support.error')}
-                </p>
-              )}
+            {!isSending && error && (
+              <p className="coz-claudy-menu-action-description-error">
+                {error.i18n && `${t(error.i18n)}`}
+                {error.message &&
+                  `${t('claudy.actions.support.error')} : ${error.message}`}
+                {!error.i18n &&
+                  !error.message &&
+                  t('claudy.actions.support.error')}
+              </p>
+            )}
             {isSending && (
               <p className="coz-claudy-menu-action-description-detail">
                 {t('claudy.actions.support.sending')}

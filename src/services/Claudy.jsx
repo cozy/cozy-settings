@@ -194,9 +194,8 @@ export class Claudy extends Component {
     const claudyActions = this.consolidateActions(claudyInfos)
     let SelectedActionComponent = null
     if (selectedAction && selectedAction.component) {
-      SelectedActionComponent = require(`./ClaudyActionComponents${
-        selectedAction.component
-      }.jsx`).default
+      SelectedActionComponent = require(`./ClaudyActionComponents${selectedAction.component}.jsx`)
+        .default
     }
     if (!alreadyResized && claudyInfos.actions.length && service.instance) {
       this.resizeDefaultClaudy() // very first resizing
@@ -248,33 +247,30 @@ export class Claudy extends Component {
                   <p className="coz-claudy-menu-action-title">
                     {t(`claudy.actions.${action.slug}.title`)}
                   </p>
-                  {action.complete &&
-                    action.slug !== CLAUDY_ACTION_GATHER && (
-                      <img
-                        className="coz-claudy-menu-action-check"
-                        src={this.checkIcon}
-                      />
-                    )}
-                  {action.complete &&
-                    action.slug === CLAUDY_ACTION_GATHER && (
-                      <div className="coz-claudy-menu-action-count-wrapper">
-                        <span className="coz-claudy-menu-action-count">
-                          {claudyInfos.accounts.length}
-                        </span>
-                      </div>
-                    )}
+                  {action.complete && action.slug !== CLAUDY_ACTION_GATHER && (
+                    <img
+                      className="coz-claudy-menu-action-check"
+                      src={this.checkIcon}
+                    />
+                  )}
+                  {action.complete && action.slug === CLAUDY_ACTION_GATHER && (
+                    <div className="coz-claudy-menu-action-count-wrapper">
+                      <span className="coz-claudy-menu-action-count">
+                        {claudyInfos.accounts.length}
+                      </span>
+                    </div>
+                  )}
                 </a>
               ))}
             </div>
-            {selectedAction &&
-              !SelectedActionComponent && (
-                <ClaudyAction
-                  action={selectedAction}
-                  iconSrc={this.getIcon(selectedAction.icon)}
-                  url={selectedActionUrl}
-                  onActionClick={() => this.trackActionLink(selectedAction)}
-                />
-              )}
+            {selectedAction && !SelectedActionComponent && (
+              <ClaudyAction
+                action={selectedAction}
+                iconSrc={this.getIcon(selectedAction.icon)}
+                url={selectedActionUrl}
+                onActionClick={() => this.trackActionLink(selectedAction)}
+              />
+            )}
             {SelectedActionComponent && (
               <SelectedActionComponent
                 action={selectedAction}
