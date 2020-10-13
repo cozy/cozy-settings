@@ -1,8 +1,8 @@
-/* global cozy */
-
+import compose from 'lodash/flowRight'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import ButtonAction from 'cozy-ui/transpiled/react/ButtonAction'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
@@ -15,14 +15,13 @@ import viewStyles from 'styles/view'
 import formStyles from 'styles/fields'
 
 class ExportDownload extends Component {
-  constructor(props) {
-    super(props)
+  componentDidMount(props) {
     props.fetchExportData()
   }
 
   download(cursor) {
-    const { exportId } = this.props
-    const dataUrl = `${cozy.client._url}/move/exports/data/${exportId}`
+    const { exportId, client } = this.props
+    const dataUrl = `${client.stackClient.uri}/move/exports/data/${exportId}`
     const url = cursor ? `${dataUrl}?cursor=${cursor}` : dataUrl
     this.downloadFrame.src = url
   }
@@ -105,4 +104,8 @@ class ExportDownload extends Component {
   }
 }
 
-export default translate()(withRouter(ExportDownload))
+export default compose(
+  withClient,  
+  translate(),
+  withRouter
+)(ExportDownload)
