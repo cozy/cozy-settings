@@ -49,11 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('[role=application]')
   const data = root.dataset
 
-  cozy.client.init({
-    cozyURL: '//' + data.cozyDomain,
-    token: data.cozyToken
-  })
-
   const protocol = window.location.protocol
   cozyClient.login({
     uri: `${protocol}//${data.cozyDomain}`,
