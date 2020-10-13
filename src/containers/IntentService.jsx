@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
 import compose from 'lodash/flowRight'
+
+import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { fetchClaudyInfos, createIntentService } from 'actions/services'

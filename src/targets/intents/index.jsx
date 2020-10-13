@@ -1,19 +1,21 @@
-/* global cozy, __DEVELOPMENT__ */
+/* global __DEVELOPMENT__ */
 
 import 'styles/services/index'
 
 import React from 'react'
 import { render } from 'react-dom'
-
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
-import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import { Provider } from 'react-redux'
-import { compose, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
+import { compose, createStore, applyMiddleware } from 'redux'
+
+import { CozyProvider } from 'cozy-client'
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
+import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 
 import IntentService from 'containers/IntentService'
 import settingsApp from 'reducers'
+import cozyClient from 'lib/client'
 
 const lang = document.documentElement.getAttribute('lang') || 'en'
 
@@ -36,21 +38,23 @@ const store = createStore(
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('[role=application]')
   const data = root.dataset
-
-  cozy.client.init({
-    cozyURL: '//' + data.cozyDomain,
+  const protocol = window.location.protocol
+  cozyClient.login({
+    uri: `${protocol}//${data.cozyDomain}`,
     token: data.cozyToken
   })
 
   render(
-    <Provider store={store}>
-      <I18n lang={lang} dictRequire={lang => require(`locales/${lang}`)}>
-        <div className="set-services">
-          <IntentService window={window} />
-          <IconSprite />
-        </div>
-      </I18n>
-    </Provider>,
+    <CozyProvider client={cozyClient}>
+      <Provider store={store}>
+        <I18n lang={lang} dictRequire={lang => require(`locales/${lang}`)}>
+          <div className="set-services">
+            <IntentService window={window} />
+            <IconSprite />
+          </div>
+        </I18n>
+      </Provider>
+    </CozyProvider>,
     document.querySelector('[role=application]')
   )
 })

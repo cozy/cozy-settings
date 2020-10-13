@@ -1,4 +1,5 @@
-/* global cozy */
+import Intents from 'cozy-interapp'
+import { Q } from 'cozy-client'
 
 import CLAUDY_ACTIONS from 'config/claudyActions'
 
@@ -14,10 +15,11 @@ export const CREATE_INTENT_SERVICE_FAILURE = 'CREATE_INTENT_SERVICE_FAILURE'
 
 export const ACCOUNTS_DOCTYPE = 'io.cozy.accounts'
 
-export const createIntentService = (intent, window) => {
+export const createIntentService = (client, intent, window) => {
   return dispatch => {
     dispatch({ type: CREATE_INTENT_SERVICE })
-    cozy.client.intents
+    const intents = new Intents({ client })
+    intents
       .createService(intent, window)
       .then(service => {
         dispatch({ type: CREATE_INTENT_SERVICE_SUCCESS, service })
@@ -101,8 +103,7 @@ export const consolidateClaudyActionsInfos = claudyActions => {
   }
 }
 
-export function getAllAccounts() {
-  return cozy.client.data
-    .findAll(ACCOUNTS_DOCTYPE)
-    .then(accountsMap => Object.values(accountsMap))
+export function getAllAccounts(client) {
+  const { data: accounts } = client.query(Q(ACCOUNTS_DOCTYPE))
+  return accounts
 }

@@ -18,7 +18,7 @@ function textPlainContentParts (message) {
 }
 
 export function sendMessageToSupport (client, message, t) {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch({type: SEND_EMAIL})
     if (!message) {
       return dispatch({

@@ -48,6 +48,7 @@
     "cozy-client-js": "0.14.2",
     "cozy-client": "15.3.1",
     "cozy-doctypes": "^1.70.0",
+    "cozy-interapp": "0.5.6",
     "cozy-keys-lib": "3.1.2",
     "cozy-ui": "38.0.1",
     "date-fns": "1.30.1",
