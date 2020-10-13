@@ -34,6 +34,7 @@
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
     "cozy-bar": "7.15.2",
+    "cozy-scripts": "5.3.1",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.9.1",
     "npm-run-all": "4.1.5",
@@ -48,7 +49,6 @@
     "cozy-client": "15.3.1",
     "cozy-doctypes": "^1.70.0",
     "cozy-keys-lib": "3.1.2",
-    "cozy-scripts": "5.1.3",
     "cozy-ui": "35.22.0",
     "date-fns": "1.30.1",
     "piwik-react-router": "0.12.1",
