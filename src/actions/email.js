@@ -17,7 +17,7 @@ function textPlainContentParts (message) {
   return [{type: 'text/plain', body: message || 'No reason/message provided.'}]
 }
 
-export function sendMessageToSupport (message, t) {
+export function sendMessageToSupport (client, message, t) {
   return (dispatch, getState) => {
     dispatch({type: SEND_EMAIL})
     if (!message) {
@@ -28,13 +28,14 @@ export function sendMessageToSupport (message, t) {
     }
     const domain = STACK_DOMAIN.replace('//', '')
     return sendEmail(
+      client,
       CONTACT_RECIPIENT_LIST,
       textPlainContentParts(message),
       `[cozy-support] Ask support for ${domain}`
     ).then(() => {
       dispatch({type: SEND_EMAIL_SUCCESS})
       try {
-        return sendEmail(null, [
+        return sendEmail(client, null, [
           {type: 'text/plain', body: t('support.response_email.body', { message })}
         ], `[cozy-support] ${t('support.response_email.subject')}`,
         'noreply')
@@ -56,15 +57,16 @@ export function sendMessageToSupport (message, t) {
   }
 }
 
-export function sendDeleteAccountRequest(subject, message) {
+export function sendDeleteAccountRequest(client, subject, message) {
   return sendEmail(
+    client,
     CONTACT_RECIPIENT_LIST,
     textPlainContentParts(message),
     subject
   )
 }
 
-export function sendEmail (recipientsList, contentParts, subject = '', mode = 'from') {
+export function sendEmail (client, recipientsList, contentParts, subject = '', mode = 'from') {
   if (!contentParts.length) throw new Error('No email content parts found')
   if (mode === 'from' && !recipientsList.length) throw new Error('No recipients found')
   const options = {
@@ -73,11 +75,12 @@ export function sendEmail (recipientsList, contentParts, subject = '', mode = 'f
     parts: contentParts
   }
   if (mode === 'from') options.to = recipientsList
-  return cozy.client.jobs.create('sendmail', options, {
+  const jobCollection = client.collection('io.cozy.jobs')
+  return jobCollection.create('sendmail', options, {
     priority: 10,
     max_exec_count: 1
   })
-  .then(job => waitForJobFinished(job))
+  .then(({data: { attributes: job }}) => waitForJobFinished(job))
 }
 
 // monitor the status of the job and resolve when the email is sent
