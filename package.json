@@ -6,7 +6,6 @@
     "tx": "tx pull --all || true",
     "lint": "yarn lint:js",
     "lint:js": "eslint '{src,test}/**/*.{js,jsx}'",
-    "prebuild": "yarn lint && yarn tx",
     "build": "yarn build:browser",
     "build:browser": "cozy-scripts build --browser",
     "build:mobile": "cozy-scripts build --mobile",
@@ -15,7 +14,6 @@
     "watch:mobile": "cozy-scripts watch --mobile",
     "start": "cozy-scripts start --hot",
     "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost",
-    "pretest": "yarn lint",
     "test": "cozy-scripts test",
     "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev"
   },

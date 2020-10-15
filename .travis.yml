@@ -27,6 +27,7 @@ before_install:
 - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then chmod 600 /tmp/id_rsa_downcloud_cozy-settings; fi
 - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then ssh-add /tmp/id_rsa_downcloud_cozy-settings; fi
 script:
+- yarn lint
 - yarn test
 - yarn run build
 deploy:
