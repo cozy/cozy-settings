@@ -22,7 +22,6 @@ What's Settings?
 
 Cozy Settings make your Cozy configuration easy to manage. Main features are:
 
-* Account management
 * Connected devices management
 * Storage information
 
@@ -95,9 +94,6 @@ yarn link cozy-ui
 
 You can now run the watch task and your project will hot-reload each times a cozy-ui source file is touched.
 
-[Cozy-client-js] is our API library that provides an unified API on top of the cozy-stack. If you need to develop / hack cozy-client-js in parallel of your application, you can use the same trick that we used with [cozy-ui]: yarn linking.
-
-
 ### Tests
 
 Tests are run by [mocha] under the hood, and written using [chai] and [sinon]. You can easily run the tests suite with:
@@ -162,11 +158,10 @@ Cozy Settings is developed by Cozy Cloud and distributed under the [AGPL v3 lice
 
 
 [cozy]: https://cozy.io "Cozy Cloud"
-[setup]: https://dev.cozy.io/#set-up-the-development-environment "Cozy dev docs: Set up the Development Environment"
+[setup]: https://docs.cozy.io/en/tutorials/app/#install-the-development-environment "Cozy dev docs: Set up the Development Environment"
 [yarn]: https://yarnpkg.com/
 [yarn-install]: https://yarnpkg.com/en/docs/install
 [cozy-ui]: https://github.com/cozy/cozy-ui
-[cozy-client-js]: https://github.com/cozy/cozy-client-js/
 [cozy-stack-docker]: https://github.com/cozy/cozy-stack/blob/master/docs/client-app-dev.md#with-docker
 [doctypes]: https://cozy.github.io/cozy-doctypes/
 [bill-doctype]: https://github.com/cozy/cozy-konnector-libs/blob/master/models/bill.js
