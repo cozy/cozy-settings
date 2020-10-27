@@ -1,6 +1,7 @@
 /* global __PIWIK_TRACKER_URL__  __PIWIK_SITEID__ __PIWIK_DIMENSION_ID_APP__ */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import {
   shouldEnableTracking,
@@ -291,6 +292,12 @@ export class Claudy extends Component {
       </div>
     )
   }
+}
+
+Claudy.propTypes = {
+  claudyInfos: PropTypes.array.isRequired,
+  onClose: PropTypes.func.isRequired,
+  sendMessageToSupport: PropTypes.func
 }
 
 export default translate()(Claudy)
