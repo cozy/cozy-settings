@@ -7,6 +7,8 @@ configure({ adapter: new Adapter() })
 
 process.env.USE_REACT = true
 
+window.__DEVELOPMENT__ = false
+
 // To avoid the errors while creating theme (since no CSS stylesheet
 // defining CSS variables is injected during tests)
 // Material-UI: the color provided to augmentColor(color) is invalid.
