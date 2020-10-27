@@ -1,6 +1,7 @@
 /* global __DEVELOPMENT__ */
 /* global cozy */
 
+import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'styles/index.styl'
 
 import React from 'react'

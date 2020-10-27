@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
-import 'cozy-ui/transpiled/react/stylesheet.css'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
