@@ -978,6 +978,13 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@cozy/minilog@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@cozy/minilog/-/minilog-1.0.0.tgz#1acc1aad849261e931e255a5f181b638315f7b84"
+  integrity sha512-IkDHF9CLh0kQeSEVsou59ar/VehvenpbEUjLfwhckJyOUqZnKAWmXy8qrBgMT5Loxr8Xjs2wmMnj0D67wP00eQ==
+  dependencies:
+    microee "0.0.6"
+
 "@emotion/cache@^10.0.14":
   version "10.0.19"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.19.tgz#d258d94d9c707dcadaf1558def968b86bb87ad71"
@@ -3065,19 +3072,19 @@ cozy-client@13.8.3:
     sift "^6.0.0"
     url-search-params-polyfill "^7.0.0"
 
-cozy-client@15.3.1:
-  version "15.3.1"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-15.3.1.tgz#3976fdbb357f55ae6d7c5626f72e1c6bd86b51ea"
-  integrity sha512-mhkSlNIBE6qw/g7nNtOOpkJJusoeQ0AMEw9/uFLOz3PCDmwHG3/IUOCAay42sgA+4ExCVaLO0YTXYoKU1S/GnA==
+cozy-client@16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-16.0.0.tgz#8e3333f7ee42e996c79d1d150651c0e480d02495"
+  integrity sha512-Q8owRCIVxfeDZiAvokcIvduA9Ei1dtbNGSnYQcYOKLh3dDcKVQ12KmuodgyFj4792eruNy3oR43xLqi7wccAmg==
   dependencies:
+    "@cozy/minilog" "1.0.0"
     btoa "^1.2.1"
     cozy-device-helper "^1.7.3"
     cozy-logger "^1.6.0"
-    cozy-stack-client "^15.2.0"
+    cozy-stack-client "^16.0.0"
     isomorphic-fetch "^2.2.1"
     lodash "^4.17.13"
     microee "^0.0.6"
-    minilog "https://github.com/cozy/minilog.git#master"
     open "^7.0.2"
     prop-types "^15.6.2"
     react-redux "^7.2.0"
@@ -3222,10 +3229,10 @@ cozy-stack-client@^13.8.3:
     mime "^2.4.0"
     qs "^6.7.0"
 
-cozy-stack-client@^15.2.0:
-  version "15.2.0"
-  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-15.2.0.tgz#677f56e38e7a1b25f0574241da6caff441046b38"
-  integrity sha512-QldK+uQ2GZCLAlHwxFR3tb+4R83MG3huw43kGGVXono2XavBOqDU40Ms2imkUlCyzMXulY1UkInsSQBPO8mVgQ==
+cozy-stack-client@^16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-16.0.0.tgz#9946dd2b7afe3ac7b747156ef47e3af20b37759d"
+  integrity sha512-FV+wnjeVzdy3Gv/YQInIVeGO0CFFpATNfXW599+cxPQPejvzAq7XkGYLx2zw6Bmu/2vyBxk8UoomtA2eB27oXA==
   dependencies:
     detect-node "^2.0.4"
     mime "^2.4.0"
