@@ -4,7 +4,7 @@
   },
   "DeleteAccount": {
     "title" : "Suppression du compte",
-    "label" : "Vous pouvez supprimer votre Cozy à tout instant. Attention, une fois votre compte supprimé, vos données seront également supprimées, nous ne pourrons pas vous les renvoyer.",
+    "label" : "Vous pouvez supprimer votre Cozy à tout moment. Attention, une fois votre compte supprimé, vos données seront également supprimées, nous ne pourrons pas vous les renvoyer.",
     "button": {
       "label": "Supprimer mon compte"
     },
