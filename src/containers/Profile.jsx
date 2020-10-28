@@ -11,6 +11,7 @@ import {
   cancel2FAActivation
 } from 'actions/twoFactor'
 import { requestExport, fetchExportData } from 'actions/export'
+import { precheckImport } from 'actions/import'
 
 import ProfileView from 'components/ProfileView'
 
@@ -20,6 +21,7 @@ const mapStateToProps = state => ({
   instance: state.instance,
   twoFactor: state.twoFactor,
   exportData: state.exportData,
+  importData: state.importData,
   isFetching: state.ui.isFetching
 })
 
@@ -42,6 +44,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   fetchExportData: exportId => {
     dispatch(fetchExportData(exportId))
+  },
+  precheckImport: url => {
+    dispatch(precheckImport(url))
   },
   cancel2FAActivation: () => {
     dispatch(cancel2FAActivation())

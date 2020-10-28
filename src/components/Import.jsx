@@ -7,22 +7,25 @@ import Modal, {
   ModalFooter
 } from 'cozy-ui/transpiled/react/Modal'
 import { Button } from 'cozy-ui/transpiled/react/Button'
+import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
+import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 
 import viewStyles from 'styles/view'
 import formStyles from 'styles/fields'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import ExportDownload from 'components/export/ExportDownload'
 
-const exportImage = require('assets/images/export-cozy-mail.svg')
+const importImage = require('assets/images/import-cozy.svg')
 
-class ExportSection extends Component {
+class Import extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      displayModal: false
+      displayModal: false,
+      url: ''
     }
     this.toggleModal = this.toggleModal.bind(this)
-    this.submitExport = this.submitExport.bind(this)
+    this.setURL = this.setURL.bind(this)
+    this.submitImport = this.submitImport.bind(this)
   }
 
   toggleModal() {
@@ -31,32 +34,24 @@ class ExportSection extends Component {
     }))
   }
 
-  submitExport() {
-    this.props.requestExport()
-    this.toggleModal()
+  setURL(event) {
+    this.setState({ url: event.target.value })
+  }
+
+  submitImport() {
+    this.props.precheckImport(this.state.url)
   }
 
   render() {
-    const {
-      t,
-      email,
-      exportData,
-      exportId,
-      fetchExportData,
-      parent
-    } = this.props
+    const { t, importData } = this.props
     const { displayModal } = this.state
     return (
       <div>
-        <div className="{viewStyles['set-view-section']} u-mb-1">
-          <h3>{t('ProfileView.export.title')}</h3>
-          <p className={viewStyles['set-view-section-label']}>
-            {t('ProfileView.export.label')}
-          </p>
+        <div className={viewStyles['set-view-section']}>
           <p className="u-mt-1">
             <Button
               onClick={this.toggleModal}
-              label={t('ProfileView.export.link')}
+              label={t('ProfileView.import.link')}
               extension="full"
             />
           </p>
@@ -70,22 +65,33 @@ class ExportSection extends Component {
             <ModalHeader className="u-ta-center u-pr-0">
               <img
                 className={viewStyles['set-export-modal-image']}
-                alt={t('ProfileView.export.modal.title')}
-                src={exportImage}
+                alt={t('ProfileView.import.modal.title')}
+                src={importImage}
               />
               <h2 className={viewStyles['set-export-modal-title']}>
-                {t('ProfileView.export.modal.title')}
+                {t('ProfileView.import.modal.title')}
               </h2>
             </ModalHeader>
             <ModalDescription
               className={viewStyles['set-export-modal-description']}
             >
               <ReactMarkdownWrapper
-                source={t('ProfileView.export.modal.description', { email })}
+                source={t('ProfileView.import.modal.description')}
               />
-              {exportData.error && (
+              <MuiCozyTheme>
+                <TextField
+                  required
+                  autoFocus={true}
+                  onChange={this.setURL}
+                  label={t('ProfileView.import.url.label')}
+                  fullWidth={true}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </MuiCozyTheme>
+              {importData.error && (
                 <p className={formStyles['coz-form-errors']}>
-                  {t(exportData.error)}
+                  {t(importData.error)}
                 </p>
               )}
             </ModalDescription>
@@ -93,29 +99,21 @@ class ExportSection extends Component {
               <Button
                 theme="secondary"
                 onClick={this.toggleModal}
-                label={t('ProfileView.export.modal.cancel')}
+                label={t('ProfileView.import.modal.cancel')}
               />
               <Button
                 theme="primary"
-                onClick={this.submitExport}
-                busy={exportData.submitting}
-                disabled={exportData.submitting}
+                onClick={this.submitImport}
+                busy={importData.checking}
+                disabled={importData.checking}
                 label={t('ProfileView.export.modal.CTA')}
               />
             </ModalFooter>
           </Modal>
-        )}
-        {exportId && (
-          <ExportDownload
-            exportData={exportData}
-            exportId={exportId}
-            fetchExportData={fetchExportData}
-            parent={parent}
-          />
         )}
       </div>
     )
   }
 }
 
-export default translate()(ExportSection)
+export default translate()(Import)

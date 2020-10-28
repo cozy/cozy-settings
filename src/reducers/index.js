@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import fields from 'reducers/fields'
 import twoFactor from 'reducers/twoFactor'
 import exportData from 'reducers/export'
+import importData from 'reducers/import'
 import passphrase from 'reducers/passphrase'
 import instance from 'reducers/instance'
 import claudy from 'reducers/claudy'
@@ -21,6 +22,7 @@ const appReducer = combineReducers({
   fields,
   twoFactor,
   exportData,
+  importData,
   instance,
   claudy,
   service,
