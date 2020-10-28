@@ -136,12 +136,11 @@ class PassphraseForm extends Component {
               error={newPassphraseTouched && !newPassphraseMatch}
             />
           </Stack>
-          {newPassphraseTouched &&
-            !newPassphraseMatch && (
-              <ErrorMessage>
-                {t('PassphraseView.new_passphrase.dont_match')}
-              </ErrorMessage>
-            )}
+          {newPassphraseTouched && !newPassphraseMatch && (
+            <ErrorMessage>
+              {t('PassphraseView.new_passphrase.dont_match')}
+            </ErrorMessage>
+          )}
           {globalError && <ErrorMessage>{t(globalError)}</ErrorMessage>}
           {twoFactorError && <ErrorMessage>{t(twoFactorError)}</ErrorMessage>}
           <UnorderedList className={styles['set-passphrase-advices']}>

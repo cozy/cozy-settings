@@ -1,4 +1,7 @@
 import { connect } from 'react-redux'
+import compose from 'lodash/flowRight'
+
+import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { fetchClaudyInfos, createIntentService } from 'actions/services'
@@ -24,13 +27,15 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(fetchInfos())
   },
   sendMessageToSupport: message => {
-    dispatch(sendMessageToSupport(message, ownProps.t))
+    dispatch(sendMessageToSupport(ownProps.client, message, ownProps.t))
   }
 })
 
-export default translate()(
+export default compose(
+  translate(),
+  withClient,
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(IntentView)
-)
+  )
+)(IntentView)

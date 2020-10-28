@@ -56,16 +56,14 @@ const PassphraseView = props => {
         )}
       >
         <PassphraseForm {...passphrase} onSubmit={onSubmit} />
-        {twoFAModalOpen &&
-          !passphrase.errors &&
-          !passphrase.submitting && (
-            <Passphrase2FA
-              onPassphrase2FASubmit={handlePassphrase2FASubmit}
-              closeTwoFAPassphraseModal={() => setTwoFAModalOpen(false)}
-              instance={instance}
-              submitting={passphrase.submitting2FAStep2}
-            />
-          )}
+        {twoFAModalOpen && !passphrase.errors && !passphrase.submitting && (
+          <Passphrase2FA
+            onPassphrase2FASubmit={handlePassphrase2FASubmit}
+            closeTwoFAPassphraseModal={() => setTwoFAModalOpen(false)}
+            instance={instance}
+            submitting={passphrase.submitting2FAStep2}
+          />
+        )}
       </div>
     </div>
   )

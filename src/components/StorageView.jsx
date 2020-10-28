@@ -44,32 +44,31 @@ class StorageView extends Component {
             loadingType={t('Loading.loading')}
           />
         )}
-        {!isFetching &&
-          storageData && (
-            <div>
-              <h2 className={viewStyles['set-view-title']}>
-                {t('StorageView.storage_phrase', {
-                  diskUsage,
-                  diskQuota
-                })}
-              </h2>
-              <progress
-                className={styles['set-storage-bar']}
-                value={diskUsage}
-                max={diskQuota}
-                min="0"
-              />
-              <span
-                className={classNames(
-                  styles['set-bar-percent'],
-                  percent < 5 ? styles['--dark'] : ''
-                )}
-              >
-                {`${percent.toFixed(2)}%`}
-              </span>
-              <OffersLink storageData={storageData} />
-            </div>
-          )}
+        {!isFetching && storageData && (
+          <div>
+            <h2 className={viewStyles['set-view-title']}>
+              {t('StorageView.storage_phrase', {
+                diskUsage,
+                diskQuota
+              })}
+            </h2>
+            <progress
+              className={styles['set-storage-bar']}
+              value={diskUsage}
+              max={diskQuota}
+              min="0"
+            />
+            <span
+              className={classNames(
+                styles['set-bar-percent'],
+                percent < 5 ? styles['--dark'] : ''
+              )}
+            >
+              {`${percent.toFixed(2)}%`}
+            </span>
+            <OffersLink storageData={storageData} />
+          </div>
+        )}
       </div>
     )
   }

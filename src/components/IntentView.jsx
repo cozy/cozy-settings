@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
+import { withClient } from 'cozy-client'
 
 import Claudy from 'services/Claudy'
 import Support from 'services/Support'
 
-export default class IntentView extends Component {
+class IntentView extends Component {
   constructor(props) {
     super(props)
     const { window } = props
     const intentType = window.location.href.match(/.*\/services\/(.*)\?.*/)[1]
     this.state = { intentType }
     // Maybe the logic about getting the intent from location.search should be
-    // encapsulated in cozy.client.createService
+    // encapsulated in createService
     const intent = window.location.search.split('=')[1]
-    this.props.createIntentService(intent, window)
+    this.props.createIntentService(this.props.client, intent, window)
   }
 
   componentDidMount() {
@@ -54,3 +55,5 @@ export default class IntentView extends Component {
     }
   }
 }
+
+export default withClient(IntentView)

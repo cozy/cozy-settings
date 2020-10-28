@@ -1,15 +1,10 @@
 /* global fetch */
 
 import emailHelper from 'lib/emailHelper'
+import { getStackDomain, getStackToken } from './domUtils'
 
-export let STACK_DOMAIN = null
-export let STACK_TOKEN = null
-
-if (document.querySelector('[role=application]')) {
-  STACK_DOMAIN =
-    '//' + document.querySelector('[role=application]').dataset.cozyDomain
-  STACK_TOKEN = document.querySelector('[role=application]').dataset.cozyToken
-}
+export let STACK_DOMAIN = getStackDomain()
+export let STACK_TOKEN = getStackToken()
 
 if (!(STACK_TOKEN || STACK_DOMAIN)) {
   // eslint-disable-next-line no-console

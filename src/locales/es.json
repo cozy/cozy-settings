@@ -1,0 +1,351 @@
+{
+  "manifest": {
+    "name": "Ajustes"
+  },
+  "DeleteAccount": {
+    "title" : "Borrar su cuenta",
+    "label" : "Usted puede borrar su Cozy en cualquier momento. Tenga cuidado, al borrar su cuenta sus datos se borrarán completamente y no hay marcha atrás.",
+    "button": {
+      "label": "Eliminar mi cuenta"
+    },
+    "error": {
+      "message": "Ha ocurrido un error durante la solicitud de eliminar la cuenta. Vuelva a ensayar o contacte nuestro servicio de ayuda."
+    },
+    "modal": {
+      "confirm": {
+        "title": "¿Eliminar su Cozy?",
+        "description": {
+          "line": {
+            "1": "Su Cozy ha sido eliminado",
+            "2": "Usted no podrá acceder mùas a su Cozy",
+            "3": "Todos sus datos han sido eliminados"
+          }
+        },
+        "button": {
+          "cancel": {
+            "label": "Anular"
+          },
+          "submit": {
+            "label": "Eliminar"
+          }
+        }
+      },
+      "form": {
+        "title": "Solicitud de eliminación de su Cozy",
+        "reason": {
+          "label": "¿Por qué quiere eliminar su Cozy (opcional)?"
+        },
+        "button": {
+          "cancel": {
+            "label": "Anular"
+          },
+          "submit": {
+            "label": "Enviar"
+          }
+        }
+      }
+    },
+    "request": {
+      "mail": {
+        "subject": "Solicitud de eleminación de %{domain}"
+      }
+    },
+    "success": {
+      "message": "Su solicitud de eliminación ha sido enviada."
+    }
+  },
+  "Nav": {
+    "profile": "Perfil",
+    "activated_services": "Servicios activados",
+    "connected_devices": "Periféricos conectados",
+    "sessions": "Conexiones",
+    "storage": "Almacenamiento",
+    "email_notifications": "Notificaciones por correo electrónico"
+  },
+  "Loading": {
+    "loading": "Cargando"
+  },
+  "Empty": {
+    "devices": {
+      "title": "No hay ningún periférico conectado",
+      "text": "Al instalarla en sus distintos periféricos, usted podrá acceder simultáneamente a sus archivos desde las diferentes pantallas.",
+      "link": {
+        "href": "https://cozy.io/en/download/",
+        "text": "Descargue una de nuestras aplicaciones"
+      }
+    }
+  },
+  "ProfileView": {
+    "instance": {
+      "server_error": "Algo no ha funcionado en el servidor. Por favor, recargue la página."
+    },
+    "title": "Perfil",
+    "password": {
+      "title": "Contraseña",
+      "label": "Su cozy está actualmente protegido por una contraseña",
+      "cta": "Actualizar mi contraseña"
+    },
+    "infos": {
+      "success": "Sus datos han sido cambiados",
+      "server_error": "Algo no funcionó. Sus datos no se han podido guardar.",
+      "empty": "Este campo no puede estar vacío"
+    },
+    "email" : {
+      "title" : "Correo electrónico",
+      "label": "Cozy necesita su correo electrónico para enviarle notificaciones y permitirle recuperar su contraseña.",
+      "error" : "Su correo electrónico no parece correcto. ¿Está usted seguro de haberlo escrito correctamente (p.e. antonio@banderas.com)?"
+    },
+    "twofa" : {
+      "title": {
+        "activate": "Autenticación en dos pasos",
+        "desactivate": "Desactivar la autenticación en dos pasos",
+        "validation": "Validar la autenticación en dos pasos"
+      },
+      "passphrase": {
+        "title": "Autenticación en dos pasos",
+        "description": "Su Cozy envía un código de validación de 6 dígitos a %{email}.\\nIntroduzca el código arriba mencionado para cambiar su contraseña:."
+      },
+      "label": "Debido a que dos pasos son mejores que uno, mejore la seguridad de su Cozy con un paso adicional. [Échele un vistazo a nuestro sitio web de asistencia?]( %{link})",
+      "modal": {
+        "code": "código",
+        "protect": "Proteger su Cozy con una autenticación en dos pasos",
+        "change": "¿Qué está cambiando?** Cada vez que usted se conecta a su Cozy, va a necesitar su contraseña y un código de validación. 1[¿Échele un vistazo a nuestro sitio web de asistencia?](%{link})",
+        "secu_title": "Agregar un nivel de seguridad adicional",
+        "secu_description": "Una contraseña, es una buena cosa, pero si no es \"complicada\", cualquier ladrón puede fácilmente adivinarla. Reciba un código de validación por correo electrónico para hacer más seguro el control de su Cozy.",
+        "protect_title": "Mejorar la protección de sus datos",
+        "protect_description": "Incluso si un intruso obtiene su contraseña, usted sigue siendo el único capitán capaz de conectarse a su Cozy",
+        "desactivate_title": "¿Etá usted seguro de querer desactivar esta opción?",
+        "desactivate_description": "Al hacer clic en el botón \"Desactivar\", su contraseña será la única clave para acceder a su Cozy. Anulará un nivel de seguridad.",
+        "confirmation_title": "Validación del código de confirmación",
+        "confirmation_description": "Su Cozy envía un código de validación de 6 dígitos a %{email}.\nIntroduzca el código arriba mencionado para activar la autenticación.",
+        "nocode": "¿No ha recibido  usted un código?",
+        "nocode_claude": "Contactar a Claudia al",
+        "validation_title": "Felicitaciones! Su dirección de correo electrónico ha sido confirmada.",
+        "validation_description": "Su Cozy ahora esta seguro con la identificación a 2 pasos.",
+        "validation_logs": "Recuerden sus identificadores:",
+        "email": "Debe suministrar una dirección de correo electrónico válida",
+        "button": {
+          "activate": "Activar la autenticación",
+          "cancel": "anular",
+          "desactivate": "desactivar",
+          "validate": "validar",
+          "terminate": "terminar"
+        }
+      }
+    },
+    "public_name" : {
+      "title" : "Usuario",
+      "label": "Su nombre de usuario será visualizado cuando usted comparta archivos con usuarios Cozy."
+    },
+    "tracking": {
+      "title": "Ayúdenos a mejorar nuestro producto",
+      "label": "Autorizar Cozy Cloud a adquirir anónimamente sus datos de uso para mejorar nuestro producto. [Manténgase informado sobre los compromisis de Cozy](https://files.cozycloud.cc/TOS%{version}.pdf)"
+    },
+    "export": {
+      "title": "Mis datos",
+      "label": "Cozy se compromete a proporcionarle todos los datos que la plataforma almacena sobre usted:",
+      "link": "Descargar una copia de mis datos",
+      "server_error": "Algo ha ido mal, por favor vuelva a ensayar o contáctenos.",
+      "fetch_error": "Algo salió mal al tratar de obtener sus datos de exportación. Por favor, inténtelo de nuevo o póngase en contacto con nosotros.",
+      "missing_error": "Parece que el archivo ha desaparecido o ha caducado. Por favor, inténtelo de nuevo o póngase en contacto con nosotros.",
+      "success": "Su solicitud ha sido correctamente enviada!",
+      "modal": {
+        "title": "Recuperar mis datos",
+        "description": "Cozy se encarga de obtener todos los datos que le conciernen y de enviarle un archivo para que lo descargue, el cual le será enviado a la dirección de correo electrónico __%{email}__ cuando el archivo esté disponible.",
+        "cancel": "Anular",
+        "CTA": "Enviarme mis datos"
+      },
+      "download": {
+        "title": "Descargar mis datos",
+        "description": "Aquí están todos los archivos de datos disponibles en su Cozy:",
+        "CTA": "Descargar el archivo",
+        "CTA_part": "Descargar (part %{number})"
+      }
+    },
+    "locale" : {
+      "title" : "Idioma",
+      "label": "Éste será el idioma utilizado en su Cozy.",
+      "contrib" : "¿Está usted interesado(a) en ayudar a traducir Cozy? [Mire a ver si puede **darnos una mano** en eso](https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937).",
+      "fr": "Francés",
+      "en": "Inglés",
+      "es": "Español",
+      "ja": "Japonés",
+      "nl": "Holandés",
+      "de": "Alemán",
+      "ru": "Ruso",
+      "nl_NL": "Holandés",
+      "ko": "Coreano",
+      "pl": "Polonés",
+      "pt": "Portugués",
+      "da": "Danés",
+      "ro_RO": "Rumano",
+      "pt_BR": "Partugués (Brasil)",
+      "zh_CN": "Chino (China)",
+      "ar": "Arabe",
+      "it": "Italiano",
+      "ro": "Rumano",
+      "eo": "Esperanto",
+      "de_DE": "Alemán (Alemania)",
+      "sq": "Albanés",
+      "tr": "Turco",
+      "uk_UA": "Ucraniano (Ucrania)",
+      "ru_RU": "Ruso (Rusia)",
+      "sq_AL": "Albanés (Albania)",
+      "ca": "Catalán",
+      "ca_ES": "Catalán (Esoaña)",
+      "zh": "Chino",
+      "zh_TW": "Chino (Taiwan)",
+      "cs": "Checo",
+      "cs_CZ": "Checo (República Checa)",
+      "el": "Griego",
+      "id": "Indonesio",
+      "it_IT": "Italiano (Italia)",
+      "sk": "Eslovaco",
+      "sk_SK": "Eslovaco (Eslovaquia)",
+      "es_CO": "Español (Colombia)",
+      "es_ES": "Español (España)",
+      "sv": "Sueco"
+    }
+  },
+  "DevicesView": {
+    "title": "Periféricos conectados",
+    "load_error": "Ha ocurrido un error al cargar sus periféricos, por favor vuelva a ensayar más tarde.",
+    "head_name": "Nombre",
+    "head_sync": "Última sincronización",
+    "head_activity": "Última actividad",
+    "head_permissions": "Autorizaciones",
+    "head_actions": "Acciones",
+    "revoke": "revocar",
+    "sync_date_format": "MMM D, YYYY"
+  },
+  "StorageView": {
+    "title": "Almacenamiento",
+    "load_error": "Ha ocurrido un error al cargar la información de su almacenamiento, por favor vuelva a ensayar más tarde.",
+    "storage_title": "Espacio total",
+    "storage_phrase": "%{diskUsage} GB de %{diskQuota} GB usado",
+    "more_space": "¿Necesita más espacio de almacenamiento?",
+    "see_offer": "Actualizar mi almacenamiento"
+  },
+  "SessionsView": {
+    "title": "Historial de conexiones",
+    "sync_date_format": "MMM D, YYYY",
+    "delete": "Borrar todas las otras sesiones",
+    "infos": {
+      "server_error": "Algo no ha funcionado en el servidor. Por favor, recargue la página.",
+      "sessions_deleted": "Todas las demás sesiones han sido borradas."
+    }
+  },
+  "revokeDevice": {
+    "title": "Revocar este periférico",
+    "description": "Estás desvinculando **%{name}**.",
+    "subText": "Esto parará la sincronización con este periférico.",
+    "validate": "Revocar el periférico",
+    "error": "Incapaz de revocar el periférico, trate de recargar la página."
+  },
+  "ServicesView": {
+    "title": "Servicio activados",
+    "load_error": "Ha ocurrido un error al cargar sus servicios, por favor vuelva a ensayar más tarde.",
+    "head_services": "Servicios",
+    "head_account": "Cuenta",
+    "head_sync": "Última sincronización",
+    "head_status": "Estatus",
+    "unsync": "No sincronizafo",
+    "konnector_link": "Acceder a la totalidad de los servicios aquí"
+  },
+  "PassphraseView": {
+    "title": "Actualizar mi contraseña",
+    "current_passphrase": {
+      "label": "Escriba su contraseña actual ",
+      "placeholder": "Contraseña actual",
+      "wrong_passphrase": "La contraseña actual parece errónea."
+    },
+    "new_passphrase": {
+      "label": "Escoja una nueva contraseña",
+      "placeholder": "Nueva contraseña cozy",
+      "confirmation_placeholder": "Confirmar la contraseña",
+      "dont_match": "La contraseña no coincide"
+    },
+    "advices": {
+      "strong_passphrase": "*Preferir una contraseña fuerte:** Una contraseña larga con números y caracteres especiales será imposible de romper.",
+      "memorize": "**Memorícela bien:** En caso de pérdida, no podrá recuperar las contraseñas encriptadas en su cozy.",
+      "our_tip": "**Nuestro consejo:** Encuentre una frase corta que le guste, por ejemplo: "
+    },
+    "hint": {
+      "title": "Deje una pista",
+      "placeholder": "Pista",
+      "description": "La pista se le enviará por correo electrónico si olvida su contraseña, elija una pista que sólo usted pueda entender",
+      "same_as_passphrase": "Su pista no puede ser su contraseña"
+    },
+    "submit": "Actualizar mi contraseña",
+    "cancel": "Guardar mi contraseña actual",
+    "server_error": "Algo ha ido mal.  Su contraseña no ha sido grabada.",
+    "wrong_two_fa_code": "El código de dos factores suministrado parece incorrecto",
+    "reload": "Su contraseña ha sido cambiada. La página va a recargarse, así los cambios podrán surtir efecto.",
+    "redirect": "Su contraseña ha sido cambiada. Va a ser redirigido."
+  },
+  "soon": {
+    "title": "Pronto vendrá",
+    "description": "Esta función no está válida todavía. Para mayores informes, no dude en contáctarnos en contact@cozycloud.cc"
+  },
+
+  "support": {
+    "title": "¡Hola! ¿Podemos ayudarle?",
+    "emailDetail": "Su mensaje se enviará a partir de su email que aparece en los parámetros de Cozy.",
+    "fields": {
+      "message": {
+        "title": "Su solicitud",
+        "placeholder": "Díganos algo (una solicitud de ayuda, comparta un comentario o díganos hola). Contentos estaremos de comunicar con usted."
+      }
+    },
+    "response_email": {
+      "subject": "Su solicitud se ha recibido correctamente",
+      "body": "Hola, \n\nHemos recibido correctamente su solicitud de soporte:\n%{message}\n\nEstamos haciendo todo lo posible para responderle lo antes posible.\n\nClaude de Cozy."
+    },
+    "button": "¡Adelante!",
+    "sending": "Enviando...",
+    "success": "Su mensaje se ha enviado. Gracias!",
+    "error": "Ha ocurrido un error al enviar su mensaje"
+  },
+
+  "claudy": {
+    "title": "¿Cómo pilotear su Cozy?",
+    "actions": {
+      "desktop": {
+        "title": "Acceda a sus archivos en su ordenador",
+        "description": "Sincronice todos sus archivos Cozy Drive con su ordenador",
+        "button": "Instale Cozy Drive en su ordenador de escritorio",
+        "link": "https://cozy.io/es/download/\n"
+      },
+      "mobile": {
+        "title": "Haga una copia de seguridad y sincronice todas sus imágenes de su celular",
+        "description": "Todos sus archivos en memoria están seguros en su Cozy Drive",
+        "button": "Instale la aplicación Coey Drive en su celular",
+        "link": "https://cozy.io/es/download/\n"
+      },
+      "cozy-collect": {
+        "title": "Recupere sus facturas instantáneamente",
+        "description": "Cozy Collect organiza todos sus archivos instantáneamente",
+        "button": "Descubra Cozy Collect"
+      },
+      "support": {
+        "title": "Contáctenos",
+        "description": "¡Hola! ¿Podemos ayudarle?",
+        "emailDetail": "Su mensaje se enviará a partir de su email que aparece en los parámetros de Cozy.",
+        "fields": {
+          "message": {
+            "title": "Su solicitud",
+            "placeholder": "Díganos algo (una solicitud de ayuda, comparta un comentario o díganos hola). Contentos estaremos de comunicar con usted."
+          }
+        },
+        "button": "¡Adelante!",
+        "sending": "Enviando...",
+        "success": "Su mensaje se ha enviado. Gracias!",
+        "error": "Ha ocurrido un error al enviar su mensaje"
+      }
+    }
+  },
+
+  "errors": {
+    "noEmailFound": "No se encontró ninguna dirección email. Por favor, vuelva a poner una en los parámetros de su Cozy."
+  }
+}

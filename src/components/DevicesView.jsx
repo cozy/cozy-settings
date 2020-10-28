@@ -65,78 +65,77 @@ class DevicesView extends Component {
           />
         )}
         {!isFetching && devices.length === 0 && <NoDevicesMessage />}
-        {!isFetching &&
-          devices.length > 0 && (
-            <Table className={tableStyles['coz-table']}>
-              {openDeviceRevokeModale && (
-                <DevicesModaleRevokeView
-                  cancelAction={onDeviceModaleRevokeClose}
-                  revokeDevice={devicePerformRevoke}
-                  device={deviceToRevoke}
-                />
-              )}
-              <TableHead>
-                <TableRow>
-                  <TableHeader className={tableStyles['set-table-name']}>
-                    {t('DevicesView.head_name')}
-                  </TableHeader>
-                  <TableHeader
+        {!isFetching && devices.length > 0 && (
+          <Table className={tableStyles['coz-table']}>
+            {openDeviceRevokeModale && (
+              <DevicesModaleRevokeView
+                cancelAction={onDeviceModaleRevokeClose}
+                revokeDevice={devicePerformRevoke}
+                device={deviceToRevoke}
+              />
+            )}
+            <TableHead>
+              <TableRow>
+                <TableHeader className={tableStyles['set-table-name']}>
+                  {t('DevicesView.head_name')}
+                </TableHeader>
+                <TableHeader
+                  className={classNames(
+                    tableStyles['coz-table-header'],
+                    tableStyles['set-table-date']
+                  )}
+                >
+                  {t('DevicesView.head_sync')}
+                </TableHeader>
+                <TableHeader
+                  className={classNames(
+                    tableStyles['coz-table-header'],
+                    tableStyles['set-table-actions']
+                  )}
+                >
+                  {t('DevicesView.head_actions')}
+                </TableHeader>
+              </TableRow>
+            </TableHead>
+            <TableBody className={tableStyles['set-table-devices']}>
+              {devices.map(device => (
+                <TableRow key={device.id}>
+                  <TableCell
                     className={classNames(
-                      tableStyles['coz-table-header'],
-                      tableStyles['set-table-date']
+                      tableStyles['set-table-name'],
+                      tableStyles['coz-table-primary']
                     )}
                   >
-                    {t('DevicesView.head_sync')}
-                  </TableHeader>
-                  <TableHeader
-                    className={classNames(
-                      tableStyles['coz-table-header'],
-                      tableStyles['set-table-actions']
-                    )}
-                  >
-                    {t('DevicesView.head_actions')}
-                  </TableHeader>
-                </TableRow>
-              </TableHead>
-              <TableBody className={tableStyles['set-table-devices']}>
-                {devices.map(device => (
-                  <TableRow key={device.id}>
-                    <TableCell
-                      className={classNames(
-                        tableStyles['set-table-name'],
-                        tableStyles['coz-table-primary']
-                      )}
+                    <Media>
+                      <Img>
+                        <Icon icon={getDeviceIcon(device)} size={32} />
+                      </Img>
+                      <Bd className="u-ml-1">{device.client_name}</Bd>
+                    </Media>
+                  </TableCell>
+                  <TableCell className={tableStyles['set-table-date']}>
+                    {device.synchronized_at
+                      ? f(
+                          device.synchronized_at,
+                          t('DevicesView.sync_date_format')
+                        )
+                      : '-'}
+                  </TableCell>
+                  <TableCell className={tableStyles['set-table-actions']}>
+                    <button
+                      className={devicesStyles['coz-btn--revoke']}
+                      onClick={() => {
+                        onDeviceModaleRevoke(device)
+                      }}
                     >
-                      <Media>
-                        <Img>
-                          <Icon icon={getDeviceIcon(device)} size={32} />
-                        </Img>
-                        <Bd className="u-ml-1">{device.client_name}</Bd>
-                      </Media>
-                    </TableCell>
-                    <TableCell className={tableStyles['set-table-date']}>
-                      {device.synchronized_at
-                        ? f(
-                            device.synchronized_at,
-                            t('DevicesView.sync_date_format')
-                          )
-                        : '-'}
-                    </TableCell>
-                    <TableCell className={tableStyles['set-table-actions']}>
-                      <button
-                        className={devicesStyles['coz-btn--revoke']}
-                        onClick={() => {
-                          onDeviceModaleRevoke(device)
-                        }}
-                      >
-                        {t('DevicesView.revoke')}
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          )}
+                      {t('DevicesView.revoke')}
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </div>
     )
   }
