@@ -1,0 +1,351 @@
+{
+  "manifest": {
+    "name": "Instellingen"
+  },
+  "DeleteAccount": {
+    "title" : "Account verwijderen",
+    "label" : "Je kunt je Cozy op elk gewenst moment verwijderen. Maar wees voorzichtig, want als je account verwijdert, worden al je gegevens ook verwijderd en dit is onomkeerbaar!",
+    "button": {
+      "label": "Mijn account verwijderen"
+    },
+    "error": {
+      "message": "Er is een fout opgetreden tijdens het verwijderingsverzoek. Probeer het opnieuw of neem contact op met onze ondersteuning."
+    },
+    "modal": {
+      "confirm": {
+        "title": "Wil je je Cozy verwijderen?",
+        "description": {
+          "line": {
+            "1": "Je Cozy zal worden verwijderd.",
+            "2": "Hierdoor heb je geen toegang meer tot je Cozy.",
+            "3": "Al je gegevens worden verwijderd."
+          }
+        },
+        "button": {
+          "cancel": {
+            "label": "Annuleren"
+          },
+          "submit": {
+            "label": "Verwijderen"
+          }
+        }
+      },
+      "form": {
+        "title": "Verwijderingsverzoek voor je Cozy",
+        "reason": {
+          "label": "Waarom wil je je Cozy verwijderen (optioneel)?"
+        },
+        "button": {
+          "cancel": {
+            "label": "Annuleren"
+          },
+          "submit": {
+            "label": "Versturen"
+          }
+        }
+      }
+    },
+    "request": {
+      "mail": {
+        "subject": "Verwijderingsverzoek voor %{domain}"
+      }
+    },
+    "success": {
+      "message": "Je verwijderingsverzoek is verstuurd."
+    }
+  },
+  "Nav": {
+    "profile": "Profiel",
+    "activated_services": "Ingeschakelde diensten",
+    "connected_devices": "Verbonden diensten",
+    "sessions": "Verbindingen",
+    "storage": "Opslag",
+    "email_notifications": "E-mailmeldingen"
+  },
+  "Loading": {
+    "loading": "Bezig met laden"
+  },
+  "Empty": {
+    "devices": {
+      "title": "Je hebt geen apparaten verbonden.",
+      "text": "Door het installeren van de verschillende clients, heb je toegang tot je bestanden op alle schermen tegelijkertijd. Cozy is altijd binnen handbereik, zelfs als je onderweg bent!",
+      "link": {
+        "href": "https://cozy.io/en/download/",
+        "text": "Download één van onze apps"
+      }
+    }
+  },
+  "ProfileView": {
+    "instance": {
+      "server_error": "Er is een fout opgetreden op de server. Herlaad de pagina."
+    },
+    "title": "Profiel",
+    "password": {
+      "title": "Wachtwoord",
+      "label": "Je Cozy is momenteel beveiligd met een wachtwoord",
+      "cta": "Wachtwoord bijwerken"
+    },
+    "infos": {
+      "success": "Je gegevens zijn gewijzigd.",
+      "server_error": "Er is een fout opgetreden; je gegevens zijn niet opgeslagen.",
+      "empty": "Dit veld mag niet leeg worden gelaten"
+    },
+    "email" : {
+      "title" : "E-mailadres",
+      "label": "Cozy heeft je e-mailadres nodig zodat je meldingen kunt ontvangen en je je wachtwoord kunt herstellen.",
+      "error" : "Dit e-mailadres lijkt onjuist. Weet je zeker dat je het goed geschreven hebt (bijv. jan@jansen.nl)?"
+    },
+    "twofa" : {
+      "title": {
+        "activate": "Authenticatie in twee stappen",
+        "desactivate": "Authenticatie in twee stappen uitschakelen",
+        "validation": "Verificatie van authenticatie in twee stappen"
+      },
+      "passphrase": {
+        "title": "Authenticatie in twee stappen",
+        "description": "Cozy heeft een verificatiecode van 6 getallen verstuurd naar %{email}.<br/>Voer die code hier in om je wachtwoord te wijzigen:"
+      },
+      "label": "Twee stappen zijn beter dan één: daarom kun je de veiligheid verbeteren met een extra stap.<br/>[Bekijk onze hulppagina →](%{link})",
+      "modal": {
+        "code": "code",
+        "protect": "Bescherm je Cozy met authenticatie in twee stappen",
+        "change": "**Wat verandert er?** Elke keer als je verbindt met je Cozy, dan heb je je wachtwoord nodig en een verificatiecode.<br/>[Bekijk onze hulppagina →](%{link})",
+        "secu_title": "Voeg een extra beveiligingsniveau toe",
+        "secu_description": "Een wachtwoord is goed, maar als het niet \"complex\" genoeg is, dan kan een dief dit gemakkelijk raden. Ontvang per mail een verificatiecode om de veiligheid van je Cozy te waarborgen.",
+        "protect_title": "Verbeter de beveiliging van je gegevens",
+        "protect_description": "Zelfs als een dief je wachtwoord raadt, dan blijf jij de enige die kan verbinden met je Cozy.",
+        "desactivate_title": "Weet je zeker dat je deze optie wilt uitschakelen?",
+        "desactivate_description": "Door het klikken op de knop \"Uitschakelen\", zal je wachtwoord de enige toegang zijn tot je Cozy. Je verwijdert een beveiligingsniveau.",
+        "confirmation_title": "Verificatiecode-bevestiging",
+        "confirmation_description": "Cozy heeft een verificatiecode van 6 getallen verstuurd naar %{email}.<br/>Voer die code hier in om de authenticatie in te schakelen:",
+        "nocode": "Heb je geen code ontvangen?",
+        "nocode_claude": "Neem dan contact op met Claude via",
+        "validation_title": "Gefeliciteerd! Je e-mailadres is bevestigd.",
+        "validation_description": "Je Cozy wordt nu beveiligd door authenticatie in twee stappen.",
+        "validation_logs": "Inloggegevens onthouden:",
+        "email": "Je moet een geldig e-mailadres opgeven.",
+        "button": {
+          "activate": "Authenticatie activeren",
+          "cancel": "annuleren",
+          "desactivate": "uitschakelen",
+          "validate": "verifiëren",
+          "terminate": "afbreken"
+        }
+      }
+    },
+    "public_name" : {
+      "title" : "Gebruikersnaam",
+      "label": "Je gebruikersnaam wordt getoond als je bestanden deelt met Cozy-gebruikers."
+    },
+    "tracking": {
+      "title": "Help mee ons product te verbeteren",
+      "label": "Geef Cozy Cloud toestemming om anonieme gebruiksgegevens te verzamelen voor het verbeteren van ons product.<br/>[Lees meer over Cozy's privacywaarborg](https://files.cozycloud.cc/TOS%{version}.pdf)"
+    },
+    "export": {
+      "title": "Mijn gegevens",
+      "label": "Cozy zorgt ervoor dat alle opgeslagen gegevens met je worden gedeeld:",
+      "link": "Mijn gegevens downloaden",
+      "server_error": "Er is een fout opgetreden. Probeer het opnieuw of neem contact met ons op.",
+      "fetch_error": "Er is een fout opgetreden tijdens het opvragen van je gegevens. Probeer het opnieuw of neem contact met ons op.",
+      "missing_error": "Het archief ontbreekt of is verouderd. Probeer het opnieuw of neem contact met ons op.",
+      "success": "Je verzoek is verstuurd!",
+      "modal": {
+        "title": "Geef me mijn gegevens terug",
+        "description": "Cozy is bezig al je opgeslagen gegevens te verzamelen en dit om te zetten naar een downloadbaar archief.<br/><br/>De downloadlink zal worden verstuurd naar het e-mailadres '__%{email}__' zodra het archief beschikbaar is.",
+        "cancel": "Annuleren",
+        "CTA": "Geef me mijn gegevens"
+      },
+      "download": {
+        "title": "Download mijn gegevens",
+        "description": "Hier zijn alle gegevensarchieven, beschikbaar in je Cozy:",
+        "CTA": "Archief downloaden",
+        "CTA_part": "(part %{number}) downloaden"
+      }
+    },
+    "locale" : {
+      "title" : "Taal",
+      "label": "Dit is de taal die zal worden gebruikt in je Cozy.",
+      "contrib" : "Wil je meehelpen Cozy te vertalen? [Kijk dan op https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937 hoe je een handje kunt helpen.]",
+      "fr": "Frans",
+      "en": "Engels",
+      "es": "Spaans",
+      "ja": "Japans",
+      "nl": "Nederlands",
+      "de": "Duits",
+      "ru": "Russisch",
+      "nl_NL": "Nederlands (Nederland)",
+      "ko": "Koreaans",
+      "pl": "Pools",
+      "pt": "Portugees",
+      "da": "Deens",
+      "ro_RO": "Roemeens (Roemenië)",
+      "pt_BR": "Portugees (Brazilië)",
+      "zh_CN": "Chinees (China)",
+      "ar": "Arabisch",
+      "it": "Italiaans",
+      "ro": "Roemeens",
+      "eo": "Esperanto",
+      "de_DE": "Duits (Duitsland)",
+      "sq": "Albanees",
+      "tr": "Turks",
+      "uk_UA": "Oekraïens (Oekraïne)",
+      "ru_RU": "Russisch (Rusland)",
+      "sq_AL": "Albanees (Albanië)",
+      "ca": "Catalaans",
+      "ca_ES": "Catalaans (Spanje)",
+      "zh": "Chinees",
+      "zh_TW": "Chinees (Taiwan)",
+      "cs": "Tsjechisch",
+      "cs_CZ": "Tsjechisch (Tsjechië)",
+      "el": "Grieks",
+      "id": "Indonesisch",
+      "it_IT": "Italiaans (Italië)",
+      "sk": "Slowaaks",
+      "sk_SK": "Slowaaks (Slowakije)",
+      "es_CO": "Spaans (Colombia)",
+      "es_ES": "Spaans (Spanje)",
+      "sv": "Zweeds"
+    }
+  },
+  "DevicesView": {
+    "title": "Verbonden apparaten",
+    "load_error": "Er is een fout opgetreden tijdens het laden van je apparaten. Probeer het later opnieuw.",
+    "head_name": "Naam",
+    "head_sync": "Laatste synchronisatie",
+    "head_activity": "Laatste activiteit",
+    "head_permissions": "Machtigingen",
+    "head_actions": "Acties",
+    "revoke": "intrekken",
+    "sync_date_format": "D MMM YYYY"
+  },
+  "StorageView": {
+    "title": "Opslag",
+    "load_error": "Er is een fout opgetreden tijdens het laden van je opslaginformatie. Probeer het later opnieuw.",
+    "storage_title": "Totale ruimte",
+    "storage_phrase": "%{diskUsage} GB van %{diskQuota} GB gebruikt",
+    "more_space": "Meer opslagruimte nodig?",
+    "see_offer": "Mijn opslag uitbreiden"
+  },
+  "SessionsView": {
+    "title": "Verbindingsgeschiedenis",
+    "sync_date_format": "D MMM YYYY",
+    "delete": "Alle andere sessie verwijderen",
+    "infos": {
+      "server_error": "Er is een fout opgetreden op de server. Herlaad de pagina.",
+      "sessions_deleted": "Alle andere sessies zijn verwijderd."
+    }
+  },
+  "revokeDevice": {
+    "title": "Dit apparaat intrekken",
+    "description": "Je staat op het punt om **%{name}** te ontkoppelen.",
+    "subText": "De synchronisatie met dit apparaat zal direct stoppen.",
+    "validate": "Apparaat ontkoppelen",
+    "error": "Het ontkoppelen is mislukt; probeer het later opnieuw."
+  },
+  "ServicesView": {
+    "title": "Ingeschakelde diensten",
+    "load_error": "Er is een fout opgetreden tijdens het laden van je diensten. Probeer het later opnieuw.",
+    "head_services": "Diensten",
+    "head_account": "Account",
+    "head_sync": "Laatste synchronisatie",
+    "head_status": "Status",
+    "unsync": "Niet-gesynchroniseerd",
+    "konnector_link": "Klik hier voor de volledige lijst met diensten"
+  },
+  "PassphraseView": {
+    "title": "Wachtwoord bijwerken",
+    "current_passphrase": {
+      "label": "Voer je huidige wachtwoord in:",
+      "placeholder": "Huidige wachtwoord:",
+      "wrong_passphrase": "Je huidige wachtwoord is onjuist."
+    },
+    "new_passphrase": {
+      "label": "Voer je nieuwe wachtwoord in:",
+      "placeholder": "Nieuw cozy-wachtwoord",
+      "confirmation_placeholder": "Bevestig het wachtwoord",
+      "dont_match": "De wachtwoorden konen niet overeen"
+    },
+    "advices": {
+      "strong_passphrase": "**Gebruik een sterk wachtwoord:** een lang wachtwoord met cijfers en speciale tekens is onmogelijk te kraken.",
+      "memorize": "**Onthoud het goed:** als je je wachtwoord kwijtraakt, kun je de versleutelde wachtwoorden op je Cozy niet herstellen.",
+      "our_tip": "**Aanbeveling:** kies een korte zin die bij je past, zoals: "
+    },
+    "hint": {
+      "title": "Laat een hint achter",
+      "placeholder": "Hint",
+      "description": "Deze hint wordt aan je opgestuurd als je je wachtwoord vergeten bent. Kies een hint die alleen jíj kan ontcijferen.",
+      "same_as_passphrase": "De hint mag niet hetzelfde zijn als je wachtwoord"
+    },
+    "submit": "Wachtwoord bijwerken",
+    "cancel": "Huidige wachtwoord behouden",
+    "server_error": "Er is een fout opgetreden; je wachtwoord is niet opgeslagen.",
+    "wrong_two_fa_code": "De opgegeven tweestapscode is onjuist.",
+    "reload": "Je wachtwoord is gewijzigd. De pagina wordt herladen zodat de wijziging kan worden toegepast.",
+    "redirect": "Je wachtwoord is gewijzigd - je wordt doorgestuurd."
+  },
+  "soon": {
+    "title": "Binnenkort",
+    "description": "Deze functie is nog niet beschikbaar. Neem, voor meer informatie, contact met ons op: contact@cozycloud.cc"
+  },
+
+  "support": {
+    "title": "Hallo! Kunnen we je helpen?",
+    "emailDetail": "Je bericht wordt verstuurd middels het e-mailadres dat je hebt opgegeven in je Cozy-instellingen.",
+    "fields": {
+      "message": {
+        "title": "Je verzoek",
+        "placeholder": "Vertel ons iets (vraag om hulp, deel feedback of zeg gewoon 'hallo'). We staan klaar om met je te praten."
+      }
+    },
+    "response_email": {
+      "subject": "Je verzoek is ontvangen.",
+      "body": "Hallo,\n\nwe hebben je ondersteuningsverzoek ontvangen:\n%{message}\n\nWe doen ons best om dit zo snel mogelijk te beantwoorden.\n\nClaude van Cozy."
+    },
+    "button": "Gaan met die banaan!",
+    "sending": "Bezig met versturen...",
+    "success": "👏 Je bericht is verstuurd. Dank je!",
+    "error": "Er is een fout opgetreden tijdens het versturen van je bericht."
+  },
+
+  "claudy": {
+    "title": "Hoe ga ik met Cozy om?",
+    "actions": {
+      "desktop": {
+        "title": "Verkrijg toegang tot alle bestanden op je computer",
+        "description": "Synchroniseer alle Cozy Drive-bestanden naar je computer",
+        "button": "Installeer Cozy Drive op je computer",
+        "link": "https://cozy.io/en/download/"
+      },
+      "mobile": {
+        "title": "Back-up en synchroniseer de afbeeldingen op je telefoon",
+        "description": "Al je herinneringen zijn veilig op Cozy Drive",
+        "button": "Installeer de Cozy Drive-app op je telefoon",
+        "link": "https://cozy.io/en/download/"
+      },
+      "cozy-collect": {
+        "title": "Krijg je rekeningen direct terug",
+        "description": "Cozy Collect - organiseer al je bestanden direct",
+        "button": "Ontdek Cozy Collect"
+      },
+      "support": {
+        "title": "Neem contact met ons op",
+        "description": "Hallo! Kunnen we je helpen?",
+        "emailDetail": "Je bericht wordt verstuurd middels het e-mailadres dat je hebt opgegeven in je Cozy-instellingen.",
+        "fields": {
+          "message": {
+            "title": "Je verzoek",
+            "placeholder": "Vertel ons iets (vraag om hulp, deel feedback of zeg gewoon 'hallo'). We staan klaar om met je te praten."
+          }
+        },
+        "button": "Gaan met die banaan!",
+        "sending": "Bezig met versturen...",
+        "success": "👏 Je bericht is verstuurd. Dank je!",
+        "error": "Er is een fout opgetreden tijdens het versturen van je bericht."
+      }
+    }
+  },
+
+  "errors": {
+    "noEmailFound": "Er is geen e-mailadres aangetroffen. Voeg er één toe in je Cozy-instellingen en probeer het opnieuw."
+  }
+}
