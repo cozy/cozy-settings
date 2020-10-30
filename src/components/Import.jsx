@@ -7,7 +7,6 @@ import Modal, {
   ModalFooter
 } from 'cozy-ui/transpiled/react/Modal'
 import { Button } from 'cozy-ui/transpiled/react/Button'
-import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 
 import viewStyles from 'styles/view'
@@ -78,17 +77,15 @@ class Import extends Component {
               <ReactMarkdownWrapper
                 source={t('ProfileView.import.modal.description')}
               />
-              <MuiCozyTheme>
-                <TextField
-                  required
-                  autoFocus={true}
-                  onChange={this.setURL}
-                  label={t('ProfileView.import.url.label')}
-                  fullWidth={true}
-                  margin="normal"
-                  variant="outlined"
-                />
-              </MuiCozyTheme>
+              <TextField
+                required
+                autoFocus={true}
+                onChange={this.setURL}
+                label={t('ProfileView.import.url.label')}
+                fullWidth={true}
+                margin="normal"
+                variant="outlined"
+              />
               {importData.error && (
                 <p className={formStyles['coz-form-errors']}>
                   {t(importData.error)}

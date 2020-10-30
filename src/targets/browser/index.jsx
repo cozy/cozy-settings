@@ -9,6 +9,7 @@ import { Provider, connect } from 'react-redux'
 import { CozyProvider } from 'cozy-client'
 
 import I18n from 'cozy-ui/transpiled/react/I18n'
+import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
 
 import App from 'components/App'
@@ -52,9 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
     <CozyProvider client={cozyClient}>
       <Provider store={store}>
         <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
-          <PiwikHashRouter>
-            <App />
-          </PiwikHashRouter>
+          <MuiCozyTheme>
+            <PiwikHashRouter>
+              <App />
+            </PiwikHashRouter>
+          </MuiCozyTheme>
         </EnhancedI18n>
       </Provider>
     </CozyProvider>,
