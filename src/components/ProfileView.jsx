@@ -38,6 +38,7 @@ class ProfileView extends Component {
       requestExport,
       importData,
       precheckImport,
+      submitImport,
       twoFactor,
       checkTwoFactorCode,
       activate2FA,
@@ -124,7 +125,11 @@ class ProfileView extends Component {
                 fetchExportData={() => fetchExportData(exportId)}
                 parent={'/profile'}
               />
-              <Import importData={importData} precheckImport={precheckImport} />
+              <Import
+                importData={importData}
+                precheckImport={precheckImport}
+                submitImport={submitImport}
+              />
               <div className={viewStyles['set-delete-account']}>
                 <DeleteAccount />
               </div>

@@ -11,7 +11,7 @@ import {
   cancel2FAActivation
 } from 'actions/twoFactor'
 import { requestExport, fetchExportData } from 'actions/export'
-import { precheckImport } from 'actions/import'
+import { precheckImport, submitImport } from 'actions/import'
 
 import ProfileView from 'components/ProfileView'
 
@@ -45,8 +45,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchExportData: exportId => {
     dispatch(fetchExportData(exportId))
   },
-  precheckImport: url => {
-    dispatch(precheckImport(url))
+  precheckImport: async url => {
+    return dispatch(precheckImport(url))
+  },
+  submitImport: async url => {
+    return dispatch(submitImport(url))
   },
   cancel2FAActivation: () => {
     dispatch(cancel2FAActivation())

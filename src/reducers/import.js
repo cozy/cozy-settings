@@ -3,7 +3,10 @@ import { combineReducers } from 'redux'
 import {
   PRECHECK_IMPORT,
   PRECHECK_IMPORT_FAILURE,
-  PRECHECK_IMPORT_SUCCESS
+  PRECHECK_IMPORT_SUCCESS,
+  IMPORT_IMPORT,
+  IMPORT_IMPORT_FAILURE,
+  IMPORT_IMPORT_SUCCESS
 } from 'actions/import'
 
 const checking = (state = false, action) => {
@@ -18,12 +21,13 @@ const checking = (state = false, action) => {
   }
 }
 
-const data = (state = {}, action) => {
+const submitting = (state = false, action) => {
   switch (action.type) {
-    case PRECHECK_IMPORT:
-      return {}
-    case PRECHECK_IMPORT_SUCCESS:
-      return action.data
+    case IMPORT_IMPORT:
+      return true
+    case IMPORT_IMPORT_FAILURE:
+    case IMPORT_IMPORT_SUCCESS:
+      return false
     default:
       return state
   }
@@ -33,8 +37,11 @@ const error = (state = null, action) => {
   switch (action.type) {
     case PRECHECK_IMPORT:
     case PRECHECK_IMPORT_SUCCESS:
+    case IMPORT_IMPORT:
+    case IMPORT_IMPORT_SUCCESS:
       return null
     case PRECHECK_IMPORT_FAILURE:
+    case IMPORT_IMPORT_FAILURE:
       return action.error
     default:
       return state
@@ -43,7 +50,7 @@ const error = (state = null, action) => {
 
 const exportReducer = combineReducers({
   checking,
-  data,
+  submitting,
   error
 })
 

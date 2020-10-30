@@ -173,6 +173,12 @@
         "cancel": "Cancel",
         "CTA": "Import"
       },
+      "confirmation": {
+        "title": "Warning",
+        "description": "When importing, the data already present in your Cozy **%{url}** will be overwritten. Access to your Cozy will be blocked until the end of this operation.\n\nDo you really want to continue?",
+        "cancel": "Cancel",
+        "CTA": "Overwrite the data"
+      },
 	  "url": {
 		"label": "Download link"
 	  }
