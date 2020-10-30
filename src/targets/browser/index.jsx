@@ -9,6 +9,7 @@ import { Provider, connect } from 'react-redux'
 import { CozyProvider } from 'cozy-client'
 
 import I18n from 'cozy-ui/transpiled/react/I18n'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
 
@@ -53,11 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
     <CozyProvider client={cozyClient}>
       <Provider store={store}>
         <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
-          <MuiCozyTheme>
-            <PiwikHashRouter>
-              <App />
-            </PiwikHashRouter>
-          </MuiCozyTheme>
+          <BreakpointsProvider>
+            <MuiCozyTheme>
+              <PiwikHashRouter>
+                <App />
+              </PiwikHashRouter>
+            </MuiCozyTheme>
+          </BreakpointsProvider>
         </EnhancedI18n>
       </Provider>
     </CozyProvider>,

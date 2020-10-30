@@ -10,6 +10,12 @@ import Modal, {
 } from 'cozy-ui/transpiled/react/Modal'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import Dialog, {
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogCloseButton
+} from 'cozy-ui/transpiled/react/Dialog'
 
 import viewStyles from 'styles/view'
 import formStyles from 'styles/fields'
@@ -136,46 +142,42 @@ class Import extends Component {
             </ModalFooter>
           </Modal>
         )}
-        {displayConfirmation && (
-          <Modal
-            className={viewStyles['set-export-modal']}
-            secondaryAction={this.toggleConfirmation}
-          >
-            <ModalHeader className="u-ta-center u-pr-0">
-              <h2 className={viewStyles['set-export-modal-title']}>
-                {t('ProfileView.import.confirmation.title')}
-              </h2>
-            </ModalHeader>
-            <ModalDescription
-              className={viewStyles['set-export-modal-description']}
-            >
-              <ReactMarkdownWrapper
-                source={t('ProfileView.import.confirmation.description', {
-                  url: STACK_DOMAIN.replace('//', '')
-                })}
-              />
-              {importData.error && (
-                <p className={formStyles['coz-form-errors']}>
-                  {t(importData.error)}
-                </p>
-              )}
-            </ModalDescription>
-            <ModalFooter className={viewStyles['set-export-modal-footer']}>
-              <Button
-                theme="secondary"
-                onClick={this.toggleConfirmation}
-                label={t('ProfileView.import.confirmation.cancel')}
-              />
-              <Button
-                theme="danger"
-                onClick={this.submitImport}
-                busy={importData.submitting}
-                disabled={importData.submitting}
-                label={t('ProfileView.import.confirmation.CTA')}
-              />
-            </ModalFooter>
-          </Modal>
-        )}
+        <Dialog
+          open={displayConfirmation}
+          onClose={this.toggleConfirmation}
+          fullScreen={false}
+        >
+          <DialogCloseButton onClick={this.toggleConfirmation} />
+          <DialogTitle>
+            {t('ProfileView.import.confirmation.title')}
+          </DialogTitle>
+          <DialogContent>
+            <ReactMarkdownWrapper
+              source={t('ProfileView.import.confirmation.description', {
+                url: STACK_DOMAIN.replace('//', '')
+              })}
+            />
+            {importData.error && (
+              <p className={formStyles['coz-form-errors']}>
+                {t(importData.error)}
+              </p>
+            )}
+          </DialogContent>
+          <DialogActions>
+            <Button
+              theme="secondary"
+              onClick={this.toggleConfirmation}
+              label={t('ProfileView.import.confirmation.cancel')}
+            />
+            <Button
+              theme="danger"
+              onClick={this.submitImport}
+              busy={importData.submitting}
+              disabled={importData.submitting}
+              label={t('ProfileView.import.confirmation.CTA')}
+            />
+          </DialogActions>
+        </Dialog>
       </div>
     )
   }
