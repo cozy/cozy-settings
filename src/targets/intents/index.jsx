@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 
 import { CozyProvider } from 'cozy-client'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 
 import IntentService from 'containers/IntentService'
@@ -31,10 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
     <CozyProvider client={cozyClient}>
       <Provider store={store}>
         <I18n lang={lang} dictRequire={lang => require(`locales/${lang}`)}>
-          <div className="set-services">
-            <IntentService window={window} />
-            <IconSprite />
-          </div>
+          <BreakpointsProvider>
+            <MuiCozyTheme>
+              <div className="set-services">
+                <IntentService window={window} />
+                <IconSprite />
+              </div>
+            </MuiCozyTheme>
+          </BreakpointsProvider>
         </I18n>
       </Provider>
     </CozyProvider>,
