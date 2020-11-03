@@ -144,7 +144,7 @@
     "export": {
       "title": "Mes données",
       "label": "Cozy s'engage à vous fournir la totalité des informations qu'il stocke sur vous :",
-      "link": "Télécharger une copie de mes données",
+      "link": "Export mon Cozy",
       "server_error": "Une erreur s'est produite. Veuillez recommencer ou nous contacter.",
       "fetch_error": "Une erreur en récupérant vos données. Veuillez recommencer ou nous contacter.",
       "missing_error": "L'archive semble être manquant ou a expiré. Veuillez recommencer ou nous contacter.",
@@ -161,6 +161,27 @@
         "CTA": "Télécharger",
         "CTA_part": "Télécharger (partie %{number})"
       }
+    },
+    "import": {
+      "link": "Importer un Cozy",
+      "server_error": "Une erreur s'est produite. Veuillez recommencer ou nous contacter.",
+      "invalid_url": "Le lien ne semble pas correspondre au lien de téléchargement d'un Cozy.",
+      "quota_too_small": "L'espace de stockage de votre Cozy est insuffisant pour importer l'ensemble de vos données. 2 solutions s'offrent : augmenter l'espace de stockage de votre Cozy ou supprimer les données non nécessaires à l'import.",
+      "modal": {
+        "title": "Importer un Cozy",
+        "description": "Renseignez ci-dessous le lien de téléchargement transmis par email. Pour récupérer le lien de téléchargement d'un Cozy, il vous suffit de lancer son export.",
+        "cancel": "Annuler",
+        "CTA": "Importer"
+      },
+      "confirmation": {
+        "title": "Avertissement",
+        "description": "Lors de l'import, les données déjà présentes dans votre Cozy **%{url}** seront écrasées. Votre Cozy sera indisponible jusqu'à la fin de l'opération.\n\nVoulez-vous vraiment continuer ?",
+        "cancel": "Annuler",
+        "CTA": "Écraser les données"
+      },
+	  "url": {
+		"label": "Lien de téléchargement"
+	  }
     },
     "locale" : {
       "title" : "Langue",

@@ -22,6 +22,11 @@
       "type": "io.cozy.exports",
       "verbs": ["GET", "POST"]
     },
+    "imports": {
+      "description": "Required to import the Cozy data",
+      "type": "io.cozy.imports",
+      "verbs": ["GET", "POST"]
+    },
     "sessions": {
       "description": "Required to manage your sessions",
       "type": "io.cozy.sessions.logins",

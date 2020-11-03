@@ -13,6 +13,7 @@ import DeleteAccount from 'components/DeleteAccount'
 import Input from 'components/Input'
 import LanguageSection from 'components/LanguageSection'
 import TwoFA from 'components/2FA'
+import Import from 'components/Import'
 import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
 
@@ -35,6 +36,9 @@ class ProfileView extends Component {
       exportData,
       fetchExportData,
       requestExport,
+      importData,
+      precheckImport,
+      submitImport,
       twoFactor,
       checkTwoFactorCode,
       activate2FA,
@@ -120,6 +124,11 @@ class ProfileView extends Component {
                 requestExport={requestExport}
                 fetchExportData={() => fetchExportData(exportId)}
                 parent={'/profile'}
+              />
+              <Import
+                importData={importData}
+                precheckImport={precheckImport}
+                submitImport={submitImport}
               />
               <div className={viewStyles['set-delete-account']}>
                 <DeleteAccount />

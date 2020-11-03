@@ -144,8 +144,8 @@
     "export": {
       "title": "My data",
       "label": "Cozy is committed to provide you all your data that it stores about you:",
-      "link": "Download a copy of my data",
-      "server_error": "Something went wrong, pleasy try again or contact us.",
+      "link": "Export my Cozy",
+      "server_error": "Something went wrong, please try again or contact us.",
       "fetch_error": "Something went wrong when fetching your export data. Please try again or contact us.",
       "missing_error": "The archive seems to be missing or expired. Please try again or contact us.",
       "success": "Your request has correctly be sent!",
@@ -161,6 +161,27 @@
         "CTA": "Download the archive",
         "CTA_part": "Download (part %{number})"
       }
+    },
+    "import": {
+      "link": "Import a Cozy",
+      "server_error": "Something went wrong, pleasy try again or contact us.",
+      "invalid_url": "The link does not seem to correspond to the download link of a Cozy.",
+      "quota_too_small": "The storage space of your Cozy is insufficient to import all your data. 2 solutions are available: increase the storage space of your Cozy or delete the data not required for import.",
+      "modal": {
+        "title": "Import a Cozy",
+        "description": "Fill in the download link sent by email below. To retrieve the download link for a Cozy, you just have to launch its export.",
+        "cancel": "Cancel",
+        "CTA": "Import"
+      },
+      "confirmation": {
+        "title": "Warning",
+        "description": "When importing, the data already present in your Cozy **%{url}** will be overwritten. Access to your Cozy will be blocked until the end of this operation.\n\nDo you really want to continue?",
+        "cancel": "Cancel",
+        "CTA": "Overwrite the data"
+      },
+	  "url": {
+		"label": "Download link"
+	  }
     },
     "locale" : {
       "title" : "Language",

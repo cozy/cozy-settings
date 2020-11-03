@@ -48,7 +48,7 @@ class ExportSection extends Component {
     const { displayModal } = this.state
     return (
       <div>
-        <div className={viewStyles['set-view-section']}>
+        <div className="{viewStyles['set-view-section']} u-mb-1">
           <h3>{t('ProfileView.export.title')}</h3>
           <p className={viewStyles['set-view-section-label']}>
             {t('ProfileView.export.label')}
