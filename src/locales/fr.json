@@ -144,7 +144,7 @@
     "export": {
       "title": "Mes données",
       "label": "Cozy s'engage à vous fournir la totalité des informations qu'il stocke sur vous :",
-      "link": "Export mon Cozy",
+      "link": "Exporter mon Cozy",
       "server_error": "Une erreur s'est produite. Veuillez recommencer ou nous contacter.",
       "fetch_error": "Une erreur en récupérant vos données. Veuillez recommencer ou nous contacter.",
       "missing_error": "L'archive semble être manquant ou a expiré. Veuillez recommencer ou nous contacter.",
@@ -169,7 +169,7 @@
       "quota_too_small": "L'espace de stockage de votre Cozy est insuffisant pour importer l'ensemble de vos données. 2 solutions s'offrent : augmenter l'espace de stockage de votre Cozy ou supprimer les données non nécessaires à l'import.",
       "modal": {
         "title": "Importer un Cozy",
-        "description": "Renseignez ci-dessous le lien de téléchargement transmis par email. Pour récupérer le lien de téléchargement d'un Cozy, il vous suffit de lancer son export.",
+        "description": "Renseignez ci-dessous le lien de téléchargement transmis par email.",
         "cancel": "Annuler",
         "CTA": "Importer"
       },
