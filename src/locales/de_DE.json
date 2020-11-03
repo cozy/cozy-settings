@@ -311,7 +311,7 @@
 
   "support": {
     "title": "Hi! Wie können wir dir helfen?",
-    "emailDetail": "Deine Nachricht wird von der in deinen Cozy Einstellungen gespeicherten E-Mail Adresse versendet.",
+    "emailDetail": "Deine Nachricht wird von der in deinen Cozy Einstellungen gespeicherten E-Mail-Adresse versendet.",
     "fields": {
       "message": {
         "title": "Deine Anfrage",
