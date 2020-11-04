@@ -139,7 +139,7 @@
           "activate": "Echtheitsprüfung aktivieren",
           "cancel": "Abbrechen",
           "desactivate": "Deaktivieren",
-          "validate": "Bestätigen",
+          "validate": "Überprüfen",
           "terminate": "Beenden"
         }
       }
@@ -352,7 +352,7 @@
         "link": "https://cozy.io/en/download/"
       },
       "cozy-collect": {
-        "title": "Hol dein Geld sofort zurück",
+        "title": "Hol' dein Geld sofort zurück",
         "description": "Cozy Collect organisiert alle deine Dateien sofort",
         "button": "Entdecke Cozy Collect"
       },
