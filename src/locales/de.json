@@ -144,8 +144,8 @@
     "export": {
       "title": "Meine Daten",
       "label": "Cozy ist verpflichtet, all jene Daten bereitzustellen, die es über dich gespeichert hat",
-      "link": "Eine Kopie meiner Daten herunterladen",
-      "server_error": "Etwas ist schief gelaufen. Bitte versuche es erneut oder kontaktiere uns.",
+      "link": "Mein Cozy exportieren",
+      "server_error": "Etwas ist schiefgelaufen, bitte versuche es erneut oder kontaktiere uns.",
       "fetch_error": "Etwas ist beim Abrufen deiner Exportdaten schiefgelaufen. Bitte versuche es später ernuet oder kontaktiere uns.",
       "missing_error": "Das Archive scheint zu fehlen oder ist abgelaufen. Bitte versucht es erneut oder kontaktiere uns.",
       "success": "Deine Anfrage wurde erfolgreich gesendet!",
@@ -161,6 +161,27 @@
         "CTA": "Das Archiv herunterladen",
         "CTA_part": "Lade (Teil %{number}) herunter"
       }
+    },
+    "import": {
+      "link": "Ein Cozy importieren",
+      "server_error": "Etwas ist schiefgelaufen, bitte versuche es erneut oder kontaktiere uns.",
+      "invalid_url": "Der Link scheint nicht mit einem Downloadlink von Cozy übereinzustimmen.",
+      "quota_too_small": "Der Speicherplatz deines Cozys ist zu gering, um all deine Daten zu importieren. Zwei Lösungen sind vorhanden: erhöhe den Speicherplatz deines Cozys oder entferne Daten, die für den Import nicht benötigt werden. ",
+      "modal": {
+        "title": "Ein Cozy importieren",
+        "description": "Füge unten den Downloadlink aus der E-Mail ein. Um den Downloadlink eines Cozys zu erhalten, musst du lediglich seinen Export starten.",
+        "cancel": "Abbrechen",
+        "CTA": "Importieren"
+      },
+      "confirmation": {
+        "title": "Warnung",
+        "description": "Beim Importieren in dein Cozy **%{url}**, werden bereits vorhandene Daten überschrieben. Der Zugriff auf dein Cozy wird solange geblockt, bis dieser Vorgang abgeschlossen ist.\n\nMöchtest du wirklich fortfahren?",
+        "cancel": "Abbrechen",
+        "CTA": "Daten überschreiben"
+      },
+	  "url": {
+		"label": "Downloadlink"
+	  }
     },
     "locale" : {
       "title" : "Sprache",
@@ -334,7 +355,7 @@
         "fields": {
           "message": {
             "title": "Deine Anfrage",
-            "placeholder": "Sag uns etwas (frag nach Hilfe, teile ein Feedback oder sag uns einfach hallo). Wir freuen uns, mit dir zu sprechen."
+            "placeholder": "Erzähl' uns alles (frag' nach Hilfe, teile Feedback oder sage einfach Hallo). Wir freuen uns, dich zu sprechen. "
           }
         },
         "button": "Lass uns gehen!",
