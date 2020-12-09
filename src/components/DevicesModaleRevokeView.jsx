@@ -1,12 +1,11 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
+
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Button from 'cozy-ui/transpiled/react/Button'
-
-import ReactMarkdown from 'react-markdown'
-
-import classNames from 'classnames'
-import styles from 'styles/devicesModaleRevokeView.styl'
+import { Media, Bd, Img } from 'cozy-ui/transpiled/react/Media'
+import IconCircle2Arrows from '../assets/icons/IconCircle2Arrows'
 
 const RevokeDeviceDialog = ({ device, revokeDevice, cancelAction }) => {
   const { t } = useI18n()
@@ -34,10 +33,14 @@ const RevokeDeviceDialog = ({ device, revokeDevice, cancelAction }) => {
           <ReactMarkdown
             source={t('revokeDevice.description', { name: device.client_name })}
           />
-          <ReactMarkdown
-            source={t('revokeDevice.subText')}
-            className={classNames(styles['icon'], styles['icon-arrows'])}
-          />
+          <Media>
+            <Img className="u-mr-half">
+              <IconCircle2Arrows />
+            </Img>
+            <Bd>
+              <ReactMarkdown source={t('revokeDevice.subText')} />
+            </Bd>
+          </Media>
         </>
       }
     />
