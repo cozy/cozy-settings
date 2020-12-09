@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { STACK_DOMAIN } from 'actions'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Modal, {
@@ -50,6 +51,15 @@ class ExportSection extends Component {
       <div>
         <div className="{viewStyles['set-view-section']} u-mb-1">
           <h3>{t('ProfileView.export.title')}</h3>
+          <p className="u-mt-1">
+            <form
+              action={STACK_DOMAIN + '/move/initialize'}
+              method="post"
+              target="_blank"
+            >
+              <Button label={t('ProfileView.move.button')} extension="full" />
+            </form>
+          </p>
           <p className={viewStyles['set-view-section-label']}>
             {t('ProfileView.export.label')}
           </p>
