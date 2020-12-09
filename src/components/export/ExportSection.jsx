@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Modal, {
-  ModalHeader,
-  ModalDescription,
-  ModalFooter
-} from 'cozy-ui/transpiled/react/Modal'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 
 import viewStyles from 'styles/view.styl'
