@@ -1,63 +1,64 @@
-import React, { Fragment } from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { Button } from 'cozy-ui/transpiled/react/Button'
+import React from 'react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
-import viewStyles from 'styles/view'
 import styles from 'styles/fields'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
-export const ActivationConfirmation = ({
-  t,
-  activate2FA,
-  images,
-  twoFactor
-}) => (
-  <Fragment>
-    <img
-      alt={t('ProfileView.twofa.title.activate')}
-      src={images.twoFaModalBanner}
-    />
-    <h3>{t('ProfileView.twofa.modal.protect')}</h3>
-    <ReactMarkdownWrapper
-      source={t('ProfileView.twofa.modal.change', {
-        link: 'https://support.cozy.io/article/114-doubleauthentification'
-      })}
-    />
-    <div className={viewStyles['set-view-content-twofa']}>
-      <div className={viewStyles['set-view-content-twofa-point']}>
-        <img
-          className={viewStyles['set-view-content-twofa-point-image']}
-          alt="{t('ProfileView.twofa.modal.secu_title')}"
-          src={images.twoFaModalSecu}
-        />
-        <div>
-          <b>{t('ProfileView.twofa.modal.secu_title')}</b>
-          <p>{t('ProfileView.twofa.modal.secu_description')}</p>
-        </div>
-      </div>
-      <div className={viewStyles['set-view-content-twofa-point']}>
-        <img
-          className={viewStyles['set-view-content-twofa-point-image']}
-          alt="{t('ProfileView.twofa.modal.protect_title')}"
-          src={images.twoFaModalProtect}
-        />
-        <div>
-          <b>{t('ProfileView.twofa.modal.protect_title')}</b>
-          <p>{t('ProfileView.twofa.modal.protect_description')}</p>
-        </div>
-      </div>
-    </div>
-    {twoFactor.error && (
-      <p className={styles['coz-form-errors']}>{t(twoFactor.error)}</p>
-    )}
-    <div className={viewStyles['set-view-content-twofa-modal-content-button']}>
-      <Button
-        onClick={activate2FA}
-        aria-busy={twoFactor.submitting}
-        label={t('ProfileView.twofa.modal.button.activate')}
+export const ActivationConfirmation = ({ images, twoFactor }) => {
+  const { t } = useI18n()
+  return (
+    <>
+      <img
+        alt={t('ProfileView.twofa.title.activate')}
+        src={images.twoFaModalBanner}
       />
-    </div>
-  </Fragment>
-)
+      <h3>{t('ProfileView.twofa.modal.protect')}</h3>
+      <ReactMarkdownWrapper
+        source={t('ProfileView.twofa.modal.change', {
+          link: 'https://support.cozy.io/article/114-doubleauthentification'
+        })}
+      />
+      <div>
+        <Media>
+          <Img>
+            <img
+              width="80px"
+              className="u-mr-1-half"
+              alt="{t('ProfileView.twofa.modal.secu_title')}"
+              src={images.twoFaModalSecu}
+            />
+          </Img>
+          <div>
+            <Typography variant="h5">
+              {t('ProfileView.twofa.modal.secu_title')}
+            </Typography>
+            <p>{t('ProfileView.twofa.modal.secu_description')}</p>
+          </div>
+        </Media>
+        <Media>
+          <Img>
+            <img
+              width="80px"
+              className="u-mr-1-half"
+              alt="{t('ProfileView.twofa.modal.protect_title')}"
+              src={images.twoFaModalProtect}
+            />
+          </Img>
+          <Bd>
+            <Typography variant="h5">
+              {t('ProfileView.twofa.modal.protect_title')}
+            </Typography>
+            <p>{t('ProfileView.twofa.modal.protect_description')}</p>
+          </Bd>
+        </Media>
+      </div>
+      {twoFactor.error && (
+        <p className={styles['coz-form-errors']}>{t(twoFactor.error)}</p>
+      )}
+    </>
+  )
+}
 
-export default translate()(ActivationConfirmation)
+export default ActivationConfirmation

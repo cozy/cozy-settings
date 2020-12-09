@@ -1,14 +1,13 @@
 import React from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Modal, { ModalContent } from 'cozy-ui/transpiled/react/Modal'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import Button from 'cozy-ui/transpiled/react/Button'
 
-import viewStyles from 'styles/view'
 import ActivationConfirmation from 'components/2FA/ActivationConfirmation'
 import TwoFactorCode from 'components/2FA/TwoFactorCode'
 import ActivationConfirmed from 'components/2FA/ActivationConfirmed'
 
 export const Activate2FA = ({
-  t,
   activate2FA,
   checkTwoFactorCode,
   mailConfirmationCodeIsValid,
@@ -19,47 +18,56 @@ export const Activate2FA = ({
   instance,
   cozyDomain,
   images
-}) => (
-  <div className={viewStyles['set-view-content-twofa-modal-wrapper']}>
-    <Modal
-      dismissAction={closeTwoFAActivationModal}
-      className={viewStyles['set-view-content-twofa-modal']}
+}) => {
+  const { t } = useI18n()
+  return (
+    <ConfirmDialog
+      open
+      onClose={closeTwoFAActivationModal}
       title={t(
         isTwoFactorEnabled && mailConfirmationCodeIsValid
           ? 'ProfileView.twofa.title.validation'
           : 'ProfileView.twofa.title.activate'
       )}
-      size="large"
-    >
-      <ModalContent
-        className={viewStyles['set-view-content-twofa-modal-content']}
-      >
-        {twoFactor.pending ? (
-          mailConfirmationCodeIsValid ? (
-            <ActivationConfirmed
-              closeTwoFAActivationModal={closeTwoFAActivationModal}
-              instance={instance}
-              cozyDomain={cozyDomain}
-            />
-          ) : (
-            <TwoFactorCode
-              checkTwoFactorCode={checkTwoFactorCode}
-              closeTwoFAActivationModal={closeTwoFAActivationModal}
-              onChange={onChange}
-              twoFactor={twoFactor}
-              email={instance && instance.data.attributes.email}
-            />
-          )
-        ) : (
-          <ActivationConfirmation
-            activate2FA={activate2FA}
-            images={images}
-            twoFactor={twoFactor}
+      size="m"
+      actions={
+        twoFactor.pending ? null : (
+          <Button
+            onClick={activate2FA}
+            aria-busy={twoFactor.submitting}
+            label={t('ProfileView.twofa.modal.button.activate')}
           />
-        )}
-      </ModalContent>
-    </Modal>
-  </div>
-)
+        )
+      }
+      content={
+        <>
+          {twoFactor.pending ? (
+            mailConfirmationCodeIsValid ? (
+              <ActivationConfirmed
+                closeTwoFAActivationModal={closeTwoFAActivationModal}
+                instance={instance}
+                cozyDomain={cozyDomain}
+              />
+            ) : (
+              <TwoFactorCode
+                checkTwoFactorCode={checkTwoFactorCode}
+                closeTwoFAActivationModal={closeTwoFAActivationModal}
+                onChange={onChange}
+                twoFactor={twoFactor}
+                email={instance && instance.data.attributes.email}
+              />
+            )
+          ) : (
+            <ActivationConfirmation
+              activate2FA={activate2FA}
+              images={images}
+              twoFactor={twoFactor}
+            />
+          )}
+        </>
+      }
+    />
+  )
+}
 
-export default translate()(Activate2FA)
+export default Activate2FA
