@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-
-import styles from 'styles/deleteAccountFormModal'
+import Button from 'cozy-ui/transpiled/react/Button'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
 import { sendDeleteAccountRequest } from 'actions/email'
-
-import Button from 'cozy-ui/transpiled/react/Button'
-import Modal, {
-  ModalContent,
-  ModalFooter,
-  ModalHeader
-} from 'cozy-ui/transpiled/react/Modal'
-
 import { STACK_DOMAIN } from 'actions'
+
+import styles from 'styles/deleteAccountFormModal'
 
 const DONE = 'done'
 const ERRORED = 'errored'
@@ -62,28 +56,30 @@ export class FormModal extends Component {
     const { status } = this.state
     const isSending = status === SENDING
     return (
-      <Modal
-        closable
-        dismissAction={dismissAction}
+      <ConfirmDialog
+        open
+        onClose={dismissAction}
         mobileFullScreen
-        size="small"
-      >
-        <ModalHeader>{t('DeleteAccount.modal.form.title')}</ModalHeader>
-        <form onSubmit={this.onSend}>
-          <ModalContent>
-            <label>{t('DeleteAccount.modal.form.reason.label')}</label>
-            <div className={styles['coz-textarea-wrapper']}>
-              <textarea
-                aria-busy={isSending}
-                maxLength={REASON_MAXLENGTH}
-                readOnly={isSending}
-                ref={element => {
-                  this.reasonElement = element
-                }}
-              />
-            </div>
-          </ModalContent>
-          <ModalFooter className={styles['set-delete-account-form-controls']}>
+        title={t('DeleteAccount.modal.form.title')}
+        content={
+          <>
+            <form onSubmit={this.onSend}>
+              <label>{t('DeleteAccount.modal.form.reason.label')}</label>
+              <div className={styles['coz-textarea-wrapper']}>
+                <textarea
+                  aria-busy={isSending}
+                  maxLength={REASON_MAXLENGTH}
+                  readOnly={isSending}
+                  ref={element => {
+                    this.reasonElement = element
+                  }}
+                />
+              </div>
+            </form>
+          </>
+        }
+        actions={
+          <>
             <Button
               disabled={isSending}
               label={t('DeleteAccount.modal.form.button.cancel.label')}
@@ -96,11 +92,11 @@ export class FormModal extends Component {
               disabled={isSending}
               label={t('DeleteAccount.modal.form.button.submit.label')}
               theme="danger"
-              type="submit"
+              onClick={this.onSend}
             />
-          </ModalFooter>
-        </form>
-      </Modal>
+          </>
+        }
+      />
     )
   }
 }
