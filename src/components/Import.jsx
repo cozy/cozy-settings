@@ -3,23 +3,17 @@ import React, { Component } from 'react'
 import { STACK_DOMAIN } from 'actions'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Modal, {
-  ModalHeader,
-  ModalDescription,
-  ModalFooter
-} from 'cozy-ui/transpiled/react/Modal'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
-import Dialog, {
-  DialogTitle,
-  DialogActions,
-  DialogContent,
-  DialogCloseButton
-} from 'cozy-ui/transpiled/react/Dialog'
 
 import viewStyles from 'styles/view'
 import formStyles from 'styles/fields'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+
+import {
+  IllustrationDialog,
+  ConfirmDialog
+} from 'cozy-ui/transpiled/react/CozyDialogs'
 
 const importImage = require('assets/images/import-cozy.svg')
 
@@ -88,25 +82,21 @@ class Import extends Component {
             />
           </p>
         </div>
-        {displayModal && (
-          <Modal
-            className={viewStyles['set-export-modal']}
-            secondaryAction={this.toggleModal}
-            mobileFullscreen
-          >
-            <ModalHeader className="u-ta-center u-pr-0">
+        <IllustrationDialog
+          open={displayModal}
+          onClose={this.toggleModal}
+          title={
+            <div className="u-flex u-flex-column u-flex-items-center">
               <img
-                className={viewStyles['set-export-modal-image']}
+                className="u-maw-4 u-mb-1"
                 alt={t('ProfileView.import.modal.title')}
                 src={importImage}
               />
-              <h2 className={viewStyles['set-export-modal-title']}>
-                {t('ProfileView.import.modal.title')}
-              </h2>
-            </ModalHeader>
-            <ModalDescription
-              className={viewStyles['set-export-modal-description']}
-            >
+              {t('ProfileView.import.modal.title')}
+            </div>
+          }
+          content={
+            <>
               <ReactMarkdownWrapper
                 source={t('ProfileView.import.modal.description')}
               />
@@ -125,8 +115,10 @@ class Import extends Component {
                   {t(importData.error)}
                 </p>
               )}
-            </ModalDescription>
-            <ModalFooter className={viewStyles['set-export-modal-footer']}>
+            </>
+          }
+          actions={
+            <>
               <Button
                 theme="secondary"
                 onClick={this.toggleModal}
@@ -139,45 +131,44 @@ class Import extends Component {
                 disabled={importData.checking}
                 label={t('ProfileView.import.modal.CTA')}
               />
-            </ModalFooter>
-          </Modal>
-        )}
-        <Dialog
+            </>
+          }
+        />
+        <ConfirmDialog
+          title={t('ProfileView.import.confirmation.title')}
           open={displayConfirmation}
           onClose={this.toggleConfirmation}
-          fullScreen={false}
-        >
-          <DialogCloseButton onClick={this.toggleConfirmation} />
-          <DialogTitle>
-            {t('ProfileView.import.confirmation.title')}
-          </DialogTitle>
-          <DialogContent>
-            <ReactMarkdownWrapper
-              source={t('ProfileView.import.confirmation.description', {
-                url: STACK_DOMAIN.replace('//', '')
-              })}
-            />
-            {importData.error && (
-              <p className={formStyles['coz-form-errors']}>
-                {t(importData.error)}
-              </p>
-            )}
-          </DialogContent>
-          <DialogActions>
-            <Button
-              theme="secondary"
-              onClick={this.toggleConfirmation}
-              label={t('ProfileView.import.confirmation.cancel')}
-            />
-            <Button
-              theme="danger"
-              onClick={this.submitImport}
-              busy={importData.submitting}
-              disabled={importData.submitting}
-              label={t('ProfileView.import.confirmation.CTA')}
-            />
-          </DialogActions>
-        </Dialog>
+          content={
+            <>
+              <ReactMarkdownWrapper
+                source={t('ProfileView.import.confirmation.description', {
+                  url: STACK_DOMAIN.replace('//', '')
+                })}
+              />
+              {importData.error && (
+                <p className={formStyles['coz-form-errors']}>
+                  {t(importData.error)}
+                </p>
+              )}
+            </>
+          }
+          actions={
+            <>
+              <Button
+                theme="secondary"
+                onClick={this.toggleConfirmation}
+                label={t('ProfileView.import.confirmation.cancel')}
+              />
+              <Button
+                theme="danger"
+                onClick={this.submitImport}
+                busy={importData.submitting}
+                disabled={importData.submitting}
+                label={t('ProfileView.import.confirmation.CTA')}
+              />
+            </>
+          }
+        />
       </div>
     )
   }
