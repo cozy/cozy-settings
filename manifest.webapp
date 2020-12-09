@@ -29,6 +29,14 @@
         "POST"
       ]
     },
+    "imports": {
+      "description": "Required to import the Cozy data",
+      "type": "io.cozy.imports",
+      "verbs": [
+        "GET",
+        "POST"
+      ]
+    },
     "sessions": {
       "description": "Required to manage your sessions",
       "type": "io.cozy.sessions.logins",
@@ -117,6 +125,12 @@
   ],
   "type": "webapp",
   "locales": {
+    "de": {
+      "name": "Einstellungen"
+    },
+    "de_DE": {
+      "name": "Einstellungen"
+    },
     "en": {
       "name": "Settings"
     },
@@ -125,11 +139,21 @@
     },
     "fr": {
       "name": "Paramètres"
+    },
+    "ja": {
+      "name": "設定"
+    },
+    "nl_NL": {
+      "name": "Instellingen"
     }
   },
   "langs": [
+    "de",
+    "de_DE",
     "en",
     "es",
-    "fr"
+    "fr",
+    "ja",
+    "nl_NL"
   ]
 }
