@@ -17,7 +17,7 @@ const PassphraseView = props => {
 
   useEffect(() => {
     fetchInfos()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const [twoFAModalOpen, setTwoFAModalOpen] = useState(false)
   const [currentPassphrase, setCurrentPassphrase] = useState('')
