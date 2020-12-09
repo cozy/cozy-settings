@@ -11,7 +11,6 @@ export const ConfirmModal = props => {
       open
       closable
       onClose={dismissAction}
-      size="s"
       title={t('DeleteAccount.modal.confirm.title')}
       content={
         <ul className="u-mv-0">

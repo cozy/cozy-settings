@@ -10,6 +10,7 @@ export const Desactivate2FA = ({
   const { t } = useI18n()
   return (
     <ConfirmDialog
+      open
       onClose={closeTwoFADesactivationModal}
       title={t('ProfileView.twofa.title.desactivate')}
       content={

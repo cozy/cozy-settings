@@ -34,6 +34,7 @@ export class Passphrase2FA extends Component {
     const email = instance && instance.data.attributes.email
     return (
       <Dialog
+        open
         onClose={closeTwoFAPassphraseModal}
         title={t('ProfileView.twofa.passphrase.title')}
         size="s"

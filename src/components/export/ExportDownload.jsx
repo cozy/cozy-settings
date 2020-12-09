@@ -39,6 +39,7 @@ class ExportDownload extends Component {
 
     return (
       <Dialog
+        open
         onClose={() => this.closeModal()}
         title={t('ProfileView.export.download.title')}
         content={
