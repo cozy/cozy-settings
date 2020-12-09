@@ -13,6 +13,8 @@ import formStyles from 'styles/fields'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import ExportDownload from 'components/export/ExportDownload'
 
+import { IllustrationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+
 const exportImage = require('assets/images/export-cozy-mail.svg')
 
 class ExportSection extends Component {
@@ -62,48 +64,50 @@ class ExportSection extends Component {
           </p>
         </div>
         {displayModal && (
-          <Modal
-            className={viewStyles['set-export-modal']}
-            secondaryAction={this.toggleModal}
-            mobileFullscreen
-          >
-            <ModalHeader className="u-ta-center u-pr-0">
-              <img
-                className={viewStyles['set-export-modal-image']}
-                alt={t('ProfileView.export.modal.title')}
-                src={exportImage}
-              />
-              <h2 className={viewStyles['set-export-modal-title']}>
+          <IllustrationDialog
+            open
+            onClose={() => this.toggleModal()}
+            title={
+              <div className="u-flex u-flex-column u-flex-items-center">
+                <img
+                  className="u-maw-4 u-mb-1"
+                  alt={t('ProfileView.export.modal.title')}
+                  src={exportImage}
+                />
                 {t('ProfileView.export.modal.title')}
-              </h2>
-            </ModalHeader>
-            <ModalDescription
-              className={viewStyles['set-export-modal-description']}
-            >
-              <ReactMarkdownWrapper
-                source={t('ProfileView.export.modal.description', { email })}
-              />
-              {exportData.error && (
-                <p className={formStyles['coz-form-errors']}>
-                  {t(exportData.error)}
-                </p>
-              )}
-            </ModalDescription>
-            <ModalFooter className={viewStyles['set-export-modal-footer']}>
-              <Button
-                theme="secondary"
-                onClick={this.toggleModal}
-                label={t('ProfileView.export.modal.cancel')}
-              />
-              <Button
-                theme="primary"
-                onClick={this.submitExport}
-                busy={exportData.submitting}
-                disabled={exportData.submitting}
-                label={t('ProfileView.export.modal.CTA')}
-              />
-            </ModalFooter>
-          </Modal>
+              </div>
+            }
+            content={
+              <>
+                <ReactMarkdownWrapper
+                  source={t('ProfileView.export.modal.description', { email })}
+                />
+                {exportData.error && (
+                  <p className={formStyles['coz-form-errors']}>
+                    {t(exportData.error)}
+                  </p>
+                )}
+              </>
+            }
+            actions={
+              <>
+                <Button
+                  className="u-flex-grow-1"
+                  theme="secondary"
+                  onClick={this.toggleModal}
+                  label={t('ProfileView.export.modal.cancel')}
+                />
+                <Button
+                  className="u-flex-grow-1"
+                  theme="primary"
+                  onClick={this.submitExport}
+                  busy={exportData.submitting}
+                  disabled={exportData.submitting}
+                  label={t('ProfileView.export.modal.CTA')}
+                />
+              </>
+            }
+          />
         )}
         {exportId && (
           <ExportDownload
