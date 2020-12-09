@@ -261,6 +261,7 @@
     "description": "Vous allez révoquer **%{name}**.",
     "subText": "La synchronisation depuis cet appareil s'arrêtera immédiatement.",
     "validate": "Révoquer l’appareil",
+    "cancel": "Annuler",
     "error": "Je ne parviens pas à révoquer l’appareil, essayez de recharger la page."
   },
   "ServicesView": {
