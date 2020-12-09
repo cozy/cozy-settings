@@ -111,7 +111,7 @@
         "protect": "Protégez votre Cozy avec l'authentification en deux étapes",
         "change": " **Qu'est-ce que ça change ?** Chaque fois que vous vous connecterez à votre Cozy, vous aurez besoin de votre mot de passe et d'un code d'activation. <br/>[Consulter notre site d'aide →](%{link}). ",
         "secu_title": "Ajoutez un niveau de sécurité supplémentaire",
-        "secu_description": "Un mot de passe, c'est bien mais s'il n'est pas \\\\\\\"compliqué\\\\\\\", un intrus peut le deviner facilement. Recevoir un code de validation par e-mail vous garantit le contrôle de votre Cozy.",
+        "secu_description": "Un mot de passe, c'est bien mais s'il n'est pas \"compliqué\", un intrus peut le deviner facilement. Recevoir un code de validation par e-mail vous garantit le contrôle de votre Cozy.",
         "protect_title": "Renforcez la protection de vos données",
         "protect_description": "Même si un inconnu obtient votre mot de passe, vous restez le seul maître à bord et le seul à pouvoir vous connecter à votre Cozy.",
         "desactivate_title": "Êtes-vous certain·e de désactiver cette option ?",
