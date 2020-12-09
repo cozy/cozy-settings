@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -20,7 +19,6 @@ export class DeleteAccount extends Component {
   }
 
   cancel = () => {
-    const { status } = this.state
     this.setStatus(IDLE)
   }
 
@@ -33,7 +31,7 @@ export class DeleteAccount extends Component {
   onError = error => {
     const { t } = this.props
     this.setStatus(IDLE)
-    console.error(error.message)
+    console.error(error.message) // eslint-disable-line no-console
     Alerter.error(t('DeleteAccount.error.message'))
   }
 
@@ -48,19 +46,19 @@ export class DeleteAccount extends Component {
     const { status } = this.state
     return (
       <div>
-        { status === CONFIRMING &&
+        {status === CONFIRMING && (
           <ConfirmModal
             dismissAction={this.cancel}
             primaryAction={this.request}
           />
-        }
-        { status === REQUESTING &&
+        )}
+        {status === REQUESTING && (
           <FormModal
             dismissAction={this.cancel}
             onError={this.onError}
             onSuccess={this.onRequested}
           />
-        }
+        )}
         <div className={viewStyles['set-view-section']}>
           <h3>{t('DeleteAccount.title')}</h3>
           <p className={viewStyles['set-view-section-label']}>
