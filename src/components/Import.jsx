@@ -6,8 +6,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 
-import viewStyles from 'styles/view'
-import formStyles from 'styles/fields'
+import viewStyles from 'styles/view.styl'
+import formStyles from 'styles/fields.styl'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
 import {

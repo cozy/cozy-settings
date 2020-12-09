@@ -3,7 +3,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
-import styles from 'styles/fields'
+import styles from 'styles/fields.styl'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
 export const ActivationConfirmation = ({ images, twoFactor }) => {

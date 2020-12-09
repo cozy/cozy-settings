@@ -9,7 +9,7 @@ import Nav, {
 } from 'cozy-ui/transpiled/react/Nav'
 import UISidebar from 'cozy-ui/transpiled/react/Sidebar'
 
-import styles from 'styles/sidebar'
+import styles from 'styles/sidebar.styl'
 
 import boxIcon from 'assets/icons/icon-box.svg'
 import globeIcon from 'assets/icons/icon-globe.svg'

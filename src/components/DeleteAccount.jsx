@@ -8,7 +8,7 @@ import Button from 'cozy-ui/transpiled/react/Button'
 import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
 import FormModal from 'components/DeleteAccount/FormModal'
 
-import viewStyles from 'styles/view'
+import viewStyles from 'styles/view.styl'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'

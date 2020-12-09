@@ -1,4 +1,4 @@
-import styles from 'styles/passphrase'
+import styles from 'styles/passphrase.styl'
 
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'

@@ -1,5 +1,5 @@
-import styles from 'styles/fields'
-import viewStyles from 'styles/view'
+import styles from 'styles/fields.styl'
+import viewStyles from 'styles/view.styl'
 
 import React from 'react'
 import classNames from 'classnames'

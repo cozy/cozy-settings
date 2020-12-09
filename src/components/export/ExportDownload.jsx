@@ -6,7 +6,7 @@ import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import ButtonAction from 'cozy-ui/transpiled/react/ButtonAction'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import formStyles from 'styles/fields'
+import formStyles from 'styles/fields.styl'
 
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 

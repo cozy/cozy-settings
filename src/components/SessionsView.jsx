@@ -1,5 +1,5 @@
-import tableStyles from 'styles/table'
-import viewStyles from 'styles/view'
+import tableStyles from 'styles/table.styl'
+import viewStyles from 'styles/view.styl'
 
 import React, { Component } from 'react'
 

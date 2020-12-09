@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
-import styles from 'styles/index'
+import styles from 'styles/index.styl'
 
 const LinkRenderer = props => (
   <a

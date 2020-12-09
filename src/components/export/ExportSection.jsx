@@ -8,8 +8,8 @@ import Modal, {
 } from 'cozy-ui/transpiled/react/Modal'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 
-import viewStyles from 'styles/view'
-import formStyles from 'styles/fields'
+import viewStyles from 'styles/view.styl'
+import formStyles from 'styles/fields.styl'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import ExportDownload from 'components/export/ExportDownload'
 

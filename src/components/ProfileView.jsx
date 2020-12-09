@@ -1,4 +1,4 @@
-import viewStyles from 'styles/view'
+import viewStyles from 'styles/view.styl'
 
 import classNames from 'classnames'
 import React, { Component } from 'react'

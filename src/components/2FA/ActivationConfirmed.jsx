@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 
-import viewStyles from 'styles/view'
+import viewStyles from 'styles/view.styl'
 
 export const ActivationConfirmed = ({
   t,

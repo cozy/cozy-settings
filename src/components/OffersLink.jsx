@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
-import viewStyles from 'styles/view'
-import styles from 'styles/storage'
+import viewStyles from 'styles/view.styl'
+import styles from 'styles/storage.styl'
 
 export class OffersLink extends PureComponent {
   render() {

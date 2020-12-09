@@ -6,7 +6,7 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { sendDeleteAccountRequest } from 'actions/email'
 import { STACK_DOMAIN } from 'actions'
 
-import styles from 'styles/deleteAccountFormModal'
+import styles from 'styles/deleteAccountFormModal.styl'
 
 const DONE = 'done'
 const ERRORED = 'errored'

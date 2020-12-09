@@ -6,7 +6,7 @@ import Button from 'cozy-ui/transpiled/react/Button'
 import ReactMarkdown from 'react-markdown'
 
 import classNames from 'classnames'
-import styles from 'styles/devicesModaleRevokeView'
+import styles from 'styles/devicesModaleRevokeView.styl'
 
 const RevokeDeviceDialog = ({ device, revokeDevice, cancelAction }) => {
   const { t } = useI18n()
