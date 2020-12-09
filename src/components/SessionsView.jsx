@@ -40,7 +40,7 @@ class SessionsView extends Component {
             className={'u-pos-fixed-s'}
             middle
             size="xxlarge"
-            loadingType={t('Loading.loading')}
+            loadingType="loading"
           />
         )}
         {!isFetching && sessions && (

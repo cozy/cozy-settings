@@ -62,7 +62,7 @@
     "storage": "Storage",
     "email_notifications": "E-mail notifications"
   },
-  "Loading": {
+  "loading": {
     "loading": "Loading"
   },
   "Empty": {

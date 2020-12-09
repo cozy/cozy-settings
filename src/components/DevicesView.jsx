@@ -61,7 +61,7 @@ class DevicesView extends Component {
             className={'u-pos-fixed-s'}
             middle
             size="xxlarge"
-            loadingType={t('Loading.loading')}
+            loadingType="loading"
           />
         )}
         {!isFetching && devices.length === 0 && <NoDevicesMessage />}
