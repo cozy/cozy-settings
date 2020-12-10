@@ -1,5 +1,5 @@
-import viewStyles from 'styles/view'
-import styles from 'styles/storage'
+import viewStyles from 'styles/view.styl'
+import styles from 'styles/storage.styl'
 
 import React, { Component } from 'react'
 
@@ -41,7 +41,7 @@ class StorageView extends Component {
             className={'u-pos-fixed-s'}
             middle
             size="xxlarge"
-            loadingType={t('Loading.loading')}
+            loadingType="loading"
           />
         )}
         {!isFetching && storageData && (

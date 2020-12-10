@@ -1,32 +1,40 @@
-/* eslint-disable */
 import React from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
-
-import Modal, { ModalContent, ModalHeader } from 'cozy-ui/transpiled/react/Modal'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Button from 'cozy-ui/transpiled/react/Button'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
 export const ConfirmModal = props => {
-  const { dismissAction, primaryAction, t } = props
+  const { dismissAction, primaryAction } = props
+  const { t } = useI18n()
   return (
-    <Modal
+    <ConfirmDialog
+      open
       closable
-      dismissAction={dismissAction}
-      primaryAction={primaryAction}
-      primaryText={t('DeleteAccount.modal.confirm.button.submit.label')}
-      primaryType="danger"
-      secondaryAction={dismissAction}
-      secondaryText={t('DeleteAccount.modal.confirm.button.cancel.label')}
-      size="small"
-    >
-      <ModalHeader>{t('DeleteAccount.modal.confirm.title')}</ModalHeader>
-      <ModalContent>
-        <ul>
+      onClose={dismissAction}
+      title={t('DeleteAccount.modal.confirm.title')}
+      content={
+        <ul className="u-mv-0">
           <li>{t('DeleteAccount.modal.confirm.description.line.1')}</li>
           <li>{t('DeleteAccount.modal.confirm.description.line.2')}</li>
           <li>{t('DeleteAccount.modal.confirm.description.line.3')}</li>
         </ul>
-      </ModalContent>
-    </Modal>
-  );
-};
+      }
+      actions={
+        <>
+          <Button
+            label={t('DeleteAccount.modal.confirm.button.submit.label')}
+            onClick={primaryAction}
+            theme="danger"
+          />
+          <Button
+            label={t('DeleteAccount.modal.confirm.button.cancel.label')}
+            onClick={dismissAction}
+            theme="secondary"
+          />
+        </>
+      }
+    />
+  )
+}
 
-export default translate()(ConfirmModal)
+export default ConfirmModal

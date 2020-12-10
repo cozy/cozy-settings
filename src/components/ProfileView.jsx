@@ -1,4 +1,4 @@
-import viewStyles from 'styles/view'
+import viewStyles from 'styles/view.styl'
 
 import classNames from 'classnames'
 import React, { Component } from 'react'
@@ -66,7 +66,7 @@ class ProfileView extends Component {
               className={'u-pos-fixed-s'}
               middle
               size="xxlarge"
-              loadingType={t('Loading.loading')}
+              loadingType="loading"
             />
           )}
           {!isFetching && (

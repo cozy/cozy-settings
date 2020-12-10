@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PassphraseForm from 'components/PassphraseForm'
 import Passphrase2FA from 'components/2FA/Passphrase2FA'
 import classNames from 'classnames'
-import viewStyles from 'styles/view'
+import viewStyles from 'styles/view.styl'
 
 const PassphraseView = props => {
   const {
@@ -17,7 +17,7 @@ const PassphraseView = props => {
 
   useEffect(() => {
     fetchInfos()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const [twoFAModalOpen, setTwoFAModalOpen] = useState(false)
   const [currentPassphrase, setCurrentPassphrase] = useState('')

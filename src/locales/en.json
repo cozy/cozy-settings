@@ -62,7 +62,7 @@
     "storage": "Storage",
     "email_notifications": "E-mail notifications"
   },
-  "Loading": {
+  "loading": {
     "loading": "Loading"
   },
   "Empty": {
@@ -261,6 +261,7 @@
     "description": "You're about to unlink **%{name}**.",
     "subText": "It will immediately stop syncing with this device.",
     "validate": "Revoke device",
+    "cancel": "Cancel",
     "error": "Unable to revoke the device, try to reload the page."
   },
   "ServicesView": {

@@ -1,6 +1,6 @@
-import tableStyles from 'styles/table'
-import viewStyles from 'styles/view'
-import devicesStyles from 'styles/devices'
+import tableStyles from 'styles/table.styl'
+import viewStyles from 'styles/view.styl'
+import devicesStyles from 'styles/devices.styl'
 
 import classNames from 'classnames'
 
@@ -61,7 +61,7 @@ class DevicesView extends Component {
             className={'u-pos-fixed-s'}
             middle
             size="xxlarge"
-            loadingType={t('Loading.loading')}
+            loadingType="loading"
           />
         )}
         {!isFetching && devices.length === 0 && <NoDevicesMessage />}

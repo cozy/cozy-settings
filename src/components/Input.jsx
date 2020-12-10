@@ -1,4 +1,4 @@
-import styles from 'styles/fields'
+import styles from 'styles/fields.styl'
 
 import React from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'

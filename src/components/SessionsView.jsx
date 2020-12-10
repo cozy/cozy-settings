@@ -1,5 +1,5 @@
-import tableStyles from 'styles/table'
-import viewStyles from 'styles/view'
+import tableStyles from 'styles/table.styl'
+import viewStyles from 'styles/view.styl'
 
 import React, { Component } from 'react'
 
@@ -40,7 +40,7 @@ class SessionsView extends Component {
             className={'u-pos-fixed-s'}
             middle
             size="xxlarge"
-            loadingType={t('Loading.loading')}
+            loadingType="loading"
           />
         )}
         {!isFetching && sessions && (

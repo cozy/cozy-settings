@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from 'styles/fields'
+import styles from 'styles/fields.styl'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Field from 'components/Field'
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'

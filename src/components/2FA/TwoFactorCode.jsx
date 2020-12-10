@@ -4,7 +4,7 @@ import { Button } from 'cozy-ui/transpiled/react/Button'
 import Field from 'cozy-ui/transpiled/react/Field'
 import { ErrorMessage } from 'cozy-ui/transpiled/react/Text'
 
-import viewStyles from 'styles/view'
+import viewStyles from 'styles/view.styl'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import settingsConfig from 'config'
 

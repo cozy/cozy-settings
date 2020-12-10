@@ -1,6 +1,3 @@
-/* eslint-disable */
-/* global cozy */
-
 import { cozyFetch } from 'actions'
 
 import { STACK_DOMAIN } from 'actions'
@@ -11,15 +8,17 @@ export const SEND_EMAIL_FAILURE = 'SEND_EMAIL_FAILURE'
 
 const CONTACT_ADDRESS = 'contact@cozycloud.cc'
 
-const CONTACT_RECIPIENT_LIST = [{name: 'Contact', email: CONTACT_ADDRESS}]
+const CONTACT_RECIPIENT_LIST = [{ name: 'Contact', email: CONTACT_ADDRESS }]
 
-function textPlainContentParts (message) {
-  return [{type: 'text/plain', body: message || 'No reason/message provided.'}]
+function textPlainContentParts(message) {
+  return [
+    { type: 'text/plain', body: message || 'No reason/message provided.' }
+  ]
 }
 
-export function sendMessageToSupport (client, message, t) {
+export function sendMessageToSupport(client, message, t) {
   return dispatch => {
-    dispatch({type: SEND_EMAIL})
+    dispatch({ type: SEND_EMAIL })
     if (!message) {
       return dispatch({
         type: SEND_EMAIL_FAILURE,
@@ -32,28 +31,41 @@ export function sendMessageToSupport (client, message, t) {
       CONTACT_RECIPIENT_LIST,
       textPlainContentParts(message),
       `[cozy-support] Ask support for ${domain}`
-    ).then(() => {
-      dispatch({type: SEND_EMAIL_SUCCESS})
-      try {
-        return sendEmail(client, null, [
-          {type: 'text/plain', body: t('support.response_email.body', { message })}
-        ], `[cozy-support] ${t('support.response_email.subject')}`,
-        'noreply')
-      } catch (e) { // ignore errors for this sending
-        console.warn('Something went wrong when copying the support request to the user.')
-      }
-    })
-    .catch(error => {
-      // error if no emails found
-      if (error.message && error.message.match(/no email in its settings/)) {
-        dispatch({
-          type: SEND_EMAIL_FAILURE,
-          error: { i18n: 'errors.noEmailFound' }
-        })
-      } else {
-        dispatch({type: SEND_EMAIL_FAILURE, error})
-      }
-    })
+    )
+      .then(() => {
+        dispatch({ type: SEND_EMAIL_SUCCESS })
+        try {
+          return sendEmail(
+            client,
+            null,
+            [
+              {
+                type: 'text/plain',
+                body: t('support.response_email.body', { message })
+              }
+            ],
+            `[cozy-support] ${t('support.response_email.subject')}`,
+            'noreply'
+          )
+        } catch (e) {
+          // ignore errors for this sending
+          // eslint-disable-next-line no-console
+          console.warn(
+            'Something went wrong when copying the support request to the user.'
+          )
+        }
+      })
+      .catch(error => {
+        // error if no emails found
+        if (error.message && error.message.match(/no email in its settings/)) {
+          dispatch({
+            type: SEND_EMAIL_FAILURE,
+            error: { i18n: 'errors.noEmailFound' }
+          })
+        } else {
+          dispatch({ type: SEND_EMAIL_FAILURE, error })
+        }
+      })
   }
 }
 
@@ -66,9 +78,16 @@ export function sendDeleteAccountRequest(client, subject, message) {
   )
 }
 
-export function sendEmail (client, recipientsList, contentParts, subject = '', mode = 'from') {
+export function sendEmail(
+  client,
+  recipientsList,
+  contentParts,
+  subject = '',
+  mode = 'from'
+) {
   if (!contentParts.length) throw new Error('No email content parts found')
-  if (mode === 'from' && !recipientsList.length) throw new Error('No recipients found')
+  if (mode === 'from' && !recipientsList.length)
+    throw new Error('No recipients found')
   const options = {
     mode,
     subject,
@@ -76,11 +95,12 @@ export function sendEmail (client, recipientsList, contentParts, subject = '', m
   }
   if (mode === 'from') options.to = recipientsList
   const jobCollection = client.collection('io.cozy.jobs')
-  return jobCollection.create('sendmail', options, {
-    priority: 10,
-    max_exec_count: 1
-  })
-  .then(({data: { attributes: job }}) => waitForJobFinished(job))
+  return jobCollection
+    .create('sendmail', options, {
+      priority: 10,
+      max_exec_count: 1
+    })
+    .then(({ data: { attributes: job } }) => waitForJobFinished(job))
 }
 
 // monitor the status of the job and resolve when the email is sent
@@ -89,27 +109,27 @@ export const JOB_STATE = {
   ERRORED: 'errored',
   DONE: 'done'
 }
-function waitForJobFinished (job) {
+function waitForJobFinished(job) {
   return new Promise((resolve, reject) => {
     let idInterval
 
     idInterval = setInterval(() => {
       cozyFetch('GET', `/jobs/${job._id}`)
-      .then(response => {
-        const job = response.data
-        if (job.attributes.state === JOB_STATE.ERRORED) {
+        .then(response => {
+          const job = response.data
+          if (job.attributes.state === JOB_STATE.ERRORED) {
+            clearInterval(idInterval)
+            reject(new Error(job.attributes.error))
+          }
+          if (job.attributes.state === JOB_STATE.DONE) {
+            clearInterval(idInterval)
+            resolve(job)
+          }
+        })
+        .catch(error => {
           clearInterval(idInterval)
-          reject(new Error(job.attributes.error))
-        }
-        if (job.attributes.state === JOB_STATE.DONE) {
-          clearInterval(idInterval)
-          resolve(job)
-        }
-      })
-      .catch(error => {
-        clearInterval(idInterval)
-        reject(error)
-      })
+          reject(error)
+        })
     }, 1000)
   })
 }
