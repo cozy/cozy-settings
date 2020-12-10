@@ -50,7 +50,7 @@ export function sendMessageToSupport(client, message, t) {
         } catch (e) {
           // ignore errors for this sending
           // eslint-disable-next-line no-console
-	  console.warn(
+          console.warn(
             'Something went wrong when copying the support request to the user.'
           )
         }
