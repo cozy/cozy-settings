@@ -4,7 +4,7 @@ import Button from 'cozy-ui/transpiled/react/Button'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
 import { sendDeleteAccountRequest } from 'actions/email'
-import { STACK_DOMAIN } from 'actions'
+import { getStackDomain } from 'actions/domUtils'
 
 import styles from 'styles/deleteAccountFormModal.styl'
 
@@ -37,6 +37,7 @@ export class FormModal extends Component {
   onSend = async event => {
     event.preventDefault()
     const { t } = this.props
+    const STACK_DOMAIN = getStackDomain()
     const domain = STACK_DOMAIN.replace('//', '')
     const reason = this.reasonElement.value
     this.setStatus(SENDING)
@@ -52,14 +53,13 @@ export class FormModal extends Component {
   }
 
   render = () => {
-    const { dismissAction, t } = this.props
+    const { onClose, t } = this.props
     const { status } = this.state
     const isSending = status === SENDING
     return (
       <ConfirmDialog
         open
-        onClose={dismissAction}
-        mobileFullScreen
+        onClose={onClose}
         title={t('DeleteAccount.modal.form.title')}
         content={
           <>
@@ -83,7 +83,7 @@ export class FormModal extends Component {
             <Button
               disabled={isSending}
               label={t('DeleteAccount.modal.form.button.cancel.label')}
-              onClick={dismissAction}
+              onClick={onClose}
               theme="secondary"
               type="button"
             />

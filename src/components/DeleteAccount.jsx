@@ -54,7 +54,7 @@ export class DeleteAccount extends Component {
         )}
         {status === REQUESTING && (
           <FormModal
-            dismissAction={this.cancel}
+            onClose={this.cancel}
             onError={this.onError}
             onSuccess={this.onRequested}
           />
