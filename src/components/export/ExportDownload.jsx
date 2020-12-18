@@ -11,8 +11,8 @@ import formStyles from 'styles/fields.styl'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
 class ExportDownload extends Component {
-  componentDidMount(props) {
-    props.fetchExportData()
+  componentDidMount() {
+    this.props.fetchExportData()
   }
 
   download(cursor) {
