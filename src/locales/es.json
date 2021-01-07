@@ -62,7 +62,7 @@
     "storage": "Almacenamiento",
     "email_notifications": "Notificaciones por correo electrónico"
   },
-  "Loading": {
+  "loading": {
     "loading": "Cargando"
   },
   "Empty": {
@@ -103,7 +103,7 @@
       },
       "passphrase": {
         "title": "Autenticación en dos pasos",
-        "description": "Su Cozy envía un código de validación de 6 dígitos a %{email}.\\nIntroduzca el código arriba mencionado para cambiar su contraseña:."
+        "description": "Su Cozy envía un código de validación de 6 dígitos a %{email}.<br/>\nintroduzca el código arriba mencionado para cambiar su contraseña:."
       },
       "label": "Debido a que dos pasos son mejores que uno, mejore la seguridad de su Cozy con un paso adicional. [Échele un vistazo a nuestro sitio web de asistencia?]( %{link})",
       "modal": {
@@ -144,8 +144,8 @@
     "export": {
       "title": "Mis datos",
       "label": "Cozy se compromete a proporcionarle todos los datos que la plataforma almacena sobre usted:",
-      "link": "Descargar una copia de mis datos",
-      "server_error": "Algo ha ido mal, por favor vuelva a ensayar o contáctenos.",
+      "link": "Exportar mi Cozy",
+      "server_error": "Algo no funciona, por favor vuelva a ensayar o contáctenos.",
       "fetch_error": "Algo salió mal al tratar de obtener sus datos de exportación. Por favor, inténtelo de nuevo o póngase en contacto con nosotros.",
       "missing_error": "Parece que el archivo ha desaparecido o ha caducado. Por favor, inténtelo de nuevo o póngase en contacto con nosotros.",
       "success": "Su solicitud ha sido correctamente enviada!",
@@ -161,6 +161,27 @@
         "CTA": "Descargar el archivo",
         "CTA_part": "Descargar (part %{number})"
       }
+    },
+    "import": {
+      "link": "Importar un Cozy.",
+      "server_error": "Algo ha salido mal, por favor vuelva a ensayar o contáctenos.",
+      "invalid_url": "El enlace no parece corresponder al enlace de descarga de un Cozy.",
+      "quota_too_small": "El espacio de almacenamiento de su Cozy es insuficiente para importar todos sus datos. Existen dos soluciones: aumentar el espacio de almacenamiento de su Cozy o eliminar los datos no necesarios para la importación.",
+      "modal": {
+        "title": "Importar un Cozy",
+        "description": "Rellene el enlace de descarga enviado por correo electrónico y que aparece a continuación. Para recuperar el enlace de descarga de un Cozy, sólo tiene que lanzar su exportación.",
+        "cancel": "Anular",
+        "CTA": "Importar"
+      },
+      "confirmation": {
+        "title": "Advertencia",
+        "description": "Al importar, se sobrescribirán los datos ya presentes en su Cozy **%{url}**. El acceso a su Cozy estará bloqueado hasta el final de esta operación.",
+        "cancel": "Anular",
+        "CTA": "Sobrescribir los datos"
+      },
+	  "url": {
+		"label": "Enlace de descarga"
+	  }
     },
     "locale" : {
       "title" : "Idioma",
@@ -240,6 +261,7 @@
     "description": "Estás desvinculando **%{name}**.",
     "subText": "Esto parará la sincronización con este periférico.",
     "validate": "Revocar el periférico",
+    "cancel": "Anular",
     "error": "Incapaz de revocar el periférico, trate de recargar la página."
   },
   "ServicesView": {
