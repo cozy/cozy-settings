@@ -141,6 +141,9 @@
       "title": "Ayúdenos a mejorar nuestro producto",
       "label": "Autorizar Cozy Cloud a adquirir anónimamente sus datos de uso para mejorar nuestro producto. [Manténgase informado sobre los compromisis de Cozy](https://files.cozycloud.cc/TOS%{version}.pdf)"
     },
+    "move": {
+      "button": "Desplazar mi Cozy"
+    },
     "export": {
       "title": "Mis datos",
       "label": "Cozy se compromete a proporcionarle todos los datos que la plataforma almacena sobre usted:",
