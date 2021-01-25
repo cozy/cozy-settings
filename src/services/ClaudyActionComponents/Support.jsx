@@ -3,6 +3,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
+import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
+
 export class Support extends Component {
   constructor(props) {
     super(props)
@@ -126,7 +128,7 @@ export class Support extends Component {
               disabled={!message}
               busy={isSending}
             >
-              <Icon icon="paperplane" />
+              <Icon icon={PaperplaneIcon} />
               {t('claudy.actions.support.button')}
             </Button>
           </div>

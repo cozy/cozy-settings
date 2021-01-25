@@ -3,6 +3,8 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
 
+import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
+
 export class Support extends Component {
   constructor(props) {
     super(props)
@@ -71,7 +73,7 @@ export class Support extends Component {
             onClick={() => this.sendMessage()}
             disabled={!message}
             busy={isSending}
-            icon="paperplane"
+            icon={PaperplaneIcon}
             label={t('support.button')}
           />
         </div>

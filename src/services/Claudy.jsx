@@ -12,6 +12,8 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 
 import ClaudyAction from 'services/ClaudyAction'
 
+import CrossIcon from 'cozy-ui/transpiled/react/Icons/Cross'
+
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'
 
@@ -211,7 +213,7 @@ export class Claudy extends Component {
         <header className="coz-claudy-menu-header">
           <h2 className="coz-claudy-menu-title">{t('claudy.title')}</h2>
           <button className="coz-btn-close" onClick={onClose}>
-            <Icon icon="cross" color="#95999D" width="24" height="24" />
+            <Icon icon={CrossIcon} color="#95999D" width="24" height="24" />
           </button>
           <button
             className="coz-claudy-menu-header-back-button"

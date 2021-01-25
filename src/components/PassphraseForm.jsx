@@ -18,6 +18,8 @@ import passwordHelper from 'lib/passwordHelper'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
 
+import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
+
 const initialState = {
   currentPassphrase: '',
   newPassphrase: '',
@@ -202,7 +204,7 @@ class PassphraseForm extends Component {
             {saved && (
               <Icon
                 className="u-ml-half"
-                icon="check"
+                icon={CheckIcon}
                 color={palette['emerald']}
               />
             )}
