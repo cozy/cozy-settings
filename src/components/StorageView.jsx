@@ -1,13 +1,14 @@
-import viewStyles from 'styles/view.styl'
-import styles from 'styles/storage.styl'
-
 import React, { Component } from 'react'
-
 import classNames from 'classnames'
+
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+
+import styles from 'styles/storage.styl'
 import OffersLink from 'components/OffersLink'
 
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import Page from 'components/Page'
 
 class StorageView extends Component {
   componentWillMount() {
@@ -24,18 +25,13 @@ class StorageView extends Component {
       : storageData.usage
     const percent = (diskUsage / diskQuota) * 100
     return (
-      <div
-        className={classNames(
-          viewStyles['set-view-content'],
-          viewStyles['set-view-content--narrow']
-        )}
-      >
-        <h2 className={viewStyles['set-view-title']}>
+      <Page narrow>
+        <Typography variant="h3" gutterBottom>
           {t('StorageView.title')}
-        </h2>
-        <h3 className={viewStyles['set-view-subtitle']}>
+        </Typography>
+        <Typography variant="h5" gutterBottom>
           {t('StorageView.storage_title')}
-        </h3>
+        </Typography>
         {isFetching && (
           <Spinner
             className={'u-pos-fixed-s'}
@@ -46,12 +42,12 @@ class StorageView extends Component {
         )}
         {!isFetching && storageData && (
           <div>
-            <h2 className={viewStyles['set-view-title']}>
+            <Typography variant="h4" gutterBottom>
               {t('StorageView.storage_phrase', {
                 diskUsage,
                 diskQuota
               })}
-            </h2>
+            </Typography>
             <progress
               className={styles['set-storage-bar']}
               value={diskUsage}
@@ -69,7 +65,7 @@ class StorageView extends Component {
             <OffersLink storageData={storageData} />
           </div>
         )}
-      </div>
+      </Page>
     )
   }
 }

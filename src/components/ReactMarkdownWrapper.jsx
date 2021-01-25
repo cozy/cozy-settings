@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import styles from 'styles/index.styl'
 
@@ -14,9 +15,18 @@ const LinkRenderer = props => (
   </a>
 )
 
+const ParagraphRenderer = ({ children }) => {
+  return (
+    <Typography variant="body1" className="u-mv-half">
+      {children}
+    </Typography>
+  )
+}
+
 const reactMarkdownRendererOptions = {
   link: LinkRenderer,
-  linkReference: LinkRenderer
+  linkReference: LinkRenderer,
+  paragraph: ParagraphRenderer
 }
 
 const ReactMarkdownWrapper = ({ source }) => (

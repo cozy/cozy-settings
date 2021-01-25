@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+
 import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
 import FormModal from 'components/DeleteAccount/FormModal'
-
-import viewStyles from 'styles/view.styl'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
@@ -45,7 +44,7 @@ export class DeleteAccount extends Component {
     const { t } = this.props
     const { status } = this.state
     return (
-      <div>
+      <>
         {status === CONFIRMING && (
           <ConfirmModal
             dismissAction={this.cancel}
@@ -59,12 +58,12 @@ export class DeleteAccount extends Component {
             onSuccess={this.onRequested}
           />
         )}
-        <div className={viewStyles['set-view-section']}>
-          <h3>{t('DeleteAccount.title')}</h3>
-          <p className={viewStyles['set-view-section-label']}>
-            {t('DeleteAccount.label')}
-          </p>
-          <p className="u-mt-1">
+        <div>
+          <Typography variant="h5" gutterBottom>
+            {t('DeleteAccount.title')}
+          </Typography>
+          <Typography variant="body1">{t('DeleteAccount.label')}</Typography>
+          <div className="u-mt-1">
             <Button
               busy={status === REQUESTING}
               disabled={status !== IDLE}
@@ -73,9 +72,9 @@ export class DeleteAccount extends Component {
               onClick={this.confirm}
               theme="danger-outline"
             />
-          </p>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 }

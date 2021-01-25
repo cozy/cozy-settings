@@ -5,9 +5,8 @@ import { STACK_DOMAIN } from 'actions'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import viewStyles from 'styles/view.styl'
-import formStyles from 'styles/fields.styl'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
 import {
@@ -72,15 +71,13 @@ class Import extends Component {
     const { t, importData } = this.props
     const { displayModal, displayConfirmation } = this.state
     return (
-      <div>
-        <div className={viewStyles['set-view-section']}>
-          <p className="u-mt-1">
-            <Button
-              onClick={this.toggleModal}
-              label={t('ProfileView.import.link')}
-              extension="full"
-            />
-          </p>
+      <>
+        <div>
+          <Button
+            onClick={this.toggleModal}
+            label={t('ProfileView.import.link')}
+            extension="full"
+          />
         </div>
         <IllustrationDialog
           open={displayModal}
@@ -111,9 +108,9 @@ class Import extends Component {
                 variant="outlined"
               />
               {importData.error && (
-                <p className={formStyles['coz-form-errors']}>
+                <Typography variant="body1" className="u-error">
                   {t(importData.error)}
-                </p>
+                </Typography>
               )}
             </>
           }
@@ -146,9 +143,9 @@ class Import extends Component {
                 })}
               />
               {importData.error && (
-                <p className={formStyles['coz-form-errors']}>
+                <Typography variant="body1" className="u-error">
                   {t(importData.error)}
-                </p>
+                </Typography>
               )}
             </>
           }
@@ -169,7 +166,7 @@ class Import extends Component {
             </>
           }
         />
-      </div>
+      </>
     )
   }
 }

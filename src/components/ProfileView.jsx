@@ -1,14 +1,14 @@
-import viewStyles from 'styles/view.styl'
-
-import classNames from 'classnames'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { Text } from 'cozy-ui/transpiled/react/Text'
 import Button from 'cozy-ui/transpiled/react/Button'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import Stack from 'cozy-ui/transpiled/react/Stack'
 
+import Page from 'components/Page'
 import DeleteAccount from 'components/DeleteAccount'
 import Input from 'components/Input'
 import LanguageSection from 'components/LanguageSection'
@@ -18,6 +18,30 @@ import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
 
 import { AUTH_MODE } from 'actions/twoFactor'
+
+const PasswordSection = () => {
+  const { t } = useI18n()
+
+  return (
+    <div>
+      <div>
+        <Typography variant="h5" gutterBottom>
+          {t('ProfileView.password.title')}
+        </Typography>
+        <Typography variant="body1">
+          {t('ProfileView.password.label')}
+        </Typography>
+        <Button
+          tag={Link}
+          to="/profile/password"
+          label={t('ProfileView.password.cta')}
+          theme="secondary"
+          className="u-mt-half u-mh-0"
+        />
+      </div>
+    </div>
+  )
+}
 
 class ProfileView extends Component {
   componentWillMount() {
@@ -54,26 +78,21 @@ class ProfileView extends Component {
       fields.auth_mode && fields.auth_mode.value === AUTH_MODE.TWO_FA_MAIL
 
     return (
-      <div role="contentinfo">
-        <div
-          className={classNames(
-            viewStyles['set-view-content'],
-            viewStyles['set-view-content--narrow']
-          )}
-        >
-          {isFetching && (
-            <Spinner
-              className={'u-pos-fixed-s'}
-              middle
-              size="xxlarge"
-              loadingType="loading"
-            />
-          )}
-          {!isFetching && (
-            <>
-              <h2 className={viewStyles['set-view-title']}>
-                {t('ProfileView.title')}
-              </h2>
+      <Page narrow>
+        {isFetching && (
+          <Spinner
+            className={'u-pos-fixed-s'}
+            middle
+            size="xxlarge"
+            loadingType="loading"
+          />
+        )}
+        {!isFetching && (
+          <>
+            <Typography variant="h3" className="u-mb-1">
+              {t('ProfileView.title')}
+            </Typography>
+            <Stack spacing="l">
               <Input
                 name="email"
                 type="email"
@@ -90,17 +109,7 @@ class ProfileView extends Component {
                 {...fields.public_name}
                 onBlur={onFieldChange}
               />
-              <h3>{t('ProfileView.password.title')}</h3>
-              <Text tag="p" className="u-black">
-                {t('ProfileView.password.label')}
-              </Text>
-              <Button
-                tag={Link}
-                to="/profile/password"
-                label={t('ProfileView.password.cta')}
-                theme="secondary"
-                className="u-mh-0"
-              />
+              <PasswordSection />
               <TwoFA
                 isTwoFactorEnabled={isTwoFactorEnabled}
                 instance={instance}
@@ -117,26 +126,28 @@ class ProfileView extends Component {
                 fields={fields}
                 onChange={onFieldChange}
               />
-              <ExportSection
-                email={fields.email && fields.email.value}
-                exportData={exportData}
-                exportId={exportId}
-                requestExport={requestExport}
-                fetchExportData={() => fetchExportData(exportId)}
-                parent={'/profile'}
-              />
-              <Import
-                importData={importData}
-                precheckImport={precheckImport}
-                submitImport={submitImport}
-              />
-              <div className={viewStyles['set-delete-account']}>
-                <DeleteAccount />
+              <div>
+                <ExportSection
+                  email={fields.email && fields.email.value}
+                  exportData={exportData}
+                  exportId={exportId}
+                  requestExport={requestExport}
+                  fetchExportData={() => fetchExportData(exportId)}
+                  parent={'/profile'}
+                />
+                <Import
+                  importData={importData}
+                  precheckImport={precheckImport}
+                  submitImport={submitImport}
+                />
               </div>
-            </>
-          )}
-        </div>
-      </div>
+            </Stack>
+            <div className="u-mt-2">
+              <DeleteAccount />
+            </div>
+          </>
+        )}
+      </Page>
     )
   }
 }

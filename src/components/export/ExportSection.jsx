@@ -3,9 +3,8 @@ import { STACK_DOMAIN } from 'actions'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import viewStyles from 'styles/view.styl'
-import formStyles from 'styles/fields.styl'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import ExportDownload from 'components/export/ExportDownload'
 
@@ -46,9 +45,11 @@ class ExportSection extends Component {
     const { displayModal } = this.state
     return (
       <div>
-        <div className="{viewStyles['set-view-section']} u-mb-1">
-          <h3>{t('ProfileView.export.title')}</h3>
-          <p className="u-mt-1">
+        <div>
+          <Typography variant="h5" gutterBottom>
+            {t('ProfileView.export.title')}
+          </Typography>
+          <div className="u-mv-half">
             <form
               action={STACK_DOMAIN + '/move/initialize'}
               method="post"
@@ -56,17 +57,17 @@ class ExportSection extends Component {
             >
               <Button label={t('ProfileView.move.button')} extension="full" />
             </form>
-          </p>
-          <p className={viewStyles['set-view-section-label']}>
+          </div>
+          <Typography variant="body1" gutterBottom>
             {t('ProfileView.export.label')}
-          </p>
-          <p className="u-mt-1">
+          </Typography>
+          <div className="u-mb-half">
             <Button
               onClick={this.toggleModal}
               label={t('ProfileView.export.link')}
               extension="full"
             />
-          </p>
+          </div>
         </div>
         {displayModal && (
           <IllustrationDialog
@@ -88,9 +89,9 @@ class ExportSection extends Component {
                   source={t('ProfileView.export.modal.description', { email })}
                 />
                 {exportData.error && (
-                  <p className={formStyles['coz-form-errors']}>
+                  <Typography variant="body1" className="u-error">
                     {t(exportData.error)}
-                  </p>
+                  </Typography>
                 )}
               </>
             }

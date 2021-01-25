@@ -1,36 +1,34 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import { ButtonLink } from 'cozy-ui/transpiled/react/Button'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import viewStyles from 'styles/view.styl'
 import styles from 'styles/storage.styl'
 
-export class OffersLink extends PureComponent {
-  render() {
-    const { storageData, t } = this.props
-    return storageData.offersLink ? (
-      <div>
-        <h3 className={viewStyles['set-view-subtitle']}>
-          {t('StorageView.more_space')}
-        </h3>
-        <ButtonLink
-          theme="regular"
-          className={styles['set-offer-button']}
-          href={storageData.offersLink}
-          target
-        >
-          {t('StorageView.see_offer')}
-        </ButtonLink>
-      </div>
-    ) : null
-  }
+const OffersLink = props => {
+  const { t } = useI18n()
+  const { storageData } = props
+  return storageData.offersLink ? (
+    <div>
+      <Typography variant="h5" gutterBottom>
+        {t('StorageView.more_space')}
+      </Typography>
+      <ButtonLink
+        theme="regular"
+        className={styles['set-offer-button']}
+        href={storageData.offersLink}
+        target
+      >
+        {t('StorageView.see_offer')}
+      </ButtonLink>
+    </div>
+  ) : null
 }
 
 OffersLink.propTypes = {
-  storageData: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  storageData: PropTypes.object.isRequired
 }
 
-export default translate()(OffersLink)
+export default OffersLink

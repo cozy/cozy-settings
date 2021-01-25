@@ -1,5 +1,3 @@
-import styles from 'styles/fields.styl'
-
 import React from 'react'
 import Switch from 'cozy-ui/transpiled/react/MuiCozyTheme/Switch'
 import Field from 'components/Field'
@@ -23,20 +21,20 @@ const Input = ({
     name={name}
     onChange={onChange && (e => onChange(name, e.target.value))}
     onBlur={onBlur && (e => onBlur(name, e.target.value))}
-    className={errors && errors.length !== 0 ? styles['error'] : ''}
+    className={errors && errors.length !== 0 ? 'u-error' : ''}
     aria-busy={submitting}
   />
 )
 
 const SwitchCheckBox = ({ name, value, onChange }) => (
-  <div className={styles['set-toggle']}>
+  <span>
     <Switch
       id={`set-${name.replace(' ', '_')}-toggle`}
-      checked={!!value || true}
+      checked={!!value}
       color="primary"
       onChange={(ev, checked) => onChange(name, checked)}
     />
-  </div>
+  </span>
 )
 
 const SwitchOrInput = props => (
