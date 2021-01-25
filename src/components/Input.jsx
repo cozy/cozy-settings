@@ -1,8 +1,7 @@
 import styles from 'styles/fields.styl'
 
 import React from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Toggle from 'cozy-ui/transpiled/react/Toggle'
+import Switch from 'cozy-ui/transpiled/react/MuiCozyTheme/Switch'
 import Field from 'components/Field'
 import UIInput from 'cozy-ui/transpiled/react/Input'
 
@@ -31,15 +30,16 @@ const Input = ({
 
 const SwitchCheckBox = ({ name, value, onChange }) => (
   <div className={styles['set-toggle']}>
-    <Toggle
+    <Switch
       id={`set-${name.replace(' ', '_')}-toggle`}
-      checked={!!value}
-      onToggle={checked => onChange(name, checked)}
+      checked={!!value || true}
+      color="primary"
+      onChange={(ev, checked) => onChange(name, checked)}
     />
   </div>
 )
 
-export default translate()(props => (
+const SwitchOrInput = props => (
   <Field {...props}>
     {props.type === 'checkbox' ? (
       <SwitchCheckBox {...props} />
@@ -47,4 +47,6 @@ export default translate()(props => (
       <Input {...props} />
     )}
   </Field>
-))
+)
+
+export default SwitchOrInput
