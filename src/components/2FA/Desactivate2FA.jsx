@@ -1,7 +1,8 @@
 import React from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
-import { ConfirmDialog } from 'cozy-ui/transpiled/react/Modal'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 export const Desactivate2FA = ({
   desactivate2FA,
@@ -15,10 +16,12 @@ export const Desactivate2FA = ({
       title={t('ProfileView.twofa.title.desactivate')}
       content={
         <>
-          <p>
+          <Typography variant="body1">
             <b>{t('ProfileView.twofa.modal.desactivate_title')}</b>
-          </p>
-          <p>{t('ProfileView.twofa.modal.desactivate_description')}</p>
+          </Typography>
+          <Typography variant="body1">
+            {t('ProfileView.twofa.modal.desactivate_description')}
+          </Typography>
         </>
       }
       actions={

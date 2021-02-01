@@ -1,12 +1,12 @@
+import React, { Component } from 'react'
+
 import tableStyles from 'styles/table.styl'
-import viewStyles from 'styles/view.styl'
-import devicesStyles from 'styles/devices.styl'
 
 import classNames from 'classnames'
 
-import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import MuiButton from 'cozy-ui/transpiled/react/MuiCozyTheme/Buttons'
 import {
   Table,
   TableHead,
@@ -15,12 +15,14 @@ import {
   TableHeader,
   TableCell
 } from 'cozy-ui/transpiled/react/Table'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
 import NoDevicesMessage from 'components/NoDevicesMessage'
-
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
+import Page from 'components/Page'
+
 import mobileIcon from 'assets/icons/icon-device-phone.svg'
 import browserIcon from 'assets/icons/icon-device-browser.svg'
 import laptopIcon from 'assets/icons/icon-device-laptop.svg'
@@ -52,10 +54,10 @@ class DevicesView extends Component {
       devicePerformRevoke
     } = this.props
     return (
-      <div role="contentinfo" className={devicesStyles['devices-view']}>
-        <h2 className={viewStyles['set-view-title']}>
+      <Page narrow={!isFetching && devices.length === 0}>
+        <Typography variant="h3" gutterBottom>
           {t('DevicesView.title')}
-        </h2>
+        </Typography>
         {isFetching && (
           <Spinner
             className={'u-pos-fixed-s'}
@@ -122,21 +124,21 @@ class DevicesView extends Component {
                       : '-'}
                   </TableCell>
                   <TableCell className={tableStyles['set-table-actions']}>
-                    <button
-                      className={devicesStyles['coz-btn--revoke']}
+                    <MuiButton
+                      color="primary"
                       onClick={() => {
                         onDeviceModaleRevoke(device)
                       }}
                     >
                       {t('DevicesView.revoke')}
-                    </button>
+                    </MuiButton>
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         )}
-      </div>
+      </Page>
     )
   }
 }

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Input from 'cozy-ui/transpiled/react/Input'
-
-import styles from 'styles/fields.styl'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Button } from 'cozy-ui/transpiled/react/Button'
+
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import settingsConfig from 'config'
 
@@ -68,19 +68,21 @@ export class Passphrase2FA extends Component {
                 onChange={e => this.onChange(e.target.value)}
               />
               <div>
-                <p>{t('ProfileView.twofa.modal.nocode')}</p>
-                <p>
+                <Typography variant="body1">
+                  {t('ProfileView.twofa.modal.nocode')}
+                </Typography>
+                <Typography variant="body1">
                   {t('ProfileView.twofa.modal.nocode_claude')}
                   <a href={`mailto{settingsConfig.contactEmail}`}>
                     {settingsConfig.contactEmail}
                   </a>
-                </p>
+                </Typography>
               </div>
             </div>
             {!email && (
-              <p className={styles['coz-form-errors']}>
+              <Typography variant="body1" className="u-error">
                 {t('ProfileView.twofa.modal.email')}
-              </p>
+              </Typography>
             )}
           </>
         }

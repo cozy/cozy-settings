@@ -3,11 +3,7 @@ import styles from 'styles/passphrase.styl'
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
-import {
-  MainTitle,
-  SubTitle,
-  ErrorMessage
-} from 'cozy-ui/transpiled/react/Text'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import Input from 'cozy-ui/transpiled/react/Input'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Stack from 'cozy-ui/transpiled/react/Stack'
@@ -21,6 +17,8 @@ import PasswordInput from 'cozy-ui/transpiled/react/Labs/PasswordInput'
 import passwordHelper from 'lib/passwordHelper'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
+
+import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
 
 const initialState = {
   currentPassphrase: '',
@@ -91,11 +89,15 @@ class PassphraseForm extends Component {
 
     return (
       <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
-        <MainTitle className="u-mt-2">{t('PassphraseView.title')}</MainTitle>
+        <Typography variant="h3">{t('PassphraseView.title')}</Typography>
         <Stack spacing="m">
-          <SubTitle tag="label" htmlFor="current-passphrase">
+          <Typography
+            variant="h5"
+            component="label"
+            htmlFor="current-passphrase"
+          >
             {t('PassphraseView.current_passphrase.label')}
-          </SubTitle>
+          </Typography>
           <PasswordInput
             name="currentPassphrase"
             value={currentPassphrase}
@@ -106,13 +108,13 @@ class PassphraseForm extends Component {
             error={Boolean(currentPassphraseError)}
           />
           {currentPassphraseError && (
-            <ErrorMessage>{t(currentPassphraseError)}</ErrorMessage>
+            <Typography variant="body1">{t(currentPassphraseError)}</Typography>
           )}
         </Stack>
         <Stack spacing="m">
-          <SubTitle tag="label" htmlFor="new-passphrase">
+          <Typography variant="h5" component="label" htmlFor="new-passphrase">
             {t('PassphraseView.new_passphrase.label')}
-          </SubTitle>
+          </Typography>
           <Stack spacing="xs">
             <PasswordInput
               name="newPassphrase"
@@ -137,12 +139,20 @@ class PassphraseForm extends Component {
             />
           </Stack>
           {newPassphraseTouched && !newPassphraseMatch && (
-            <ErrorMessage>
+            <Typography variant="body1" className="u-error">
               {t('PassphraseView.new_passphrase.dont_match')}
-            </ErrorMessage>
+            </Typography>
           )}
-          {globalError && <ErrorMessage>{t(globalError)}</ErrorMessage>}
-          {twoFactorError && <ErrorMessage>{t(twoFactorError)}</ErrorMessage>}
+          {globalError && (
+            <Typography variant="body1" className="u-error">
+              {t(globalError)}
+            </Typography>
+          )}
+          {twoFactorError && (
+            <Typography variant="body1" className="u-error">
+              {t(twoFactorError)}
+            </Typography>
+          )}
           <UnorderedList className={styles['set-passphrase-advices']}>
             <ListItem>
               <ReactMarkdownWrapper
@@ -163,9 +173,9 @@ class PassphraseForm extends Component {
           </UnorderedList>
         </Stack>
         <Stack spacing="m">
-          <SubTitle tag="label" htmlFor="hint">
+          <Typography variant="h3" component="label" htmlFor="hint">
             {t('PassphraseView.hint.title')}
-          </SubTitle>
+          </Typography>
           <Stack spacing="xs">
             <Input
               value={hint}
@@ -176,9 +186,9 @@ class PassphraseForm extends Component {
               error={hintSameAsPassphrase}
             />
             {hintSameAsPassphrase && (
-              <ErrorMessage>
+              <Typography variant="body1" className="u-error">
                 {t('PassphraseView.hint.same_as_passphrase')}
-              </ErrorMessage>
+              </Typography>
             )}
           </Stack>
           <ReactMarkdownWrapper source={t('PassphraseView.hint.description')} />
@@ -194,7 +204,7 @@ class PassphraseForm extends Component {
             {saved && (
               <Icon
                 className="u-ml-half"
-                icon="check"
+                icon={CheckIcon}
                 color={palette['emerald']}
               />
             )}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
+
 import PassphraseForm from 'components/PassphraseForm'
 import Passphrase2FA from 'components/2FA/Passphrase2FA'
-import classNames from 'classnames'
-import viewStyles from 'styles/view.styl'
+import Page from 'components/Page'
 
 const PassphraseView = props => {
   const {
@@ -48,24 +48,17 @@ const PassphraseView = props => {
     : onPassphraseSimpleSubmit
 
   return (
-    <div role="contentinfo">
-      <div
-        className={classNames(
-          viewStyles['set-view-content'],
-          viewStyles['set-view-content--narrow']
-        )}
-      >
-        <PassphraseForm {...passphrase} onSubmit={onSubmit} />
-        {twoFAModalOpen && !passphrase.errors && !passphrase.submitting && (
-          <Passphrase2FA
-            onPassphrase2FASubmit={handlePassphrase2FASubmit}
-            closeTwoFAPassphraseModal={() => setTwoFAModalOpen(false)}
-            instance={instance}
-            submitting={passphrase.submitting2FAStep2}
-          />
-        )}
-      </div>
-    </div>
+    <Page narrow>
+      <PassphraseForm {...passphrase} onSubmit={onSubmit} />
+      {twoFAModalOpen && !passphrase.errors && !passphrase.submitting && (
+        <Passphrase2FA
+          onPassphrase2FASubmit={handlePassphrase2FASubmit}
+          closeTwoFAPassphraseModal={() => setTwoFAModalOpen(false)}
+          instance={instance}
+          submitting={passphrase.submitting2FAStep2}
+        />
+      )}
+    </Page>
   )
 }
 

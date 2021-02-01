@@ -6,7 +6,7 @@ import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import ButtonAction from 'cozy-ui/transpiled/react/ButtonAction'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import formStyles from 'styles/fields.styl'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
@@ -54,9 +54,9 @@ class ExportDownload extends Component {
                 }}
               />
               {exportData.error ? (
-                <p className={formStyles['coz-form-errors']}>
+                <Typography variant="body1" className="u-error">
                   {t(exportData.error)}
-                </p>
+                </Typography>
               ) : (
                 <div>
                   {t('ProfileView.export.download.description')}

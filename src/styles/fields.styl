@@ -1,131 +1,22 @@
 @require 'cozy-ui'
-@require './spinner.styl'
 
 [role=application]
-    :local
-        .coz-form-label
-            margin 0
-            padding 0
-
-        .password-visibility
-            float right
-            text-align right
-            text-transform  uppercase
-            cursor          pointer
-            font-weight     bold
-
-            &:hover,
-            &:active,
-            &:focus
-                text-decoration none
-
-
-        .password-reset-link
-            margin-top .5em
-
-        .coz-form-controls
-            margin  1em 0
-            width   100%
-            padding 0
-
-            [role=button]
-                width        100%
-                margin-left  0
-                margin-right 0
-
-        .set-field
-            input
-                width 100%
-
-        .set-field-saved,
-        .coz-form-controls [role=button].saved
-            &.set-field-input:after,
-            &.set-field-checkbox .set-toggle label:after
-                opacity 1
-                background-image embedurl("../assets/icons/icon-checked.svg")
-
-        .set-field-loading
-        .set-field-saved
-            position absolute
-            right .5rem
-            top 50%
-            transform: translateY(-50%)
-            select
-                background-image none
-
-        .set-field-checkbox
-            .set-field-loading
-            .set-field-saved
-                left .5rem
-                right auto
-
-        .set-field-select
-            .set-field-loading
-            .set-field-saved
-                right    2rem
-
-        .set-field-checkbox
-            display         flex
-            flex-direction  row
-            flex-wrap       wrap
-            align-items     center
-            .set-toggle
-                margin-left     2rem
-            .coz-form-desc
-                flex            1 1
-                padding-right   1em
-            .set-field-title
-            .coz-form-errors
-                flex-basis  100%
-            .coz-form-errors
-                margin-top  0
-
-
-        progress
-            &.pw-weak
-                color   var(--pomegranate)
-                &::-webkit-progress-value
-                    background    var(--pomegranate)
-                &::-moz-progress-bar
-                    background    var(--pomegranate)
-            &.pw-moderate
-                color   var(--texasRose)
-                &::-webkit-progress-value
-                    background    var(--texasRose)
-                &::-moz-progress-bar
-                    background    var(--texasRose)
-            &.pw-strong
-                color   var(--emerald)
-                &::-webkit-progress-value
-                    background    var(--emerald)
-                &::-moz-progress-bar
-                    background    var(--emerald)
-
-.coz-form-field-header
-    display flex
-    flex-direction row
-    justify-content space-between
-    align-items flex-end
-    margin 1rem 0 .5rem
-
-.coz-input-group
-    input
-        border 0 !important
-
-.coz-pwd-input
-    display flex
-    flex-direction column
-
-.coz-input-group-with-strength
-    border-bottom-left-radius 0
-    border-bottom-right-radius 0
-
-.coz-pwd-input-strength
-    margin 0 !important
-    border-radius 3px !important
-    border-top-left-radius 0 !important
-    border-top-right-radius 0 !important
-    border 1px solid var(--silver) !important
-    border-top 0 !important
-    box-sizing border-box
-    height 4px !important
+    progress
+        &.pw-weak
+            color   var(--pomegranate)
+            &::-webkit-progress-value
+                background    var(--pomegranate)
+            &::-moz-progress-bar
+                background    var(--pomegranate)
+        &.pw-moderate
+            color   var(--texasRose)
+            &::-webkit-progress-value
+                background    var(--texasRose)
+            &::-moz-progress-bar
+                background    var(--texasRose)
+        &.pw-strong
+            color   var(--emerald)
+            &::-webkit-progress-value
+                background    var(--emerald)
+            &::-moz-progress-bar
+                background    var(--emerald)

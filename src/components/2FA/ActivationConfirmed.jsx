@@ -1,34 +1,37 @@
-import React, { Fragment } from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import React from 'react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
-
-import viewStyles from 'styles/view.styl'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 export const ActivationConfirmed = ({
-  t,
   closeTwoFAActivationModal,
   instance,
   cozyDomain
-}) => (
-  <Fragment>
-    <h3>{t('ProfileView.twofa.modal.validation_title')}</h3>
-    <p>{t('ProfileView.twofa.modal.validation_description')}</p>
-    <p>{t('ProfileView.twofa.modal.validation_logs')}</p>
-    <ul>
-      <li>{instance && instance.data.attributes.email}</li>
-      <li>{cozyDomain}</li>
-    </ul>
-    <div
-      className={
-        viewStyles['set-view-content-twofa-modal-content-right-buttons']
-      }
-    >
-      <Button
-        onClick={closeTwoFAActivationModal}
-        label={t('ProfileView.twofa.modal.button.terminate')}
-      />
-    </div>
-  </Fragment>
-)
+}) => {
+  const { t } = useI18n()
+  return (
+    <>
+      <Typography variant="h5" gutterBottom>
+        {t('ProfileView.twofa.modal.validation_title')}
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        {t('ProfileView.twofa.modal.validation_description')}
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        {t('ProfileView.twofa.modal.validation_logs')}
+      </Typography>
+      <ul>
+        <li>{instance && instance.data.attributes.email}</li>
+        <li>{cozyDomain}</li>
+      </ul>
+      <div className="u-ta-right">
+        <Button
+          onClick={closeTwoFAActivationModal}
+          label={t('ProfileView.twofa.modal.button.terminate')}
+        />
+      </div>
+    </>
+  )
+}
 
-export default translate()(ActivationConfirmed)
+export default ActivationConfirmed

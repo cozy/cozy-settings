@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import Field from 'cozy-ui/transpiled/react/Field'
-import { ErrorMessage } from 'cozy-ui/transpiled/react/Text'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import viewStyles from 'styles/view.styl'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import settingsConfig from 'config'
 
@@ -35,7 +34,9 @@ export class TwoFactorCode extends Component {
     return (
       <div>
         <div>
-          <h3>{t('ProfileView.twofa.modal.confirmation_title')}</h3>
+          <Typography variant="h5">
+            {t('ProfileView.twofa.modal.confirmation_title')}
+          </Typography>
           <ReactMarkdownWrapper
             source={t('ProfileView.twofa.modal.confirmation_description', {
               email: email
@@ -53,23 +54,19 @@ export class TwoFactorCode extends Component {
           error={Boolean(twoFactor.checkError)}
         />
         {twoFactor.checkError ? (
-          <ErrorMessage>{t(twoFactor.checkError)}</ErrorMessage>
+          <Typography variant="body1" className="u-error">
+            {t(twoFactor.checkError)}
+          </Typography>
         ) : null}
-        <div className={viewStyles['set-view-content-twofa-modal-nocode']}>
-          <p>
-            <span>{t('ProfileView.twofa.modal.nocode')}</span>
-            <br />
-            {t('ProfileView.twofa.modal.nocode_claude')}
-            <a href={`mailto{settingsConfig.contactEmail}`}>
-              {settingsConfig.contactEmail}
-            </a>
-          </p>
-        </div>
-        <div
-          className={
-            viewStyles['set-view-content-twofa-modal-content-right-buttons']
-          }
-        >
+        <Typography variant="body1" gutterBottom>
+          <span>{t('ProfileView.twofa.modal.nocode')}</span>
+          <br />
+          {t('ProfileView.twofa.modal.nocode_claude')}
+          <a href={`mailto{settingsConfig.contactEmail}`}>
+            {settingsConfig.contactEmail}
+          </a>
+        </Typography>
+        <div className="u-ta-right">
           <Button
             onClick={closeTwoFAActivationModal}
             theme="secondary"

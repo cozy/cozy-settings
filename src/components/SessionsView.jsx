@@ -1,11 +1,7 @@
-import tableStyles from 'styles/table.styl'
-import viewStyles from 'styles/view.styl'
-
 import React, { Component } from 'react'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
-
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import {
@@ -15,6 +11,10 @@ import {
   TableRow,
   TableHeader
 } from 'cozy-ui/transpiled/react/Table'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+
+import Page from 'components/Page'
+import tableStyles from 'styles/table.styl'
 
 class SessionsView extends Component {
   componentWillMount() {
@@ -24,17 +24,18 @@ class SessionsView extends Component {
   render() {
     const { t, f, isFetching, sessions, deleteOtherSessions } = this.props
     return (
-      <div role="contentinfo">
-        <h2 className={viewStyles['set-view-title']}>
+      <Page>
+        <Typography variant="h3" className="u-mb-1">
           {t('SessionsView.title')}
-        </h2>
-        <p className={viewStyles['set-view-title']}>
+        </Typography>
+        <Typography variant="body1" className="u-mb-1-half">
           <Button
+            className="u-ml-0"
             theme="danger"
             onClick={() => deleteOtherSessions()}
             label={t('SessionsView.delete')}
           />
-        </p>
+        </Typography>
         {isFetching && (
           <Spinner
             className={'u-pos-fixed-s'}
@@ -74,7 +75,7 @@ class SessionsView extends Component {
             </TableBody>
           </Table>
         )}
-      </div>
+      </Page>
     )
   }
 }
