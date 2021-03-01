@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
-    "cozy-bar": "7.15.2",
+    "cozy-bar": "8.2.0",
     "cozy-scripts": "5.4.1",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.9.1",
