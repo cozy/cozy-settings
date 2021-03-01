@@ -3138,10 +3138,10 @@ cozy-interapp@0.5.4:
   resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.5.4.tgz#2573f1800f073c84c289267d04234954d88eae0c"
   integrity sha512-f0UaKpBkRUnIKgAWND0e1IwfTTINjizlgDmfQwX3aMyWp8t9wX0xkNFn53TSyKUoBUnfovrclS3hm9fngjEp7A==
 
-cozy-interapp@0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.5.6.tgz#cd168d11759c2dcad03d6108ed556525d993c676"
-  integrity sha512-aiSFquWhFRB4WQbTN4QxIzkhPRwXDhBiYAp1YcYRGjtmCI+O42zyy13XO0AOq0Ws088POXK+3NySHGbA7qY3nA==
+cozy-interapp@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.6.2.tgz#ab0e0062cbaca057023902bbde8825febe5c95a8"
+  integrity sha512-2cz+xGSio+vvgC+MJnOl8/3Pt4IMAnt2jh9/zMU0YgiP8JmPqVRsweRoPOjUmPqhw2xmVvGSWr//IhAfMxi62w==
 
 cozy-keys-lib@3.1.2:
   version "3.1.2"
