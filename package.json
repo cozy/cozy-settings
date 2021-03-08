@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
+    "@testing-library/react": "11.2.5",
     "cozy-bar": "7.15.2",
     "cozy-scripts": "5.4.1",
     "enzyme": "3.9.0",
@@ -43,13 +44,13 @@
     "react-test-renderer": "16.13.1"
   },
   "dependencies": {
-    "@material-ui/core": "3.9.4",
+    "@material-ui/core": "4.11.3",
     "classnames": "2.2.6",
     "cozy-client": "16.0.0",
     "cozy-doctypes": "^1.70.0",
     "cozy-interapp": "0.5.6",
     "cozy-keys-lib": "3.1.2",
-    "cozy-ui": "44.2.0",
+    "cozy-ui": "45.1.0",
     "date-fns": "1.30.1",
     "piwik-react-router": "0.12.1",
     "prop-types": "15.7.2",
