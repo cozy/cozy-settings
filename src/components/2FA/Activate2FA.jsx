@@ -29,7 +29,7 @@ export const Activate2FA = ({
           ? 'ProfileView.twofa.title.validation'
           : 'ProfileView.twofa.title.activate'
       )}
-      size="m"
+      size="medium"
       actions={
         twoFactor.pending ? null : (
           <Button

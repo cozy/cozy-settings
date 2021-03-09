@@ -3,9 +3,11 @@
 /* eslint-env jest */
 
 import React from 'react'
-import { mount } from 'enzyme'
-import { FormModal } from './FormModal'
+import { render, fireEvent } from '@testing-library/react'
+import FormModal from './FormModal'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { I18n } from 'cozy-ui/transpiled/react'
+import langEn from 'locales/en.json'
 
 jest.mock('actions/domUtils', () => ({
   getStackDomain: () => 'http://cozy.tools:8080',
@@ -16,8 +18,13 @@ jest.mock('actions/email', () => ({
   sendDeleteAccountRequest: jest.fn()
 }))
 
-const tMock = (key, options) =>
-  `${key} ${options && [].concat.apply([], Object.values(options))}`
+const TestI18n = ({ children }) => {
+  return (
+    <I18n lang={'en'} dictRequire={() => langEn}>
+      {children}
+    </I18n>
+  )
+}
 
 describe('FormModal component', () => {
   const mockDomain = 'cozy.tools:8080'
@@ -33,14 +40,15 @@ describe('FormModal component', () => {
   it('should read correctly Cozy Domain on send action ', async () => {
     const { sendDeleteAccountRequest } = require('actions/email')
 
-    const formInstance = mount(
+    const root = render(
       <BreakpointsProvider>
-        <FormModal t={tMock} onClose={jest.fn()} />
+        <TestI18n>
+          <FormModal onClose={jest.fn()} />
+        </TestI18n>
       </BreakpointsProvider>
     )
-      .find(FormModal)
-      .instance()
-    await formInstance.onSend(new Event('submit'))
+
+    fireEvent.click(root.getByText('Send'))
 
     expect(sendDeleteAccountRequest.mock.calls[0][0]).toEqual(
       expect.stringContaining(mockDomain)

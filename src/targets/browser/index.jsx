@@ -16,7 +16,23 @@ import PiwikHashRouter from 'lib/PiwikHashRouter'
 import App from 'components/App'
 import cozyClient from 'lib/client'
 
+import {
+  StylesProvider,
+  createGenerateClassName
+} from '@material-ui/core/styles'
+
 import createStore from '../../store'
+
+/*
+With MUI V4, it is possible to generate deterministic class names.
+In the case of multiple react roots, it is necessary to disable this
+feature. Since we have the cozy-bar root, we need to disable the
+feature.
+https://material-ui.com/styles/api/#stylesprovider
+*/
+const generateClassName = createGenerateClassName({
+  disableGlobal: true
+})
 
 const EnhancedI18n = connect(state => {
   const { lang } = state.ui
@@ -51,19 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   render(
-    <CozyProvider client={cozyClient}>
-      <Provider store={store}>
-        <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
-          <BreakpointsProvider>
-            <MuiCozyTheme>
-              <PiwikHashRouter>
-                <App />
-              </PiwikHashRouter>
-            </MuiCozyTheme>
-          </BreakpointsProvider>
-        </EnhancedI18n>
-      </Provider>
-    </CozyProvider>,
+    <StylesProvider generateClassName={generateClassName}>
+      <CozyProvider client={cozyClient}>
+        <Provider store={store}>
+          <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
+            <BreakpointsProvider>
+              <MuiCozyTheme>
+                <PiwikHashRouter>
+                  <App />
+                </PiwikHashRouter>
+              </MuiCozyTheme>
+            </BreakpointsProvider>
+          </EnhancedI18n>
+        </Provider>
+      </CozyProvider>
+    </StylesProvider>,
     root
   )
 })
