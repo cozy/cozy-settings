@@ -6,6 +6,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import { CozyProvider } from 'cozy-client'
+import flag from 'cozy-flags'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     uri: `${protocol}//${data.cozyDomain}`,
     token: data.cozyToken
   })
+  cozyClient.registerPlugin(flag.plugin)
 
   render(
     <StylesProvider generateClassName={generateClassName}>

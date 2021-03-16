@@ -10,6 +10,8 @@ import ExportDownload from 'components/export/ExportDownload'
 
 import { IllustrationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
+import flag from 'cozy-flags'
+
 const exportImage = require('assets/images/export-cozy-mail.svg')
 
 class ExportSection extends Component {
@@ -49,15 +51,17 @@ class ExportSection extends Component {
           <Typography variant="h5" gutterBottom>
             {t('ProfileView.export.title')}
           </Typography>
-          <div className="u-mv-half">
-            <form
-              action={STACK_DOMAIN + '/move/initialize'}
-              method="post"
-              target="_blank"
-            >
-              <Button label={t('ProfileView.move.button')} extension="full" />
-            </form>
-          </div>
+          {flag('settings.moving-cozy') && (
+            <div className="u-mv-half">
+              <form
+                action={STACK_DOMAIN + '/move/initialize'}
+                method="post"
+                target="_blank"
+              >
+                <Button label={t('ProfileView.move.button')} extension="full" />
+              </form>
+            </div>
+          )}
           <Typography variant="body1" gutterBottom>
             {t('ProfileView.export.label')}
           </Typography>
