@@ -280,12 +280,12 @@
   "PassphraseView": {
     "title": "Update my password",
     "current_passphrase": {
-      "label": "Enter your current password:",
+      "label": "Enter your current password",
       "placeholder": "Current password",
       "wrong_passphrase": "Current password seems wrong."
     },
     "new_passphrase": {
-      "label": "Choose a new password:",
+      "label": "Choose a new password",
       "placeholder": "New cozy password",
       "confirmation_placeholder": "Confirm the password",
       "dont_match": "Password don't match"

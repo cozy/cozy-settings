@@ -88,7 +88,7 @@ class PassphraseForm extends Component {
     )
 
     return (
-      <Stack spacing="xxl" tag="form" onSubmit={this.handleSubmit}>
+      <Stack spacing="xl" tag="form" onSubmit={this.handleSubmit}>
         <Typography variant="h3">{t('PassphraseView.title')}</Typography>
         <Stack spacing="m">
           <Typography
@@ -173,7 +173,7 @@ class PassphraseForm extends Component {
           </UnorderedList>
         </Stack>
         <Stack spacing="m">
-          <Typography variant="h3" component="label" htmlFor="hint">
+          <Typography variant="h5" component="label" htmlFor="hint">
             {t('PassphraseView.hint.title')}
           </Typography>
           <Stack spacing="xs">
