@@ -279,6 +279,7 @@
   },
   "PassphraseView": {
     "title": "Modifier mon mot de passe",
+    "title_oidc": "Modifier mon mot de passe Cozy Pass",
     "current_passphrase": {
       "label": "Rappelez votre mot de passe actuel",
       "placeholder": "Mot de passe actuel",

@@ -1,24 +1,28 @@
 import styles from 'styles/passphrase.styl'
 
 import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+
+import compose from 'lodash/flowRight'
+import get from 'lodash/get'
+
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Input from 'cozy-ui/transpiled/react/Input'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Stack from 'cozy-ui/transpiled/react/Stack'
+import PasswordInput from 'cozy-ui/transpiled/react/Labs/PasswordInput'
+import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
-import palette from 'cozy-ui/stylus/settings/palette.json'
-import { Link, withRouter } from 'react-router-dom'
-import compose from 'lodash/flowRight'
 import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
 
-import PasswordInput from 'cozy-ui/transpiled/react/Labs/PasswordInput'
-import passwordHelper from 'lib/passwordHelper'
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
+import { withClient } from 'cozy-client'
 
-import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import PageTitle from 'components/PageTitle'
+import passwordHelper from 'lib/passwordHelper'
+import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
 
 const initialState = {
   currentPassphrase: '',
@@ -64,7 +68,7 @@ class PassphraseForm extends Component {
       hint
     } = this.state
 
-    const { t, errors, submitting, saved, location } = this.props
+    const { t, errors, submitting, saved, location, client } = this.props
     const currentPassphraseError = errors && errors.currentPassphrase
     const globalError = errors && errors.global
     const twoFactorError = errors && errors.wrongTwoFactor
@@ -87,9 +91,18 @@ class PassphraseForm extends Component {
       location.search
     )
 
+    const canAuthWithPassword = get(
+      client,
+      'capabilities.can_auth_with_password'
+    )
+    const canAuthWithOIDC = get(client, 'capabilities.can_auth_with_oidc')
+    const isOIDC = !canAuthWithPassword && canAuthWithOIDC
+
     return (
       <Stack spacing="xl" tag="form" onSubmit={this.handleSubmit}>
-        <Typography variant="h3">{t('PassphraseView.title')}</Typography>
+        <Typography variant="h3">
+          {isOIDC ? t('PassphraseView.title_oidc') : t('PassphraseView.title')}
+        </Typography>
         <Stack spacing="m">
           <Typography
             variant="h5"
@@ -227,5 +240,6 @@ class PassphraseForm extends Component {
 
 export default compose(
   translate(),
-  withRouter
+  withRouter,
+  withClient
 )(PassphraseForm)

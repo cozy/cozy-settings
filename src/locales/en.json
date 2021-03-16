@@ -279,6 +279,7 @@
   },
   "PassphraseView": {
     "title": "Update my password",
+    "title_oidc": "Update my Cozy Pass password",
     "current_passphrase": {
       "label": "Enter your current password",
       "placeholder": "Current password",
