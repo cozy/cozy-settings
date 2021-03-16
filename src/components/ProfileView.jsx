@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import { useClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Stack from 'cozy-ui/transpiled/react/Stack'
+
+import get from 'lodash/get'
 
 import Page from 'components/Page'
 import DeleteAccount from 'components/DeleteAccount'
@@ -21,8 +24,9 @@ import { AUTH_MODE } from 'actions/twoFactor'
 
 const PasswordSection = () => {
   const { t } = useI18n()
-
-  return (
+  const client = useClient()
+  const canAuthWithPassword = get(client, 'capabilities.can_auth_with_password')
+  return canAuthWithPassword ? (
     <div>
       <Typography variant="h5" gutterBottom>
         {t('ProfileView.password.title')}
@@ -36,7 +40,7 @@ const PasswordSection = () => {
         className="u-mt-half u-mh-0"
       />
     </div>
-  )
+  ) : null
 }
 
 class ProfileView extends Component {
