@@ -24,21 +24,17 @@ const PasswordSection = () => {
 
   return (
     <div>
-      <div>
-        <Typography variant="h5" gutterBottom>
-          {t('ProfileView.password.title')}
-        </Typography>
-        <Typography variant="body1">
-          {t('ProfileView.password.label')}
-        </Typography>
-        <Button
-          tag={Link}
-          to="/profile/password"
-          label={t('ProfileView.password.cta')}
-          theme="secondary"
-          className="u-mt-half u-mh-0"
-        />
-      </div>
+      <Typography variant="h5" gutterBottom>
+        {t('ProfileView.password.title')}
+      </Typography>
+      <Typography variant="body1">{t('ProfileView.password.label')}</Typography>
+      <Button
+        tag={Link}
+        to="/profile/password"
+        label={t('ProfileView.password.cta')}
+        theme="secondary"
+        className="u-mt-half u-mh-0"
+      />
     </div>
   )
 }
