@@ -201,13 +201,7 @@ class PassphraseForm extends Component {
             extension="full"
             className="u-mb-half"
           >
-            {saved && (
-              <Icon
-                className="u-ml-half"
-                icon={CheckIcon}
-                color={palette['emerald']}
-              />
-            )}
+            {saved && <Icon className="u-ml-half u-valid" icon={CheckIcon} />}
           </Button>
           {cancelRedirectUrl ? (
             <ButtonLink
