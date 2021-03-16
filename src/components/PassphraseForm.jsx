@@ -100,9 +100,9 @@ class PassphraseForm extends Component {
 
     return (
       <Stack spacing="xl" tag="form" onSubmit={this.handleSubmit}>
-        <Typography variant="h3">
+        <PageTitle>
           {isOIDC ? t('PassphraseView.title_oidc') : t('PassphraseView.title')}
-        </Typography>
+        </PageTitle>
         <Stack spacing="m">
           <Typography
             variant="h5"
