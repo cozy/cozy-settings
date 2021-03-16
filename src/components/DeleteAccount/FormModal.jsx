@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import compose from 'lodash/flowRight'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
@@ -7,6 +8,7 @@ import { sendDeleteAccountRequest } from 'actions/email'
 import { getStackDomain } from 'actions/domUtils'
 
 import styles from 'styles/deleteAccountFormModal.styl'
+import { withClient } from 'cozy-client'
 
 const DONE = 'done'
 const ERRORED = 'errored'
@@ -36,13 +38,14 @@ export class FormModal extends Component {
 
   onSend = async event => {
     event.preventDefault()
-    const { t } = this.props
+    const { client, t } = this.props
     const STACK_DOMAIN = getStackDomain()
     const domain = STACK_DOMAIN.replace('//', '')
     const reason = this.reasonElement.value
     this.setStatus(SENDING)
     try {
       await sendDeleteAccountRequest(
+        client,
         t('DeleteAccount.request.mail.subject', { domain }),
         reason.substring(0, REASON_MAXLENGTH)
       )
@@ -101,4 +104,7 @@ export class FormModal extends Component {
   }
 }
 
-export default translate()(FormModal)
+export default compose(
+  withClient,
+  translate()
+)(FormModal)

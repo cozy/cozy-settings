@@ -7,6 +7,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
 import { CozyProvider } from 'cozy-client'
+import flag from 'cozy-flags'
 
 import I18n from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const store = createStore()
   cozyClient.setStore(store)
+  cozyClient.registerPlugin(flag.plugin)
 
   cozy.bar.init({
     cozyClient,
