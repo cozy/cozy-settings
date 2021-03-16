@@ -22,3 +22,11 @@ jest.mock('cozy-ui/transpiled/react/utils/color', () => ({
 global.requestAnimationFrame = cb => {
   setTimeout(cb, 0)
 }
+
+window.cozy = {
+  bar: {
+    BarCenter: ({ children }) => children,
+    BarLeft: ({ children }) => children,
+    BarRight: ({ children }) => children
+  }
+}
