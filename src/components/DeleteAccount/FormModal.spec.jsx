@@ -50,7 +50,7 @@ describe('FormModal component', () => {
 
     fireEvent.click(root.getByText('Send'))
 
-    expect(sendDeleteAccountRequest.mock.calls[0][0]).toEqual(
+    expect(sendDeleteAccountRequest.mock.calls[0][1]).toEqual(
       expect.stringContaining(mockDomain)
     )
     jest.dontMock('actions/email')
