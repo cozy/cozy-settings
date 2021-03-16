@@ -9,6 +9,7 @@ import styles from 'styles/storage.styl'
 import OffersLink from 'components/OffersLink'
 
 import Page from 'components/Page'
+import PageTitle from 'components/PageTitle'
 
 class StorageView extends Component {
   componentWillMount() {
@@ -26,9 +27,7 @@ class StorageView extends Component {
     const percent = (diskUsage / diskQuota) * 100
     return (
       <Page narrow>
-        <Typography variant="h3" gutterBottom>
-          {t('StorageView.title')}
-        </Typography>
+        <PageTitle>{t('StorageView.title')}</PageTitle>
         <Typography variant="h5" gutterBottom>
           {t('StorageView.storage_title')}
         </Typography>

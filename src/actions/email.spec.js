@@ -3,6 +3,11 @@ import { createMockClient } from 'cozy-client/dist/mock'
 import { sendMessageToSupport } from './email'
 import { cozyFetch } from './index'
 
+jest.mock('lib/client', () => {
+  const CozyClient = jest.requireActual('cozy-client').default
+  return new CozyClient({})
+})
+
 jest.mock('./index', () => {
   const actions = jest.requireActual('./index')
   return {

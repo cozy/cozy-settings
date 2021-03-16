@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import compose from 'lodash/flowRight'
 
+import { useClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Button'
+import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Stack from 'cozy-ui/transpiled/react/Stack'
+
+import get from 'lodash/get'
 
 import Page from 'components/Page'
 import DeleteAccount from 'components/DeleteAccount'
@@ -16,31 +21,29 @@ import TwoFA from 'components/2FA'
 import Import from 'components/Import'
 import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
+import PageTitle from 'components/PageTitle'
 
 import { AUTH_MODE } from 'actions/twoFactor'
 
 const PasswordSection = () => {
   const { t } = useI18n()
-
-  return (
+  const client = useClient()
+  const canAuthWithPassword = get(client, 'capabilities.can_auth_with_password')
+  return canAuthWithPassword ? (
     <div>
-      <div>
-        <Typography variant="h5" gutterBottom>
-          {t('ProfileView.password.title')}
-        </Typography>
-        <Typography variant="body1">
-          {t('ProfileView.password.label')}
-        </Typography>
-        <Button
-          tag={Link}
-          to="/profile/password"
-          label={t('ProfileView.password.cta')}
-          theme="secondary"
-          className="u-mt-half u-mh-0"
-        />
-      </div>
+      <Typography variant="h5" gutterBottom>
+        {t('ProfileView.password.title')}
+      </Typography>
+      <Typography variant="body1">{t('ProfileView.password.label')}</Typography>
+      <Button
+        tag={Link}
+        to="/profile/password"
+        label={t('ProfileView.password.cta')}
+        theme="secondary"
+        className="u-mt-half u-mh-0"
+      />
     </div>
-  )
+  ) : null
 }
 
 class ProfileView extends Component {
@@ -67,7 +70,8 @@ class ProfileView extends Component {
       checkTwoFactorCode,
       activate2FA,
       desactivate2FA,
-      cancel2FAActivation
+      cancel2FAActivation,
+      breakpoints: { isMobile }
     } = this.props
 
     let exportId = null
@@ -89,9 +93,9 @@ class ProfileView extends Component {
         )}
         {!isFetching && (
           <>
-            <Typography variant="h3" className="u-mb-1">
+            <PageTitle className={!isMobile ? 'u-mb-1' : ''}>
               {t('ProfileView.title')}
-            </Typography>
+            </PageTitle>
             <Stack spacing="l">
               <Input
                 name="email"
@@ -152,4 +156,7 @@ class ProfileView extends Component {
   }
 }
 
-export default translate()(ProfileView)
+export default compose(
+  translate(),
+  withBreakpoints()
+)(ProfileView)

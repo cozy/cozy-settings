@@ -14,6 +14,7 @@ import {
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import Page from 'components/Page'
+import PageTitle from 'components/PageTitle'
 import tableStyles from 'styles/table.styl'
 
 class SessionsView extends Component {
@@ -25,9 +26,7 @@ class SessionsView extends Component {
     const { t, f, isFetching, sessions, deleteOtherSessions } = this.props
     return (
       <Page>
-        <Typography variant="h3" className="u-mb-1">
-          {t('SessionsView.title')}
-        </Typography>
+        <PageTitle>{t('SessionsView.title')}</PageTitle>
         <Typography variant="body1" className="u-mb-1-half">
           <Button
             className="u-ml-0"

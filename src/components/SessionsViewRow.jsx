@@ -3,10 +3,11 @@ import tableStyles from 'styles/table.styl'
 import React from 'react'
 import { UAParser } from 'ua-parser-js'
 
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { TableRow, TableCell } from 'cozy-ui/transpiled/react/Table'
+import { useI18n } from 'cozy-ui/transpiled/react'
 
-const SessionsViewRow = ({ f, t, session }) => {
+const SessionsViewRow = ({ session }) => {
+  const { f, t } = useI18n()
   const ua = UAParser(session.user_agent)
   return (
     <TableRow>
@@ -26,4 +27,4 @@ const SessionsViewRow = ({ f, t, session }) => {
   )
 }
 
-export default translate()(SessionsViewRow)
+export default SessionsViewRow

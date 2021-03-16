@@ -1,5 +1,4 @@
 import React from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { NavLink as RouterLink } from 'react-router-dom'
 import Nav, {
   NavLink,
@@ -8,59 +7,64 @@ import Nav, {
   NavText
 } from 'cozy-ui/transpiled/react/Nav'
 import UISidebar from 'cozy-ui/transpiled/react/Sidebar'
-
 import styles from 'styles/sidebar.styl'
 
 import boxIcon from 'assets/icons/icon-box.svg'
+
 import globeIcon from 'assets/icons/icon-globe.svg'
 import devicesIcon from 'assets/icons/icon-phone.svg'
 import peopleIcon from 'assets/icons/icon-people.svg'
+import { useI18n } from 'cozy-ui/transpiled/react'
 
-export const Sidebar = ({ t }) => (
-  <UISidebar className={styles['o-sidebar']}>
-    <Nav>
-      <NavItem>
-        <RouterLink
-          to="/profile"
-          className={NavLink.className}
-          activeClassName={NavLink.activeClassName}
-        >
-          <NavIcon icon={peopleIcon} />
-          <NavText>{t('Nav.profile')}</NavText>
-        </RouterLink>
-      </NavItem>
-      <NavItem>
-        <RouterLink
-          to="/connectedDevices"
-          className={NavLink.className}
-          activeClassName={NavLink.activeClassName}
-        >
-          <NavIcon icon={devicesIcon} />
-          <NavText>{t('Nav.connected_devices')}</NavText>
-        </RouterLink>
-      </NavItem>
-      <NavItem>
-        <RouterLink
-          to="/sessions"
-          className={NavLink.className}
-          activeClassName={NavLink.activeClassName}
-        >
-          <NavIcon icon={globeIcon} />
-          <NavText>{t('Nav.sessions')}</NavText>
-        </RouterLink>
-      </NavItem>
-      <NavItem>
-        <RouterLink
-          to="/storage"
-          className={NavLink.className}
-          activeClassName={NavLink.activeClassName}
-        >
-          <NavIcon icon={boxIcon} />
-          <NavText>{t('Nav.storage')}</NavText>
-        </RouterLink>
-      </NavItem>
-    </Nav>
-  </UISidebar>
-)
+export const Sidebar = () => {
+  const { t } = useI18n()
 
-export default translate()(Sidebar)
+  return (
+    <UISidebar className={styles['o-sidebar']}>
+      <Nav>
+        <NavItem>
+          <RouterLink
+            to="/profile"
+            className={NavLink.className}
+            activeClassName={NavLink.activeClassName}
+          >
+            <NavIcon icon={peopleIcon} />
+            <NavText>{t('Nav.profile')}</NavText>
+          </RouterLink>
+        </NavItem>
+        <NavItem>
+          <RouterLink
+            to="/connectedDevices"
+            className={NavLink.className}
+            activeClassName={NavLink.activeClassName}
+          >
+            <NavIcon icon={devicesIcon} />
+            <NavText>{t('Nav.connected_devices')}</NavText>
+          </RouterLink>
+        </NavItem>
+        <NavItem>
+          <RouterLink
+            to="/sessions"
+            className={NavLink.className}
+            activeClassName={NavLink.activeClassName}
+          >
+            <NavIcon icon={globeIcon} />
+            <NavText>{t('Nav.sessions')}</NavText>
+          </RouterLink>
+        </NavItem>
+        <NavItem>
+          <RouterLink
+            to="/storage"
+            className={NavLink.className}
+            activeClassName={NavLink.activeClassName}
+          >
+            <NavIcon icon={boxIcon} />
+            <NavText>{t('Nav.storage')}</NavText>
+          </RouterLink>
+        </NavItem>
+      </Nav>
+    </UISidebar>
+  )
+}
+
+export default Sidebar

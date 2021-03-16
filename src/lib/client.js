@@ -1,6 +1,6 @@
 import CozyClient from 'cozy-client'
 
-const client = new CozyClient({
+const client = CozyClient.fromDOM({
   schema: {}
 })
 

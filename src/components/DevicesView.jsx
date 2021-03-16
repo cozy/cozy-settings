@@ -15,13 +15,13 @@ import {
   TableHeader,
   TableCell
 } from 'cozy-ui/transpiled/react/Table'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
 import NoDevicesMessage from 'components/NoDevicesMessage'
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
 import Page from 'components/Page'
+import PageTitle from 'components/PageTitle'
 
 import mobileIcon from 'assets/icons/icon-device-phone.svg'
 import browserIcon from 'assets/icons/icon-device-browser.svg'
@@ -55,9 +55,7 @@ class DevicesView extends Component {
     } = this.props
     return (
       <Page narrow={!isFetching && devices.length === 0}>
-        <Typography variant="h3" gutterBottom>
-          {t('DevicesView.title')}
-        </Typography>
+        <PageTitle>{t('DevicesView.title')}</PageTitle>
         {isFetching && (
           <Spinner
             className={'u-pos-fixed-s'}
