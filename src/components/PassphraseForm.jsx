@@ -96,12 +96,14 @@ class PassphraseForm extends Component {
       'capabilities.can_auth_with_password'
     )
     const canAuthWithOIDC = get(client, 'capabilities.can_auth_with_oidc')
-    const isOIDC = !canAuthWithPassword && canAuthWithOIDC
+    const shouldUseOIDCtitle = !canAuthWithPassword && canAuthWithOIDC
 
     return (
       <Stack spacing="xl" tag="form" onSubmit={this.handleSubmit}>
         <PageTitle>
-          {isOIDC ? t('PassphraseView.title_oidc') : t('PassphraseView.title')}
+          {shouldUseOIDCtitle
+            ? t('PassphraseView.title_oidc')
+            : t('PassphraseView.title')}
         </PageTitle>
         <Stack spacing="m">
           <Typography
