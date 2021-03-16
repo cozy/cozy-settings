@@ -1,8 +1,9 @@
 import React from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import { useI18n } from 'cozy-ui/transpiled/react'
 
-export const ClaudyAction = ({ t, action, iconSrc, url, onActionClick }) => {
+export const ClaudyAction = ({ action, iconSrc, url, onActionClick }) => {
+  const { t } = useI18n()
   return (
     <div className="coz-claudy-menu-action-description">
       <div className="coz-claudy-menu-action-description-header">
@@ -38,4 +39,4 @@ export const ClaudyAction = ({ t, action, iconSrc, url, onActionClick }) => {
   )
 }
 
-export default translate()(ClaudyAction)
+export default ClaudyAction
