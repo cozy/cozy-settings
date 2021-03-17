@@ -82,7 +82,7 @@
     "title": "Profil",
     "password": {
       "title": "Mot de passe",
-      "label": "Votre cozy est actuellement protégé par un mot de passe",
+      "label": "Votre cozy est actuellement protégé par un mot de passe.",
       "cta": "Modifier le mot de passe"
     },
     "infos": {
