@@ -2939,15 +2939,15 @@ cozy-client@13.8.3:
     sift "^6.0.0"
     url-search-params-polyfill "^7.0.0"
 
-cozy-client@20.0.0:
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-20.0.0.tgz#2580309e72e909bc94d8e93bc287ce56f0517029"
-  integrity sha512-otLXLExURuTw8uu/J3CQvw2R+WEjXL1t345i9nwtXzeTKzCHeebMipPc5FJ9EdptCWXgcImeFwPcOnGmR0bXaw==
+cozy-client@20.2.0:
+  version "20.2.0"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-20.2.0.tgz#958ed4ebbba18c11dd1f29b977e0f74000f19f8c"
+  integrity sha512-mEbu7770udjHXU5KTH4UO7fq6RXalPgGNe7FxmWJarDzRYyJCwhgfMiHpjjWd7GhAtImMMn+tigzeaZ6Qpfkiw==
   dependencies:
     "@cozy/minilog" "1.0.0"
     "@types/jest" "^26.0.20"
     btoa "^1.2.1"
-    cozy-device-helper "^1.7.3"
+    cozy-device-helper "^1.12.0"
     cozy-logger "^1.6.0"
     cozy-stack-client "^20.0.0"
     lodash "^4.17.13"
@@ -2968,6 +2968,13 @@ cozy-device-helper@1.8.0, cozy-device-helper@^1.7.3, cozy-device-helper@^1.7.5:
   integrity sha512-XomsjdCCWcS01x1QK/Wc4EI4zTxJN8Ouh7956wm2AEQyjj4lN+7cj8tqEBlb8fLWm68/3S3Z4V3iSJDgnJHu6A==
   dependencies:
     lodash "4.17.15"
+
+cozy-device-helper@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-1.12.0.tgz#619a24b0d3caf2d3f616a1524daef7c7b71eab7a"
+  integrity sha512-7pFbltgkD8rSO0PEf8pd6aBB37RUnNYH7fb3pkbcvo5rk4quCfSLREV94gZwXxowzP4vjZcAumTM09DfI42mJA==
+  dependencies:
+    lodash "^4.17.19"
 
 cozy-doctypes@^1.70.0:
   version "1.70.0"
@@ -3003,10 +3010,10 @@ cozy-interapp@0.5.6:
   resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.5.6.tgz#cd168d11759c2dcad03d6108ed556525d993c676"
   integrity sha512-aiSFquWhFRB4WQbTN4QxIzkhPRwXDhBiYAp1YcYRGjtmCI+O42zyy13XO0AOq0Ws088POXK+3NySHGbA7qY3nA==
 
-cozy-keys-lib@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-3.1.2.tgz#524b4360d8e6008c3f234aeb9bd9730f1d2276fc"
-  integrity sha512-AgCO7otBoUvNs5lYWZquXm/YItM3Go+WseeFx99e6KuYs4219cSlEjzNyHgIGythfXRiBlQjWVuZaK4t/yvaPQ==
+cozy-keys-lib@3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-3.7.1.tgz#cb58a0eaa91d77f606502d7e0ee6ac0c6e6bc2a0"
+  integrity sha512-lknlq4wdY0izhlKr1/SW8JWuOJ+NUz9McgcVtty4QAHHPDBSIhvX09vez69gWGAs7WuAAmxzfPL+S7OrOqgaBA==
   dependencies:
     "@aspnet/signalr" "^1.1.4"
     "@aspnet/signalr-protocol-msgpack" "^1.1.0"

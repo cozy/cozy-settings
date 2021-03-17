@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import compose from 'lodash/flowRight'
+import get from 'lodash/get'
 
 import { useClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -10,8 +11,6 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-
-import get from 'lodash/get'
 
 import Page from 'components/Page'
 import DeleteAccount from 'components/DeleteAccount'
@@ -25,10 +24,17 @@ import PageTitle from 'components/PageTitle'
 
 import { AUTH_MODE } from 'actions/twoFactor'
 
-const PasswordSection = () => {
+export const PasswordSection = () => {
   const { t } = useI18n()
   const client = useClient()
-  const canAuthWithPassword = get(client, 'capabilities.can_auth_with_password')
+
+  // If we have no capabilities, consider that we can login to the cozy with password
+  const canAuthWithPassword = get(
+    client,
+    'capabilities.can_auth_with_password',
+    true
+  )
+
   return canAuthWithPassword ? (
     <div>
       <Typography variant="h5" gutterBottom>
