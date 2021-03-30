@@ -279,13 +279,14 @@
   },
   "PassphraseView": {
     "title": "Wachtwoord bijwerken",
+    "title_oidc": "Cozy Pass-wachtwoord bijwerken",
     "current_passphrase": {
-      "label": "Voer je huidige wachtwoord in:",
+      "label": "Voer je huidige wachtwoord in",
       "placeholder": "Huidige wachtwoord:",
       "wrong_passphrase": "Je huidige wachtwoord is onjuist."
     },
     "new_passphrase": {
-      "label": "Voer je nieuwe wachtwoord in:",
+      "label": "Voer een nieuw wachtwoord in",
       "placeholder": "Nieuw cozy-wachtwoord",
       "confirmation_placeholder": "Bevestig het wachtwoord",
       "dont_match": "De wachtwoorden konen niet overeen"
