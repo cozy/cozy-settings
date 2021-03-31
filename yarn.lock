@@ -3010,10 +3010,10 @@ cozy-interapp@0.5.6:
   resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.5.6.tgz#cd168d11759c2dcad03d6108ed556525d993c676"
   integrity sha512-aiSFquWhFRB4WQbTN4QxIzkhPRwXDhBiYAp1YcYRGjtmCI+O42zyy13XO0AOq0Ws088POXK+3NySHGbA7qY3nA==
 
-cozy-keys-lib@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-3.7.1.tgz#cb58a0eaa91d77f606502d7e0ee6ac0c6e6bc2a0"
-  integrity sha512-lknlq4wdY0izhlKr1/SW8JWuOJ+NUz9McgcVtty4QAHHPDBSIhvX09vez69gWGAs7WuAAmxzfPL+S7OrOqgaBA==
+cozy-keys-lib@3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/cozy-keys-lib/-/cozy-keys-lib-3.8.0.tgz#655a6d05d012081d595ece7f25c6e8efa832b91f"
+  integrity sha512-uwuX3btRlItvaSsxTyuX2XiAFMmVjCJYYAKyQjQNgGsRfOiwVGUBp6GxjU54fd6X5tLTNdIysODNlbt+0WuS9Q==
   dependencies:
     "@aspnet/signalr" "^1.1.4"
     "@aspnet/signalr-protocol-msgpack" "^1.1.0"
@@ -3023,7 +3023,7 @@ cozy-keys-lib@3.7.1:
     lodash "^4.17.15"
     lunr "^2.3.6"
     microee "^0.0.6"
-    minilog "https://github.com/cozy/minilog.git#master"
+    minilog "git+https://github.com/cozy/minilog.git#master"
     node-forge "^0.9.0"
     papaparse "^5.1.1"
     prop-types "^15.7.2"
@@ -7163,7 +7163,14 @@ mini-css-extract-plugin@0.5.0:
     schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
 
-minilog@3.1.0, "minilog@https://github.com/cozy/minilog.git#master":
+minilog@3.1.0, "minilog@git+https://github.com/cozy/minilog.git#master":
+  version "3.1.0"
+  uid "6da0aa58759c4f1a1a7e0fd093dbe2a67c035c55"
+  resolved "git+https://github.com/cozy/minilog.git#6da0aa58759c4f1a1a7e0fd093dbe2a67c035c55"
+  dependencies:
+    microee "0.0.6"
+
+"minilog@https://github.com/cozy/minilog.git#master":
   version "3.1.0"
   resolved "https://github.com/cozy/minilog.git#6da0aa58759c4f1a1a7e0fd093dbe2a67c035c55"
   dependencies:
