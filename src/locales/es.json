@@ -105,7 +105,7 @@
         "title": "Autenticación en dos pasos",
         "description": "Su Cozy envía un código de validación de 6 dígitos a %{email}.<br/>\nintroduzca el código arriba mencionado para cambiar su contraseña:."
       },
-      "label": "Debido a que dos pasos son mejores que uno, mejore la seguridad de su Cozy con un paso adicional. [Échele un vistazo a nuestro sitio web de asistencia?]( %{link})",
+      "label": "<br/>Debido a que dos pasos son mejores que uno, mejore la seguridad de su Cozy con un paso adicional. \n[Échele un vistazo a nuestro sitio web de asistencia?]( %{link})",
       "modal": {
         "code": "código",
         "protect": "Proteger su Cozy con una autenticación en dos pasos",
@@ -140,6 +140,9 @@
     "tracking": {
       "title": "Ayúdenos a mejorar nuestro producto",
       "label": "Autorizar Cozy Cloud a adquirir anónimamente sus datos de uso para mejorar nuestro producto. [Manténgase informado sobre los compromisis de Cozy](https://files.cozycloud.cc/TOS%{version}.pdf)"
+    },
+    "move": {
+      "button": "Desplazar mi Cozy"
     },
     "export": {
       "title": "Mis datos",
@@ -276,6 +279,7 @@
   },
   "PassphraseView": {
     "title": "Actualizar mi contraseña",
+    "title_oidc": "Actualizar mi contraseña de Cozy Pass",
     "current_passphrase": {
       "label": "Escriba su contraseña actual ",
       "placeholder": "Contraseña actual",
