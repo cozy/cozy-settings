@@ -20,6 +20,7 @@ import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
 import NoDevicesMessage from 'components/NoDevicesMessage'
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
+import DevicesModaleConfigureView from 'components/DevicesModaleConfigureView'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 
@@ -37,6 +38,12 @@ const getDeviceIcon = device => {
 }
 
 class DevicesView extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { deviceToConfigure: null }
+  }
+
   componentWillMount() {
     this.props.fetchDevices()
   }
@@ -53,6 +60,7 @@ class DevicesView extends Component {
       onDeviceModaleRevokeClose,
       devicePerformRevoke
     } = this.props
+    const { deviceToConfigure } = this.state
     return (
       <Page narrow={!isFetching && devices.length === 0}>
         <PageTitle>{t('DevicesView.title')}</PageTitle>
@@ -72,6 +80,17 @@ class DevicesView extends Component {
                 cancelAction={onDeviceModaleRevokeClose}
                 revokeDevice={devicePerformRevoke}
                 device={deviceToRevoke}
+              />
+            )}
+            {deviceToConfigure != null && (
+              <DevicesModaleConfigureView
+                cancelAction={() => {
+                  this.setState({ deviceToConfigure: null })
+                }}
+                onDeviceConfigured={() =>
+                  this.setState({ deviceToConfigure: null })
+                }
+                device={deviceToConfigure}
               />
             )}
             <TableHead>
@@ -130,6 +149,16 @@ class DevicesView extends Component {
                     >
                       {t('DevicesView.revoke')}
                     </MuiButton>
+                    {device.client_kind === 'desktop' && (
+                      <MuiButton
+                        color="primary"
+                        onClick={() => {
+                          this.setState({ deviceToConfigure: device })
+                        }}
+                      >
+                        {t('DevicesView.configure')}
+                      </MuiButton>
+                    )}
                   </TableCell>
                 </TableRow>
               ))}
