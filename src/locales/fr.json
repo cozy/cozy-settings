@@ -240,6 +240,7 @@
     "head_permissions": "Permissions",
     "head_actions": "Actions",
     "revoke": "révoquer",
+    "configure": "configurer",
     "sync_date_format": "D MMM YYYY"
   },
   "StorageView": {
@@ -266,6 +267,19 @@
     "validate": "Révoquer l’appareil",
     "cancel": "Annuler",
     "error": "Je ne parviens pas à révoquer l’appareil, essayez de recharger la page."
+  },
+  "configureDevice": {
+    "load_error": "Une erreur s’est produite pendant le chargement de vos dossiers, merci de réessayer prochainement.",
+    "configure_error": "Je ne parviens pas à configurer les dossiers à synchroniser avec votre ordinateur, essayez de recharger la page.",
+    "description": "Sélectionner les dossiers à synchroniser avec votre ordinateur :",
+    "no_folders": "Vous n'avez aucun dossier dans votre Cozy.",
+    "my_cozy": "Mon Cozy",
+    "partialSync": {
+      "disable": "Synchroniser tout mon Cozy",
+      "enable": "Synchroniser exclusivement les dossiers suivants :"
+    },
+    "validate": "OK",
+    "cancel": "Annuler"
   },
   "ServicesView": {
     "title": "Services activés",

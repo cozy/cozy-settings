@@ -56,6 +56,11 @@
       "description": "Required to send emails to support",
       "type": "io.cozy.jobs",
       "verbs": ["ALL"]
+    },
+    "files": {
+      "description": "Required to select folders to synchronize on devices",
+      "type": "io.cozy.files",
+      "verbs": ["ALL"]
     }
   },
   "routes": {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 
 import tableStyles from 'styles/table.styl'
 
-import classNames from 'classnames'
+import flag from 'cozy-flags'
 
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
@@ -20,6 +21,7 @@ import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
 import NoDevicesMessage from 'components/NoDevicesMessage'
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
+import DevicesModaleConfigureView from 'components/DevicesModaleConfigureView'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 
@@ -36,7 +38,18 @@ const getDeviceIcon = device => {
   return deviceKindToIcon[device.client_kind] || laptopIcon
 }
 
+const isDesktopDevice = device => device.client_kind === 'desktop'
+const canConfigureDevice = device =>
+  flag('settings.partial-desktop-sync.show-synced-folders-selection') &&
+  isDesktopDevice(device)
+
 class DevicesView extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { deviceToConfigure: null }
+  }
+
   componentWillMount() {
     this.props.fetchDevices()
   }
@@ -53,6 +66,7 @@ class DevicesView extends Component {
       onDeviceModaleRevokeClose,
       devicePerformRevoke
     } = this.props
+    const { deviceToConfigure } = this.state
     return (
       <Page narrow={!isFetching && devices.length === 0}>
         <PageTitle>{t('DevicesView.title')}</PageTitle>
@@ -74,6 +88,17 @@ class DevicesView extends Component {
                 device={deviceToRevoke}
               />
             )}
+            {deviceToConfigure != null ? (
+              <DevicesModaleConfigureView
+                cancelAction={() => {
+                  this.setState({ deviceToConfigure: null })
+                }}
+                onDeviceConfigured={() =>
+                  this.setState({ deviceToConfigure: null })
+                }
+                device={deviceToConfigure}
+              />
+            ) : null}
             <TableHead>
               <TableRow>
                 <TableHeader className={tableStyles['set-table-name']}>
@@ -130,6 +155,16 @@ class DevicesView extends Component {
                     >
                       {t('DevicesView.revoke')}
                     </MuiButton>
+                    {canConfigureDevice(device) ? (
+                      <MuiButton
+                        color="primary"
+                        onClick={() => {
+                          this.setState({ deviceToConfigure: device })
+                        }}
+                      >
+                        {t('DevicesView.configure')}
+                      </MuiButton>
+                    ) : null}
                   </TableCell>
                 </TableRow>
               ))}
