@@ -387,5 +387,9 @@
 
   "errors": {
     "noEmailFound": "No email address found. Please add one in your Cozy settings then try again."
+  },
+
+  "Toolbar": {
+    "more": "More"
   }
 }

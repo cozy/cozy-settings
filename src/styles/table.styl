@@ -32,14 +32,17 @@
 
     +small-screen()
         .set-table-name
-            flex  0 0 60%
-
-        .set-table-date
-            flex 0 0 15%
-
-        .set-table-actions
-            flex  0 0 25%
+            flex  0 0 100%
 
         .set-table-activity
         .set-table-permission
+            display none
+
+.set-table-devices
+    .set-table-actions
+        flex 0 0 45%
+
+    +small-screen()
+        .set-table-date
+        .set-table-actions
             display none
