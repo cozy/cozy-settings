@@ -387,5 +387,9 @@
 
   "errors": {
     "noEmailFound": "Aucune adresse courriel trouvée. Veuillez en ajouter une dans les paramètres de votre Cozy avant de réessayez."
+  },
+
+  "Toolbar": {
+    "more": "Plus"
   }
 }
