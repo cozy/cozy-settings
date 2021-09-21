@@ -39,6 +39,11 @@ import mobileIcon from 'assets/icons/icon-device-phone.svg'
 import browserIcon from 'assets/icons/icon-device-browser.svg'
 import laptopIcon from 'assets/icons/icon-device-laptop.svg'
 
+import {
+  ROOT_FOLDER_ID,
+  buildFoldersQuery
+} from 'lib/deviceConfigurationHelper'
+
 const deviceKindToIcon = {
   mobile: mobileIcon,
   browser: browserIcon
@@ -159,6 +164,11 @@ class DevicesView extends Component {
       breakpoints: { isMobile }
     } = this.props
     const { deviceToConfigure } = this.state
+    const foldersQuery =
+      deviceToConfigure != null
+        ? buildFoldersQuery({ currentFolderId: ROOT_FOLDER_ID })
+        : null
+    console.log({ foldersQuery })
     return (
       <Page narrow={!isFetching && devices.length === 0}>
         <PageTitle>{t('DevicesView.title')}</PageTitle>
@@ -189,6 +199,7 @@ class DevicesView extends Component {
                   this.setState({ deviceToConfigure: null })
                 }
                 device={deviceToConfigure}
+                foldersQuery={foldersQuery}
               />
             )}
             <TableHead>

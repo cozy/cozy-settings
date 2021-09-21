@@ -142,6 +142,7 @@ const FoldersList = ({
 
 const ConfigureDeviceSyncDialog = ({
   device,
+  foldersQuery,
   cancelAction,
   onDeviceConfigured
 }) => {
@@ -158,7 +159,6 @@ const ConfigureDeviceSyncDialog = ({
     setPartialSync(newExcluded.length !== 0)
   }, [])
 
-  const foldersQuery = buildFoldersQuery({ currentFolderId: ROOT_FOLDER_ID })
   const queryResult = useQuery(foldersQuery.definition, foldersQuery.options)
 
   useMemo(() => {
@@ -181,8 +181,16 @@ const ConfigureDeviceSyncDialog = ({
 
       if (wasExcluded.length > 0) {
         setWasExcluded(wasExcluded)
+        console.log(
+          { wasExcluded, data: queryResult.data.slice(0, 3) },
+          'going through memo'
+        )
         updateExcluded(wasExcluded)
       } else {
+        console.log(
+          { wasExcluded, data: queryResult.data.slice(0, 3) },
+          'going through memo'
+        )
         updateExcluded([])
       }
       setLoaded(true)
@@ -234,6 +242,9 @@ const ConfigureDeviceSyncDialog = ({
         foldersToExclude,
         client
       })
+      //const newExcluded = excluded.filter(id => !foldersToInclude.includes(id))
+      //console.log(newExcluded.slice(0, 3))
+      //updateExcluded(newExcluded)
     } catch (err) {
       return Alerter.error(t('configureDevice.configure_error'))
     }

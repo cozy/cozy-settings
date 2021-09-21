@@ -7,7 +7,7 @@ export const ROOT_FOLDER_ID = 'io.cozy.files.root-dir'
 const TRASH_DIR_ID = 'io.cozy.files.trash-dir'
 
 const formatFoldersQueryId = (type, folderId, sortAttribute, sortOrder) => {
-  return `${type} ${folderId} ${sortAttribute} ${sortOrder}`
+  return `${type} ${folderId} ${sortAttribute} ${sortOrder} ${new Date()}`
 }
 
 export const buildFoldersQuery = ({ currentFolderId }) => ({
