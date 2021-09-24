@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
+import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
+import { initFlags } from 'lib/flags'
+
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
@@ -16,11 +19,14 @@ import Storage from 'containers/Storage'
 import Passphrase from 'containers/Passphrase'
 import IntentRedirect from 'services/IntentRedirect'
 
+initFlags()
+
 export class App extends Component {
   render() {
     return (
       <Layout>
         {App.renderExtra()}
+        <FlagSwitcher />
         <Alerter />
         <Sidebar />
 
