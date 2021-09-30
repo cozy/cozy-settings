@@ -240,6 +240,7 @@
     "head_permissions": "Permissions",
     "head_actions": "Actions",
     "revoke": "revoke",
+    "configure": "configure",
     "sync_date_format": "MMM D, YYYY"
   },
   "StorageView": {
@@ -266,6 +267,19 @@
     "validate": "Revoke device",
     "cancel": "Cancel",
     "error": "Unable to revoke the device, try to reload the page."
+  },
+  "configureDevice": {
+    "load_error": "An error occured while loading your folders, please try again later.",
+    "configure_error": "Unable to configure the folders to synchronize with the device, try to reload the page.",
+    "description": "Select the folders to synchronize with your computer:",
+    "no_folders": "You don't have any folders in your Cozy.",
+    "my_cozy": "My Cozy",
+    "partialSync": {
+      "disable": "Synchronize my whole Cozy",
+      "enable": "Synchronize only the selected folders:"
+    },
+    "validate": "OK",
+    "cancel": "Cancel"
   },
   "ServicesView": {
     "title": "Activated services",
@@ -373,5 +387,9 @@
 
   "errors": {
     "noEmailFound": "No email address found. Please add one in your Cozy settings then try again."
+  },
+
+  "Toolbar": {
+    "more": "More"
   }
 }
