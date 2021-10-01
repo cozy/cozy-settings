@@ -48,6 +48,13 @@ describe('DevicesModaleConfigureView', () => {
   const mockCancelAction = jest.fn()
   const mockOnDeviceConfigured = jest.fn()
 
+  const partialSyncSelector = root =>
+    root.getByLabelText('Synchronize only the selected folders:')
+  const completeSyncSelector = root =>
+    root.getByLabelText('Synchronize my whole Cozy')
+  const cancelButton = root => root.getByRole('button', { name: 'Cancel' })
+  const validateButton = root => root.getByRole('button', { name: 'Validate' })
+
   const setup = () => {
     const root = render(
       <AppLike client={mockClient}>
@@ -89,7 +96,7 @@ describe('DevicesModaleConfigureView', () => {
     describe('and the dialog is validated', () => {
       const run = () => {
         const { root } = setup()
-        fireEvent.click(root.getByRole('button', { name: 'OK' }))
+        fireEvent.click(validateButton(root))
       }
 
       it('should call updateDirectoriesExclusions without folders', async () => {
@@ -126,7 +133,7 @@ describe('DevicesModaleConfigureView', () => {
     describe('and the dialog is validated', () => {
       const run = () => {
         const { root } = setup()
-        fireEvent.click(root.getByRole('button', { name: 'OK' }))
+        fireEvent.click(validateButton(root))
       }
 
       it('should call updateDirectoriesExclusions without folders', async () => {
@@ -164,16 +171,14 @@ describe('DevicesModaleConfigureView', () => {
 
     it('should render a disabled partial sync selector', () => {
       const { root } = setup()
-      expect(
-        root.getByLabelText('Synchronize only the selected folders:')
-      ).toBeDisabled()
-      expect(root.getByLabelText('Synchronize my whole Cozy')).toBeChecked()
+      expect(partialSyncSelector(root)).toBeDisabled()
+      expect(completeSyncSelector(root)).toBeChecked()
     })
 
     describe('and the dialog is validated', () => {
       const run = () => {
         const { root } = setup()
-        fireEvent.click(root.getByRole('button', { name: 'OK' }))
+        fireEvent.click(validateButton(root))
       }
 
       it('should call updateDirectoriesExclusions without folders', async () => {
@@ -204,10 +209,8 @@ describe('DevicesModaleConfigureView', () => {
 
     it('should render a checked whole Cozy sync selector', () => {
       const { root } = setup()
-      expect(root.getByLabelText('Synchronize my whole Cozy')).toBeChecked()
-      expect(
-        root.getByLabelText('Synchronize only the selected folders:')
-      ).toBeEnabled()
+      expect(completeSyncSelector(root)).toBeChecked()
+      expect(partialSyncSelector(root)).toBeEnabled()
     })
 
     it('should render a list of checked and disabled folder toggles', () => {
@@ -222,19 +225,16 @@ describe('DevicesModaleConfigureView', () => {
     describe('and partial sync is enabled', () => {
       const run = () => {
         const { root } = setup()
-        const partialSyncToggle = root.getByLabelText(
-          'Synchronize only the selected folders:'
-        )
 
-        fireEvent.click(partialSyncToggle)
+        fireEvent.click(partialSyncSelector(root))
 
-        return { partialSyncToggle, root }
+        return { root }
       }
 
       it('should render a checked partial sync selector', () => {
-        const { partialSyncToggle } = run()
+        const { root } = run()
 
-        expect(partialSyncToggle).toBeChecked()
+        expect(partialSyncSelector(root)).toBeChecked()
       })
 
       it('should render a list of checked and enabled folder toggles', () => {
@@ -264,9 +264,7 @@ describe('DevicesModaleConfigureView', () => {
       it('should render a checked partial sync selector', () => {
         const { root } = run()
 
-        expect(
-          root.getByLabelText('Synchronize only the selected folders:')
-        ).toBeChecked()
+        expect(partialSyncSelector(root)).toBeChecked()
       })
 
       it('should render a list of unchecked and enabled folder toggles', () => {
@@ -296,9 +294,7 @@ describe('DevicesModaleConfigureView', () => {
       it('should render a checked partial sync selector', () => {
         const { root } = run()
 
-        expect(
-          root.getByLabelText('Synchronize only the selected folders:')
-        ).toBeChecked()
+        expect(partialSyncSelector(root)).toBeChecked()
       })
 
       it('should render a mixed checked and enabled all folders toggle', () => {
@@ -335,7 +331,7 @@ describe('DevicesModaleConfigureView', () => {
     describe('and the dialog is validated', () => {
       const run = () => {
         const { root } = setup()
-        fireEvent.click(root.getByRole('button', { name: 'OK' }))
+        fireEvent.click(validateButton(root))
       }
 
       it('should call updateDirectoriesExclusions without folders', async () => {
@@ -366,9 +362,7 @@ describe('DevicesModaleConfigureView', () => {
 
     it('should render a checked partial sync selector', () => {
       const { root } = setup()
-      expect(
-        root.getByLabelText('Synchronize only the selected folders:')
-      ).toBeChecked()
+      expect(partialSyncSelector(root)).toBeChecked()
     })
 
     it('should render a list of unchecked and enabled folder toggles', () => {
@@ -383,19 +377,16 @@ describe('DevicesModaleConfigureView', () => {
     describe('and partial sync is disabled', () => {
       const run = () => {
         const { root } = setup()
-        const partialSyncToggle = root.getByLabelText(
-          'Synchronize my whole Cozy'
-        )
 
-        fireEvent.click(partialSyncToggle)
+        fireEvent.click(completeSyncSelector(root))
 
-        return { partialSyncToggle, root }
+        return { root }
       }
 
       it('should render a checked whole Cozy sync selector', () => {
-        const { partialSyncToggle } = run()
+        const { root } = run()
 
-        expect(partialSyncToggle).toBeChecked()
+        expect(completeSyncSelector(root)).toBeChecked()
       })
 
       it('should render a list of unchecked and disabled folder toggles', () => {
@@ -425,7 +416,7 @@ describe('DevicesModaleConfigureView', () => {
       it('should render a checked whole Cozy sync selector', () => {
         const { root } = run()
 
-        expect(root.getByLabelText('Synchronize my whole Cozy')).toBeChecked()
+        expect(completeSyncSelector(root)).toBeChecked()
       })
 
       it('should render a list of checked and disabled folder toggles', () => {
@@ -455,9 +446,7 @@ describe('DevicesModaleConfigureView', () => {
       it('should render a checked partial sync selector', () => {
         const { root } = run()
 
-        expect(
-          root.getByLabelText('Synchronize only the selected folders:')
-        ).toBeChecked()
+        expect(partialSyncSelector(root)).toBeChecked()
       })
 
       it('should render a mixed checked and enabled all folders toggle', () => {
@@ -494,7 +483,7 @@ describe('DevicesModaleConfigureView', () => {
     describe('and the dialog is validated', () => {
       const run = () => {
         const { root } = setup()
-        fireEvent.click(root.getByRole('button', { name: 'OK' }))
+        fireEvent.click(validateButton(root))
       }
 
       it('should call updateDirectoriesExclusions without folders', async () => {
@@ -525,13 +514,9 @@ describe('DevicesModaleConfigureView', () => {
 
     it('should render an enabled and checked partial sync selector', () => {
       const { root } = setup()
-      expect(root.getByLabelText('Synchronize my whole Cozy')).toBeEnabled()
-      expect(
-        root.getByLabelText('Synchronize only the selected folders:')
-      ).toBeEnabled()
-      expect(
-        root.getByLabelText('Synchronize only the selected folders:')
-      ).toBeChecked()
+      expect(completeSyncSelector(root)).toBeEnabled()
+      expect(partialSyncSelector(root)).toBeEnabled()
+      expect(partialSyncSelector(root)).toBeChecked()
     })
 
     it('should render a mixed checked and enabled all folders toggle', () => {
@@ -572,19 +557,16 @@ describe('DevicesModaleConfigureView', () => {
     describe('and partial sync is disabled', () => {
       const run = () => {
         const { root } = setup()
-        const partialSyncToggle = root.getByLabelText(
-          'Synchronize my whole Cozy'
-        )
 
-        fireEvent.click(partialSyncToggle)
+        fireEvent.click(completeSyncSelector(root))
 
-        return { partialSyncToggle, root }
+        return { root }
       }
 
       it('should render a checked whole Cozy sync selector', () => {
-        const { partialSyncToggle } = run()
+        const { root } = run()
 
-        expect(partialSyncToggle).toBeChecked()
+        expect(completeSyncSelector(root)).toBeChecked()
       })
 
       it('should render a list of disabled folder toggles, checked for included ones', () => {
@@ -630,9 +612,7 @@ describe('DevicesModaleConfigureView', () => {
       it('should render a checked partial sync selector', () => {
         const { root } = run()
 
-        expect(
-          root.getByLabelText('Synchronize only the selected folders:')
-        ).toBeChecked()
+        expect(partialSyncSelector(root)).toBeChecked()
       })
 
       it('should render a list of unchecked and enabled folder toggles', () => {
@@ -663,7 +643,7 @@ describe('DevicesModaleConfigureView', () => {
       it('should render a checked whole Cozy sync selector', () => {
         const { root } = run()
 
-        expect(root.getByLabelText('Synchronize my whole Cozy')).toBeChecked()
+        expect(completeSyncSelector(root)).toBeChecked()
       })
 
       it('should render a list of checked and disabled folder toggles', () => {
@@ -680,7 +660,7 @@ describe('DevicesModaleConfigureView', () => {
     describe('and the dialog is validated', () => {
       const run = () => {
         const { root } = setup()
-        fireEvent.click(root.getByRole('button', { name: 'OK' }))
+        fireEvent.click(validateButton(root))
       }
 
       it('should call updateDirectoriesExclusions without folders', async () => {
@@ -717,7 +697,7 @@ describe('DevicesModaleConfigureView', () => {
           })
         )
 
-        fireEvent.click(root.getByRole('button', { name: 'OK' }))
+        fireEvent.click(validateButton(root))
       }
 
       it('should call updateDirectoriesExclusions with the changed folders', async () => {
@@ -754,7 +734,7 @@ describe('DevicesModaleConfigureView', () => {
           })
         )
 
-        fireEvent.click(root.getByRole('button', { name: 'Cancel' }))
+        fireEvent.click(cancelButton(root))
       }
 
       it('should not call updateDirectoriesExclusions', async () => {
