@@ -240,6 +240,7 @@
     "head_permissions": "Machtigingen",
     "head_actions": "Acties",
     "revoke": "intrekken",
+    "configure": "Instellen",
     "sync_date_format": "D MMM YYYY"
   },
   "StorageView": {
@@ -267,6 +268,19 @@
     "cancel": "Annuleren",
     "error": "Het ontkoppelen is mislukt; probeer het later opnieuw."
   },
+  "configureDevice": {
+    "load_error": "Er is een fout opgetreden tijdens het laden van je mappen. Probeer het later opnieuw.",
+    "configure_error": "De te synchroniseren mappen kunnen niet worden ingesteld. Herlaad de pagina en probeer het opnieuw.",
+    "description": "Selecteer de te synchroniseren mappen.",
+    "no_folders": "Je hebt nog geen mappen op je Cozy.",
+    "my_cozy": "Mijn Cozy",
+    "partialSync": {
+      "disable": "Gehele Cozy synchroniseren",
+      "enable": "Allees de geselecteerde mappen synchroniseren:"
+    },
+    "validate": "Oké",
+    "cancel": "Annuleren"
+  },
   "ServicesView": {
     "title": "Ingeschakelde diensten",
     "load_error": "Er is een fout opgetreden tijdens het laden van je diensten. Probeer het later opnieuw.",
@@ -279,13 +293,14 @@
   },
   "PassphraseView": {
     "title": "Wachtwoord bijwerken",
+    "title_oidc": "Cozy Pass-wachtwoord bijwerken",
     "current_passphrase": {
-      "label": "Voer je huidige wachtwoord in:",
+      "label": "Voer je huidige wachtwoord in",
       "placeholder": "Huidige wachtwoord:",
       "wrong_passphrase": "Je huidige wachtwoord is onjuist."
     },
     "new_passphrase": {
-      "label": "Voer je nieuwe wachtwoord in:",
+      "label": "Voer een nieuw wachtwoord in",
       "placeholder": "Nieuw cozy-wachtwoord",
       "confirmation_placeholder": "Bevestig het wachtwoord",
       "dont_match": "De wachtwoorden konen niet overeen"
@@ -372,5 +387,9 @@
 
   "errors": {
     "noEmailFound": "Er is geen e-mailadres aangetroffen. Voeg er één toe in je Cozy-instellingen en probeer het opnieuw."
+  },
+
+  "Toolbar": {
+    "more": "Meer"
   }
 }
