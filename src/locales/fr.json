@@ -278,7 +278,7 @@
       "disable": "Synchroniser tout mon Cozy",
       "enable": "Synchroniser exclusivement les dossiers suivants :"
     },
-    "validate": "OK",
+    "validate": "Valider",
     "cancel": "Annuler"
   },
   "ServicesView": {
