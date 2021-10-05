@@ -10,11 +10,13 @@ import ActionMenu, {
   ActionMenuHeader,
   ActionMenuItem
 } from 'cozy-ui/transpiled/react/ActionMenu'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
 import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
 import { translate, useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import LoadMore from 'cozy-ui/transpiled/react/LoadMore'
 import MuiButton from 'cozy-ui/transpiled/react/MuiCozyTheme/Buttons'
 import {
   Table,
@@ -40,7 +42,21 @@ import mobileIcon from 'assets/icons/icon-device-phone.svg'
 import browserIcon from 'assets/icons/icon-device-browser.svg'
 import laptopIcon from 'assets/icons/icon-device-laptop.svg'
 
-import { COZY_DESKTOP_SOFTWARE_ID } from 'lib/deviceConfigurationHelper'
+import { Q, isQueryLoading, useQuery } from 'cozy-client'
+
+import {
+  COZY_DESKTOP_SOFTWARE_ID,
+  DISPLAYED_CLIENTS,
+  OAUTH_CLIENTS_DOCTYPE
+} from 'lib/deviceConfigurationHelper'
+
+const DEVICES_QUERY_LIMIT = 100
+const buildDevicesQuery = () => ({
+  definition: () => Q(OAUTH_CLIENTS_DOCTYPE).limitBy(DEVICES_QUERY_LIMIT),
+  options: {
+    as: `${OAUTH_CLIENTS_DOCTYPE} _id asc`
+  }
+})
 
 const deviceKindToIcon = {
   mobile: mobileIcon,
@@ -145,9 +161,6 @@ const DevicesView = props => {
   const {
     t,
     f,
-    isFetching,
-    devices,
-    fetchDevices,
     openDeviceRevokeModale,
     deviceToRevoke,
     onDeviceModaleRevoke,
@@ -157,15 +170,40 @@ const DevicesView = props => {
   } = props
 
   const [deviceToConfigure, setDeviceToConfigure] = useState(null)
-  const [devicesRequested, setDevicesRequested] = useState(false)
+
+  const devicesQuery = buildDevicesQuery()
+  const queryResult = useQuery(devicesQuery.definition, devicesQuery.options)
+  const { hasMore, fetchMore } = useMemo(
+    () => ({ hasMore: queryResult.hasMore, fetchMore: queryResult.fetchMore }),
+    [queryResult.hasMore, queryResult.fetchMore]
+  )
+  const devices = useMemo(
+    () =>
+      Array.isArray(queryResult.data)
+        ? queryResult.data.filter(device =>
+            DISPLAYED_CLIENTS.includes(device.client_kind)
+          )
+        : [],
+    [queryResult.data]
+  )
+  // Detect if we have less than DEVICES_QUERY_LIMIT devices because they were
+  // filtered on the client side.
+  const hasMoreUnfiltered = useMemo(
+    () => devices.length < DEVICES_QUERY_LIMIT && hasMore,
+    [devices.length, hasMore]
+  )
+  const isFetching = useMemo(
+    () => isQueryLoading(queryResult) || hasMoreUnfiltered,
+    [queryResult, hasMoreUnfiltered]
+  )
 
   useMemo(() => {
-    if (isFetching && !devicesRequested) {
-      setDevicesRequested(true)
-    } else if (!devicesRequested && !isFetching) {
-      fetchDevices()
+    if (queryResult.fetchStatus === 'failed') {
+      Alerter.error(t('DevicesView.load_error'))
+    } else if (hasMoreUnfiltered) {
+      fetchMore()
     }
-  }, [devicesRequested, isFetching, fetchDevices])
+  }, [fetchMore, hasMoreUnfiltered, queryResult.fetchStatus, t])
 
   return (
     <Page narrow={!isFetching && devices.length === 0}>
@@ -280,6 +318,12 @@ const DevicesView = props => {
                 </TableCell>
               </TableRow>
             ))}
+            {hasMore ? (
+              <LoadMore
+                label={t('DevicesView.load_more')}
+                fetchMore={fetchMore}
+              />
+            ) : null}
           </TableBody>
         </Table>
       )}

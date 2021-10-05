@@ -234,6 +234,7 @@
   "DevicesView": {
     "title": "Connected devices",
     "load_error": "An error occured while loading your devices, please try again later.",
+    "load_more": "Load More",
     "head_name": "Name",
     "head_sync": "Last synchronisation",
     "head_activity": "Last activity",
