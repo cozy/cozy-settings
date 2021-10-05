@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import compose from 'lodash/flowRight'
 
@@ -40,9 +40,7 @@ import mobileIcon from 'assets/icons/icon-device-phone.svg'
 import browserIcon from 'assets/icons/icon-device-browser.svg'
 import laptopIcon from 'assets/icons/icon-device-laptop.svg'
 
-import {
-  COZY_DESKTOP_SOFTWARE_ID
-} from 'lib/deviceConfigurationHelper'
+import { COZY_DESKTOP_SOFTWARE_ID } from 'lib/deviceConfigurationHelper'
 
 const deviceKindToIcon = {
   mobile: mobileIcon,
@@ -143,152 +141,150 @@ const MoreMenu = ({ device, onRevoke, onConfigure, isMobile }) => {
   )
 }
 
-class DevicesView extends Component {
-  constructor(props) {
-    super(props)
+const DevicesView = props => {
+  const {
+    t,
+    f,
+    isFetching,
+    devices,
+    fetchDevices,
+    openDeviceRevokeModale,
+    deviceToRevoke,
+    onDeviceModaleRevoke,
+    onDeviceModaleRevokeClose,
+    devicePerformRevoke,
+    breakpoints: { isMobile }
+  } = props
 
-    this.state = { deviceToConfigure: null }
-  }
+  const [deviceToConfigure, setDeviceToConfigure] = useState(null)
+  const [devicesRequested, setDevicesRequested] = useState(false)
 
-  componentWillMount() {
-    this.props.fetchDevices()
-  }
+  useMemo(() => {
+    if (isFetching && !devicesRequested) {
+      setDevicesRequested(true)
+    } else if (!devicesRequested && !isFetching) {
+      fetchDevices()
+    }
+  }, [devicesRequested, isFetching, fetchDevices])
 
-  render() {
-    const {
-      t,
-      f,
-      isFetching,
-      devices,
-      openDeviceRevokeModale,
-      deviceToRevoke,
-      onDeviceModaleRevoke,
-      onDeviceModaleRevokeClose,
-      devicePerformRevoke,
-      breakpoints: { isMobile }
-    } = this.props
-    const { deviceToConfigure } = this.state
-    return (
-      <Page narrow={!isFetching && devices.length === 0}>
-        <PageTitle>{t('DevicesView.title')}</PageTitle>
-        {isFetching && (
-          <Spinner
-            className={'u-pos-fixed-s'}
-            middle
-            size="xxlarge"
-            loadingType="loading"
-          />
-        )}
-        {!isFetching && devices.length === 0 && <NoDevicesMessage />}
-        {!isFetching && devices.length > 0 && (
-          <Table className={tableStyles['coz-table']}>
-            {openDeviceRevokeModale && (
-              <DevicesModaleRevokeView
-                cancelAction={onDeviceModaleRevokeClose}
-                revokeDevice={devicePerformRevoke}
-                device={deviceToRevoke}
-              />
-            )}
-            {deviceToConfigure != null ? (
-              <DevicesModaleConfigureView
-                cancelAction={() => {
-                  this.setState({ deviceToConfigure: null })
-                }}
-                onDeviceConfigured={() =>
-                  this.setState({ deviceToConfigure: null })
-                }
-                device={deviceToConfigure}
-              />
-            ) : null}
-            <TableHead>
-              <TableRow>
-                <TableHeader className={tableStyles['set-table-name']}>
-                  {t('DevicesView.head_name')}
-                </TableHeader>
-                <TableHeader
+  return (
+    <Page narrow={!isFetching && devices.length === 0}>
+      <PageTitle>{t('DevicesView.title')}</PageTitle>
+      {isFetching ? (
+        <Spinner
+          className={'u-pos-fixed-s'}
+          middle
+          size="xxlarge"
+          loadingType="loading"
+        />
+      ) : devices.length === 0 ? (
+        <NoDevicesMessage />
+      ) : (
+        <Table className={tableStyles['coz-table']}>
+          {openDeviceRevokeModale && (
+            <DevicesModaleRevokeView
+              cancelAction={onDeviceModaleRevokeClose}
+              revokeDevice={devicePerformRevoke}
+              device={deviceToRevoke}
+            />
+          )}
+          {deviceToConfigure != null ? (
+            <DevicesModaleConfigureView
+              cancelAction={() => {
+                setDeviceToConfigure(null)
+              }}
+              onDeviceConfigured={() => setDeviceToConfigure(null)}
+              device={deviceToConfigure}
+            />
+          ) : null}
+          <TableHead>
+            <TableRow>
+              <TableHeader className={tableStyles['set-table-name']}>
+                {t('DevicesView.head_name')}
+              </TableHeader>
+              <TableHeader
+                className={classNames(
+                  tableStyles['coz-table-header'],
+                  tableStyles['set-table-date']
+                )}
+              >
+                {t('DevicesView.head_sync')}
+              </TableHeader>
+              <TableHeader
+                className={classNames(
+                  tableStyles['coz-table-header'],
+                  tableStyles['set-table-actions']
+                )}
+              >
+                {t('DevicesView.head_actions')}
+              </TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody className={tableStyles['set-table-devices']}>
+            {devices.map(device => (
+              <TableRow key={device.id}>
+                <TableCell
                   className={classNames(
-                    tableStyles['coz-table-header'],
-                    tableStyles['set-table-date']
+                    tableStyles['set-table-name'],
+                    tableStyles['coz-table-primary']
                   )}
                 >
-                  {t('DevicesView.head_sync')}
-                </TableHeader>
-                <TableHeader
-                  className={classNames(
-                    tableStyles['coz-table-header'],
-                    tableStyles['set-table-actions']
-                  )}
-                >
-                  {t('DevicesView.head_actions')}
-                </TableHeader>
-              </TableRow>
-            </TableHead>
-            <TableBody className={tableStyles['set-table-devices']}>
-              {devices.map(device => (
-                <TableRow key={device.id}>
-                  <TableCell
-                    className={classNames(
-                      tableStyles['set-table-name'],
-                      tableStyles['coz-table-primary']
-                    )}
-                  >
-                    <Media>
-                      <Img>
-                        <Icon icon={getDeviceIcon(device)} size={32} />
-                      </Img>
-                      <Bd className="u-ml-1">{device.client_name}</Bd>
-                      {isMobile ? (
-                        <MoreMenu
-                          device={device}
-                          onRevoke={() => {
-                            onDeviceModaleRevoke(device)
-                          }}
-                          onConfigure={() => {
-                            this.setState({ deviceToConfigure: device })
-                          }}
-                          isMobile={true}
-                        />
-                      ) : null}
-                    </Media>
-                  </TableCell>
-                  <TableCell className={tableStyles['set-table-date']}>
-                    {device.synchronized_at
-                      ? f(
-                          device.synchronized_at,
-                          t('DevicesView.sync_date_format')
-                        )
-                      : '-'}
-                  </TableCell>
-                  <TableCell className={tableStyles['set-table-actions']}>
-                    <>
+                  <Media>
+                    <Img>
+                      <Icon icon={getDeviceIcon(device)} size={32} />
+                    </Img>
+                    <Bd className="u-ml-1">{device.client_name}</Bd>
+                    {isMobile ? (
+                      <MoreMenu
+                        device={device}
+                        onRevoke={() => {
+                          onDeviceModaleRevoke(device)
+                        }}
+                        onConfigure={() => {
+                          setDeviceToConfigure(device)
+                        }}
+                        isMobile={true}
+                      />
+                    ) : null}
+                  </Media>
+                </TableCell>
+                <TableCell className={tableStyles['set-table-date']}>
+                  {device.synchronized_at
+                    ? f(
+                        device.synchronized_at,
+                        t('DevicesView.sync_date_format')
+                      )
+                    : '-'}
+                </TableCell>
+                <TableCell className={tableStyles['set-table-actions']}>
+                  <>
+                    <MuiButton
+                      color="primary"
+                      onClick={() => {
+                        onDeviceModaleRevoke(device)
+                      }}
+                    >
+                      {t('DevicesView.revoke')}
+                    </MuiButton>
+                    {canConfigureDevice(device) ? (
                       <MuiButton
                         color="primary"
                         onClick={() => {
-                          onDeviceModaleRevoke(device)
+                          setDeviceToConfigure(device)
                         }}
                       >
-                        {t('DevicesView.revoke')}
+                        {t('DevicesView.configure')}
                       </MuiButton>
-                      {canConfigureDevice(device) ? (
-                        <MuiButton
-                          color="primary"
-                          onClick={() => {
-                            this.setState({ deviceToConfigure: device })
-                          }}
-                        >
-                          {t('DevicesView.configure')}
-                        </MuiButton>
-                      ) : null}
-                    </>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
-      </Page>
-    )
-  }
+                    ) : null}
+                  </>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      )}
+    </Page>
+  )
 }
 
 export default compose(
