@@ -40,6 +40,10 @@ import mobileIcon from 'assets/icons/icon-device-phone.svg'
 import browserIcon from 'assets/icons/icon-device-browser.svg'
 import laptopIcon from 'assets/icons/icon-device-laptop.svg'
 
+import {
+  COZY_DESKTOP_SOFTWARE_ID
+} from 'lib/deviceConfigurationHelper'
+
 const deviceKindToIcon = {
   mobile: mobileIcon,
   browser: browserIcon
@@ -49,10 +53,11 @@ const getDeviceIcon = device => {
   return deviceKindToIcon[device.client_kind] || laptopIcon
 }
 
-const isDesktopDevice = device => device.client_kind === 'desktop'
+const isCozyDesktopApp = device =>
+  device.software_id === COZY_DESKTOP_SOFTWARE_ID
 const canConfigureDevice = device =>
   flag('settings.partial-desktop-sync.show-synced-folders-selection') &&
-  isDesktopDevice(device)
+  isCozyDesktopApp(device)
 
 const MoreButton = ({ onClick }) => {
   const { t } = useI18n()
