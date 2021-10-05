@@ -8,6 +8,7 @@ export const OAUTH_CLIENTS_DOCTYPE = 'io.cozy.oauth.clients'
 export const ROOT_FOLDER_ID = 'io.cozy.files.root-dir'
 export const TRASH_DIR_ID = 'io.cozy.files.trash-dir'
 export const COZY_DESKTOP_SOFTWARE_ID = 'github.com/cozy-labs/cozy-desktop'
+export const DISPLAYED_CLIENTS = ['mobile', 'desktop', 'browser']
 
 const buildFoldersQuery = ({ currentFolderId }) =>
   Q(FILES_DOCTYPE)
