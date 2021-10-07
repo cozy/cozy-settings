@@ -160,6 +160,7 @@ const DevicesView = props => {
   const {
     t,
     f,
+    lang,
     breakpoints: { isMobile }
   } = props
 
@@ -174,9 +175,16 @@ const DevicesView = props => {
   const devices = useMemo(
     () =>
       Array.isArray(data)
-        ? data.filter(device => DISPLAYED_CLIENTS.includes(device.client_kind))
+        ? data
+            .filter(device => DISPLAYED_CLIENTS.includes(device.client_kind))
+            .sort((a, b) => {
+              return a.client_name.localeCompare(b.client_name, lang, {
+                sensitivity: 'base',
+                numeric: true
+              })
+            })
         : [],
-    [data]
+    [data, lang]
   )
   const isFetching = useMemo(() => isQueryLoading({ fetchStatus }) || hasMore, [
     fetchStatus,
