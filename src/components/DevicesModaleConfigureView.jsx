@@ -161,7 +161,7 @@ const ConfigureDeviceSyncDialog = ({
   const [excluded, setExcluded] = useState([])
   const updateExcluded = useCallback(newExcluded => {
     setExcluded(newExcluded)
-    setPartialSync(newExcluded.length !== 0)
+    setPartialSync(true)
   }, [])
 
   const { folders, loading, failed } = useFolders(client)
@@ -182,7 +182,7 @@ const ConfigureDeviceSyncDialog = ({
         setWasExcluded(wasExcluded)
         updateExcluded(wasExcluded)
       } else {
-        updateExcluded([])
+        setExcluded([])
       }
     }
   }, [device.id, failed, folders, loading, t, updateExcluded])
