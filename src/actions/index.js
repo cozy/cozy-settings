@@ -226,30 +226,6 @@ export const fetchDevices = () => {
   }
 }
 
-export const devicePerformRevoke = deviceId => {
-  return async dispatch => {
-    dispatch({ type: DEVICE_REVOKE })
-
-    cozyFetch('DELETE', '/settings/clients/' + deviceId)
-      .then(() => {
-        dispatch({ type: DEVICE_REVOKE_SUCCESS, deviceId })
-      })
-      .catch(error => {
-        dispatch({ type: DEVICE_REVOKE_FAILURE })
-        throw error
-      })
-  }
-}
-
-export const deviceModaleRevokeOpen = device => ({
-  type: DEVICES_MODALE_REVOKE_OPEN,
-  device
-})
-
-export const deviceModaleRevokeClose = () => ({
-  type: DEVICES_MODALE_REVOKE_CLOSE
-})
-
 export const fetchSessions = () => {
   return async dispatch => {
     dispatch({ type: FETCH_SESSIONS })
