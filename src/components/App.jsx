@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader'
 
 import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import { initFlags } from 'lib/flags'
+import { RealTimeQueries } from 'cozy-client'
 
 import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -29,6 +30,7 @@ export class App extends Component {
         <FlagSwitcher />
         <Alerter />
         <Sidebar />
+        <RealTimeQueries doctype="io.cozy.oauth.clients" />
 
         <Main>
           <Switch>

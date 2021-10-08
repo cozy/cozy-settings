@@ -9,6 +9,9 @@ exports[`App component only should be mounted correctly 1`] = `
     into="body"
   />
   <Sidebar />
+  <Memo(RealTimeQueries)
+    doctype="io.cozy.oauth.clients"
+  />
   <Main>
     <Switch>
       <Route
