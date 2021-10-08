@@ -161,15 +161,11 @@ const DevicesView = props => {
   const {
     t,
     f,
-    openDeviceRevokeModale,
-    deviceToRevoke,
-    onDeviceModaleRevoke,
-    onDeviceModaleRevokeClose,
-    devicePerformRevoke,
     breakpoints: { isMobile }
   } = props
 
   const [deviceToConfigure, setDeviceToConfigure] = useState(null)
+  const [deviceToRevoke, setDeviceToRevoke] = useState(null)
 
   const devicesQuery = buildDevicesQuery()
   const queryResult = useQuery(devicesQuery.definition, devicesQuery.options)
@@ -219,13 +215,17 @@ const DevicesView = props => {
         <NoDevicesMessage />
       ) : (
         <Table className={tableStyles['coz-table']}>
-          {openDeviceRevokeModale && (
+          {deviceToRevoke != null ? (
             <DevicesModaleRevokeView
-              cancelAction={onDeviceModaleRevokeClose}
-              revokeDevice={devicePerformRevoke}
+              cancelAction={() => {
+                setDeviceToRevoke(null)
+              }}
+              onDeviceRevoked={() => {
+                setDeviceToRevoke(null)
+              }}
               device={deviceToRevoke}
             />
-          )}
+          ) : null}
           {deviceToConfigure != null ? (
             <DevicesModaleConfigureView
               cancelAction={() => {
@@ -276,7 +276,7 @@ const DevicesView = props => {
                       <MoreMenu
                         device={device}
                         onRevoke={() => {
-                          onDeviceModaleRevoke(device)
+                          setDeviceToRevoke(device)
                         }}
                         onConfigure={() => {
                           setDeviceToConfigure(device)
@@ -299,7 +299,7 @@ const DevicesView = props => {
                     <MuiButton
                       color="primary"
                       onClick={() => {
-                        onDeviceModaleRevoke(device)
+                        setDeviceToRevoke(device)
                       }}
                     >
                       {t('DevicesView.revoke')}

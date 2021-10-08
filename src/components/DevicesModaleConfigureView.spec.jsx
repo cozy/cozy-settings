@@ -413,19 +413,19 @@ describe('DevicesModaleConfigureView', () => {
         return { root }
       }
 
-      it('should render a checked whole Cozy sync selector', () => {
+      it('should render a checked partial sync selector', () => {
         const { root } = run()
 
-        expect(completeSyncSelector(root)).toBeChecked()
+        expect(partialSyncSelector(root)).toBeChecked()
       })
 
-      it('should render a list of checked and disabled folder toggles', () => {
+      it('should render a list of checked and enabled folder toggles', () => {
         const { root } = run()
 
         const folderToggles = root.getAllByRole('checkbox')
         for (const folderToggle of folderToggles) {
           expect(folderToggle).toBeChecked()
-          expect(folderToggle).toBeDisabled()
+          expect(folderToggle).toBeEnabled()
         }
       })
     })
@@ -640,19 +640,19 @@ describe('DevicesModaleConfigureView', () => {
         return { root }
       }
 
-      it('should render a checked whole Cozy sync selector', () => {
+      it('should render a checked partial sync selector', () => {
         const { root } = run()
 
-        expect(completeSyncSelector(root)).toBeChecked()
+        expect(partialSyncSelector(root)).toBeChecked()
       })
 
-      it('should render a list of checked and disabled folder toggles', () => {
+      it('should render a list of checked and enabled folder toggles', () => {
         const { root } = run()
 
         const folderToggles = root.getAllByRole('checkbox')
         for (const folderToggle of folderToggles) {
           expect(folderToggle).toBeChecked()
-          expect(folderToggle).toBeDisabled()
+          expect(folderToggle).toBeEnabled()
         }
       })
     })

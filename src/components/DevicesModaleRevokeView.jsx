@@ -1,14 +1,31 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import ReactMarkdown from 'react-markdown'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import Button from 'cozy-ui/transpiled/react/Button'
-import { Media, Bd, Img } from 'cozy-ui/transpiled/react/Media'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import IconCircle2Arrows from '../assets/icons/IconCircle2Arrows'
+import { Media, Bd, Img } from 'cozy-ui/transpiled/react/Media'
 
-const RevokeDeviceDialog = ({ device, revokeDevice, cancelAction }) => {
+import { useClient } from 'cozy-client'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+
+import logger from 'lib/logger'
+
+const RevokeDeviceDialog = ({ device, cancelAction, onDeviceRevoked }) => {
   const { t } = useI18n()
+  const client = useClient()
+  const revokeDevice = useCallback(async () => {
+    try {
+      await client.destroy(device)
+    } catch (err) {
+      logger.warn(err)
+      return Alerter.error(t('revokeDevice.error'))
+    }
+
+    onDeviceRevoked()
+  }, [client, device, onDeviceRevoked, t])
+
   return (
     <ConfirmDialog
       open
@@ -18,16 +35,16 @@ const RevokeDeviceDialog = ({ device, revokeDevice, cancelAction }) => {
           <Button
             label={t('revokeDevice.validate')}
             theme="danger"
-            onClick={() => revokeDevice(device.id)}
+            onClick={revokeDevice}
           />
           <Button
             label={t('revokeDevice.cancel')}
             theme="secondary"
-            onClick={() => cancelAction()}
+            onClick={cancelAction}
           />
         </>
       }
-      onClose={() => cancelAction()}
+      onClose={cancelAction}
       content={
         <>
           <ReactMarkdown
