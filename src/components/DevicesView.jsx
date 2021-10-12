@@ -16,7 +16,6 @@ import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
 import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
 import { translate, useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import LoadMore from 'cozy-ui/transpiled/react/LoadMore'
 import MuiButton from 'cozy-ui/transpiled/react/MuiCozyTheme/Buttons'
 import {
   Table,
@@ -50,7 +49,7 @@ import {
   OAUTH_CLIENTS_DOCTYPE
 } from 'lib/deviceConfigurationHelper'
 
-const DEVICES_QUERY_LIMIT = 100
+const DEVICES_QUERY_LIMIT = 1000
 const buildDevicesQuery = () => ({
   definition: () => Q(OAUTH_CLIENTS_DOCTYPE).limitBy(DEVICES_QUERY_LIMIT),
   options: {
@@ -168,38 +167,29 @@ const DevicesView = props => {
   const [deviceToRevoke, setDeviceToRevoke] = useState(null)
 
   const devicesQuery = buildDevicesQuery()
-  const queryResult = useQuery(devicesQuery.definition, devicesQuery.options)
-  const { hasMore, fetchMore } = useMemo(
-    () => ({ hasMore: queryResult.hasMore, fetchMore: queryResult.fetchMore }),
-    [queryResult.hasMore, queryResult.fetchMore]
+  const { data, hasMore, fetchMore, fetchStatus } = useQuery(
+    devicesQuery.definition,
+    devicesQuery.options
   )
   const devices = useMemo(
     () =>
-      Array.isArray(queryResult.data)
-        ? queryResult.data.filter(device =>
-            DISPLAYED_CLIENTS.includes(device.client_kind)
-          )
+      Array.isArray(data)
+        ? data.filter(device => DISPLAYED_CLIENTS.includes(device.client_kind))
         : [],
-    [queryResult.data]
+    [data]
   )
-  // Detect if we have less than DEVICES_QUERY_LIMIT devices because they were
-  // filtered on the client side.
-  const hasMoreUnfiltered = useMemo(
-    () => devices.length < DEVICES_QUERY_LIMIT && hasMore,
-    [devices.length, hasMore]
-  )
-  const isFetching = useMemo(
-    () => isQueryLoading(queryResult) || hasMoreUnfiltered,
-    [queryResult, hasMoreUnfiltered]
-  )
+  const isFetching = useMemo(() => isQueryLoading({ fetchStatus }) || hasMore, [
+    fetchStatus,
+    hasMore
+  ])
 
   useMemo(() => {
-    if (queryResult.fetchStatus === 'failed') {
+    if (fetchStatus === 'failed') {
       Alerter.error(t('DevicesView.load_error'))
-    } else if (hasMoreUnfiltered) {
+    } else if (hasMore) {
       fetchMore()
     }
-  }, [fetchMore, hasMoreUnfiltered, queryResult.fetchStatus, t])
+  }, [fetchMore, hasMore, fetchStatus, t])
 
   return (
     <Page narrow={!isFetching && devices.length === 0}>
@@ -318,12 +308,6 @@ const DevicesView = props => {
                 </TableCell>
               </TableRow>
             ))}
-            {hasMore ? (
-              <LoadMore
-                label={t('DevicesView.load_more')}
-                fetchMore={fetchMore}
-              />
-            ) : null}
           </TableBody>
         </Table>
       )}
