@@ -46,7 +46,8 @@
     "react-test-renderer": "16.13.1"
   },
   "dependencies": {
-    "@material-ui/core": "4.11.3",
+    "@material-ui/core": "4.12.3",
+    "@material-ui/lab": "4.0.0-alpha.60",
     "classnames": "2.2.6",
     "cozy-client": "^25.0.0",
     "cozy-doctypes": "^1.70.0",
