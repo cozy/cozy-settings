@@ -66,7 +66,7 @@ export const toCozyOAuthClient = ({ id, _id }) => {
 }
 
 export const updateDirectoriesExclusions = ({
-  deviceToConfigure,
+  device,
   foldersToInclude,
   foldersToExclude,
   client
@@ -75,10 +75,16 @@ export const updateDirectoriesExclusions = ({
     foldersToExclude.length > 0 &&
       client
         .collection(FILES_DOCTYPE)
-        .addNotSynchronizedDirectories(deviceToConfigure, foldersToExclude),
+        .addNotSynchronizedDirectories(
+          toCozyOAuthClient(device),
+          foldersToExclude.map(toCozyDirectory)
+        ),
     foldersToInclude.length > 0 &&
       client
         .collection(FILES_DOCTYPE)
-        .removeNotSynchronizedDirectories(deviceToConfigure, foldersToInclude)
+        .removeNotSynchronizedDirectories(
+          toCozyOAuthClient(device),
+          foldersToInclude.map(toCozyDirectory)
+        )
   ])
 }
