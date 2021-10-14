@@ -10,10 +10,9 @@ export const TRASH_DIR_ID = 'io.cozy.files.trash-dir'
 export const COZY_DESKTOP_SOFTWARE_ID = 'github.com/cozy-labs/cozy-desktop'
 export const DISPLAYED_CLIENTS = ['mobile', 'desktop', 'browser']
 
-const buildFoldersQuery = ({ currentFolderId }) =>
+const buildFoldersQuery = () =>
   Q(FILES_DOCTYPE)
     .where({
-      dir_id: currentFolderId,
       type: 'directory',
       name: { $gt: null }
     })
@@ -22,8 +21,8 @@ const buildFoldersQuery = ({ currentFolderId }) =>
         $ne: TRASH_DIR_ID
       }
     })
-    .indexFields(['dir_id', 'type', 'name'])
-    .sortBy([{ dir_id: 'asc' }, { type: 'asc' }, { name: 'asc' }])
+    .indexFields(['path', 'type', 'name'])
+    .sortBy([{ path: 'asc' }, { type: 'asc' }, { name: 'asc' }])
 
 export const useFolders = client => {
   const [loading, setLoading] = useState(false)
@@ -34,9 +33,18 @@ export const useFolders = client => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const foldersQuery = buildFoldersQuery({
-          currentFolderId: ROOT_FOLDER_ID
-        })
+        const foldersQuery = buildFoldersQuery()
+        // We need to be able to tell wether a folder's children are excluded or
+        // not to display a "mixed" state when the folder itself is included but
+        // its children are not.
+        // This can be done by fetching all the folders (i.e. the info we need
+        // is present on the folders themselves) or we can fetch folders level
+        // by level (i.e. to limit the query size) but we'll then need to
+        // request the list of excluded folders as well and looks for excluded
+        // children).
+        //
+        // We'll go with the first solution for the moment as it is simpler to
+        // implement than the level by level fetch and display solution.
         const fetchedFolders = await client.queryAll(foldersQuery)
         setFolders(fetchedFolders)
         setLoading(false)

@@ -1,0 +1,1409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DevicesModaleConfigureView when the folders query yields folders with hierarchies should render a tree view of the hierarchies 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    style="padding-right: 0px; overflow: hidden;"
+  >
+    <div
+      aria-hidden="true"
+    />
+    <div
+      class="MuiDialog-root"
+      role="presentation"
+      style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+    >
+      <div
+        aria-hidden="true"
+        class="MuiBackdrop-root"
+        style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      />
+      <div
+        data-test="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="MuiDialog-container MuiDialog-scrollPaper"
+        role="none presentation"
+        style="opacity: 1; transform: scale(1, 1); transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+        tabindex="-1"
+      >
+        <div
+          aria-labelledby="modal-title-50"
+          class="MuiPaper-root MuiDialog-paper medium  MuiDialog-paperScrollPaper MuiDialog-paperWidthSm MuiPaper-elevation24 MuiPaper-rounded"
+          role="dialog"
+        >
+          <div
+            class="styles__DialogCloseButton___cxKPO"
+          >
+            <button
+              aria-label="Close"
+              class="MuiButtonBase-root MuiIconButton-root"
+              data-test-id="modal-close-button-50"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  class="styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <path
+                    d="M8 6.59l5.3-5.3a1 1 0 011.4 1.42L9.42 8l5.3 5.3a1 1 0 01-1.42 1.4L8 9.42l-5.3 5.3a1 1 0 11-1.4-1.42L6.58 8l-5.3-5.3A1 1 0 112.7 1.3L8 6.58z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+          <div
+            class="MuiDialogTitle-root u-ellipsis"
+            id="modal-title-50"
+          >
+            Mock Device
+          </div>
+          <hr
+            class="MuiDivider-root"
+          />
+          <div
+            class="MuiDialogContent-root"
+          >
+            <div
+              class="dialogContentInner"
+            >
+              <p>
+                Select the folders to synchronize with your computer:
+              </p>
+              <div
+                class="MuiFormControl-root u-pl-half"
+              >
+                <div
+                  class="MuiFormGroup-root"
+                  role="radiogroup"
+                >
+                  <label
+                    class="MuiFormControlLabel-root"
+                  >
+                    <span
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiRadio-root MuiRadio-colorPrimary MuiIconButton-colorPrimary"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <input
+                          class="PrivateSwitchBase-input-1141"
+                          name="partialSync"
+                          type="radio"
+                          value="false"
+                        />
+                        <div
+                          class="PrivateRadioButtonIcon-root-1142"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                            />
+                          </svg>
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-1143"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                            />
+                          </svg>
+                        </div>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </span>
+                    <span
+                      class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                    >
+                      Synchronize my whole Cozy
+                    </span>
+                  </label>
+                  <label
+                    class="MuiFormControlLabel-root"
+                  >
+                    <span
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <input
+                          checked=""
+                          class="PrivateSwitchBase-input-1141"
+                          name="partialSync"
+                          type="radio"
+                          value="true"
+                        />
+                        <div
+                          class="PrivateRadioButtonIcon-root-1142 PrivateRadioButtonIcon-checked-1144"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                            />
+                          </svg>
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-1143"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                            />
+                          </svg>
+                        </div>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </span>
+                    <span
+                      class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                    >
+                      Synchronize only the selected folders:
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div
+                class="styles__c-card___YgP7B u-mt-1 u-p-0"
+              >
+                <div
+                  class="MuiCardHeader-root u-pv-0 u-pl-0 u-pr-1-half"
+                  style="flex-direction: row-reverse;"
+                >
+                  <div
+                    class="MuiCardHeader-content"
+                  >
+                    <h6
+                      class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextSecondary MuiTypography-displayInline"
+                    >
+                      My Cozy
+                    </h6>
+                  </div>
+                  <div
+                    class="MuiCardHeader-action u-mv-0 u-mr-0"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <span
+                          aria-disabled="false"
+                          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-indeterminate PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                          data-testid="toggle-all-inclusion"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <input
+                              aria-checked="mixed"
+                              aria-disabled="false"
+                              checked=""
+                              class="PrivateSwitchBase-input-1141"
+                              data-indeterminate="true"
+                              type="checkbox"
+                              value=""
+                            />
+                            <svg
+                              aria-hidden="true"
+                              class="MuiSvgIcon-root"
+                              focusable="false"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="MuiCardContent-root u-p-0 u-ov-auto"
+                >
+                  <ul
+                    aria-multiselectable="false"
+                    class="MuiTreeView-root makeStyles-root-1145"
+                    role="tree"
+                  >
+                    <li
+                      class="MuiTreeItem-root makeStyles-root-1147"
+                      role="treeitem"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="MuiTreeItem-content"
+                      >
+                        <div
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1146"
+                        />
+                        <div
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1148 MuiTypography-body1"
+                        >
+                          <div
+                            class="styles__media___cSJMp"
+                          >
+                            <div
+                              class="styles__img___3SHpG u-pr-half"
+                            >
+                              <button
+                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                tabindex="0"
+                                type="button"
+                              >
+                                <span
+                                  class="MuiIconButton-label"
+                                >
+                                  <span
+                                    aria-disabled="false"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                                    data-testid="toggle-Accounts-inclusion"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <input
+                                        aria-checked=""
+                                        aria-disabled="false"
+                                        checked=""
+                                        class="PrivateSwitchBase-input-1141"
+                                        data-indeterminate="false"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <svg
+                                        aria-hidden="true"
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </span>
+                                <span
+                                  class="MuiTouchRipple-root"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="styles__img___3SHpG u-pr-1"
+                            >
+                              <svg
+                                class="styles__icon___23x3R"
+                                height="16"
+                                viewBox="0 0 32 32"
+                                width="16"
+                              >
+                                <g
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  transform="translate(0 2)"
+                                >
+                                  <rect
+                                    fill="#B2D3FF"
+                                    height="26"
+                                    rx="2"
+                                    width="32"
+                                    y="2"
+                                  />
+                                  <path
+                                    d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                    fill="#197BFF"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                            <p
+                              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                              style="overflow: unset; padding-right: 1rem;"
+                            >
+                              Accounts
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      class="MuiTreeItem-root makeStyles-root-1150"
+                      role="treeitem"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="MuiTreeItem-content"
+                      >
+                        <div
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1149"
+                        />
+                        <div
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1151 MuiTypography-body1"
+                        >
+                          <div
+                            class="styles__media___cSJMp"
+                          >
+                            <div
+                              class="styles__img___3SHpG u-pr-half"
+                            >
+                              <button
+                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                tabindex="0"
+                                type="button"
+                              >
+                                <span
+                                  class="MuiIconButton-label"
+                                >
+                                  <span
+                                    aria-disabled="false"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                                    data-testid="toggle-Administrative-inclusion"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <input
+                                        aria-checked=""
+                                        aria-disabled="false"
+                                        checked=""
+                                        class="PrivateSwitchBase-input-1141"
+                                        data-indeterminate="false"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <svg
+                                        aria-hidden="true"
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </span>
+                                <span
+                                  class="MuiTouchRipple-root"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="styles__img___3SHpG u-pr-1"
+                            >
+                              <svg
+                                class="styles__icon___23x3R"
+                                height="16"
+                                viewBox="0 0 32 32"
+                                width="16"
+                              >
+                                <g
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  transform="translate(0 2)"
+                                >
+                                  <rect
+                                    fill="#B2D3FF"
+                                    height="26"
+                                    rx="2"
+                                    width="32"
+                                    y="2"
+                                  />
+                                  <path
+                                    d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                    fill="#197BFF"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                            <p
+                              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                              style="overflow: unset; padding-right: 1rem;"
+                            >
+                              Administrative
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      class="MuiTreeItem-root makeStyles-root-1153"
+                      role="treeitem"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="MuiTreeItem-content"
+                      >
+                        <div
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1152"
+                        />
+                        <div
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1154 MuiTypography-body1"
+                        >
+                          <div
+                            class="styles__media___cSJMp"
+                          >
+                            <div
+                              class="styles__img___3SHpG u-pr-half"
+                            >
+                              <button
+                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                tabindex="0"
+                                type="button"
+                              >
+                                <span
+                                  class="MuiIconButton-label"
+                                >
+                                  <span
+                                    aria-disabled="false"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                                    data-testid="toggle-Ciphers-inclusion"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <input
+                                        aria-checked=""
+                                        aria-disabled="false"
+                                        checked=""
+                                        class="PrivateSwitchBase-input-1141"
+                                        data-indeterminate="false"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <svg
+                                        aria-hidden="true"
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </span>
+                                <span
+                                  class="MuiTouchRipple-root"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="styles__img___3SHpG u-pr-1"
+                            >
+                              <svg
+                                class="styles__icon___23x3R"
+                                height="16"
+                                viewBox="0 0 32 32"
+                                width="16"
+                              >
+                                <g
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  transform="translate(0 2)"
+                                >
+                                  <rect
+                                    fill="#B2D3FF"
+                                    height="26"
+                                    rx="2"
+                                    width="32"
+                                    y="2"
+                                  />
+                                  <path
+                                    d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                    fill="#197BFF"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                            <p
+                              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                              style="overflow: unset; padding-right: 1rem;"
+                            >
+                              Ciphers
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      aria-expanded="false"
+                      class="MuiTreeItem-root makeStyles-root-1156"
+                      role="treeitem"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="MuiTreeItem-content"
+                      >
+                        <div
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1155"
+                        >
+                          <svg
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                              fill-rule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1157 MuiTypography-body1"
+                        >
+                          <div
+                            class="styles__media___cSJMp"
+                          >
+                            <div
+                              class="styles__img___3SHpG u-pr-half"
+                            >
+                              <button
+                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                tabindex="0"
+                                type="button"
+                              >
+                                <span
+                                  class="MuiIconButton-label"
+                                >
+                                  <span
+                                    aria-disabled="false"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                                    data-testid="toggle-Konnectors-inclusion"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <input
+                                        aria-checked=""
+                                        aria-disabled="false"
+                                        checked=""
+                                        class="PrivateSwitchBase-input-1141"
+                                        data-indeterminate="false"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <svg
+                                        aria-hidden="true"
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </span>
+                                <span
+                                  class="MuiTouchRipple-root"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="styles__img___3SHpG u-pr-1"
+                            >
+                              <svg
+                                class="styles__icon___23x3R"
+                                height="16"
+                                viewBox="0 0 32 32"
+                                width="16"
+                              >
+                                <g
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  transform="translate(0 2)"
+                                >
+                                  <rect
+                                    fill="#B2D3FF"
+                                    height="26"
+                                    rx="2"
+                                    width="32"
+                                    y="2"
+                                  />
+                                  <path
+                                    d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                    fill="#197BFF"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                            <p
+                              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                              style="overflow: unset; padding-right: 1rem;"
+                            >
+                              Konnectors
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <li
+                        aria-expanded="false"
+                        class="MuiTreeItem-root makeStyles-root-1159"
+                        role="treeitem"
+                        tabindex="-1"
+                      >
+                        <div
+                          class="MuiTreeItem-content"
+                        >
+                          <div
+                            class="MuiTreeItem-iconContainer makeStyles-iconContainer-1158"
+                          >
+                            <svg
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="MuiTypography-root MuiTreeItem-label makeStyles-label-1160 MuiTypography-body1"
+                          >
+                            <div
+                              class="styles__media___cSJMp"
+                            >
+                              <div
+                                class="styles__img___3SHpG u-pr-half"
+                              >
+                                <button
+                                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                  tabindex="0"
+                                  type="button"
+                                >
+                                  <span
+                                    class="MuiIconButton-label"
+                                  >
+                                    <span
+                                      aria-disabled="false"
+                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                                      data-testid="toggle-Ameli-inclusion"
+                                    >
+                                      <span
+                                        class="MuiIconButton-label"
+                                      >
+                                        <input
+                                          aria-checked=""
+                                          aria-disabled="false"
+                                          checked=""
+                                          class="PrivateSwitchBase-input-1141"
+                                          data-indeterminate="false"
+                                          type="checkbox"
+                                          value=""
+                                        />
+                                        <svg
+                                          aria-hidden="true"
+                                          class="MuiSvgIcon-root"
+                                          focusable="false"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path
+                                            d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </span>
+                                  </span>
+                                  <span
+                                    class="MuiTouchRipple-root"
+                                  />
+                                </button>
+                              </div>
+                              <div
+                                class="styles__img___3SHpG u-pr-1"
+                              >
+                                <svg
+                                  class="styles__icon___23x3R"
+                                  height="16"
+                                  viewBox="0 0 32 32"
+                                  width="16"
+                                >
+                                  <g
+                                    fill="none"
+                                    fill-rule="evenodd"
+                                    transform="translate(0 2)"
+                                  >
+                                    <rect
+                                      fill="#B2D3FF"
+                                      height="26"
+                                      rx="2"
+                                      width="32"
+                                      y="2"
+                                    />
+                                    <path
+                                      d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                      fill="#197BFF"
+                                    />
+                                  </g>
+                                </svg>
+                              </div>
+                              <p
+                                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                                style="overflow: unset; padding-right: 1rem;"
+                              >
+                                Ameli
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <li
+                          class="MuiTreeItem-root makeStyles-root-1162"
+                          role="treeitem"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="MuiTreeItem-content"
+                          >
+                            <div
+                              class="MuiTreeItem-iconContainer makeStyles-iconContainer-1161"
+                            />
+                            <div
+                              class="MuiTypography-root MuiTreeItem-label makeStyles-label-1163 MuiTypography-body1"
+                            >
+                              <div
+                                class="styles__media___cSJMp"
+                              >
+                                <div
+                                  class="styles__img___3SHpG u-pr-half"
+                                >
+                                  <button
+                                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                    tabindex="0"
+                                    type="button"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <span
+                                        aria-disabled="false"
+                                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1139 Mui-checked MuiIconButton-colorPrimary"
+                                        data-testid="toggle-Claude-inclusion"
+                                      >
+                                        <span
+                                          class="MuiIconButton-label"
+                                        >
+                                          <input
+                                            aria-checked=""
+                                            aria-disabled="false"
+                                            checked=""
+                                            class="PrivateSwitchBase-input-1141"
+                                            data-indeterminate="false"
+                                            type="checkbox"
+                                            value=""
+                                          />
+                                          <svg
+                                            aria-hidden="true"
+                                            class="MuiSvgIcon-root"
+                                            focusable="false"
+                                            viewBox="0 0 24 24"
+                                          >
+                                            <path
+                                              d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                            />
+                                          </svg>
+                                        </span>
+                                      </span>
+                                    </span>
+                                    <span
+                                      class="MuiTouchRipple-root"
+                                    />
+                                  </button>
+                                </div>
+                                <div
+                                  class="styles__img___3SHpG u-pr-1"
+                                >
+                                  <svg
+                                    class="styles__icon___23x3R"
+                                    height="16"
+                                    viewBox="0 0 32 32"
+                                    width="16"
+                                  >
+                                    <g
+                                      fill="none"
+                                      fill-rule="evenodd"
+                                      transform="translate(0 2)"
+                                    >
+                                      <rect
+                                        fill="#B2D3FF"
+                                        height="26"
+                                        rx="2"
+                                        width="32"
+                                        y="2"
+                                      />
+                                      <path
+                                        d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                        fill="#197BFF"
+                                      />
+                                    </g>
+                                  </svg>
+                                </div>
+                                <p
+                                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                                  style="overflow: unset; padding-right: 1rem;"
+                                >
+                                  Claude
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </li>
+                    </li>
+                    <li
+                      class="MuiTreeItem-root makeStyles-root-1165"
+                      role="treeitem"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="MuiTreeItem-content"
+                      >
+                        <div
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1164"
+                        />
+                        <div
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1166 MuiTypography-body1"
+                        >
+                          <div
+                            class="styles__media___cSJMp"
+                          >
+                            <div
+                              class="styles__img___3SHpG u-pr-half"
+                            >
+                              <button
+                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                tabindex="0"
+                                type="button"
+                              >
+                                <span
+                                  class="MuiIconButton-label"
+                                >
+                                  <span
+                                    aria-disabled="false"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                    data-testid="toggle-Photos-inclusion"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <input
+                                        aria-checked=""
+                                        aria-disabled="false"
+                                        class="PrivateSwitchBase-input-1141"
+                                        data-indeterminate="false"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <svg
+                                        aria-hidden="true"
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </span>
+                                <span
+                                  class="MuiTouchRipple-root"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="styles__img___3SHpG u-pr-1"
+                            >
+                              <svg
+                                class="styles__icon___23x3R"
+                                height="16"
+                                viewBox="0 0 32 32"
+                                width="16"
+                              >
+                                <g
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  transform="translate(0 2)"
+                                >
+                                  <rect
+                                    fill="#B2D3FF"
+                                    height="26"
+                                    rx="2"
+                                    width="32"
+                                    y="2"
+                                  />
+                                  <path
+                                    d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                    fill="#197BFF"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                            <p
+                              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                              style="overflow: unset; padding-right: 1rem;"
+                            >
+                              Photos
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      aria-expanded="false"
+                      class="MuiTreeItem-root makeStyles-root-1168"
+                      role="treeitem"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="MuiTreeItem-content"
+                      >
+                        <div
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1167"
+                        >
+                          <svg
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                              fill-rule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1169 MuiTypography-body1"
+                        >
+                          <div
+                            class="styles__media___cSJMp"
+                          >
+                            <div
+                              class="styles__img___3SHpG u-pr-half"
+                            >
+                              <button
+                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                tabindex="0"
+                                type="button"
+                              >
+                                <span
+                                  class="MuiIconButton-label"
+                                >
+                                  <span
+                                    aria-disabled="false"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                    data-testid="toggle-Videos-inclusion"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <input
+                                        aria-checked=""
+                                        aria-disabled="false"
+                                        class="PrivateSwitchBase-input-1141"
+                                        data-indeterminate="false"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <svg
+                                        aria-hidden="true"
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </span>
+                                <span
+                                  class="MuiTouchRipple-root"
+                                />
+                              </button>
+                            </div>
+                            <div
+                              class="styles__img___3SHpG u-pr-1"
+                            >
+                              <svg
+                                class="styles__icon___23x3R"
+                                height="16"
+                                viewBox="0 0 32 32"
+                                width="16"
+                              >
+                                <g
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  transform="translate(0 2)"
+                                >
+                                  <rect
+                                    fill="#B2D3FF"
+                                    height="26"
+                                    rx="2"
+                                    width="32"
+                                    y="2"
+                                  />
+                                  <path
+                                    d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                    fill="#197BFF"
+                                  />
+                                </g>
+                              </svg>
+                            </div>
+                            <p
+                              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                              style="overflow: unset; padding-right: 1rem;"
+                            >
+                              Videos
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <li
+                        aria-expanded="false"
+                        class="MuiTreeItem-root makeStyles-root-1171"
+                        role="treeitem"
+                        tabindex="-1"
+                      >
+                        <div
+                          class="MuiTreeItem-content"
+                        >
+                          <div
+                            class="MuiTreeItem-iconContainer makeStyles-iconContainer-1170"
+                          >
+                            <svg
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="MuiTypography-root MuiTreeItem-label makeStyles-label-1172 MuiTypography-body1"
+                          >
+                            <div
+                              class="styles__media___cSJMp"
+                            >
+                              <div
+                                class="styles__img___3SHpG u-pr-half"
+                              >
+                                <button
+                                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                  tabindex="0"
+                                  type="button"
+                                >
+                                  <span
+                                    class="MuiIconButton-label"
+                                  >
+                                    <span
+                                      aria-disabled="false"
+                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                      data-testid="toggle-Movies-inclusion"
+                                    >
+                                      <span
+                                        class="MuiIconButton-label"
+                                      >
+                                        <input
+                                          aria-checked=""
+                                          aria-disabled="false"
+                                          class="PrivateSwitchBase-input-1141"
+                                          data-indeterminate="false"
+                                          type="checkbox"
+                                          value=""
+                                        />
+                                        <svg
+                                          aria-hidden="true"
+                                          class="MuiSvgIcon-root"
+                                          focusable="false"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path
+                                            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </span>
+                                  </span>
+                                  <span
+                                    class="MuiTouchRipple-root"
+                                  />
+                                </button>
+                              </div>
+                              <div
+                                class="styles__img___3SHpG u-pr-1"
+                              >
+                                <svg
+                                  class="styles__icon___23x3R"
+                                  height="16"
+                                  viewBox="0 0 32 32"
+                                  width="16"
+                                >
+                                  <g
+                                    fill="none"
+                                    fill-rule="evenodd"
+                                    transform="translate(0 2)"
+                                  >
+                                    <rect
+                                      fill="#B2D3FF"
+                                      height="26"
+                                      rx="2"
+                                      width="32"
+                                      y="2"
+                                    />
+                                    <path
+                                      d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                      fill="#197BFF"
+                                    />
+                                  </g>
+                                </svg>
+                              </div>
+                              <p
+                                class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                                style="overflow: unset; padding-right: 1rem;"
+                              >
+                                Movies
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <li
+                          class="MuiTreeItem-root makeStyles-root-1174"
+                          role="treeitem"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="MuiTreeItem-content"
+                          >
+                            <div
+                              class="MuiTreeItem-iconContainer makeStyles-iconContainer-1173"
+                            />
+                            <div
+                              class="MuiTypography-root MuiTreeItem-label makeStyles-label-1175 MuiTypography-body1"
+                            >
+                              <div
+                                class="styles__media___cSJMp"
+                              >
+                                <div
+                                  class="styles__img___3SHpG u-pr-half"
+                                >
+                                  <button
+                                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                    tabindex="0"
+                                    type="button"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <span
+                                        aria-disabled="false"
+                                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1138 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                        data-testid="toggle-Comedy-inclusion"
+                                      >
+                                        <span
+                                          class="MuiIconButton-label"
+                                        >
+                                          <input
+                                            aria-checked=""
+                                            aria-disabled="false"
+                                            class="PrivateSwitchBase-input-1141"
+                                            data-indeterminate="false"
+                                            type="checkbox"
+                                            value=""
+                                          />
+                                          <svg
+                                            aria-hidden="true"
+                                            class="MuiSvgIcon-root"
+                                            focusable="false"
+                                            viewBox="0 0 24 24"
+                                          >
+                                            <path
+                                              d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                                            />
+                                          </svg>
+                                        </span>
+                                      </span>
+                                    </span>
+                                    <span
+                                      class="MuiTouchRipple-root"
+                                    />
+                                  </button>
+                                </div>
+                                <div
+                                  class="styles__img___3SHpG u-pr-1"
+                                >
+                                  <svg
+                                    class="styles__icon___23x3R"
+                                    height="16"
+                                    viewBox="0 0 32 32"
+                                    width="16"
+                                  >
+                                    <g
+                                      fill="none"
+                                      fill-rule="evenodd"
+                                      transform="translate(0 2)"
+                                    >
+                                      <rect
+                                        fill="#B2D3FF"
+                                        height="26"
+                                        rx="2"
+                                        width="32"
+                                        y="2"
+                                      />
+                                      <path
+                                        d="M0 .99A1 1 0 011.007 0h11.986c.556 0 1.32.313 1.718.71l.578.58c.393.392 1.156.71 1.712.71h13.005C31.107 2 32 2.895 32 4H17c-.552 0-1.313.313-1.71.71l-.58.58c-.392.392-1.16.71-1.717.71H1.007A1.004 1.004 0 010 5.01V.99z"
+                                        fill="#197BFF"
+                                      />
+                                    </g>
+                                  </svg>
+                                </div>
+                                <p
+                                  class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap MuiTypography-displayInline"
+                                  style="overflow: unset; padding-right: 1rem;"
+                                >
+                                  Comedy
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </li>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr
+            class="MuiDivider-root"
+          />
+          <div
+            class="MuiDialogActions-root cozyDialogActions"
+          >
+            <button
+              class="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--center___16_Xh"
+              type="submit"
+            >
+              <span>
+                <span>
+                  Cancel
+                </span>
+              </span>
+            </button>
+            <button
+              class="styles__c-btn___-2Vnj styles__c-btn--center___16_Xh"
+              type="submit"
+            >
+              <span>
+                <span>
+                  Validate
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        data-test="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
