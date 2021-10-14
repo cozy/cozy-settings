@@ -27,8 +27,6 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { useClient } from 'cozy-client'
 
 import {
-  toCozyDirectory,
-  toCozyOAuthClient,
   updateDirectoriesExclusions,
   useFolders
 } from 'lib/deviceConfigurationHelper'
@@ -211,17 +209,16 @@ const ConfigureDeviceSyncDialog = ({
     [setPartialSync]
   )
   const configureDevice = useCallback(async () => {
-    const deviceToConfigure = toCozyOAuthClient(device)
     const foldersToExclude = partialSync
-      ? excluded.filter(id => !wasExcluded.includes(id)).map(toCozyDirectory)
+      ? excluded.filter(id => !wasExcluded.includes(id))
       : []
     const foldersToInclude = partialSync
-      ? wasExcluded.filter(id => !excluded.includes(id)).map(toCozyDirectory)
-      : wasExcluded.map(toCozyDirectory)
+      ? wasExcluded.filter(id => !excluded.includes(id))
+      : wasExcluded
 
     try {
       await updateDirectoriesExclusions({
-        deviceToConfigure,
+        device,
         foldersToInclude,
         foldersToExclude,
         client
