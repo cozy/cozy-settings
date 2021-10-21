@@ -272,7 +272,8 @@
   },
   "configureDevice": {
     "load_error": "An error occured while loading your folders, please try again later.",
-    "configure_error": "Unable to configure the folders to synchronize with the device, try to reload the page.",
+    "configure_success": "The items to synchronize were successfully saved.",
+    "configure_error": "Unable to configure the items to synchronize with the device, try to reload the page.",
     "description": "Select the folders to synchronize with your computer:",
     "no_folders": "You don't have any folders in your Cozy.",
     "my_cozy": "My Cozy",
