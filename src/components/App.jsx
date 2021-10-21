@@ -37,7 +37,8 @@ export class App extends Component {
             <Route path="/redirect" component={IntentRedirect} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/profile/password" component={Passphrase} />
-            <Route path="/connectedDevices" component={Devices} />
+            <Route exact path="/connectedDevices" component={Devices} />
+            <Route path="/connectedDevices/:deviceId" component={Devices} />
             <Route path="/sessions" component={Sessions} />
             <Route path="/storage" component={Storage} />
             <Route path="/exports/:exportId" component={Profile} />

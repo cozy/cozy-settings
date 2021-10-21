@@ -234,6 +234,7 @@
   "DevicesView": {
     "title": "Appareils connectés",
     "load_error": "Une erreur s'est produite lors du chargement de vos appareils, merci de réessayer plus tard.",
+    "device_load_error": "Nous ne trouvons pas l'appareil demandé.",
     "load_more": "Plus d'appareils",
     "head_name": "Nom",
     "head_sync": "Dernière synchronisation",

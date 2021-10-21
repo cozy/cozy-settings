@@ -29,7 +29,12 @@ exports[`App component only should be mounted correctly 1`] = `
       />
       <Route
         component={[Function]}
+        exact={true}
         path="/connectedDevices"
+      />
+      <Route
+        component={[Function]}
+        path="/connectedDevices/:deviceId"
       />
       <Route
         component={[Function]}
