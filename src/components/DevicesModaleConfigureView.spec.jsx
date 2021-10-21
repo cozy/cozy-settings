@@ -21,7 +21,8 @@ jest.mock('@material-ui/core/Collapse', () => {
   return FakeCollapse
 })
 jest.mock('cozy-ui/transpiled/react/Alerter', () => ({
-  error: jest.fn()
+  error: jest.fn(),
+  success: jest.fn()
 }))
 jest.mock('lib/deviceConfigurationHelper', () => {
   const original = jest.requireActual('lib/deviceConfigurationHelper') // Step 2.
