@@ -189,7 +189,7 @@ Object {
                     <span
                       class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
                     >
-                      Synchronize only the selected folders:
+                      Unselect folders which should not be synchronized:
                     </span>
                   </label>
                 </div>

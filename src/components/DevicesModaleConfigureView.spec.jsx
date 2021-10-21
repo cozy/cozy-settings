@@ -130,7 +130,7 @@ describe('DevicesModaleConfigureView', () => {
   const mockOnDeviceConfigured = jest.fn()
 
   const partialSyncSelector = root =>
-    root.getByLabelText('Synchronize only the selected folders:')
+    root.getByLabelText('Unselect folders which should not be synchronized:')
   const completeSyncSelector = root =>
     root.getByLabelText('Synchronize my whole Cozy')
   const cancelButton = root => root.getByRole('button', { name: 'Cancel' })
