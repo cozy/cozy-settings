@@ -278,7 +278,7 @@
     "my_cozy": "Mon Cozy",
     "partialSync": {
       "disable": "Synchroniser tout mon Cozy",
-      "enable": "Synchroniser exclusivement les dossiers suivants :"
+      "enable": "Désélectionner les dossiers à ne pas synchroniser :"
     },
     "validate": "Valider",
     "cancel": "Annuler"
