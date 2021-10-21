@@ -272,7 +272,8 @@
   },
   "configureDevice": {
     "load_error": "Une erreur s’est produite pendant le chargement de vos dossiers, merci de réessayer prochainement.",
-    "configure_error": "Je ne parviens pas à configurer les dossiers à synchroniser avec votre ordinateur, essayez de recharger la page.",
+    "configure_success": "Les éléments à synchroniser ont bien été enregistrés.",
+    "configure_error": "Je ne parviens pas à configurer les éléments à synchroniser avec votre ordinateur, essayez de recharger la page.",
     "description": "Sélectionner les dossiers à synchroniser avec votre ordinateur :",
     "no_folders": "Vous n'avez aucun dossier dans votre Cozy.",
     "my_cozy": "Mon Cozy",

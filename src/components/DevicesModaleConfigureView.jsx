@@ -379,12 +379,12 @@ const ConfigureDeviceSyncDialog = ({
         foldersToExclude,
         client
       })
+      onDeviceConfigured()
+      Alerter.success(t('configureDevice.configure_success'))
     } catch (err) {
       logger.warn(err)
       return Alerter.error(t('configureDevice.configure_error'))
     }
-
-    onDeviceConfigured()
   }, [partialSync, hierarchy, onDeviceConfigured, device, client, t])
 
   return (
