@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
 import compose from 'lodash/flowRight'
+import get from 'lodash/get'
 
 import tableStyles from 'styles/table.styl'
 
@@ -161,11 +163,14 @@ const DevicesView = props => {
     t,
     f,
     lang,
-    breakpoints: { isMobile }
+    breakpoints: { isMobile },
+    match,
+    history
   } = props
 
   const [deviceToConfigure, setDeviceToConfigure] = useState(null)
   const [deviceToRevoke, setDeviceToRevoke] = useState(null)
+  const deviceId = useMemo(() => get(match, 'params.deviceId', null), [match])
 
   const devicesQuery = buildDevicesQuery()
   const { data, hasMore, fetchMore, fetchStatus } = useQuery(
@@ -191,13 +196,42 @@ const DevicesView = props => {
     hasMore
   ])
 
+  const onDeviceConfigurationCanceled = () => {
+    if (deviceId) {
+      history.push(match.url.replace(`/${deviceId}`, ''))
+    }
+    setDeviceToConfigure(null)
+  }
+  const onDeviceConfigured = () => {
+    if (deviceId) {
+      history.push(match.url.replace(`/${deviceId}`, ''))
+    }
+    setDeviceToConfigure(null)
+  }
+
   useMemo(() => {
     if (fetchStatus === 'failed') {
       Alerter.error(t('DevicesView.load_error'))
     } else if (hasMore) {
       fetchMore()
+    } else if (deviceId && !isFetching) {
+      const device = devices.find(d => d.id === deviceId)
+      if (device != null && deviceToConfigure == null) {
+        setDeviceToConfigure(device)
+      } else if (device == null) {
+        Alerter.error(t('DevicesView.device_load_error'))
+      }
     }
-  }, [fetchMore, hasMore, fetchStatus, t])
+  }, [
+    fetchStatus,
+    hasMore,
+    deviceId,
+    isFetching,
+    t,
+    fetchMore,
+    devices,
+    deviceToConfigure
+  ])
 
   return (
     <Page narrow={!isFetching && devices.length === 0}>
@@ -226,10 +260,8 @@ const DevicesView = props => {
           ) : null}
           {deviceToConfigure != null ? (
             <DevicesModaleConfigureView
-              cancelAction={() => {
-                setDeviceToConfigure(null)
-              }}
-              onDeviceConfigured={() => setDeviceToConfigure(null)}
+              cancelAction={onDeviceConfigurationCanceled}
+              onDeviceConfigured={onDeviceConfigured}
               device={deviceToConfigure}
             />
           ) : null}
@@ -325,5 +357,6 @@ const DevicesView = props => {
 
 export default compose(
   translate(),
-  withBreakpoints()
+  withBreakpoints(),
+  withRouter
 )(DevicesView)
