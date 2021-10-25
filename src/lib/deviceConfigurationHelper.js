@@ -17,8 +17,8 @@ const buildFoldersQuery = () =>
       name: { $gt: null }
     })
     .partialIndex({
-      _id: {
-        $ne: TRASH_DIR_ID
+      $not: {
+        path: { $regex: '^/.cozy_trash' }
       }
     })
     .indexFields(['path', 'type', 'name'])
