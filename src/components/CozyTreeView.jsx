@@ -14,8 +14,6 @@ const useItemClasses = divider =>
       minWidth: 'auto',
       marginRight: '1rem',
       padding: 0,
-      width: '1rem',
-      height: '1rem',
       justifyContent: 'center'
     },
     root: {
@@ -68,8 +66,8 @@ const useViewClasses = makeStyles(() => ({
 export const TreeView = ({ classes, children, ...other }) => {
   return (
     <MuiTreeView
-      defaultCollapseIcon={<BottomIcon />}
-      defaultExpandIcon={<RightIcon />}
+      defaultCollapseIcon={<BottomIcon width="1rem" height="1rem" />}
+      defaultExpandIcon={<RightIcon width="1rem" height="1rem" />}
       disableSelection={true}
       classes={mergeClasses({
         baseClasses: useViewClasses(),
