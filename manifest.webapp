@@ -9,7 +9,7 @@
     "name": "Cozy",
     "url": "https://cozy.io"
   },
-  "version": "1.15.0",
+  "version": "1.17.0",
   "licence": "AGPL-3.0",
   "permissions": {
     "settings": {
@@ -78,6 +78,13 @@
     "jobs": {
       "description": "Required to send emails to support",
       "type": "io.cozy.jobs",
+      "verbs": [
+        "ALL"
+      ]
+    },
+    "files": {
+      "description": "Required to select folders to synchronize on devices",
+      "type": "io.cozy.files",
       "verbs": [
         "ALL"
       ]
