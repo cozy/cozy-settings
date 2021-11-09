@@ -38,7 +38,7 @@ const isNotSynchronized = (folder, device) =>
 const findMixedAncestors = (level, areMixed) => {
   if (
     level.parent == null ||
-    level.parent.isExcluded ||
+    !level.parent.isSelected ||
     areMixed.includes(level.parent)
   ) {
     return []
@@ -51,7 +51,15 @@ const initializeHierarchy = (folders, device) => {
   let areMixed = []
 
   const hierarchy = new Map([
-    [ROOT_FOLDER_ID, { _id: ROOT_FOLDER_ID, children: [] }]
+    [
+      ROOT_FOLDER_ID,
+      {
+        _id: ROOT_FOLDER_ID,
+        children: [],
+        isSelected: true,
+        wasExcluded: false
+      }
+    ]
   ])
   for (const folder of folders) {
     if (folder._id === ROOT_FOLDER_ID) continue
@@ -67,14 +75,14 @@ const initializeHierarchy = (folders, device) => {
       children: [],
       parent,
       wasExcluded,
-      isExcluded: wasExcluded,
+      isSelected: !wasExcluded,
       folder
     }
     hierarchy.set(level._id, level)
 
     parent.children.push(level)
 
-    if (level.isExcluded) {
+    if (!level.isSelected) {
       areMixed = areMixed.concat(findMixedAncestors(level, areMixed))
     }
   }
@@ -93,9 +101,9 @@ const ancestors = level =>
 const descendants = level =>
   level.children.concat(...level.children.map(child => descendants(child)))
 const isChecked = level =>
-  !level.isExcluded && ancestors(level).every(a => !a.isExcluded)
+  level.isSelected && ancestors(level).every(a => a.isSelected)
 const isMixed = level =>
-  !level.isExcluded && descendants(level).some(d => d.isExcluded)
+  level.isSelected && descendants(level).some(d => !d.isSelected)
 
 const FoldersLoading = () => (
   <div className="u-ta-center">
@@ -122,7 +130,7 @@ const FolderLevel = ({
   disabled,
   isExpanded,
   isLast,
-  toggleInclusion
+  toggleSelection
 }) => {
   const labelStyle = useMemo(
     () => ({
@@ -146,7 +154,7 @@ const FolderLevel = ({
               disabled={disabled}
               onClick={event => {
                 event.stopPropagation()
-                toggleInclusion(level)
+                toggleSelection(level)
               }}
             />
           </Img>
@@ -172,7 +180,7 @@ const FolderLevel = ({
           mixed={isMixed(child)}
           disabled={disabled}
           isLast={isLast && index === level.children.length - 1}
-          toggleInclusion={toggleInclusion}
+          toggleSelection={toggleSelection}
         />
       ))}
     </TreeItem>
@@ -182,7 +190,7 @@ const FolderLevel = ({
 const countChecked = levels =>
   levels.reduce(
     (count, level) =>
-      count + (level.isExcluded ? 0 : 1) + countChecked(level.children),
+      count + (level.isSelected ? 1 : 0) + countChecked(level.children),
     0
   )
 
@@ -201,40 +209,40 @@ const FoldersTree = ({
   const [checkedLevels, setCheckedLevels] = useState(countChecked(rootLevels))
   const [expanded, setExpanded] = useState(defaultExpanded)
 
-  const allExcluded = useMemo(
-    () => checkedLevels === 0 || rootLevels.every(level => level.isExcluded),
+  const noneSelected = useMemo(
+    () => checkedLevels === 0 || rootLevels.every(level => !level.isSelected),
     [checkedLevels, rootLevels]
   )
 
-  const toggleAllInclusion = useCallback(() => {
-    if (allExcluded) {
+  const toggleAllSelection = useCallback(() => {
+    if (noneSelected) {
       rootLevels.forEach(level => {
-        level.isExcluded = false
+        level.isSelected = true
       })
       setCheckedLevels(count => count - rootLevels.length)
     } else {
       rootLevels.forEach(level => {
-        level.isExcluded = true
+        level.isSelected = false
         descendants(level).forEach(d => {
-          d.isExcluded = false
+          d.isSelected = true
         })
       })
       setCheckedLevels(count => count + rootLevels.length)
     }
     setPartialSync(true)
-  }, [allExcluded, rootLevels, setPartialSync])
-  const toggleInclusion = useCallback(
+  }, [noneSelected, rootLevels, setPartialSync])
+  const toggleSelection = useCallback(
     level => {
       if (isChecked(level)) {
-        level.isExcluded = true
+        level.isSelected = false
         descendants(level).forEach(d => {
-          d.isExcluded = false
+          d.isSelected = true
         })
         setCheckedLevels(count => count - 1)
       } else {
-        level.isExcluded = false
+        level.isSelected = true
         ancestors(level).forEach(a => {
-          a.isExcluded = false
+          a.isSelected = true
         })
         setCheckedLevels(count => count + 1)
       }
@@ -274,13 +282,13 @@ const FoldersTree = ({
           hasLevels && (
             <FolderCheckbox
               data-testid="toggle-all-inclusion"
-              checked={!allExcluded}
+              checked={!noneSelected}
               mixed={
-                !allExcluded &&
-                rootLevels.some(level => level.isExcluded || isMixed(level))
+                !noneSelected &&
+                rootLevels.some(level => !level.isSelected || isMixed(level))
               }
               disabled={disabled}
-              onClick={toggleAllInclusion}
+              onClick={toggleAllSelection}
             />
           )
         }
@@ -302,7 +310,7 @@ const FoldersTree = ({
                 disabled={disabled}
                 isExpanded={expanded.includes(level._id)}
                 isLast={index === rootLevels.length - 1}
-                toggleInclusion={toggleInclusion}
+                toggleSelection={toggleSelection}
               />
             ))}
           </TreeView>
@@ -346,7 +354,7 @@ const ConfigureDeviceSyncDialog = ({
 
       setHierarchy(hierarchy)
 
-      if (levels(hierarchy).some(level => level.isExcluded)) {
+      if (levels(hierarchy).some(level => !level.isSelected)) {
         setExpanded(areMixed.map(({ _id }) => _id))
         setPartialSync(true)
       }
@@ -361,12 +369,12 @@ const ConfigureDeviceSyncDialog = ({
   const configureDevice = useCallback(async () => {
     const foldersToExclude = partialSync
       ? levels(hierarchy)
-          .filter(level => level.isExcluded && !level.wasExcluded)
+          .filter(level => !level.isSelected && !level.wasExcluded)
           .map(level => level.folder)
       : []
     const foldersToInclude = partialSync
       ? levels(hierarchy)
-          .filter(level => level.wasExcluded && !level.isExcluded)
+          .filter(level => level.wasExcluded && level.isSelected)
           .map(level => level.folder)
       : levels(hierarchy)
           .filter(level => level.wasExcluded)
