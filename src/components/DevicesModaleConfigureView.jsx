@@ -75,7 +75,10 @@ const initializeHierarchy = (folders, device) => {
       children: [],
       parent,
       wasExcluded,
-      isSelected: !wasExcluded,
+      isSelected:
+        !wasExcluded &&
+        !parent.wasExcluded &&
+        ancestors(parent).every(a => !a.wasExcluded),
       folder
     }
     hierarchy.set(level._id, level)
@@ -100,8 +103,6 @@ const ancestors = level =>
   level.parent != null ? [level.parent].concat(ancestors(level.parent)) : []
 const descendants = level =>
   level.children.concat(...level.children.map(child => descendants(child)))
-const isChecked = level =>
-  level.isSelected && ancestors(level).every(a => a.isSelected)
 const isMixed = level =>
   level.isSelected && descendants(level).some(d => !d.isSelected)
 
@@ -176,7 +177,7 @@ const FolderLevel = ({
         <FolderLevel
           key={child._id}
           level={child}
-          checked={isChecked(child)}
+          checked={child.isSelected}
           mixed={isMixed(child)}
           disabled={disabled}
           isLast={isLast && index === level.children.length - 1}
@@ -210,7 +211,7 @@ const FoldersTree = ({
   const [expanded, setExpanded] = useState(defaultExpanded)
 
   const noneSelected = useMemo(
-    () => checkedLevels === 0 || rootLevels.every(level => !level.isSelected),
+    () => rootLevels.every(level => !level.isSelected) || checkedLevels === 0,
     [checkedLevels, rootLevels]
   )
 
@@ -218,13 +219,16 @@ const FoldersTree = ({
     if (noneSelected) {
       rootLevels.forEach(level => {
         level.isSelected = true
+        descendants(level).forEach(d => {
+          d.isSelected = true
+        })
       })
       setCheckedLevels(count => count - rootLevels.length)
     } else {
       rootLevels.forEach(level => {
         level.isSelected = false
         descendants(level).forEach(d => {
-          d.isSelected = true
+          d.isSelected = false
         })
       })
       setCheckedLevels(count => count + rootLevels.length)
@@ -233,16 +237,19 @@ const FoldersTree = ({
   }, [noneSelected, rootLevels, setPartialSync])
   const toggleSelection = useCallback(
     level => {
-      if (isChecked(level)) {
+      if (level.isSelected) {
         level.isSelected = false
         descendants(level).forEach(d => {
-          d.isSelected = true
+          d.isSelected = false
         })
         setCheckedLevels(count => count - 1)
       } else {
         level.isSelected = true
         ancestors(level).forEach(a => {
           a.isSelected = true
+        })
+        descendants(level).forEach(d => {
+          d.isSelected = true
         })
         setCheckedLevels(count => count + 1)
       }
@@ -305,7 +312,7 @@ const FoldersTree = ({
               <FolderLevel
                 key={level._id}
                 level={level}
-                checked={isChecked(level)}
+                checked={level.isSelected}
                 mixed={isMixed(level)}
                 disabled={disabled}
                 isExpanded={expanded.includes(level._id)}
@@ -367,18 +374,32 @@ const ConfigureDeviceSyncDialog = ({
   )
 
   const configureDevice = useCallback(async () => {
-    const foldersToExclude = partialSync
-      ? levels(hierarchy)
-          .filter(level => !level.isSelected && !level.wasExcluded)
-          .map(level => level.folder)
-      : []
-    const foldersToInclude = partialSync
-      ? levels(hierarchy)
-          .filter(level => level.wasExcluded && level.isSelected)
-          .map(level => level.folder)
-      : levels(hierarchy)
-          .filter(level => level.wasExcluded)
-          .map(level => level.folder)
+    let foldersToInclude = []
+    let foldersToExclude = []
+
+    if (partialSync) {
+      levels(hierarchy).forEach(level => {
+        if (level.isSelected) {
+          // Re-include folders that were re-selected
+          if (level.wasExcluded) foldersToInclude.push(level.folder)
+        } else if (level.wasExcluded) {
+          // Re-include folders whose ancestor was un-selected
+          if (ancestors(level).some(a => !a.isSelected)) {
+            foldersToInclude.push(level.folder)
+          }
+        } else {
+          // Exlude folders that were un-selected
+          if (ancestors(level).every(a => a.isSelected)) {
+            foldersToExclude.push(level.folder)
+          }
+        }
+      })
+    } else {
+      // Re-include all exluded folders
+      foldersToInclude = levels(hierarchy)
+        .filter(level => level.wasExcluded)
+        .map(level => level.folder)
+    }
 
     try {
       await updateDirectoriesExclusions({
