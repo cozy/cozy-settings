@@ -7,6 +7,7 @@ import get from 'lodash/get'
 import tableStyles from 'styles/table.styl'
 
 import flag from 'cozy-flags'
+import semver from 'semver'
 
 import ActionMenu, {
   ActionMenuHeader,
@@ -71,8 +72,9 @@ const getDeviceIcon = device => {
 const isCozyDesktopApp = device =>
   device.software_id === COZY_DESKTOP_SOFTWARE_ID
 const canConfigureDevice = device =>
-  flag('settings.partial-desktop-sync.show-synced-folders-selection') &&
-  isCozyDesktopApp(device)
+  isCozyDesktopApp(device) &&
+  semver.gte(device.software_version, '3.32.0-beta.2') &&
+  flag('settings.partial-desktop-sync.show-synced-folders-selection')
 
 const MoreButton = ({ onClick }) => {
   const { t } = useI18n()
