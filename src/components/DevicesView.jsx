@@ -73,7 +73,7 @@ const isCozyDesktopApp = device =>
   device.software_id === COZY_DESKTOP_SOFTWARE_ID
 const canConfigureDevice = device =>
   isCozyDesktopApp(device) &&
-  semver.gte(device.software_version, '3.32.0-beta.2') &&
+  semver.gte(device.software_version, '3.32.0-beta.3') &&
   flag('settings.partial-desktop-sync.show-synced-folders-selection')
 
 const MoreButton = ({ onClick }) => {
