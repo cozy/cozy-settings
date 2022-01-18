@@ -234,6 +234,8 @@
   "DevicesView": {
     "title": "Verbonden apparaten",
     "load_error": "Er is een fout opgetreden tijdens het laden van je apparaten. Probeer het later opnieuw.",
+    "device_load_error": "Het gevraagde apparaat is niet aangetroffen.",
+    "load_more": "Meer laden",
     "head_name": "Naam",
     "head_sync": "Laatste synchronisatie",
     "head_activity": "Laatste activiteit",
@@ -270,15 +272,16 @@
   },
   "configureDevice": {
     "load_error": "Er is een fout opgetreden tijdens het laden van je mappen. Probeer het later opnieuw.",
-    "configure_error": "De te synchroniseren mappen kunnen niet worden ingesteld. Herlaad de pagina en probeer het opnieuw.",
+    "configure_success": "De te synchroniseren items zijn opgeslagen.",
+    "configure_error": "De te synchroniseren items kunnen niet worden ingesteld. Herlaad de pagina en probeer het opnieuw.",
     "description": "Selecteer de te synchroniseren mappen.",
     "no_folders": "Je hebt nog geen mappen op je Cozy.",
     "my_cozy": "Mijn Cozy",
     "partialSync": {
       "disable": "Gehele Cozy synchroniseren",
-      "enable": "Allees de geselecteerde mappen synchroniseren:"
+      "enable": "Deselecteer de mappen die niet moeten worden gesynchroniseerd:"
     },
-    "validate": "Oké",
+    "validate": "Verifiëren",
     "cancel": "Annuleren"
   },
   "ServicesView": {
