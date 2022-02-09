@@ -15,6 +15,7 @@ import I18n from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import PiwikHashRouter from 'lib/PiwikHashRouter'
+import { WebviewIntentProvider } from 'cozy-intent'
 
 import App from 'components/App'
 import cozyClient from 'lib/client'
@@ -72,21 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   render(
-    <StylesProvider generateClassName={generateClassName}>
-      <CozyProvider client={cozyClient}>
-        <Provider store={store}>
-          <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
-            <BreakpointsProvider>
-              <MuiCozyTheme>
-                <PiwikHashRouter>
-                  <App />
-                </PiwikHashRouter>
-              </MuiCozyTheme>
-            </BreakpointsProvider>
-          </EnhancedI18n>
-        </Provider>
-      </CozyProvider>
-    </StylesProvider>,
+    <WebviewIntentProvider>
+      <StylesProvider generateClassName={generateClassName}>
+        <CozyProvider client={cozyClient}>
+          <Provider store={store}>
+            <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
+              <BreakpointsProvider>
+                <MuiCozyTheme>
+                  <PiwikHashRouter>
+                    <App />
+                  </PiwikHashRouter>
+                </MuiCozyTheme>
+              </BreakpointsProvider>
+            </EnhancedI18n>
+          </Provider>
+        </CozyProvider>
+      </StylesProvider>
+    </WebviewIntentProvider>,
     root
   )
 })
