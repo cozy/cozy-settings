@@ -23,15 +23,13 @@ class TwoFA extends Component {
     this.desactivate2FA = this.desactivate2FA.bind(this)
     this.openTwoFAActivationModal = this.openTwoFAActivationModal.bind(this)
     this.closeTwoFAActivationModal = this.closeTwoFAActivationModal.bind(this)
-    this.openTwoFADesactivationModal = this.openTwoFADesactivationModal.bind(
-      this
-    )
-    this.closeTwoFADesactivationModal = this.closeTwoFADesactivationModal.bind(
-      this
-    )
+    this.openTwoFADesactivationModal =
+      this.openTwoFADesactivationModal.bind(this)
+    this.closeTwoFADesactivationModal =
+      this.closeTwoFADesactivationModal.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     !this.props.isTwoFactorEnabled &&
       nextProps.isTwoFactorEnabled &&
       this.setState({ mailConfirmationCodeIsValid: true })
@@ -67,13 +65,8 @@ class TwoFA extends Component {
   }
 
   render() {
-    const {
-      t,
-      isTwoFactorEnabled,
-      instance,
-      checkTwoFactorCode,
-      twoFactor
-    } = this.props
+    const { t, isTwoFactorEnabled, instance, checkTwoFactorCode, twoFactor } =
+      this.props
     const {
       twoFAActivationModalIsOpen,
       twoFADesactivationModalIsOpen,

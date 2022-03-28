@@ -34,6 +34,7 @@ const PassphraseView = props => {
 
   const handlePassphrase2FASubmit = twoFactorCode => {
     const { twoFactorToken } = passphrase
+    // eslint-disable-next-line promise/catch-or-return
     onPassphrase2FAStep2(
       currentPassphrase,
       newPassphrase,

@@ -89,8 +89,4 @@ class ExportDownload extends Component {
   }
 }
 
-export default compose(
-  withClient,
-  translate(),
-  withRouter
-)(ExportDownload)
+export default compose(withClient, translate(), withRouter)(ExportDownload)

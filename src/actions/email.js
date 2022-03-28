@@ -34,6 +34,7 @@ export function sendMessageToSupport(client, message, t) {
     )
       .then(() => {
         dispatch({ type: SEND_EMAIL_SUCCESS })
+        // eslint-disable-next-line promise/always-return
         try {
           return sendEmail(
             client,
@@ -121,6 +122,7 @@ function waitForJobFinished(job) {
             clearInterval(idInterval)
             reject(new Error(job.attributes.error))
           }
+          // eslint-disable-next-line promise/always-return
           if (job.attributes.state === JOB_STATE.DONE) {
             clearInterval(idInterval)
             resolve(job)

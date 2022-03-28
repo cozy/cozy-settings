@@ -1,3 +1,4 @@
+/* eslint-disable promise/always-return */
 import Intents from 'cozy-interapp'
 import { Q } from 'cozy-client'
 
@@ -45,6 +46,7 @@ export const fetchClaudyInfos = () => {
           // get an arrays of action
           claudyActions = contextActions
             .map(slug => {
+              // eslint-disable-next-line no-prototype-builtins
               if (CLAUDY_ACTIONS.hasOwnProperty(slug)) {
                 // adding also the action slug
                 return Object.assign({}, CLAUDY_ACTIONS[slug], { slug })

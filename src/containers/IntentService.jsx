@@ -34,8 +34,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default compose(
   translate(),
   withClient,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(IntentView)

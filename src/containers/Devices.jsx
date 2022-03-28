@@ -12,8 +12,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = () => ({})
 
 export default translate()(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DevicesView)
+  connect(mapStateToProps, mapDispatchToProps)(DevicesView)
 )

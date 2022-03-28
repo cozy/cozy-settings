@@ -49,24 +49,22 @@ class PassphraseForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
+    // eslint-disable-next-line promise/catch-or-return
     this.props
       .onSubmit(
         this.state.currentPassphrase,
         this.state.newPassphrase,
         this.state.hint
       )
+      // eslint-disable-next-line promise/always-return
       .then(() => {
         this.setState(initialState)
       })
   }
 
   render() {
-    const {
-      currentPassphrase,
-      newPassphrase,
-      newPassphraseRepeat,
-      hint
-    } = this.state
+    const { currentPassphrase, newPassphrase, newPassphraseRepeat, hint } =
+      this.state
 
     const { t, errors, submitting, saved, location, client } = this.props
     const currentPassphraseError = errors && errors.currentPassphrase
@@ -240,8 +238,4 @@ class PassphraseForm extends Component {
   }
 }
 
-export default compose(
-  translate(),
-  withRouter,
-  withClient
-)(PassphraseForm)
+export default compose(translate(), withRouter, withClient)(PassphraseForm)

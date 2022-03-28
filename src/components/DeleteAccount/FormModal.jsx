@@ -104,7 +104,4 @@ export class FormModal extends Component {
   }
 }
 
-export default compose(
-  withClient,
-  translate()
-)(FormModal)
+export default compose(withClient, translate())(FormModal)

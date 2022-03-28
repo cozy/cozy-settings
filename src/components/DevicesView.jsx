@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import React, { useCallback, useMemo, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
@@ -193,10 +194,10 @@ const DevicesView = props => {
         : [],
     [data, lang]
   )
-  const isFetching = useMemo(() => isQueryLoading({ fetchStatus }) || hasMore, [
-    fetchStatus,
-    hasMore
-  ])
+  const isFetching = useMemo(
+    () => isQueryLoading({ fetchStatus }) || hasMore,
+    [fetchStatus, hasMore]
+  )
 
   const onDeviceConfigurationCanceled = () => {
     if (deviceId) {
@@ -357,8 +358,4 @@ const DevicesView = props => {
   )
 }
 
-export default compose(
-  translate(),
-  withBreakpoints(),
-  withRouter
-)(DevicesView)
+export default compose(translate(), withBreakpoints(), withRouter)(DevicesView)

@@ -14,7 +14,7 @@ export class Support extends Component {
     this.sendMessage = this.sendMessage.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // reset message if successfully sent
     if (nextProps.emailStatus.isSent && this.props.emailStatus.isSending) {
       this.setState({ message: '' })

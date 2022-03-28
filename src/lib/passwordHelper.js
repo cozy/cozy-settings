@@ -1,5 +1,5 @@
 // Return given password srength as an object {percentage, label}
-module.exports.getStrength = function(password) {
+module.exports.getStrength = function (password) {
   if (!password && password !== '') {
     throw new Error('password parameter is missing')
   }
@@ -18,7 +18,7 @@ module.exports.getStrength = function(password) {
     { regexp: /\p{P}|\p{S}/u, size: 30 }
   ]
 
-  const possibleChars = charsets.reduce(function(possibleChars, charset) {
+  const possibleChars = charsets.reduce(function (possibleChars, charset) {
     if (charset.regexp.test(password)) possibleChars += charset.size
     return possibleChars
   }, 0)

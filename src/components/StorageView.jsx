@@ -12,7 +12,7 @@ import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 
 class StorageView extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.fetchStorageData()
   }
 

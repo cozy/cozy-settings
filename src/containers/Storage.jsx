@@ -21,8 +21,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 export default translate()(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(StorageView)
+  connect(mapStateToProps, mapDispatchToProps)(StorageView)
 )

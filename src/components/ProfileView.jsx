@@ -53,7 +53,7 @@ export const PasswordSection = () => {
 }
 
 class ProfileView extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.fetchInfos()
   }
 
@@ -162,7 +162,4 @@ class ProfileView extends Component {
   }
 }
 
-export default compose(
-  translate(),
-  withBreakpoints()
-)(ProfileView)
+export default compose(translate(), withBreakpoints())(ProfileView)
