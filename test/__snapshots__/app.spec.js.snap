@@ -61,6 +61,6 @@ exports[`App component only should be mounted correctly 1`] = `
       />
     </Switch>
   </Main>
-  <UNDEFINED />
+  <Sprite />
 </Layout>
 `;
