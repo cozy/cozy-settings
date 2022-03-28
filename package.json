@@ -57,6 +57,7 @@
     "cozy-interapp": "0.5.6",
     "cozy-keys-lib": "3.7.1",
     "cozy-realtime": "^3.13.1",
+    "cozy-sharing": "3.10.0",
     "cozy-ui": "62.4.0",
     "piwik-react-router": "0.12.1",
     "prop-types": "15.7.2",
