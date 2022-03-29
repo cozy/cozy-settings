@@ -1,3 +1,4 @@
+/* eslint-disable promise/always-return */
 import { cozyFetch } from 'actions'
 
 export const REQUEST_EXPORT = 'REQUEST_EXPORT'

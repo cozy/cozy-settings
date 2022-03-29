@@ -39,8 +39,8 @@ Object {
           >
             <button
               aria-label="Close"
-              class="MuiButtonBase-root MuiIconButton-root"
-              data-test-id="modal-close-button-50"
+              class="MuiButtonBase-root MuiIconButton-root dialogIconButton"
+              data-testid="modal-close-button-50"
               tabindex="0"
               type="button"
             >
@@ -65,7 +65,7 @@ Object {
             </button>
           </div>
           <div
-            class="MuiDialogTitle-root u-ellipsis"
+            class="MuiDialogTitle-root u-ellipsis dialogTitleWithClose"
             id="modal-title-50"
           >
             Mock Device

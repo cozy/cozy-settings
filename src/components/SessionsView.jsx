@@ -18,7 +18,7 @@ import PageTitle from 'components/PageTitle'
 import tableStyles from 'styles/table.styl'
 
 class SessionsView extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.fetchSessions()
   }
 
@@ -63,7 +63,7 @@ class SessionsView extends Component {
             </TableHead>
             <TableBody className={tableStyles['set-table-sessions']}>
               {sessions
-                .sort(function(a, b) {
+                .sort(function (a, b) {
                   // Turn your strings into dates, and then subtract them
                   // to get a value that is either negative, positive, or zero.
                   return new Date(b.created_at) - new Date(a.created_at)

@@ -6,7 +6,7 @@ import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import { initFlags } from 'lib/flags'
 import { RealTimeQueries } from 'cozy-client'
 
-import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
+import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
@@ -46,7 +46,7 @@ export class App extends Component {
             <Redirect from="*" to="/profile" />
           </Switch>
         </Main>
-        <IconSprite />
+        <Sprite />
       </Layout>
     )
   }

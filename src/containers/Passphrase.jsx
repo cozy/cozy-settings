@@ -100,10 +100,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 const Passphrase = compose(
   withRouter,
   translate(),
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(PassphraseView)
 
 export default Passphrase

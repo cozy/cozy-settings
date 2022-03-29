@@ -19,7 +19,7 @@ export class Support extends Component {
     this.onOpen()
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.opened !== this.props.opened) {
       nextProps.opened ? this.onOpen() : this.onReturn()
     }

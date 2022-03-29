@@ -1,3 +1,5 @@
+/* eslint-disable promise/always-return */
+// eslint-disable-next-line no-redeclare
 /* global fetch */
 
 import emailHelper from 'lib/emailHelper'
@@ -57,6 +59,7 @@ export const fetchInfos = () => {
           instance &&
           instance.data &&
           instance.data.attributes &&
+          // eslint-disable-next-line no-prototype-builtins
           instance.data.attributes.hasOwnProperty('tracking')
         ) {
           instance.data.attributes.tracking =

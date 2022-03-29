@@ -10,7 +10,7 @@ import flag from 'cozy-flags'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
-import { Sprite as IconSprite } from 'cozy-ui/transpiled/react/Icon'
+import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 
 import IntentService from 'containers/IntentService'
 import cozyClient from 'lib/client'
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <MuiCozyTheme>
                 <div className="set-services">
                   <IntentService window={window} />
-                  <IconSprite />
+                  <Sprite />
                 </div>
               </MuiCozyTheme>
             </BreakpointsProvider>

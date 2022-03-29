@@ -36,14 +36,8 @@ class ExportSection extends Component {
   }
 
   render() {
-    const {
-      t,
-      email,
-      exportData,
-      exportId,
-      fetchExportData,
-      parent
-    } = this.props
+    const { t, email, exportData, exportId, fetchExportData, parent } =
+      this.props
     const { displayModal } = this.state
     return (
       <div>

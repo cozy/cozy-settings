@@ -30,8 +30,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 export default translate()(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SessionsView)
+  connect(mapStateToProps, mapDispatchToProps)(SessionsView)
 )
