@@ -2,7 +2,7 @@ import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'styles/services/index'
 
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import { CozyProvider } from 'cozy-client'
@@ -36,8 +36,9 @@ const generateClassName = createGenerateClassName({
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('[role=application]')
-  const data = root.dataset
+  let container = document.querySelector('[role=application]')
+  const { render } = createRoot(container)
+  const data = container.dataset
   const protocol = window.location.protocol
 
   const store = createStore()
@@ -63,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </I18n>
         </Provider>
       </CozyProvider>
-    </StylesProvider>,
-    document.querySelector('[role=application]')
+    </StylesProvider>
   )
 })
