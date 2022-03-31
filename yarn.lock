@@ -1723,13 +1723,6 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@7.5.5":
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
-  integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.10.0", "@babel/runtime@^7.12.0", "@babel/runtime@^7.13.10", "@babel/runtime@^7.16.3", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
   version "7.17.8"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.8.tgz#3e56e4aff81befa55ac3ac6a0967349fd1c5bca2"
@@ -4848,19 +4841,7 @@ cozy-device-helper@^1.7.5:
   dependencies:
     lodash "4.17.15"
 
-cozy-doctypes@^1.70.0:
-  version "1.70.0"
-  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.70.0.tgz#22c031b2d0f50174a06bd9d7fd3d2e88cc8187ea"
-  integrity sha512-F9u2gff90Fz4RF1pI6rGmhgoWmHHzjK25N4fuUgkTgTgn5cL6mb8jiDDjFPEJsFkis6a+ah5TX3ttsFa2ms35w==
-  dependencies:
-    "@babel/runtime" "7.5.5"
-    cozy-logger "^1.6.0"
-    date-fns "1.30.1"
-    es6-promise-pool "2.5.0"
-    lodash "4.17.15"
-    prop-types "^15.7.2"
-
-cozy-doctypes@^1.82.3, cozy-doctypes@^1.83.7:
+cozy-doctypes@1.83.7, cozy-doctypes@^1.82.3, cozy-doctypes@^1.83.7:
   version "1.83.7"
   resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.83.7.tgz#258448aa5fa8f76d557c7635c148d9bfe54bbe33"
   integrity sha512-sAMZ/xajc2rXWmBFB0fP4NWQmUDh6FmStRE2KFpMrq7UGM6wIBouVl1CYD7grdlompBh3/1kBNmAb5PuWRMnBQ==
@@ -5394,7 +5375,7 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-date-fns@1.30.1, date-fns@^1.28.5, date-fns@^1.30.1:
+date-fns@^1.28.5, date-fns@^1.30.1:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
@@ -6095,7 +6076,7 @@ es6-object-assign@^1.1.0:
   resolved "https://registry.yarnpkg.com/es6-object-assign/-/es6-object-assign-1.1.0.tgz#c2c3582656247c39ea107cb1e6652b6f9f24523c"
   integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=
 
-es6-promise-pool@2.5.0, es6-promise-pool@^2.5.0:
+es6-promise-pool@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/es6-promise-pool/-/es6-promise-pool-2.5.0.tgz#147c612b36b47f105027f9d2bf54a598a99d9ccb"
   integrity sha1-FHxhKza0fxBQJ/nSv1SlmKmdnMs=
@@ -12289,11 +12270,6 @@ regenerator-runtime@^0.12.0:
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
   integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
-
-regenerator-runtime@^0.13.2:
-  version "0.13.7"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
-  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
 regenerator-runtime@^0.13.4:
   version "0.13.9"
