@@ -50,7 +50,7 @@
   "dependencies": {
     "@material-ui/core": "4.12.3",
     "@material-ui/lab": "4.0.0-alpha.60",
-    "classnames": "2.2.6",
+    "classnames": "2.3.1",
     "cozy-client": "27.26.1",
     "cozy-device-helper": "^1.17.0",
     "cozy-doctypes": "^1.70.0",
