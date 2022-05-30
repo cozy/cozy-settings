@@ -39,7 +39,7 @@ Object {
           >
             <button
               aria-label="Close"
-              class="MuiButtonBase-root MuiIconButton-root dialogIconButton"
+              class="MuiButtonBase-root MuiIconButton-root dialogIconButton medium"
               data-testid="modal-close-button-50"
               tabindex="0"
               type="button"
@@ -214,7 +214,7 @@ Object {
                     class="MuiCardHeader-action u-mv-0 u-mr-0"
                   >
                     <button
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                      class="MuiButtonBase-root MuiIconButton-root small"
                       tabindex="0"
                       type="button"
                     >
@@ -286,7 +286,7 @@ Object {
                               class="styles__img___3SHpG u-pr-half"
                             >
                               <button
-                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                class="MuiButtonBase-root MuiIconButton-root small"
                                 tabindex="0"
                                 type="button"
                               >
@@ -387,7 +387,7 @@ Object {
                               class="styles__img___3SHpG u-pr-half"
                             >
                               <button
-                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                class="MuiButtonBase-root MuiIconButton-root small"
                                 tabindex="0"
                                 type="button"
                               >
@@ -488,7 +488,7 @@ Object {
                               class="styles__img___3SHpG u-pr-half"
                             >
                               <button
-                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                class="MuiButtonBase-root MuiIconButton-root small"
                                 tabindex="0"
                                 type="button"
                               >
@@ -601,7 +601,7 @@ Object {
                               class="styles__img___3SHpG u-pr-half"
                             >
                               <button
-                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                class="MuiButtonBase-root MuiIconButton-root small"
                                 tabindex="0"
                                 type="button"
                               >
@@ -713,7 +713,7 @@ Object {
                                 class="styles__img___3SHpG u-pr-half"
                               >
                                 <button
-                                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                  class="MuiButtonBase-root MuiIconButton-root small"
                                   tabindex="0"
                                   type="button"
                                 >
@@ -813,7 +813,7 @@ Object {
                                   class="styles__img___3SHpG u-pr-half"
                                 >
                                   <button
-                                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                    class="MuiButtonBase-root MuiIconButton-root small"
                                     tabindex="0"
                                     type="button"
                                   >
@@ -916,7 +916,7 @@ Object {
                               class="styles__img___3SHpG u-pr-half"
                             >
                               <button
-                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                class="MuiButtonBase-root MuiIconButton-root small"
                                 tabindex="0"
                                 type="button"
                               >
@@ -1028,7 +1028,7 @@ Object {
                               class="styles__img___3SHpG u-pr-half"
                             >
                               <button
-                                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                class="MuiButtonBase-root MuiIconButton-root small"
                                 tabindex="0"
                                 type="button"
                               >
@@ -1139,7 +1139,7 @@ Object {
                                 class="styles__img___3SHpG u-pr-half"
                               >
                                 <button
-                                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                  class="MuiButtonBase-root MuiIconButton-root small"
                                   tabindex="0"
                                   type="button"
                                 >
@@ -1238,7 +1238,7 @@ Object {
                                   class="styles__img___3SHpG u-pr-half"
                                 >
                                   <button
-                                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                    class="MuiButtonBase-root MuiIconButton-root small"
                                     tabindex="0"
                                     type="button"
                                   >
