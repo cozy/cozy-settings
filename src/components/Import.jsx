@@ -79,93 +79,98 @@ class Import extends Component {
             extension="full"
           />
         </div>
-        <IllustrationDialog
-          open={displayModal}
-          onClose={this.toggleModal}
-          title={
-            <div className="u-flex u-flex-column u-flex-items-center">
-              <img
-                className="u-maw-4 u-mb-1"
-                alt={t('ProfileView.import.modal.title')}
-                src={importImage}
-              />
-              {t('ProfileView.import.modal.title')}
-            </div>
-          }
-          content={
-            <>
-              <ReactMarkdownWrapper
-                source={t('ProfileView.import.modal.description')}
-              />
-              <TextField
-                required
-                error={!!importData.error}
-                autoFocus
-                onChange={this.setURL}
-                label={t('ProfileView.import.url.label')}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-              />
-              {importData.error && (
-                <Typography variant="body1" className="u-error">
-                  {t(importData.error)}
-                </Typography>
-              )}
-            </>
-          }
-          actions={
-            <>
-              <Button
-                theme="secondary"
-                onClick={this.toggleModal}
-                label={t('ProfileView.import.modal.cancel')}
-              />
-              <Button
-                theme="primary"
-                onClick={this.precheckImport}
-                busy={importData.checking}
-                disabled={importData.checking}
-                label={t('ProfileView.import.modal.CTA')}
-              />
-            </>
-          }
-        />
-        <ConfirmDialog
-          title={t('ProfileView.import.confirmation.title')}
-          open={displayConfirmation}
-          onClose={this.toggleConfirmation}
-          content={
-            <>
-              <ReactMarkdownWrapper
-                source={t('ProfileView.import.confirmation.description', {
-                  url: STACK_DOMAIN.replace('//', '')
-                })}
-              />
-              {importData.error && (
-                <Typography variant="body1" className="u-error">
-                  {t(importData.error)}
-                </Typography>
-              )}
-            </>
-          }
-          actions={
-            <>
-              <Button
-                theme="secondary"
-                onClick={this.toggleConfirmation}
-                label={t('ProfileView.import.confirmation.cancel')}
-              />
-              <Button
-                theme="danger"
-                onClick={this.submitImport}
-                busy={importData.submitting}
-                disabled={importData.submitting}
-                label={t('ProfileView.import.confirmation.CTA')}
-              />
-            </>
-          }
-        />
+        {displayModal && (
+          <IllustrationDialog
+            open={displayModal}
+            onClose={this.toggleModal}
+            title={
+              <div className="u-flex u-flex-column u-flex-items-center">
+                <img
+                  className="u-maw-4 u-mb-1"
+                  alt={t('ProfileView.import.modal.title')}
+                  src={importImage}
+                />
+                {t('ProfileView.import.modal.title')}
+              </div>
+            }
+            content={
+              <>
+                <ReactMarkdownWrapper
+                  source={t('ProfileView.import.modal.description')}
+                />
+                <TextField
+                  required
+                  error={!!importData.error}
+                  autoFocus
+                  onChange={this.setURL}
+                  label={t('ProfileView.import.url.label')}
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                />
+                {importData.error && (
+                  <Typography variant="body1" className="u-error">
+                    {t(importData.error)}
+                  </Typography>
+                )}
+              </>
+            }
+            actions={
+              <>
+                <Button
+                  theme="secondary"
+                  onClick={this.toggleModal}
+                  label={t('ProfileView.import.modal.cancel')}
+                />
+                <Button
+                  theme="primary"
+                  onClick={this.precheckImport}
+                  busy={importData.checking}
+                  disabled={importData.checking}
+                  label={t('ProfileView.import.modal.CTA')}
+                />
+              </>
+            }
+          />
+        )}
+
+        {displayConfirmation && (
+          <ConfirmDialog
+            title={t('ProfileView.import.confirmation.title')}
+            open={displayConfirmation}
+            onClose={this.toggleConfirmation}
+            content={
+              <>
+                <ReactMarkdownWrapper
+                  source={t('ProfileView.import.confirmation.description', {
+                    url: STACK_DOMAIN.replace('//', '')
+                  })}
+                />
+                {importData.error && (
+                  <Typography variant="body1" className="u-error">
+                    {t(importData.error)}
+                  </Typography>
+                )}
+              </>
+            }
+            actions={
+              <>
+                <Button
+                  theme="secondary"
+                  onClick={this.toggleConfirmation}
+                  label={t('ProfileView.import.confirmation.cancel')}
+                />
+                <Button
+                  theme="danger"
+                  onClick={this.submitImport}
+                  busy={importData.submitting}
+                  disabled={importData.submitting}
+                  label={t('ProfileView.import.confirmation.CTA')}
+                />
+              </>
+            }
+          />
+        )}
       </>
     )
   }
