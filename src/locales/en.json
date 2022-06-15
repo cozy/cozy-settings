@@ -91,7 +91,7 @@
       "empty": "This field cannot be empty"
     },
     "email" : {
-      "title" : "E-mail",
+      "title" : "E-mail for authentication and contact",
       "label": "Cozy needs your e-mail to send you notifications and allow you to recover your password",
       "error" : "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     },

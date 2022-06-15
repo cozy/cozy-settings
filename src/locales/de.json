@@ -91,7 +91,7 @@
       "empty": "Dieses Feld darf nicht leer sein"
     },
     "email" : {
-      "title" : "E-Mail",
+      "title" : "E-Mail zur Authentifizierung und Kontaktaufnahme",
       "label": "Cozy braucht deine E-Mail, um dir Benachrichtigungen zuzusenden und dein Passwort wiederherzustellen",
       "error" : "Die E-Mail-Adresse fühlt sich nicht richtig an. Bist du sicher, dass du sie richtig geschrieben hast (z. B. john@wayne.com)?"
     },
