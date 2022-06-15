@@ -189,7 +189,6 @@
     "locale" : {
       "title" : "Langue",
       "label": "C’est la langue de votre Cozy.",
-      "contrib" : "Vous voulez aider à traduire des applications de Cozy ? [Voilà comment nous aider](https://forum.cozy.io/t/comment-participer-a-la-traduction-de-cozy/3938).",
       "fr": "Français",
       "en": "Anglais",
       "es": "Espagnol",

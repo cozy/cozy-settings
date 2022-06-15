@@ -18,6 +18,7 @@ const LanguageSection = props => {
   }
   const selectedLocale = fields.locale.value
   const fieldName = 'locale'
+  console.log('coucou')
   return (
     <div>
       <Select
@@ -35,9 +36,6 @@ const LanguageSection = props => {
         }}
         onChange={sel => onChange(fieldName, sel.value)}
       />
-      <Typography variant="body1" component="div">
-        <ReactMarkdownWrapper source={t('ProfileView.locale.contrib')} />
-      </Typography>
     </div>
   )
 }

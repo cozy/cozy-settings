@@ -165,7 +165,6 @@
     "locale" : {
       "title" : "言語",
       "label": "Cozy で使用される言語です。",
-      "contrib" : "Cozy の翻訳に興味がありますか? [**私たちに手を差し伸べる方法**] (https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937)。",
       "fr": "フランス語",
       "en": "英語",
       "es": "スペイン語",

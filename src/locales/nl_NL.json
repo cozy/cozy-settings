@@ -189,7 +189,6 @@
     "locale" : {
       "title" : "Taal",
       "label": "Dit is de taal die zal worden gebruikt in je Cozy.",
-      "contrib" : "Wil je meehelpen Cozy te vertalen? [Kijk dan op https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937 hoe je een handje kunt helpen.]",
       "fr": "Frans",
       "en": "Engels",
       "es": "Spaans",
