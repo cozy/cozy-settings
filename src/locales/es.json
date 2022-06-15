@@ -91,7 +91,7 @@
       "empty": "Este campo no puede estar vacío"
     },
     "email" : {
-      "title" : "Correo electrónico",
+      "title" : "Correo electrónico de autentificación y contacto",
       "label": "Cozy necesita su correo electrónico para enviarle notificaciones y permitirle recuperar su contraseña.",
       "error" : "Su correo electrónico no parece correcto. ¿Está usted seguro de haberlo escrito correctamente (p.e. antonio@banderas.com)?"
     },

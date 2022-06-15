@@ -91,7 +91,7 @@
       "empty": "Le champ ne peut pas être vide"
     },
     "email" : {
-      "title" : "E-mail",
+      "title" : "E-mail pour authentification et contact",
       "label": "Cozy a besoin de votre e-mail pour vous envoyer des notifications et vous permettre de récupérer votre mot de passe.",
       "error" : "L'adresse e-mail que vous avez entré ne semble pas correcte. Êtes-vous sûr(e) de l'avoir bien écrite sous la forme georges@abitbol.com ?"
     },

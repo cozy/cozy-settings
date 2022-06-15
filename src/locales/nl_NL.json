@@ -91,7 +91,7 @@
       "empty": "Dit veld mag niet leeg worden gelaten"
     },
     "email" : {
-      "title" : "E-mailadres",
+      "title" : "E-mailadres voor verificatie en contact",
       "label": "Cozy heeft je e-mailadres nodig zodat je meldingen kunt ontvangen en je je wachtwoord kunt herstellen.",
       "error" : "Dit e-mailadres lijkt onjuist. Weet je zeker dat je het goed geschreven hebt (bijv. jan@jansen.nl)?"
     },
