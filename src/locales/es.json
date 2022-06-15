@@ -186,7 +186,6 @@
     "locale" : {
       "title" : "Idioma",
       "label": "Éste será el idioma utilizado en su Cozy.",
-      "contrib" : "¿Está usted interesado(a) en ayudar a traducir Cozy? [Mire a ver si puede **darnos una mano** en eso](https://forum.cozy.io/t/how-to-contribute-to-the-cozy-localization/3937).",
       "fr": "Francés",
       "en": "Inglés",
       "es": "Español",
