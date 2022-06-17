@@ -1,9 +1,7 @@
 import React from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import Select from 'components/Select'
 
 const LANG_OPTIONS = ['en', 'fr', 'es']
@@ -18,7 +16,6 @@ const LanguageSection = props => {
   }
   const selectedLocale = fields.locale.value
   const fieldName = 'locale'
-  console.log('coucou')
   return (
     <div>
       <Select
