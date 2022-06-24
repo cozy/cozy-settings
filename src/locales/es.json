@@ -60,7 +60,8 @@
     "connected_devices": "Periféricos conectados",
     "sessions": "Conexiones",
     "storage": "Almacenamiento",
-    "email_notifications": "Notificaciones por correo electrónico"
+    "email_notifications": "Notificaciones por correo electrónico",
+    "permissions": "Permisos"
   },
   "loading": {
     "loading": "Cargando"

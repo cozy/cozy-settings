@@ -60,7 +60,8 @@
     "connected_devices": "接続されたデバイス",
     "sessions": "接続",
     "storage": "ストレージ",
-    "email_notifications": "メール通知"
+    "email_notifications": "メール通知",
+    "permissions": "きょか"
   },
   "Loading": {
     "loading": "読み込み中"

@@ -60,7 +60,8 @@
     "connected_devices": "Verbonden diensten",
     "sessions": "Verbindingen",
     "storage": "Opslag",
-    "email_notifications": "E-mailmeldingen"
+    "email_notifications": "E-mailmeldingen",
+    "permissions": "Machtigingen"
   },
   "loading": {
     "loading": "Bezig met laden"

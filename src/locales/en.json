@@ -60,7 +60,8 @@
     "connected_devices": "Connected devices",
     "sessions": "Connections",
     "storage": "Storage",
-    "email_notifications": "E-mail notifications"
+    "email_notifications": "E-mail notifications",
+    "permissions": "Permissions"
   },
   "loading": {
     "loading": "Loading"
@@ -393,5 +394,9 @@
 
   "Toolbar": {
     "more": "More"
+  },
+  
+  "Permissions": {
+    "title": "Applications control"
   }
 }

@@ -8,9 +8,8 @@ import Nav, {
 } from 'cozy-ui/transpiled/react/Nav'
 import UISidebar from 'cozy-ui/transpiled/react/Sidebar'
 import styles from 'styles/sidebar.styl'
-
+import HandIcon from 'cozy-ui/transpiled/react/Icons/Hand'
 import boxIcon from 'assets/icons/icon-box.svg'
-
 import globeIcon from 'assets/icons/icon-globe.svg'
 import devicesIcon from 'assets/icons/icon-phone.svg'
 import peopleIcon from 'assets/icons/icon-people.svg'
@@ -60,6 +59,16 @@ export const Sidebar = () => {
           >
             <NavIcon icon={boxIcon} />
             <NavText>{t('Nav.storage')}</NavText>
+          </RouterLink>
+        </NavItem>
+        <NavItem>
+          <RouterLink
+            to="/permissions"
+            className={NavLink.className}
+            activeClassName={NavLink.activeClassName}
+          >
+            <NavIcon icon={HandIcon} />
+            <NavText>{t('Nav.permissions')}</NavText>
           </RouterLink>
         </NavItem>
       </Nav>
