@@ -9,7 +9,7 @@ branches:
    - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
 env:
   global:
-  - MATTERMOST_CHANNEL=Plateformers-release
+  - MATTERMOST_CHANNEL=App---settings
   # to generate secure ENV VARS : travis encrypt MY_VAR=<value> -r cozy/cozy-settings
   # MATTERMOST_HOOK_URL
   - secure: br6w5xqXr6VV9jSXwsmknhaRYZJ38MCZJQDm3VB8RLmCSeuxxAinMQUoh+a9kfU/KehUQTlEYzXxGaQQl9BtIz3h91H+5uaKQETc1OCMjEaeCsVx35a0oft0Niwo21fUzK2Sv/PsIjkCVkcYhAZJcyqRIemBpanGOlAVfSDLCFrvR0PpgAUwGbzt24xECo+i0OwnSVFht3J8k96olchXzQqs96tYD/3JfLHzxsJrlFH8WRt1MQKNywNTgmiSQ5GZXyJkeIdinTG6USCylxSsDgMclmQuicCxPBHCf3kCD6W86trS6YTNrQ+JV7/UsbyXsvEjz6vIvPRwmXYvFPHTm84CTDqbdjdh/qBmJ95+zGOkI0Ans1pRpR6V9kaJ9DB1Iik/n4BFIqISBj/EN31KHh7CTTwOJrjYodGdhMzoQMjX+XeTZuM3P5dTZ1v1xD/ssl+0VTCb6yLAqvuysbmZvYFd3UBAVs9VUmEa3BOTIGXy/8BVaKehtqruRe6Qec1udJEij6hi90VJJOGxUP98cCx9ZC97TLkITTqr6p2bpUX3nxOsFOmMzxLjkZtJij5y1cCsIaSS4P79fSud1DTSehbnDuO+O67b/XVDCRMcHKqU7+7HjvdTOmmtYmbPX45VQ5jvSY9+ZRlS9+BbLwWPWrEt+5p4+fSvEjLt/IxNxT4=
