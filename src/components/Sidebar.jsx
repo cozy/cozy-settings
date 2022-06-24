@@ -9,10 +9,10 @@ import Nav, {
 import UISidebar from 'cozy-ui/transpiled/react/Sidebar'
 import styles from 'styles/sidebar.styl'
 import HandIcon from 'cozy-ui/transpiled/react/Icons/Hand'
-import boxIcon from 'assets/icons/icon-box.svg'
-import globeIcon from 'assets/icons/icon-globe.svg'
-import devicesIcon from 'assets/icons/icon-phone.svg'
-import peopleIcon from 'assets/icons/icon-people.svg'
+import GlobeIcon from 'cozy-ui/transpiled/react/Icons/Globe'
+import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
+import PhoneIcon from 'cozy-ui/transpiled/react/Icons/Phone'
+import ArchiveIcon from 'cozy-ui/transpiled/react/Icons/Archive'
 import { useI18n } from 'cozy-ui/transpiled/react'
 
 export const Sidebar = () => {
@@ -27,7 +27,7 @@ export const Sidebar = () => {
             className={NavLink.className}
             activeClassName={NavLink.activeClassName}
           >
-            <NavIcon icon={peopleIcon} />
+            <NavIcon icon={PeopleIcon} />
             <NavText>{t('Nav.profile')}</NavText>
           </RouterLink>
         </NavItem>
@@ -37,7 +37,7 @@ export const Sidebar = () => {
             className={NavLink.className}
             activeClassName={NavLink.activeClassName}
           >
-            <NavIcon icon={devicesIcon} />
+            <NavIcon icon={PhoneIcon} />
             <NavText>{t('Nav.connected_devices')}</NavText>
           </RouterLink>
         </NavItem>
@@ -47,7 +47,7 @@ export const Sidebar = () => {
             className={NavLink.className}
             activeClassName={NavLink.activeClassName}
           >
-            <NavIcon icon={globeIcon} />
+            <NavIcon icon={GlobeIcon} />
             <NavText>{t('Nav.sessions')}</NavText>
           </RouterLink>
         </NavItem>
@@ -57,7 +57,7 @@ export const Sidebar = () => {
             className={NavLink.className}
             activeClassName={NavLink.activeClassName}
           >
-            <NavIcon icon={boxIcon} />
+            <NavIcon icon={ArchiveIcon} />
             <NavText>{t('Nav.storage')}</NavText>
           </RouterLink>
         </NavItem>
