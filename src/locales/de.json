@@ -60,7 +60,8 @@
     "connected_devices": "Verbundene Geräte",
     "sessions": "Verbindungen",
     "storage": "Speicher",
-    "email_notifications": "E-Mail Benachrichtigung"
+    "email_notifications": "E-Mail Benachrichtigung",
+    "permissions": "Berechtigungen"
   },
   "Loading": {
     "loading": "Laden"

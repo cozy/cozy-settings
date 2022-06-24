@@ -60,7 +60,8 @@
     "connected_devices": "Appareils connectés",
     "sessions": "Connexions",
     "storage": "Stockage",
-    "email_notifications": "Notifications par e-mail"
+    "email_notifications": "Notifications par e-mail",
+    "permissions": "Permissions"
   },
   "loading": {
     "loading": "Chargement"
@@ -394,5 +395,9 @@
 
   "Toolbar": {
     "more": "Plus"
+  },
+
+  "Permissions": {
+    "title": "Permissions"
   }
 }

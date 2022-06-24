@@ -46,6 +46,10 @@ exports[`App component only should be mounted correctly 1`] = `
       />
       <Route
         component={[Function]}
+        path="/permissions"
+      />
+      <Route
+        component={[Function]}
         path="/exports/:exportId"
       />
       <Redirect
