@@ -5192,10 +5192,10 @@ cozy-ui@22.3.1:
     react-pdf "^4.0.5"
     react-select "2.2.0"
 
-cozy-ui@^68.2.0:
-  version "68.2.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-68.2.0.tgz#c360b3c260094ad0670fe44af8f4a36125844fd2"
-  integrity sha512-pd3Tztq1sWcMCXEaUyWJNrak+1Sakrc6EQmkicV5+jkJzftc+zq6GFYdWV8vpu+fAsrH3i/i9xsD4yiDFN8Zgw==
+cozy-ui@^68.6.0:
+  version "68.6.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-68.6.0.tgz#cb7ebe2740ebc23a0370559553908051ab8bb72a"
+  integrity sha512-uLieZqZvNQ6wgJCrlZxLHEgPbtHC0VWlgJdMtjKQto5T7i/8GKjLw9TrgEoF/TJTQQGO2cHRxsOOdgvPh1/+4A==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@popperjs/core" "^2.4.4"
@@ -5219,6 +5219,7 @@ cozy-ui@^68.2.0:
     react-remove-scroll "^2.4.0"
     react-select "^4.3.0"
     react-swipeable-views "^0.13.3"
+    rooks "^5.11.2"
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -12779,6 +12780,14 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+rooks@^5.11.2:
+  version "5.11.2"
+  resolved "https://registry.yarnpkg.com/rooks/-/rooks-5.11.2.tgz#f7ba3a758c512c7cc807af38615f3052439578b8"
+  integrity sha512-kOVYjNW/0Emq9NN3DbmC41xcltK25gVV2PMGw+Et9vC5UiIKrwWYRYmMid2/WRGQ0oodOeksCkrqGwJcV2buuQ==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    raf "^3.4.1"
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
