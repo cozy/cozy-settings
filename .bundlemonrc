@@ -1,0 +1,41 @@
+{
+    "baseDir": "./build",
+    "files": [
+        {
+            "path": "app/settings.<hash>.js"
+        },
+        {
+            "path": "intents/settings.<hash>.js"
+        },
+        {
+            "path": "vendors/settings.<hash>.js"
+        },
+        {
+            "path": "img/*.<hash>.svg"
+        },
+        {
+            "path": "app-settings.<hash>.min.css"
+        },
+        {
+            "path": "intents-settings.<hash>.min.css"
+        },
+        {
+            "path": "vendors-settings.<hash>.min.css"
+        }
+    ],
+    "groups": [
+        {
+            "path": "**/*.js",
+            "maxPercentIncrease": 5
+        },
+        {
+            "path": "**/*.css",
+            "maxPercentIncrease": 5
+        },
+        {
+            "path": "img/*.*",
+            "maxPercentIncrease": 5
+        }
+    ],
+    "reportOutput": ["github"]
+}
