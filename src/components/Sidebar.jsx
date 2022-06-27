@@ -14,6 +14,7 @@ import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
 import PhoneIcon from 'cozy-ui/transpiled/react/Icons/Phone'
 import ArchiveIcon from 'cozy-ui/transpiled/react/Icons/Archive'
 import { useI18n } from 'cozy-ui/transpiled/react'
+import flag from 'cozy-flags'
 
 export const Sidebar = () => {
   const { t } = useI18n()
@@ -61,16 +62,18 @@ export const Sidebar = () => {
             <NavText>{t('Nav.storage')}</NavText>
           </RouterLink>
         </NavItem>
-        <NavItem>
-          <RouterLink
-            to="/permissions"
-            className={NavLink.className}
-            activeClassName={NavLink.activeClassName}
-          >
-            <NavIcon icon={HandIcon} />
-            <NavText>{t('Nav.permissions')}</NavText>
-          </RouterLink>
-        </NavItem>
+        {flag('settings.permissions-dashboard') && (
+          <NavItem>
+            <RouterLink
+              to="/permissions"
+              className={NavLink.className}
+              activeClassName={NavLink.activeClassName}
+            >
+              <NavIcon icon={HandIcon} />
+              <NavText>{t('Nav.permissions')}</NavText>
+            </RouterLink>
+          </NavItem>
+        )}
       </Nav>
     </UISidebar>
   )
