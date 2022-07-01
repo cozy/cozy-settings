@@ -397,6 +397,7 @@
   },
   
   "Permissions": {
-    "title": "Applications control"
+    "title": "Applications control",
+    "failedRequest": "The request has failed"
   }
 }
