@@ -397,6 +397,7 @@
   },
 
   "Permissions": {
-    "title": "Permissions"
+    "title": "Permissions",
+    "failedRequest": "La requête a échoué"
   }
 }
