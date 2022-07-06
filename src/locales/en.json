@@ -315,7 +315,7 @@
     },
     "hint": {
       "title": "Leave a hint",
-      "placeholder": "Hint",
+      "placeholder": "Hint (optional)",
       "description": "The hint will be emailed to you if you forget your password, choose a hint that only you can understand",
       "same_as_passphrase": "Your hint can not be your password"
     },
