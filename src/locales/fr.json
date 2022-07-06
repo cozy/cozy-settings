@@ -315,7 +315,7 @@
     },
     "hint": {
       "title": "Laissez un indice",
-      "placeholder": "Indice",
+      "placeholder": "Indice (optionnel)",
       "description": "L'indice vous sera envoyé par email en cas d'oubli de votre mot de passe, choisissez un indice que vous-seul pouvez comprendre.",
       "same_as_passphrase": "Votre indice ne peut pas être votre mot de passe"
     },
