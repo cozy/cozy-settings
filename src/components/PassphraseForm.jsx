@@ -82,7 +82,6 @@ class PassphraseForm extends Component {
       newPassphraseTouched &&
       newPassphraseMatch &&
       strength.label !== 'weak' &&
-      hint &&
       !hintSameAsPassphrase
 
     const { cancelRedirectUrl } = parseRedirectUrlsFromUrlParams(
