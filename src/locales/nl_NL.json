@@ -315,7 +315,7 @@
     },
     "hint": {
       "title": "Laat een hint achter",
-      "placeholder": "Hint",
+      "placeholder": "Hint (optioneel)",
       "description": "Deze hint wordt aan je opgestuurd als je je wachtwoord vergeten bent. Kies een hint die alleen jíj kan ontcijferen.",
       "same_as_passphrase": "De hint mag niet hetzelfde zijn als je wachtwoord"
     },
@@ -394,5 +394,9 @@
 
   "Toolbar": {
     "more": "Meer"
+  },
+  
+  "Permissions": {
+    "title": "Appbeheer"
   }
 }
