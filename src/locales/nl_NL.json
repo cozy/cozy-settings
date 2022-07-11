@@ -397,6 +397,7 @@
   },
   
   "Permissions": {
-    "title": "Appbeheer"
+    "title": "Appbeheer",
+    "failedRequest": "Het verzoek is mislukt"
   }
 }
