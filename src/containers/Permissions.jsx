@@ -40,7 +40,7 @@ const Permissions = () => {
         <List>
           {queryResult.data.map(app => (
             <div key={app.name}>
-              <Link to={'/permissions/'}>
+              <Link to={'/permissions/' + app.slug}>
                 <ListItem button>
                   <ListItemIcon>
                     <AppIcon app={app} />
