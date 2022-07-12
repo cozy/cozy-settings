@@ -10,9 +10,8 @@ import PageTitle from 'components/PageTitle'
 import { withRouter } from 'react-router-dom'
 
 const PermissionsApplication = ({ match }) => {
-  const appName = match.params.app
-
   const { t } = useI18n()
+  const appName = match.params.app
 
   const queryResult = useQuery(
     Q(APPS_DOCTYPE).getById('io.cozy.apps/' + appName),
