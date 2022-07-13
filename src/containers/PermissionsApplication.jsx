@@ -7,7 +7,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 const PermissionsApplication = ({ match }) => {
   const { t } = useI18n()
@@ -19,7 +19,6 @@ const PermissionsApplication = ({ match }) => {
       as: 'io.cozy.apps/' + appName
     }
   )
-  console.log(queryResult)
 
   return (
     <Page narrow>
@@ -34,11 +33,11 @@ const PermissionsApplication = ({ match }) => {
           <PageTitle>{appName.toUpperCase()}</PageTitle>
           {Object.entries(queryResult.data[0].attributes.permissions).map(
             ([key, value]) => (
-              <React.Fragment key={key}>
+              <Link to={`/permissions/${appName}/${key}`} key={key}>
                 <Typography variant="h4">
                   {value.type} : {value.verbs ? value.verbs.join(' / ') : 'ALL'}
                 </Typography>
-              </React.Fragment>
+              </Link>
             )
           )}
         </div>
