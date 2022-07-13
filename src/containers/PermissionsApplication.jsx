@@ -29,7 +29,18 @@ const PermissionsApplication = ({ match }) => {
           {t('Permissions.failedRequest')}
         </Typography>
       ) : (
-        <PageTitle>{appName}</PageTitle>
+        <div>
+          <PageTitle>{appName.toUpperCase()}</PageTitle>
+          {Object.entries(queryResult.data[0].attributes.permissions).map(
+            ([key, value]) => (
+              <React.Fragment key={key}>
+                <Typography variant="h4">
+                  {value.type} : {value.verbs ? value.verbs.join(' / ') : 'ALL'}
+                </Typography>
+              </React.Fragment>
+            )
+          )}
+        </div>
       )}
     </Page>
   )
