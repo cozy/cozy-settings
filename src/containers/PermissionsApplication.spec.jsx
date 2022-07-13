@@ -39,10 +39,35 @@ jest.mock('cozy-ui/transpiled/react/Spinner', () => {
 
 describe('PermissionsApplication', () => {
   beforeEach(() => {
+    const queryResult = {
+      fetchStatus: 'loaded',
+      data: [
+        {
+          attributes: {
+            permissions: {
+              files: {
+                type: 'io.cozy.files',
+                description: 'Required to access the files'
+              },
+              allFiles: {
+                type: 'io.cozy.files.*',
+                description: 'Required to access the files'
+              },
+              apps: {
+                type: 'io.cozy.apps',
+                description:
+                  'Required by the cozy-bar to display the icons of the apps',
+                verbs: ['GET']
+              }
+            }
+          }
+        }
+      ]
+    }
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(true)
     Q.mockReturnValue({ getById: () => 'kfrf' })
-    useQuery.mockReturnValue({ fetchStatus: 'success' })
+    useQuery.mockReturnValue(queryResult)
   })
   it('should display appName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
@@ -50,7 +75,7 @@ describe('PermissionsApplication', () => {
     expect(container).toMatchSnapshot()
   })
 
-  it('should render a spinner when query is loading and has not been load', () => {
+  it('should render a spinner when query is loading and has not been loaded', () => {
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(false)
     const { queryByTestId } = render(<PermissionsApplication />)
@@ -60,7 +85,7 @@ describe('PermissionsApplication', () => {
   it('should display appName when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
     const { queryByText } = render(<PermissionsApplication />)
-    expect(queryByText('Drive')).toBeTruthy()
+    expect(queryByText('DRIVE')).toBeTruthy()
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {

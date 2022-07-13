@@ -6,10 +6,32 @@ exports[`PermissionsApplication should display appName when query has been loade
     data-narrow="true"
     data-testid="page"
   >
-    <div
-      data-testid="pageTitle"
-    >
-      Drive
+    <div>
+      <div
+        data-testid="pageTitle"
+      >
+        DRIVE
+      </div>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        files
+      </h4>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        allFiles
+      </h4>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        apps
+      </h4>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        GET
+      </p>
     </div>
   </div>
 </div>
