@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PermissionsApplication should display appName when query has been loaded 1`] = `
+<div>
+  <div
+    data-narrow="true"
+    data-testid="page"
+  >
+    <div
+      data-testid="pageTitle"
+    >
+      Drive
+    </div>
+  </div>
+</div>
+`;
