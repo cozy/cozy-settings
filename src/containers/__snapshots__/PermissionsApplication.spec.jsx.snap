@@ -6,10 +6,33 @@ exports[`PermissionsApplication should display appName when query has been loade
     data-narrow="true"
     data-testid="page"
   >
-    <div
-      data-testid="pageTitle"
-    >
-      Drive
+    <div>
+      <div
+        data-testid="pageTitle"
+      >
+        DRIVE
+      </div>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        io.cozy.files
+         : 
+        ALL
+      </h4>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        io.cozy.files.*
+         : 
+        ALL
+      </h4>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        io.cozy.apps
+         : 
+        GET
+      </h4>
     </div>
   </div>
 </div>
