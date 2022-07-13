@@ -51,7 +51,12 @@ exports[`App component only should be mounted correctly 1`] = `
       />
       <Route
         component={[Function]}
+        exact={true}
         path="/permissions/:app"
+      />
+      <Route
+        component={[Function]}
+        path="/permissions/:app/:permission"
       />
       <Route
         component={[Function]}

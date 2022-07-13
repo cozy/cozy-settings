@@ -12,27 +12,42 @@ exports[`PermissionsApplication should display appName when query has been loade
       >
         DRIVE
       </div>
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+      <div
+        data-testid="Link"
+        data-to="/permissions/Drive/files"
       >
-        io.cozy.files
-         : 
-        ALL
-      </h4>
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
+          io.cozy.files
+           : 
+          ALL
+        </h4>
+      </div>
+      <div
+        data-testid="Link"
+        data-to="/permissions/Drive/allFiles"
       >
-        io.cozy.files.*
-         : 
-        ALL
-      </h4>
-      <h4
-        class="MuiTypography-root MuiTypography-h4"
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
+          io.cozy.files.*
+           : 
+          ALL
+        </h4>
+      </div>
+      <div
+        data-testid="Link"
+        data-to="/permissions/Drive/apps"
       >
-        io.cozy.apps
-         : 
-        GET
-      </h4>
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
+          io.cozy.apps
+           : 
+          GET
+        </h4>
+      </div>
     </div>
   </div>
 </div>
