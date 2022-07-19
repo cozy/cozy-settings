@@ -21,6 +21,7 @@ import Passphrase from 'containers/Passphrase'
 import Permissions from 'containers/Permissions'
 import IntentRedirect from 'services/IntentRedirect'
 import PermissionsApplication from 'containers/PermissionsApplication'
+import Permission from 'containers/Permission'
 
 initFlags()
 
@@ -45,8 +46,13 @@ export class App extends Component {
             <Route path="/storage" component={Storage} />
             <Route exact path="/permissions" component={Permissions} />
             <Route
+              exact
               path="/permissions/:app"
               component={PermissionsApplication}
+            />
+            <Route
+              path="/permissions/:app/:permission"
+              component={Permission}
             />
             <Route path="/exports/:exportId" component={Profile} />
             <Redirect exact from="/" to="/profile" />

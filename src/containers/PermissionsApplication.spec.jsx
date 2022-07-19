@@ -13,7 +13,14 @@ jest.mock('react-router-dom', () => {
       const match = { params: { app: 'Drive' } }
       // eslint-disable-next-line react/display-name
       return () => <Component match={match} />
-    }
+    },
+    Link:
+      // eslint-disable-next-line react/display-name
+      ({ to, children }) => (
+        <div data-testid="Link" data-to={to}>
+          {children}
+        </div>
+      )
   }
 })
 
