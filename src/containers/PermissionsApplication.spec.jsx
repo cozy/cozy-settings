@@ -1,30 +1,37 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import PermissionsApplication from './PermissionsApplication'
+import PermissionsApplication, {
+  completePermission
+} from './PermissionsApplication'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 
-jest.mock('cozy-ui/transpiled/react', () => {
-  return { useI18n: () => ({ t: x => x }) }
+jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
+  return () => Component => {
+    const t = text => text
+    const match = { params: { app: 'Drive' } }
+    // eslint-disable-next-line react/display-name
+    return () => <Component match={match} t={t} />
+  }
 })
 
 jest.mock('react-router-dom', () => {
   return {
-    withRouter: Component => {
-      const match = { params: { app: 'Drive' } }
-      // eslint-disable-next-line react/display-name
-      return () => <Component match={match} />
-    },
-    Link:
-      // eslint-disable-next-line react/display-name
-      ({ to, children }) => (
-        <div data-testid="Link" data-to={to}>
-          {children}
-        </div>
-      )
+    withRouter: Component => Component,
+    Link: ({ narrow, children }) => (
+      <div data-testid="page" data-narrow={narrow}>
+        {children}
+      </div>
+    )
   }
 })
 
-jest.mock('cozy-client')
+jest.mock('cozy-client', () => ({
+  ...jest.requireActual('cozy-client'),
+  hasQueryBeenLoaded: jest.fn(),
+  Q: jest.fn(),
+  useQuery: jest.fn(),
+  isQueryLoading: jest.fn()
+}))
 
 jest.mock('components/Page', () => {
   // eslint-disable-next-line react/display-name
@@ -99,5 +106,23 @@ describe('PermissionsApplication', () => {
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
     const { queryByText } = render(<PermissionsApplication />)
     expect(queryByText('Permissions.failedRequest')).toBeTruthy()
+  })
+
+  describe('completePermission', () => {
+    it('should add description in permissions', () => {
+      const key = 'contactsAccounts'
+      const permission = 'Comptes associés aux contacts'
+      const value = {
+        description: 'blabla',
+        verbs: ['GET', 'POST']
+      }
+      const resultat = completePermission(key, permission, value)
+      expect(resultat).toEqual({
+        name: 'contactsAccounts',
+        title: 'Comptes associés aux contacts',
+        description: 'blabla',
+        verbs: ['GET', 'POST']
+      })
+    })
   })
 })
