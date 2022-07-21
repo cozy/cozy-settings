@@ -15,23 +15,17 @@ exports[`PermissionsApplication should display appName when query has been loade
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
-        io.cozy.files
-         : 
-        ALL
+        Permissions.io.cozy.apps
       </h4>
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
-        io.cozy.files.*
-         : 
-        ALL
+        Permissions.io.cozy.files
       </h4>
       <h4
         class="MuiTypography-root MuiTypography-h4"
       >
-        io.cozy.apps
-         : 
-        GET
+        Permissions.io.cozy.files.*
       </h4>
     </div>
   </div>

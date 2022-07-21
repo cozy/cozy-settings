@@ -1,7 +1,13 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 import PermissionsApplication from './PermissionsApplication'
-import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+import {
+  Q,
+  useQuery,
+  isQueryLoading,
+  hasQueryBeenLoaded,
+  models
+} from 'cozy-client'
 
 jest.mock('cozy-ui/transpiled/react', () => {
   return { useI18n: () => ({ t: x => x }) }
@@ -17,7 +23,15 @@ jest.mock('react-router-dom', () => {
   }
 })
 
-jest.mock('cozy-client')
+jest.mock('cozy-client', () => ({
+  ...jest.requireActual('cozy-client'),
+  hasQueryBeenLoaded: jest.fn(),
+  Q: jest.fn(),
+  useQuery: jest.fn(),
+  isQueryLoading: jest.fn(),
+
+  models: { document: { locales: { getBoundT: jest.fn() } } }
+}))
 
 jest.mock('components/Page', () => {
   // eslint-disable-next-line react/display-name
@@ -68,6 +82,8 @@ describe('PermissionsApplication', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
     Q.mockReturnValue({ getById: () => 'kfrf' })
     useQuery.mockReturnValue(queryResult)
+    const permissionsT = text => text
+    models.document.locales.getBoundT.mockReturnValue(permissionsT)
   })
   it('should display appName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
