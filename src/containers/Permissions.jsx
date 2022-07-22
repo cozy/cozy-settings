@@ -22,13 +22,14 @@ import CozyClient, {
 
 const Permissions = () => {
   const { t } = useI18n()
+  const THIRTY_SECONDS = 30 * 1000
   const queryResultApps = useQuery(Q(APPS_DOCTYPE), {
     as: APPS_DOCTYPE,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(30 * 1000)
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
   })
   const queryResultKonnectors = useQuery(Q(KONNECTORS_DOCTYPE), {
     as: KONNECTORS_DOCTYPE,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(30 * 1000)
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
   })
 
   return (
@@ -49,14 +50,14 @@ const Permissions = () => {
           {queryResultApps.data
             .concat(queryResultKonnectors.data)
             .sort((a, b) => a.slug.localeCompare(b.slug))
-            .map(el => (
-              <div key={el.name}>
-                <Link to={'/permissions/' + el.slug}>
+            .map(appOrKonnector => (
+              <div key={appOrKonnector.name}>
+                <Link to={'/permissions/' + appOrKonnector.slug}>
                   <ListItem button>
                     <ListItemIcon>
-                      <AppIcon app={el} />
+                      <AppIcon app={appOrKonnector} />
                     </ListItemIcon>
-                    <ListItemText primary={el.name} />
+                    <ListItemText primary={appOrKonnector.name} />
                   </ListItem>
                 </Link>
                 <Divider />
