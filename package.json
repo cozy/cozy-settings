@@ -35,6 +35,7 @@
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "11.2.7",
     "babel-preset-cozy-app": "2.0.2",
+    "browser-resolve": "^2.0.0",
     "bundlemon": "^1.4.0",
     "cozy-bar": "7.17.8",
     "cozy-scripts": "6.3.0",
