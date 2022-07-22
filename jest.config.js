@@ -18,5 +18,5 @@ module.exports = {
     __TARGET__: 'browser',
     cozy: {}
   },
-  browser: true
+  resolver: "<rootDir>/test/jestLib/resolver.js"
 }
