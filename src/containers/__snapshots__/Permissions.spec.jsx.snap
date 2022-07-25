@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Permissions should display appName when query has been loaded 1`] = `
+<div>
+  <div
+    data-narrow="true"
+    data-testid="page"
+  >
+    <div
+      data-testid="page-title"
+    >
+      Permissions.title
+    </div>
+    <ul
+      class="MuiList-root MuiList-padding"
+    >
+      <div>
+        <div
+          data-testid="page"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemIcon-root"
+            >
+              <div
+                data-testid="AppIcon"
+              />
+            </div>
+            <div
+              class="MuiListItemText-root"
+            >
+              <span
+                class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              >
+                Alan
+              </span>
+            </div>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <hr
+          class="MuiDivider-root"
+        />
+      </div>
+      <div>
+        <div
+          data-testid="page"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemIcon-root"
+            >
+              <div
+                data-testid="AppIcon"
+              />
+            </div>
+            <div
+              class="MuiListItemText-root"
+            >
+              <span
+                class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              >
+                Contacts
+              </span>
+            </div>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <hr
+          class="MuiDivider-root"
+        />
+      </div>
+    </ul>
+  </div>
+</div>
+`;

@@ -12,7 +12,7 @@ import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
-import { APPS_DOCTYPE } from 'doctypes'
+import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import CozyClient, {
   Q,
   useQuery,
@@ -22,35 +22,47 @@ import CozyClient, {
 
 const Permissions = () => {
   const { t } = useI18n()
-  const queryResult = useQuery(Q(APPS_DOCTYPE), {
+  const THIRTY_SECONDS = 30 * 1000
+  const queryResultApps = useQuery(Q(APPS_DOCTYPE), {
     as: APPS_DOCTYPE,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(30 * 1000)
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+  })
+  const queryResultKonnectors = useQuery(Q(KONNECTORS_DOCTYPE), {
+    as: KONNECTORS_DOCTYPE,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
   })
 
   return (
     <Page narrow>
       <PageTitle>{t('Permissions.title')}</PageTitle>
-      {isQueryLoading(queryResult) && !hasQueryBeenLoaded(queryResult) ? (
+      {(isQueryLoading(queryResultApps) ||
+        isQueryLoading(queryResultKonnectors)) &&
+      (!hasQueryBeenLoaded(queryResultApps) ||
+        !hasQueryBeenLoaded(queryResultKonnectors)) ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
-      ) : queryResult.fetchStatus === 'failed' ? (
+      ) : (queryResultApps.fetchStatus || queryResultKonnectors.fetchStatus) ===
+        'failed' ? (
         <Typography variant="body1" className="u-mb-1-half">
           {t('Permissions.failedRequest')}
         </Typography>
       ) : (
         <List>
-          {queryResult.data.map(app => (
-            <div key={app.name}>
-              <Link to={'/permissions/' + app.slug}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <AppIcon app={app} />
-                  </ListItemIcon>
-                  <ListItemText primary={app.name} />
-                </ListItem>
-              </Link>
-              <Divider />
-            </div>
-          ))}
+          {queryResultApps.data
+            .concat(queryResultKonnectors.data)
+            .sort((a, b) => a.slug.localeCompare(b.slug))
+            .map(appOrKonnector => (
+              <div key={appOrKonnector.name}>
+                <Link to={'/permissions/' + appOrKonnector.slug}>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <AppIcon app={appOrKonnector} />
+                    </ListItemIcon>
+                    <ListItemText primary={appOrKonnector.name} />
+                  </ListItem>
+                </Link>
+                <Divider />
+              </div>
+            ))}
         </List>
       )}
     </Page>

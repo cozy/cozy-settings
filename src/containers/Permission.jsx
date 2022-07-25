@@ -41,7 +41,9 @@ const Permission = ({ match }) => {
               .verbs ? (
               queryResult.data[0].attributes.permissions[
                 permissionName
-              ].verbs.map((el, i) => <ListItemText key={i}>{el}</ListItemText>)
+              ].verbs.map(permission => (
+                <ListItemText key={permission.name}>{permission}</ListItemText>
+              ))
             ) : (
               <ListItemText>ALL</ListItemText>
             )}

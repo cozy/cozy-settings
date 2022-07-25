@@ -47,6 +47,11 @@
       "type": "io.cozy.apps",
       "verbs": ["GET", "POST", "PUT"]
     },
+     "konnectors": {
+      "description": "Required to get the list of konnectors",
+      "type": "io.cozy.konnectors",
+      "verbs": ["GET"]
+    },
     "accounts": {
       "description": "Required to manage accounts associated to konnectors",
       "type": "io.cozy.accounts",
