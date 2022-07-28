@@ -50,12 +50,12 @@ exports[`PermissionsApplication should display appName when query has been loade
       </div>
       <div
         data-testid="Link"
-        data-to="/permissions/Drive/findABetterNamePlease"
+        data-to="/permissions/Drive/accounts"
       >
         <h4
           class="MuiTypography-root MuiTypography-h4"
         >
-          io.cozy.apps
+          io.cozy.accounts
            : 
           Écriture
         </h4>
