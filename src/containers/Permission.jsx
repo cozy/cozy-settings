@@ -1,32 +1,64 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { APPS_DOCTYPE } from 'doctypes'
+import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import { withRouter } from 'react-router-dom'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+import CozyClient, {
+  Q,
+  useQuery,
+  isQueryLoading,
+  hasQueryBeenLoaded
+} from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react'
 import Page from 'components/Page'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
-import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
+import { displayPermissions } from './helpers/permissionsHelper'
 
 const Permission = ({ match }) => {
   const { t } = useI18n()
   const appName = match.params.app
   const permissionName = match.params.permission
+  const THIRTY_SECONDS = 30 * 1000
 
-  const queryResult = useQuery(
+  const [verbs, setVerbs] = useState([])
+
+  const queryResultApps = useQuery(
     Q(APPS_DOCTYPE).getById('io.cozy.apps/' + appName),
     {
-      as: 'io.cozy.apps/' + appName
+      as: 'io.cozy.apps/' + appName,
+      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
     }
   )
 
+  const queryResultKonnectors = useQuery(
+    Q(KONNECTORS_DOCTYPE).getById('io.cozy.konnectors/' + appName),
+    {
+      as: 'io.cozy.konnectors/' + appName,
+      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+    }
+  )
+
+  useEffect(() => {
+    let result
+    if (queryResultApps.data.length > 0) {
+      result = queryResultApps
+    } else if (queryResultKonnectors.data.length > 0) {
+      result = queryResultKonnectors
+    } else {
+      return
+    }
+    setVerbs(result.data[0].attributes.permissions[permissionName].verbs)
+  }, [queryResultApps, queryResultKonnectors, permissionName])
+
   return (
     <Page narrow>
-      {isQueryLoading(queryResult) && !hasQueryBeenLoaded(queryResult) ? (
+      {(isQueryLoading(queryResultApps) &&
+        !hasQueryBeenLoaded(queryResultApps)) ||
+      (isQueryLoading(queryResultKonnectors) &&
+        !hasQueryBeenLoaded(queryResultKonnectors)) ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
-      ) : queryResult.fetchStatus === 'failed' ? (
+      ) : queryResultApps.fetchStatus === 'failed' &&
+        queryResultKonnectors.fetchStatus === 'failed' ? (
         <Typography variant="body1" className="u-mb-1-half">
           {t('Permissions.failedRequest')}
         </Typography>
@@ -36,18 +68,7 @@ const Permission = ({ match }) => {
             Application: {appName.toUpperCase()}
           </Typography>
           <Typography variant="h2">Permission: {permissionName}</Typography>
-          <List>
-            {queryResult.data[0].attributes.permissions[permissionName]
-              .verbs ? (
-              queryResult.data[0].attributes.permissions[
-                permissionName
-              ].verbs.map(permission => (
-                <ListItemText key={permission.name}>{permission}</ListItemText>
-              ))
-            ) : (
-              <ListItemText>ALL</ListItemText>
-            )}
-          </List>
+          <Typography variant="h3">{displayPermissions(verbs)}</Typography>
         </div>
       )}
     </Page>

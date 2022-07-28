@@ -13,6 +13,7 @@ import { useI18n } from 'cozy-ui/transpiled/react'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { withRouter, Link } from 'react-router-dom'
+import { displayPermissions } from './helpers/permissionsHelper'
 
 const PermissionsApplication = ({ match }) => {
   const { t } = useI18n()
@@ -57,7 +58,7 @@ const PermissionsApplication = ({ match }) => {
           ).map(([key, value]) => (
             <Link to={`/permissions/${appName}/${key}`} key={key}>
               <Typography variant="h4">
-                {value.type} : {value.verbs ? value.verbs.join(' / ') : 'ALL'}
+                {value.type} : {displayPermissions(value.verbs)}
               </Typography>
             </Link>
           ))}
