@@ -398,6 +398,9 @@
 
   "Permissions": {
     "title": "Permissions",
-    "failedRequest": "La requête a échoué"
+    "failedRequest": "La requête a échoué",
+    "read": "Lecture",
+    "readAndWrite": "Lecture et Écriture",
+    "write": "Écriture"
   }
 }

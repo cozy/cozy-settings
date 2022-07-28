@@ -18,9 +18,9 @@ exports[`PermissionsApplication should display appName when query has been loade
         <h4
           class="MuiTypography-root MuiTypography-h4"
         >
-          Permissions.io.cozy.apps
+          CozyClient.Permissions.io.cozy.accounts
            : 
-          GET
+          Permissions.write
         </h4>
       </div>
       <div
@@ -29,9 +29,9 @@ exports[`PermissionsApplication should display appName when query has been loade
         <h4
           class="MuiTypography-root MuiTypography-h4"
         >
-          Permissions.io.cozy.files
+          CozyClient.Permissions.io.cozy.apps
            : 
-          ALL
+          Permissions.read
         </h4>
       </div>
       <div
@@ -40,9 +40,20 @@ exports[`PermissionsApplication should display appName when query has been loade
         <h4
           class="MuiTypography-root MuiTypography-h4"
         >
-          Permissions.io.cozy.files.*
+          CozyClient.Permissions.io.cozy.files
            : 
-          ALL
+          Permissions.readAndWrite
+        </h4>
+      </div>
+      <div
+        data-testid="page"
+      >
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
+          CozyClient.Permissions.io.cozy.files.*
+           : 
+          Permissions.readAndWrite
         </h4>
       </div>
     </div>

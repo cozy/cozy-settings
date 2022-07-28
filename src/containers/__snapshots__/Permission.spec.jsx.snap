@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Permission should display appName when query has been loaded 1`] = `
+<div>
+  <div
+    data-narrow="true"
+    data-testid="page"
+  >
+    <div>
+      <h1
+        class="MuiTypography-root MuiTypography-h1"
+      >
+        Application: 
+        DRIVE
+      </h1>
+      <h2
+        class="MuiTypography-root MuiTypography-h2"
+      >
+        Permission: 
+        apps
+      </h2>
+      <h3
+        class="MuiTypography-root MuiTypography-h3"
+      >
+        Permissions.write
+      </h3>
+    </div>
+  </div>
+</div>
+`;
