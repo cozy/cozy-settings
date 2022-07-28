@@ -72,6 +72,12 @@ describe('PermissionsApplication', () => {
                 description:
                   'Required by the cozy-bar to display the icons of the apps',
                 verbs: ['GET']
+              },
+              findABetterNamePlease: {
+                type: 'io.cozy.apps',
+                description:
+                  'Required by the cozy-bar to display the icons of the apps',
+                verbs: ['POST']
               }
             }
           }

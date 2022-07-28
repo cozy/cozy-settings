@@ -7,6 +7,7 @@ import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { withRouter, Link } from 'react-router-dom'
 import withLocales from 'lib/withLocales'
+import { displayPermissions } from './helpers/permissionsHelper'
 
 import CozyClient, {
   Q,
@@ -88,7 +89,7 @@ const PermissionsApplication = ({ match, t }) => {
             ({ name, title, verbs }) => (
               <Link to={`/permissions/${appName}/${name}`} key={name}>
                 <Typography variant="h4">
-                  {title} : {verbs ? verbs.join(' / ') : 'ALL'}
+                  {title} : {displayPermissions(verbs)}
                 </Typography>
               </Link>
             )
