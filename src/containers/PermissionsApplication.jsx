@@ -1,25 +1,42 @@
 import React from 'react'
 
 import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import Page from 'components/Page'
+import PageTitle from 'components/PageTitle'
+import { withRouter, Link } from 'react-router-dom'
+import withLocales from 'lib/withLocales'
+import { displayPermissions } from './helpers/permissionsHelper'
+
 import CozyClient, {
   Q,
   useQuery,
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import { useI18n } from 'cozy-ui/transpiled/react'
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import { withRouter, Link } from 'react-router-dom'
-import { displayPermissions } from './helpers/permissionsHelper'
 
-const PermissionsApplication = ({ match }) => {
-  const { t } = useI18n()
+export const completePermission = (
+  name,
+  permission,
+  { description, verbs }
+) => {
+  const completedPermission = {
+    name: name,
+    title: permission
+  }
+  if (description) {
+    completedPermission.description = description
+  }
+  if (verbs) {
+    completedPermission.verbs = verbs
+  }
+  return completedPermission
+}
+
+const PermissionsApplication = ({ match, t }) => {
   const appName = match.params.app
   const THIRTY_SECONDS = 30 * 1000
-
   const queryResultApps = useQuery(
     Q(APPS_DOCTYPE).getById('io.cozy.apps/' + appName),
     {
@@ -36,6 +53,23 @@ const PermissionsApplication = ({ match }) => {
     }
   )
 
+  let matchingQueryResult = []
+  if (queryResultApps?.data?.length > 0) {
+    matchingQueryResult = queryResultApps
+  }
+  if (queryResultKonnectors?.data?.length > 0) {
+    matchingQueryResult = queryResultKonnectors
+  }
+  const sortPermissionsByName = queryResult => {
+    return Object.entries(queryResult.data[0].attributes.permissions)
+      .map(([name, value]) => {
+        const perm = t('Permissions.' + value.type)
+        return completePermission(name, perm, value)
+      })
+      .sort((a, b) => {
+        return a.title.localeCompare(b.title)
+      })
+  }
   return (
     <Page narrow>
       {(isQueryLoading(queryResultApps) &&
@@ -51,21 +85,19 @@ const PermissionsApplication = ({ match }) => {
       ) : (
         <div>
           <PageTitle>{appName.toUpperCase()}</PageTitle>
-          {Object.entries(
-            queryResultApps.data.length > 0
-              ? queryResultApps.data[0].attributes.permissions
-              : queryResultKonnectors.data[0].attributes.permissions
-          ).map(([key, value]) => (
-            <Link to={`/permissions/${appName}/${key}`} key={key}>
-              <Typography variant="h4">
-                {value.type} : {displayPermissions(value.verbs)}
-              </Typography>
-            </Link>
-          ))}
+          {sortPermissionsByName(matchingQueryResult).map(
+            ({ name, title, verbs }) => (
+              <Link to={`/permissions/${appName}/${name}`} key={name}>
+                <Typography variant="h4">
+                  {title} : {displayPermissions(verbs)}
+                </Typography>
+              </Link>
+            )
+          )}
         </div>
       )}
     </Page>
   )
 }
 
-export default withRouter(PermissionsApplication)
+export default withRouter(withLocales(PermissionsApplication))
