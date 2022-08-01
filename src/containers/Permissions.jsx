@@ -40,8 +40,8 @@ const Permissions = () => {
       (!hasQueryBeenLoaded(queryResultApps) ||
         !hasQueryBeenLoaded(queryResultKonnectors)) ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
-      ) : (queryResultApps.fetchStatus || queryResultKonnectors.fetchStatus) ===
-        'failed' ? (
+      ) : queryResultApps.fetchStatus === 'failed' ||
+        queryResultKonnectors.fetchStatus === 'failed' ? (
         <Typography variant="body1" className="u-mb-1-half">
           {t('Permissions.failedRequest')}
         </Typography>
@@ -50,19 +50,28 @@ const Permissions = () => {
           {queryResultApps.data
             .concat(queryResultKonnectors.data)
             .sort((a, b) => a.slug.localeCompare(b.slug))
-            .map(appOrKonnector => (
-              <div key={appOrKonnector.name}>
-                <Link to={'/permissions/' + appOrKonnector.slug}>
-                  <ListItem button>
-                    <ListItemIcon>
-                      <AppIcon app={appOrKonnector} />
-                    </ListItemIcon>
-                    <ListItemText primary={appOrKonnector.name} />
-                  </ListItem>
-                </Link>
-                <Divider />
-              </div>
-            ))}
+            .map(appOrKonnector => {
+              return (
+                <div key={appOrKonnector.name}>
+                  <Link to={'/permissions/' + appOrKonnector.slug}>
+                    <ListItem button>
+                      <ListItemIcon>
+                        <AppIcon app={appOrKonnector} />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={appOrKonnector.name}
+                        secondary={t('Permissions.numberOfPermissions', {
+                          smart_count: Object.entries(
+                            appOrKonnector.permissions
+                          ).length
+                        })}
+                      />
+                    </ListItem>
+                  </Link>
+                  <Divider />
+                </div>
+              )
+            })}
         </List>
       )}
     </Page>

@@ -32,14 +32,10 @@ exports[`Permissions should display appName when query has been loaded 1`] = `
               />
             </div>
             <div
-              class="MuiListItemText-root"
-            >
-              <span
-                class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-              >
-                Alan
-              </span>
-            </div>
+              data-primary="Alan"
+              data-secondary="Permissions.numberOfPermissions"
+              data-testid="ListItemText"
+            />
             <span
               class="MuiTouchRipple-root"
             />
@@ -67,14 +63,91 @@ exports[`Permissions should display appName when query has been loaded 1`] = `
               />
             </div>
             <div
-              class="MuiListItemText-root"
+              data-primary="Contacts"
+              data-secondary="Permissions.numberOfPermissions 3"
+              data-testid="ListItemText"
+            />
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <hr
+          class="MuiDivider-root"
+        />
+      </div>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Permissions should display sorted app and konnector names when query is not loading 1`] = `
+<div>
+  <div
+    data-narrow="true"
+    data-testid="page"
+  >
+    <div
+      data-testid="page-title"
+    >
+      Permissions.title
+    </div>
+    <ul
+      class="MuiList-root MuiList-padding"
+    >
+      <div>
+        <div
+          data-testid="page"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemIcon-root"
             >
-              <span
-                class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-              >
-                Contacts
-              </span>
+              <div
+                data-testid="AppIcon"
+              />
             </div>
+            <div
+              data-primary="Alan"
+              data-secondary="Permissions.numberOfPermissions"
+              data-testid="ListItemText"
+            />
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <hr
+          class="MuiDivider-root"
+        />
+      </div>
+      <div>
+        <div
+          data-testid="page"
+        >
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemIcon-root"
+            >
+              <div
+                data-testid="AppIcon"
+              />
+            </div>
+            <div
+              data-primary="Contacts"
+              data-secondary="Permissions.numberOfPermissions 3"
+              data-testid="ListItemText"
+            />
             <span
               class="MuiTouchRipple-root"
             />
