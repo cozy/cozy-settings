@@ -18,13 +18,20 @@ exports[`PermissionsApplication should display appName when query has been loade
         <h4
           class="MuiTypography-root MuiTypography-h4"
         >
+          Permissions.io.cozy.accounts
+           : 
+          Écriture
+        </h4>
+      </div>
+      <div
+        data-testid="page"
+      >
+        <h4
+          class="MuiTypography-root MuiTypography-h4"
+        >
           Permissions.io.cozy.apps
            : 
-<<<<<<< HEAD
-          GET
-=======
-          Lecture et Écriture
->>>>>>> 5859b26 (feat(Permissions): Display permissions type details instead of verbs)
+          Lecture
         </h4>
       </div>
       <div
@@ -46,23 +53,7 @@ exports[`PermissionsApplication should display appName when query has been loade
         >
           Permissions.io.cozy.files.*
            : 
-<<<<<<< HEAD
-          ALL
-=======
-          Lecture
-        </h4>
-      </div>
-      <div
-        data-testid="Link"
-        data-to="/permissions/Drive/accounts"
-      >
-        <h4
-          class="MuiTypography-root MuiTypography-h4"
-        >
-          io.cozy.accounts
-           : 
-          Écriture
->>>>>>> 5859b26 (feat(Permissions): Display permissions type details instead of verbs)
+          Lecture et Écriture
         </h4>
       </div>
     </div>
