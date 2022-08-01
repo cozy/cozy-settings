@@ -5,7 +5,7 @@ import 'cozy-ui/dist/cozy-ui.utils.min.css'
 import 'styles/index.styl'
 
 import React from 'react'
-import { createRoot } from 'react-dom/client'
+import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
 import { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
@@ -50,9 +50,8 @@ const EnhancedI18n = connect(state => {
 })(I18n)
 
 document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('[role=application]')
-  const { render } = createRoot(container)
-  const data = container.dataset
+  const root = document.querySelector('[role=application]')
+  const data = root.dataset
 
   const protocol = window.location.protocol
   cozyClient.login({
@@ -90,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </Provider>
         </CozyProvider>
       </StylesProvider>
-    </WebviewIntentProvider>
+    </WebviewIntentProvider>,
+    root
   )
 })
