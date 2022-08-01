@@ -4,7 +4,16 @@ import Permissions from './Permissions'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 
 jest.mock('cozy-ui/transpiled/react', () => {
-  return { useI18n: () => ({ t: x => x }) }
+  return {
+    useI18n: () => ({
+      t: (x, { smart_count } = {}) => {
+        if (smart_count) {
+          return `${x} ${smart_count}`
+        }
+        return x
+      }
+    })
+  }
 })
 
 jest.mock('react-router-dom', () => {
@@ -43,28 +52,37 @@ jest.mock('cozy-ui/transpiled/react/AppIcon', () => {
   return () => <div data-testid="AppIcon"></div>
 })
 
+jest.mock('cozy-ui/transpiled/react/ListItemText', () => {
+  // eslint-disable-next-line react/display-name
+  return ({ primary, secondary }) => (
+    <div
+      data-testid="ListItemText"
+      data-primary={primary}
+      data-secondary={secondary}
+    ></div>
+  )
+})
+
 describe('Permissions', () => {
   beforeEach(() => {
     const queryResultApps = {
       fetchStatus: 'loaded',
       data: [
         {
-          attributes: {
-            permissions: {
-              files: {
-                type: 'io.cozy.files',
-                description: 'Required to access the files'
-              },
-              allFiles: {
-                type: 'io.cozy.files.*',
-                description: 'Required to access the files'
-              },
-              apps: {
-                type: 'io.cozy.apps',
-                description:
-                  'Required by the cozy-bar to display the icons of the apps',
-                verbs: ['GET']
-              }
+          permissions: {
+            files: {
+              type: 'io.cozy.files',
+              description: 'Required to access the files'
+            },
+            allFiles: {
+              type: 'io.cozy.files.*',
+              description: 'Required to access the files'
+            },
+            apps: {
+              type: 'io.cozy.apps',
+              description:
+                'Required by the cozy-bar to display the icons of the apps',
+              verbs: ['GET']
             }
           },
           slug: 'contacts',
@@ -76,23 +94,7 @@ describe('Permissions', () => {
       fetchStatus: 'loaded',
       data: [
         {
-          attributes: {
-            permissions: {
-              files: {
-                type: 'io.cozy.files',
-                description: 'Required to access the files'
-              },
-              allFiles: {
-                type: 'io.cozy.files.*',
-                description: 'Required to access the files'
-              },
-              konnectors: {
-                description: 'Required to get the list of konnectors',
-                type: 'io.cozy.konnectors',
-                verbs: ['GET']
-              }
-            }
-          },
+          permissions: {},
           slug: 'alan',
           name: 'Alan'
         }
@@ -101,6 +103,8 @@ describe('Permissions', () => {
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(true)
     Q.mockReturnValue({ getById: () => 'kfrf' })
+    useQuery.mockReturnValueOnce(queryResultApps)
+    useQuery.mockReturnValueOnce(queryResultKonnectors)
     useQuery.mockReturnValueOnce(queryResultApps)
     useQuery.mockReturnValueOnce(queryResultKonnectors)
   })
@@ -117,11 +121,18 @@ describe('Permissions', () => {
     expect(queryByTestId('Spinner')).toBeTruthy()
   })
 
-  it('should display appName and konnectorName when query is not loading', () => {
+  it('should display sorted app and konnector names when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { queryByText } = render(<Permissions />)
-    expect(queryByText('Contacts')).toBeTruthy()
-    expect(queryByText('Alan')).toBeTruthy()
+    const { getAllByTestId, container } = render(<Permissions />)
+    expect(container).toMatchSnapshot()
+    expect(getAllByTestId('ListItemText')[1]).toHaveAttribute(
+      'data-primary',
+      'Contacts'
+    )
+    expect(getAllByTestId('ListItemText')[0]).toHaveAttribute(
+      'data-primary',
+      'Alan'
+    )
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
