@@ -401,6 +401,7 @@
     "failedRequest": "The request has failed",
     "read": "Read",
     "readAndWrite": "Read and Write",
-    "write": "Write"
+    "write": "Write",
+    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions"
   }
 }

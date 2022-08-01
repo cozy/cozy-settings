@@ -401,6 +401,7 @@
     "failedRequest": "La requête a échoué",
     "read": "Lecture",
     "readAndWrite": "Lecture et Écriture",
-    "write": "Écriture"
+    "write": "Écriture",
+    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions"
   }
 }
