@@ -1,7 +1,9 @@
 module.exports = {
-  testURL: 'http://localhost/',
+  testEnvironmentOptions: {
+     url: 'http://localhost/'
+  },
   moduleFileExtensions: ['js', 'jsx', 'json', 'styl'],
-  setupFiles: ['<rootDir>/test/jestLib/setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/test/jestLib/setup.js'],
   moduleDirectories: ['<rootDir>/src', 'node_modules'],
   moduleNameMapper: {
     '\\.(png|gif|jpe?g|svg)$': '<rootDir>/test/__mocks__/fileMock.js',
@@ -18,5 +20,6 @@ module.exports = {
     __TARGET__: 'browser',
     cozy: {}
   },
+  testEnvironment: "<rootDir>/test/jestLib/custom-test-env.js",
   resolver: "<rootDir>/test/jestLib/resolver.js"
 }
