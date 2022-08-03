@@ -87,6 +87,21 @@ describe('Permissions', () => {
           },
           slug: 'contacts',
           name: 'Contacts'
+        },
+        {
+          permissions: {},
+          slug: 'home',
+          name: 'Home'
+        },
+        {
+          permissions: {},
+          slug: 'settings',
+          name: 'Settings'
+        },
+        {
+          permissions: {},
+          slug: 'store',
+          name: 'Store'
         }
       ]
     }
@@ -133,6 +148,14 @@ describe('Permissions', () => {
       'data-primary',
       'Alan'
     )
+  })
+
+  it('should not display Home, Settings and Store when query is not loading', () => {
+    isQueryLoading.mockReturnValue(false)
+    const { queryByText } = render(<Permissions />)
+    expect(queryByText('Home')).toBeFalsy
+    expect(queryByText('Settings')).toBeFalsy
+    expect(queryByText('Store')).toBeFalsy
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
