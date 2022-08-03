@@ -31,6 +31,7 @@ const Permissions = () => {
     as: KONNECTORS_DOCTYPE,
     fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
   })
+  const toNotDisplay = ['home', 'store', 'settings']
 
   return (
     <Page narrow>
@@ -50,6 +51,7 @@ const Permissions = () => {
           {queryResultApps.data
             .concat(queryResultKonnectors.data)
             .sort((a, b) => a.slug.localeCompare(b.slug))
+            .filter(a => !toNotDisplay.includes(a.slug))
             .map(appOrKonnector => {
               return (
                 <div key={appOrKonnector.name}>
