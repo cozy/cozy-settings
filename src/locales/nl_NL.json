@@ -110,7 +110,7 @@
       "modal": {
         "code": "code",
         "protect": "Bescherm je Cozy met authenticatie in twee stappen",
-        "change": "**Wat verandert er?** Elke keer als je verbindt met je Cozy, dan heb je je wachtwoord nodig en een verificatiecode.<br/>[Bekijk onze hulppagina →](%{link})",
+        "change": "**Wat verandert er?** Elke keer als je verbinding maakt met je Cozy, dan heb je je wachtwoord nodig en een verificatiecode.<br/>[Bekijk onze hulppagina →](%{link})",
         "secu_title": "Voeg een extra beveiligingsniveau toe",
         "secu_description": "Een wachtwoord is goed, maar als het niet \"complex\" genoeg is, dan kan een dief dit gemakkelijk raden. Ontvang per mail een verificatiecode om de veiligheid van je Cozy te waarborgen.",
         "protect_title": "Verbeter de beveiliging van je gegevens",
@@ -232,12 +232,12 @@
     }
   },
   "DevicesView": {
-    "title": "Verbonden apparaten",
+    "title": "Gekoppelde apparaten",
     "load_error": "Er is een fout opgetreden tijdens het laden van je apparaten. Probeer het later opnieuw.",
     "device_load_error": "Het gevraagde apparaat is niet aangetroffen.",
     "load_more": "Meer laden",
     "head_name": "Naam",
-    "head_sync": "Laatste synchronisatie",
+    "head_sync": "Recentste synchronisatie",
     "head_activity": "Laatste activiteit",
     "head_permissions": "Machtigingen",
     "head_actions": "Acties",
@@ -398,6 +398,10 @@
   
   "Permissions": {
     "title": "Appbeheer",
-    "failedRequest": "Het verzoek is mislukt"
+    "failedRequest": "Het verzoek is mislukt",
+    "read": "Lezen",
+    "readAndWrite": "Lezen en schrijven",
+    "write": "Schrijven",
+    "numberOfPermissions" : "%{smart_count} bevoegdheid |||| %{smart_count} bevoegdheden"
   }
 }
