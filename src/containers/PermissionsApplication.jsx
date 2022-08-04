@@ -6,7 +6,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { withRouter, Link } from 'react-router-dom'
-import withLocales from 'lib/withLocales'
+import { displayPermissions } from './helpers/permissionsHelper'
 
 import CozyClient, {
   Q,
@@ -14,6 +14,7 @@ import CozyClient, {
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
+import withAllLocales from '../lib/withAllLocales'
 
 export const completePermission = (
   name,
@@ -62,7 +63,7 @@ const PermissionsApplication = ({ match, t }) => {
   const sortPermissionsByName = queryResult => {
     return Object.entries(queryResult.data[0].attributes.permissions)
       .map(([name, value]) => {
-        const perm = t('Permissions.' + value.type)
+        const perm = t('CozyClient.Permissions.' + value.type)
         return completePermission(name, perm, value)
       })
       .sort((a, b) => {
@@ -88,7 +89,7 @@ const PermissionsApplication = ({ match, t }) => {
             ({ name, title, verbs }) => (
               <Link to={`/permissions/${appName}/${name}`} key={name}>
                 <Typography variant="h4">
-                  {title} : {verbs ? verbs.join(' / ') : 'ALL'}
+                  {title} : {t(displayPermissions(verbs))}
                 </Typography>
               </Link>
             )
@@ -99,4 +100,4 @@ const PermissionsApplication = ({ match, t }) => {
   )
 }
 
-export default withRouter(withLocales(PermissionsApplication))
+export default withRouter(withAllLocales(PermissionsApplication))

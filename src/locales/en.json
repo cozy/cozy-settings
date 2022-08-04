@@ -398,6 +398,9 @@
   
   "Permissions": {
     "title": "Applications control",
-    "failedRequest": "The request has failed"
+    "failedRequest": "The request has failed",
+    "read": "Read",
+    "readAndWrite": "Read and Write",
+    "write": "Write"
   }
 }

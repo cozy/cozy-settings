@@ -1,0 +1,15 @@
+import withLocales from 'cozy-ui/transpiled/react/I18n/withLocales'
+
+const dictRequire = lang => {
+  const cozyClientLocales = require(`cozy-client/dist/models/doctypes/locales/${lang}.json`)
+  const cozySettingsLocales = require(`../locales/${lang}.json`)
+  return { CozyClient: cozyClientLocales, ...cozySettingsLocales }
+}
+
+/**
+ * @function
+ * @description HOC to provide locales from CozyClient and from the application to components.
+ * @param  {Function} Component - Component that need translations from CozyClient
+ * @returns {Function} - Component that will receive translations from CozyClient and CozySettings
+ */
+export default withLocales(dictRequire)

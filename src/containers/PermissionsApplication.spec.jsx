@@ -14,6 +14,10 @@ jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   }
 })
 
+jest.mock('cozy-ui/transpiled/react', () => ({
+  useI18n: () => ({ t: text => text })
+}))
+
 jest.mock('react-router-dom', () => {
   return {
     withRouter: Component => Component,
@@ -72,6 +76,11 @@ describe('PermissionsApplication', () => {
                 description:
                   'Required by the cozy-bar to display the icons of the apps',
                 verbs: ['GET']
+              },
+              accounts: {
+                type: 'io.cozy.accounts',
+                description: 'Required to access accounts',
+                verbs: ['POST']
               }
             }
           }
