@@ -398,6 +398,10 @@
   
   "Permissions": {
     "title": "Appbeheer",
-    "failedRequest": "Het verzoek is mislukt"
+    "failedRequest": "Het verzoek is mislukt",
+    "read": "Lezen",
+    "readAndWrite": "Lezen en schrijven",
+    "write": "Schrijven",
+    "numberOfPermissions" : "%{smart_count} bevoegdheid |||| %{smart_count} bevoegdheden"
   }
 }
