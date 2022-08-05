@@ -14,7 +14,7 @@ import {
 } from 'lib/deviceConfigurationHelper'
 import DevicesModaleConfigureView from './DevicesModaleConfigureView'
 
-jest.mock('@material-ui/core/Collapse', () => {
+jest.mock('cozy-ui/transpiled/react/Collapse', () => {
   // Make sure the Collapse transition renders instantly so its children appear
   // in the rendered test DOM.
   const FakeCollapse = ({ children }) => <>{children}</>
@@ -153,7 +153,10 @@ describe('DevicesModaleConfigureView', () => {
     )
     return { root }
   }
-
+  beforeEach(() => {
+    // eslint-disable-next-line no-console
+    console.error = jest.fn()
+  })
   afterEach(() => {
     updateDirectoriesExclusions.mockClear()
     mockOnDeviceConfigured.mockClear()
