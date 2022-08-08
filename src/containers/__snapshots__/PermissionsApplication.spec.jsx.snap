@@ -8,53 +8,256 @@ exports[`PermissionsApplication should display appName when query has been loade
   >
     <div>
       <div
-        data-testid="pageTitle"
+        data-testid="NavigationList"
       >
-        DRIVE
-      </div>
-      <div
-        data-testid="page"
-      >
-        <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextPrimary"
+        <div
+          data-testid="pageTitle"
         >
-          CozyClient.Permissions.io.cozy.accounts
-           : 
-          Permissions.write
-        </h4>
-      </div>
-      <div
-        data-testid="page"
-      >
-        <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextPrimary"
+          DRIVE
+        </div>
+        <div
+          data-testid="NavigationListSection"
         >
-          CozyClient.Permissions.io.cozy.apps
-           : 
-          Permissions.read
-        </h4>
-      </div>
-      <div
-        data-testid="page"
-      >
-        <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextPrimary"
-        >
-          CozyClient.Permissions.io.cozy.files
-           : 
-          Permissions.readAndWrite
-        </h4>
-      </div>
-      <div
-        data-testid="page"
-      >
-        <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextPrimary"
-        >
-          CozyClient.Permissions.io.cozy.files.*
-           : 
-          Permissions.readAndWrite
-        </h4>
+          <div>
+            <div
+              data-testid="page"
+            >
+              <div
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        d="M3 9c0 29.178 11.311 34.3 20.997 39C33.682 43.3 45 38.178 45 9L23.998 0 3 9z"
+                        fill="#d6d8da"
+                        fill-rule="nonzero"
+                      />
+                      <path
+                        d="M22.5 25.244V30.5a1 1 0 001 1h1a1 1 0 001-1v-5.256A4.502 4.502 0 0024 16.5a4.5 4.5 0 00-1.5 8.744zM24 37.5c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15 8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyClient.Permissions.io.cozy.accounts
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.write
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+          <div>
+            <div
+              data-testid="page"
+            >
+              <div
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        d="M25.342 24.67l20.87 10.436a1 1 0 010 1.788L25.341 47.33a3 3 0 01-2.684 0L1.788 36.894a1 1 0 010-1.788l20.87-10.435a3 3 0 012.684 0z"
+                        fill="#d6d8da"
+                      />
+                      <path
+                        d="M25.342 12.67l20.87 10.436a1 1 0 010 1.788L25.341 35.33a3 3 0 01-2.684 0L1.788 24.894a1 1 0 010-1.788l20.87-10.435a3 3 0 012.684 0z"
+                        fill="#95999d"
+                      />
+                      <path
+                        d="M25.342.67l20.87 10.436a1 1 0 010 1.788L25.341 23.33a3 3 0 01-2.684 0L1.788 12.894a1 1 0 010-1.788L22.659.67a3 3 0 012.684 0z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyClient.Permissions.io.cozy.apps
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.read
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+          <div>
+            <div
+              data-testid="page"
+            >
+              <div
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect
+                        fill="#d6d8da"
+                        height="39"
+                        rx="2"
+                        width="48"
+                        y="6"
+                      />
+                      <path
+                        d="M2 3h18.172a2 2 0 011.414.586l1.828 1.828A2 2 0 0024.828 6H45a3 3 0 013 3H24.828a2 2 0 00-1.414.586l-1.828 1.828a2 2 0 01-1.414.586H0V5a2 2 0 012-2z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyClient.Permissions.io.cozy.files
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.readAndWrite
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+          <div>
+            <div
+              data-testid="page"
+            >
+              <div
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect
+                        fill="#d6d8da"
+                        height="39"
+                        rx="2"
+                        width="48"
+                        y="6"
+                      />
+                      <path
+                        d="M2 3h18.172a2 2 0 011.414.586l1.828 1.828A2 2 0 0024.828 6H45a3 3 0 013 3H24.828a2 2 0 00-1.414.586l-1.828 1.828a2 2 0 01-1.414.586H0V5a2 2 0 012-2z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyClient.Permissions.io.cozy.files.*
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.readAndWrite
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>

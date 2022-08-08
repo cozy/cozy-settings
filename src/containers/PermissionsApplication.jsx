@@ -6,7 +6,20 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { withRouter, Link } from 'react-router-dom'
-import { displayPermissions } from './helpers/permissionsHelper'
+import {
+  displayPermissions,
+  getPermissionIconName
+} from './helpers/permissionsHelper'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import NavigationList, {
+  NavigationListSection
+} from 'cozy-ui/transpiled/react/NavigationList'
+import ListItemIcon, {
+  mediumSize
+} from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
+import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 
 import CozyClient, {
   Q,
@@ -19,10 +32,12 @@ import withAllLocales from '../lib/withAllLocales'
 export const completePermission = (
   name,
   permission,
-  { description, verbs }
+  { description, verbs },
+  type
 ) => {
   const completedPermission = {
-    name: name,
+    name,
+    type,
     title: permission
   }
   if (description) {
@@ -37,6 +52,7 @@ export const completePermission = (
 const PermissionsApplication = ({ match, t }) => {
   const appName = match.params.app
   const THIRTY_SECONDS = 30 * 1000
+
   const queryResultApps = useQuery(
     Q(APPS_DOCTYPE).getById('io.cozy.apps/' + appName),
     {
@@ -63,13 +79,15 @@ const PermissionsApplication = ({ match, t }) => {
   const sortPermissionsByName = queryResult => {
     return Object.entries(queryResult.data[0].attributes.permissions)
       .map(([name, value]) => {
-        const perm = t('CozyClient.Permissions.' + value.type)
-        return completePermission(name, perm, value)
+        const type = value.type
+        const perm = t('CozyClient.Permissions.' + type)
+        return completePermission(name, perm, value, type)
       })
       .sort((a, b) => {
         return a.title.localeCompare(b.title)
       })
   }
+
   return (
     <Page narrow>
       {(isQueryLoading(queryResultApps) &&
@@ -84,16 +102,42 @@ const PermissionsApplication = ({ match, t }) => {
         </Typography>
       ) : (
         <div>
-          <PageTitle>{appName.toUpperCase()}</PageTitle>
-          {sortPermissionsByName(matchingQueryResult).map(
-            ({ name, title, verbs }) => (
-              <Link to={`/permissions/${appName}/${name}`} key={name}>
-                <Typography variant="h4">
-                  {title} : {t(displayPermissions(verbs))}
-                </Typography>
-              </Link>
-            )
-          )}
+          <NavigationList>
+            <PageTitle>{appName.toUpperCase()}</PageTitle>
+            <NavigationListSection>
+              {sortPermissionsByName(matchingQueryResult).map(
+                ({ name, title, verbs, type }) => {
+                  const iconName = getPermissionIconName(type)
+                  return (
+                    <div key={name}>
+                      <Link
+                        to={`/permissions/${appName}/${name}`}
+                        key={name}
+                        style={{ textDecoration: 'none' }}
+                      >
+                        <ListItem button>
+                          <ListItemIcon>
+                            <Icon
+                              icon={
+                                require(`cozy-ui/transpiled/react/Icons/${iconName}`)
+                                  .default
+                              }
+                              size={mediumSize}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={title}
+                            secondary={t(displayPermissions(verbs))}
+                          />
+                        </ListItem>
+                      </Link>
+                      <Divider />
+                    </div>
+                  )
+                }
+              )}
+            </NavigationListSection>
+          </NavigationList>
         </div>
       )}
     </Page>
