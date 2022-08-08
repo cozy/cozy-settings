@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { useI18n } from 'cozy-ui/transpiled/react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
@@ -11,6 +11,7 @@ import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import { routes } from 'constants/routes'
 
 import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import CozyClient, {
@@ -20,7 +21,7 @@ import CozyClient, {
   hasQueryBeenLoaded
 } from 'cozy-client'
 
-const Permissions = () => {
+const AppList = () => {
   const { t } = useI18n()
   const THIRTY_SECONDS = 30 * 1000
   const queryResultApps = useQuery(Q(APPS_DOCTYPE), {
@@ -35,7 +36,7 @@ const Permissions = () => {
 
   return (
     <Page narrow>
-      <PageTitle>{t('Permissions.title')}</PageTitle>
+      <PageTitle>{t('Permissions.applications')}</PageTitle>
       {(isQueryLoading(queryResultApps) ||
         isQueryLoading(queryResultKonnectors)) &&
       (!hasQueryBeenLoaded(queryResultApps) ||
@@ -55,7 +56,7 @@ const Permissions = () => {
             .map(appOrKonnector => {
               return (
                 <div key={appOrKonnector.name}>
-                  <Link to={'/permissions/' + appOrKonnector.slug}>
+                  <Link to={`${routes.appList}/${appOrKonnector.slug}`}>
                     <ListItem button>
                       <ListItemIcon>
                         <AppIcon app={appOrKonnector} />
@@ -80,4 +81,4 @@ const Permissions = () => {
   )
 }
 
-export default Permissions
+export default AppList

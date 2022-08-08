@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Permissions should display appName when query has been loaded 1`] = `
+exports[`AppList should display appName when query has been loaded 1`] = `
 <div>
   <div
     data-narrow="true"
@@ -9,7 +9,7 @@ exports[`Permissions should display appName when query has been loaded 1`] = `
     <div
       data-testid="page-title"
     >
-      Permissions.title
+      Applications
     </div>
     <ul
       class="MuiList-root MuiList-padding"
@@ -33,7 +33,7 @@ exports[`Permissions should display appName when query has been loaded 1`] = `
             </div>
             <div
               data-primary="Alan"
-              data-secondary="Permissions.numberOfPermissions"
+              data-secondary="0 permissions"
               data-testid="ListItemText"
             />
             <span
@@ -64,7 +64,7 @@ exports[`Permissions should display appName when query has been loaded 1`] = `
             </div>
             <div
               data-primary="Contacts"
-              data-secondary="Permissions.numberOfPermissions 3"
+              data-secondary="3 permissions"
               data-testid="ListItemText"
             />
             <span
@@ -81,7 +81,7 @@ exports[`Permissions should display appName when query has been loaded 1`] = `
 </div>
 `;
 
-exports[`Permissions should display sorted app and konnector names when query is not loading 1`] = `
+exports[`AppList should display sorted app and konnector names when query is not loading 1`] = `
 <div>
   <div
     data-narrow="true"
@@ -90,7 +90,7 @@ exports[`Permissions should display sorted app and konnector names when query is
     <div
       data-testid="page-title"
     >
-      Permissions.title
+      Applications
     </div>
     <ul
       class="MuiList-root MuiList-padding"
@@ -114,7 +114,7 @@ exports[`Permissions should display sorted app and konnector names when query is
             </div>
             <div
               data-primary="Alan"
-              data-secondary="Permissions.numberOfPermissions"
+              data-secondary="0 permissions"
               data-testid="ListItemText"
             />
             <span
@@ -145,7 +145,7 @@ exports[`Permissions should display sorted app and konnector names when query is
             </div>
             <div
               data-primary="Contacts"
-              data-secondary="Permissions.numberOfPermissions 3"
+              data-secondary="3 permissions"
               data-testid="ListItemText"
             />
             <span

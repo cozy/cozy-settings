@@ -397,6 +397,8 @@
     "read": "Read",
     "readAndWrite": "Read and Write",
     "write": "Write",
-    "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions"
+    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions",
+    "applications": "Applications",
+    "data": "Data"
   }
 }

@@ -18,7 +18,7 @@ import Devices from 'containers/Devices'
 import Sessions from 'containers/Sessions'
 import Storage from 'containers/Storage'
 import Passphrase from 'containers/Passphrase'
-import Permissions from 'containers/Permissions'
+import PermissionsTab from './Permissions/PermissionsTab'
 import IntentRedirect from 'services/IntentRedirect'
 import PermissionsApplication from 'containers/PermissionsApplication'
 import Permission from 'containers/Permission'
@@ -44,18 +44,19 @@ export class App extends Component {
             <Route path="/connectedDevices/:deviceId" component={Devices} />
             <Route path="/sessions" component={Sessions} />
             <Route path="/storage" component={Storage} />
-            <Route exact path="/permissions" component={Permissions} />
+            <Route exact path="/permissions/:page" component={PermissionsTab} />
             <Route
               exact
-              path="/permissions/:app"
+              path="/permissions/slug/:app"
               component={PermissionsApplication}
             />
             <Route
-              path="/permissions/:app/:permission"
+              path="/permissions/slug/:app/:permission"
               component={Permission}
             />
             <Route path="/exports/:exportId" component={Profile} />
             <Redirect exact from="/" to="/profile" />
+            <Redirect exact from="/permissions" to="/permissions/slug" />
             <Redirect from="*" to="/profile" />
           </Switch>
         </Main>

@@ -9,13 +9,14 @@ import CozyClient, {
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Page from 'components/Page'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { displayPermissions } from './helpers/permissionsHelper'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
+import { routes } from 'constants/routes'
 
 const Permission = ({ match }) => {
   const { t } = useI18n()
@@ -73,20 +74,19 @@ const Permission = ({ match }) => {
           {t('Permissions.failedRequest')}
         </Typography>
       ) : (
-        <div>
+        <React.Fragment>
           <IconButton
             className="u-mr-half"
-            href={`#/permissions/${appName.toLowerCase()}`}
+            href={`#${routes.appList}/${appName.toLowerCase()}`}
           >
             <Icon icon={PreviousIcon} size={16} />
           </IconButton>
-
           <Typography variant="h1">
             Application: {appName.toUpperCase()}
           </Typography>
           <Typography variant="h2">Permission: {permissionName}</Typography>
           <Typography variant="h3">{t(displayPermissions(verbs))}</Typography>
-        </div>
+        </React.Fragment>
       )}
     </Page>
   )
