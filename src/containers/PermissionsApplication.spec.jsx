@@ -14,6 +14,18 @@ jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   }
 })
 
+jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
+  return {
+    __esModule: true,
+    default: ({ children }) => (
+      <div data-testid="NavigationList">{children}</div>
+    ),
+    NavigationListSection: ({ children }) => (
+      <div data-testid="NavigationListSection">{children}</div>
+    )
+  }
+})
+
 jest.mock('cozy-ui/transpiled/react', () => ({
   useI18n: () => ({ t: text => text })
 }))
