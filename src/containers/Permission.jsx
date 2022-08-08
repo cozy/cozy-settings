@@ -13,13 +13,15 @@ import { useI18n } from 'cozy-ui/transpiled/react'
 import Page from 'components/Page'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { displayPermissions } from './helpers/permissionsHelper'
+import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import IconButton from 'cozy-ui/transpiled/react/IconButton'
 
 const Permission = ({ match }) => {
   const { t } = useI18n()
   const appName = match.params.app
   const permissionName = match.params.permission
   const THIRTY_SECONDS = 30 * 1000
-
   const [verbs, setVerbs] = useState([])
 
   // TODO : instead of sending 2 queries (queryResultApps & queryResultKonnectors) where 1 will be useless, find a way to check if we have an app or a konnector and send only 1 query
@@ -72,6 +74,13 @@ const Permission = ({ match }) => {
         </Typography>
       ) : (
         <div>
+          <IconButton
+            className="u-mr-half"
+            href={`#/permissions/${appName.toLowerCase()}`}
+          >
+            <Icon icon={PreviousIcon} size={16} />
+          </IconButton>
+
           <Typography variant="h1">
             Application: {appName.toUpperCase()}
           </Typography>

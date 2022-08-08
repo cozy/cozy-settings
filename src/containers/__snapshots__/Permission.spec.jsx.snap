@@ -7,6 +7,31 @@ exports[`Permission should display appName when query has been loaded 1`] = `
     data-testid="page"
   >
     <div>
+      <a
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiIconButton-root u-mr-half large"
+        href="#/permissions/drive"
+        tabindex="0"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            class="styles__icon___23x3R"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          >
+            <path
+              d="M3.414 7h11.58C15.548 7 16 7.444 16 8c0 .552-.45 1-1.007 1H3.414l5.293 5.293a1 1 0 01-1.414 1.414l-7-7a1 1 0 010-1.414l7-7a1 1 0 111.414 1.414L3.414 7z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </a>
       <h1
         class="MuiTypography-root MuiTypography-h1"
       >
