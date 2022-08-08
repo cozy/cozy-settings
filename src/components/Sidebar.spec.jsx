@@ -3,7 +3,7 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import flag from 'cozy-flags'
 
-jest.mock('cozy-ui/transpiled/react', () => ({
+jest.mock('cozy-ui/transpiled/react/I18n', () => ({
   useI18n: () => ({ t: name => name })
 }))
 jest.mock('react-router-dom', () => ({

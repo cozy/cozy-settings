@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PermissionsTab should match snapshot 1`] = `
+<div>
+  <div
+    class="u-mv-2 u-mh-2 u-pb-3 Page--narrow"
+  >
+    <button
+      data-testid="tabs"
+      value="slug"
+    >
+      <div
+        aria-controls="simple-tabpanel-0"
+        data-testid="tab"
+        href="#/permissions/slug"
+        id="simple-tab-0"
+        label="Permissions.applications"
+        value="slug"
+      />
+      <div
+        aria-controls="simple-tabpanel-1"
+        data-testid="tab"
+        href="#/permissions/data"
+        id="simple-tab-1"
+        label="Permissions.data"
+        value="data"
+      />
+    </button>
+    <hr
+      class="MuiDivider-root u-mb-1"
+    />
+    <div
+      aria-labelledby="simple-tab-slug"
+      id="simple-tabpanel-slug"
+      role="tabpanel"
+    >
+      <div
+        data-testid="AppList"
+      />
+    </div>
+    <div
+      aria-labelledby="simple-tab-data"
+      hidden=""
+      id="simple-tabpanel-data"
+      role="tabpanel"
+    />
+  </div>
+</div>
+`;

@@ -2,10 +2,7 @@ import { render } from '@testing-library/react'
 import React from 'react'
 import Permission from './Permission'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-
-jest.mock('cozy-ui/transpiled/react', () => {
-  return { useI18n: () => ({ t: x => x }) }
-})
+import AppLike from 'test/AppLike'
 
 jest.mock('react-router-dom', () => {
   return {
@@ -106,14 +103,22 @@ describe('Permission', () => {
 
   it('should display appName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
-    const { container } = render(<Permission />)
+    const { container } = render(
+      <AppLike>
+        <Permission />
+      </AppLike>
+    )
     expect(container).toMatchSnapshot()
   })
 
   it('should render a spinner when query is loading and has not been loaded', () => {
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(false)
-    const { queryByTestId } = render(<Permission />)
+    const { queryByTestId } = render(
+      <AppLike>
+        <Permission />
+      </AppLike>
+    )
     expect(queryByTestId('Spinner')).toBeTruthy()
   })
 })

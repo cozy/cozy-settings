@@ -1,20 +1,8 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import Permissions from './Permissions'
+import AppList from './AppList'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-
-jest.mock('cozy-ui/transpiled/react', () => {
-  return {
-    useI18n: () => ({
-      t: (x, { smart_count } = {}) => {
-        if (smart_count) {
-          return `${x} ${smart_count}`
-        }
-        return x
-      }
-    })
-  }
-})
+import AppLike from 'test/AppLike'
 
 jest.mock('react-router-dom', () => {
   return {
@@ -63,7 +51,7 @@ jest.mock('cozy-ui/transpiled/react/ListItemText', () => {
   )
 })
 
-describe('Permissions', () => {
+describe('AppList', () => {
   beforeEach(() => {
     const queryResultApps = {
       fetchStatus: 'loaded',
@@ -125,20 +113,32 @@ describe('Permissions', () => {
   })
   it('should display appName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
-    const { container } = render(<Permissions />)
+    const { container } = render(
+      <AppLike>
+        <AppList />
+      </AppLike>
+    )
     expect(container).toMatchSnapshot()
   })
 
   it('should render a spinner when query is loading and has not been loaded', () => {
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(false)
-    const { queryByTestId } = render(<Permissions />)
+    const { queryByTestId } = render(
+      <AppLike>
+        <AppList />
+      </AppLike>
+    )
     expect(queryByTestId('Spinner')).toBeTruthy()
   })
 
   it('should display sorted app and konnector names when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { getAllByTestId, container } = render(<Permissions />)
+    const { getAllByTestId, container } = render(
+      <AppLike>
+        <AppList />
+      </AppLike>
+    )
     expect(container).toMatchSnapshot()
     expect(getAllByTestId('ListItemText')[1]).toHaveAttribute(
       'data-primary',
@@ -152,7 +152,11 @@ describe('Permissions', () => {
 
   it('should not display Home, Settings and Store when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { queryByText } = render(<Permissions />)
+    const { queryByText } = render(
+      <AppLike>
+        <AppList />
+      </AppLike>
+    )
     expect(queryByText('Home')).toBeFalsy
     expect(queryByText('Settings')).toBeFalsy
     expect(queryByText('Store')).toBeFalsy
@@ -161,7 +165,11 @@ describe('Permissions', () => {
   it('should render Permissions.failedRequest when query status is failed', () => {
     useQuery.mockReset()
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
-    const { queryByText } = render(<Permissions />)
-    expect(queryByText('Permissions.failedRequest')).toBeTruthy()
+    const { queryByText } = render(
+      <AppLike>
+        <AppList />
+      </AppLike>
+    )
+    expect(queryByText('The request has failed')).toBeTruthy()
   })
 })

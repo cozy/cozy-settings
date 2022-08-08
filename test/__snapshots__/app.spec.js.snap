@@ -47,16 +47,16 @@ exports[`App component only should be mounted correctly 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="/permissions"
+        path="/permissions/:page"
       />
       <Route
         component={[Function]}
         exact={true}
-        path="/permissions/:app"
+        path="/permissions/slug/:app"
       />
       <Route
         component={[Function]}
-        path="/permissions/:app/:permission"
+        path="/permissions/slug/:app/:permission"
       />
       <Route
         component={[Function]}
@@ -67,6 +67,12 @@ exports[`App component only should be mounted correctly 1`] = `
         from="/"
         push={false}
         to="/profile"
+      />
+      <Redirect
+        exact={true}
+        from="/permissions"
+        push={false}
+        to="/permissions/slug"
       />
       <Redirect
         from="*"

@@ -22,6 +22,7 @@ import ListItemIcon, {
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
+import { routes } from 'constants/routes'
 
 import CozyClient, {
   Q,
@@ -116,7 +117,7 @@ const PermissionsApplication = ({ match, t }) => {
                   return (
                     <div key={name}>
                       <Link
-                        to={`/permissions/${appName}/${name}`}
+                        to={`${routes.appList}/${appName}/${name}`}
                         key={name}
                         style={{ textDecoration: 'none' }}
                       >
