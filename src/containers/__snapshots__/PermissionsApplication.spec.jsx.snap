@@ -84,7 +84,7 @@ exports[`PermissionsApplication should display appName when query has been loade
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
                   >
-                    CozyClient.Permissions.io.cozy.accounts
+                    CozyPermissions.Permissions.io.cozy.accounts
                   </span>
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -145,7 +145,7 @@ exports[`PermissionsApplication should display appName when query has been loade
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
                   >
-                    CozyClient.Permissions.io.cozy.apps
+                    CozyPermissions.Permissions.io.cozy.apps
                   </span>
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -205,7 +205,7 @@ exports[`PermissionsApplication should display appName when query has been loade
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
                   >
-                    CozyClient.Permissions.io.cozy.files
+                    CozyPermissions.Permissions.io.cozy.files
                   </span>
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -265,7 +265,7 @@ exports[`PermissionsApplication should display appName when query has been loade
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
                   >
-                    CozyClient.Permissions.io.cozy.files.*
+                    CozyPermissions.Permissions.io.cozy.files.*
                   </span>
                   <span
                     class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"

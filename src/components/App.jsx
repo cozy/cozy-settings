@@ -55,11 +55,11 @@ export class App extends Component {
             <Route path="/permissions/:page" element={<PermissionsTab />} />
             <Route path={routes.lockScreen} element={<LockScreen />} />
             <Route
-              path="/permissions/slug/:app"
+              path="/permissions/slug/:slug"
               element={<PermissionsApplication />}
             />
             <Route
-              path="/permissions/slug/:app/:permission"
+              path="/permissions/slug/:slug/:permission"
               element={<Permission />}
             />
             <Route path="/exports/:exportId" element={<Profile />} />

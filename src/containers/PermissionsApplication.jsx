@@ -23,14 +23,13 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import { routes } from 'constants/routes'
-
+import withAllLocales from '../lib/withAllLocales'
 import CozyClient, {
   Q,
   useQuery,
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
-import withAllLocales from '../lib/withAllLocales'
 
 export const completePermission = (
   name,
@@ -53,21 +52,21 @@ export const completePermission = (
 }
 
 const PermissionsApplication = ({ t }) => {
-  const { app: appName } = useParams()
+  const { slug: slugName } = useParams()
   const THIRTY_SECONDS = 30 * 1000
 
   const queryResultApps = useQuery(
-    Q(APPS_DOCTYPE).getById('io.cozy.apps/' + appName),
+    Q(APPS_DOCTYPE).getById('io.cozy.apps/' + slugName),
     {
-      as: 'io.cozy.apps/' + appName,
+      as: 'io.cozy.apps/' + slugName,
       fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
     }
   )
 
   const queryResultKonnectors = useQuery(
-    Q(KONNECTORS_DOCTYPE).getById('io.cozy.konnectors/' + appName),
+    Q(KONNECTORS_DOCTYPE).getById('io.cozy.konnectors/' + slugName),
     {
-      as: 'io.cozy.konnectors/' + appName,
+      as: 'io.cozy.konnectors/' + slugName,
       fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
     }
   )
@@ -83,7 +82,7 @@ const PermissionsApplication = ({ t }) => {
     return Object.entries(queryResult.data[0].attributes.permissions)
       .map(([name, value]) => {
         const type = value.type
-        const perm = t('CozyClient.Permissions.' + type)
+        const perm = t('CozyPermissions.Permissions.' + type)
         return completePermission(name, perm, value, type)
       })
       .sort((a, b) => {
@@ -109,7 +108,7 @@ const PermissionsApplication = ({ t }) => {
             <Icon icon={PreviousIcon} size={16} />
           </IconButton>
           <NavigationList>
-            <PageTitle>{appName.toUpperCase()}</PageTitle>
+            <PageTitle>{slugName.toUpperCase()}</PageTitle>
             <NavigationListSection>
               {sortPermissionsByName(matchingQueryResult).map(
                 ({ name, title, verbs, type }) => {
@@ -117,7 +116,7 @@ const PermissionsApplication = ({ t }) => {
                   return (
                     <div key={name}>
                       <Link
-                        to={`${routes.appList}/${appName}/${name}`}
+                        to={`${routes.appList}/${slugName}/${name}`}
                         key={name}
                         style={{ textDecoration: 'none' }}
                       >

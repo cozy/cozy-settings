@@ -8,7 +8,7 @@ import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   return () => Component => {
     const t = text => text
-    const match = { params: { app: 'Drive' } }
+    const match = { params: { slug: 'Drive' } }
     // eslint-disable-next-line react/display-name
     return () => <Component match={match} t={t} />
   }
@@ -26,14 +26,10 @@ jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
   }
 })
 
-jest.mock('cozy-ui/transpiled/react', () => ({
-  useI18n: () => ({ t: text => text })
-}))
-
 jest.mock('react-router-dom', () => {
   return {
     ...jest.requireActual('react-router-dom'),
-    useParams: () => ({ app: 'Drive' }),
+    useParams: () => ({ slug: 'Drive' }),
     Link: ({ narrow, children }) => (
       <div data-testid="page" data-narrow={narrow}>
         {children}
@@ -121,7 +117,7 @@ describe('PermissionsApplication', () => {
   it('should display appName when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
     const { queryByText } = render(<PermissionsApplication />)
-    expect(queryByText('DRIVE')).toBeTruthy()
+    expect(queryByText('DRIVE')).toBeInTheDocument()
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
