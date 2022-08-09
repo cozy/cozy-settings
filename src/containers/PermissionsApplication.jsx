@@ -23,14 +23,13 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import { routes } from 'constants/routes'
-
+import withAllLocales from '../lib/withAllLocales'
 import CozyClient, {
   Q,
   useQuery,
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
-import withAllLocales from '../lib/withAllLocales'
 
 export const completePermission = (
   name,
@@ -83,7 +82,7 @@ const PermissionsApplication = ({ t }) => {
     return Object.entries(queryResult.data[0].attributes.permissions)
       .map(([name, value]) => {
         const type = value.type
-        const perm = t('CozyClient.Permissions.' + type)
+        const perm = t('CozyPermissions.Permissions.' + type)
         return completePermission(name, perm, value, type)
       })
       .sort((a, b) => {

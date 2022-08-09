@@ -26,10 +26,6 @@ jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
   }
 })
 
-jest.mock('cozy-ui/transpiled/react', () => ({
-  useI18n: () => ({ t: text => text })
-}))
-
 jest.mock('react-router-dom', () => {
   return {
     ...jest.requireActual('react-router-dom'),
@@ -121,7 +117,7 @@ describe('PermissionsApplication', () => {
   it('should display slugName when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
     const { queryByText } = render(<PermissionsApplication />)
-    expect(queryByText('DRIVE')).toBeTruthy()
+    expect(queryByText('DRIVE')).toBeInTheDocument()
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {

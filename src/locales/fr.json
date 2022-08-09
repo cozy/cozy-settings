@@ -425,7 +425,8 @@
     "read": "Lecture",
     "readAndWrite": "Lecture et Écriture",
     "write": "Écriture",
-    "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
+    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions",
+    "numberOfApplications" : "%{smart_count} application |||| %{smart_count} applications",
     "applications": "Applications",
     "data": "Données"
   },
