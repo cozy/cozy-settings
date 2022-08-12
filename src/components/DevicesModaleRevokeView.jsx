@@ -9,6 +9,7 @@ import { Media, Bd, Img } from 'cozy-ui/transpiled/react/Media'
 
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import logger from 'lib/logger'
 
@@ -47,9 +48,10 @@ const RevokeDeviceDialog = ({ device, cancelAction, onDeviceRevoked }) => {
       onClose={cancelAction}
       content={
         <>
-          <ReactMarkdown
-            source={t('revokeDevice.description', { name: device.client_name })}
-          />
+          <Typography>
+            {t('revokeDevice.description', { name: device.client_name })}
+          </Typography>
+
           <Media>
             <Img className="u-mr-half">
               <IconCircle2Arrows />

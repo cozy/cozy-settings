@@ -3,8 +3,8 @@
     "name": "Einstellungen"
   },
   "DeleteAccount": {
-    "title" : "Dein Konto löschen",
-    "label" : "Du kannst dein Cozy jederzeit löschen. Sei aber vorsichtig, denn sobald dein Konto gelöscht ist, werden  alle deine Daten unwiderruflich gelöscht.",
+    "title": "Dein Konto löschen",
+    "label": "Du kannst dein Cozy jederzeit löschen. Sei aber vorsichtig, denn sobald dein Konto gelöscht ist, werden  alle deine Daten unwiderruflich gelöscht.",
     "button": {
       "label": "Mein Konto löschen"
     },
@@ -91,12 +91,12 @@
       "server_error": "Etwas ist schiefgelaufen. Deine Informationen wurden nicht gespeichert.",
       "empty": "Dieses Feld darf nicht leer sein"
     },
-    "email" : {
-      "title" : "E-Mail zur Authentifizierung und Kontaktaufnahme",
+    "email": {
+      "title": "E-Mail zur Authentifizierung und Kontaktaufnahme",
       "label": "Cozy braucht deine E-Mail, um dir Benachrichtigungen zuzusenden und dein Passwort wiederherzustellen",
-      "error" : "Die E-Mail-Adresse fühlt sich nicht richtig an. Bist du sicher, dass du sie richtig geschrieben hast (z. B. john@wayne.com)?"
+      "error": "Die E-Mail-Adresse fühlt sich nicht richtig an. Bist du sicher, dass du sie richtig geschrieben hast (z. B. john@wayne.com)?"
     },
-    "twofa" : {
+    "twofa": {
       "title": {
         "activate": "Zwei-Faktor-Authentifizierung",
         "desactivate": "Zwei-Faktor-Authentifizierung deaktivieren",
@@ -134,8 +134,8 @@
         }
       }
     },
-    "public_name" : {
-      "title" : "Benutzername",
+    "public_name": {
+      "title": "Benutzername",
       "label": "Dein Benutzername wird angezeigt, wenn du Dateien mit Cozy-Benutzern teilst."
     },
     "tracking": {
@@ -180,12 +180,12 @@
         "cancel": "Abbrechen",
         "CTA": "Daten überschreiben"
       },
-	  "url": {
-		"label": "Downloadlink"
-	  }
+      "url": {
+        "label": "Downloadlink"
+      }
     },
-    "locale" : {
-      "title" : "Sprache",
+    "locale": {
+      "title": "Sprache",
       "label": "Dies wird die Sprache sein, die in deinem Cozy verwendet wird.",
       "fr": "Französisch ",
       "en": "Englisch",
@@ -258,7 +258,7 @@
   },
   "revokeDevice": {
     "title": "Dieses Gerät widerrufen",
-    "description": "Du bist dabei, die Verknüfung mit **%{name}** aufzuheben.",
+    "description": "Du bist dabei, die Verknüfung mit %{name} aufzuheben.",
     "subText": "Das Synchronisieren mit diesem Gerät wird sofort beendet.",
     "validate": "Gerät widerrufen",
     "error": "Kann das Gerät nicht widerrufen, versuche die Seite neu zu laden."
@@ -308,7 +308,6 @@
     "title": "Demnächst",
     "description": "Diese Funktion ist noch nicht verfügbar. Für weitere Informationen kontaktiere uns bitte unter contact@cozycloud.cc"
   },
-
   "support": {
     "title": "Hallo! Wie können wir dir helfen?",
     "emailDetail": "Deine Nachricht wird von der E-Mail-Adresse gesendet, die du in den Cozy Einstellungen gespeichert hast.",
@@ -327,7 +326,6 @@
     "success": "👏 Deine Nachricht wurde gesendet. Danke!",
     "error": "Beim Senden der Nachricht ist ein Fehler aufgetreten"
   },
-
   "claudy": {
     "title": "Wie willst du dein Cozy steuern?",
     "actions": {
@@ -365,7 +363,6 @@
       }
     }
   },
-
   "errors": {
     "noEmailFound": "Keine E-Mail-Adresse gefunden. Bitte füge eine in deinen Cozy Einstellungen hinzu und versuche es dann nochmal."
   }

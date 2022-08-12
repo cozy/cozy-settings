@@ -264,7 +264,7 @@
   },
   "revokeDevice": {
     "title": "Révoquer cet appareil",
-    "description": "Vous allez révoquer **%{name}**.",
+    "description": "Vous allez révoquer %{name}.",
     "subText": "La synchronisation depuis cet appareil s'arrêtera immédiatement.",
     "validate": "Révoquer l’appareil",
     "cancel": "Annuler",

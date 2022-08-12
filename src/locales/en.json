@@ -3,8 +3,8 @@
     "name": "Settings"
   },
   "DeleteAccount": {
-    "title" : "Delete your account",
-    "label" : "You can delete you Cozy at anytime. Be careful, once your account is deleted, your data will entirely be deleted, there is no going back.",
+    "title": "Delete your account",
+    "label": "You can delete you Cozy at anytime. Be careful, once your account is deleted, your data will entirely be deleted, there is no going back.",
     "button": {
       "label": "Delete my account"
     },
@@ -91,12 +91,12 @@
       "server_error": "Something went wrong. Your informations has not been saved.",
       "empty": "This field cannot be empty"
     },
-    "email" : {
-      "title" : "E-mail for authentication and contact",
+    "email": {
+      "title": "E-mail for authentication and contact",
       "label": "Cozy needs your e-mail to send you notifications and allow you to recover your password",
-      "error" : "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
+      "error": "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     },
-    "twofa" : {
+    "twofa": {
       "title": {
         "activate": "Two steps authentication",
         "desactivate": "Desactivate two steps authentication",
@@ -134,8 +134,8 @@
         }
       }
     },
-    "public_name" : {
-      "title" : "Username",
+    "public_name": {
+      "title": "Username",
       "label": "Your username will be displayed when you share files with Cozy users."
     },
     "tracking": {
@@ -183,12 +183,12 @@
         "cancel": "Cancel",
         "CTA": "Overwrite the data"
       },
-	  "url": {
-		"label": "Download link"
-	  }
+      "url": {
+        "label": "Download link"
+      }
     },
-    "locale" : {
-      "title" : "Language",
+    "locale": {
+      "title": "Language",
       "label": "This will be the language used in your Cozy.",
       "fr": "French",
       "en": "English",
@@ -264,7 +264,7 @@
   },
   "revokeDevice": {
     "title": "Revoke this device",
-    "description": "You're about to unlink **%{name}**.",
+    "description": "You're about to unlink %{name}.",
     "subText": "It will immediately stop syncing with this device.",
     "validate": "Revoke device",
     "cancel": "Cancel",
@@ -330,7 +330,6 @@
     "title": "Coming soon",
     "description": "This feature is not available yet. For more information, please contact us at contact@cozycloud.cc"
   },
-
   "support": {
     "title": "Hi! Can we help you?",
     "emailDetail": "Your message will be sent from your email address saved in your Cozy settings.",
@@ -349,7 +348,6 @@
     "success": "👏 Your message has been sent. Thank you!",
     "error": "An error occured while sending your message"
   },
-
   "claudy": {
     "title": "How to drive your Cozy?",
     "actions": {
@@ -387,21 +385,18 @@
       }
     }
   },
-
   "errors": {
     "noEmailFound": "No email address found. Please add one in your Cozy settings then try again."
   },
-
   "Toolbar": {
     "more": "More"
   },
-  
   "Permissions": {
     "title": "Applications control",
     "failedRequest": "The request has failed",
     "read": "Read",
     "readAndWrite": "Read and Write",
     "write": "Write",
-    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions"
+    "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions"
   }
 }
