@@ -1,3 +1,5 @@
+// @babel/polyfill provided by cozy-scripts
+// eslint-disable-next-line import/no-extraneous-dependencies
 require('@babel/polyfill')
 
 import { configure } from 'enzyme'
