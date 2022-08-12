@@ -3,8 +3,8 @@
     "name": "Instellingen"
   },
   "DeleteAccount": {
-    "title" : "Account verwijderen",
-    "label" : "Je kunt je Cozy op elk gewenst moment verwijderen. Maar wees voorzichtig, want als je account verwijdert, worden al je gegevens ook verwijderd en dit is onomkeerbaar!",
+    "title": "Account verwijderen",
+    "label": "Je kunt je Cozy op elk gewenst moment verwijderen. Maar wees voorzichtig, want als je account verwijdert, worden al je gegevens ook verwijderd en dit is onomkeerbaar!",
     "button": {
       "label": "Mijn account verwijderen"
     },
@@ -91,12 +91,12 @@
       "server_error": "Er is een fout opgetreden; je gegevens zijn niet opgeslagen.",
       "empty": "Dit veld mag niet leeg worden gelaten"
     },
-    "email" : {
-      "title" : "E-mailadres voor authenticatie en contact",
+    "email": {
+      "title": "E-mailadres voor authenticatie en contact",
       "label": "Cozy heeft je e-mailadres nodig zodat je meldingen kunt ontvangen en je je wachtwoord kunt herstellen.",
-      "error" : "Dit e-mailadres lijkt onjuist. Weet je zeker dat je het goed geschreven hebt (bijv. jan@jansen.nl)?"
+      "error": "Dit e-mailadres lijkt onjuist. Weet je zeker dat je het goed geschreven hebt (bijv. jan@jansen.nl)?"
     },
-    "twofa" : {
+    "twofa": {
       "title": {
         "activate": "Authenticatie in twee stappen",
         "desactivate": "Authenticatie in twee stappen uitschakelen",
@@ -134,8 +134,8 @@
         }
       }
     },
-    "public_name" : {
-      "title" : "Gebruikersnaam",
+    "public_name": {
+      "title": "Gebruikersnaam",
       "label": "Je gebruikersnaam wordt getoond als je bestanden deelt met Cozy-gebruikers."
     },
     "tracking": {
@@ -183,12 +183,12 @@
         "cancel": "Annuleren",
         "CTA": "Gegevens overschrijven"
       },
-	  "url": {
-		"label": "Downloadlink"
-	  }
+      "url": {
+        "label": "Downloadlink"
+      }
     },
-    "locale" : {
-      "title" : "Taal",
+    "locale": {
+      "title": "Taal",
       "label": "Dit is de taal die zal worden gebruikt in je Cozy.",
       "fr": "Frans",
       "en": "Engels",
@@ -264,7 +264,7 @@
   },
   "revokeDevice": {
     "title": "Dit apparaat intrekken",
-    "description": "Je staat op het punt om **%{name}** te ontkoppelen.",
+    "description": "Je staat op het punt om %{name} te ontkoppelen.",
     "subText": "De synchronisatie met dit apparaat zal direct stoppen.",
     "validate": "Apparaat ontkoppelen",
     "cancel": "Annuleren",
@@ -330,7 +330,6 @@
     "title": "Binnenkort",
     "description": "Deze functie is nog niet beschikbaar. Neem, voor meer informatie, contact met ons op: contact@cozycloud.cc"
   },
-
   "support": {
     "title": "Hallo! Kunnen we je helpen?",
     "emailDetail": "Je bericht wordt verstuurd middels het e-mailadres dat je hebt opgegeven in je Cozy-instellingen.",
@@ -349,7 +348,6 @@
     "success": "👏 Je bericht is verstuurd. Dank je!",
     "error": "Er is een fout opgetreden tijdens het versturen van je bericht."
   },
-
   "claudy": {
     "title": "Hoe ga ik met Cozy om?",
     "actions": {
@@ -387,21 +385,18 @@
       }
     }
   },
-
   "errors": {
     "noEmailFound": "Er is geen e-mailadres aangetroffen. Voeg er één toe in je Cozy-instellingen en probeer het opnieuw."
   },
-
   "Toolbar": {
     "more": "Meer"
   },
-  
   "Permissions": {
     "title": "Appbeheer",
     "failedRequest": "Het verzoek is mislukt",
     "read": "Lezen",
     "readAndWrite": "Lezen en schrijven",
     "write": "Schrijven",
-    "numberOfPermissions" : "%{smart_count} bevoegdheid |||| %{smart_count} bevoegdheden"
+    "numberOfPermissions": "%{smart_count} bevoegdheid |||| %{smart_count} bevoegdheden"
   }
 }

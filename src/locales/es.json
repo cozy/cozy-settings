@@ -3,8 +3,8 @@
     "name": "Ajustes"
   },
   "DeleteAccount": {
-    "title" : "Borrar su cuenta",
-    "label" : "Usted puede borrar su Cozy en cualquier momento. Tenga cuidado, al borrar su cuenta sus datos se borrarán completamente y no hay marcha atrás.",
+    "title": "Borrar su cuenta",
+    "label": "Usted puede borrar su Cozy en cualquier momento. Tenga cuidado, al borrar su cuenta sus datos se borrarán completamente y no hay marcha atrás.",
     "button": {
       "label": "Eliminar mi cuenta"
     },
@@ -91,12 +91,12 @@
       "server_error": "Algo no funcionó. Sus datos no se han podido guardar.",
       "empty": "Este campo no puede estar vacío"
     },
-    "email" : {
-      "title" : "Correo electrónico de autentificación y contacto",
+    "email": {
+      "title": "Correo electrónico de autentificación y contacto",
       "label": "Cozy necesita su correo electrónico para enviarle notificaciones y permitirle recuperar su contraseña.",
-      "error" : "Su correo electrónico no parece correcto. ¿Está usted seguro de haberlo escrito correctamente (p.e. antonio@banderas.com)?"
+      "error": "Su correo electrónico no parece correcto. ¿Está usted seguro de haberlo escrito correctamente (p.e. antonio@banderas.com)?"
     },
-    "twofa" : {
+    "twofa": {
       "title": {
         "activate": "Autenticación en dos pasos",
         "desactivate": "Desactivar la autenticación en dos pasos",
@@ -134,8 +134,8 @@
         }
       }
     },
-    "public_name" : {
-      "title" : "Usuario",
+    "public_name": {
+      "title": "Usuario",
       "label": "Su nombre de usuario será visualizado cuando usted comparta archivos con usuarios Cozy."
     },
     "tracking": {
@@ -180,12 +180,12 @@
         "cancel": "Anular",
         "CTA": "Sobrescribir los datos"
       },
-	  "url": {
-		"label": "Enlace de descarga"
-	  }
+      "url": {
+        "label": "Enlace de descarga"
+      }
     },
-    "locale" : {
-      "title" : "Idioma",
+    "locale": {
+      "title": "Idioma",
       "label": "Éste será el idioma utilizado en su Cozy.",
       "fr": "Francés",
       "en": "Inglés",
@@ -258,7 +258,7 @@
   },
   "revokeDevice": {
     "title": "Revocar este periférico",
-    "description": "Estás desvinculando **%{name}**.",
+    "description": "Estás desvinculando %{name}.",
     "subText": "Esto parará la sincronización con este periférico.",
     "validate": "Revocar el periférico",
     "cancel": "Anular",
@@ -309,7 +309,6 @@
     "title": "Pronto vendrá",
     "description": "Esta función no está válida todavía. Para mayores informes, no dude en contáctarnos en contact@cozycloud.cc"
   },
-
   "support": {
     "title": "¡Hola! ¿Podemos ayudarle?",
     "emailDetail": "Su mensaje se enviará a partir de su email que aparece en los parámetros de Cozy.",
@@ -328,7 +327,6 @@
     "success": "Su mensaje se ha enviado. Gracias!",
     "error": "Ha ocurrido un error al enviar su mensaje"
   },
-
   "claudy": {
     "title": "¿Cómo pilotear su Cozy?",
     "actions": {
@@ -366,7 +364,6 @@
       }
     }
   },
-
   "errors": {
     "noEmailFound": "No se encontró ninguna dirección email. Por favor, vuelva a poner una en los parámetros de su Cozy."
   }
