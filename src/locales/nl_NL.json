@@ -264,7 +264,7 @@
   },
   "revokeDevice": {
     "title": "Dit apparaat intrekken",
-    "description": "Je staat op het punt om %{name} te ontkoppelen.",
+    "description": "Je staat op het punt om **%{name}** te ontkoppelen.",
     "subText": "De synchronisatie met dit apparaat zal direct stoppen.",
     "validate": "Apparaat ontkoppelen",
     "cancel": "Annuleren",
