@@ -1,8 +1,8 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles from 'cozy-ui/transpiled/react/helpers/makeStyles'
 import mergeClasses from '@material-ui/styles/mergeClasses'
 
-import Collapse from '@material-ui/core/Collapse'
+import Collapse from 'cozy-ui/transpiled/react/Collapse'
 import MuiTreeItem from '@material-ui/lab/TreeItem'
 import MuiTreeView from '@material-ui/lab/TreeView'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'

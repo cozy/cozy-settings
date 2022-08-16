@@ -33,19 +33,19 @@ exports[`Permission should display appName when query has been loaded 1`] = `
         />
       </a>
       <h1
-        class="MuiTypography-root MuiTypography-h1"
+        class="MuiTypography-root MuiTypography-h1 MuiTypography-colorTextPrimary"
       >
         Application: 
         DRIVE
       </h1>
       <h2
-        class="MuiTypography-root MuiTypography-h2"
+        class="MuiTypography-root MuiTypography-h2 MuiTypography-colorTextPrimary"
       >
         Permission: 
         apps
       </h2>
       <h3
-        class="MuiTypography-root MuiTypography-h3"
+        class="MuiTypography-root MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Permissions.write
       </h3>
