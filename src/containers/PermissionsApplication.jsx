@@ -11,6 +11,8 @@ import {
   getPermissionIconName
 } from './helpers/permissionsHelper'
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import IconButton from 'cozy-ui/transpiled/react/IconButton'
+import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
@@ -102,6 +104,9 @@ const PermissionsApplication = ({ match, t }) => {
         </Typography>
       ) : (
         <div>
+          <IconButton className="u-mr-half" href={`#/permissions`}>
+            <Icon icon={PreviousIcon} size={16} />
+          </IconButton>
           <NavigationList>
             <PageTitle>{appName.toUpperCase()}</PageTitle>
             <NavigationListSection>
