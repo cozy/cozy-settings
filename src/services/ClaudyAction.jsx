@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
-import { useI18n } from 'cozy-ui/transpiled/react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 export const ClaudyAction = ({ action, iconSrc, url, onActionClick }) => {
   const { t } = useI18n()

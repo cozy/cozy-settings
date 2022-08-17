@@ -6,7 +6,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import FormModal from './FormModal'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { I18n } from 'cozy-ui/transpiled/react'
+import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import langEn from 'locales/en.json'
 
 jest.mock('actions/domUtils', () => ({

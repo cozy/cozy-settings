@@ -3,7 +3,7 @@ import React from 'react'
 import Permission from './Permission'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 
-jest.mock('cozy-ui/transpiled/react', () => {
+jest.mock('cozy-ui/transpiled/react/I18n', () => {
   return { useI18n: () => ({ t: x => x }) }
 })
 

@@ -26,7 +26,7 @@ jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
   }
 })
 
-jest.mock('cozy-ui/transpiled/react', () => ({
+jest.mock('cozy-ui/transpiled/react/I18n', () => ({
   useI18n: () => ({ t: text => text })
 }))
 

@@ -9,7 +9,7 @@ import CozyClient, {
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Page from 'components/Page'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { displayPermissions } from './helpers/permissionsHelper'

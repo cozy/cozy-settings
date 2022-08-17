@@ -4,7 +4,7 @@ import React from 'react'
 import { UAParser } from 'ua-parser-js'
 
 import { TableRow, TableCell } from 'cozy-ui/transpiled/react/Table'
-import { useI18n } from 'cozy-ui/transpiled/react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 const SessionsViewRow = ({ session }) => {
   const { f, t } = useI18n()

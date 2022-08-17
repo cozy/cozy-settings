@@ -13,7 +13,7 @@ import GlobeIcon from 'cozy-ui/transpiled/react/Icons/Globe'
 import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
 import PhoneIcon from 'cozy-ui/transpiled/react/Icons/Phone'
 import ArchiveIcon from 'cozy-ui/transpiled/react/Icons/Archive'
-import { useI18n } from 'cozy-ui/transpiled/react'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import flag from 'cozy-flags'
 
 export const Sidebar = () => {
