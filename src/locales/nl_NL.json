@@ -264,7 +264,7 @@
   },
   "revokeDevice": {
     "title": "Dit apparaat intrekken",
-    "description": "Je staat op het punt om %{name} te ontkoppelen.",
+    "description": "Je staat op het punt om **%{name}** te ontkoppelen.",
     "subText": "De synchronisatie met dit apparaat zal direct stoppen.",
     "validate": "Apparaat ontkoppelen",
     "cancel": "Annuleren",
@@ -397,6 +397,8 @@
     "read": "Lezen",
     "readAndWrite": "Lezen en schrijven",
     "write": "Schrijven",
-    "numberOfPermissions": "%{smart_count} bevoegdheid |||| %{smart_count} bevoegdheden"
+    "numberOfPermissions" : "%{smart_count} bevoegdheid |||| %{smart_count} bevoegdheden",
+    "applications": "Apps",
+    "data": "Gegevens"
   }
 }
