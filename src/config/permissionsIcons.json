@@ -32,7 +32,7 @@
   "io.cozy.bank.balancehistories": "Versioning",
   "io.cozy.bank.groups": "BankGroups",
   "io.cozy.bank.operations": "BankOperations",
-  "io.cozy.bank.settings": "settings",
+  "io.cozy.bank.settings": "Settings",
   "io.cozy.bank.recurrence": "BankRecurrence",
   "io.cozy.bank.recipients": "Contacts",
   "io.cozy.bills": "BillPermissions",
