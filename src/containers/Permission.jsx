@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
-import { withRouter } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import CozyClient, {
   Q,
@@ -18,10 +18,9 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import { routes } from 'constants/routes'
 
-const Permission = ({ match }) => {
+const Permission = () => {
   const { t } = useI18n()
-  const appName = match.params.app
-  const permissionName = match.params.permission
+  const { app: appName, permission: permissionName } = useParams()
   const THIRTY_SECONDS = 30 * 1000
   const [verbs, setVerbs] = useState([])
 
@@ -92,4 +91,4 @@ const Permission = ({ match }) => {
   )
 }
 
-export default withRouter(Permission)
+export default Permission

@@ -19,6 +19,7 @@ module.exports.getStrength = function (password) {
   ]
 
   const possibleChars = charsets.reduce(function (possibleChars, charset) {
+    // eslint-disable-next-line no-param-reassign
     if (charset.regexp.test(password)) possibleChars += charset.size
     return possibleChars
   }, 0)

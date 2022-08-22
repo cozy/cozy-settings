@@ -91,7 +91,7 @@ class ProfileView extends Component {
       <Page narrow>
         {isFetching && (
           <Spinner
-            className={'u-pos-fixed-s'}
+            className="u-pos-fixed-s"
             middle
             size="xxlarge"
             loadingType="loading"
@@ -143,7 +143,7 @@ class ProfileView extends Component {
                   exportId={exportId}
                   requestExport={requestExport}
                   fetchExportData={() => fetchExportData(exportId)}
-                  parent={'/profile'}
+                  parent="/profile"
                 />
                 <Import
                   importData={importData}

@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import get from 'lodash/get'
 import compose from 'lodash/flowRight'
@@ -12,7 +13,7 @@ import {
 } from 'actions/passphrase'
 import { fetchInfos } from 'actions'
 import PassphraseView from 'components/PassphraseView'
-import { withRouter } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const mapStateToProps = state => ({
   fields: state.fields,
@@ -97,10 +98,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchInfos: () => dispatch(fetchInfos())
 })
 
-const Passphrase = compose(
-  withRouter,
+const ComposedPassphrase = compose(
   translate(),
   connect(mapStateToProps, mapDispatchToProps)
 )(PassphraseView)
 
-export default Passphrase
+const PassphraseWithLocation = props => {
+  const location = useLocation()
+  return <ComposedPassphrase {...props} location={location} />
+}
+
+export default PassphraseWithLocation

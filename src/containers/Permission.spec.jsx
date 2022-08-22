@@ -6,11 +6,8 @@ import AppLike from 'test/AppLike'
 
 jest.mock('react-router-dom', () => {
   return {
-    withRouter: Component => {
-      const match = { params: { app: 'Drive', permission: 'apps' } }
-      // eslint-disable-next-line react/display-name
-      return () => <Component match={match} />
-    },
+    ...jest.requireActual('react-router-dom'),
+    useParams: () => ({ app: 'Drive', permission: 'apps' }),
     Link:
       // eslint-disable-next-line react/display-name
       ({ to, children }) => (

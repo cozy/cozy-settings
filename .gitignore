@@ -1,12 +1,10 @@
 # NPM
 node_modules/
 npm-debug.log
-yarn.lock # Remove this one on your app
-
+yarn-error.log
 
 # Build
 build/
-
 
 # OS generated files
 .DS_Store
@@ -18,11 +16,10 @@ ehthumbs.db
 Thumbs.db
 desktop.ini
 
-
 # Editors / IDEs
 .floo
 .flooignore
-
+.vscode
 
 # Default
 !.gitkeep

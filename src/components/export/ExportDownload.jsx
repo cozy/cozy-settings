@@ -1,6 +1,6 @@
 import compose from 'lodash/flowRight'
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -23,8 +23,8 @@ class ExportDownload extends Component {
   }
 
   closeModal() {
-    const { history, parent } = this.props
-    history.push(parent)
+    const { navigate, parent } = this.props
+    navigate(parent)
   }
 
   render() {
@@ -89,4 +89,11 @@ class ExportDownload extends Component {
   }
 }
 
-export default compose(withClient, translate(), withRouter)(ExportDownload)
+const ComposedExportDownload = compose(withClient, translate())(ExportDownload)
+
+const ExportDownloadWithHistory = props => {
+  const navigate = useNavigate()
+  return <ComposedExportDownload {...props} navigate={navigate} />
+}
+
+export default ExportDownloadWithHistory

@@ -9,7 +9,7 @@ import { RealTimeQueries } from 'cozy-client'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Navigate, Routes } from 'react-router-dom'
 
 import Sidebar from 'components/Sidebar'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
@@ -36,29 +36,30 @@ export class App extends Component {
         <RealTimeQueries doctype="io.cozy.oauth.clients" />
 
         <Main>
-          <Switch>
-            <Route path="/redirect" component={IntentRedirect} />
-            <Route exact path="/profile" component={Profile} />
-            <Route path="/profile/password" component={Passphrase} />
-            <Route exact path="/connectedDevices" component={Devices} />
-            <Route path="/connectedDevices/:deviceId" component={Devices} />
-            <Route path="/sessions" component={Sessions} />
-            <Route path="/storage" component={Storage} />
-            <Route exact path="/permissions/:page" component={PermissionsTab} />
+          <Routes>
+            <Route path="/redirect" element={<IntentRedirect />} />
+            <Route path="/profile/*" element={<Profile />} />
+            <Route path="/profile/password" element={<Passphrase />} />
+            <Route path="/connectedDevices/*" element={<Devices />} />
+            <Route path="/connectedDevices/:deviceId" element={<Devices />} />
+            <Route path="/sessions" element={<Sessions />} />
+            <Route path="/storage" element={<Storage />} />
+            <Route path="/permissions/:page" element={<PermissionsTab />} />
             <Route
-              exact
               path="/permissions/slug/:app"
-              component={PermissionsApplication}
+              element={<PermissionsApplication />}
             />
             <Route
               path="/permissions/slug/:app/:permission"
-              component={Permission}
+              element={<Permission />}
             />
-            <Route path="/exports/:exportId" component={Profile} />
-            <Redirect exact from="/" to="/profile" />
-            <Redirect exact from="/permissions" to="/permissions/slug" />
-            <Redirect from="*" to="/profile" />
-          </Switch>
+            <Route path="/exports/:exportId" element={<Profile />} />
+            <Route
+              path="/permissions"
+              element={<Navigate to="/permissions/slug" replace />}
+            />
+            <Route path="*" element={<Navigate to="/profile" replace />} />
+          </Routes>
         </Main>
         <Sprite />
       </Layout>
@@ -73,10 +74,4 @@ const mapStateToProps = state => ({
   alert: state.ui.alert
 })
 
-/*
-withRouter is necessary here to deal with redux
-https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
-*/
-export default hot(module)(
-  translate()(withRouter(connect(mapStateToProps)(App)))
-)
+export default hot(module)(translate()(connect(mapStateToProps)(App)))

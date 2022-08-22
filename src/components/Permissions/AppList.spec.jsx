@@ -6,6 +6,7 @@ import AppLike from 'test/AppLike'
 
 jest.mock('react-router-dom', () => {
   return {
+    ...jest.requireActual('react-router-dom'),
     Link: ({ narrow, children }) => (
       <div data-testid="page" data-narrow={narrow}>
         {children}

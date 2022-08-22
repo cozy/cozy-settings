@@ -168,6 +168,7 @@ export const updateInfo = (field, value) => {
       return
     }
     // tracking field must be stored as string
+    // eslint-disable-next-line no-param-reassign
     if (field === 'tracking') value = value.toString()
     const instance = { ...getState().instance }
     // We are actually mutating also getState().instance.data.attributes here.
@@ -307,6 +308,7 @@ export const cozyFetch = (method, path, body) => {
 
     return response.status >= 200 && response.status <= 204
       ? data
-      : data.then(Promise.reject.bind(Promise))
+      : // eslint-disable-next-line promise/no-nesting
+        data.then(Promise.reject.bind(Promise))
   })
 }
