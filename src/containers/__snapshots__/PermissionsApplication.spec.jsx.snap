@@ -41,6 +41,9 @@ exports[`PermissionsApplication should display appName when query has been loade
           DRIVE
         </div>
         <div
+          data-testid="CircleButton"
+        />
+        <div
           data-testid="NavigationListSection"
         >
           <div>

@@ -404,6 +404,8 @@
     "write": "Écriture",
     "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions",
     "applications": "Applications",
-    "data": "Données"
+    "data": "Données",
+    "open": "Ouvrir"
   }
+
 }

@@ -3,13 +3,18 @@ import React from 'react'
 import PermissionsApplication, {
   completePermission
 } from './PermissionsApplication'
-import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+import {
+  Q,
+  useQuery,
+  useClient,
+  isQueryLoading,
+  hasQueryBeenLoaded
+} from 'cozy-client'
 
 jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   return () => Component => {
     const t = text => text
     const match = { params: { app: 'Drive' } }
-    // eslint-disable-next-line react/display-name
     return () => <Component match={match} t={t} />
   }
 })
@@ -47,11 +52,11 @@ jest.mock('cozy-client', () => ({
   hasQueryBeenLoaded: jest.fn(),
   Q: jest.fn(),
   useQuery: jest.fn(),
-  isQueryLoading: jest.fn()
+  isQueryLoading: jest.fn(),
+  useClient: jest.fn()
 }))
 
 jest.mock('components/Page', () => {
-  // eslint-disable-next-line react/display-name
   return ({ narrow, children }) => (
     <div data-testid="page" data-narrow={narrow}>
       {children}
@@ -60,12 +65,16 @@ jest.mock('components/Page', () => {
 })
 
 jest.mock('components/PageTitle', () => {
-  // eslint-disable-next-line react/display-name
   return ({ children }) => <div data-testid="pageTitle">{children}</div>
 })
 jest.mock('cozy-ui/transpiled/react/Spinner', () => {
-  // eslint-disable-next-line react/display-name
   return ({ size }) => <div data-testid="Spinner" data-size={size}></div>
+})
+jest.mock('cozy-ui/transpiled/react/CircleButton', () => {
+  return () => <div data-testid="CircleButton"></div>
+})
+jest.mock('cozy-ui/transpiled/react/I18n', () => {
+  return { useI18n: () => ({ t: x => x }) }
 })
 
 describe('PermissionsApplication', () => {
@@ -104,6 +113,16 @@ describe('PermissionsApplication', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
     Q.mockReturnValue({ getById: () => 'kfrf' })
     useQuery.mockReturnValue(queryResult)
+    useClient.mockReturnValue({
+      getStackClient: () => {
+        return { uri: 'http://cozy.localhost:8080' }
+      },
+      getInstanceOptions: () => {
+        return {
+          subdomain: 'flat'
+        }
+      }
+    })
   })
   it('should display appName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
@@ -128,6 +147,11 @@ describe('PermissionsApplication', () => {
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
     const { queryByText } = render(<PermissionsApplication />)
     expect(queryByText('Permissions.failedRequest')).toBeTruthy()
+  })
+
+  it('should contain an OpenApp button', () => {
+    const { queryByTestId } = render(<PermissionsApplication />)
+    expect(queryByTestId('CircleButton')).toBeTruthy()
   })
 
   describe('completePermission', () => {

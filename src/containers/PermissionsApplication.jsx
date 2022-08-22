@@ -23,6 +23,7 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import { routes } from 'constants/routes'
+import { OpenappButton } from '../components/Permissions/OpenappButton'
 
 import CozyClient, {
   Q,
@@ -91,6 +92,8 @@ const PermissionsApplication = ({ t }) => {
       })
   }
 
+  const isKonnector = type => type === 'io.cozy.konnectors'
+
   return (
     <Page narrow>
       {(isQueryLoading(queryResultApps) &&
@@ -110,6 +113,14 @@ const PermissionsApplication = ({ t }) => {
           </IconButton>
           <NavigationList>
             <PageTitle>{appName.toUpperCase()}</PageTitle>
+            <OpenappButton
+              type={
+                isKonnector(matchingQueryResult.data[0].type)
+                  ? 'konnector'
+                  : 'app'
+              }
+              matchingQueryResultData={matchingQueryResult.data[0]}
+            />
             <NavigationListSection>
               {sortPermissionsByName(matchingQueryResult).map(
                 ({ name, title, verbs, type }) => {
