@@ -5,7 +5,7 @@ import AppList from './AppList'
 import DataList from './DataList'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider/index'
 import { routes } from 'constants/routes'
-import { withRouter } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import withAllLocales from '../../lib/withAllLocales'
 
 function a11yProps(index) {
@@ -28,8 +28,8 @@ const TabPanel = props => {
     </div>
   )
 }
-const PermissionsTab = ({ match, t }) => {
-  const slugOrData = match.params.page
+const PermissionsTab = ({ t }) => {
+  const { page: slugOrData } = useParams()
   const [tab, setTab] = useState(slugOrData)
   const handleChange = (event, value) => setTab(value)
 
@@ -60,4 +60,4 @@ const PermissionsTab = ({ match, t }) => {
   )
 }
 
-export default withRouter(withAllLocales(PermissionsTab))
+export default withAllLocales(PermissionsTab)

@@ -1,3 +1,4 @@
+import React from 'react'
 import { HashRouter } from 'react-router-dom'
 import {
   shouldEnableTracking,
@@ -7,6 +8,7 @@ import {
 const addPiwik = function (history) {
   if (shouldEnableTracking() && getTracker()) {
     let trackerInstance = getTracker()
+    // eslint-disable-next-line no-param-reassign
     history = trackerInstance.connectToHistory(history)
     // when using a hash history, the initial visit is not tracked by piwik react router
     trackerInstance.track(history.location)
@@ -14,9 +16,8 @@ const addPiwik = function (history) {
   return history
 }
 
-export default class PiwikHashRouter extends HashRouter {
-  constructor(props) {
-    super(props)
-    this.history = addPiwik(this.history)
-  }
-}
+export const PiwikHashRouter = ({ children }) => (
+  <HashRouter history={addPiwik(history)}>{children}</HashRouter>
+)
+
+export default PiwikHashRouter

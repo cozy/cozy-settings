@@ -5,7 +5,7 @@ import langEn from '../locales/en.json'
 
 export const TestI18n = ({ children }) => {
   return (
-    <I18n lang={'en'} dictRequire={() => langEn}>
+    <I18n lang="en" dictRequire={() => langEn}>
       {children}
     </I18n>
   )

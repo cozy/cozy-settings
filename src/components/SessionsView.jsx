@@ -37,7 +37,7 @@ class SessionsView extends Component {
         </Typography>
         {isFetching && (
           <Spinner
-            className={'u-pos-fixed-s'}
+            className="u-pos-fixed-s"
             middle
             size="xxlarge"
             loadingType="loading"

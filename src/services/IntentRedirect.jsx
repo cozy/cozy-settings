@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 export const IntentRedirect = ({ location }) => {
   const queryString = !!location && location.search
@@ -15,9 +15,9 @@ export const IntentRedirect = ({ location }) => {
       }, {})
 
   if (query.step) {
-    return <Redirect to={`/${query.step}`} />
+    return <Navigate to={`/${query.step}`} />
   }
-  return <Redirect to={`/profile`} />
+  return <Navigate to="/profile" />
 }
 
 export default IntentRedirect

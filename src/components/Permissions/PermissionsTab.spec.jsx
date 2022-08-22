@@ -13,7 +13,7 @@ jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
 
 jest.mock('react-router-dom', () => {
   return {
-    withRouter: Component => Component
+    useParams: () => ({ page: 'slug' })
   }
 })
 

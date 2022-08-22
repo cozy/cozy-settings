@@ -62,7 +62,7 @@ export class TwoFactorCode extends Component {
           <span>{t('ProfileView.twofa.modal.nocode')}</span>
           <br />
           {t('ProfileView.twofa.modal.nocode_claude')}
-          <a href={`mailto{settingsConfig.contactEmail}`}>
+          <a href={`mailto:${settingsConfig.contactEmail}`}>
             {settingsConfig.contactEmail}
           </a>
         </Typography>

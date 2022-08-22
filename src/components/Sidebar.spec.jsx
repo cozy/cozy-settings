@@ -7,6 +7,7 @@ jest.mock('cozy-ui/transpiled/react/I18n', () => ({
   useI18n: () => ({ t: name => name })
 }))
 jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   NavLink: ({ children }) => <div data-testid="NavLink">{children}</div>
 }))
 jest.mock('cozy-flags')

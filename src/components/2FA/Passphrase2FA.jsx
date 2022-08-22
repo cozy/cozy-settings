@@ -73,7 +73,7 @@ export class Passphrase2FA extends Component {
                 </Typography>
                 <Typography variant="body1">
                   {t('ProfileView.twofa.modal.nocode_claude')}
-                  <a href={`mailto{settingsConfig.contactEmail}`}>
+                  <a href="mailto{settingsConfig.contactEmail}">
                     {settingsConfig.contactEmail}
                   </a>
                 </Typography>

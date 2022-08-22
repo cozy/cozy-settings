@@ -18,6 +18,7 @@ const composeReducers = (...fns) => {
   return (state, action) => {
     for (let i = 0; i < fns.length; i++) {
       const reducer = fns[fns.length - i - 1]
+      // eslint-disable-next-line no-param-reassign
       state = reducer(state, action)
     }
     return state

@@ -1,9 +1,8 @@
 /* eslint-disable no-irregular-whitespace */
 import React, { useCallback, useMemo, useState } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 import compose from 'lodash/flowRight'
-import get from 'lodash/get'
 
 import tableStyles from 'styles/table.styl'
 
@@ -152,7 +151,7 @@ const MoreMenu = ({ device, onRevoke, onConfigure, isMobile }) => {
           <MoreMenuItem
             onClick={onRevoke}
             icon={TrashIcon}
-            color={'error'}
+            color="error"
             text={t('DevicesView.revoke')}
           />
         </ActionMenu>
@@ -166,14 +165,14 @@ const DevicesView = props => {
     t,
     f,
     lang,
-    breakpoints: { isMobile },
-    match,
-    history
+    breakpoints: { isMobile }
   } = props
+  const navigate = useNavigate()
+  const { deviceId } = useParams()
+  const location = useLocation()
 
   const [deviceToConfigure, setDeviceToConfigure] = useState(null)
   const [deviceToRevoke, setDeviceToRevoke] = useState(null)
-  const deviceId = useMemo(() => get(match, 'params.deviceId', null), [match])
 
   const devicesQuery = buildDevicesQuery()
   const { data, hasMore, fetchMore, fetchStatus } = useQuery(
@@ -201,13 +200,13 @@ const DevicesView = props => {
 
   const onDeviceConfigurationCanceled = () => {
     if (deviceId) {
-      history.push(match.url.replace(`/${deviceId}`, ''))
+      navigate(location.pathname.replace(`/${deviceId}`, ''))
     }
     setDeviceToConfigure(null)
   }
   const onDeviceConfigured = () => {
     if (deviceId) {
-      history.push(match.url.replace(`/${deviceId}`, ''))
+      navigate(location.pathname.replace(`/${deviceId}`, ''))
     }
     setDeviceToConfigure(null)
   }
@@ -241,7 +240,7 @@ const DevicesView = props => {
       <PageTitle>{t('DevicesView.title')}</PageTitle>
       {isFetching ? (
         <Spinner
-          className={'u-pos-fixed-s'}
+          className="u-pos-fixed-s"
           middle
           size="xxlarge"
           loadingType="loading"
@@ -358,4 +357,4 @@ const DevicesView = props => {
   )
 }
 
-export default compose(translate(), withBreakpoints(), withRouter)(DevicesView)
+export default compose(translate(), withBreakpoints())(DevicesView)

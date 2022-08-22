@@ -1,7 +1,7 @@
 import styles from 'styles/passphrase.styl'
 
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import compose from 'lodash/flowRight'
 import get from 'lodash/get'
@@ -237,4 +237,12 @@ class PassphraseForm extends Component {
   }
 }
 
-export default compose(translate(), withRouter, withClient)(PassphraseForm)
+const ComposedPassphraseForm = compose(translate(), withClient)(PassphraseForm)
+
+const PassphraseFormWrapper = props => {
+  const location = useLocation()
+
+  return <ComposedPassphraseForm {...props} location={location} />
+}
+
+export default PassphraseFormWrapper

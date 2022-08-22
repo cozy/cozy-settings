@@ -1,10 +1,6 @@
 require('@babel/polyfill')
 
-import { configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
 import '@testing-library/jest-dom'
-
-configure({ adapter: new Adapter() })
 
 process.env.USE_REACT = true
 
@@ -22,6 +18,11 @@ jest.mock('cozy-ui/transpiled/react/utils/color', () => ({
 jest.mock('cozy-intent', () => ({
   WebviewIntentProvider: ({ children }) => children,
   useWebviewIntent: () => ({ call: () => {} })
+}))
+
+jest.mock('../../src/actions/domUtils.js', () => ({
+  getStackDomain: () => 'http://test.mycozy.cloud',
+  getStackToken: () => 'http://test.mycozy.cloud'
 }))
 
 // polyfill for requestAnimationFrame

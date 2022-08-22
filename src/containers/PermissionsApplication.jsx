@@ -5,7 +5,7 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
-import { withRouter, Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import {
   displayPermissions,
   getPermissionIconName
@@ -52,8 +52,8 @@ export const completePermission = (
   return completedPermission
 }
 
-const PermissionsApplication = ({ match, t }) => {
-  const appName = match.params.app
+const PermissionsApplication = ({ t }) => {
+  const { app: appName } = useParams()
   const THIRTY_SECONDS = 30 * 1000
 
   const queryResultApps = useQuery(
@@ -105,7 +105,7 @@ const PermissionsApplication = ({ match, t }) => {
         </Typography>
       ) : (
         <div>
-          <IconButton className="u-mr-half" href={`#/permissions`}>
+          <IconButton className="u-mr-half" href="#/permissions">
             <Icon icon={PreviousIcon} size={16} />
           </IconButton>
           <NavigationList>
@@ -150,4 +150,4 @@ const PermissionsApplication = ({ match, t }) => {
   )
 }
 
-export default withRouter(withAllLocales(PermissionsApplication))
+export default withAllLocales(PermissionsApplication)

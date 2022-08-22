@@ -32,7 +32,8 @@ jest.mock('cozy-ui/transpiled/react', () => ({
 
 jest.mock('react-router-dom', () => {
   return {
-    withRouter: Component => Component,
+    ...jest.requireActual('react-router-dom'),
+    useParams: () => ({ app: 'Drive' }),
     Link: ({ narrow, children }) => (
       <div data-testid="page" data-narrow={narrow}>
         {children}
