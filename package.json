@@ -5,7 +5,7 @@
   "scripts": {
     "tx": "tx pull --all || true",
     "lint": "yarn lint:js",
-    "lint:js": "eslint '{src,test}/**/*.{js,jsx}'",
+    "lint:js": "eslint '{src,test}/**/*.{js,jsx,ts,tsx}'",
     "build": "yarn build:browser",
     "build:browser": "cozy-scripts build --browser",
     "build:mobile": "cozy-scripts build --mobile",
