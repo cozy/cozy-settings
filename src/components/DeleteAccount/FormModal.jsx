@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react'
 
 import { useClient } from 'cozy-client'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import Textarea from 'cozy-ui/transpiled/react/Textarea'
 
 import { sendDeleteAccountRequest } from 'actions/email'
 import { getStackDomain } from 'actions/domUtils'
-import styles from 'styles/deleteAccountFormModal.styl'
 
 const DONE = 'done'
 const ERRORED = 'errored'
@@ -60,14 +60,13 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
       content={
         <form onSubmit={handleSend}>
           <label>{t('DeleteAccount.modal.form.reason.label')}</label>
-          <div className={styles['coz-textarea-wrapper']}>
-            <textarea
-              aria-busy={isSending}
-              maxLength={REASON_MAXLENGTH}
-              readOnly={isSending}
-              ref={reasonElementRef}
-            />
-          </div>
+          <Textarea
+            className="u-mt-1"
+            ref={reasonElementRef}
+            aria-busy={isSending}
+            maxLength={REASON_MAXLENGTH}
+            readOnly={isSending}
+          />
         </form>
       }
       actions={
@@ -75,15 +74,14 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
           <Button
             disabled={isSending}
             label={t('DeleteAccount.modal.form.button.cancel.label')}
+            variant="secondary"
             onClick={onClose}
-            theme="secondary"
-            type="button"
           />
           <Button
             busy={isSending}
             disabled={isSending}
             label={t('DeleteAccount.modal.form.button.submit.label')}
-            theme="danger"
+            color="error"
             onClick={handleSend}
           />
         </>
