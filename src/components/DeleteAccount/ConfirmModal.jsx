@@ -1,16 +1,15 @@
 import React from 'react'
+
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 
-export const ConfirmModal = props => {
-  const { dismissAction, primaryAction } = props
+export const ConfirmModal = ({ dismissAction, primaryAction }) => {
   const { t } = useI18n()
+
   return (
     <ConfirmDialog
       open
-      closable
-      onClose={dismissAction}
       title={t('DeleteAccount.modal.confirm.title')}
       content={
         <ul className="u-mv-0">
@@ -23,16 +22,17 @@ export const ConfirmModal = props => {
         <>
           <Button
             label={t('DeleteAccount.modal.confirm.button.submit.label')}
+            color="error"
             onClick={primaryAction}
-            theme="danger"
           />
           <Button
             label={t('DeleteAccount.modal.confirm.button.cancel.label')}
+            variant="secondary"
             onClick={dismissAction}
-            theme="secondary"
           />
         </>
       }
+      onClose={dismissAction}
     />
   )
 }
