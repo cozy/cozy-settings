@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
-import compose from 'lodash/flowRight'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import React, { useState, useRef } from 'react'
+
+import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import { sendDeleteAccountRequest } from 'actions/email'
 import { getStackDomain } from 'actions/domUtils'
-
 import styles from 'styles/deleteAccountFormModal.styl'
-import { withClient } from 'cozy-client'
 
 const DONE = 'done'
 const ERRORED = 'errored'
@@ -17,91 +16,81 @@ const SENDING = 'sending'
 
 const REASON_MAXLENGTH = 3000
 
-export class FormModal extends Component {
-  state = {
-    status: IDLE
-  }
+const FormModal = ({ onSuccess, onError, onClose }) => {
+  const [status, setStatus] = useState(IDLE)
+  const client = useClient()
+  const { t } = useI18n()
+  const reasonElementRef = useRef()
 
-  setStatus = status => this.setState({ status })
+  const isSending = status === SENDING
 
-  onSuccess = () => {
-    const { onSuccess } = this.props
-    this.setStatus(DONE)
+  const handleSuccess = () => {
+    setStatus(DONE)
     onSuccess && onSuccess()
   }
 
-  onError = error => {
-    const { onError } = this.props
-    this.setStatus(ERRORED)
+  const handleError = error => {
+    setStatus(ERRORED)
     onError && onError(error)
   }
 
-  onSend = async event => {
+  const handleSend = async event => {
     event.preventDefault()
-    const { client, t } = this.props
     const STACK_DOMAIN = getStackDomain()
     const domain = STACK_DOMAIN.replace('//', '')
-    const reason = this.reasonElement.value
-    this.setStatus(SENDING)
+    const reason = reasonElementRef.current.value
+    setStatus(SENDING)
+
     try {
       await sendDeleteAccountRequest(
         client,
         t('DeleteAccount.request.mail.subject', { domain }),
         reason.substring(0, REASON_MAXLENGTH)
       )
-      return this.onSuccess()
+      return handleSuccess()
     } catch (error) {
-      return this.onError(error)
+      return handleError(error)
     }
   }
 
-  render = () => {
-    const { onClose, t } = this.props
-    const { status } = this.state
-    const isSending = status === SENDING
-    return (
-      <ConfirmDialog
-        open
-        onClose={onClose}
-        title={t('DeleteAccount.modal.form.title')}
-        content={
-          <>
-            <form onSubmit={this.onSend}>
-              <label>{t('DeleteAccount.modal.form.reason.label')}</label>
-              <div className={styles['coz-textarea-wrapper']}>
-                <textarea
-                  aria-busy={isSending}
-                  maxLength={REASON_MAXLENGTH}
-                  readOnly={isSending}
-                  ref={element => {
-                    this.reasonElement = element
-                  }}
-                />
-              </div>
-            </form>
-          </>
-        }
-        actions={
-          <>
-            <Button
-              disabled={isSending}
-              label={t('DeleteAccount.modal.form.button.cancel.label')}
-              onClick={onClose}
-              theme="secondary"
-              type="button"
+  return (
+    <ConfirmDialog
+      open
+      title={t('DeleteAccount.modal.form.title')}
+      content={
+        <form onSubmit={handleSend}>
+          <label>{t('DeleteAccount.modal.form.reason.label')}</label>
+          <div className={styles['coz-textarea-wrapper']}>
+            <textarea
+              aria-busy={isSending}
+              maxLength={REASON_MAXLENGTH}
+              readOnly={isSending}
+              ref={reasonElementRef}
             />
-            <Button
-              busy={isSending}
-              disabled={isSending}
-              label={t('DeleteAccount.modal.form.button.submit.label')}
-              theme="danger"
-              onClick={this.onSend}
-            />
-          </>
-        }
-      />
-    )
-  }
+          </div>
+        </form>
+      }
+      actions={
+        <>
+          <Button
+            disabled={isSending}
+            label={t('DeleteAccount.modal.form.button.cancel.label')}
+            onClick={onClose}
+            theme="secondary"
+            type="button"
+          />
+          <Button
+            busy={isSending}
+            disabled={isSending}
+            label={t('DeleteAccount.modal.form.button.submit.label')}
+            theme="danger"
+            onClick={handleSend}
+          />
+        </>
+      }
+      onClose={onClose}
+    />
+  )
 }
 
-export default compose(withClient, translate())(FormModal)
+export default FormModal
