@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
@@ -42,22 +42,19 @@ const DeleteAccount = () => {
           onSuccess={onRequested}
         />
       )}
-      <div>
-        <Typography variant="h5" gutterBottom>
-          {t('DeleteAccount.title')}
-        </Typography>
-        <Typography variant="body1">{t('DeleteAccount.label')}</Typography>
-        <div className="u-mt-1">
-          <Button
-            busy={status === REQUESTING}
-            disabled={status !== IDLE}
-            extension="full"
-            label={t('DeleteAccount.button.label')}
-            onClick={() => setStatus(CONFIRMING)}
-            theme="danger-outline"
-          />
-        </div>
-      </div>
+      <Typography variant="h5" gutterBottom>
+        {t('DeleteAccount.title')}
+      </Typography>
+      <Typography variant="body1">{t('DeleteAccount.label')}</Typography>
+      <Button
+        className="u-mt-1"
+        variant="secondary"
+        color="error"
+        label={t('DeleteAccount.button.label')}
+        busy={status === REQUESTING}
+        fullWidth
+        onClick={() => setStatus(CONFIRMING)}
+      />
     </>
   )
 }
