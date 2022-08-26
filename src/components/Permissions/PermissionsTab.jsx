@@ -1,6 +1,7 @@
 import React from 'react'
 import Page from 'components/Page'
-import { Tabs, Tab } from 'cozy-ui/transpiled/react/MuiTabs'
+import Tabs from 'cozy-ui/transpiled/react/Tabs'
+import Tab from 'cozy-ui/transpiled/react/Tab'
 import AppList from './AppList'
 import DataList from './DataList'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider/index'
@@ -37,7 +38,7 @@ const PermissionsTab = () => {
 
   return (
     <Page narrow>
-      <Tabs value={page} onChange={handleChange}>
+      <Tabs value={page} onChange={handleChange} segmented>
         <Tab
           value="slug"
           label={t('Permissions.applications')}
