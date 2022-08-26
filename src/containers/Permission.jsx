@@ -20,24 +20,24 @@ import { routes } from 'constants/routes'
 
 const Permission = () => {
   const { t } = useI18n()
-  const { app: appName, permission: permissionName } = useParams()
+  const { slug: slugName, permission: permissionName } = useParams()
   const THIRTY_SECONDS = 30 * 1000
   const [verbs, setVerbs] = useState([])
 
   // TODO : instead of sending 2 queries (queryResultApps & queryResultKonnectors) where 1 will be useless, find a way to check if we have an app or a konnector and send only 1 query
   const queryResultApps = useQuery(
-    Q(APPS_DOCTYPE).getById('io.cozy.apps/' + appName),
+    Q(APPS_DOCTYPE).getById('io.cozy.apps/' + slugName),
     {
-      as: 'io.cozy.apps/' + appName,
+      as: 'io.cozy.apps/' + slugName,
       fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS),
       singleDocData: true
     }
   )
 
   const queryResultKonnectors = useQuery(
-    Q(KONNECTORS_DOCTYPE).getById('io.cozy.konnectors/' + appName),
+    Q(KONNECTORS_DOCTYPE).getById('io.cozy.konnectors/' + slugName),
     {
-      as: 'io.cozy.konnectors/' + appName,
+      as: 'io.cozy.konnectors/' + slugName,
       fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS),
       singleDocData: true
     }
@@ -76,12 +76,12 @@ const Permission = () => {
         <React.Fragment>
           <IconButton
             className="u-mr-half"
-            href={`#${routes.appList}/${appName.toLowerCase()}`}
+            href={`#${routes.appList}/${slugName.toLowerCase()}`}
           >
             <Icon icon={PreviousIcon} size={16} />
           </IconButton>
           <Typography variant="h1">
-            Application: {appName.toUpperCase()}
+            Application: {slugName.toUpperCase()}
           </Typography>
           <Typography variant="h2">Permission: {permissionName}</Typography>
           <Typography variant="h3">{t(displayPermissions(verbs))}</Typography>

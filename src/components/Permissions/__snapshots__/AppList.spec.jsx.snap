@@ -33,7 +33,7 @@ exports[`AppList should display appName when query has been loaded 1`] = `
             </div>
             <div
               data-primary="Alan"
-              data-secondary="0 permissions"
+              data-secondary="1 permission"
               data-testid="ListItemText"
             />
             <span
@@ -114,7 +114,7 @@ exports[`AppList should display sorted app and konnector names when query is not
             </div>
             <div
               data-primary="Alan"
-              data-secondary="0 permissions"
+              data-secondary="1 permission"
               data-testid="ListItemText"
             />
             <span
