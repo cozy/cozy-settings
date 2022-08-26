@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Page from 'components/Page'
 import { Tabs, Tab } from 'cozy-ui/transpiled/react/MuiTabs'
 import AppList from './AppList'
 import DataList from './DataList'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider/index'
 import { routes } from 'constants/routes'
-import { useParams } from 'react-router-dom'
-import withAllLocales from '../../lib/withAllLocales'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 function a11yProps(index) {
   return {
@@ -28,14 +28,16 @@ const TabPanel = props => {
     </div>
   )
 }
-const PermissionsTab = ({ t }) => {
-  const { page: slugOrData } = useParams()
-  const [tab, setTab] = useState(slugOrData)
-  const handleChange = (event, value) => setTab(value)
+
+const PermissionsTab = () => {
+  const { t } = useI18n()
+  const { page } = useParams()
+  const navigate = useNavigate()
+  const handleChange = (event, value) => navigate(`/permissions/${value}`)
 
   return (
     <Page narrow>
-      <Tabs value={tab} onChange={handleChange}>
+      <Tabs value={page} onChange={handleChange}>
         <Tab
           value="slug"
           label={t('Permissions.applications')}
@@ -50,14 +52,14 @@ const PermissionsTab = ({ t }) => {
         />
       </Tabs>
       <Divider className="u-mb-1" />
-      <TabPanel value={tab} index="slug">
+      <TabPanel value={page} index="slug">
         <AppList />
       </TabPanel>
-      <TabPanel value={tab} index="data">
+      <TabPanel value={page} index="data">
         <DataList />
       </TabPanel>
     </Page>
   )
 }
 
-export default withAllLocales(PermissionsTab)
+export default PermissionsTab

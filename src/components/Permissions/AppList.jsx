@@ -55,7 +55,7 @@ const AppList = () => {
             .filter(a => !toNotDisplay.includes(a.slug))
             .map(appOrKonnector => {
               return (
-                <div key={appOrKonnector._id}>
+                <div key={appOrKonnector.name}>
                   <Link to={`${routes.appList}/${appOrKonnector.slug}`}>
                     <ListItem button>
                       <ListItemIcon>

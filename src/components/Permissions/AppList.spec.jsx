@@ -98,7 +98,14 @@ describe('AppList', () => {
       fetchStatus: 'loaded',
       data: [
         {
-          permissions: {},
+          permissions: {
+            apps: {
+              type: 'io.cozy.apps',
+              description:
+                'Required by the cozy-bar to display the icons of the apps',
+              verbs: ['GET']
+            }
+          },
           slug: 'alan',
           name: 'Alan'
         }
