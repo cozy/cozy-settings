@@ -1,24 +1,31 @@
 import { render } from '@testing-library/react'
-import React from 'react'
+import React, { ReactChild } from 'react'
 import Sidebar from './Sidebar'
 import flag from 'cozy-flags'
 
+const mockFlag = flag as jest.MockedFunction<typeof flag>
+
 jest.mock('cozy-ui/transpiled/react/I18n', () => ({
-  useI18n: () => ({ t: name => name })
+  useI18n: (): {
+    t: (name: string) => string
+  } => ({ t: name => name })
 }))
+
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  NavLink: ({ children }) => <div data-testid="NavLink">{children}</div>
+  NavLink: ({ children }: { children: ReactChild }): JSX.Element => (
+    <div data-testid="NavLink">{children}</div>
+  )
 }))
+
 jest.mock('cozy-flags')
 
 describe('Sidebar', () => {
   it('should display Permission table when flag is on', () => {
     // given
-    flag.mockReturnValue(true)
+    mockFlag.mockReturnValueOnce(true)
 
     // when
-    const { queryByText } = render(<Sidebar></Sidebar>)
+    const { queryByText } = render(<Sidebar />)
 
     // then
     expect(queryByText('Nav.permissions')).toBeTruthy()
@@ -26,10 +33,10 @@ describe('Sidebar', () => {
 
   it('should not display Permission table when flag is off', () => {
     // given
-    flag.mockReturnValue(false)
+    mockFlag.mockReturnValueOnce(false)
 
     // when
-    const { queryByText } = render(<Sidebar></Sidebar>)
+    const { queryByText } = render(<Sidebar />)
 
     // then
     expect(queryByText('Nav.permissions')).toBeFalsy()

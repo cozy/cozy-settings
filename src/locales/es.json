@@ -243,7 +243,7 @@
     "title": "Almacenamiento",
     "load_error": "Ha ocurrido un error al cargar la información de su almacenamiento, por favor vuelva a ensayar más tarde.",
     "storage_title": "Espacio total",
-    "storage_phrase": "%{diskUsage} GB de %{diskQuota} GB usado",
+    "storage_phrase": "%{humanDiskUsage} GB de %{humanDiskQuota} GB usado",
     "more_space": "¿Necesita más espacio de almacenamiento?",
     "see_offer": "Actualizar mi almacenamiento"
   },

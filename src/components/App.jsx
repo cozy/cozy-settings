@@ -1,42 +1,46 @@
 import React, { Component } from 'react'
+import { Route, Navigate, Routes } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
-import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
-import { initFlags } from 'lib/flags'
-import { RealTimeQueries } from 'cozy-client'
-
-import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
-import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
-import { Route, Navigate, Routes } from 'react-router-dom'
-
-import Sidebar from 'components/Sidebar'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
-import Profile from 'containers/Profile'
+import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
+import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
+import { RealTimeQueries } from 'cozy-client'
+import { translate } from 'cozy-ui/transpiled/react/I18n'
+
 import Devices from 'containers/Devices'
-import Sessions from 'containers/Sessions'
-import Storage from 'containers/Storage'
-import Passphrase from 'containers/Passphrase'
-import PermissionsTab from 'components/Permissions/PermissionsTab'
 import IntentRedirect from 'services/IntentRedirect'
-import PermissionsApplication from 'containers/PermissionsApplication'
+import Passphrase from 'containers/Passphrase'
 import Permission from 'containers/Permission'
+import PermissionsApplication from 'containers/PermissionsApplication'
+import PermissionsTab from 'components/Permissions/PermissionsTab'
+import Profile from 'containers/Profile'
+import Sessions from 'containers/Sessions'
+import Sidebar from 'components/Sidebar'
+import Storage from 'containers/Storage'
+import { Menu } from 'components/pages/Menu'
+import { initFlags } from 'lib/flags'
 
 initFlags()
 
 export class App extends Component {
   render() {
+    const { isMobile } = this.props
+
     return (
       <Layout>
         {App.renderExtra()}
         <FlagSwitcher />
         <Alerter />
-        <Sidebar />
+        {!isMobile && <Sidebar />}
         <RealTimeQueries doctype="io.cozy.oauth.clients" />
 
         <Main>
           <Routes>
+            {isMobile && <Route path="/menu" element={<Menu />} />}
             <Route path="/redirect" element={<IntentRedirect />} />
             <Route path="/profile/*" element={<Profile />} />
             <Route path="/profile/password" element={<Passphrase />} />
@@ -58,7 +62,12 @@ export class App extends Component {
               path="/permissions"
               element={<Navigate to="/permissions/slug" replace />}
             />
-            <Route path="*" element={<Navigate to="/profile" replace />} />
+            <Route
+              path="*"
+              element={
+                <Navigate to={isMobile ? '/menu' : '/profile'} replace />
+              }
+            />
           </Routes>
         </Main>
         <Sprite />
@@ -74,4 +83,12 @@ const mapStateToProps = state => ({
   alert: state.ui.alert
 })
 
-export default hot(module)(translate()(connect(mapStateToProps)(App)))
+const AppWithBreakpoints = props => {
+  const { isMobile } = useBreakpoints()
+
+  return <App {...props} isMobile={isMobile} />
+}
+
+export default hot(module)(
+  translate()(connect(mapStateToProps)(AppWithBreakpoints))
+)

@@ -10,6 +10,7 @@ import OffersLink from 'components/OffersLink'
 
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
+import { makeDiskInfos } from 'lib/makeDiskInfos'
 
 class StorageView extends Component {
   UNSAFE_componentWillMount() {
@@ -18,13 +19,11 @@ class StorageView extends Component {
 
   render() {
     const { t, isFetching, storageData } = this.props
-    const diskQuota = Number.isInteger(storageData.quota)
-      ? (storageData.quota / (1000 * 1000 * 1000)).toFixed(2)
-      : storageData.quota
-    const diskUsage = Number.isInteger(storageData.usage)
-      ? (storageData.usage / (1000 * 1000 * 1000)).toFixed(2)
-      : storageData.usage
-    const percent = (diskUsage / diskQuota) * 100
+    const { humanDiskQuota, humanDiskUsage, percentUsage } = makeDiskInfos(
+      storageData.usage,
+      storageData.quota
+    )
+
     return (
       <Page narrow>
         <PageTitle>{t('StorageView.title')}</PageTitle>
@@ -43,23 +42,23 @@ class StorageView extends Component {
           <div>
             <Typography variant="h4" gutterBottom>
               {t('StorageView.storage_phrase', {
-                diskUsage,
-                diskQuota
+                humanDiskUsage,
+                humanDiskQuota
               })}
             </Typography>
             <progress
               className={styles['set-storage-bar']}
-              value={diskUsage}
-              max={diskQuota}
+              value={humanDiskUsage}
+              max={humanDiskQuota}
               min="0"
             />
             <span
               className={classNames(
                 styles['set-bar-percent'],
-                percent < 5 ? styles['--dark'] : ''
+                +percentUsage < 5 ? styles['--dark'] : ''
               )}
             >
-              {`${percent.toFixed(2)}%`}
+              {`${percentUsage}%`}
             </span>
             <OffersLink storageData={storageData} />
           </div>

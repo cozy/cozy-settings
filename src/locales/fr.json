@@ -3,8 +3,8 @@
     "name": "Paramètres"
   },
   "DeleteAccount": {
-    "title" : "Suppression du compte",
-    "label" : "Vous pouvez supprimer votre Cozy à tout moment. Attention, une fois votre compte supprimé, vos données seront également supprimées, nous ne pourrons pas vous les renvoyer.",
+    "title": "Suppression du compte",
+    "label": "Vous pouvez supprimer votre Cozy à tout moment. Attention, une fois votre compte supprimé, vos données seront également supprimées, nous ne pourrons pas vous les renvoyer.",
     "button": {
       "label": "Supprimer mon compte"
     },
@@ -55,13 +55,26 @@
     }
   },
   "Nav": {
-    "profile": "Profil",
     "activated_services": "Services activés",
     "connected_devices": "Appareils connectés",
-    "sessions": "Connexions",
-    "storage": "Stockage",
     "email_notifications": "Notifications par e-mail",
-    "permissions": "Permissions"
+    "header_flagship": "Application Cozy",
+    "header_other": "Autres",
+    "header_general": "Général",
+    "permissions": "Permissions",
+    "primary_faq": "Manuel d'utilisation",
+    "primary_lock_screen": "Écran de verrouillage",
+    "primary_logout": "Déconnexion",
+    "primary_package": "Forfait",
+    "primary_photo_sync": "Synchronisation auto des photos",
+    "primary_save_journeys": "Mémoriser mes trajets",
+    "primary_support": "Support",
+    "primary_wifi_sync": "Synchroniser seulement en wifi",
+    "profile": "Profil",
+    "secondary_free": "Gratuit",
+    "secondary_used": "%{percent}% utilisé",
+    "sessions": "Connexions",
+    "storage": "Stockage"
   },
   "loading": {
     "loading": "Chargement"
@@ -91,12 +104,12 @@
       "server_error": "Une erreur s'est produite. Vos informations n'ont pas pu être enregistrées.",
       "empty": "Le champ ne peut pas être vide"
     },
-    "email" : {
-      "title" : "E-mail pour authentification et contact",
+    "email": {
+      "title": "E-mail pour authentification et contact",
       "label": "Cozy a besoin de votre e-mail pour vous envoyer des notifications et vous permettre de récupérer votre mot de passe.",
-      "error" : "L'adresse e-mail que vous avez entré ne semble pas correcte. Êtes-vous sûr(e) de l'avoir bien écrite sous la forme georges@abitbol.com ?"
+      "error": "L'adresse e-mail que vous avez entré ne semble pas correcte. Êtes-vous sûr(e) de l'avoir bien écrite sous la forme georges@abitbol.com ?"
     },
-    "twofa" : {
+    "twofa": {
       "title": {
         "activate": "Authentification en deux étapes",
         "desactivate": "Désactiver l'authentification en deux étapes",
@@ -134,8 +147,8 @@
         }
       }
     },
-    "public_name" : {
-      "title" : "Nom d'usage",
+    "public_name": {
+      "title": "Nom d'usage",
       "label": "Votre nom d'usage est utilisé lorsque vous partagez des fichiers avec d'autres utilisateurs de Cozy."
     },
     "tracking": {
@@ -183,12 +196,12 @@
         "cancel": "Annuler",
         "CTA": "Écraser les données"
       },
-	  "url": {
-		"label": "Lien de téléchargement"
-	  }
+      "url": {
+        "label": "Lien de téléchargement"
+      }
     },
-    "locale" : {
-      "title" : "Langue",
+    "locale": {
+      "title": "Langue",
       "label": "C’est la langue de votre Cozy.",
       "fr": "Français",
       "en": "Anglais",
@@ -249,7 +262,7 @@
     "title": "Stockage",
     "load_error": "Une erreur s'est produite lors du chargement de vos informations de stockage, merci de re-essayer plus tard.",
     "storage_title": "Espace total",
-    "storage_phrase": "%{diskUsage} Go sur %{diskQuota} Go",
+    "storage_phrase": "%{humanDiskUsage} Go sur %{humanDiskQuota} Go",
     "more_space": "Besoin de plus de stockage?",
     "see_offer": "Augmenter mon espace"
   },
@@ -330,7 +343,6 @@
     "title": "Bientôt",
     "description": "Cette fonctionnalité n’est pas encore disponible. Pour plus d’informations, contactez-nous s’il-vous-plaît à contact@cozycloud.cc"
   },
-
   "support": {
     "title": "Bonjour ! Pouvons-nous vous aider? ",
     "emailDetail": "Votre message sera envoyé depuis votre adresse courriel enregistrée dans les paramètres de votre Cozy.",
@@ -349,7 +361,6 @@
     "success": "👏 Votre message a bien été envoyé. Merci!",
     "error": "Une erreur s'est produite lors de l'envoi de votre message"
   },
-
   "claudy": {
     "title": "Comment utiliser votre Cozy ?",
     "actions": {
@@ -387,22 +398,19 @@
       }
     }
   },
-
   "errors": {
     "noEmailFound": "Aucune adresse courriel trouvée. Veuillez en ajouter une dans les paramètres de votre Cozy avant de réessayez."
   },
-
   "Toolbar": {
     "more": "Plus"
   },
-
   "Permissions": {
     "title": "Permissions",
     "failedRequest": "La requête a échoué",
     "read": "Lecture",
     "readAndWrite": "Lecture et Écriture",
     "write": "Écriture",
-    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions",
+    "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
     "applications": "Applications",
     "data": "Données"
   }

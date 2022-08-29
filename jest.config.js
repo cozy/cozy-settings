@@ -1,8 +1,8 @@
 module.exports = {
   testEnvironmentOptions: {
-     url: 'http://localhost/'
+    url: 'http://localhost/'
   },
-  moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx', 'styl'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'styl'],
   setupFilesAfterEnv: ['<rootDir>/test/jestLib/setup.js'],
   moduleDirectories: ['<rootDir>/src', 'node_modules'],
   moduleNameMapper: {
@@ -20,6 +20,6 @@ module.exports = {
     __TARGET__: 'browser',
     cozy: {}
   },
-  testEnvironment: "<rootDir>/test/jestLib/custom-test-env.js",
-  resolver: "<rootDir>/test/jestLib/resolver.js"
+  testEnvironment: '<rootDir>/test/jestLib/custom-test-env.js',
+  resolver: '<rootDir>/test/jestLib/resolver.js'
 }

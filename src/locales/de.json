@@ -243,7 +243,7 @@
     "title": "Speicher",
     "load_error": "Beim Laden deiner Speicherinformationen ist ein Fehler aufgetreten. Bitte versuche es später erneut.",
     "storage_title": "Gesamtspeicherplatz",
-    "storage_phrase": "%{diskUsage} GB von %{diskQuota} verwendet",
+    "storage_phrase": "%{humanDiskUsage} GB von %{humanDiskQuota} verwendet",
     "more_space": "Du brauchst mehr Speicherplatz?",
     "see_offer": "Meinen Speicherplatz upgraden"
   },
