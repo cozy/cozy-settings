@@ -55,13 +55,26 @@
     }
   },
   "Nav": {
-    "profile": "Profile",
     "activated_services": "Activated services",
     "connected_devices": "Connected devices",
-    "sessions": "Connections",
-    "storage": "Storage",
     "email_notifications": "E-mail notifications",
-    "permissions": "Permissions"
+    "header_flagship": "Application Cozy",
+    "header_general": "Général",
+    "header_other": "Autres",
+    "permissions": "Permissions",
+    "primary_faq": "Manuel d'utilisation",
+    "primary_lock_screen": "Écran de verrouillage",
+    "primary_logout": "Déconnexion",
+    "primary_package": "Forfait",
+    "primary_photo_sync": "Synchronisation auto des photos",
+    "primary_save_journeys": "Mémoriser mes trajets",
+    "primary_support": "Support",
+    "primary_wifi_sync": "Synchroniser seulement en wifi",
+    "profile": "Profile",
+    "secondary_free": "Gratuit",
+    "secondary_used": "utilisé",
+    "sessions": "Connections",
+    "storage": "Storage"
   },
   "loading": {
     "loading": "Loading"
@@ -249,7 +262,7 @@
     "title": "Storage",
     "load_error": "An error occured while loading your storage information, please try again later.",
     "storage_title": "Total space",
-    "storage_phrase": "%{diskUsage} GB of %{diskQuota} GB used",
+    "storage_phrase": "%{humanDiskUsage} GB of %{humanDiskQuota} GB used",
     "more_space": "Need more storage space?",
     "see_offer": "Upgrade my storage"
   },
@@ -397,7 +410,7 @@
     "read": "Read",
     "readAndWrite": "Read and Write",
     "write": "Write",
-    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions",
+    "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
     "applications": "Applications",
     "data": "Data"
   }

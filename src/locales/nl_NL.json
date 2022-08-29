@@ -249,7 +249,7 @@
     "title": "Opslag",
     "load_error": "Er is een fout opgetreden tijdens het laden van je opslaginformatie. Probeer het later opnieuw.",
     "storage_title": "Totale ruimte",
-    "storage_phrase": "%{diskUsage} GB van %{diskQuota} GB gebruikt",
+    "storage_phrase": "%{humanDiskUsage} GB van %{humanDiskQuota} GB gebruikt",
     "more_space": "Meer opslagruimte nodig?",
     "see_offer": "Mijn opslag uitbreiden"
   },

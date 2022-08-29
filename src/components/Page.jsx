@@ -2,10 +2,13 @@ import React from 'react'
 import cx from 'classnames'
 import styles from './Page.styl'
 
-const Page = ({ children, narrow }) => {
+const Page = ({ children, narrow, className }) => {
   return (
     <div
-      className={cx('u-mv-2 u-mh-2 u-pb-3', narrow && styles['Page--narrow'])}
+      className={cx(
+        className ?? 'u-mv-2 u-mh-2 u-pb-3',
+        narrow && styles['Page--narrow']
+      )}
     >
       {children}
     </div>

@@ -1,10 +1,15 @@
 import React from 'react'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useMatch, useNavigate } from 'react-router-dom'
+
 import CozyTheme from 'cozy-ui/transpiled/react/CozyTheme'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import IconButton from 'cozy-ui/transpiled/react/IconButton'
+import LeftIcon from 'cozy-ui/transpiled/react/Icons/Left'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 /* global cozy */
-const { BarCenter } = cozy.bar
+const { BarCenter, BarLeft } = cozy.bar
 
 const barTitleStyle = { height: '3rem', display: 'flex', alignItems: 'center' }
 const BarContainer = ({ children }) => {
@@ -12,14 +17,28 @@ const BarContainer = ({ children }) => {
 }
 const PageTitle = ({ children, ...rest }) => {
   const { isMobile } = useBreakpoints()
+  const navigate = useNavigate()
+  const isRoot = useMatch('/menu')
+  const navigateBack = () => navigate('..')
+
   return isMobile ? (
-    <BarCenter>
-      <CozyTheme variant="normal">
-        <BarContainer>
-          <Typography variant="h4">{children}</Typography>
-        </BarContainer>
-      </CozyTheme>
-    </BarCenter>
+    <>
+      {!isRoot && (
+        <BarLeft>
+          <IconButton onClick={navigateBack} size="large">
+            <Icon color="secondary" icon={LeftIcon} />
+          </IconButton>
+        </BarLeft>
+      )}
+
+      <BarCenter>
+        <CozyTheme variant="normal">
+          <BarContainer>
+            <Typography variant="h4">{children}</Typography>
+          </BarContainer>
+        </CozyTheme>
+      </BarCenter>
+    </>
   ) : (
     <Typography variant="h3" {...rest} gutterBottom>
       {children}
