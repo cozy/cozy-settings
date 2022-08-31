@@ -18,7 +18,17 @@
           "line": {
             "1": "Votre Cozy sera supprimé",
             "2": "Vous ne pourrez plus accéder à votre Cozy",
-            "3": "L'ensemble de vos données seront supprimées"
+            "3": "L'ensemble de vos données seront supprimées",
+            "4": "Veuillez saisir votre mot de passe pour valider cette action :"
+          }
+        },
+        "password": {
+          "hide": "Masquer",
+          "show": "Afficher",
+          "required": "Ce champs est obligatoire.",
+          "errors": {
+            "403": "Votre mot de passe ne semble pas correct",
+            "others": "Une erreur s'est produite, veuillez réessayer"
           }
         },
         "button": {
@@ -47,7 +57,7 @@
     },
     "request": {
       "mail": {
-        "subject": "Demande de suppression de %{domain}"
+        "subject": "Motifs de la suppression du Cozy %{domain}"
       }
     },
     "success": {
