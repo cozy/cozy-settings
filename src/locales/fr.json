@@ -59,9 +59,10 @@
     "connected_devices": "Appareils connectés",
     "email_notifications": "Notifications par e-mail",
     "header_flagship": "Application Cozy",
-    "header_other": "Autres",
     "header_general": "Général",
+    "header_other": "Autres",
     "permissions": "Permissions",
+    "primary_biometry": "Déverrouiller avec mes empreintes biométriques",
     "primary_faq": "Manuel d'utilisation",
     "primary_lock_screen": "Écran de verrouillage",
     "primary_logout": "Déconnexion",
@@ -338,6 +339,9 @@
     "wrong_two_fa_code": "Le code d'authentification en deux étapes fourni semble mauvais.",
     "reload": "Votre mot de passe a été changé. La page va se recharger afin que le changement prenne effet.",
     "redirect": "Votre mot de passe a été changé. Vous allez être redirigé(e)."
+  },
+  "LockScreenView": {
+    "title": "Écran de verrouillage"
   },
   "soon": {
     "title": "Bientôt",

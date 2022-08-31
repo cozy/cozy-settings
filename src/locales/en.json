@@ -58,12 +58,13 @@
     "activated_services": "Activated services",
     "connected_devices": "Connected devices",
     "email_notifications": "E-mail notifications",
-    "header_flagship": "Application Cozy",
+    "header_flagship": "Cozy App",
     "header_general": "Général",
     "header_other": "Autres",
     "permissions": "Permissions",
+    "primary_biometry": "Unlock with my biometric fingerprints",
     "primary_faq": "Manuel d'utilisation",
-    "primary_lock_screen": "Écran de verrouillage",
+    "primary_lock_screen": "Unlock screen",
     "primary_logout": "Déconnexion",
     "primary_package": "Forfait",
     "primary_photo_sync": "Synchronisation auto des photos",
@@ -338,6 +339,9 @@
     "wrong_two_fa_code": "The provided two factor code seems wrong.",
     "reload": "Your password has been changed. The page is going to reload so the change can take effect.",
     "redirect": "Your password has been changed. You are going to be redirected."
+  },
+  "LockScreenView": {
+    "title": "Unlock screen"
   },
   "soon": {
     "title": "Coming soon",
