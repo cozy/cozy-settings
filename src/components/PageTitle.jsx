@@ -4,7 +4,7 @@ import { useMatch, useNavigate } from 'react-router-dom'
 import CozyTheme from 'cozy-ui/transpiled/react/CozyTheme'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
-import LeftIcon from 'cozy-ui/transpiled/react/Icons/Left'
+import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
@@ -25,8 +25,8 @@ const PageTitle = ({ children, ...rest }) => {
     <>
       {!isRoot && (
         <BarLeft>
-          <IconButton onClick={navigateBack} size="large">
-            <Icon color="secondary" icon={LeftIcon} />
+          <IconButton onClick={navigateBack} size="large" title="Previous">
+            <Icon color="secondary" icon={PreviousIcon} />
           </IconButton>
         </BarLeft>
       )}
