@@ -57,7 +57,7 @@
     },
     "request": {
       "mail": {
-        "subject": "Demande de suppression de %{domain}"
+        "subject": "Motifs de la suppression du Cozy %{domain}"
       }
     },
     "success": {

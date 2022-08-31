@@ -57,7 +57,7 @@
     },
     "request": {
       "mail": {
-        "subject": "Deletion request for %{domain}"
+        "subject": "Reasons for removing the Cozy %{domain}"
       }
     },
     "success": {
