@@ -7,6 +7,7 @@ import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 /* global cozy */
 const { BarCenter, BarLeft } = cozy.bar
@@ -16,16 +17,21 @@ const BarContainer = ({ children }) => {
   return <div style={barTitleStyle}>{children}</div>
 }
 const PageTitle = ({ children, ...rest }) => {
-  const { isMobile } = useBreakpoints()
-  const navigate = useNavigate()
   const isRoot = useMatch('/menu')
+  const navigate = useNavigate()
   const navigateBack = () => navigate('..')
+  const { isMobile } = useBreakpoints()
+  const { t } = useI18n()
 
   return isMobile ? (
     <>
       {!isRoot && (
         <BarLeft>
-          <IconButton onClick={navigateBack} size="large" title="Previous">
+          <IconButton
+            onClick={navigateBack}
+            size="large"
+            title={t('Accessibility.previous')}
+          >
             <Icon color="secondary" icon={PreviousIcon} />
           </IconButton>
         </BarLeft>

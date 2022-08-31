@@ -417,5 +417,8 @@
     "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
     "applications": "Applications",
     "data": "Données"
+  },
+  "Accessibility": {
+    "previous": "Précédent"
   }
 }
