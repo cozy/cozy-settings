@@ -6,7 +6,7 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
 
-import { sendDeleteAccountRequest } from 'actions/email'
+import { sendDeleteAccountReasonEmail } from 'actions/email'
 import { getStackDomain } from 'actions/domUtils'
 
 const DONE = 'done'
@@ -42,7 +42,7 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
     setStatus(SENDING)
 
     try {
-      await sendDeleteAccountRequest(
+      await sendDeleteAccountReasonEmail(
         client,
         t('DeleteAccount.request.mail.subject', { domain }),
         reason.substring(0, REASON_MAXLENGTH)
