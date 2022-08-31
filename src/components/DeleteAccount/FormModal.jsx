@@ -8,6 +8,7 @@ import Textarea from 'cozy-ui/transpiled/react/Textarea'
 
 import { sendDeleteAccountReasonEmail } from 'actions/email'
 import { getStackDomain } from 'actions/domUtils'
+import { sendDeleteAccountRequest } from './helpers'
 
 const DONE = 'done'
 const ERRORED = 'errored'
@@ -47,6 +48,7 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
         t('DeleteAccount.request.mail.subject', { domain }),
         reason.substring(0, REASON_MAXLENGTH)
       )
+      await sendDeleteAccountRequest(client)
       return handleSuccess()
     } catch (error) {
       return handleError(error)
