@@ -18,7 +18,17 @@
           "line": {
             "1": "Your Cozy will be removed",
             "2": "Your will not be able to access your Cozy anymore",
-            "3": "All your data will be removed"
+            "3": "All your data will be removed",
+            "4": "Please enter your password to validate this action:"
+          }
+        },
+        "password": {
+          "hide": "Hide",
+          "show": "Show",
+          "required": "This field is required",
+          "errors": {
+            "403": "Your password doesn't seem to be correct",
+            "others": "An error has occurred, please try again"
           }
         },
         "button": {
