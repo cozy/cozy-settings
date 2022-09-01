@@ -30,7 +30,7 @@ export const Sidebar = (): JSX.Element => {
   const offersLink = useOffersLink()
 
   return (
-    <nav role="navigation">
+    <nav role="navigation" style={{ minWidth: '362px' }}>
       <List>
         {isFlagshipApp() ||
           (flag('settings.flagship-mode') && (

@@ -20,10 +20,10 @@ const PageTitle = ({ children, ...rest }) => {
   const isRoot = useMatch('/menu')
   const navigate = useNavigate()
   const navigateBack = () => navigate('..')
-  const { isMobile } = useBreakpoints()
+  const { isMobile, isTablet } = useBreakpoints()
   const { t } = useI18n()
 
-  return isMobile ? (
+  return isMobile || isTablet ? (
     <>
       {!isRoot && (
         <BarLeft>
