@@ -1,11 +1,11 @@
-import React from 'react'
-import makeStyles from 'cozy-ui/transpiled/react/helpers/makeStyles'
-import mergeClasses from '@material-ui/styles/mergeClasses'
-
-import Collapse from 'cozy-ui/transpiled/react/Collapse'
 import MuiTreeItem from '@material-ui/lab/TreeItem'
 import MuiTreeView from '@material-ui/lab/TreeView'
+import React from 'react'
+import mergeClasses from '@material-ui/styles/mergeClasses'
+import { makeStyles } from '@material-ui/core/styles'
+
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
+import Collapse from 'cozy-ui/transpiled/react/Collapse'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 
 const useItemClasses = divider =>
