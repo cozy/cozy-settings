@@ -62,7 +62,7 @@ declare module 'cozy-ui/transpiled/react/I18n' {
   export { useI18n }
 }
 
-declare module 'cozy-ui/transpiled/react/switch' {
+declare module 'cozy-ui/transpiled/react/MuiCozyTheme/Switch' {
   import Switch from '@material-ui/core/Switch'
   export default Switch
 }

@@ -15,6 +15,7 @@ import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'
 import { MenuItemButton } from 'components/menu/MenuItemButton'
 import { MenuItemNavLink } from 'components/menu/MenuItemNavLink'
 import { MenuList } from 'components/menu/MenuList'
+import { isFlagshipApp } from 'cozy-device-helper'
 import { routes } from 'constants/routes'
 import { useDiskPercentage } from 'hooks/useDiskPercentage'
 import { useLogout } from 'hooks/useLogout'
@@ -27,6 +28,17 @@ export const Sidebar = (): JSX.Element => {
   return (
     <nav role="navigation">
       <List>
+        {isFlagshipApp() ||
+          (flag('settings.flagship-mode') && (
+            <MenuList title={t('Nav.header_flagship')}>
+              <MenuItemNavLink
+                to={routes.lockScreen}
+                primary={t('Nav.primary_lock_screen')}
+                icon={PeopleIcon} // @todo icon
+              />
+            </MenuList>
+          ))}
+
         <MenuList title={t('Nav.header_general')}>
           <MenuItemNavLink
             to={routes.profile}

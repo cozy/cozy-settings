@@ -22,7 +22,7 @@ jest.mock('cozy-flags')
 describe('Sidebar', () => {
   it('should display Permission table when flag is on', () => {
     // given
-    mockFlag.mockReturnValueOnce(true)
+    mockFlag.mockReturnValue(true)
 
     // when
     const { queryByText } = render(<Sidebar />)
@@ -33,7 +33,7 @@ describe('Sidebar', () => {
 
   it('should not display Permission table when flag is off', () => {
     // given
-    mockFlag.mockReturnValueOnce(false)
+    mockFlag.mockReturnValue(false)
 
     // when
     const { queryByText } = render(<Sidebar />)

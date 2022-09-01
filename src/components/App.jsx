@@ -21,8 +21,10 @@ import Profile from 'containers/Profile'
 import Sessions from 'containers/Sessions'
 import Sidebar from 'components/Sidebar'
 import Storage from 'containers/Storage'
+import { LockScreen } from 'components/pages/LockScreen'
 import { Menu } from 'components/pages/Menu'
 import { initFlags } from 'lib/flags'
+import { routes } from 'constants/routes'
 
 initFlags()
 
@@ -49,6 +51,7 @@ export class App extends Component {
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/storage" element={<Storage />} />
             <Route path="/permissions/:page" element={<PermissionsTab />} />
+            <Route path={routes.lockScreen} element={<LockScreen />} />
             <Route
               path="/permissions/slug/:app"
               element={<PermissionsApplication />}
