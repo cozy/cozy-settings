@@ -60,7 +60,7 @@
     "cozy-keys-lib": "^3.11.1",
     "cozy-realtime": "3.13.1",
     "cozy-sharing": "3.10.0",
-    "cozy-ui": "^70.6.2",
+    "cozy-ui": "74.0.0",
     "piwik-react-router": "0.12.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",

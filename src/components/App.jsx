@@ -30,19 +30,21 @@ initFlags()
 
 export class App extends Component {
   render() {
-    const { isMobile } = this.props
+    const { isMobile, isTablet } = this.props
+    const isSmallView = isMobile || isTablet
+    const isBigView = !isSmallView
 
     return (
       <Layout>
         {App.renderExtra()}
         <FlagSwitcher />
         <Alerter />
-        {!isMobile && <Sidebar />}
+        {isBigView && <Sidebar />}
         <RealTimeQueries doctype="io.cozy.oauth.clients" />
 
         <Main>
           <Routes>
-            {isMobile && <Route path="/menu" element={<Menu />} />}
+            {isSmallView && <Route path="/menu" element={<Menu />} />}
             <Route path="/redirect" element={<IntentRedirect />} />
             <Route path="/profile/*" element={<Profile />} />
             <Route path="/profile/password" element={<Passphrase />} />
@@ -68,7 +70,7 @@ export class App extends Component {
             <Route
               path="*"
               element={
-                <Navigate to={isMobile ? '/menu' : '/profile'} replace />
+                <Navigate to={isSmallView ? '/menu' : '/profile'} replace />
               }
             />
           </Routes>
@@ -87,9 +89,9 @@ const mapStateToProps = state => ({
 })
 
 const AppWithBreakpoints = props => {
-  const { isMobile } = useBreakpoints()
+  const { isMobile, isTablet } = useBreakpoints()
 
-  return <App {...props} isMobile={isMobile} />
+  return <App {...props} isMobile={isMobile} isTablet={isTablet} />
 }
 
 export default hot(module)(
