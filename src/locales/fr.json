@@ -81,6 +81,7 @@
     "primary_save_journeys": "Mémoriser mes trajets",
     "primary_support": "Support",
     "primary_wifi_sync": "Synchroniser seulement en wifi",
+    "primary_plan": "Forfait",
     "profile": "Profil",
     "secondary_free": "Gratuit",
     "secondary_used": "%{percent}% utilisé",

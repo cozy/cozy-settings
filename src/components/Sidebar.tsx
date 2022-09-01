@@ -19,11 +19,13 @@ import { isFlagshipApp } from 'cozy-device-helper'
 import { routes } from 'constants/routes'
 import { useDiskPercentage } from 'hooks/useDiskPercentage'
 import { useLogout } from 'hooks/useLogout'
+import { useOffersLink } from 'hooks/useOffersLink'
 
 export const Sidebar = (): JSX.Element => {
   const { t } = useI18n()
   const percent = useDiskPercentage()
   const logout = useLogout()
+  const offersLink = useOffersLink()
 
   return (
     <nav role="navigation">
@@ -45,6 +47,15 @@ export const Sidebar = (): JSX.Element => {
             primary={t('Nav.profile')}
             icon={PeopleIcon}
           />
+
+          {flag('settings.enable_premium_links') && offersLink && (
+            <MenuItemAnchor
+              primary={t('Nav.primary_plan')}
+              href={offersLink}
+              target="_blank"
+              icon={UnknowIcon}
+            />
+          )}
 
           <MenuItemNavLink
             to={routes.connectedDevices}
