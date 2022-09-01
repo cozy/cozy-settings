@@ -1,10 +1,12 @@
 import React from 'react'
 
+import CozyCircle from 'cozy-ui/transpiled/react/Icons/CozyCircle'
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import GlobeIcon from 'cozy-ui/transpiled/react/Icons/Globe'
 import GraphCircle from 'cozy-ui/transpiled/react/Icons/GraphCircle'
 import HandIcon from 'cozy-ui/transpiled/react/Icons/Hand'
 import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
+import LockScreen from 'cozy-ui/transpiled/react/Icons/LockScreen'
 import Logout from 'cozy-ui/transpiled/react/Icons/Logout'
 import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
 import UnknowIcon from 'cozy-ui/transpiled/react/Icons/Unknow'
@@ -36,7 +38,7 @@ export const Sidebar = (): JSX.Element => {
               <MenuItemNavLink
                 to={routes.lockScreen}
                 primary={t('Nav.primary_lock_screen')}
-                icon={PeopleIcon} // @todo icon
+                icon={LockScreen}
               />
             </MenuList>
           ))}
@@ -53,7 +55,7 @@ export const Sidebar = (): JSX.Element => {
               primary={t('Nav.primary_plan')}
               href={offersLink}
               target="_blank"
-              icon={UnknowIcon}
+              icon={CozyCircle}
             />
           )}
 
