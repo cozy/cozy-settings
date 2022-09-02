@@ -7,7 +7,7 @@ import AppLike from 'test/AppLike'
 jest.mock('react-router-dom', () => {
   return {
     ...jest.requireActual('react-router-dom'),
-    useParams: () => ({ app: 'Drive', permission: 'apps' }),
+    useParams: () => ({ slug: 'Drive', permission: 'apps' }),
     Link:
       // eslint-disable-next-line react/display-name
       ({ to, children }) => (
@@ -98,7 +98,7 @@ describe('Permission', () => {
     useQuery.mockReturnValueOnce(queryResultKonnectors)
   })
 
-  it('should display appName when query has been loaded', () => {
+  it('should display slugName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
     const { container } = render(
       <AppLike>
