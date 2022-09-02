@@ -7,7 +7,8 @@ import DataList from './DataList'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider/index'
 import { routes } from 'constants/routes'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import withAllLocales from '../../lib/withAllLocales'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 function a11yProps(index) {
   return {
@@ -30,37 +31,40 @@ const TabPanel = props => {
   )
 }
 
-const PermissionsTab = () => {
-  const { t } = useI18n()
+const PermissionsTab = ({ t }) => {
   const { page } = useParams()
   const navigate = useNavigate()
-  const handleChange = (event, value) => navigate(`/permissions/${value}`)
+  const handleChange = (event, value) => {
+    return navigate(`/permissions/${value}`)
+  }
 
   return (
-    <Page narrow>
-      <Tabs value={page} onChange={handleChange} segmented>
-        <Tab
-          value="slug"
-          label={t('Permissions.applications')}
-          href={`#${routes.appList}`}
-          {...a11yProps(0)}
-        />
-        <Tab
-          value="data"
-          label={t('Permissions.data')}
-          href={`#${routes.dataList}`}
-          {...a11yProps(1)}
-        />
-      </Tabs>
-      <Divider className="u-mb-1" />
-      <TabPanel value={page} index="slug">
-        <AppList />
-      </TabPanel>
-      <TabPanel value={page} index="data">
-        <DataList />
-      </TabPanel>
-    </Page>
+    <BreakpointsProvider>
+      <Page narrow>
+        <Tabs value={page} onChange={handleChange} segmented>
+          <Tab
+            value="slug"
+            label={t('Permissions.applications')}
+            href={`#${routes.appList}`}
+            {...a11yProps(0)}
+          />
+          <Tab
+            value="data"
+            label={t('Permissions.data')}
+            href={`#${routes.dataList}`}
+            {...a11yProps(1)}
+          />
+        </Tabs>
+        <Divider className="u-mb-1" />
+        <TabPanel value={page} index="slug">
+          <AppList />
+        </TabPanel>
+        <TabPanel value={page} index="data">
+          <DataList />
+        </TabPanel>
+      </Page>
+    </BreakpointsProvider>
   )
 }
 
-export default PermissionsTab
+export default withAllLocales(PermissionsTab)

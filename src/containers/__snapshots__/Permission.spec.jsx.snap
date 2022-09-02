@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Permission should display appName when query has been loaded 1`] = `
+exports[`Permission should display slugName when query has been loaded 1`] = `
 <div>
   <div
     data-narrow="true"
