@@ -18,7 +18,17 @@
           "line": {
             "1": "Dein Cozy wird gelöscht",
             "2": "Du wirst nie mehr auf dein Cozy zugreifen können",
-            "3": "All deine Daten werden gelöscht"
+            "3": "All deine Daten werden gelöscht",
+            "4": "Bitte geben Sie Ihr Passwort ein, um diese Aktion zu bestätigen :"
+          }
+        },
+        "password": {
+          "hide": "Ausblenden",
+          "show": "Anzeigen",
+          "required": "Dieses Feld ist obligatorisch.",
+          "errors": {
+            "passphrase": "Ihr Passwort scheint nicht korrekt zu sein",
+            "others": "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
           }
         },
         "button": {

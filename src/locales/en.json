@@ -27,7 +27,7 @@
           "show": "Show",
           "required": "This field is required",
           "errors": {
-            "403": "Your password doesn't seem to be correct",
+            "passphrase": "Your password doesn't seem to be correct",
             "others": "An error has occurred, please try again"
           }
         },

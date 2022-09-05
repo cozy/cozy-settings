@@ -27,7 +27,7 @@
           "show": "Afficher",
           "required": "Ce champs est obligatoire.",
           "errors": {
-            "403": "Votre mot de passe ne semble pas correct",
+            "passphrase": "Votre mot de passe ne semble pas correct",
             "others": "Une erreur s'est produite, veuillez réessayer"
           }
         },
