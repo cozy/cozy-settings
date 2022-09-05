@@ -1,6 +1,11 @@
 import { createMockClient } from 'cozy-client'
 import { submitPassword, containerForTesting } from './helpers'
 
+jest.mock('lib/client', () => {
+  const CozyClient = jest.requireActual('cozy-client').default
+  return new CozyClient({})
+})
+
 const client = createMockClient({})
 const primaryAction = jest.fn()
 const setError = jest.fn()
