@@ -15,8 +15,13 @@ jest.mock('actions/domUtils', () => ({
 }))
 
 jest.mock('actions/email', () => ({
-  sendDeleteAccountRequest: jest.fn()
+  sendDeleteAccountReasonEmail: jest.fn()
 }))
+
+jest.mock('lib/client', () => {
+  const CozyClient = jest.requireActual('cozy-client').default
+  return new CozyClient({})
+})
 
 const TestI18n = ({ children }) => {
   return (
@@ -38,7 +43,7 @@ describe('FormModal component', () => {
   })
 
   it('should read correctly Cozy Domain on send action ', async () => {
-    const { sendDeleteAccountRequest } = require('actions/email')
+    const { sendDeleteAccountReasonEmail } = require('actions/email')
 
     const root = render(
       <BreakpointsProvider>
@@ -50,7 +55,7 @@ describe('FormModal component', () => {
 
     fireEvent.click(root.getByText('Send'))
 
-    expect(sendDeleteAccountRequest.mock.calls[0][1]).toEqual(
+    expect(sendDeleteAccountReasonEmail.mock.calls[0][1]).toEqual(
       expect.stringContaining(mockDomain)
     )
     jest.dontMock('actions/email')

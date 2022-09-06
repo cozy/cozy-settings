@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Page from 'components/Page'
-import { Tabs, Tab } from 'cozy-ui/transpiled/react/MuiTabs'
+import Tabs from 'cozy-ui/transpiled/react/Tabs'
+import Tab from 'cozy-ui/transpiled/react/Tab'
 import AppList from './AppList'
 import DataList from './DataList'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider/index'
 import { routes } from 'constants/routes'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import withAllLocales from '../../lib/withAllLocales'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 function a11yProps(index) {
   return {
@@ -28,35 +30,40 @@ const TabPanel = props => {
     </div>
   )
 }
+
 const PermissionsTab = ({ t }) => {
-  const { page: slugOrData } = useParams()
-  const [tab, setTab] = useState(slugOrData)
-  const handleChange = (event, value) => setTab(value)
+  const { page } = useParams()
+  const navigate = useNavigate()
+  const handleChange = (event, value) => {
+    return navigate(`/permissions/${value}`)
+  }
 
   return (
-    <Page narrow>
-      <Tabs value={tab} onChange={handleChange}>
-        <Tab
-          value="slug"
-          label={t('Permissions.applications')}
-          href={`#${routes.appList}`}
-          {...a11yProps(0)}
-        />
-        <Tab
-          value="data"
-          label={t('Permissions.data')}
-          href={`#${routes.dataList}`}
-          {...a11yProps(1)}
-        />
-      </Tabs>
-      <Divider className="u-mb-1" />
-      <TabPanel value={tab} index="slug">
-        <AppList />
-      </TabPanel>
-      <TabPanel value={tab} index="data">
-        <DataList />
-      </TabPanel>
-    </Page>
+    <BreakpointsProvider>
+      <Page narrow>
+        <Tabs value={page} onChange={handleChange} segmented>
+          <Tab
+            value="slug"
+            label={t('Permissions.applications')}
+            href={`#${routes.appList}`}
+            {...a11yProps(0)}
+          />
+          <Tab
+            value="data"
+            label={t('Permissions.data')}
+            href={`#${routes.dataList}`}
+            {...a11yProps(1)}
+          />
+        </Tabs>
+        <Divider className="u-mb-1" />
+        <TabPanel value={page} index="slug">
+          <AppList />
+        </TabPanel>
+        <TabPanel value={page} index="data">
+          <DataList />
+        </TabPanel>
+      </Page>
+    </BreakpointsProvider>
   )
 }
 

@@ -18,7 +18,17 @@
           "line": {
             "1": "Your Cozy will be removed",
             "2": "Your will not be able to access your Cozy anymore",
-            "3": "All your data will be removed"
+            "3": "All your data will be removed",
+            "4": "Please enter your password to validate this action:"
+          }
+        },
+        "password": {
+          "hide": "Hide",
+          "show": "Show",
+          "required": "This field is required",
+          "errors": {
+            "passphrase": "Your password doesn't seem to be correct",
+            "others": "An error has occurred, please try again"
           }
         },
         "button": {
@@ -47,7 +57,7 @@
     },
     "request": {
       "mail": {
-        "subject": "Deletion request for %{domain}"
+        "subject": "Reasons for removing the Cozy %{domain}"
       }
     },
     "success": {
@@ -55,13 +65,28 @@
     }
   },
   "Nav": {
-    "profile": "Profile",
     "activated_services": "Activated services",
     "connected_devices": "Connected devices",
-    "sessions": "Connections",
-    "storage": "Storage",
     "email_notifications": "E-mail notifications",
-    "permissions": "Permissions"
+    "header_flagship": "Cozy App",
+    "header_general": "Général",
+    "header_other": "Autres",
+    "permissions": "Permissions",
+    "primary_biometry": "Unlock with my biometric fingerprints",
+    "primary_faq": "Manuel d'utilisation",
+    "primary_lock_screen": "Unlock screen",
+    "primary_logout": "Déconnexion",
+    "primary_package": "Forfait",
+    "primary_photo_sync": "Synchronisation auto des photos",
+    "primary_save_journeys": "Mémoriser mes trajets",
+    "primary_support": "Support",
+    "primary_wifi_sync": "Synchroniser seulement en wifi",
+    "primary_plan": "Forfait",
+    "profile": "Profile",
+    "secondary_free": "Gratuit",
+    "secondary_used": "utilisé",
+    "sessions": "Connections",
+    "storage": "Storage"
   },
   "loading": {
     "loading": "Loading"
@@ -249,7 +274,7 @@
     "title": "Storage",
     "load_error": "An error occured while loading your storage information, please try again later.",
     "storage_title": "Total space",
-    "storage_phrase": "%{diskUsage} GB of %{diskQuota} GB used",
+    "storage_phrase": "%{humanDiskUsage} GB of %{humanDiskQuota} GB used",
     "more_space": "Need more storage space?",
     "see_offer": "Upgrade my storage"
   },
@@ -326,6 +351,9 @@
     "reload": "Your password has been changed. The page is going to reload so the change can take effect.",
     "redirect": "Your password has been changed. You are going to be redirected."
   },
+  "LockScreenView": {
+    "title": "Unlock screen"
+  },
   "soon": {
     "title": "Coming soon",
     "description": "This feature is not available yet. For more information, please contact us at contact@cozycloud.cc"
@@ -397,9 +425,12 @@
     "read": "Read",
     "readAndWrite": "Read and Write",
     "write": "Write",
-    "numberOfPermissions" : "%{smart_count} permission |||| %{smart_count} permissions",
+    "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
     "applications": "Applications",
     "data": "Data",
     "open": "Open"
+  },
+  "Accessibility": {
+    "previous": "Previous"
   }
 }

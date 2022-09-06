@@ -36,6 +36,18 @@ jest.mock('cozy-ui/transpiled/react/Spinner', () => {
   return ({ size }) => <div data-testid="Spinner" data-size={size}></div>
 })
 
+jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
+  return {
+    __esModule: true,
+    default: ({ children }) => (
+      <div data-testid="NavigationList">{children}</div>
+    ),
+    NavigationListSection: ({ children }) => (
+      <div data-testid="NavigationListSection">{children}</div>
+    )
+  }
+})
+
 jest.mock('cozy-ui/transpiled/react/AppIcon', () => {
   // eslint-disable-next-line react/display-name
   return () => <div data-testid="AppIcon"></div>
@@ -98,7 +110,14 @@ describe('AppList', () => {
       fetchStatus: 'loaded',
       data: [
         {
-          permissions: {},
+          permissions: {
+            apps: {
+              type: 'io.cozy.apps',
+              description:
+                'Required by the cozy-bar to display the icons of the apps',
+              verbs: ['GET']
+            }
+          },
           slug: 'alan',
           name: 'Alan'
         }

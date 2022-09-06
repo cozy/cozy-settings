@@ -51,7 +51,7 @@ $ cd cozy-settings
 $ yarn run watch:server
 ```
 
-and point your browser to http://localhost:8090.
+and point your browser to http://localhost:8090. :warning: Be aware that password based actions only works on .localhost domain.
 
 
 ### Run it inside the VM

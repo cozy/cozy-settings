@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-redeclare
 /* global fetch */
 
+import { FallbackQuota } from 'lib/makeDiskInfos'
 import emailHelper from 'lib/emailHelper'
 import { getStackDomain, getStackToken } from './domUtils'
 
@@ -118,7 +119,7 @@ export const fetchStorageData = () => {
           storageData: {
             usage: parseInt(json.data.attributes.used, 10),
             // TODO Better handling when no quota provided
-            quota: parseInt(json.data.attributes.quota, 10) || 100000000000,
+            quota: parseInt(json.data.attributes.quota, 10) || FallbackQuota,
             isLimited: json.data.attributes.is_limited,
             offersLink
           }

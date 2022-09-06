@@ -11,7 +11,7 @@ describe('withAllLocales', () => {
       return (
         <div>
           <p>{t('Permissions.write')}</p>
-          <p>{t('CozyClient.Permissions.io.cozy.accounts')}</p>
+          <p>{t('CozyPermissions.Permissions.io.cozy.accounts')}</p>
         </div>
       )
     }

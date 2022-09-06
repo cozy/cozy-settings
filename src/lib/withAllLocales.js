@@ -3,7 +3,7 @@ import withLocales from 'cozy-ui/transpiled/react/I18n/withLocales'
 const dictRequire = lang => {
   const cozyClientLocales = require(`cozy-client/dist/models/doctypes/locales/${lang}.json`)
   const cozySettingsLocales = require(`../locales/${lang}.json`)
-  return { CozyClient: cozyClientLocales, ...cozySettingsLocales }
+  return { CozyPermissions: cozyClientLocales, ...cozySettingsLocales }
 }
 
 /**

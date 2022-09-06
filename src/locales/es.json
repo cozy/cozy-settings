@@ -18,7 +18,17 @@
           "line": {
             "1": "Su Cozy ha sido eliminado",
             "2": "Usted no podrá acceder mùas a su Cozy",
-            "3": "Todos sus datos han sido eliminados"
+            "3": "Todos sus datos han sido eliminados",
+            "4": "Por favor, introduzca su contraseña para validar esta acción:"
+          }
+        },
+        "password": {
+          "hide": "Ocultar",
+          "show": "Ver",
+          "required": "Este campo es obligatorio.",
+          "errors": {
+            "passphrase": "Su contraseña no parece ser correcta",
+            "others": "Se ha producido un error, inténtelo de nuevo"
           }
         },
         "button": {
@@ -243,7 +253,7 @@
     "title": "Almacenamiento",
     "load_error": "Ha ocurrido un error al cargar la información de su almacenamiento, por favor vuelva a ensayar más tarde.",
     "storage_title": "Espacio total",
-    "storage_phrase": "%{diskUsage} GB de %{diskQuota} GB usado",
+    "storage_phrase": "%{humanDiskUsage} GB de %{humanDiskQuota} GB usado",
     "more_space": "¿Necesita más espacio de almacenamiento?",
     "see_offer": "Actualizar mi almacenamiento"
   },

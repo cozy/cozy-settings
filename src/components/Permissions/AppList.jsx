@@ -4,7 +4,6 @@ import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
@@ -12,6 +11,9 @@ import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { routes } from 'constants/routes'
+import NavigationList, {
+  NavigationListSection
+} from 'cozy-ui/transpiled/react/NavigationList'
 
 import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import CozyClient, {
@@ -48,34 +50,39 @@ const AppList = () => {
           {t('Permissions.failedRequest')}
         </Typography>
       ) : (
-        <List>
-          {queryResultApps.data
-            .concat(queryResultKonnectors.data)
-            .sort((a, b) => a.slug.localeCompare(b.slug))
-            .filter(a => !toNotDisplay.includes(a.slug))
-            .map(appOrKonnector => {
-              return (
-                <div key={appOrKonnector._id}>
-                  <Link to={`${routes.appList}/${appOrKonnector.slug}`}>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <AppIcon app={appOrKonnector} />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={appOrKonnector.name}
-                        secondary={t('Permissions.numberOfPermissions', {
-                          smart_count: Object.entries(
-                            appOrKonnector.permissions
-                          ).length
-                        })}
-                      />
-                    </ListItem>
-                  </Link>
-                  <Divider />
-                </div>
-              )
-            })}
-        </List>
+        <NavigationList>
+          <NavigationListSection>
+            {queryResultApps.data
+              .concat(queryResultKonnectors.data)
+              .sort((a, b) => a.slug.localeCompare(b.slug))
+              .filter(a => !toNotDisplay.includes(a.slug))
+              .map(appOrKonnector => {
+                return (
+                  <div key={appOrKonnector.name}>
+                    <Link
+                      to={`${routes.appList}/${appOrKonnector.slug}`}
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <ListItem button>
+                        <ListItemIcon>
+                          <AppIcon app={appOrKonnector} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={appOrKonnector.name}
+                          secondary={t('Permissions.numberOfPermissions', {
+                            smart_count: Object.entries(
+                              appOrKonnector.permissions
+                            ).length
+                          })}
+                        />
+                      </ListItem>
+                    </Link>
+                    <Divider />
+                  </div>
+                )
+              })}
+          </NavigationListSection>
+        </NavigationList>
       )}
     </Page>
   )

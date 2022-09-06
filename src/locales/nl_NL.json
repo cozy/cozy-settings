@@ -18,7 +18,17 @@
           "line": {
             "1": "Je Cozy zal worden verwijderd.",
             "2": "Hierdoor heb je geen toegang meer tot je Cozy.",
-            "3": "Al je gegevens worden verwijderd."
+            "3": "Al je gegevens worden verwijderd.",
+            "4": "Voer uw wachtwoord in om deze actie te valideren:"
+          }
+        },
+        "password": {
+          "hide": "Verberg",
+          "show": "Bekijk",
+          "required": "Dit veld is verplicht.",
+          "errors": {
+            "passphrase": "Uw wachtwoord lijkt niet juist te zijn",
+            "others": "Er is een fout opgetreden, probeer het opnieuw"
           }
         },
         "button": {
@@ -249,7 +259,7 @@
     "title": "Opslag",
     "load_error": "Er is een fout opgetreden tijdens het laden van je opslaginformatie. Probeer het later opnieuw.",
     "storage_title": "Totale ruimte",
-    "storage_phrase": "%{diskUsage} GB van %{diskQuota} GB gebruikt",
+    "storage_phrase": "%{humanDiskUsage} GB van %{humanDiskQuota} GB gebruikt",
     "more_space": "Meer opslagruimte nodig?",
     "see_offer": "Mijn opslag uitbreiden"
   },
