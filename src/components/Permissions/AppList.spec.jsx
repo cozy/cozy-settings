@@ -36,6 +36,18 @@ jest.mock('cozy-ui/transpiled/react/Spinner', () => {
   return ({ size }) => <div data-testid="Spinner" data-size={size}></div>
 })
 
+jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
+  return {
+    __esModule: true,
+    default: ({ children }) => (
+      <div data-testid="NavigationList">{children}</div>
+    ),
+    NavigationListSection: ({ children }) => (
+      <div data-testid="NavigationListSection">{children}</div>
+    )
+  }
+})
+
 jest.mock('cozy-ui/transpiled/react/AppIcon', () => {
   // eslint-disable-next-line react/display-name
   return () => <div data-testid="AppIcon"></div>
