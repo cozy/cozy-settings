@@ -11,72 +11,76 @@ exports[`AppList should display appName when query has been loaded 1`] = `
     >
       Applications
     </div>
-    <ul
-      class="MuiList-root MuiList-padding"
+    <div
+      data-testid="NavigationList"
     >
-      <div>
-        <div
-          data-testid="page"
-        >
+      <div
+        data-testid="NavigationListSection"
+      >
+        <div>
           <div
-            aria-disabled="false"
-            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-            role="button"
-            tabindex="0"
+            data-testid="page"
           >
             <div
-              class="MuiListItemIcon-root"
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+              role="button"
+              tabindex="0"
             >
               <div
-                data-testid="AppIcon"
+                class="MuiListItemIcon-root"
+              >
+                <div
+                  data-testid="AppIcon"
+                />
+              </div>
+              <div
+                data-primary="Alan"
+                data-secondary="1 permission"
+                data-testid="ListItemText"
+              />
+              <span
+                class="MuiTouchRipple-root"
               />
             </div>
-            <div
-              data-primary="Alan"
-              data-secondary="1 permission"
-              data-testid="ListItemText"
-            />
-            <span
-              class="MuiTouchRipple-root"
-            />
           </div>
+          <hr
+            class="MuiDivider-root"
+          />
         </div>
-        <hr
-          class="MuiDivider-root"
-        />
-      </div>
-      <div>
-        <div
-          data-testid="page"
-        >
+        <div>
           <div
-            aria-disabled="false"
-            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-            role="button"
-            tabindex="0"
+            data-testid="page"
           >
             <div
-              class="MuiListItemIcon-root"
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+              role="button"
+              tabindex="0"
             >
               <div
-                data-testid="AppIcon"
+                class="MuiListItemIcon-root"
+              >
+                <div
+                  data-testid="AppIcon"
+                />
+              </div>
+              <div
+                data-primary="Contacts"
+                data-secondary="3 permissions"
+                data-testid="ListItemText"
+              />
+              <span
+                class="MuiTouchRipple-root"
               />
             </div>
-            <div
-              data-primary="Contacts"
-              data-secondary="3 permissions"
-              data-testid="ListItemText"
-            />
-            <span
-              class="MuiTouchRipple-root"
-            />
           </div>
+          <hr
+            class="MuiDivider-root"
+          />
         </div>
-        <hr
-          class="MuiDivider-root"
-        />
       </div>
-    </ul>
+    </div>
   </div>
 </div>
 `;
@@ -92,72 +96,76 @@ exports[`AppList should display sorted app and konnector names when query is not
     >
       Applications
     </div>
-    <ul
-      class="MuiList-root MuiList-padding"
+    <div
+      data-testid="NavigationList"
     >
-      <div>
-        <div
-          data-testid="page"
-        >
+      <div
+        data-testid="NavigationListSection"
+      >
+        <div>
           <div
-            aria-disabled="false"
-            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-            role="button"
-            tabindex="0"
+            data-testid="page"
           >
             <div
-              class="MuiListItemIcon-root"
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+              role="button"
+              tabindex="0"
             >
               <div
-                data-testid="AppIcon"
+                class="MuiListItemIcon-root"
+              >
+                <div
+                  data-testid="AppIcon"
+                />
+              </div>
+              <div
+                data-primary="Alan"
+                data-secondary="1 permission"
+                data-testid="ListItemText"
+              />
+              <span
+                class="MuiTouchRipple-root"
               />
             </div>
-            <div
-              data-primary="Alan"
-              data-secondary="1 permission"
-              data-testid="ListItemText"
-            />
-            <span
-              class="MuiTouchRipple-root"
-            />
           </div>
+          <hr
+            class="MuiDivider-root"
+          />
         </div>
-        <hr
-          class="MuiDivider-root"
-        />
-      </div>
-      <div>
-        <div
-          data-testid="page"
-        >
+        <div>
           <div
-            aria-disabled="false"
-            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-            role="button"
-            tabindex="0"
+            data-testid="page"
           >
             <div
-              class="MuiListItemIcon-root"
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+              role="button"
+              tabindex="0"
             >
               <div
-                data-testid="AppIcon"
+                class="MuiListItemIcon-root"
+              >
+                <div
+                  data-testid="AppIcon"
+                />
+              </div>
+              <div
+                data-primary="Contacts"
+                data-secondary="3 permissions"
+                data-testid="ListItemText"
+              />
+              <span
+                class="MuiTouchRipple-root"
               />
             </div>
-            <div
-              data-primary="Contacts"
-              data-secondary="3 permissions"
-              data-testid="ListItemText"
-            />
-            <span
-              class="MuiTouchRipple-root"
-            />
           </div>
+          <hr
+            class="MuiDivider-root"
+          />
         </div>
-        <hr
-          class="MuiDivider-root"
-        />
       </div>
-    </ul>
+    </div>
   </div>
 </div>
 `;
