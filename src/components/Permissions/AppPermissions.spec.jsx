@@ -1,8 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import PermissionsApplication, {
-  completePermission
-} from './PermissionsApplication'
+import PermissionsApplication, { completePermission } from './AppPermissions'
 import {
   Q,
   useQuery,

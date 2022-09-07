@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import Permission from './Permission'
+import Permission from './PermissionDetails'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import AppLike from 'test/AppLike'
 

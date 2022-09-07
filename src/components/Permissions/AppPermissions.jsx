@@ -9,7 +9,7 @@ import { Link, useParams } from 'react-router-dom'
 import {
   displayPermissions,
   getPermissionIconName
-} from './helpers/permissionsHelper'
+} from '../../containers/helpers/permissionsHelper'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
@@ -23,8 +23,8 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import { routes } from 'constants/routes'
-import { OpenappButton } from '../components/Permissions/OpenappButton'
-import withAllLocales from '../lib/withAllLocales'
+import { OpenappButton } from './OpenappButton'
+import withAllLocales from '../../lib/withAllLocales'
 import CozyClient, {
   Q,
   useQuery,
