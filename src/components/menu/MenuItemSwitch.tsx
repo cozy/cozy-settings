@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
@@ -10,21 +10,23 @@ type MenuItemSwitchProps = {
   icon: JSX.Element
   primary: string
   secondary?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  checked?: boolean
+  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 export const MenuItemSwitch = ({
+  checked,
   icon,
+  onClick,
   primary,
   secondary
 }: MenuItemSwitchProps): JSX.Element => {
-  const [checked, setChecked] = useState(false)
-  const handleClick = useCallback(() => setChecked(!checked), [checked])
-
   return (
     <ListItem
       button
-      onClick={handleClick}
       style={{ color: 'var(--primaryTextColor)' }}
+      onClick={onClick}
     >
       <ListItemIcon>
         <Icon icon={icon} />

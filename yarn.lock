@@ -5497,6 +5497,13 @@ cozy-client@^32.8.0:
     sift "^6.0.0"
     url-search-params-polyfill "^8.0.0"
 
+cozy-device-helper@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-2.3.0.tgz#22b69a98ac178ec90f5ba37ab4f902ca2cf70188"
+  integrity sha512-RNA8hbQtJEM4JoYS5jmmrExDPzeRhxnw269ia43tiS4fnqdVfcUWPcM/fVuda8CEGKrrTYj/Jngh8OuLyQduLQ==
+  dependencies:
+    lodash "^4.17.19"
+
 cozy-device-helper@^1.12.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-1.12.0.tgz#619a24b0d3caf2d3f616a1524daef7c7b71eab7a"
@@ -5517,13 +5524,6 @@ cozy-device-helper@^1.7.5:
   integrity sha512-XomsjdCCWcS01x1QK/Wc4EI4zTxJN8Ouh7956wm2AEQyjj4lN+7cj8tqEBlb8fLWm68/3S3Z4V3iSJDgnJHu6A==
   dependencies:
     lodash "4.17.15"
-
-cozy-device-helper@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-2.2.2.tgz#a290210bb604868facfd01287b7576b22eb12cfe"
-  integrity sha512-+WXfUbpywvBLynjH2LRr3uPhGrVCbS3sU/uWY+VfgnxU16AAq91RD1sdPInTCmbAEbCoPWzMDVOCTH5VlW822Q==
-  dependencies:
-    lodash "^4.17.19"
 
 cozy-doctypes@1.83.7, cozy-doctypes@^1.82.3, cozy-doctypes@^1.83.7:
   version "1.83.7"
@@ -5569,17 +5569,17 @@ cozy-harvest-lib@7.3.7:
     react-markdown "^4.2.2"
     uuid "^3.3.2"
 
+cozy-intent@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/cozy-intent/-/cozy-intent-2.4.0.tgz#f2e1900798e60e3e63c1c4fce13c79baab91e09f"
+  integrity sha512-bW6Jbn/BnPnKttHWxgOe79jUgYhK5lfVwUP+icxp7ZCt3FNsTYX0bZ36PS8zV3j0F8s11kU8wvtMcRxkQ8R87Q==
+  dependencies:
+    post-me "0.4.5"
+
 cozy-intent@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/cozy-intent/-/cozy-intent-2.0.2.tgz#81330389c7b8cfc1433608a435873b362691931c"
   integrity sha512-E+9WqbYhFiV/KCGFArSJu/jcvdliI58Vfa3ajrJFRV2AsPtej6wN5qfn6Wex53xpdTAZSjLfmYAQLNt0cl6xGw==
-  dependencies:
-    post-me "0.4.5"
-
-cozy-intent@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/cozy-intent/-/cozy-intent-2.3.1.tgz#c1bec4fb69ddd6b0ec6fa08aa7140719bf23b0d2"
-  integrity sha512-00m7BY4cpZ3zLJzaEhue+zZe+mmLi1lUhd3nMxnfPTmstbk8UyHdSeRYiYpKQ1IH5s9Kzhcn2qB3QapKTtLylw==
   dependencies:
     post-me "0.4.5"
 

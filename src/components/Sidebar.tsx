@@ -32,16 +32,15 @@ export const Sidebar = (): JSX.Element => {
   return (
     <nav role="navigation" style={{ minWidth: '362px' }}>
       <List>
-        {isFlagshipApp() ||
-          (flag('settings.flagship-mode') && (
-            <MenuList title={t('Nav.header_flagship')}>
-              <MenuItemNavLink
-                to={routes.lockScreen}
-                primary={t('Nav.primary_lock_screen')}
-                icon={LockScreen}
-              />
-            </MenuList>
-          ))}
+        {(isFlagshipApp() || flag('settings.flagship-mode')) && (
+          <MenuList title={t('Nav.header_flagship')}>
+            <MenuItemNavLink
+              to={routes.lockScreen}
+              primary={t('Nav.primary_lock_screen')}
+              icon={LockScreen}
+            />
+          </MenuList>
+        )}
 
         <MenuList title={t('Nav.header_general')}>
           <MenuItemNavLink
