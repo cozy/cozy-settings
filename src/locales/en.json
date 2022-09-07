@@ -427,7 +427,8 @@
     "write": "Write",
     "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
     "applications": "Applications",
-    "data": "Data"
+    "data": "Data",
+    "open": "Open"
   },
   "Accessibility": {
     "previous": "Previous"
