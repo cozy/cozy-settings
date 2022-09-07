@@ -2,7 +2,7 @@ import React, { ReactChild, ReactNode } from 'react'
 
 import ListSubheader from 'cozy-ui/transpiled/react/MuiCozyTheme/ListSubheader'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
-import styles from 'components/menu/menu.styl'
+import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 
 type MenuListProps = {
   title: string
@@ -10,18 +10,22 @@ type MenuListProps = {
 }
 
 export const MenuList = ({ title, children }: MenuListProps): JSX.Element => (
-  <>
-    <ListSubheader className={styles['subheader']}>{title}</ListSubheader>
+  <li>
+    <List className="u-pb-1">
+      <ListSubheader className="u-mb-1">{title}</ListSubheader>
 
-    {Array.isArray(children)
-      ? children.map((child, index, array) => (
-          <React.Fragment key={index}>
-            {child}
-            {!(index === array.length - 1) && child && (
-              <Divider component="li" variant="inset" />
-            )}
-          </React.Fragment>
-        ))
-      : children}
-  </>
+      {Array.isArray(children)
+        ? children
+            .filter(value => value)
+            .map((child, index, array) => (
+              <React.Fragment key={index}>
+                {child}
+                {index !== array.length - 1 && (
+                  <Divider component="li" variant="inset" />
+                )}
+              </React.Fragment>
+            ))
+        : children}
+    </List>
+  </li>
 )
