@@ -80,7 +80,7 @@ const PermissionsApplication = ({ t }) => {
     matchingQueryResult = queryResultKonnectors
   }
   const sortPermissionsByName = queryResult => {
-    return Object.entries(queryResult.data[0].attributes.permissions)
+    return Object.entries(queryResult.data[0].permissions)
       .map(([name, value]) => {
         const type = value.type
         const perm = t('CozyPermissions.Permissions.' + type)

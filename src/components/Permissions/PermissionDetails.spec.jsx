@@ -40,22 +40,20 @@ describe('Permission', () => {
       fetchStatus: 'loaded',
       data: [
         {
-          attributes: {
-            permissions: {
-              files: {
-                type: 'io.cozy.files',
-                description: 'Required to access the files'
-              },
-              allFiles: {
-                type: 'io.cozy.files.*',
-                description: 'Required to access the files'
-              },
-              apps: {
-                type: 'io.cozy.apps',
-                description:
-                  'Required by the cozy-bar to display the icons of the apps',
-                verbs: ['GET']
-              }
+          permissions: {
+            files: {
+              type: 'io.cozy.files',
+              description: 'Required to access the files'
+            },
+            allFiles: {
+              type: 'io.cozy.files.*',
+              description: 'Required to access the files'
+            },
+            apps: {
+              type: 'io.cozy.apps',
+              description:
+                'Required by the cozy-bar to display the icons of the apps',
+              verbs: ['GET']
             }
           },
           slug: 'contacts',
@@ -67,21 +65,19 @@ describe('Permission', () => {
       fetchStatus: 'loaded',
       data: [
         {
-          attributes: {
-            permissions: {
-              files: {
-                type: 'io.cozy.files',
-                description: 'Required to access the files'
-              },
-              allFiles: {
-                type: 'io.cozy.files.*',
-                description: 'Required to access the files'
-              },
-              konnectors: {
-                description: 'Required to get the list of konnectors',
-                type: 'io.cozy.konnectors',
-                verbs: ['GET']
-              }
+          permissions: {
+            files: {
+              type: 'io.cozy.files',
+              description: 'Required to access the files'
+            },
+            allFiles: {
+              type: 'io.cozy.files.*',
+              description: 'Required to access the files'
+            },
+            konnectors: {
+              description: 'Required to get the list of konnectors',
+              type: 'io.cozy.konnectors',
+              verbs: ['GET']
             }
           },
           slug: 'alan',

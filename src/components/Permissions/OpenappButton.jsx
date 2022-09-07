@@ -20,7 +20,7 @@ export const OpenappButton = ({ type, matchingQueryResultData }) => {
         cozyUrl: client.getStackClient().uri,
         slug: 'home',
         subDomainType,
-        nativePath: `connected/${matchingQueryResultData.attributes.slug}`
+        nativePath: `connected/${matchingQueryResultData.slug}`
       })
 
     appData = matchingQueryResultData && matchingQueryResultData
