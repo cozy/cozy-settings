@@ -26,9 +26,6 @@ exports[`PermissionsTab should match snapshot 1`] = `
         value="data"
       />
     </button>
-    <hr
-      class="MuiDivider-root u-mb-1"
-    />
     <div
       aria-labelledby="simple-tab-slug"
       id="simple-tabpanel-slug"

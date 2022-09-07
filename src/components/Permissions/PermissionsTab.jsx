@@ -4,7 +4,6 @@ import Tabs from 'cozy-ui/transpiled/react/Tabs'
 import Tab from 'cozy-ui/transpiled/react/Tab'
 import AppList from './AppList'
 import DataList from './DataList'
-import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider/index'
 import { routes } from 'constants/routes'
 import { useParams, useNavigate } from 'react-router-dom'
 import withAllLocales from '../../lib/withAllLocales'
@@ -41,7 +40,12 @@ const PermissionsTab = ({ t }) => {
   return (
     <BreakpointsProvider>
       <Page narrow>
-        <Tabs value={page} onChange={handleChange} segmented>
+        <Tabs
+          value={page}
+          onChange={handleChange}
+          segmented
+          style={{ width: '20rem' }}
+        >
           <Tab
             value="slug"
             label={t('Permissions.applications')}
@@ -55,7 +59,6 @@ const PermissionsTab = ({ t }) => {
             {...a11yProps(1)}
           />
         </Tabs>
-        <Divider className="u-mb-1" />
         <TabPanel value={page} index="slug">
           <AppList />
         </TabPanel>
