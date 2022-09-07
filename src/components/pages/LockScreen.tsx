@@ -23,7 +23,7 @@ const handleChange = async (
     ? setHasBiometry(res)
     : (logger as { error: (arg: string) => void }).error(
         `Error while calling openSettingBiometry(), returned value is not a boolean: "${
-          res !== undefined ? res : 'undefined'
+          res === undefined ? 'undefined' : res === null ? 'null' : res
         }"`
       )
 }
