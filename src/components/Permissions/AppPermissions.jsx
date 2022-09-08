@@ -13,10 +13,8 @@ import {
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
-import NavigationList, {
-  NavigationListSection
-} from 'cozy-ui/transpiled/react/NavigationList'
 import ListItemIcon, {
+  smallSize,
   mediumSize
 } from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
@@ -25,6 +23,9 @@ import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import { routes } from 'constants/routes'
 import { OpenappButton } from './OpenappButton'
 import withAllLocales from '../../lib/withAllLocales'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
+import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
 import CozyClient, {
   Q,
   useQuery,
@@ -72,7 +73,7 @@ const PermissionsApplication = ({ t }) => {
     }
   )
 
-  let matchingQueryResult = []
+  let matchingQueryResult
   if (queryResultApps?.data?.length > 0) {
     matchingQueryResult = queryResultApps
   }
@@ -92,6 +93,15 @@ const PermissionsApplication = ({ t }) => {
   }
 
   const isKonnector = type => type === 'io.cozy.konnectors'
+
+  let sortedPermissionsByName =
+    matchingQueryResult && sortPermissionsByName(matchingQueryResult)
+
+  const isNotLastItem = name => {
+    return (
+      name !== sortedPermissionsByName[sortedPermissionsByName.length - 1].name
+    )
+  }
 
   return (
     <Page narrow>
@@ -120,39 +130,41 @@ const PermissionsApplication = ({ t }) => {
               }
               matchingQueryResultData={matchingQueryResult.data[0]}
             />
-            <NavigationListSection>
-              {sortPermissionsByName(matchingQueryResult).map(
-                ({ name, title, verbs, type }) => {
-                  const iconName = getPermissionIconName(type)
-                  return (
-                    <div key={name}>
-                      <Link
-                        to={`${routes.appList}/${slugName}/${name}`}
-                        key={name}
-                        style={{ textDecoration: 'none' }}
-                      >
-                        <ListItem button>
-                          <ListItemIcon>
-                            <Icon
-                              icon={
-                                require(`cozy-ui/transpiled/react/Icons/${iconName}`)
-                                  .default
-                              }
-                              size={mediumSize}
-                            />
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={title}
-                            secondary={t(displayPermissions(verbs))}
-                          />
-                        </ListItem>
-                      </Link>
-                      <Divider />
-                    </div>
-                  )
-                }
-              )}
-            </NavigationListSection>
+
+            {sortedPermissionsByName.map(({ name, title, verbs, type }) => {
+              const iconName = getPermissionIconName(type)
+              return (
+                <Link
+                  to={`${routes.appList}/${slugName}/${name}`}
+                  key={name}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <ListItem button>
+                    <ListItemIcon>
+                      <Icon
+                        icon={
+                          require(`cozy-ui/transpiled/react/Icons/${iconName}`)
+                            .default
+                        }
+                        size={mediumSize}
+                      />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={title}
+                      secondary={t(displayPermissions(verbs))}
+                    />
+                    <ListItemSecondaryAction style={{ color: 'grey' }}>
+                      <Icon
+                        icon={RightIcon}
+                        size={smallSize}
+                        className="u-mr-1"
+                      />
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                  {isNotLastItem(name) && <Divider variant="inset" />}
+                </Link>
+              )
+            })}
           </NavigationList>
         </div>
       )}
