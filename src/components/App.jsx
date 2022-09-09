@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import { Route, Navigate, Routes } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
@@ -21,6 +22,7 @@ import Profile from 'containers/Profile'
 import Sessions from 'containers/Sessions'
 import Sidebar from 'components/Sidebar'
 import Storage from 'containers/Storage'
+import styles from 'styles/index.styl'
 import { LockScreen } from 'components/pages/LockScreen'
 import { Menu } from 'components/pages/Menu'
 import { initFlags } from 'lib/flags'
@@ -35,7 +37,9 @@ export class App extends Component {
     const isBigView = !isSmallView
 
     return (
-      <Layout>
+      <Layout
+        className={classNames({ [styles['Layout--small-view']]: isSmallView })}
+      >
         {App.renderExtra()}
         <FlagSwitcher />
         <Alerter />
