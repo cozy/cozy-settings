@@ -49,7 +49,7 @@ export const Sidebar = (): JSX.Element => {
             icon={PeopleIcon}
           />
 
-          {flag('settings.enable_premium_links') && offersLink && (
+          {offersLink && (
             <MenuItemAnchor
               primary={t('Nav.primary_plan')}
               href={offersLink}

@@ -7,7 +7,7 @@ const warn = (logger as { warn: (...args: unknown[]) => void }).warn
 type QueryResult<T> = { data: { attributes: T } }
 type ExpectedContext = QueryResult<{
   manager_url?: string
-  enable_premium_links?: string
+  enable_premium_links?: boolean
 }>
 type ExpectedInstance = QueryResult<{ uuid?: string }>
 
