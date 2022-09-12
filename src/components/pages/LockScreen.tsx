@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 
 import Fingerprint from 'cozy-ui/transpiled/react/Icons/Fingerprint'
 import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
+import Swap from 'cozy-ui/transpiled/react/Icons/Swap'
 import flag from 'cozy-flags'
 import { getFlagshipMetadata, isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -14,26 +15,36 @@ import logger from 'lib/logger'
 import { MenuItemSwitch } from 'components/menu/MenuItemSwitch'
 
 const handleChange = async (
-  setHasBiometry: React.Dispatch<React.SetStateAction<boolean>>,
+  dispatch: React.Dispatch<React.SetStateAction<boolean>>,
+  setting: 'biometryLock' | 'autoLock',
   webviewIntent?: WebviewService
 ): Promise<void> => {
-  const res = await webviewIntent?.call('openSettingBiometry')
+  if (!webviewIntent) return
+
+  const res = await webviewIntent.call('toggleSetting', setting)
 
   typeof res === 'boolean'
-    ? setHasBiometry(res)
-    : (logger as { error: (arg: string) => void }).error(
-        `Error while calling openSettingBiometry(), returned value is not a boolean: "${
-          res === undefined ? 'undefined' : res === null ? 'null' : res
-        }"`
+    ? dispatch(res)
+    : logger.error(
+        `Error while calling toggleSetting('${setting}'), returned value is null or undefined."`
       )
 }
 
 export const LockScreen = (): JSX.Element => {
   const { t } = useI18n()
   const webviewIntent = useWebviewIntent()
-  const [hasBiometry, setHasBiometry] = useState(
-    Boolean(getFlagshipMetadata().hasBiometry)
+  const [biometryEnabled, setBiometry] = useState(
+    Boolean(getFlagshipMetadata().settings?.biometryEnabled)
   )
+  const [autoLockEnabled, setAutoLock] = useState(
+    Boolean(getFlagshipMetadata().settings?.autoLockEnabled)
+  )
+
+  const onBiometryLock = (): void =>
+    void handleChange(setBiometry, 'biometryLock', webviewIntent)
+
+  const onAutoLock = (): void =>
+    void handleChange(setAutoLock, 'autoLock', webviewIntent)
 
   return isFlagshipApp() || flag('settings.flagship-mode') ? (
     <Page className="u-m-0" narrow>
@@ -44,10 +55,15 @@ export const LockScreen = (): JSX.Element => {
           <MenuItemSwitch
             primary={t('Nav.primary_biometry')}
             icon={Fingerprint}
-            onClick={(): void =>
-              void handleChange(setHasBiometry, webviewIntent)
-            }
-            checked={hasBiometry}
+            onClick={onBiometryLock}
+            checked={biometryEnabled}
+          />
+
+          <MenuItemSwitch
+            primary={t('Nav.primary_lock_switch')}
+            icon={Swap}
+            onClick={onAutoLock}
+            checked={autoLockEnabled}
           />
         </List>
       </nav>
