@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataPermissions should display DataPermissions 1`] = `
+<div>
+  <div
+    data-narrow="true"
+    data-testid="page"
+  >
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiIconButton-root u-mr-half large"
+      href="#/permissions/data"
+      tabindex="0"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <div
+          data-testid="Icon"
+        />
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <div
+      data-testid="page-title"
+    >
+      CozyPermissions.Permissions.undefined
+    </div>
+    <div
+      data-testid="NavigationList"
+    />
+  </div>
+</div>
+`;

@@ -1,19 +1,15 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import DataList from './DataList'
-import { useQuery, isQueryLoading } from 'cozy-client'
+import DataPermissions from './DataPermissions'
+import { useQuery } from 'cozy-client'
 
-jest.mock(
-  'cozy-ui/transpiled/react/I18n/withLocales',
-  () => () => Component => () =>
-    (
-      <Component
-        t={(text, { smart_count } = {}) =>
-          smart_count ? `${text}${smart_count}` : text
-        }
-      />
-    )
-)
+jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
+  return () => Component => {
+    const t = text => text
+    const match = { params: { permission: 'io.cozy.apps' } }
+    return () => <Component match={match} t={t} />
+  }
+})
 
 jest.mock('react-router-dom', () => {
   return {
@@ -29,7 +25,6 @@ jest.mock('react-router-dom', () => {
 jest.mock('cozy-client')
 
 jest.mock('components/Page', () => {
-  // eslint-disable-next-line react/display-name
   return ({ narrow, children }) => (
     <div data-testid="page" data-narrow={narrow}>
       {children}
@@ -46,30 +41,26 @@ jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
     __esModule: true,
     default: ({ children }) => (
       <div data-testid="NavigationList">{children}</div>
-    ),
-    NavigationListSection: ({ children }) => (
-      <div data-testid="NavigationListSection">{children}</div>
     )
   }
 })
 
 jest.mock('cozy-ui/transpiled/react/Icon', () => {
-  // eslint-disable-next-line react/display-name
   return () => <div data-testid="Icon"></div>
 })
 
 jest.mock('cozy-ui/transpiled/react/ListItemText', () => {
-  // eslint-disable-next-line react/display-name
-  return ({ primary, secondary }) => (
-    <div
-      data-testid="ListItemText"
-      data-primary={primary}
-      data-secondary={secondary}
-    ></div>
+  return ({ primary }) => (
+    <div data-testid="ListItemText" data-primary={primary}></div>
   )
 })
 
-describe('DataList', () => {
+jest.mock('cozy-ui/transpiled/react/AppIcon', () => {
+  // eslint-disable-next-line react/display-name
+  return () => <div data-testid="AppIcon"></div>
+})
+
+describe('DataPermissions', () => {
   beforeEach(() => {
     const queryResultApps = {
       fetchStatus: 'loaded',
@@ -141,55 +132,8 @@ describe('DataList', () => {
     useQuery.mockReturnValueOnce(queryResultKonnectors)
   })
 
-  it('should display DataList title', () => {
-    const { queryByText } = render(<DataList />)
-    expect(queryByText('Permissions.data')).toBeInTheDocument()
-  })
-
-  it('should display sorted permissions names when query is not loading', () => {
-    isQueryLoading.mockReturnValue(false)
-    const { queryAllByTestId } = render(<DataList />)
-    expect(queryAllByTestId('ListItemText')[0]).toHaveAttribute(
-      'data-primary',
-      'CozyPermissions.Permissions.io.cozy.apps'
-    )
-    expect(queryAllByTestId('ListItemText')[1]).toHaveAttribute(
-      'data-primary',
-      'CozyPermissions.Permissions.io.cozy.files'
-    )
-    expect(queryAllByTestId('ListItemText')[2]).toHaveAttribute(
-      'data-primary',
-      'CozyPermissions.Permissions.io.cozy.files.*'
-    )
-  })
-
-  it('should display number of applications when query is not loading', () => {
-    isQueryLoading.mockReturnValue(false)
-    const { queryAllByTestId } = render(<DataList />)
-    expect(queryAllByTestId('ListItemText')[0]).toHaveAttribute(
-      'data-secondary',
-      'Permissions.numberOfApplications1'
-    )
-    expect(queryAllByTestId('ListItemText')[1]).toHaveAttribute(
-      'data-secondary',
-      'Permissions.numberOfApplications1'
-    )
-    expect(queryAllByTestId('ListItemText')[2]).toHaveAttribute(
-      'data-secondary',
-      'Permissions.numberOfApplications1'
-    )
-  })
-
-  it('should display permissions icons when query is not loading', () => {
-    isQueryLoading.mockReturnValue(false)
-    const { queryAllByTestId } = render(<DataList />)
-    expect(queryAllByTestId('Icon').length).toEqual(6)
-  })
-
-  it('should render Permissions.failedRequest when query status is failed', () => {
-    useQuery.mockReset()
-    useQuery.mockReturnValue({ fetchStatus: 'failed' })
-    const { queryByText } = render(<DataList />)
-    expect(queryByText('Permissions.failedRequest')).toBeInTheDocument()
+  it('should display DataPermissions', () => {
+    const { container } = render(<DataPermissions />)
+    expect(container).toMatchSnapshot()
   })
 })
