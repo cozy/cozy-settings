@@ -29,8 +29,13 @@ declare module 'cozy-ui/transpiled/react/ListItemText' {
 }
 
 declare module 'cozy-ui/transpiled/react/Icon' {
-  type IconProps = {
-    icon: string | object | ((args: unknown) => React.ReactNode) | JSX.Element
+  interface IconProps {
+    icon:
+      | string
+      | object
+      | ((args: unknown) => React.ReactNode)
+      | JSX.Element
+      | (() => JSX.Element)
     width?: string | number
     height?: string | number
     color?: string | object
@@ -44,9 +49,7 @@ declare module 'cozy-ui/transpiled/react/Icon' {
 }
 
 declare module 'cozy-ui/transpiled/react/Icons/*' {
-  import Icon from '@material-ui/core/Icon'
-
-  export default Icon as JSX.Element
+  export default (): JSX.Element => element as JSX.Element
 }
 
 declare module 'cozy-ui/transpiled/react/I18n' {

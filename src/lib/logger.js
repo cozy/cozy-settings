@@ -1,5 +1,9 @@
 import minilog from '@cozy/minilog'
 
+/**
+ * @typedef {{ error: (arg: string) => void }} Logger
+ * @type {Logger}
+ */
 const logger = minilog(`cozy-settings`)
 minilog.enable()
 

@@ -6,13 +6,13 @@ import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import Switch from 'cozy-ui/transpiled/react/MuiCozyTheme/Switch'
 
-type MenuItemSwitchProps = {
-  icon: JSX.Element
+interface MenuItemSwitchProps {
+  icon: () => JSX.Element | JSX.Element
   primary: string
   secondary?: string
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   checked?: boolean
-  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
 export const MenuItemSwitch = ({
