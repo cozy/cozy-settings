@@ -430,7 +430,8 @@
     "numberOfApplications" : "%{smart_count} application |||| %{smart_count} applications",
     "applications": "Applications",
     "data": "Données",
-    "open": "Ouvrir"
+    "open": "Ouvrir",
+    "access": "Les applications disposant de cette permission peuvent accéder à votre/vos "
   },
   "Accessibility": {
     "previous": "Précédent"
