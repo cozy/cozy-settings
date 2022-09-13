@@ -18,6 +18,7 @@ import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import withAllLocales from 'lib/withAllLocales'
 import { getPermissionIconName } from 'containers/helpers/permissionsHelper'
 import { completePermission, sortPermissionsByName } from './DataListHelpers'
+import { routes } from 'constants/routes'
 import CozyClient, {
   Q,
   useQuery,
@@ -25,8 +26,8 @@ import CozyClient, {
   hasQueryBeenLoaded
 } from 'cozy-client'
 
-const THIRTY_SECONDS = 30 * 1000
 const DataList = ({ t }) => {
+  const THIRTY_SECONDS = 30 * 1000
   const queryResultApps = useQuery(Q(APPS_DOCTYPE), {
     as: APPS_DOCTYPE,
     fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
@@ -40,6 +41,7 @@ const DataList = ({ t }) => {
     queryResultApps,
     queryResultKonnectors
   )
+
   return (
     <Page narrow>
       <PageTitle>{t('Permissions.data')}</PageTitle>
@@ -61,7 +63,7 @@ const DataList = ({ t }) => {
                 const iconName = getPermissionIconName(key)
                 return (
                   <React.Fragment key={key}>
-                    <Link to="/">
+                    <Link to={`${routes.dataList}/${key}`}>
                       <ListItem button>
                         <ListItemIcon>
                           <Icon

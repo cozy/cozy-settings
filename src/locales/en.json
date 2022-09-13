@@ -428,7 +428,8 @@
     "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
     "applications": "Applications",
     "data": "Data",
-    "open": "Open"
+    "open": "Open",
+    "access": "Applications with this permission can access your "
   },
   "Accessibility": {
     "previous": "Previous"

@@ -17,6 +17,7 @@ import IntentRedirect from 'services/IntentRedirect'
 import Passphrase from 'containers/Passphrase'
 import Permission from 'components/Permissions/PermissionDetails'
 import PermissionsApplication from 'components/Permissions/AppPermissions'
+import DataPermissions from 'components/Permissions/DataPermissions'
 import PermissionsTab from 'components/Permissions/PermissionsTab'
 import Profile from 'containers/Profile'
 import Sessions from 'containers/Sessions'
@@ -61,6 +62,10 @@ export class App extends Component {
             <Route
               path="/permissions/slug/:slug"
               element={<PermissionsApplication />}
+            />
+            <Route
+              path="/permissions/data/:data"
+              element={<DataPermissions />}
             />
             <Route
               path="/permissions/slug/:slug/:permission"

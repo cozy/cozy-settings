@@ -1,0 +1,137 @@
+import React from 'react'
+import withAllLocales from '../../lib/withAllLocales'
+import { useParams } from 'react-router-dom'
+import CozyClient, {
+  Q,
+  useQuery,
+  isQueryLoading,
+  hasQueryBeenLoaded
+} from 'cozy-client'
+import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
+import { completePermission } from './DataListHelpers'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import Page from 'components/Page'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import IconButton from 'cozy-ui/transpiled/react/IconButton'
+import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
+import NavigationList, {
+  NavigationListSection
+} from 'cozy-ui/transpiled/react/NavigationList'
+import PageTitle from 'components/PageTitle'
+import {
+  displayPermissions,
+  getPermissionIconName
+} from '../../containers/helpers/permissionsHelper'
+import ListItemIcon, {
+  mediumSize
+} from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
+import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
+import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
+
+const DataPermissions = ({ t }) => {
+  const { data } = useParams()
+
+  const THIRTY_SECONDS = 30 * 1000
+  const queryResultApps = useQuery(Q(APPS_DOCTYPE), {
+    as: APPS_DOCTYPE,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+  })
+  const queryResultKonnectors = useQuery(Q(KONNECTORS_DOCTYPE), {
+    as: KONNECTORS_DOCTYPE,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+  })
+
+  const appsAndKonnectorsSlugs = completePermission(
+    queryResultApps,
+    queryResultKonnectors
+  )[data]
+
+  const appsAndKonnectors = []
+
+  if (appsAndKonnectorsSlugs?.length > 0) {
+    for (let i = 0; i < appsAndKonnectorsSlugs.length; i++) {
+      const appToAdd = queryResultApps.data.find(
+        app => app.slug === appsAndKonnectorsSlugs[i]
+      )
+      if (appToAdd) {
+        appsAndKonnectors.push(appToAdd)
+      }
+
+      const konnectorToAdd = queryResultKonnectors.data.find(
+        konnector => konnector.slug === appsAndKonnectorsSlugs[i]
+      )
+      if (konnectorToAdd) {
+        appsAndKonnectors.push(konnectorToAdd)
+      }
+    }
+  }
+
+  const isNotLastItem = slug => {
+    return slug !== appsAndKonnectorsSlugs[appsAndKonnectorsSlugs.length - 1]
+  }
+
+  const iconName = getPermissionIconName(data)
+
+  return (
+    <Page narrow>
+      {(isQueryLoading(queryResultApps) &&
+        !hasQueryBeenLoaded(queryResultApps)) ||
+      (isQueryLoading(queryResultKonnectors) &&
+        !hasQueryBeenLoaded(queryResultKonnectors)) ? (
+        <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
+      ) : queryResultApps.fetchStatus === 'failed' &&
+        queryResultKonnectors.fetchStatus === 'failed' ? (
+        <Typography variant="body1" className="u-mb-1-half">
+          {t('Permissions.failedRequest')}
+        </Typography>
+      ) : (
+        <>
+          <IconButton className="u-mr-half" href="#/permissions/data">
+            <Icon icon={PreviousIcon} size={16} />
+          </IconButton>
+          <div style={{ textAlign: 'center' }}>
+            <Icon
+              icon={
+                require(`cozy-ui/transpiled/react/Icons/${iconName}`).default
+              }
+              size={mediumSize}
+            />
+            <PageTitle>
+              {t('CozyPermissions.Permissions.' + data).toUpperCase()}
+            </PageTitle>
+            <Typography variant="body1" className="u-mb-1-half">
+              {t('Permissions.access') +
+                ' ' +
+                t('CozyPermissions.Permissions.' + data).toLowerCase()}
+            </Typography>
+          </div>
+          <NavigationList>
+            <NavigationListSection>
+              {appsAndKonnectors.map(appOrKonnector => {
+                return (
+                  <div key={appOrKonnector.name}>
+                    <ListItem button>
+                      <ListItemIcon>
+                        <AppIcon app={appOrKonnector} />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={appOrKonnector.name}
+                        secondary={t(displayPermissions(appOrKonnector.verbs))}
+                      />
+                    </ListItem>
+                    {isNotLastItem(appOrKonnector.slug) && <Divider />}
+                  </div>
+                )
+              })}
+            </NavigationListSection>
+          </NavigationList>
+        </>
+      )}
+    </Page>
+  )
+}
+
+export default withAllLocales(DataPermissions)
