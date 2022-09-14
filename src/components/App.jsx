@@ -18,7 +18,6 @@ import Passphrase from 'containers/Passphrase'
 import Permission from 'components/Permissions/PermissionDetails'
 import PermissionsApplication from 'components/Permissions/AppPermissions'
 import PermissionsTab from 'components/Permissions/PermissionsTab'
-import DataPermissions from 'components/Permissions/DataPermissions'
 import Profile from 'containers/Profile'
 import Sessions from 'containers/Sessions'
 import Sidebar from 'components/Sidebar'
@@ -71,10 +70,6 @@ export class App extends Component {
             <Route
               path="/permissions"
               element={<Navigate to="/permissions/slug" replace />}
-            />
-            <Route
-              path="/permissions/data/:permission"
-              element={<DataPermissions />}
             />
             <Route
               path="*"

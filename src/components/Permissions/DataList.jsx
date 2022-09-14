@@ -6,25 +6,18 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
-import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItemIcon, {
-  smallSize,
   mediumSize
 } from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import withAllLocales from 'lib/withAllLocales'
-import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
-import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import { getPermissionIconName } from 'components/Permissions/helpers/permissionsHelper'
-import {
-  completePermission,
-  sortPermissionsByName
-} from './helpers/DataListHelpers'
-import { routes } from 'constants/routes'
+import { getPermissionIconName } from 'containers/helpers/permissionsHelper'
+import { completePermission, sortPermissionsByName } from './DataListHelpers'
 import CozyClient, {
   Q,
   useQuery,
@@ -47,7 +40,6 @@ const DataList = ({ t }) => {
     queryResultApps,
     queryResultKonnectors
   )
-
   return (
     <Page narrow>
       <PageTitle>{t('Permissions.data')}</PageTitle>
@@ -69,10 +61,7 @@ const DataList = ({ t }) => {
                 const iconName = getPermissionIconName(key)
                 return (
                   <React.Fragment key={key}>
-                    <Link
-                      to={`${routes.dataList}/${key}`}
-                      style={{ textDecoration: 'none', color: 'black' }}
-                    >
+                    <Link to="/">
                       <ListItem button>
                         <ListItemIcon>
                           <Icon
@@ -89,16 +78,9 @@ const DataList = ({ t }) => {
                             smart_count: slugs.length
                           })}
                         />
-                        <ListItemSecondaryAction style={{ color: 'grey' }}>
-                          <Icon
-                            icon={RightIcon}
-                            size={smallSize}
-                            className="u-mr-1"
-                          />
-                        </ListItemSecondaryAction>
                       </ListItem>
-                      <Divider variant="inset" />
                     </Link>
+                    <Divider />
                   </React.Fragment>
                 )
               }

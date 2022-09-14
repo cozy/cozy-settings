@@ -183,7 +183,7 @@ describe('DataList', () => {
   it('should display permissions icons when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
     const { queryAllByTestId } = render(<DataList />)
-    expect(queryAllByTestId('Icon').length).toEqual(6)
+    expect(queryAllByTestId('Icon').length).toEqual(3)
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
