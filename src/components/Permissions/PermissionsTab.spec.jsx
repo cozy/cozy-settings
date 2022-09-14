@@ -54,7 +54,7 @@ jest.mock('./AppList', () => {
   return () => <div data-testid="AppList"></div>
 })
 
-jest.mock('./DataList', () => {
+jest.mock('./DataList/DataList', () => {
   return () => <div data-testid="DataList"></div>
 })
 

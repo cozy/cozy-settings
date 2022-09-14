@@ -8,7 +8,7 @@ import CozyClient, {
   hasQueryBeenLoaded
 } from 'cozy-client'
 import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
-import { completePermission } from '../DataList/DataListHelpers'
+import { completePermission } from '../helpers/permissionsHelper'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
