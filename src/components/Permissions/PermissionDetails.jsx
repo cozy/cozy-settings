@@ -12,7 +12,7 @@ import CozyClient, {
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Page from 'components/Page'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import { displayPermissions } from '../../containers/helpers/permissionsHelper'
+import { displayPermissions } from './helpers/permissionsHelper'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'

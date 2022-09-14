@@ -9,7 +9,7 @@ import { Link, useParams } from 'react-router-dom'
 import {
   displayPermissions,
   getPermissionIconName
-} from '../../containers/helpers/permissionsHelper'
+} from './helpers/permissionsHelper'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'

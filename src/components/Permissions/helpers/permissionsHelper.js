@@ -1,4 +1,4 @@
-import PERMISSIONS_ICONS from '../../config/permissionsIcons.json'
+import PERMISSIONS_ICONS from '../../../config/permissionsIcons.json'
 
 export const displayPermissions = verbs => {
   return !verbs || (verbs.length > 1 && verbs.includes('GET'))
