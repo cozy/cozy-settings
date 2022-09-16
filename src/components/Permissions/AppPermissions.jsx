@@ -5,11 +5,12 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import {
   displayPermissions,
   getPermissionIconName
 } from './helpers/permissionsHelper'
+import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
@@ -25,7 +26,9 @@ import { OpenappButton } from './OpenappButton'
 import withAllLocales from '../../lib/withAllLocales'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
+import NavigationList, {
+  NavigationListSection
+} from 'cozy-ui/transpiled/react/NavigationList'
 import CozyClient, {
   Q,
   useQuery,
@@ -61,7 +64,8 @@ const PermissionsApplication = ({ t }) => {
     Q(APPS_DOCTYPE).getById('io.cozy.apps/' + slugName),
     {
       as: 'io.cozy.apps/' + slugName,
-      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS),
+      singleDocData: true
     }
   )
 
@@ -69,19 +73,21 @@ const PermissionsApplication = ({ t }) => {
     Q(KONNECTORS_DOCTYPE).getById('io.cozy.konnectors/' + slugName),
     {
       as: 'io.cozy.konnectors/' + slugName,
-      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS),
+      singleDocData: true
     }
   )
 
   let matchingQueryResult
-  if (queryResultApps?.data?.length > 0) {
+  if (queryResultApps.data) {
     matchingQueryResult = queryResultApps
   }
-  if (queryResultKonnectors?.data?.length > 0) {
+  if (queryResultKonnectors.data) {
     matchingQueryResult = queryResultKonnectors
   }
+
   const sortPermissionsByName = queryResult => {
-    return Object.entries(queryResult.data[0].permissions)
+    return Object.entries(queryResult.data?.permissions)
       .map(([name, value]) => {
         const type = value.type
         const perm = t('CozyPermissions.Permissions.' + type)
@@ -95,7 +101,7 @@ const PermissionsApplication = ({ t }) => {
   const isKonnector = type => type === 'io.cozy.konnectors'
 
   let sortedPermissionsByName =
-    matchingQueryResult && sortPermissionsByName(matchingQueryResult)
+    matchingQueryResult?.data && sortPermissionsByName(matchingQueryResult)
 
   const isNotLastItem = name => {
     return (
@@ -120,51 +126,56 @@ const PermissionsApplication = ({ t }) => {
           <IconButton className="u-mr-half" href="#/permissions">
             <Icon icon={PreviousIcon} size={16} />
           </IconButton>
-          <NavigationList>
+          <div className="u-flex u-flex-column u-flex-items-center">
+            <div style={{ width: '48px' }}>
+              <AppIcon app={slugName} />
+            </div>
             <PageTitle>{slugName.toUpperCase()}</PageTitle>
             <OpenappButton
               type={
-                isKonnector(matchingQueryResult.data[0].type)
-                  ? 'konnector'
-                  : 'app'
+                isKonnector(matchingQueryResult.data.type) ? 'konnector' : 'app'
               }
-              matchingQueryResultData={matchingQueryResult.data[0]}
+              matchingQueryResultData={matchingQueryResult.data}
             />
-
-            {sortedPermissionsByName.map(({ name, title, verbs, type }) => {
-              const iconName = getPermissionIconName(type)
-              return (
-                <Link
-                  to={`${routes.appList}/${slugName}/${name}`}
-                  key={name}
-                  style={{ textDecoration: 'none', color: 'black' }}
-                >
-                  <ListItem button>
-                    <ListItemIcon>
-                      <Icon
-                        icon={
-                          require(`cozy-ui/transpiled/react/Icons/${iconName}`)
-                            .default
-                        }
-                        size={mediumSize}
+          </div>
+          <NavigationList>
+            <NavigationListSection>
+              {sortedPermissionsByName.map(({ name, title, verbs, type }) => {
+                const iconName = getPermissionIconName(type)
+                return (
+                  <div key={name}>
+                    <ListItem
+                      button
+                      component="a"
+                      href={`/#${routes.appList}/${slugName}/${name}`}
+                    >
+                      <ListItemIcon>
+                        <Icon
+                          icon={
+                            require(`cozy-ui/transpiled/react/Icons/${iconName}`)
+                              .default
+                          }
+                          size={mediumSize}
+                        />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={title}
+                        secondary={t(displayPermissions(verbs))}
                       />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={title}
-                      secondary={t(displayPermissions(verbs))}
-                    />
-                    <ListItemSecondaryAction style={{ color: 'grey' }}>
-                      <Icon
-                        icon={RightIcon}
-                        size={smallSize}
-                        className="u-mr-1"
-                      />
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                  {isNotLastItem(name) && <Divider variant="inset" />}
-                </Link>
-              )
-            })}
+                      <ListItemSecondaryAction>
+                        <Icon
+                          icon={RightIcon}
+                          size={smallSize}
+                          className="u-mr-1"
+                          style={{ color: 'var(--secondaryTextColor)' }}
+                        />
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                    {isNotLastItem(name) && <Divider variant="inset" />}
+                  </div>
+                )
+              })}
+            </NavigationListSection>
           </NavigationList>
         </div>
       )}

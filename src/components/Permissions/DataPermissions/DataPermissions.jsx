@@ -15,15 +15,18 @@ import Page from 'components/Page'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
+import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import PageTitle from 'components/PageTitle'
 import {
   displayPermissions,
   getPermissionIconName
 } from '../helpers/permissionsHelper'
 import ListItemIcon, {
+  smallSize,
   mediumSize
 } from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
@@ -121,8 +124,18 @@ const DataPermissions = ({ t }) => {
                         primary={appOrKonnector.name}
                         secondary={t(displayPermissions(appOrKonnector.verbs))}
                       />
+                      <ListItemSecondaryAction>
+                        <Icon
+                          icon={RightIcon}
+                          size={smallSize}
+                          className="u-mr-1"
+                          style={{ color: 'var(--secondaryTextColor)' }}
+                        />
+                      </ListItemSecondaryAction>
                     </ListItem>
-                    {isNotLastItem(appOrKonnector.slug) && <Divider />}
+                    {isNotLastItem(appOrKonnector.slug) && (
+                      <Divider variant="inset" />
+                    )}
                   </div>
                 )
               })}

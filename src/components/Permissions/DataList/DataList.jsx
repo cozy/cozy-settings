@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -67,36 +66,36 @@ const DataList = ({ t }) => {
                 const iconName = getPermissionIconName(key)
                 return (
                   <React.Fragment key={key}>
-                    <Link
-                      to={`${routes.dataList}/${key}`}
-                      style={{ textDecoration: 'none', color: 'black' }}
+                    <ListItem
+                      button
+                      component="a"
+                      href={`/#${routes.dataList}/${key}`}
                     >
-                      <ListItem button>
-                        <ListItemIcon>
-                          <Icon
-                            icon={
-                              require(`cozy-ui/transpiled/react/Icons/${iconName}`)
-                                .default
-                            }
-                            size={mediumSize}
-                          />
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={t('CozyPermissions.Permissions.' + key)}
-                          secondary={t('Permissions.numberOfApplications', {
-                            smart_count: slugs.length
-                          })}
+                      <ListItemIcon>
+                        <Icon
+                          icon={
+                            require(`cozy-ui/transpiled/react/Icons/${iconName}`)
+                              .default
+                          }
+                          size={mediumSize}
                         />
-                        <ListItemSecondaryAction style={{ color: 'grey' }}>
-                          <Icon
-                            icon={RightIcon}
-                            size={smallSize}
-                            className="u-mr-1"
-                          />
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                      <Divider variant="inset" />
-                    </Link>
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={t('CozyPermissions.Permissions.' + key)}
+                        secondary={t('Permissions.numberOfApplications', {
+                          smart_count: slugs.length
+                        })}
+                      />
+                      <ListItemSecondaryAction>
+                        <Icon
+                          icon={RightIcon}
+                          size={smallSize}
+                          className="u-mr-1"
+                          style={{ color: 'var(--secondaryTextColor)' }}
+                        />
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                    <Divider variant="inset" />
                   </React.Fragment>
                 )
               }
