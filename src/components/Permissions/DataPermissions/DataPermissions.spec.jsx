@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 import DataPermissions from './DataPermissions'
-import { useQuery } from 'cozy-client'
+import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 
 jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   return () => Component => {
@@ -14,11 +14,7 @@ jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
 jest.mock('react-router-dom', () => {
   return {
     ...jest.requireActual('react-router-dom'),
-    Link: ({ narrow, children }) => (
-      <div data-testid="page" data-narrow={narrow}>
-        {children}
-      </div>
-    )
+    useParams: () => ({ permission: 'io.cozy.files' })
   }
 })
 
@@ -41,23 +37,34 @@ jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
     __esModule: true,
     default: ({ children }) => (
       <div data-testid="NavigationList">{children}</div>
+    ),
+    NavigationListSection: ({ children }) => (
+      <div data-testid="NavigationListSection">{children}</div>
     )
   }
 })
 
-jest.mock('cozy-ui/transpiled/react/Icon', () => {
-  return () => <div data-testid="Icon"></div>
-})
+jest.mock('cozy-ui/transpiled/react/Icon', () => ({ icon, size }) => (
+  <div data-size={size} data-testid="Icon">
+    {icon()}
+  </div>
+))
 
 jest.mock('cozy-ui/transpiled/react/ListItemText', () => {
   return ({ primary }) => (
     <div data-testid="ListItemText" data-primary={primary}></div>
   )
 })
+jest.mock('cozy-ui/transpiled/react/Spinner', () => {
+  return ({ size }) => <div data-testid="Spinner" data-size={size}></div>
+})
 
 jest.mock('cozy-ui/transpiled/react/AppIcon', () => {
   // eslint-disable-next-line react/display-name
   return () => <div data-testid="AppIcon"></div>
+})
+jest.mock('cozy-ui/transpiled/react/Spinner', () => {
+  return ({ size }) => <div data-testid="Spinner" data-size={size}></div>
 })
 
 describe('DataPermissions', () => {
@@ -122,7 +129,12 @@ describe('DataPermissions', () => {
       fetchStatus: 'loaded',
       data: [
         {
-          permissions: {},
+          permissions: {
+            files: {
+              type: 'io.cozy.files',
+              description: 'Required to access the files'
+            }
+          },
           slug: 'alan',
           name: 'Alan'
         }
@@ -130,10 +142,43 @@ describe('DataPermissions', () => {
     }
     useQuery.mockReturnValueOnce(queryResultApps)
     useQuery.mockReturnValueOnce(queryResultKonnectors)
+    isQueryLoading.mockReturnValue(false)
+    hasQueryBeenLoaded.mockReturnValue(true)
   })
 
   it('should display DataPermissions', () => {
     const { container } = render(<DataPermissions />)
     expect(container).toMatchSnapshot()
+  })
+
+  it('should display Contacts permissions because it matches the route param', () => {
+    const { container } = render(<DataPermissions />)
+    expect(container.querySelector('[data-primary]')).toHaveAttribute(
+      'data-primary',
+      'Contacts'
+    )
+  })
+
+  it('should display Alan permissions because it matches the route param', () => {
+    const { container } = render(<DataPermissions />)
+    expect(container.querySelectorAll('[data-primary]')[1]).toHaveAttribute(
+      'data-primary',
+      'Alan'
+    )
+  })
+
+  it('should render a spinner when query is loading and has not been loaded', () => {
+    isQueryLoading.mockReturnValue(true)
+    hasQueryBeenLoaded.mockReturnValue(false)
+    const { queryByTestId } = render(<DataPermissions />)
+    expect(queryByTestId('Spinner')).toBeInTheDocument()
+  })
+
+  it('should render Permissions.failedRequest when query status is failed', () => {
+    useQuery.mockRestore()
+    useQuery.mockReturnValueOnce({ fetchStatus: 'failed' })
+    useQuery.mockReturnValueOnce({ fetchStatus: 'failed' })
+    const { queryByText } = render(<DataPermissions />)
+    expect(queryByText('Permissions.failedRequest')).toBeInTheDocument()
   })
 })

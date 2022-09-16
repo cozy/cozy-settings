@@ -20,10 +20,8 @@ import withAllLocales from 'lib/withAllLocales'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import { getPermissionIconName } from 'components/Permissions/helpers/permissionsHelper'
-import {
-  completePermission,
-  sortPermissionsByName
-} from './helpers/DataListHelpers'
+import { sortPermissionsByName } from './DataListHelpers'
+import { completePermission } from '../helpers/permissionsHelper'
 import { routes } from 'constants/routes'
 import CozyClient, {
   Q,

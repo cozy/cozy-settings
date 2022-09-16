@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataPermissions should display DataPermissions 1`] = `
+<div>
+  <div
+    data-narrow="true"
+    data-testid="page"
+  >
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiIconButton-root u-mr-half large"
+      href="#/permissions/data"
+      tabindex="0"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <div
+          data-size="16"
+          data-testid="Icon"
+        >
+          <svg
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3.414 7h11.58C15.548 7 16 7.444 16 8c0 .552-.45 1-1.007 1H3.414l5.293 5.293a1 1 0 01-1.414 1.414l-7-7a1 1 0 010-1.414l7-7a1 1 0 111.414 1.414L3.414 7z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <div
+      style="text-align: center;"
+    >
+      <div
+        data-size="24"
+        data-testid="Icon"
+      >
+        <svg
+          viewBox="0 0 48 48"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+          >
+            <rect
+              fill="#d6d8da"
+              height="39"
+              rx="2"
+              width="48"
+              y="6"
+            />
+            <path
+              d="M2 3h18.172a2 2 0 011.414.586l1.828 1.828A2 2 0 0024.828 6H45a3 3 0 013 3H24.828a2 2 0 00-1.414.586l-1.828 1.828a2 2 0 01-1.414.586H0V5a2 2 0 012-2z"
+              fill="#5d6165"
+            />
+          </g>
+        </svg>
+      </div>
+      <div
+        data-testid="page-title"
+      >
+        COZYPERMISSIONS.PERMISSIONS.IO.COZY.FILES
+      </div>
+      <p
+        class="MuiTypography-root u-mb-1-half MuiTypography-body1 MuiTypography-colorTextPrimary"
+      >
+        Permissions.access cozypermissions.permissions.io.cozy.files
+      </p>
+    </div>
+    <div
+      data-testid="NavigationList"
+    >
+      <div
+        data-testid="NavigationListSection"
+      >
+        <div>
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemIcon-root"
+            >
+              <div
+                data-testid="AppIcon"
+              />
+            </div>
+            <div
+              data-primary="Contacts"
+              data-testid="ListItemText"
+            />
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+          <hr
+            class="MuiDivider-root"
+          />
+        </div>
+        <div>
+          <div
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiListItemIcon-root"
+            >
+              <div
+                data-testid="AppIcon"
+              />
+            </div>
+            <div
+              data-primary="Alan"
+              data-testid="ListItemText"
+            />
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
