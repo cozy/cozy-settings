@@ -33,8 +33,23 @@ exports[`PermissionsApplication should display slugName when query has been load
         />
       </a>
       <div
-        data-testid="NavigationList"
+        style="text-align: center;"
       >
+        <div
+          style="width: 50px; margin: 0px auto;"
+        >
+          <svg
+            class="styles__c-app-icon___2_O40 styles__c-app-icon-default___3CEmt styles__icon___23x3R"
+            height="100%"
+            style="fill: var(--coolGrey);"
+            viewBox="0 0 16 16"
+            width="100%"
+          >
+            <path
+              d="M1 11.009V5.5c0-.55.39-.773.872-.498l5.256 3.003c.476.272.872.944.872 1.495v5.508c0 .549-.39.772-.872.497l-5.256-3.003C1.396 12.231 1 11.56 1 11.01zm15 0c0 .55-.396 1.222-.872 1.494l-5.256 3.003c-.481.275-.872.052-.872-.497V9.5c0-.55.396-1.223.872-1.495l5.256-3.003c.481-.275.872-.052.872.498v5.508zM9.35 6.982c-.47.288-1.237.284-1.7 0l-4.8-2.954c-.47-.29-.463-.732.027-.995L7.623.477c.485-.261 1.264-.264 1.754 0l4.746 2.556c.485.26.49.71.027.995l-4.8 2.954z"
+            />
+          </svg>
+        </div>
         <div
           data-testid="pageTitle"
         >
@@ -43,313 +58,321 @@ exports[`PermissionsApplication should display slugName when query has been load
         <div
           data-testid="CircleButton"
         />
+      </div>
+      <div
+        data-testid="NavigationList"
+      >
         <div
-          data-testid="page"
+          data-testid="NavigationListSection"
         >
-          <li
-            class="MuiListItem-container"
+          <div
+            data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        d="M3 9c0 29.178 11.311 34.3 20.997 39C33.682 43.3 45 38.178 45 9L23.998 0 3 9z"
+                        fill="#d6d8da"
+                        fill-rule="nonzero"
+                      />
+                      <path
+                        d="M22.5 25.244V30.5a1 1 0 001 1h1a1 1 0 001-1v-5.256A4.502 4.502 0 0024 16.5a4.5 4.5 0 00-1.5 8.744zM24 37.5c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15 8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyPermissions.Permissions.io.cozy.accounts
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.write
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
               >
                 <svg
-                  class="styles__icon___23x3R"
-                  height="24"
-                  viewBox="0 0 48 48"
-                  width="24"
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
                 >
-                  <g
-                    fill="none"
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
                     fill-rule="evenodd"
-                  >
-                    <path
-                      d="M3 9c0 29.178 11.311 34.3 20.997 39C33.682 43.3 45 38.178 45 9L23.998 0 3 9z"
-                      fill="#d6d8da"
-                      fill-rule="nonzero"
-                    />
-                    <path
-                      d="M22.5 25.244V30.5a1 1 0 001 1h1a1 1 0 001-1v-5.256A4.502 4.502 0 0024 16.5a4.5 4.5 0 00-1.5 8.744zM24 37.5c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15 8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15z"
-                      fill="#5d6165"
-                    />
-                  </g>
+                  />
                 </svg>
               </div>
-              <div
-                class="MuiListItemText-root MuiListItemText-multiline"
-              >
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                >
-                  CozyPermissions.Permissions.io.cozy.accounts
-                </span>
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
-                >
-                  Permissions.write
-                </span>
-              </div>
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
-            <div
-              class="MuiListItemSecondaryAction-root"
-              style="color: grey;"
-            >
-              <svg
-                class="u-mr-1 styles__icon___23x3R"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
-              >
-                <path
-                  d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </div>
-          </li>
-          <hr
-            class="MuiDivider-root MuiDivider-inset"
-          />
-        </div>
-        <div
-          data-testid="page"
-        >
-          <li
-            class="MuiListItem-container"
+            </li>
+            <hr
+              class="MuiDivider-root MuiDivider-inset"
+            />
+          </div>
+          <div
+            data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        d="M25.342 24.67l20.87 10.436a1 1 0 010 1.788L25.341 47.33a3 3 0 01-2.684 0L1.788 36.894a1 1 0 010-1.788l20.87-10.435a3 3 0 012.684 0z"
+                        fill="#d6d8da"
+                      />
+                      <path
+                        d="M25.342 12.67l20.87 10.436a1 1 0 010 1.788L25.341 35.33a3 3 0 01-2.684 0L1.788 24.894a1 1 0 010-1.788l20.87-10.435a3 3 0 012.684 0z"
+                        fill="#95999d"
+                      />
+                      <path
+                        d="M25.342.67l20.87 10.436a1 1 0 010 1.788L25.341 23.33a3 3 0 01-2.684 0L1.788 12.894a1 1 0 010-1.788L22.659.67a3 3 0 012.684 0z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyPermissions.Permissions.io.cozy.apps
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.read
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
               >
                 <svg
-                  class="styles__icon___23x3R"
-                  height="24"
-                  viewBox="0 0 48 48"
-                  width="24"
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
                 >
-                  <g
-                    fill="none"
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
                     fill-rule="evenodd"
-                  >
-                    <path
-                      d="M25.342 24.67l20.87 10.436a1 1 0 010 1.788L25.341 47.33a3 3 0 01-2.684 0L1.788 36.894a1 1 0 010-1.788l20.87-10.435a3 3 0 012.684 0z"
-                      fill="#d6d8da"
-                    />
-                    <path
-                      d="M25.342 12.67l20.87 10.436a1 1 0 010 1.788L25.341 35.33a3 3 0 01-2.684 0L1.788 24.894a1 1 0 010-1.788l20.87-10.435a3 3 0 012.684 0z"
-                      fill="#95999d"
-                    />
-                    <path
-                      d="M25.342.67l20.87 10.436a1 1 0 010 1.788L25.341 23.33a3 3 0 01-2.684 0L1.788 12.894a1 1 0 010-1.788L22.659.67a3 3 0 012.684 0z"
-                      fill="#5d6165"
-                    />
-                  </g>
+                  />
                 </svg>
               </div>
-              <div
-                class="MuiListItemText-root MuiListItemText-multiline"
-              >
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                >
-                  CozyPermissions.Permissions.io.cozy.apps
-                </span>
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
-                >
-                  Permissions.read
-                </span>
-              </div>
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
-            <div
-              class="MuiListItemSecondaryAction-root"
-              style="color: grey;"
-            >
-              <svg
-                class="u-mr-1 styles__icon___23x3R"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
-              >
-                <path
-                  d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </div>
-          </li>
-          <hr
-            class="MuiDivider-root MuiDivider-inset"
-          />
-        </div>
-        <div
-          data-testid="page"
-        >
-          <li
-            class="MuiListItem-container"
+            </li>
+            <hr
+              class="MuiDivider-root MuiDivider-inset"
+            />
+          </div>
+          <div
+            data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect
+                        fill="#d6d8da"
+                        height="39"
+                        rx="2"
+                        width="48"
+                        y="6"
+                      />
+                      <path
+                        d="M2 3h18.172a2 2 0 011.414.586l1.828 1.828A2 2 0 0024.828 6H45a3 3 0 013 3H24.828a2 2 0 00-1.414.586l-1.828 1.828a2 2 0 01-1.414.586H0V5a2 2 0 012-2z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyPermissions.Permissions.io.cozy.files
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.readAndWrite
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
               >
                 <svg
-                  class="styles__icon___23x3R"
-                  height="24"
-                  viewBox="0 0 48 48"
-                  width="24"
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
                 >
-                  <g
-                    fill="none"
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
                     fill-rule="evenodd"
-                  >
-                    <rect
-                      fill="#d6d8da"
-                      height="39"
-                      rx="2"
-                      width="48"
-                      y="6"
-                    />
-                    <path
-                      d="M2 3h18.172a2 2 0 011.414.586l1.828 1.828A2 2 0 0024.828 6H45a3 3 0 013 3H24.828a2 2 0 00-1.414.586l-1.828 1.828a2 2 0 01-1.414.586H0V5a2 2 0 012-2z"
-                      fill="#5d6165"
-                    />
-                  </g>
+                  />
                 </svg>
               </div>
-              <div
-                class="MuiListItemText-root MuiListItemText-multiline"
-              >
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                >
-                  CozyPermissions.Permissions.io.cozy.files
-                </span>
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
-                >
-                  Permissions.readAndWrite
-                </span>
-              </div>
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
-            <div
-              class="MuiListItemSecondaryAction-root"
-              style="color: grey;"
-            >
-              <svg
-                class="u-mr-1 styles__icon___23x3R"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
-              >
-                <path
-                  d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </div>
-          </li>
-          <hr
-            class="MuiDivider-root MuiDivider-inset"
-          />
-        </div>
-        <div
-          data-testid="page"
-        >
-          <li
-            class="MuiListItem-container"
+            </li>
+            <hr
+              class="MuiDivider-root MuiDivider-inset"
+            />
+          </div>
+          <div
+            data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiListItemIcon-root"
+                >
+                  <svg
+                    class="styles__icon___23x3R"
+                    height="24"
+                    viewBox="0 0 48 48"
+                    width="24"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect
+                        fill="#d6d8da"
+                        height="39"
+                        rx="2"
+                        width="48"
+                        y="6"
+                      />
+                      <path
+                        d="M2 3h18.172a2 2 0 011.414.586l1.828 1.828A2 2 0 0024.828 6H45a3 3 0 013 3H24.828a2 2 0 00-1.414.586l-1.828 1.828a2 2 0 01-1.414.586H0V5a2 2 0 012-2z"
+                        fill="#5d6165"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root MuiListItemText-multiline"
+                >
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    CozyPermissions.Permissions.io.cozy.files.*
+                  </span>
+                  <span
+                    class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                  >
+                    Permissions.readAndWrite
+                  </span>
+                </div>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
               >
                 <svg
-                  class="styles__icon___23x3R"
-                  height="24"
-                  viewBox="0 0 48 48"
-                  width="24"
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
                 >
-                  <g
-                    fill="none"
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
                     fill-rule="evenodd"
-                  >
-                    <rect
-                      fill="#d6d8da"
-                      height="39"
-                      rx="2"
-                      width="48"
-                      y="6"
-                    />
-                    <path
-                      d="M2 3h18.172a2 2 0 011.414.586l1.828 1.828A2 2 0 0024.828 6H45a3 3 0 013 3H24.828a2 2 0 00-1.414.586l-1.828 1.828a2 2 0 01-1.414.586H0V5a2 2 0 012-2z"
-                      fill="#5d6165"
-                    />
-                  </g>
+                  />
                 </svg>
               </div>
-              <div
-                class="MuiListItemText-root MuiListItemText-multiline"
-              >
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-                >
-                  CozyPermissions.Permissions.io.cozy.files.*
-                </span>
-                <span
-                  class="MuiTypography-root u-db u-ellipsis MuiListItemText-secondary MuiTypography-caption MuiTypography-colorTextSecondary MuiTypography-displayBlock"
-                >
-                  Permissions.readAndWrite
-                </span>
-              </div>
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
-            <div
-              class="MuiListItemSecondaryAction-root"
-              style="color: grey;"
-            >
-              <svg
-                class="u-mr-1 styles__icon___23x3R"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
-              >
-                <path
-                  d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </div>
-          </li>
+            </li>
+          </div>
         </div>
       </div>
     </div>

@@ -79,53 +79,97 @@ exports[`DataPermissions should display DataPermissions 1`] = `
         data-testid="NavigationListSection"
       >
         <div>
-          <div
-            aria-disabled="false"
-            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-            role="button"
-            tabindex="0"
+          <li
+            class="MuiListItem-container"
           >
             <div
-              class="MuiListItemIcon-root"
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+              role="button"
+              tabindex="0"
             >
               <div
-                data-testid="AppIcon"
+                class="MuiListItemIcon-root"
+              >
+                <div
+                  data-testid="AppIcon"
+                />
+              </div>
+              <div
+                data-primary="Contacts"
+                data-testid="ListItemText"
+              />
+              <span
+                class="MuiTouchRipple-root"
               />
             </div>
             <div
-              data-primary="Contacts"
-              data-testid="ListItemText"
-            />
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </div>
+              class="MuiListItemSecondaryAction-root"
+              style="color: grey;"
+            >
+              <div
+                data-size="16"
+                data-testid="Icon"
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </li>
           <hr
-            class="MuiDivider-root"
+            class="MuiDivider-root MuiDivider-inset"
           />
         </div>
         <div>
-          <div
-            aria-disabled="false"
-            class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-            role="button"
-            tabindex="0"
+          <li
+            class="MuiListItem-container"
           >
             <div
-              class="MuiListItemIcon-root"
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+              role="button"
+              tabindex="0"
             >
               <div
-                data-testid="AppIcon"
+                class="MuiListItemIcon-root"
+              >
+                <div
+                  data-testid="AppIcon"
+                />
+              </div>
+              <div
+                data-primary="Alan"
+                data-testid="ListItemText"
+              />
+              <span
+                class="MuiTouchRipple-root"
               />
             </div>
             <div
-              data-primary="Alan"
-              data-testid="ListItemText"
-            />
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </div>
+              class="MuiListItemSecondaryAction-root"
+              style="color: grey;"
+            >
+              <div
+                data-size="16"
+                data-testid="Icon"
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </li>
         </div>
       </div>
     </div>

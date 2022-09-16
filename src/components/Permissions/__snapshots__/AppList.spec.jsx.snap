@@ -21,62 +21,102 @@ exports[`AppList should display appName when query has been loaded 1`] = `
           <div
             data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
               >
                 <div
-                  data-testid="AppIcon"
+                  class="MuiListItemIcon-root"
+                >
+                  <div
+                    data-testid="AppIcon"
+                  />
+                </div>
+                <div
+                  data-primary="Alan"
+                  data-secondary="1 permission"
+                  data-testid="ListItemText"
+                />
+                <span
+                  class="MuiTouchRipple-root"
                 />
               </div>
               <div
-                data-primary="Alan"
-                data-secondary="1 permission"
-                data-testid="ListItemText"
-              />
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
+              >
+                <svg
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </li>
           </div>
           <hr
-            class="MuiDivider-root"
+            class="MuiDivider-root MuiDivider-inset"
           />
         </div>
         <div>
           <div
             data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
               >
                 <div
-                  data-testid="AppIcon"
+                  class="MuiListItemIcon-root"
+                >
+                  <div
+                    data-testid="AppIcon"
+                  />
+                </div>
+                <div
+                  data-primary="Contacts"
+                  data-secondary="3 permissions"
+                  data-testid="ListItemText"
+                />
+                <span
+                  class="MuiTouchRipple-root"
                 />
               </div>
               <div
-                data-primary="Contacts"
-                data-secondary="3 permissions"
-                data-testid="ListItemText"
-              />
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
+              >
+                <svg
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </li>
           </div>
           <hr
-            class="MuiDivider-root"
+            class="MuiDivider-root MuiDivider-inset"
           />
         </div>
       </div>
@@ -106,62 +146,102 @@ exports[`AppList should display sorted app and konnector names when query is not
           <div
             data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
               >
                 <div
-                  data-testid="AppIcon"
+                  class="MuiListItemIcon-root"
+                >
+                  <div
+                    data-testid="AppIcon"
+                  />
+                </div>
+                <div
+                  data-primary="Alan"
+                  data-secondary="1 permission"
+                  data-testid="ListItemText"
+                />
+                <span
+                  class="MuiTouchRipple-root"
                 />
               </div>
               <div
-                data-primary="Alan"
-                data-secondary="1 permission"
-                data-testid="ListItemText"
-              />
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
+              >
+                <svg
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </li>
           </div>
           <hr
-            class="MuiDivider-root"
+            class="MuiDivider-root MuiDivider-inset"
           />
         </div>
         <div>
           <div
             data-testid="page"
           >
-            <div
-              aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
-              role="button"
-              tabindex="0"
+            <li
+              class="MuiListItem-container"
             >
               <div
-                class="MuiListItemIcon-root"
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+                role="button"
+                tabindex="0"
               >
                 <div
-                  data-testid="AppIcon"
+                  class="MuiListItemIcon-root"
+                >
+                  <div
+                    data-testid="AppIcon"
+                  />
+                </div>
+                <div
+                  data-primary="Contacts"
+                  data-secondary="3 permissions"
+                  data-testid="ListItemText"
+                />
+                <span
+                  class="MuiTouchRipple-root"
                 />
               </div>
               <div
-                data-primary="Contacts"
-                data-secondary="3 permissions"
-                data-testid="ListItemText"
-              />
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
+                class="MuiListItemSecondaryAction-root"
+                style="color: grey;"
+              >
+                <svg
+                  class="u-mr-1 styles__icon___23x3R"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                >
+                  <path
+                    d="M12.707 7.293l-6-6a.999.999 0 10-1.414 1.414L10.586 8l-5.293 5.293a.999.999 0 101.414 1.414l6-6a.999.999 0 000-1.414"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </li>
           </div>
           <hr
-            class="MuiDivider-root"
+            class="MuiDivider-root MuiDivider-inset"
           />
         </div>
       </div>
