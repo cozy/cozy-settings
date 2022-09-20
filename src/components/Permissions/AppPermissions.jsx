@@ -57,6 +57,17 @@ const PermissionsApplication = ({ t }) => {
   const { slug: slugName } = useParams()
   const THIRTY_SECONDS = 30 * 1000
 
+  // We don't care about this data, but it makes the reload work
+  const queryResultAppsLikeAppList = useQuery(Q(APPS_DOCTYPE), {
+    as: APPS_DOCTYPE,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+  })
+
+  const queryResultKonnectorsLikeAppList = useQuery(Q(KONNECTORS_DOCTYPE), {
+    as: KONNECTORS_DOCTYPE,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+  })
+
   const queryResultApps = useQuery(
     Q(APPS_DOCTYPE).getById('io.cozy.apps/' + slugName),
     {
