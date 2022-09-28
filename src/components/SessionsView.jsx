@@ -31,7 +31,7 @@ class SessionsView extends Component {
           <Button
             className="u-ml-0"
             theme="danger"
-            onClick={() => deleteOtherSessions()}
+            onClick={deleteOtherSessions}
             label={t('SessionsView.delete')}
           />
         </Typography>
