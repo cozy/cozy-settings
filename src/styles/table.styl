@@ -3,6 +3,10 @@
 .coz-table
     margin 0 -2rem
 
+    .set-table-row
+        +small-screen()
+            height: inherit
+
     .set-table-name
         flex 0 0 40%
 
@@ -33,8 +37,16 @@
     +small-screen()
         .set-table-name
             flex  0 0 100%
-            padding-top .5rem
-            padding-bottom .5rem
+            padding-top .75rem
+            padding-bottom .75rem
+
+        .set-table-info-name
+            color var(--primaryTextColor)
+
+        .set-table-info-date
+            display flex
+            gap 0.25em
+            align-items center
 
         .set-table-activity
         .set-table-permission
@@ -48,3 +60,40 @@
         .set-table-date
         .set-table-actions
             display none
+
+.row
+    height 4rem
+
+.browser
+    padding 1.5rem 0.5rem 1.5rem 1.5rem
+
+.main
+    display flex
+    flex-direction column
+
+.title
+    font-size 1rem
+    color var(--primaryTextColor)
+
+.subtitle
+    font-size 0.75rem
+
+.more-menu-infos
+    margin-left 0.5rem
+
+.action-menu-header
+    height 4rem
+
+.action-menu-item
+    height 2.5rem
+    display flex
+    align-items center
+    margin-left 0.5rem
+
+.dialog-container
+    margin-top 0.75rem
+    display block
+
+.dialog-paragraph
+    margin 0.25rem
+    font-weight 400
