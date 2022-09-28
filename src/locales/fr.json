@@ -289,7 +289,12 @@
     "infos": {
       "server_error": "Une erreur s'est produite. Merci de recharger la page.",
       "sessions_deleted": "Toutes les sessions ont été déconnectées"
-    }
+    },
+    "modal_title": "Détails",
+    "modal_date": "Date :",
+    "modal_os": "OS :",
+    "modal_browser": "Navigateur :",
+    "modal_ip": "IP :"
   },
   "revokeDevice": {
     "title": "Révoquer cet appareil",
