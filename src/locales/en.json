@@ -286,7 +286,12 @@
     "infos": {
       "server_error": "Something went wrong with the server. Please, reload the page.",
       "sessions_deleted": "All others sessions are deleted."
-    }
+    },
+    "modal_title": "Details",
+    "modal_date": "Date:",
+    "modal_os": "OS:",
+    "modal_browser": "Browser:",
+    "modal_ip": "IP:"
   },
   "revokeDevice": {
     "title": "Revoke this device",

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
@@ -15,7 +15,9 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import tableStyles from 'styles/table.styl'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react'
+import SessionDialog from './SessionsView/SessionDialog'
 
 const SessionsView = ({
   fetchSessions,
@@ -24,10 +26,15 @@ const SessionsView = ({
   deleteOtherSessions
 }) => {
   const { t } = useI18n()
+  const [sessionDetails, setSessionDetails] = useState(undefined)
 
   useEffect(() => {
     fetchSessions()
   }, [fetchSessions])
+
+  const displayModal = session => setSessionDetails(session)
+
+  const hideModal = () => setSessionDetails(undefined)
 
   return (
     <Page>
@@ -49,6 +56,7 @@ const SessionsView = ({
         />
       )}
       {!isFetching && sessions && (
+        <>
           <Table className={tableStyles['coz-table']}>
             <TableHead>
               <TableRow>
@@ -75,12 +83,20 @@ const SessionsView = ({
                 })
                 .map((session, index) => (
                   <SessionsViewRow
+                    displayModal={displayModal}
                     session={session}
                     key={index}
                   />
                 ))}
             </TableBody>
           </Table>
+          <ConfirmDialog
+            open={!!sessionDetails}
+            onClose={hideModal}
+            title={t('SessionsView.modal_title')}
+            content={<SessionDialog session={sessionDetails} />}
+          />
+        </>
       )}
     </Page>
   )
