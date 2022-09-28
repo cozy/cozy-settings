@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import {
   Table,
@@ -16,34 +15,40 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import tableStyles from 'styles/table.styl'
+import { useI18n } from 'cozy-ui/transpiled/react'
 
-class SessionsView extends Component {
-  UNSAFE_componentWillMount() {
-    this.props.fetchSessions()
-  }
+const SessionsView = ({
+  fetchSessions,
+  isFetching,
+  sessions,
+  deleteOtherSessions
+}) => {
+  const { t } = useI18n()
 
-  render() {
-    const { t, f, isFetching, sessions, deleteOtherSessions } = this.props
-    return (
-      <Page>
-        <PageTitle>{t('SessionsView.title')}</PageTitle>
-        <Typography variant="body1" className="u-mb-1-half">
-          <Button
-            className="u-ml-0"
-            theme="danger"
-            onClick={deleteOtherSessions}
-            label={t('SessionsView.delete')}
-          />
-        </Typography>
-        {isFetching && (
-          <Spinner
-            className="u-pos-fixed-s"
-            middle
-            size="xxlarge"
-            loadingType="loading"
-          />
-        )}
-        {!isFetching && sessions && (
+  useEffect(() => {
+    fetchSessions()
+  }, [fetchSessions])
+
+  return (
+    <Page>
+      <PageTitle>{t('SessionsView.title')}</PageTitle>
+      <Typography variant="body1" className="u-mb-1-half">
+        <Button
+          className="u-ml-0"
+          theme="danger"
+          onClick={deleteOtherSessions}
+          label={t('SessionsView.delete')}
+        />
+      </Typography>
+      {isFetching && (
+        <Spinner
+          className="u-pos-fixed-s"
+          middle
+          size="xxlarge"
+          loadingType="loading"
+        />
+      )}
+      {!isFetching && sessions && (
           <Table className={tableStyles['coz-table']}>
             <TableHead>
               <TableRow>
@@ -69,14 +74,16 @@ class SessionsView extends Component {
                   return new Date(b.created_at) - new Date(a.created_at)
                 })
                 .map((session, index) => (
-                  <SessionsViewRow session={session} t={t} f={f} key={index} />
+                  <SessionsViewRow
+                    session={session}
+                    key={index}
+                  />
                 ))}
             </TableBody>
           </Table>
-        )}
-      </Page>
-    )
-  }
+      )}
+    </Page>
+  )
 }
 
-export default translate()(SessionsView)
+export default SessionsView
