@@ -6,7 +6,7 @@ import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import OpenwithIcon from 'cozy-ui/transpiled/react/Icons/Openwith'
 
-type MenuItemAnchorProps = {
+interface MenuItemAnchorProps {
   icon: JSX.Element
   primary: string
   href: string
@@ -30,7 +30,7 @@ export const MenuItemAnchor = ({
       target={target ?? '_self'}
     >
       <ListItemIcon>
-        <Icon icon={icon} />
+        <Icon icon={icon} color="var(--primaryTextColor)" />
       </ListItemIcon>
 
       <ListItemText primary={primary} />
@@ -38,7 +38,7 @@ export const MenuItemAnchor = ({
       {secondary && <ListItemText secondary={secondary} />}
 
       {target === '_blank' && (
-        <ListItemIcon align="right">
+        <ListItemIcon className="u-ml-half u-mr-0 u-w-auto">
           <Icon icon={OpenwithIcon} />
         </ListItemIcon>
       )}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTheme } from '@material-ui/core/styles'
 
 import CozyCircle from 'cozy-ui/transpiled/react/Icons/CozyCircle'
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
@@ -9,7 +10,7 @@ import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 import LockScreen from 'cozy-ui/transpiled/react/Icons/LockScreen'
 import Logout from 'cozy-ui/transpiled/react/Icons/Logout'
 import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
-import UnknowIcon from 'cozy-ui/transpiled/react/Icons/Unknow'
+import HelpIcon from 'cozy-ui/transpiled/react/Icons/Help'
 import flag from 'cozy-flags'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
@@ -28,9 +29,16 @@ export const Sidebar = (): JSX.Element => {
   const percent = useDiskPercentage()
   const logout = useLogout()
   const offersLink = useOffersLink()
+  const theme = useTheme()
 
   return (
-    <nav role="navigation" style={{ minWidth: '362px' }}>
+    <nav
+      role="navigation"
+      style={{
+        width: '320px',
+        borderRight: `1px solid ${theme.palette.divider}`
+      }}
+    >
       <List>
         {(isFlagshipApp() || flag('settings.flagship-mode')) && (
           <MenuList title={t('Nav.header_flagship')}>
@@ -96,7 +104,7 @@ export const Sidebar = (): JSX.Element => {
             primary={t('Nav.primary_faq')}
             href={routes.external_faq}
             target="_blank"
-            icon={UnknowIcon}
+            icon={HelpIcon}
           />
 
           <MenuItemButton

@@ -6,6 +6,7 @@ import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 export const MenuItemNavLink = (props: {
   icon: JSX.Element
@@ -38,22 +39,20 @@ export const MenuItemNavLink = (props: {
   return (
     <li>
       <ListItem button component={renderLink}>
-        {icon ? (
-          <ListItemIcon>
-            <Icon icon={icon} />
-          </ListItemIcon>
-        ) : null}
+        <ListItemIcon>
+          <Icon icon={icon} color="var(--primaryTextColor)" />
+        </ListItemIcon>
 
         <ListItemText primary={primary} />
 
-        {secondary && <ListItemText secondary={secondary} align="right" />}
+        {secondary && (
+          <Typography variant="body2" style={{ lineHeight: 1 }}>
+            {secondary}
+          </Typography>
+        )}
 
-        <ListItemIcon>
-          <Icon
-            className="u-ml-1"
-            icon={RightIcon}
-            color="var(--secondaryTextColor)"
-          />
+        <ListItemIcon className="u-ml-half u-mr-0 u-w-auto">
+          <Icon icon={RightIcon} />
         </ListItemIcon>
       </ListItem>
     </li>

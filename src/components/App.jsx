@@ -76,12 +76,9 @@ export class App extends Component {
               path="/permissions/data/:permission"
               element={<DataPermissions />}
             />
-            <Route
-              path="*"
-              element={
-                <Navigate to={isSmallView ? '/menu' : '/profile'} replace />
-              }
-            />
+            {isSmallView ? (
+              <Route path="*" element={<Navigate to={routes.menu} replace />} />
+            ) : null}
           </Routes>
         </Main>
         <Sprite />

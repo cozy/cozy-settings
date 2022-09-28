@@ -29,7 +29,7 @@ export const MenuItemSwitch = ({
       onClick={onClick}
     >
       <ListItemIcon>
-        <Icon icon={icon} />
+        <Icon icon={icon} color="var(--primaryTextColor)" />
       </ListItemIcon>
 
       <ListItemText
@@ -38,6 +38,7 @@ export const MenuItemSwitch = ({
       />
 
       {secondary && <ListItemText secondary={secondary} />}
+
       <Switch checked={checked} color="primary" />
     </ListItem>
   )

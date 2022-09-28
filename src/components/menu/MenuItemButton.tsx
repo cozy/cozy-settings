@@ -5,7 +5,7 @@ import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 
-type MenuItemButtonProps = {
+interface MenuItemButtonProps {
   icon: JSX.Element
   primary: string
   secondary?: string
@@ -25,7 +25,7 @@ export const MenuItemButton = ({
     style={{ color: 'var(--primaryTextColor)' }}
   >
     <ListItemIcon>
-      <Icon icon={icon} />
+      <Icon icon={icon} color="var(--primaryTextColor)" />
     </ListItemIcon>
 
     <ListItemText primary={primary} />
