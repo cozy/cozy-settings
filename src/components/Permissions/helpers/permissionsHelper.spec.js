@@ -1,4 +1,7 @@
-import { displayPermissions } from './permissionsHelper'
+import {
+  displayPermissions,
+  getPermissionsVerbsByType
+} from './permissionsHelper'
 
 describe('displayPermissions', () => {
   it('should return Lecture et Écriture when verbs is undefined', () => {
@@ -16,5 +19,43 @@ describe('displayPermissions', () => {
   it('should return Ecriture when verbs does not contain GET ', () => {
     const result = displayPermissions(['POST', 'PUT', 'DELETE'])
     expect(result).toEqual('Permissions.write')
+  })
+})
+
+describe('getPermissionsVerbsByType', () => {
+  const appOrKonnector = {
+    permissions: {
+      accounts: {
+        type: 'io.cozy.accounts',
+        description:
+          'Required to display additional information in the viewer for files automatically retrieved by services',
+        verbs: ['GET']
+      },
+      albums: {
+        type: 'io.cozy.photos.albums',
+        description: 'Required to manage photos albums',
+        verbs: ['PUT']
+      },
+      files: {
+        type: 'io.cozy.files',
+        description: 'Required to access the files'
+      }
+    }
+  }
+  it("should return ['PUT'] when the permission required is in appOrKonnector.permissions and it contains ['PUT'] in his verbs", () => {
+    const permission = 'io.cozy.photos.albums'
+    const result = getPermissionsVerbsByType(
+      appOrKonnector.permissions,
+      permission
+    )
+    expect(result).toEqual(['PUT'])
+  })
+  it("should return undefined when the permission required is not in appOrKonnector.permissions and it contains ['PUT'] in his verbs", () => {
+    const permission = 'io.cozy.contacts'
+    const result = getPermissionsVerbsByType(
+      appOrKonnector.permissions,
+      permission
+    )
+    expect(result).toEqual(undefined)
   })
 })

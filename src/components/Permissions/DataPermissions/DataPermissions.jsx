@@ -1,5 +1,6 @@
 import React from 'react'
 import withAllLocales from '../../../lib/withAllLocales'
+import { getPermissionsVerbsByType } from '../helpers/permissionsHelper'
 import { useParams } from 'react-router-dom'
 import CozyClient, {
   Q,
@@ -122,7 +123,14 @@ const DataPermissions = ({ t }) => {
                       </ListItemIcon>
                       <ListItemText
                         primary={appOrKonnector.name}
-                        secondary={t(displayPermissions(appOrKonnector.verbs))}
+                        secondary={t(
+                          displayPermissions(
+                            getPermissionsVerbsByType(
+                              appOrKonnector.permissions,
+                              permission
+                            )
+                          )
+                        )}
                       />
                       <ListItemSecondaryAction>
                         <Icon

@@ -33,3 +33,14 @@ export const completePermission = (apps, konnectors) => {
   }
   return permissionsToDisplay
 }
+
+export const getPermissionsVerbsByType = (permissions, type) => {
+  let verbs
+  const permissionsArray = Object.entries(permissions)
+  for (let i = 0; i < permissionsArray.length; i++) {
+    if (permissionsArray[i][1].type === type) {
+      verbs = permissionsArray[i][1].verbs
+    }
+  }
+  return verbs
+}
