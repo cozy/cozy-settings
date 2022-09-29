@@ -14,6 +14,7 @@ import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
 import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 import { canConfigureDevice, getDeviceIcon } from './helpers'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 const MoreButton = ({ onClick }) => {
   const { t } = useI18n()
@@ -47,8 +48,9 @@ const MoreMenuItem = ({ onClick, icon, color, text, className }) => (
     </Typography>
   </ActionMenuItem>
 )
-const MoreMenu = ({ device, onRevoke, onConfigure, isMobile }) => {
+const MoreMenu = ({ device, onRevoke, onConfigure }) => {
   const { f, t } = useI18n()
+  const { isMobile } = useBreakpoints()
 
   const [menuIsVisible, setMenuVisible] = useState(false)
 

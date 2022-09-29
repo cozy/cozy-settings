@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { UAParser } from 'ua-parser-js'
 import React from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -16,7 +18,10 @@ interface Prop {
 }
 
 const SessionDialog = ({ session }: Prop): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const { f, t } = useI18n()
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
   const ua = UAParser(session.user_agent)
   return (
     <span className={tableStyles['dialog-container']}>
@@ -29,6 +34,7 @@ const SessionDialog = ({ session }: Prop): JSX.Element => {
         {t('SessionsView.modal_os')} {session.os}
       </p>
       <p className={tableStyles['dialog-paragraph']}>
+        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
         {t('SessionsView.modal_browser')} {ua.browser.name} {ua.browser.major}
       </p>
       <p className={tableStyles['dialog-paragraph']}>

@@ -3,18 +3,13 @@ import classNames from 'classnames'
 
 import tableStyles from 'styles/table.styl'
 
-import MuiButton from 'cozy-ui/transpiled/react/MuiCozyTheme/Buttons'
 import {
   Table,
   TableHead,
-  TableBody,
   TableRow,
-  TableHeader,
-  TableCell
+  TableHeader
 } from 'cozy-ui/transpiled/react/Table'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
 import DevicesModaleConfigureView from 'components/DevicesModaleConfigureView'
@@ -25,8 +20,14 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import laptopIcon from '../../assets/icons/icon-device-laptop.svg'
 import mobileIcon from '../../assets/icons/icon-device-phone.svg'
 import browserIcon from '../../assets/icons/icon-device-browser.svg'
-import { canConfigureDevice } from './helpers'
 import MoreMenu from './DevicesViewMoreMenu'
+import List from 'cozy-ui/react/Icons/List'
+import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
+
+import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 
 const deviceKindToIcon = {
   mobile: mobileIcon,
@@ -46,7 +47,6 @@ const DevicesViewTable = ({
   const navigate = useNavigate()
   const { deviceId } = useParams()
   const location = useLocation()
-  const { isMobile } = useBreakpoints()
 
   const [deviceToRevoke, setDeviceToRevoke] = useState(null)
 
@@ -106,83 +106,41 @@ const DevicesViewTable = ({
           </TableHeader>
         </TableRow>
       </TableHead>
-      <TableBody className={tableStyles['set-table-devices']}>
+      <List>
         {devices.map(device => (
-          <TableRow key={device.id} className={tableStyles['set-table-row']}>
-            <TableCell
-              className={classNames(
-                tableStyles['set-table-name'],
-                tableStyles['coz-table-primary']
-              )}
-            >
-              <Media>
-                <Img>
-                  <Icon icon={getDeviceIcon(device)} size={32} />
-                </Img>
-                <Bd className="u-ml-1">
-                  <span className={tableStyles['set-table-info-name']}>
-                    {device.client_name}
-                  </span>
-                  {isMobile && (
-                    <span className={tableStyles['set-table-info-date']}>
-                      <Icon
-                        icon={SyncIcon}
-                        size={8}
-                        color="var(--secondaryTextColor)"
-                      />
-                      {device.synchronized_at
-                        ? f(
-                            device.synchronized_at,
-                            t('DevicesView.sync_date_format')
-                          )
-                        : '-'}
-                    </span>
-                  )}
-                </Bd>
-                {isMobile && (
-                  <MoreMenu
-                    device={device}
-                    onRevoke={() => {
-                      setDeviceToRevoke(device)
-                    }}
-                    onConfigure={() => {
-                      setDeviceToConfigure(device)
-                    }}
-                    isMobile
+          <>
+            <ListItem button key={device.client_name}>
+              <ListItemIcon>
+                <Icon icon={getDeviceIcon(device)} size={32} />
+              </ListItemIcon>
+              <ListItemText primary={device.client_name} />
+              <ListItemText secondary="metadata">
+                <span className={tableStyles['set-table-info-date']}>
+                  <Icon
+                    icon={SyncIcon}
+                    size={8}
+                    color="var(--secondaryTextColor)"
                   />
-                )}
-              </Media>
-            </TableCell>
-            <TableCell className={tableStyles['set-table-date']}>
-              {device.synchronized_at
-                ? f(device.synchronized_at, t('DevicesView.sync_date_format'))
-                : '-'}
-            </TableCell>
-            <TableCell className={tableStyles['set-table-actions']}>
-              <>
-                <MuiButton
-                  color="primary"
-                  onClick={() => {
-                    setDeviceToRevoke(device)
-                  }}
-                >
-                  {t('DevicesView.revoke')}
-                </MuiButton>
-                {canConfigureDevice(device) ? (
-                  <MuiButton
-                    color="primary"
-                    onClick={() => {
-                      setDeviceToConfigure(device)
-                    }}
-                  >
-                    {t('DevicesView.configure')}
-                  </MuiButton>
-                ) : null}
-              </>
-            </TableCell>
-          </TableRow>
+                  {device.synchronized_at
+                    ? f(
+                        device.synchronized_at,
+                        t('DevicesView.sync_date_format')
+                      )
+                    : '-'}
+                </span>
+              </ListItemText>
+              <ListItemSecondaryAction>
+                <MoreMenu
+                  device={device}
+                  onRevoke={() => setDeviceToRevoke(device)}
+                  onConfigure={() => setDeviceToConfigure(device)}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+            <Divider component="li" variant="inset" />
+          </>
         ))}
-      </TableBody>
+      </List>
     </Table>
   )
 }
