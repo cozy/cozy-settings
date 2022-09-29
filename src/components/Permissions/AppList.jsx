@@ -1,16 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+import ListItemIcon, {
+  smallSize
+} from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { routes } from 'constants/routes'
+import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
@@ -59,25 +63,32 @@ const AppList = () => {
               .map(appOrKonnector => {
                 return (
                   <div key={appOrKonnector.name}>
-                    <Link
-                      to={`${routes.appList}/${appOrKonnector.slug}`}
-                      style={{ textDecoration: 'none' }}
+                    <ListItem
+                      button
+                      component="a"
+                      href={`/#${routes.appList}/${appOrKonnector.slug}`}
                     >
-                      <ListItem button>
-                        <ListItemIcon>
-                          <AppIcon app={appOrKonnector} />
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={appOrKonnector.name}
-                          secondary={t('Permissions.numberOfPermissions', {
-                            smart_count: Object.entries(
-                              appOrKonnector.permissions
-                            ).length
-                          })}
+                      <ListItemIcon>
+                        <AppIcon app={appOrKonnector} />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={appOrKonnector.name}
+                        secondary={t('Permissions.numberOfPermissions', {
+                          smart_count: Object.entries(
+                            appOrKonnector.permissions
+                          ).length
+                        })}
+                      />
+                      <ListItemSecondaryAction>
+                        <Icon
+                          icon={RightIcon}
+                          size={smallSize}
+                          className="u-mr-1"
+                          style={{ color: 'var(--secondaryTextColor)' }}
                         />
-                      </ListItem>
-                    </Link>
-                    <Divider />
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                    <Divider variant="inset" />
                   </div>
                 )
               })}

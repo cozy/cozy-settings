@@ -76,31 +76,29 @@ describe('PermissionsApplication', () => {
   beforeEach(() => {
     const queryResult = {
       fetchStatus: 'loaded',
-      data: [
-        {
-          permissions: {
-            files: {
-              type: 'io.cozy.files',
-              description: 'Required to access the files'
-            },
-            allFiles: {
-              type: 'io.cozy.files.*',
-              description: 'Required to access the files'
-            },
-            apps: {
-              type: 'io.cozy.apps',
-              description:
-                'Required by the cozy-bar to display the icons of the apps',
-              verbs: ['GET']
-            },
-            accounts: {
-              type: 'io.cozy.accounts',
-              description: 'Required to access accounts',
-              verbs: ['POST']
-            }
+      data: {
+        permissions: {
+          files: {
+            type: 'io.cozy.files',
+            description: 'Required to access the files'
+          },
+          allFiles: {
+            type: 'io.cozy.files.*',
+            description: 'Required to access the files'
+          },
+          apps: {
+            type: 'io.cozy.apps',
+            description:
+              'Required by the cozy-bar to display the icons of the apps',
+            verbs: ['GET']
+          },
+          accounts: {
+            type: 'io.cozy.accounts',
+            description: 'Required to access accounts',
+            verbs: ['POST']
           }
         }
-      ]
+      }
     }
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(true)
