@@ -4,7 +4,7 @@ import { fetchSessions, deleteOtherSessions } from 'actions'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
-import SessionsView from 'components/SessionsView'
+import SessionsView from 'components/SessionsView/SessionsView'
 
 const mapStateToProps = state => ({
   sessions: state.sessions,
