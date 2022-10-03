@@ -5,7 +5,7 @@ import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 
-type MenuItemButtonProps = {
+interface MenuItemButtonProps {
   icon: JSX.Element
   primary: string
   secondary?: string

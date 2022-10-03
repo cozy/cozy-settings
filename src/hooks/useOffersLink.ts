@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { useClient, Q } from 'cozy-client'
 import logger from 'lib/logger'
 
-const warn = (logger as { warn: (...args: unknown[]) => void }).warn
+const warn = (logger as unknown as { warn: (...args: unknown[]) => void }).warn
 
-type QueryResult<T> = { data: { attributes: T } }
+interface QueryResult<T> {
+  data: { attributes: T }
+}
 type ExpectedContext = QueryResult<{
   manager_url?: string
   enable_premium_links?: boolean
@@ -39,7 +41,7 @@ export const useOffersLink = (): undefined | string | null => {
       }
     }
 
-    offersLink === undefined && client && asyncCore()
+    offersLink === undefined && asyncCore()
   }, [client, offersLink])
 
   return offersLink

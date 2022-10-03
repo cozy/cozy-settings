@@ -13,6 +13,7 @@ interface MenuItemSwitchProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   checked?: boolean
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+  disabled?: boolean
 }
 
 export const MenuItemSwitch = ({
@@ -20,13 +21,15 @@ export const MenuItemSwitch = ({
   icon,
   onClick,
   primary,
-  secondary
+  secondary,
+  disabled
 }: MenuItemSwitchProps): JSX.Element => {
   return (
     <ListItem
       button
       style={{ color: 'var(--primaryTextColor)' }}
       onClick={onClick}
+      disabled={disabled}
     >
       <ListItemIcon>
         <Icon icon={icon} />

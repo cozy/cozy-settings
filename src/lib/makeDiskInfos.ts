@@ -24,7 +24,7 @@ const makeDiskInfos = (
 ): DiskInfos =>
   Object.fromEntries(
     Object.entries(computeDiskInfos(+usage, quota ? +quota : undefined)).map(
-      ([key, value]) =>
+      ([key, value]: [string, number]) =>
         key === 'percentUsage'
           ? [key, Math.round(value).toString()]
           : [[key.replace('disk', 'humanDisk')], formatDecimals(value)]
