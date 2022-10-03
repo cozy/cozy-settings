@@ -6,7 +6,7 @@ import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import OpenwithIcon from 'cozy-ui/transpiled/react/Icons/Openwith'
 
-type MenuItemAnchorProps = {
+interface MenuItemAnchorProps {
   icon: JSX.Element
   primary: string
   href: string

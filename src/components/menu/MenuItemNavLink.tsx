@@ -38,11 +38,9 @@ export const MenuItemNavLink = (props: {
   return (
     <li>
       <ListItem button component={renderLink}>
-        {icon ? (
-          <ListItemIcon>
-            <Icon icon={icon} />
-          </ListItemIcon>
-        ) : null}
+        <ListItemIcon>
+          <Icon icon={icon} />
+        </ListItemIcon>
 
         <ListItemText primary={primary} />
 

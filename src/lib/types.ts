@@ -1,10 +1,10 @@
-export type DiskInfos = {
+export interface DiskInfos {
   humanDiskQuota: string
   humanDiskUsage: string
   percentUsage: string
 }
 
-export type DiskInfosRaw = {
+export interface DiskInfosRaw {
   diskQuota: number
   diskUsage: number
   percentUsage: number

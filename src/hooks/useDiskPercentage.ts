@@ -5,9 +5,11 @@ import { useClient, Q } from 'cozy-client'
 import logger from 'lib/logger'
 import { makeDiskInfos } from 'lib/makeDiskInfos'
 
-const warn = (logger as { warn: (...args: unknown[]) => void }).warn
+const warn = (logger as unknown as { warn: (...args: unknown[]) => void }).warn
 
-type ExpectedData = { data: { attributes: { used: string; quota: string } } }
+interface ExpectedData {
+  data: { attributes: { used: string; quota: string } }
+}
 
 export const useDiskPercentage = (): string | undefined => {
   const client = useClient()
@@ -29,7 +31,7 @@ export const useDiskPercentage = (): string | undefined => {
       }
     }
 
-    !percent && client && asyncCore()
+    !percent && asyncCore()
   }, [client, percent])
 
   return percent
