@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
 import Fingerprint from 'cozy-ui/transpiled/react/Icons/Fingerprint'
+import FaceId from 'cozy-ui/transpiled/react/Icons/FaceId'
 import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 import Swap from 'cozy-ui/transpiled/react/Icons/Swap'
 import flag from 'cozy-flags'
@@ -33,12 +34,15 @@ const handleChange = async (
 export const LockScreen = (): JSX.Element => {
   const { t } = useI18n()
   const webviewIntent = useWebviewIntent()
+  const flagshipMetadata = getFlagshipMetadata()
   const [biometryEnabled, setBiometry] = useState(
-    Boolean(getFlagshipMetadata().settings?.biometryEnabled)
+    Boolean(flagshipMetadata.settings_biometryEnabled)
   )
   const [autoLockEnabled, setAutoLock] = useState(
-    Boolean(getFlagshipMetadata().settings?.autoLockEnabled)
+    Boolean(flagshipMetadata.settings_autoLockEnabled)
   )
+  const biometryAvailable = Boolean(flagshipMetadata.biometry_available)
+  const biometryType = flagshipMetadata.biometry_type
 
   const onBiometryLock = (): void =>
     void handleChange(setBiometry, 'biometryLock', webviewIntent)
@@ -53,10 +57,19 @@ export const LockScreen = (): JSX.Element => {
       <nav>
         <List>
           <MenuItemSwitch
-            primary={t('Nav.primary_biometry')}
-            icon={Fingerprint}
+            primary={
+              biometryType === 'Biometrics'
+                ? t('Nav.primary_biometry_android')
+                : biometryType === 'TouchID'
+                ? t('Nav.primary_biometry_TouchId')
+                : biometryType === 'FaceID'
+                ? t('Nav.primary_biometry_FaceId')
+                : t('Nav.primary_biometry')
+            }
+            icon={biometryType === 'FaceID' ? FaceId : Fingerprint}
             onClick={onBiometryLock}
             checked={biometryEnabled}
+            disabled={!biometryAvailable}
           />
 
           <MenuItemSwitch
