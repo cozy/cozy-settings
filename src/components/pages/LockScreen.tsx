@@ -61,9 +61,9 @@ export const LockScreen = (): JSX.Element => {
               biometryType === 'Biometrics'
                 ? t('Nav.primary_biometry_android')
                 : biometryType === 'TouchID'
-                ? t('Nav.primary_biometry_TouchId')
+                ? t('Nav.primary_biometry_touchid')
                 : biometryType === 'FaceID'
-                ? t('Nav.primary_biometry_FaceId')
+                ? t('Nav.primary_biometry_faceid')
                 : t('Nav.primary_biometry')
             }
             icon={biometryType === 'FaceID' ? FaceId : Fingerprint}
