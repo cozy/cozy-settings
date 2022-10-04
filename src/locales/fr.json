@@ -439,7 +439,8 @@
     "applications": "Applications",
     "data": "Données",
     "open": "Ouvrir",
-    "access": "Les applications disposant de cette permission peuvent accéder à votre/vos "
+    "access": "Les applications disposant de cette permission peuvent accéder à votre/vos ",
+    "about": "À propos"
   },
   "Accessibility": {
     "previous": "Précédent"

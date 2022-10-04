@@ -438,7 +438,8 @@
     "applications": "Applications",
     "data": "Data",
     "open": "Open",
-    "access": "Applications with this permission can access your "
+    "access": "Applications with this permission can access your ",
+    "about": "About"
   },
   "Accessibility": {
     "previous": "Previous"

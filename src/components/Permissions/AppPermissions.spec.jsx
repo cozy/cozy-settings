@@ -140,11 +140,6 @@ describe('PermissionsApplication', () => {
     expect(queryByText('Permissions.failedRequest')).toBeTruthy()
   })
 
-  it('should contain an OpenApp button', () => {
-    const { queryByTestId } = render(<PermissionsApplication />)
-    expect(queryByTestId('CircleButton')).toBeTruthy()
-  })
-
   describe('completePermission', () => {
     it('should add description in permissions', () => {
       const key = 'contactsAccounts'
