@@ -23,6 +23,7 @@ import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import { routes } from 'constants/routes'
 import { OpenappButton } from './OpenappButton'
+import { AboutButton } from './AboutButton'
 import withAllLocales from '../../lib/withAllLocales'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
@@ -131,12 +132,17 @@ const PermissionsApplication = ({ t }) => {
               <AppIcon app={slugName} />
             </div>
             <PageTitle>{slugName.toUpperCase()}</PageTitle>
-            <OpenappButton
-              type={
-                isKonnector(matchingQueryResult.data.type) ? 'konnector' : 'app'
-              }
-              matchingQueryResultData={matchingQueryResult.data}
-            />
+            <div>
+              <OpenappButton
+                type={
+                  isKonnector(matchingQueryResult.data.type)
+                    ? 'konnector'
+                    : 'app'
+                }
+                matchingQueryResultData={matchingQueryResult.data}
+              />
+              <AboutButton matchingQueryResultData={matchingQueryResult.data} />
+            </div>
           </div>
           <NavigationList>
             <NavigationListSection>

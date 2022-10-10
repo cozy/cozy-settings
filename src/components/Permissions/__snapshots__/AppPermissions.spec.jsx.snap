@@ -55,9 +55,14 @@ exports[`PermissionsApplication should display slugName when query has been load
         >
           DRIVE
         </div>
-        <div
-          data-testid="CircleButton"
-        />
+        <div>
+          <div
+            data-testid="CircleButton"
+          />
+          <div
+            data-testid="CircleButton"
+          />
+        </div>
       </div>
       <div
         data-testid="NavigationList"
