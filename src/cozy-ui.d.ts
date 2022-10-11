@@ -69,3 +69,12 @@ declare module 'cozy-ui/transpiled/react/MuiCozyTheme/Switch' {
   import Switch from '@material-ui/core/Switch'
   export default Switch
 }
+
+declare module 'cozy-ui/transpiled/react/MuiCozyTheme/TextField' {
+  import TextField from '@material-ui/core/TextField'
+  export default TextField
+}
+
+declare module 'cozy-ui/transpiled/react/Button'
+declare module 'cozy-ui/transpiled/react/Typography'
+declare module 'cozy-ui/transpiled/react/CozyDialogs'
