@@ -31,7 +31,7 @@ Object {
       >
         <div
           aria-labelledby="modal-title-50"
-          class="MuiPaper-root MuiDialog-paper medium  MuiDialog-paperScrollPaper MuiDialog-paperWidthSm MuiPaper-elevation24 MuiPaper-rounded"
+          class="MuiPaper-root MuiDialog-paper medium makeStyles-paper-1085 makeStyles-paper-1086  MuiDialog-paperScrollPaper MuiDialog-paperWidthSm MuiPaper-elevation24 MuiPaper-rounded"
           role="dialog"
         >
           <div
@@ -167,7 +167,7 @@ Object {
                       >
                         <span
                           aria-disabled="false"
-                          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-indeterminate PrivateSwitchBase-checked-1008 Mui-checked MuiIconButton-colorPrimary"
+                          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-indeterminate PrivateSwitchBase-checked-1088 Mui-checked MuiIconButton-colorPrimary"
                           data-testid="toggle-all-inclusion"
                         >
                           <span
@@ -177,7 +177,7 @@ Object {
                               aria-checked="mixed"
                               aria-disabled="false"
                               checked=""
-                              class="PrivateSwitchBase-input-1010"
+                              class="PrivateSwitchBase-input-1090"
                               data-indeterminate="true"
                               type="checkbox"
                               value=""
@@ -206,11 +206,11 @@ Object {
                 >
                   <ul
                     aria-multiselectable="false"
-                    class="MuiTreeView-root makeStyles-root-1011"
+                    class="MuiTreeView-root makeStyles-root-1091"
                     role="tree"
                   >
                     <li
-                      class="MuiTreeItem-root makeStyles-root-1013"
+                      class="MuiTreeItem-root makeStyles-root-1093"
                       role="treeitem"
                       tabindex="-1"
                     >
@@ -218,10 +218,10 @@ Object {
                         class="MuiTreeItem-content"
                       >
                         <div
-                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1012"
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1092"
                         />
                         <div
-                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1014 MuiTypography-body1"
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1094 MuiTypography-body1"
                         >
                           <div
                             class="styles__media___cSJMp"
@@ -239,7 +239,7 @@ Object {
                                 >
                                   <span
                                     aria-disabled="false"
-                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1008 Mui-checked MuiIconButton-colorPrimary"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1088 Mui-checked MuiIconButton-colorPrimary"
                                     data-testid="toggle-Accounts-inclusion"
                                   >
                                     <span
@@ -249,7 +249,7 @@ Object {
                                         aria-checked=""
                                         aria-disabled="false"
                                         checked=""
-                                        class="PrivateSwitchBase-input-1010"
+                                        class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
                                         value=""
@@ -311,7 +311,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="MuiTreeItem-root makeStyles-root-1016"
+                      class="MuiTreeItem-root makeStyles-root-1096"
                       role="treeitem"
                       tabindex="-1"
                     >
@@ -319,10 +319,10 @@ Object {
                         class="MuiTreeItem-content"
                       >
                         <div
-                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1015"
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1095"
                         />
                         <div
-                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1017 MuiTypography-body1"
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1097 MuiTypography-body1"
                         >
                           <div
                             class="styles__media___cSJMp"
@@ -340,7 +340,7 @@ Object {
                                 >
                                   <span
                                     aria-disabled="false"
-                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1008 Mui-checked MuiIconButton-colorPrimary"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1088 Mui-checked MuiIconButton-colorPrimary"
                                     data-testid="toggle-Administrative-inclusion"
                                   >
                                     <span
@@ -350,7 +350,7 @@ Object {
                                         aria-checked=""
                                         aria-disabled="false"
                                         checked=""
-                                        class="PrivateSwitchBase-input-1010"
+                                        class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
                                         value=""
@@ -412,7 +412,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="MuiTreeItem-root makeStyles-root-1019"
+                      class="MuiTreeItem-root makeStyles-root-1099"
                       role="treeitem"
                       tabindex="-1"
                     >
@@ -420,10 +420,10 @@ Object {
                         class="MuiTreeItem-content"
                       >
                         <div
-                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1018"
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1098"
                         />
                         <div
-                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1020 MuiTypography-body1"
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1100 MuiTypography-body1"
                         >
                           <div
                             class="styles__media___cSJMp"
@@ -441,7 +441,7 @@ Object {
                                 >
                                   <span
                                     aria-disabled="false"
-                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1008 Mui-checked MuiIconButton-colorPrimary"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1088 Mui-checked MuiIconButton-colorPrimary"
                                     data-testid="toggle-Ciphers-inclusion"
                                   >
                                     <span
@@ -451,7 +451,7 @@ Object {
                                         aria-checked=""
                                         aria-disabled="false"
                                         checked=""
-                                        class="PrivateSwitchBase-input-1010"
+                                        class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
                                         value=""
@@ -514,7 +514,7 @@ Object {
                     </li>
                     <li
                       aria-expanded="false"
-                      class="MuiTreeItem-root makeStyles-root-1022"
+                      class="MuiTreeItem-root makeStyles-root-1102"
                       role="treeitem"
                       tabindex="-1"
                     >
@@ -522,7 +522,7 @@ Object {
                         class="MuiTreeItem-content"
                       >
                         <div
-                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1021"
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1101"
                         >
                           <svg
                             height="1rem"
@@ -536,7 +536,7 @@ Object {
                           </svg>
                         </div>
                         <div
-                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1023 MuiTypography-body1"
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1103 MuiTypography-body1"
                         >
                           <div
                             class="styles__media___cSJMp"
@@ -554,7 +554,7 @@ Object {
                                 >
                                   <span
                                     aria-disabled="false"
-                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1008 Mui-checked MuiIconButton-colorPrimary"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1088 Mui-checked MuiIconButton-colorPrimary"
                                     data-testid="toggle-Konnectors-inclusion"
                                   >
                                     <span
@@ -564,7 +564,7 @@ Object {
                                         aria-checked=""
                                         aria-disabled="false"
                                         checked=""
-                                        class="PrivateSwitchBase-input-1010"
+                                        class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
                                         value=""
@@ -626,7 +626,7 @@ Object {
                       </div>
                       <li
                         aria-expanded="false"
-                        class="MuiTreeItem-root makeStyles-root-1025"
+                        class="MuiTreeItem-root makeStyles-root-1105"
                         role="treeitem"
                         tabindex="-1"
                       >
@@ -634,7 +634,7 @@ Object {
                           class="MuiTreeItem-content"
                         >
                           <div
-                            class="MuiTreeItem-iconContainer makeStyles-iconContainer-1024"
+                            class="MuiTreeItem-iconContainer makeStyles-iconContainer-1104"
                           >
                             <svg
                               height="1rem"
@@ -648,7 +648,7 @@ Object {
                             </svg>
                           </div>
                           <div
-                            class="MuiTypography-root MuiTreeItem-label makeStyles-label-1026 MuiTypography-body1"
+                            class="MuiTypography-root MuiTreeItem-label makeStyles-label-1106 MuiTypography-body1"
                           >
                             <div
                               class="styles__media___cSJMp"
@@ -666,7 +666,7 @@ Object {
                                   >
                                     <span
                                       aria-disabled="false"
-                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1008 Mui-checked MuiIconButton-colorPrimary"
+                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1088 Mui-checked MuiIconButton-colorPrimary"
                                       data-testid="toggle-Ameli-inclusion"
                                     >
                                       <span
@@ -676,7 +676,7 @@ Object {
                                           aria-checked=""
                                           aria-disabled="false"
                                           checked=""
-                                          class="PrivateSwitchBase-input-1010"
+                                          class="PrivateSwitchBase-input-1090"
                                           data-indeterminate="false"
                                           type="checkbox"
                                           value=""
@@ -737,7 +737,7 @@ Object {
                           </div>
                         </div>
                         <li
-                          class="MuiTreeItem-root makeStyles-root-1028"
+                          class="MuiTreeItem-root makeStyles-root-1108"
                           role="treeitem"
                           tabindex="-1"
                         >
@@ -745,10 +745,10 @@ Object {
                             class="MuiTreeItem-content"
                           >
                             <div
-                              class="MuiTreeItem-iconContainer makeStyles-iconContainer-1027"
+                              class="MuiTreeItem-iconContainer makeStyles-iconContainer-1107"
                             />
                             <div
-                              class="MuiTypography-root MuiTreeItem-label makeStyles-label-1029 MuiTypography-body1"
+                              class="MuiTypography-root MuiTreeItem-label makeStyles-label-1109 MuiTypography-body1"
                             >
                               <div
                                 class="styles__media___cSJMp"
@@ -766,7 +766,7 @@ Object {
                                     >
                                       <span
                                         aria-disabled="false"
-                                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1008 Mui-checked MuiIconButton-colorPrimary"
+                                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-1088 Mui-checked MuiIconButton-colorPrimary"
                                         data-testid="toggle-Claude-inclusion"
                                       >
                                         <span
@@ -776,7 +776,7 @@ Object {
                                             aria-checked=""
                                             aria-disabled="false"
                                             checked=""
-                                            class="PrivateSwitchBase-input-1010"
+                                            class="PrivateSwitchBase-input-1090"
                                             data-indeterminate="false"
                                             type="checkbox"
                                             value=""
@@ -840,7 +840,7 @@ Object {
                       </li>
                     </li>
                     <li
-                      class="MuiTreeItem-root makeStyles-root-1031"
+                      class="MuiTreeItem-root makeStyles-root-1111"
                       role="treeitem"
                       tabindex="-1"
                     >
@@ -848,10 +848,10 @@ Object {
                         class="MuiTreeItem-content"
                       >
                         <div
-                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1030"
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1110"
                         />
                         <div
-                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1032 MuiTypography-body1"
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1112 MuiTypography-body1"
                         >
                           <div
                             class="styles__media___cSJMp"
@@ -869,7 +869,7 @@ Object {
                                 >
                                   <span
                                     aria-disabled="false"
-                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
                                     data-testid="toggle-Photos-inclusion"
                                   >
                                     <span
@@ -878,7 +878,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
-                                        class="PrivateSwitchBase-input-1010"
+                                        class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
                                         value=""
@@ -941,7 +941,7 @@ Object {
                     </li>
                     <li
                       aria-expanded="false"
-                      class="MuiTreeItem-root makeStyles-root-1034"
+                      class="MuiTreeItem-root makeStyles-root-1114"
                       role="treeitem"
                       tabindex="-1"
                     >
@@ -949,7 +949,7 @@ Object {
                         class="MuiTreeItem-content"
                       >
                         <div
-                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1033"
+                          class="MuiTreeItem-iconContainer makeStyles-iconContainer-1113"
                         >
                           <svg
                             height="1rem"
@@ -963,7 +963,7 @@ Object {
                           </svg>
                         </div>
                         <div
-                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1035 MuiTypography-body1"
+                          class="MuiTypography-root MuiTreeItem-label makeStyles-label-1115 MuiTypography-body1"
                         >
                           <div
                             class="styles__media___cSJMp"
@@ -981,7 +981,7 @@ Object {
                                 >
                                   <span
                                     aria-disabled="false"
-                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
                                     data-testid="toggle-Videos-inclusion"
                                   >
                                     <span
@@ -990,7 +990,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
-                                        class="PrivateSwitchBase-input-1010"
+                                        class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
                                         value=""
@@ -1052,7 +1052,7 @@ Object {
                       </div>
                       <li
                         aria-expanded="false"
-                        class="MuiTreeItem-root makeStyles-root-1037"
+                        class="MuiTreeItem-root makeStyles-root-1117"
                         role="treeitem"
                         tabindex="-1"
                       >
@@ -1060,7 +1060,7 @@ Object {
                           class="MuiTreeItem-content"
                         >
                           <div
-                            class="MuiTreeItem-iconContainer makeStyles-iconContainer-1036"
+                            class="MuiTreeItem-iconContainer makeStyles-iconContainer-1116"
                           >
                             <svg
                               height="1rem"
@@ -1074,7 +1074,7 @@ Object {
                             </svg>
                           </div>
                           <div
-                            class="MuiTypography-root MuiTreeItem-label makeStyles-label-1038 MuiTypography-body1"
+                            class="MuiTypography-root MuiTreeItem-label makeStyles-label-1118 MuiTypography-body1"
                           >
                             <div
                               class="styles__media___cSJMp"
@@ -1092,7 +1092,7 @@ Object {
                                   >
                                     <span
                                       aria-disabled="false"
-                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
                                       data-testid="toggle-Movies-inclusion"
                                     >
                                       <span
@@ -1101,7 +1101,7 @@ Object {
                                         <input
                                           aria-checked=""
                                           aria-disabled="false"
-                                          class="PrivateSwitchBase-input-1010"
+                                          class="PrivateSwitchBase-input-1090"
                                           data-indeterminate="false"
                                           type="checkbox"
                                           value=""
@@ -1162,7 +1162,7 @@ Object {
                           </div>
                         </div>
                         <li
-                          class="MuiTreeItem-root makeStyles-root-1040"
+                          class="MuiTreeItem-root makeStyles-root-1120"
                           role="treeitem"
                           tabindex="-1"
                         >
@@ -1170,10 +1170,10 @@ Object {
                             class="MuiTreeItem-content"
                           >
                             <div
-                              class="MuiTreeItem-iconContainer makeStyles-iconContainer-1039"
+                              class="MuiTreeItem-iconContainer makeStyles-iconContainer-1119"
                             />
                             <div
-                              class="MuiTypography-root MuiTreeItem-label makeStyles-label-1041 MuiTypography-body1"
+                              class="MuiTypography-root MuiTreeItem-label makeStyles-label-1121 MuiTypography-body1"
                             >
                               <div
                                 class="styles__media___cSJMp"
@@ -1191,7 +1191,7 @@ Object {
                                     >
                                       <span
                                         aria-disabled="false"
-                                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1007 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1087 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
                                         data-testid="toggle-Comedy-inclusion"
                                       >
                                         <span
@@ -1200,7 +1200,7 @@ Object {
                                           <input
                                             aria-checked=""
                                             aria-disabled="false"
-                                            class="PrivateSwitchBase-input-1010"
+                                            class="PrivateSwitchBase-input-1090"
                                             data-indeterminate="false"
                                             type="checkbox"
                                             value=""
