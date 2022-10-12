@@ -70,6 +70,18 @@ exports[`PermissionsApplication should display slugName when query has been load
         <div
           data-testid="NavigationListSection"
         >
+          <li
+            class="MuiListItem-root MuiListItem-gutters"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextPrimary"
+            >
+              Permissions.limited_right_access
+            </h5>
+          </li>
+          <hr
+            class="MuiDivider-root"
+          />
           <div>
             <li
               class="MuiListItem-container"
