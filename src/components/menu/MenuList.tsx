@@ -12,7 +12,7 @@ interface MenuListProps {
 export const MenuList = ({ title, children }: MenuListProps): JSX.Element => (
   <li>
     <List>
-      <ListSubheader>{title}</ListSubheader>
+      <ListSubheader style={{ textIndent: '1rem' }}>{title}</ListSubheader>
 
       <li>
         <List className="u-pv-half">

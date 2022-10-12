@@ -10,7 +10,7 @@ export const Menu = (): JSX.Element => {
   const { t } = useI18n()
 
   return (
-    <Page className="u-m-0" narrow={false}>
+    <Page className="u-m-0" withoutMarginTop>
       <PageTitle>{t('manifest.name')}</PageTitle>
 
       <Sidebar />

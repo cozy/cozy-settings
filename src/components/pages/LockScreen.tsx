@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
-import Fingerprint from 'cozy-ui/transpiled/react/Icons/Fingerprint'
 import FaceId from 'cozy-ui/transpiled/react/Icons/FaceId'
+import Fingerprint from 'cozy-ui/transpiled/react/Icons/Fingerprint'
 import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
+import Password from 'cozy-ui/transpiled/react/Icons/Password'
 import Swap from 'cozy-ui/transpiled/react/Icons/Swap'
 import flag from 'cozy-flags'
 import { getFlagshipMetadata, isFlagshipApp } from 'cozy-device-helper'
@@ -14,15 +15,17 @@ import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import logger from 'lib/logger'
 import { MenuItemSwitch } from 'components/menu/MenuItemSwitch'
+import { PinCodeDialog } from 'components/dialogs/PinCodeDialog'
 
 const handleChange = async (
   dispatch: React.Dispatch<React.SetStateAction<boolean>>,
-  setting: 'biometryLock' | 'autoLock',
-  webviewIntent?: WebviewService
+  setting: 'biometryLock' | 'autoLock' | 'PINLock',
+  webviewIntent?: WebviewService,
+  params?: Record<string, unknown>
 ): Promise<void> => {
   if (!webviewIntent) return
 
-  const res = await webviewIntent.call('toggleSetting', setting)
+  const res = await webviewIntent.call('toggleSetting', setting, params)
 
   typeof res === 'boolean'
     ? dispatch(res)
@@ -35,8 +38,12 @@ export const LockScreen = (): JSX.Element => {
   const { t } = useI18n()
   const webviewIntent = useWebviewIntent()
   const flagshipMetadata = getFlagshipMetadata()
+  const [pinModalVisible, setPinModalVisible] = useState(false)
   const [biometryEnabled, setBiometry] = useState(
     Boolean(flagshipMetadata.settings_biometryEnabled)
+  )
+  const [pinCodeEnabled, setPinCode] = useState(
+    Boolean(flagshipMetadata.settings_PINEnabled)
   )
   const [autoLockEnabled, setAutoLock] = useState(
     Boolean(flagshipMetadata.settings_autoLockEnabled)
@@ -47,11 +54,24 @@ export const LockScreen = (): JSX.Element => {
   const onBiometryLock = (): void =>
     void handleChange(setBiometry, 'biometryLock', webviewIntent)
 
+  const onPinCodeLock = async (pinCode?: string): Promise<void> => {
+    if (!pinCodeEnabled && !pinCode) return setPinModalVisible(true)
+
+    await handleChange(
+      setPinCode,
+      'PINLock',
+      webviewIntent,
+      pinCode ? { pinCode } : undefined
+    )
+
+    pinCode && setPinModalVisible(false)
+  }
+
   const onAutoLock = (): void =>
     void handleChange(setAutoLock, 'autoLock', webviewIntent)
 
   return isFlagshipApp() || flag('settings.flagship-mode') ? (
-    <Page className="u-m-0" narrow>
+    <Page className="u-m-0" withoutMarginTop>
       <PageTitle>{t('LockScreenView.title')}</PageTitle>
 
       <nav>
@@ -73,13 +93,27 @@ export const LockScreen = (): JSX.Element => {
           />
 
           <MenuItemSwitch
-            primary={t('Nav.primary_lock_switch')}
+            checked={pinCodeEnabled}
+            icon={Password}
+            onClick={(): void => void onPinCodeLock()}
+            primary={t('Nav.primary_pin_switch')}
+          />
+
+          <MenuItemSwitch
+            checked={autoLockEnabled}
             icon={Swap}
             onClick={onAutoLock}
-            checked={autoLockEnabled}
+            primary={t('Nav.primary_lock_switch')}
           />
         </List>
       </nav>
+
+      {pinModalVisible && (
+        <PinCodeDialog
+          setPinCode={(pinCode): void => void onPinCodeLock(pinCode)}
+          setModalVisible={setPinModalVisible}
+        />
+      )}
     </Page>
   ) : (
     <Navigate to=".." />
