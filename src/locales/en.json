@@ -450,7 +450,10 @@
     "data": "Data",
     "open": "Open",
     "access": "Applications with this permission can access your ",
-    "about": "About"
+    "about": "About",
+    "limited_right_access": "Limited right access",
+    "latest_data_releases": "Latest data releases",
+    "monthly_statistics": "Monthly statistics"
   },
   "Accessibility": {
     "previous": "Previous"

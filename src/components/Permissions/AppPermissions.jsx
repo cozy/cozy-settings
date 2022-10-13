@@ -10,10 +10,12 @@ import {
   displayPermissions,
   getPermissionIconName
 } from './helpers/permissionsHelper'
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
+import RiseIcon from 'cozy-ui/transpiled/react/Icons/Rise'
 import ListItemIcon, {
   smallSize,
   mediumSize
@@ -60,6 +62,7 @@ export const completePermission = (
 const PermissionsApplication = ({ t }) => {
   const { slug: slugName } = useParams()
   const THIRTY_SECONDS = 30 * 1000
+  const { f } = useI18n()
 
   const queryResultApps = useQuery(
     Q(APPS_DOCTYPE).getById('io.cozy.apps/' + slugName),
@@ -78,6 +81,11 @@ const PermissionsApplication = ({ t }) => {
       singleDocData: true
     }
   )
+
+  const queryResultRemote = useQuery(Q('io.cozy.remote.requests'), {
+    as: 'io.cozy.remote.requests',
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
+  })
 
   let matchingQueryResult
   if (queryResultApps.data) {
@@ -99,15 +107,27 @@ const PermissionsApplication = ({ t }) => {
       })
   }
 
+  const sortDataByDate = queryResult => {
+    return queryResult.data.sort(
+      (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    )
+  }
+
   const isKonnector = type => type === 'io.cozy.konnectors'
 
   let sortedPermissionsByName =
     matchingQueryResult?.data && sortPermissionsByName(matchingQueryResult)
 
-  const isNotLastItem = name => {
-    return (
-      name !== sortedPermissionsByName[sortedPermissionsByName.length - 1].name
-    )
+  const isNotLastItem = (itemId, list) => {
+    if (list[0].name) {
+      return itemId !== list[list.length - 1].name
+    } else {
+      return itemId !== list[list.length - 1].id
+    }
+  }
+
+  const formatDate = ({ f, date }) => {
+    return f(date, 'DD MMMM YYYY')
   }
 
   return (
@@ -115,7 +135,9 @@ const PermissionsApplication = ({ t }) => {
       {(isQueryLoading(queryResultApps) &&
         !hasQueryBeenLoaded(queryResultApps)) ||
       (isQueryLoading(queryResultKonnectors) &&
-        !hasQueryBeenLoaded(queryResultKonnectors)) ? (
+        !hasQueryBeenLoaded(queryResultKonnectors)) ||
+      (isQueryLoading(queryResultRemote) &&
+        !hasQueryBeenLoaded(queryResultRemote)) ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
       ) : queryResultApps.fetchStatus === 'failed' &&
         queryResultKonnectors.fetchStatus === 'failed' ? (
@@ -146,6 +168,12 @@ const PermissionsApplication = ({ t }) => {
           </div>
           <NavigationList>
             <NavigationListSection>
+              <ListItem>
+                <Typography variant="h5">
+                  {t('Permissions.limited_right_access')}
+                </Typography>
+              </ListItem>
+              <Divider />
               {sortedPermissionsByName.map(({ name, title, verbs, type }) => {
                 const iconName = getPermissionIconName(type)
                 return (
@@ -177,11 +205,57 @@ const PermissionsApplication = ({ t }) => {
                         />
                       </ListItemSecondaryAction>
                     </ListItem>
-                    {isNotLastItem(name) && <Divider variant="inset" />}
+                    {isNotLastItem(name, sortedPermissionsByName) && (
+                      <Divider variant="inset" />
+                    )}
                   </div>
                 )
               })}
             </NavigationListSection>
+            {queryResultRemote.data.length > 0 && (
+              <NavigationListSection>
+                <ListItem>
+                  <Typography variant="h5">
+                    {t('Permissions.latest_data_releases')}
+                  </Typography>
+                </ListItem>
+                <Divider />
+                {sortDataByDate(queryResultRemote).map(({ id, created_at }) => {
+                  return (
+                    <div key={id}>
+                      <ListItem>
+                        <ListItemIcon>
+                          <Icon
+                            icon={RiseIcon}
+                            size={mediumSize}
+                            color="var(--warningColor)"
+                            rotate={90}
+                          />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={t('Permissions.monthly_statistics')}
+                          secondary={formatDate({
+                            f,
+                            date: new Date(created_at)
+                          })}
+                        />
+                        <ListItemSecondaryAction>
+                          <Icon
+                            icon={RightIcon}
+                            size={smallSize}
+                            className="u-mr-1"
+                            style={{ color: 'var(--secondaryTextColor)' }}
+                          />
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                      {isNotLastItem(id, sortDataByDate(queryResultRemote)) && (
+                        <Divider variant="inset" />
+                      )}
+                    </div>
+                  )
+                })}
+              </NavigationListSection>
+            )}
           </NavigationList>
         </div>
       )}
