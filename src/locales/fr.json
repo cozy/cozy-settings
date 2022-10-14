@@ -78,7 +78,7 @@
     "primary_biometry_touchid": "Déverrouiller avec mon Touch ID",
     "primary_faq": "Manuel d'utilisation",
     "primary_lock_screen": "Écran de verrouillage",
-    "primary_lock_switch": "Verrouiller en passant l’app en arrière plan",
+    "primary_lock_switch": "Verrouiller automatiquement l'app",
     "primary_logout": "Déconnexion",
     "primary_package": "Forfait",
     "primary_photo_sync": "Synchronisation auto des photos",

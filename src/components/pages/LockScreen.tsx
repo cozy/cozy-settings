@@ -22,7 +22,7 @@ const handleChange = async (
   setting: 'biometryLock' | 'autoLock' | 'PINLock',
   webviewIntent?: WebviewService,
   params?: Record<string, unknown>
-): Promise<void> => {
+): Promise<boolean | null | undefined> => {
   if (!webviewIntent) return
 
   const res = await webviewIntent.call('toggleSetting', setting, params)
@@ -32,6 +32,8 @@ const handleChange = async (
     : logger.error(
         `Error while calling toggleSetting('${setting}'), returned value is null or undefined."`
       )
+
+  return res
 }
 
 export const LockScreen = (): JSX.Element => {
@@ -52,7 +54,9 @@ export const LockScreen = (): JSX.Element => {
   const biometryType = flagshipMetadata.biometry_type
 
   const onBiometryLock = (): void =>
-    void handleChange(setBiometry, 'biometryLock', webviewIntent)
+    void handleChange(setBiometry, 'biometryLock', webviewIntent).then(
+      value => value && setAutoLock(true)
+    )
 
   const onPinCodeLock = async (pinCode?: string): Promise<void> => {
     if (!pinCodeEnabled && !pinCode) return setPinModalVisible(true)
