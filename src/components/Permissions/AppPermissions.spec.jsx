@@ -42,6 +42,20 @@ jest.mock('react-router-dom', () => {
   }
 })
 
+jest.mock('cozy-ui/transpiled/react/CozyDialogs', () => {
+  return {
+    Dialog: () => (
+      <div
+        data-testid="Dialog"
+        data-open="open"
+        data-onClose="onClose"
+        data-title="title"
+        data-content="content"
+      />
+    )
+  }
+})
+
 jest.mock('cozy-client', () => ({
   ...jest.requireActual('cozy-client'),
   hasQueryBeenLoaded: jest.fn(),
