@@ -93,8 +93,8 @@ export const PinCodeDialog = ({
             )}
             disabled={
               flowStep === 'initial'
-                ? validatePinCode(initialValue)
-                : validatePinCode(confirmValue)
+                ? !validatePinCode(initialValue)
+                : !validatePinCode(confirmValue)
             }
           />
         </>
