@@ -380,6 +380,13 @@ exports[`PermissionsApplication should display slugName when query has been load
           </div>
         </div>
       </div>
+      <div
+        data-content="content"
+        data-onclose="onClose"
+        data-open="open"
+        data-testid="Dialog"
+        data-title="title"
+      />
     </div>
   </div>
 </div>

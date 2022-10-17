@@ -67,10 +67,10 @@
       "type": "io.cozy.files",
       "verbs": ["ALL"]
     },
-      "remote_request": {
-        "description": "",
-        "type": "io.cozy.remote.requests",
-        "verbs": ["GET"]
+    "remote_request": {
+      "description": "",
+      "type": "io.cozy.remote.requests",
+      "verbs": ["GET"]
     }
   },
   "routes": {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
@@ -38,6 +38,7 @@ import CozyClient, {
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
+import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
 
 export const completePermission = (
   name,
@@ -130,6 +131,19 @@ const PermissionsApplication = ({ t }) => {
     return f(date, 'DD MMMM YYYY')
   }
 
+  const [modalOpened, setModalOpened] = useState(false)
+  const [modalData, setModalData] = useState()
+
+  const handleClose = () => setModalOpened(false)
+
+  const openModal = data => {
+    setModalOpened(true)
+    let formatedData = { ...data }
+    delete formatedData._id
+    delete formatedData._rev
+    setModalData(formatedData)
+  }
+
   return (
     <Page narrow>
       {(isQueryLoading(queryResultApps) &&
@@ -220,10 +234,10 @@ const PermissionsApplication = ({ t }) => {
                   </Typography>
                 </ListItem>
                 <Divider />
-                {sortDataByDate(queryResultRemote).map(({ id, created_at }) => {
+                {sortDataByDate(queryResultRemote).map(data => {
                   return (
-                    <div key={id}>
-                      <ListItem>
+                    <div key={data.id}>
+                      <ListItem button onClick={() => openModal(data)}>
                         <ListItemIcon>
                           <Icon
                             icon={RiseIcon}
@@ -236,7 +250,7 @@ const PermissionsApplication = ({ t }) => {
                           primary={t('Permissions.monthly_statistics')}
                           secondary={formatDate({
                             f,
-                            date: new Date(created_at)
+                            date: new Date(data.created_at)
                           })}
                         />
                         <ListItemSecondaryAction>
@@ -248,15 +262,39 @@ const PermissionsApplication = ({ t }) => {
                           />
                         </ListItemSecondaryAction>
                       </ListItem>
-                      {isNotLastItem(id, sortDataByDate(queryResultRemote)) && (
-                        <Divider variant="inset" />
-                      )}
+                      {isNotLastItem(
+                        data.id,
+                        sortDataByDate(queryResultRemote)
+                      ) && <Divider variant="inset" />}
                     </div>
                   )
                 })}
               </NavigationListSection>
             )}
           </NavigationList>
+
+          <DialogComponent
+            open={modalOpened}
+            onClose={handleClose}
+            title={t('Permissions.monthly_statistics')}
+            content={
+              <>
+                <p>
+                  {modalData &&
+                    t('Permissions.monthly_stats_phrase', {
+                      app: slugName.toUpperCase(),
+                      date: formatDate({
+                        f,
+                        date: new Date(modalData.created_at)
+                      })
+                    })}
+                </p>
+                <code>
+                  <pre>{modalData && JSON.stringify(modalData, null, 2)}</pre>
+                </code>
+              </>
+            }
+          />
         </div>
       )}
     </Page>

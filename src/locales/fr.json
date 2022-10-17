@@ -454,7 +454,8 @@
     "about": "À propos",
     "limited_right_access": "Droit d'accès limité",
     "latest_data_releases": "Dernières sorties de données",
-    "monthly_statistics": "Statistiques mensuelles"
+    "monthly_statistics": "Statistiques mensuelles",
+    "monthly_stats_phrase": "Compte rendu de la sortie de données depuis votre cozy vers %{app} le %{date}:"
   },
   "Accessibility": {
     "previous": "Précédent"
