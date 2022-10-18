@@ -71,6 +71,11 @@
       "description": "",
       "type": "io.cozy.remote.requests",
       "verbs": ["GET"]
+    },
+    "doctypes": {
+      "description": "",
+      "type": "io.cozy.doctypes",
+      "verbs": ["GET"]
     }
   },
   "routes": {

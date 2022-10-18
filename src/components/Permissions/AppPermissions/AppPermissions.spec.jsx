@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import PermissionsApplication, { completePermission } from './AppPermissions'
+import PermissionsApplication from './AppPermissions'
 import {
   Q,
   useQuery,
@@ -8,6 +8,8 @@ import {
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
+import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
+import { completeAppPermission } from '../helpers/permissionsHelper'
 
 jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   return () => Component => {
@@ -85,6 +87,10 @@ jest.mock('cozy-ui/transpiled/react/CircleButton', () => {
 jest.mock('cozy-ui/transpiled/react/I18n', () => {
   return { useI18n: () => ({ t: x => x }) }
 })
+jest.mock('cozy-client/dist/hooks/useFetchJSON', () => ({
+  __esModule: true,
+  default: jest.fn()
+}))
 
 describe('PermissionsApplication', () => {
   beforeEach(() => {
@@ -131,6 +137,7 @@ describe('PermissionsApplication', () => {
   })
   it('should display slugName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
+    useFetchJSON.mockReturnValue({ data: ['doctype1', 'doctype2'] })
     const { container } = render(<PermissionsApplication />)
     expect(container).toMatchSnapshot()
   })
@@ -154,7 +161,7 @@ describe('PermissionsApplication', () => {
     expect(queryByText('Permissions.failedRequest')).toBeTruthy()
   })
 
-  describe('completePermission', () => {
+  describe('completeAppPermission', () => {
     it('should add description in permissions', () => {
       const key = 'contactsAccounts'
       const permission = 'Comptes associés aux contacts'
@@ -162,11 +169,11 @@ describe('PermissionsApplication', () => {
         description: 'blabla',
         verbs: ['GET', 'POST']
       }
-      const resultat = completePermission(key, permission, value)
+      const resultat = completeAppPermission(key, permission, value)
       expect(resultat).toEqual({
+        description: 'blabla',
         name: 'contactsAccounts',
         title: 'Comptes associés aux contacts',
-        description: 'blabla',
         verbs: ['GET', 'POST']
       })
     })

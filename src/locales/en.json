@@ -453,7 +453,8 @@
     "limited_right_access": "Limited right access",
     "latest_data_releases": "Latest data releases",
     "monthly_statistics": "Monthly statistics",
-    "monthly_stats_phrase": "Data release report from your cozy to %{app} on %{date}:"
+    "monthly_stats_phrase": "Data release report from your cozy to %{app} on %{date}:",
+    "exit_rights": "Exit rights"
   },
   "Accessibility": {
     "previous": "Previous"
