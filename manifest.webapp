@@ -3,7 +3,7 @@
   "name_prefix": "Cozy",
   "slug": "settings",
   "icon": "app-icon.svg",
-  "source": "https://github.com/cozy/cozy-settings.git@build",
+  "source": "https://github.com/cozy/cozy-settings",
   "editor": "Cozy",
   "developer": {
     "name": "Cozy",
