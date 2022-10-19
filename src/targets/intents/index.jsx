@@ -5,7 +5,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 
-import { CozyProvider } from 'cozy-client'
+import CozyClient, { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
 import { I18n } from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
@@ -13,7 +13,6 @@ import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 
 import IntentService from 'containers/IntentService'
-import cozyClient from 'lib/client'
 
 import {
   StylesProvider,
@@ -40,12 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = createRoot(container)
   const data = JSON.parse(container.dataset.cozy)
   const protocol = window.location.protocol
-
-  const store = createStore()
-  cozyClient.login({
+  const cozyClient = new CozyClient({
     uri: `${protocol}//${data.domain}`,
-    token: data.token
+    token: data.token,
+    store: false
   })
+  const store = createStore(cozyClient)
+
   cozyClient.registerPlugin(flag.plugin)
 
   root.render(

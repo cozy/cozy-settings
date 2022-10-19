@@ -8,7 +8,7 @@ import {
   applyMiddleware
 } from 'redux'
 
-const createStore = () => {
+const createStore = client => {
   // Enable Redux dev tools
   const composeEnhancers =
     (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
@@ -16,7 +16,7 @@ const createStore = () => {
   const middlewares = [thunkMiddleware]
 
   const store = reduxCreateStore(
-    appReducer,
+    appReducer(client),
     composeEnhancers(applyMiddleware(...middlewares))
   )
 

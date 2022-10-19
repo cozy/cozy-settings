@@ -7,7 +7,7 @@ import 'styles/index.styl'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider, connect } from 'react-redux'
-import { CozyProvider } from 'cozy-client'
+import CozyClient, { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
 import { RealtimePlugin } from 'cozy-realtime'
 
@@ -18,7 +18,6 @@ import PiwikHashRouter from 'lib/PiwikHashRouter'
 import { WebviewIntentProvider } from 'cozy-intent'
 
 import App from 'components/App'
-import cozyClient from 'lib/client'
 
 import {
   StylesProvider,
@@ -53,14 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('[role=application]')
   const root = createRoot(container)
   const data = JSON.parse(container.dataset.cozy)
-
   const protocol = window.location.protocol
-  cozyClient.login({
+  const cozyClient = new CozyClient({
     uri: `${protocol}//${data.domain}`,
-    token: data.token
+    token: data.token,
+    store: false
   })
 
-  const store = createStore()
+  const store = createStore(cozyClient)
   cozyClient.setStore(store)
   cozyClient.registerPlugin(flag.plugin)
   cozyClient.registerPlugin(RealtimePlugin)

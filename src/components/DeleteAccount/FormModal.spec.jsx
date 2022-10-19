@@ -18,11 +18,6 @@ jest.mock('actions/email', () => ({
   sendDeleteAccountReasonEmail: jest.fn()
 }))
 
-jest.mock('lib/client', () => {
-  const CozyClient = jest.requireActual('cozy-client').default
-  return new CozyClient({})
-})
-
 const TestI18n = ({ children }) => {
   return (
     <I18n lang="en" dictRequire={() => langEn}>
