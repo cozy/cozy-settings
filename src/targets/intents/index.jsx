@@ -38,13 +38,13 @@ const generateClassName = createGenerateClassName({
 document.addEventListener('DOMContentLoaded', () => {
   let container = document.querySelector('[role=application]')
   const root = createRoot(container)
-  const data = container.dataset
+  const data = JSON.parse(container.dataset.cozy)
   const protocol = window.location.protocol
 
   const store = createStore()
   cozyClient.login({
-    uri: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
+    uri: `${protocol}//${data.domain}`,
+    token: data.token
   })
   cozyClient.registerPlugin(flag.plugin)
 

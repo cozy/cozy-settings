@@ -52,7 +52,7 @@ const EnhancedI18n = connect(state => {
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('[role=application]')
   const root = createRoot(container)
-  const data = JSON.parse(root.dataset.cozy)
+  const data = JSON.parse(container.dataset.cozy)
 
   const protocol = window.location.protocol
   cozyClient.login({
