@@ -15,25 +15,25 @@ import openDeviceRevokeModale from 'reducers/openDeviceRevokeModale'
 import sessions from 'reducers/sessions'
 import storageData from 'reducers/storageData'
 import ui from 'reducers/ui'
-import cozyClient from 'lib/client'
 
-const appReducer = combineReducers({
-  devices,
-  fields,
-  twoFactor,
-  exportData,
-  importData,
-  instance,
-  claudy,
-  service,
-  emailStatus,
-  openDeviceRevokeModale,
-  deviceToRevoke,
-  passphrase,
-  sessions,
-  storageData,
-  ui,
-  cozy: cozyClient.reducer()
-})
+const appReducer = client =>
+  combineReducers({
+    devices,
+    fields,
+    twoFactor,
+    exportData,
+    importData,
+    instance,
+    claudy,
+    service,
+    emailStatus,
+    openDeviceRevokeModale,
+    deviceToRevoke,
+    passphrase,
+    sessions,
+    storageData,
+    ui,
+    cozy: client.reducer()
+  })
 
 export default appReducer

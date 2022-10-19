@@ -7,11 +7,6 @@ import CozyClient from 'cozy-client'
 import AppLike from '../../test/AppLike'
 import { PasswordSection } from './ProfileView'
 
-jest.mock('lib/client', () => {
-  const CozyClient = jest.requireActual('cozy-client').default
-  return new CozyClient({})
-})
-
 describe('PasswordSection', () => {
   const setup = ({ can_auth_with_password }) => {
     const client = new CozyClient({})

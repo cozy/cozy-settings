@@ -1,6 +1,6 @@
 import { cozyFetch } from 'actions'
 import { WebVaultClient } from 'cozy-keys-lib'
-import client from 'lib/client'
+import { getStackDomain } from 'actions/domUtils'
 
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
@@ -22,7 +22,7 @@ export const UPDATE_HINT_SUCCESS = 'UPDATE_HINT_SUCCESS'
 export const UPDATE_HINT_FAILURE = 'UPDATE_HINT_FAILURE'
 
 const getInstanceURL = () => {
-  return client.getStackClient().uri
+  return getStackDomain()
 }
 
 const invalidPassphraseErrorAction = {
