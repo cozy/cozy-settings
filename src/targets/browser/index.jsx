@@ -52,12 +52,12 @@ const EnhancedI18n = connect(state => {
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('[role=application]')
   const root = createRoot(container)
-  const data = container.dataset
+  const data = JSON.parse(root.dataset.cozy)
 
   const protocol = window.location.protocol
   cozyClient.login({
-    uri: `${protocol}//${data.cozyDomain}`,
-    token: data.cozyToken
+    uri: `${protocol}//${data.domain}`,
+    token: data.token
   })
 
   const store = createStore()
@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   cozy.bar.init({
     cozyClient,
-    appName: data.cozyAppName,
-    appEditor: data.cozyAppEditor,
-    iconPath: data.cozyIconPath,
-    lang: data.cozyLocale
+    appName: data.app.name,
+    appEditor: data.app.editor,
+    iconPath: data.app.icon,
+    lang: data.locale
   })
 
   root.render(
