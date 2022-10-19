@@ -73,8 +73,8 @@ class TwoFA extends Component {
       mailConfirmationCodeIsValid
     } = this.state
     const root = document.querySelector('[role=application]')
-    const data = root.dataset
-    const cozyDomain = data.cozyDomain
+    const data = JSON.parse(root.dataset.cozy)
+    const cozyDomain = data.domain
     return (
       <div>
         <Input

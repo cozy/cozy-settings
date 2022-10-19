@@ -1,8 +1,9 @@
 export const getStackDomain = () => {
   if (document.querySelector('[role=application]')) {
-    return (
-      '//' + document.querySelector('[role=application]').dataset.cozyDomain
+    const data = JSON.parse(
+      document.querySelector('[role=application]').dataset.cozy
     )
+    return '//' + data.domain
   } else {
     return null
   }
@@ -10,7 +11,10 @@ export const getStackDomain = () => {
 
 export const getStackToken = () => {
   if (document.querySelector('[role=application]')) {
-    return document.querySelector('[role=application]').dataset.cozyToken
+    const data = JSON.parse(
+      document.querySelector('[role=application]').dataset.cozy
+    )
+    return data.token
   } else {
     return null
   }
