@@ -5465,16 +5465,16 @@ cozy-client@^27.14.4:
     sift "^6.0.0"
     url-search-params-polyfill "^8.0.0"
 
-cozy-client@^33.1.2:
-  version "33.1.2"
-  resolved "https://registry.npmjs.org/cozy-client/-/cozy-client-33.1.2.tgz"
-  integrity sha512-r1SCwyFr//m1oyoqqr+yQ/OrqB8LTGi9NEaXckTarjbSj+woUtFlL5deQXj670jLB0mRxZIakMMNhG1j2FrKiw==
+cozy-client@^33.2.1:
+  version "33.2.1"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-33.2.1.tgz#623adc794c6ea36dd63e3b5db37d215a891e554f"
+  integrity sha512-WafBvbqoCI1odVI1Sc9la7Tkz3Q573iCrcGNRgYGIMCoqOwJimFg0sNIhC8KeaBGFug6SYzRCbUZmlg+k+Jx1Q==
   dependencies:
     "@cozy/minilog" "1.0.0"
     "@types/jest" "^26.0.20"
     "@types/lodash" "^4.14.170"
     btoa "^1.2.1"
-    cozy-stack-client "^33.1.2"
+    cozy-stack-client "^33.2.0"
     json-stable-stringify "^1.0.1"
     lodash "^4.17.13"
     microee "^0.0.6"
@@ -5736,10 +5736,10 @@ cozy-stack-client@^27.26.0:
     mime "^2.4.0"
     qs "^6.7.0"
 
-cozy-stack-client@^33.1.2:
-  version "33.1.2"
-  resolved "https://registry.npmjs.org/cozy-stack-client/-/cozy-stack-client-33.1.2.tgz"
-  integrity sha512-fekoPMDlLUMsp/JRFO4h5+reiF78Rgtz+3igVN+X8jtKyZLfcsxJLfUC2dg8dISK+l1WsjT6DzCaF5uElWStWQ==
+cozy-stack-client@^33.2.0:
+  version "33.2.0"
+  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-33.2.0.tgz#97b80514d68da2b6392f74d280f9867165b7d606"
+  integrity sha512-50vTnZvjCEYGx5nN+2rLhf63JZICNq9bXKY0QUFmfuMBfOTdD4EGw+EVA0YGxQYaz3E3FLrmMuIw5TtLzCDgcA==
   dependencies:
     detect-node "^2.0.4"
     mime "^2.4.0"
@@ -11186,7 +11186,6 @@ mini-css-extract-plugin@0.5.0:
 
 "minilog@https://github.com/cozy/minilog.git#master":
   version "3.1.0"
-  uid "6da0aa58759c4f1a1a7e0fd093dbe2a67c035c55"
   resolved "https://github.com/cozy/minilog.git#6da0aa58759c4f1a1a7e0fd093dbe2a67c035c55"
   dependencies:
     microee "0.0.6"
@@ -11341,7 +11340,6 @@ msgpack5@^4.0.2:
 
 "mui-bottom-sheet@https://github.com/cozy/mui-bottom-sheet.git#v1.0.9":
   version "1.0.8"
-  uid "3dc4c2a245ab39079bc2f73546bccf80847be14c"
   resolved "https://github.com/cozy/mui-bottom-sheet.git#3dc4c2a245ab39079bc2f73546bccf80847be14c"
   dependencies:
     "@juggle/resize-observer" "^3.1.3"
