@@ -25,14 +25,16 @@ export const useOffersLink = (): undefined | string | null => {
             definition: Q('io.cozy.settings').getById('context'),
             options: {
               fetchPolicy: CozyClient.fetchPolicies.olderThan(3000 * 1000),
-              as: `io.cozy.settings/context`
+              as: `io.cozy.settings/context`,
+              singleDocData: true
             }
           })) as ExpectedContext,
           (await client.fetchQueryAndGetFromState({
             definition: Q('io.cozy.settings').getById('instance'),
             options: {
               fetchPolicy: CozyClient.fetchPolicies.olderThan(3000 * 1000),
-              as: `io.cozy.settings/instance`
+              as: `io.cozy.settings/instance`,
+              singleDocData: true
             }
           })) as ExpectedInstance
         ])
