@@ -5580,10 +5580,10 @@ cozy-interapp@0.4.9:
   resolved "https://registry.npmjs.org/cozy-interapp/-/cozy-interapp-0.4.9.tgz"
   integrity sha512-skyjrewnMu5zMfST7vTNGl3jsuWae1Iwfdev6pW9RLgb58M7oBSpsIa3ofRANv5tx0XVQDVSEzWvbFQ84WJPSg==
 
-cozy-interapp@0.7.4:
-  version "0.7.4"
-  resolved "https://registry.npmjs.org/cozy-interapp/-/cozy-interapp-0.7.4.tgz"
-  integrity sha512-2QWMsW9mt04vuKXfCmhuGFT4nZi46pRPaTAQ0GnJAeCedCUuT+RlTaYs25ogSaSLMUt/puR6AgbIK9X7anhZyQ==
+cozy-interapp@0.7.7:
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/cozy-interapp/-/cozy-interapp-0.7.7.tgz#5b89df2485cda2a985a681e17aad03fdad6f59e4"
+  integrity sha512-8MWak/bEPdggb5iyzNOC73nXaxL8JEKLWbL/JmyoA6X2/Iwj2jc/Rf7Sw+xiddjB3D8C524BkcwLPFGuxhKGuA==
 
 cozy-interapp@^0.5.4:
   version "0.5.7"
