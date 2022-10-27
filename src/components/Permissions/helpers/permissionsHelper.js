@@ -73,7 +73,7 @@ export const sortPermissionsByName = (completePermission, permissions, t) => {
   return permissions
     .map(([name, value]) => {
       const type = value.type
-      const perm = t('CozyPermissions.Permissions.' + type)
+      const perm = t('CozyPermissions.' + type)
       return completePermission(name, perm, value, type)
     })
     .sort((a, b) => {
