@@ -445,16 +445,17 @@
     "readAndWrite": "Read and Write",
     "write": "Write",
     "numberOfPermissions": "%{smart_count} permission |||| %{smart_count} permissions",
+    "numberOfApplications": "%{smart_count} application |||| %{smart_count} applications",
     "applications": "Applications",
     "data": "Data",
     "open": "Open",
     "access": "Applications with this permission can access your ",
     "about": "About",
-    "limited_right_access": "Limited right access",
+    "limited_right_access": "Local data permissions",
     "latest_data_releases": "Latest data releases",
     "monthly_statistics": "Monthly statistics",
     "monthly_stats_phrase": "Data release report from your cozy to %{app} on %{date}:",
-    "exit_rights": "Exit rights"
+    "exit_rights": "Latest outgoing data history"
   },
   "Accessibility": {
     "previous": "Previous"

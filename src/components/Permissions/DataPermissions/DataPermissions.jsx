@@ -104,12 +104,12 @@ const DataPermissions = ({ t }) => {
               size={mediumSize}
             />
             <PageTitle>
-              {t('CozyPermissions.Permissions.' + permission).toUpperCase()}
+              {t('CozyPermissions.' + permission).toUpperCase()}
             </PageTitle>
             <Typography variant="body1" className="u-mb-1-half">
               {t('Permissions.access') +
                 ' ' +
-                t('CozyPermissions.Permissions.' + permission).toLowerCase()}
+                t('CozyPermissions.' + permission).toLowerCase()}
             </Typography>
           </div>
           <NavigationList>

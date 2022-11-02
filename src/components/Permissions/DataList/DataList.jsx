@@ -81,7 +81,7 @@ const DataList = ({ t }) => {
                         />
                       </ListItemIcon>
                       <ListItemText
-                        primary={t('CozyPermissions.Permissions.' + key)}
+                        primary={t('CozyPermissions.' + key)}
                         secondary={t('Permissions.numberOfApplications', {
                           smart_count: slugs.length
                         })}

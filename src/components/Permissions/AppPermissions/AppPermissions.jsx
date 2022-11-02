@@ -29,7 +29,7 @@ import {
 } from '../helpers/permissionsHelper'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 
-const PermissionsApplication = ({ t }) => {
+const AppPermissions = ({ t }) => {
   const { slug: slugName } = useParams()
   const THIRTY_SECONDS = 30 * 1000
 
@@ -161,4 +161,4 @@ const PermissionsApplication = ({ t }) => {
   )
 }
 
-export default withAllLocales(PermissionsApplication)
+export default withAllLocales(AppPermissions)
