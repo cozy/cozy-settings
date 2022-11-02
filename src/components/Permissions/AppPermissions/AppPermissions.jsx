@@ -10,9 +10,9 @@ import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
-import { OpenappButton } from '../OpenappButton'
-import { AboutButton } from '../AboutButton'
-import withAllLocales from '../../../lib/withAllLocales'
+import { OpenappButton } from 'components/Permissions/OpenappButton'
+import { AboutButton } from 'components/Permissions/AboutButton'
+import withAllLocales from 'lib/withAllLocales'
 import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
 import CozyClient, {
   Q,
@@ -20,13 +20,14 @@ import CozyClient, {
   isQueryLoading,
   hasQueryBeenLoaded
 } from 'cozy-client'
-import AccessRightsSection from '../AccessRightsSection'
-import LatestDataReleases from '../LatestDataReleases'
+import AccessRightsSection from 'components/Permissions/AccessRightsSection'
+import LatestOutgoingDataHistory from 'components/Permissions/LatestOutgoingDataHistory'
 import {
   filterPermissions,
   sortPermissionsByName,
-  completeAppPermission
-} from '../helpers/permissionsHelper'
+  completeAppPermission,
+  filterRemoteRequests
+} from 'components/Permissions/helpers/permissionsHelper'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 
 const AppPermissions = ({ t }) => {
@@ -86,6 +87,11 @@ const AppPermissions = ({ t }) => {
   )
 
   const isKonnector = type => type === 'io.cozy.konnectors'
+
+  const filteredRemoteRequests = filterRemoteRequests(
+    queryResultRemoteRequests,
+    slugName
+  )
 
   return (
     <Page narrow>
@@ -147,9 +153,9 @@ const AppPermissions = ({ t }) => {
               />
             )}
 
-            {queryResultRemoteRequests.data.length > 0 && (
-              <LatestDataReleases
-                queryResultRemoteRequests={queryResultRemoteRequests}
+            {filteredRemoteRequests?.length > 0 && (
+              <LatestOutgoingDataHistory
+                queryResultRemoteRequests={filteredRemoteRequests}
                 slugName={slugName}
                 t={t}
               />

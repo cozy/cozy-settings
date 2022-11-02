@@ -15,9 +15,13 @@ import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListI
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import { isNotLastItem, sortDataByDate } from './helpers/permissionsHelper'
 import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
-import withAllLocales from './../../lib/withAllLocales'
+import withAllLocales from '../../lib/withAllLocales'
 
-const LatestDataReleases = ({ queryResultRemoteRequests, slugName, t }) => {
+const LatestOutgoingDataHistory = ({
+  queryResultRemoteRequests,
+  slugName,
+  t
+}) => {
   const [modalOpened, setModalOpened] = useState(false)
   const [modalData, setModalData] = useState()
 
@@ -59,7 +63,7 @@ const LatestDataReleases = ({ queryResultRemoteRequests, slugName, t }) => {
                   />
                 </ListItemIcon>
                 <ListItemText
-                  primary={t('Permissions.monthly_statistics')}
+                  primary={t(`CozyPermissions.${data.doctype}`)}
                   secondary={formatDate({
                     f,
                     date: new Date(data.created_at)
@@ -108,4 +112,4 @@ const LatestDataReleases = ({ queryResultRemoteRequests, slugName, t }) => {
   )
 }
 
-export default withAllLocales(LatestDataReleases)
+export default withAllLocales(LatestOutgoingDataHistory)
