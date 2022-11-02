@@ -151,15 +151,15 @@ describe('DataList', () => {
     const { queryAllByTestId } = render(<DataList />)
     expect(queryAllByTestId('ListItemText')[0]).toHaveAttribute(
       'data-primary',
-      'CozyPermissions.Permissions.io.cozy.apps'
+      'CozyPermissions.io.cozy.apps'
     )
     expect(queryAllByTestId('ListItemText')[1]).toHaveAttribute(
       'data-primary',
-      'CozyPermissions.Permissions.io.cozy.files'
+      'CozyPermissions.io.cozy.files'
     )
     expect(queryAllByTestId('ListItemText')[2]).toHaveAttribute(
       'data-primary',
-      'CozyPermissions.Permissions.io.cozy.files.*'
+      'CozyPermissions.io.cozy.files.*'
     )
   })
 

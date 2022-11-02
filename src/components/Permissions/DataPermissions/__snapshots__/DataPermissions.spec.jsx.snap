@@ -64,12 +64,12 @@ exports[`DataPermissions should display DataPermissions 1`] = `
       <div
         data-testid="page-title"
       >
-        COZYPERMISSIONS.PERMISSIONS.IO.COZY.FILES
+        COZYPERMISSIONS.IO.COZY.FILES
       </div>
       <p
         class="MuiTypography-root u-mb-1-half MuiTypography-body1 MuiTypography-colorTextPrimary"
       >
-        Permissions.access cozypermissions.permissions.io.cozy.files
+        Permissions.access cozypermissions.io.cozy.files
       </p>
     </div>
     <div

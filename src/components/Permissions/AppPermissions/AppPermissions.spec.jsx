@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import PermissionsApplication from './AppPermissions'
+import AppPermissions from './AppPermissions'
 import {
   Q,
   useQuery,
@@ -92,7 +92,7 @@ jest.mock('cozy-client/dist/hooks/useFetchJSON', () => ({
   default: jest.fn()
 }))
 
-describe('PermissionsApplication', () => {
+describe('AppPermissions', () => {
   beforeEach(() => {
     const queryResult = {
       fetchStatus: 'loaded',
@@ -138,26 +138,26 @@ describe('PermissionsApplication', () => {
   it('should display slugName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
     useFetchJSON.mockReturnValue({ data: ['doctype1', 'doctype2'] })
-    const { container } = render(<PermissionsApplication />)
+    const { container } = render(<AppPermissions />)
     expect(container).toMatchSnapshot()
   })
 
   it('should render a spinner when query is loading and has not been loaded', () => {
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(false)
-    const { queryByTestId } = render(<PermissionsApplication />)
+    const { queryByTestId } = render(<AppPermissions />)
     expect(queryByTestId('Spinner')).toBeTruthy()
   })
 
   it('should display slugName when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { queryByText } = render(<PermissionsApplication />)
+    const { queryByText } = render(<AppPermissions />)
     expect(queryByText('DRIVE')).toBeInTheDocument()
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
-    const { queryByText } = render(<PermissionsApplication />)
+    const { queryByText } = render(<AppPermissions />)
     expect(queryByText('Permissions.failedRequest')).toBeTruthy()
   })
 
