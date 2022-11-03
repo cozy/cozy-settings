@@ -102,7 +102,15 @@ export const completeAppPermission = (
 }
 
 export const sortDataByDate = queryResult => {
-  return queryResult.data.sort(
+  return queryResult.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   )
+}
+
+export const filterRemoteRequests = (remoteRequests, slugName) => {
+  if (remoteRequests.data?.length > 0) {
+    return remoteRequests.data.filter(
+      data => data.cozyMetadata.createdByApp === slugName
+    )
+  }
 }

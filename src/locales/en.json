@@ -452,10 +452,10 @@
     "access": "Applications with this permission can access your ",
     "about": "About",
     "limited_right_access": "Local data permissions",
-    "latest_data_releases": "Latest data releases",
+    "latest_data_releases": "Latest outgoing data history",
     "monthly_statistics": "Monthly statistics",
     "monthly_stats_phrase": "Data release report from your cozy to %{app} on %{date}:",
-    "exit_rights": "Latest outgoing data history"
+    "exit_rights": "Outgoing data permissions"
   },
   "Accessibility": {
     "previous": "Previous"
