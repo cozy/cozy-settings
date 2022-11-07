@@ -102,7 +102,7 @@ export const sortDataByDate = queryResult => {
 export const filterRemoteRequests = (remoteRequests, slugName) => {
   if (remoteRequests.data?.length > 0) {
     return remoteRequests.data.filter(
-      data => data.cozyMetadata.createdByApp === slugName
+      data => data?.cozyMetadata?.createdByApp === slugName
     )
   }
 }
