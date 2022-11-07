@@ -45,14 +45,6 @@ export const getPermissionsVerbsByType = (permissions, type) => {
   return verbs
 }
 
-export const isNotLastItem = (itemId, list) => {
-  if (list[0].name) {
-    return itemId !== list[list.length - 1].name
-  } else {
-    return itemId !== list[list.length - 1].id
-  }
-}
-
 export const filterPermissions = (remoteDoctypes, matchingQueryResult) => {
   let limitedRightAccess = []
   let exitRights = []

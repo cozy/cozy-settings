@@ -13,8 +13,7 @@ import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListI
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import {
   displayPermissions,
-  getPermissionIconName,
-  isNotLastItem
+  getPermissionIconName
 } from './helpers/permissionsHelper'
 import { routes } from 'constants/routes'
 import withAllLocales from '../../lib/withAllLocales'
@@ -38,7 +37,7 @@ const AccessRightsSection = ({
         </Typography>
       </ListItem>
       <Divider />
-      {sortedPermissionsByName.map(({ name, title, verbs, type }) => {
+      {sortedPermissionsByName.map(({ name, title, verbs, type }, index) => {
         const iconName = getPermissionIconName(type)
         return (
           <div key={name}>
@@ -69,7 +68,7 @@ const AccessRightsSection = ({
                 />
               </ListItemSecondaryAction>
             </ListItem>
-            {isNotLastItem(name, sortedPermissionsByName) && (
+            {index !== sortedPermissionsByName.length - 1 && (
               <Divider variant="inset" />
             )}
           </div>
