@@ -61,13 +61,28 @@ export const LockScreen = (): JSX.Element => {
   const biometryType = flagshipMetadata.biometry_type
 
   const onBiometryLock = (): void => {
-    if (biometryAuthorisationDenied) {
-      return setBiometryDeniedDialogVisible(true)
+    const doOnBiometryLock = async (): Promise<void> => {
+      if (!webviewIntent) return
+
+      // We don't want to use local state here as on first access the authorisation
+      // can be denied from the OS dialog and then the authorization would be
+      // updated during the app's lifecycle (which is not the case when editing
+      // OS settings)
+      const isBiometryDenied = await webviewIntent.call('isBiometryDenied')
+
+      if (isBiometryDenied) {
+        return setBiometryDeniedDialogVisible(true)
+      }
+
+      const value = await handleChange(
+        setBiometry,
+        'biometryLock',
+        webviewIntent
+      )
+      value && setAutoLock(true)
     }
 
-    void handleChange(setBiometry, 'biometryLock', webviewIntent).then(
-      value => value && setAutoLock(true)
-    )
+    void doOnBiometryLock()
   }
 
   const onPinCodeLock = async (pinCode?: string): Promise<void> => {
