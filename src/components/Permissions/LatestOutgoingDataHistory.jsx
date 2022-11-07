@@ -13,7 +13,7 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import { isNotLastItem, sortDataByDate } from './helpers/permissionsHelper'
+import { sortDataByDate } from './helpers/permissionsHelper'
 import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
 import withAllLocales from '../../lib/withAllLocales'
 
@@ -50,7 +50,7 @@ const LatestOutgoingDataHistory = ({
           </Typography>
         </ListItem>
         <Divider />
-        {sortDataByDate(queryResultRemoteRequests).map(data => {
+        {sortDataByDate(queryResultRemoteRequests).map((data, index) => {
           return (
             <div key={data.id}>
               <ListItem button onClick={() => openModal(data)}>
@@ -78,10 +78,10 @@ const LatestOutgoingDataHistory = ({
                   />
                 </ListItemSecondaryAction>
               </ListItem>
-              {isNotLastItem(
-                data.id,
-                sortDataByDate(queryResultRemoteRequests)
-              ) && <Divider variant="inset" />}
+              {index !==
+                sortDataByDate(queryResultRemoteRequests).length - 1 && (
+                <Divider variant="inset" />
+              )}
             </div>
           )
         })}
