@@ -14,7 +14,6 @@ import ListItemIcon, {
 } from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import withAllLocales from 'lib/withAllLocales'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
@@ -22,23 +21,18 @@ import { getPermissionIconName } from 'components/Permissions/helpers/permission
 import { sortPermissionsByName } from './DataListHelpers'
 import { completePermission } from '../helpers/permissionsHelper'
 import { routes } from 'constants/routes'
-import CozyClient, {
-  Q,
-  useQuery,
-  isQueryLoading,
-  hasQueryBeenLoaded
-} from 'cozy-client'
+import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+import { buildAppsQuery, buildKonnectorsQuery } from 'lib/queries'
+import { useQuery } from 'cozy-client'
 
-const THIRTY_SECONDS = 30 * 1000
 const DataList = ({ t }) => {
-  const queryResultApps = useQuery(Q(APPS_DOCTYPE), {
-    as: APPS_DOCTYPE,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
-  })
-  const queryResultKonnectors = useQuery(Q(KONNECTORS_DOCTYPE), {
-    as: KONNECTORS_DOCTYPE,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
-  })
+  const appsQuery = buildAppsQuery()
+  const queryResultApps = useQuery(appsQuery.definition, appsQuery.options)
+  const konnectorsQuery = buildKonnectorsQuery()
+  const queryResultKonnectors = useQuery(
+    konnectorsQuery.definition,
+    konnectorsQuery.options
+  )
 
   const permissionsToDisplay = completePermission(
     queryResultApps,
