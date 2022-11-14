@@ -360,6 +360,12 @@
     "reload": "Votre mot de passe a été changé. La page va se recharger afin que le changement prenne effet.",
     "redirect": "Votre mot de passe a été changé. Vous allez être redirigé(e)."
   },
+  "BiometryDeniedDialog": {
+    "title": "Activation impossible",
+    "content": "Pour activer cette fonctionnalité, l'application a besoin d'avoir la permission d'utiliser FaceID",
+    "open_settings": "Ouvrir les paramètres",
+    "cancel": "Annuler"
+  },
   "LockScreenView": {
     "choose_pin_body": "Définissez votre code PIN pour déverrouiller l’application après une période d’inactivité.",
     "choose_pin_cancel": "Annuler",

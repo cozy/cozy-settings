@@ -15,6 +15,7 @@ import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import logger from 'lib/logger'
 import { MenuItemSwitch } from 'components/menu/MenuItemSwitch'
+import { BiometryDeniedDialog } from 'components/dialogs/BiometryDeniedDialog'
 import { PinCodeDialog } from 'components/dialogs/PinCodeDialog'
 
 const handleChange = async (
@@ -41,6 +42,8 @@ export const LockScreen = (): JSX.Element => {
   const webviewIntent = useWebviewIntent()
   const flagshipMetadata = getFlagshipMetadata()
   const [pinModalVisible, setPinModalVisible] = useState(false)
+  const [biometryDeniedDialogVisible, setBiometryDeniedDialogVisible] =
+    useState(false)
   const [biometryEnabled, setBiometry] = useState(
     Boolean(flagshipMetadata.settings_biometryEnabled)
   )
@@ -51,12 +54,21 @@ export const LockScreen = (): JSX.Element => {
     Boolean(flagshipMetadata.settings_autoLockEnabled)
   )
   const biometryAvailable = Boolean(flagshipMetadata.biometry_available)
+  const biometryAuthorisationDenied = Boolean(
+    flagshipMetadata.biometry_authorisation_denied
+  )
+  const showBiometryOption = biometryAvailable || biometryAuthorisationDenied
   const biometryType = flagshipMetadata.biometry_type
 
-  const onBiometryLock = (): void =>
+  const onBiometryLock = (): void => {
+    if (biometryAuthorisationDenied) {
+      return setBiometryDeniedDialogVisible(true)
+    }
+
     void handleChange(setBiometry, 'biometryLock', webviewIntent).then(
       value => value && setAutoLock(true)
     )
+  }
 
   const onPinCodeLock = async (pinCode?: string): Promise<void> => {
     if (!pinCodeEnabled && !pinCode) return setPinModalVisible(true)
@@ -80,21 +92,22 @@ export const LockScreen = (): JSX.Element => {
 
       <nav>
         <List>
-          <MenuItemSwitch
-            primary={
-              biometryType === 'Biometrics'
-                ? t('Nav.primary_biometry_android')
-                : biometryType === 'TouchID'
-                ? t('Nav.primary_biometry_touchid')
-                : biometryType === 'FaceID'
-                ? t('Nav.primary_biometry_faceid')
-                : t('Nav.primary_biometry')
-            }
-            icon={biometryType === 'FaceID' ? FaceId : Fingerprint}
-            onClick={onBiometryLock}
-            checked={biometryEnabled}
-            disabled={!biometryAvailable}
-          />
+          {showBiometryOption && (
+            <MenuItemSwitch
+              primary={
+                biometryType === 'Biometrics'
+                  ? t('Nav.primary_biometry_android')
+                  : biometryType === 'TouchID'
+                  ? t('Nav.primary_biometry_touchid')
+                  : biometryType === 'FaceID'
+                  ? t('Nav.primary_biometry_faceid')
+                  : t('Nav.primary_biometry')
+              }
+              icon={biometryType === 'FaceID' ? FaceId : Fingerprint}
+              onClick={onBiometryLock}
+              checked={biometryEnabled && !biometryAuthorisationDenied}
+            />
+          )}
 
           <MenuItemSwitch
             checked={pinCodeEnabled}
@@ -116,6 +129,12 @@ export const LockScreen = (): JSX.Element => {
         <PinCodeDialog
           setPinCode={(pinCode): void => void onPinCodeLock(pinCode)}
           setModalVisible={setPinModalVisible}
+        />
+      )}
+
+      {biometryDeniedDialogVisible && (
+        <BiometryDeniedDialog
+          setModalVisible={setBiometryDeniedDialogVisible}
         />
       )}
     </Page>
