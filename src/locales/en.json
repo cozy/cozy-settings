@@ -81,7 +81,7 @@
     "primary_lock_switch": "Lock when the app goes into background",
     "primary_logout": "Déconnexion",
     "primary_photo_sync": "Synchronisation auto des photos",
-    "primary_pin_switch": "primary_pin_switch",
+    "primary_pin_switch": "Unlock with PIN Code",
     "primary_plan": "Forfait",
     "primary_save_journeys": "Mémoriser mes trajets",
     "primary_support": "Support",
@@ -359,6 +359,12 @@
     "wrong_two_fa_code": "The provided two factor code seems wrong.",
     "reload": "Your password has been changed. The page is going to reload so the change can take effect.",
     "redirect": "Your password has been changed. You are going to be redirected."
+  },
+  "BiometryDeniedDialog": {
+    "title": "Unable to activate",
+    "content": "To activate this feature, the app needs authorization to access FaceID",
+    "open_settings": "Open settings",
+    "cancel": "Cancel"
   },
   "LockScreenView": {
     "choose_pin_body": "choose_pin_body",
