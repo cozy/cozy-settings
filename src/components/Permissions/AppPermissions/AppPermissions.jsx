@@ -28,6 +28,7 @@ import {
   buildRemoteRequestsQuery
 } from 'lib/queries'
 import { useQuery } from 'cozy-client'
+import { UninstallButton } from '../UninstallButton'
 
 const AppPermissions = ({ t }) => {
   const { slug: slugName } = useParams()
@@ -118,9 +119,10 @@ const AppPermissions = ({ t }) => {
                     ? 'konnector'
                     : 'app'
                 }
-                matchingQueryResultData={matchingQueryResult.data}
+                appData={matchingQueryResult.data}
               />
-              <AboutButton matchingQueryResultData={matchingQueryResult.data} />
+              <AboutButton appData={matchingQueryResult.data} />
+              <UninstallButton appData={matchingQueryResult.data} />
             </div>
           </div>
           <NavigationList>

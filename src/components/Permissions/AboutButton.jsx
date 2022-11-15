@@ -6,19 +6,18 @@ import AppLinker, { generateWebLink } from 'cozy-ui/transpiled/react/AppLinker'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { useClient } from 'cozy-client'
 
-export const AboutButton = ({ matchingQueryResultData }) => {
+export const AboutButton = ({ appData }) => {
   const { t } = useI18n()
   const client = useClient()
   const { subdomain: subDomainType } = client.getInstanceOptions()
   const appWebRef =
-    matchingQueryResultData &&
+    appData &&
     generateWebLink({
       cozyUrl: client.getStackClient().uri,
       slug: 'store',
       subDomainType,
-      nativePath: `discover/${matchingQueryResultData.slug}`
+      nativePath: `discover/${appData.slug}`
     })
-  const appData = matchingQueryResultData && matchingQueryResultData
 
   return (
     <AppLinker app={appData} href={appWebRef}>

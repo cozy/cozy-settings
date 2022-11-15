@@ -455,7 +455,8 @@
     "latest_data_releases": "Latest outgoing data history",
     "monthly_statistics": "Monthly statistics",
     "monthly_stats_phrase": "Data release report from your cozy to %{app} on %{date}:",
-    "exit_rights": "Outgoing data permissions"
+    "exit_rights": "Outgoing data permissions",
+    "uninstall": "Uninstall"
   },
   "Accessibility": {
     "previous": "Previous"

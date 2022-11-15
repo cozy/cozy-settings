@@ -62,6 +62,9 @@ exports[`AppPermissions should display slugName when query has been loaded 1`] =
           <div
             data-testid="CircleButton"
           />
+          <div
+            data-testid="CircleButton"
+          />
         </div>
       </div>
       <div
