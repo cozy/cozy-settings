@@ -26,7 +26,7 @@ import { useOffersLink } from 'hooks/useOffersLink'
 export const Sidebar = (): JSX.Element => {
   const { t } = useI18n()
   const percent = useDiskPercentage()
-  const logout = useLogout()
+  const logoutAndForget = useLogout()
   const offersLink = useOffersLink()
 
   return (
@@ -102,7 +102,7 @@ export const Sidebar = (): JSX.Element => {
           <MenuItemButton
             primary={t('Nav.primary_logout')}
             icon={Logout}
-            onClick={(): void => void logout()}
+            onClick={logoutAndForget}
           />
         </MenuList>
       </List>
