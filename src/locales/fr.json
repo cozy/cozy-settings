@@ -461,7 +461,8 @@
     "latest_data_releases": "Dernières sorties de données",
     "monthly_statistics": "Statistiques mensuelles",
     "monthly_stats_phrase": "Compte rendu de la sortie de données depuis votre cozy vers %{app} le %{date}:",
-    "exit_rights": "Droits de sortie"
+    "exit_rights": "Droits de sortie",
+    "uninstall": "Désinstaller"
   },
   "Accessibility": {
     "previous": "Précédent"
