@@ -1,6 +1,4 @@
 import React, { useMemo } from 'react'
-
-import { APPS_DOCTYPE, KONNECTORS_DOCTYPE } from 'doctypes'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
@@ -14,12 +12,7 @@ import { OpenappButton } from 'components/Permissions/OpenappButton'
 import { AboutButton } from 'components/Permissions/AboutButton'
 import withAllLocales from 'lib/withAllLocales'
 import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
-import CozyClient, {
-  Q,
-  useQuery,
-  isQueryLoading,
-  hasQueryBeenLoaded
-} from 'cozy-client'
+import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import AccessRightsSection from 'components/Permissions/AccessRightsSection'
 import LatestOutgoingDataHistory from 'components/Permissions/LatestOutgoingDataHistory'
 import {
@@ -29,31 +22,29 @@ import {
   filterRemoteRequests
 } from 'components/Permissions/helpers/permissionsHelper'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
+import {
+  buildAppsQueryBySlug,
+  buildKonnectorsQueryBySlug,
+  buildRemoteRequestsQuery
+} from 'lib/queries'
+import { useQuery } from 'cozy-client'
 
 const AppPermissions = ({ t }) => {
   const { slug: slugName } = useParams()
-  const THIRTY_SECONDS = 30 * 1000
 
-  const queryResultApps = useQuery(
-    Q(APPS_DOCTYPE).getById('io.cozy.apps/' + slugName),
-    {
-      as: 'io.cozy.apps/' + slugName,
-      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS),
-      singleDocData: true
-    }
-  )
+  const appsQuery = buildAppsQueryBySlug(slugName)
+  const queryResultApps = useQuery(appsQuery.definition, appsQuery.options)
+  const konnectorsQuery = buildKonnectorsQueryBySlug(slugName)
   const queryResultKonnectors = useQuery(
-    Q(KONNECTORS_DOCTYPE).getById('io.cozy.konnectors/' + slugName),
-    {
-      as: 'io.cozy.konnectors/' + slugName,
-      fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS),
-      singleDocData: true
-    }
+    konnectorsQuery.definition,
+    konnectorsQuery.options
   )
-  const queryResultRemoteRequests = useQuery(Q('io.cozy.remote.requests'), {
-    as: 'io.cozy.remote.requests',
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(THIRTY_SECONDS)
-  })
+  const remoteQuery = buildRemoteRequestsQuery()
+  const queryResultRemoteRequests = useQuery(
+    remoteQuery.definition,
+    remoteQuery.options
+  )
+
   const { data: remoteDoctypes, ...queryResultRemoteDoctypes } = useFetchJSON(
     'GET',
     '/remote/_all_doctypes'
