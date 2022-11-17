@@ -74,15 +74,33 @@ export const LockScreen = (): JSX.Element => {
         return setBiometryDeniedDialogVisible(true)
       }
 
+      if (!biometryEnabled && flagshipMetadata.platform?.OS === 'android')
+        await webviewIntent.call('setFlagshipUI', {
+          bottomOverlay: 'rgba(0,0,0,0.5)',
+          topOverlay: 'rgba(0,0,0,0.5)'
+        })
+
       const value = await handleChange(
         setBiometry,
         'biometryLock',
         webviewIntent
       )
+
       value && setAutoLock(true)
+
+      if (!biometryEnabled && flagshipMetadata.platform?.OS === 'android')
+        await webviewIntent.call('setFlagshipUI', {
+          bottomOverlay: 'transparent',
+          topOverlay: 'transparent'
+        })
     }
 
-    void doOnBiometryLock()
+    doOnBiometryLock().catch(onrejected =>
+      logger.error(
+        `Error while calling onBiometryLock(), see error:`,
+        onrejected
+      )
+    )
   }
 
   const onPinCodeLock = async (pinCode?: string): Promise<void> => {
