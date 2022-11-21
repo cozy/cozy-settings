@@ -1,7 +1,9 @@
-import { render } from '@testing-library/react'
 import React, { ReactChild } from 'react'
-import Sidebar from './Sidebar'
+import { render } from '@testing-library/react'
+
 import flag from 'cozy-flags'
+
+import Sidebar from 'components/Sidebar'
 
 const mockFlag = flag as jest.MockedFunction<typeof flag>
 
@@ -18,6 +20,14 @@ jest.mock('react-router-dom', () => ({
 }))
 
 jest.mock('cozy-flags')
+
+jest.mock('cozy-ui/transpiled/react/hooks/useBreakpoints', () => ({
+  __esModule: true,
+  default: (): {
+    isMobile: boolean
+    isTablet: boolean
+  } => ({ isMobile: false, isTablet: false })
+}))
 
 describe('Sidebar', () => {
   it('should display Permission table when flag is on', () => {

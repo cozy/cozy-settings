@@ -7,41 +7,27 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import OpenwithIcon from 'cozy-ui/transpiled/react/Icons/Openwith'
 
 interface MenuItemAnchorProps {
-  icon: JSX.Element
-  primary: string
   href: string
+  icon: () => JSX.Element
+  primary: string
   secondary?: string
   target?: string
 }
 
 export const MenuItemAnchor = ({
-  icon,
   href,
-  target,
+  icon,
   primary,
-  secondary
+  secondary,
+  target
 }: MenuItemAnchorProps): JSX.Element => (
-  <li>
-    <ListItem
-      button
-      component="a"
-      href={href}
-      style={{ color: 'var(--primaryTextColor)' }}
-      target={target ?? '_self'}
-    >
-      <ListItemIcon>
-        <Icon icon={icon} />
-      </ListItemIcon>
+  <ListItem button component="a" href={href} target={target ?? '_self'}>
+    <ListItemIcon>
+      <Icon icon={icon} />
+    </ListItemIcon>
 
-      <ListItemText primary={primary} />
+    <ListItemText primary={primary} secondary={secondary} />
 
-      {secondary && <ListItemText secondary={secondary} />}
-
-      {target === '_blank' && (
-        <ListItemIcon align="right">
-          <Icon icon={OpenwithIcon} />
-        </ListItemIcon>
-      )}
-    </ListItem>
-  </li>
+    {target === '_blank' && <Icon icon={OpenwithIcon} />}
+  </ListItem>
 )

@@ -6,10 +6,10 @@ import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 
 interface MenuItemButtonProps {
-  icon: JSX.Element
+  icon: () => JSX.Element
+  onClick: () => void
   primary: string
   secondary?: string
-  onClick: () => void
 }
 
 export const MenuItemButton = ({
@@ -18,18 +18,11 @@ export const MenuItemButton = ({
   secondary,
   onClick
 }: MenuItemButtonProps): JSX.Element => (
-  <ListItem
-    button
-    component="li"
-    onClick={onClick}
-    style={{ color: 'var(--primaryTextColor)' }}
-  >
+  <ListItem button onClick={onClick}>
     <ListItemIcon>
       <Icon icon={icon} />
     </ListItemIcon>
 
-    <ListItemText primary={primary} />
-
-    {secondary && <ListItemText secondary={secondary} />}
+    <ListItemText primary={primary} secondary={secondary} />
   </ListItem>
 )
