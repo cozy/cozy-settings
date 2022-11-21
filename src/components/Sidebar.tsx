@@ -5,14 +5,15 @@ import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import GlobeIcon from 'cozy-ui/transpiled/react/Icons/Globe'
 import GraphCircle from 'cozy-ui/transpiled/react/Icons/GraphCircle'
 import HandIcon from 'cozy-ui/transpiled/react/Icons/Hand'
-import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
+import HelpIcon from 'cozy-ui/transpiled/react/Icons/Help'
 import LockScreen from 'cozy-ui/transpiled/react/Icons/LockScreen'
 import Logout from 'cozy-ui/transpiled/react/Icons/Logout'
 import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
-import UnknowIcon from 'cozy-ui/transpiled/react/Icons/Unknow'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import flag from 'cozy-flags'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
+import styles from 'components/Sidebar.styl'
 import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'
 import { MenuItemButton } from 'components/menu/MenuItemButton'
 import { MenuItemNavLink } from 'components/menu/MenuItemNavLink'
@@ -24,88 +25,93 @@ import { useLogout } from 'hooks/useLogout'
 import { useOffersLink } from 'hooks/useOffersLink'
 
 export const Sidebar = (): JSX.Element => {
-  const { t } = useI18n()
-  const percent = useDiskPercentage()
   const logout = useLogout()
   const offersLink = useOffersLink()
+  const percent = useDiskPercentage()
+  const { t } = useI18n()
 
   return (
-    <nav role="navigation" style={{ minWidth: '362px' }}>
-      <List>
-        {(isFlagshipApp() || flag('settings.flagship-mode')) && (
-          <MenuList title={t('Nav.header_flagship')}>
-            <MenuItemNavLink
-              to={routes.lockScreen}
-              primary={t('Nav.primary_lock_screen')}
-              icon={LockScreen}
-            />
-          </MenuList>
+    <nav role="navigation" className={styles.Sidebar}>
+      {(isFlagshipApp() || flag('settings.flagship-mode')) && (
+        <MenuList title={t('Nav.header_flagship')}>
+          <MenuItemNavLink
+            to={routes.lockScreen}
+            primary={t('Nav.primary_lock_screen')}
+            icon={LockScreen}
+          />
+        </MenuList>
+      )}
+
+      <MenuList title={t('Nav.header_general')}>
+        <MenuItemNavLink
+          to={routes.profile}
+          primary={t('Nav.profile')}
+          icon={PeopleIcon}
+        />
+
+        {offersLink && (
+          <MenuItemAnchor
+            primary={t('Nav.primary_plan')}
+            href={offersLink}
+            target="_blank"
+            icon={CozyCircle}
+          />
         )}
 
-        <MenuList title={t('Nav.header_general')}>
+        <MenuItemNavLink
+          to={routes.storage}
+          primary={t('Nav.storage')}
+          beforeEnd={
+            percent ? (
+              <Typography
+                variant="body2"
+                className="u-mr-half"
+                style={{ color: 'var(--secondaryTextColor)' }}
+              >
+                {t('Nav.secondary_used', { percent })}
+              </Typography>
+            ) : null
+          }
+          icon={GraphCircle}
+        />
+      </MenuList>
+
+      <MenuList title={t('Nav.header_data')}>
+        {flag('settings.permissions-dashboard') && (
           <MenuItemNavLink
-            to={routes.profile}
-            primary={t('Nav.profile')}
-            icon={PeopleIcon}
+            to={routes.appList}
+            primary={t('Nav.permissions')}
+            icon={HandIcon}
           />
+        )}
 
-          {offersLink && (
-            <MenuItemAnchor
-              primary={t('Nav.primary_plan')}
-              href={offersLink}
-              target="_blank"
-              icon={CozyCircle}
-            />
-          )}
+        <MenuItemNavLink
+          to={routes.connectedDevices}
+          primary={t('Nav.connected_devices')}
+          icon={DevicesIcon}
+        />
 
-          <MenuItemNavLink
-            to={routes.connectedDevices}
-            primary={t('Nav.connected_devices')}
-            icon={DevicesIcon}
-          />
+        <MenuItemNavLink
+          to={routes.sessions}
+          primary={t('Nav.sessions')}
+          icon={GlobeIcon}
+        />
+      </MenuList>
 
-          <MenuItemNavLink
-            to={routes.sessions}
-            primary={t('Nav.sessions')}
-            icon={GlobeIcon}
-          />
+      <MenuList title={t('Nav.header_other')}>
+        <MenuItemAnchor
+          primary={t('Nav.primary_faq')}
+          href={routes.external_faq}
+          target="_blank"
+          icon={HelpIcon}
+        />
 
-          <MenuItemNavLink
-            to={routes.storage}
-            primary={t('Nav.storage')}
-            secondary={
-              percent &&
-              t('Nav.secondary_used', {
-                percent
-              })
-            }
-            icon={GraphCircle}
-          />
-
-          {flag('settings.permissions-dashboard') && (
-            <MenuItemNavLink
-              to={routes.appList}
-              primary={t('Nav.permissions')}
-              icon={HandIcon}
-            />
-          )}
-        </MenuList>
-
-        <MenuList title={t('Nav.header_other')}>
-          <MenuItemAnchor
-            primary={t('Nav.primary_faq')}
-            href={routes.external_faq}
-            target="_blank"
-            icon={UnknowIcon}
-          />
-
-          <MenuItemButton
-            primary={t('Nav.primary_logout')}
-            icon={Logout}
-            onClick={(): void => void logout()}
-          />
-        </MenuList>
-      </List>
+        <MenuItemButton
+          primary={t('Nav.primary_logout')}
+          icon={Logout}
+          onClick={(): void => void logout()}
+        />
+      </MenuList>
     </nav>
   )
 }
