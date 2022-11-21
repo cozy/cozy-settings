@@ -96,7 +96,7 @@ exports[`DataPermissions should display DataPermissions 1`] = `
                 />
               </div>
               <div
-                data-primary="Contacts"
+                data-primary="Alan"
                 data-testid="ListItemText"
               />
               <span
@@ -143,7 +143,7 @@ exports[`DataPermissions should display DataPermissions 1`] = `
                 />
               </div>
               <div
-                data-primary="Alan"
+                data-primary="Contacts"
                 data-testid="ListItemText"
               />
               <span

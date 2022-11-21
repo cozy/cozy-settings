@@ -153,7 +153,7 @@ describe('DataPermissions', () => {
 
   it('should display Contacts permissions because it matches the route param', () => {
     const { container } = render(<DataPermissions />)
-    expect(container.querySelector('[data-primary]')).toHaveAttribute(
+    expect(container.querySelectorAll('[data-primary]')[1]).toHaveAttribute(
       'data-primary',
       'Contacts'
     )
@@ -161,7 +161,7 @@ describe('DataPermissions', () => {
 
   it('should display Alan permissions because it matches the route param', () => {
     const { container } = render(<DataPermissions />)
-    expect(container.querySelectorAll('[data-primary]')[1]).toHaveAttribute(
+    expect(container.querySelector('[data-primary]')).toHaveAttribute(
       'data-primary',
       'Alan'
     )

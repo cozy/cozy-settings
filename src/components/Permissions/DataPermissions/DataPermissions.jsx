@@ -1,9 +1,13 @@
 import React from 'react'
-import withAllLocales from '../../../lib/withAllLocales'
-import { getPermissionsVerbsByType } from '../helpers/permissionsHelper'
+import withAllLocales from 'lib/withAllLocales'
+import {
+  getPermissionsVerbsByType,
+  completePermission,
+  displayPermissions,
+  getPermissionIconName
+} from 'components/Permissions/helpers/permissionsHelper'
 import { useParams } from 'react-router-dom'
 import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import { completePermission } from '../helpers/permissionsHelper'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
@@ -16,10 +20,6 @@ import NavigationList, {
 } from 'cozy-ui/transpiled/react/NavigationList'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import PageTitle from 'components/PageTitle'
-import {
-  displayPermissions,
-  getPermissionIconName
-} from '../helpers/permissionsHelper'
 import ListItemIcon, {
   smallSize,
   mediumSize
@@ -67,10 +67,6 @@ const DataPermissions = ({ t }) => {
     }
   }
 
-  const isNotLastItem = slug => {
-    return slug !== appsAndKonnectorsSlugs[appsAndKonnectorsSlugs.length - 1]
-  }
-
   const iconName = getPermissionIconName(permission)
 
   return (
@@ -108,39 +104,41 @@ const DataPermissions = ({ t }) => {
           </div>
           <NavigationList>
             <NavigationListSection>
-              {appsAndKonnectors.map(appOrKonnector => {
-                return (
-                  <div key={appOrKonnector.name}>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <AppIcon app={appOrKonnector} />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={appOrKonnector.name}
-                        secondary={t(
-                          displayPermissions(
-                            getPermissionsVerbsByType(
-                              appOrKonnector.permissions,
-                              permission
+              {appsAndKonnectors
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((appOrKonnector, index) => {
+                  return (
+                    <div key={appOrKonnector.name}>
+                      <ListItem button>
+                        <ListItemIcon>
+                          <AppIcon app={appOrKonnector} />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={appOrKonnector.name}
+                          secondary={t(
+                            displayPermissions(
+                              getPermissionsVerbsByType(
+                                appOrKonnector.permissions,
+                                permission
+                              )
                             )
-                          )
-                        )}
-                      />
-                      <ListItemSecondaryAction>
-                        <Icon
-                          icon={RightIcon}
-                          size={smallSize}
-                          className="u-mr-1"
-                          style={{ color: 'var(--secondaryTextColor)' }}
+                          )}
                         />
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                    {isNotLastItem(appOrKonnector.slug) && (
-                      <Divider variant="inset" />
-                    )}
-                  </div>
-                )
-              })}
+                        <ListItemSecondaryAction>
+                          <Icon
+                            icon={RightIcon}
+                            size={smallSize}
+                            className="u-mr-1"
+                            style={{ color: 'var(--secondaryTextColor)' }}
+                          />
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                      {index !== appsAndKonnectors.length - 1 && (
+                        <Divider variant="inset" />
+                      )}
+                    </div>
+                  )
+                })}
             </NavigationListSection>
           </NavigationList>
         </>
