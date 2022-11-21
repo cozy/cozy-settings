@@ -5,31 +5,24 @@ import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
 import ListSubheader from 'cozy-ui/transpiled/react/MuiCozyTheme/ListSubheader'
 
 interface MenuListProps {
-  title: string
   children: ReactChild | ReactChild[] | ReactNode | ReactNode[]
+  title: string
 }
 
 export const MenuList = ({ title, children }: MenuListProps): JSX.Element => (
-  <li>
-    <List>
-      <ListSubheader style={{ textIndent: '1rem' }}>{title}</ListSubheader>
+  <List subheader={<ListSubheader>{title}</ListSubheader>}>
+    {Array.isArray(children)
+      ? children
+          .filter(value => value)
+          .map((child, index, array) => (
+            <React.Fragment key={index}>
+              {child}
 
-      <li>
-        <List className="u-pv-half">
-          {Array.isArray(children)
-            ? children
-                .filter(value => value)
-                .map((child, index, array) => (
-                  <React.Fragment key={index}>
-                    {child}
-                    {index !== array.length - 1 && (
-                      <Divider component="li" variant="inset" />
-                    )}
-                  </React.Fragment>
-                ))
-            : children}
-        </List>
-      </li>
-    </List>
-  </li>
+              {index !== array.length - 1 && (
+                <Divider component="li" variant="inset" />
+              )}
+            </React.Fragment>
+          ))
+      : children}
+  </List>
 )

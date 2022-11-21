@@ -43,6 +43,7 @@ declare module 'cozy-ui/transpiled/react/Icon' {
     preserveColor?: boolean
     size?: string | number
     spin?: boolean
+    style?: Record<string, string>
   }
 
   export default function Icon(props: IconProps): JSX.Element
@@ -78,3 +79,11 @@ declare module 'cozy-ui/transpiled/react/MuiCozyTheme/TextField' {
 declare module 'cozy-ui/transpiled/react/Button'
 declare module 'cozy-ui/transpiled/react/Typography'
 declare module 'cozy-ui/transpiled/react/CozyDialogs'
+
+declare module 'cozy-ui/transpiled/react/hooks/useBreakpoints' {
+  export default function useBreakpoints(): {
+    isMobile: boolean
+    isTablet: boolean
+    isDesktop: boolean
+  }
+}

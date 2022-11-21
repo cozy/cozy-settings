@@ -7,41 +7,30 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import Switch from 'cozy-ui/transpiled/react/MuiCozyTheme/Switch'
 
 interface MenuItemSwitchProps {
+  checked?: boolean
+  disabled?: boolean
   icon: () => JSX.Element | JSX.Element
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
   primary: string
   secondary?: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  checked?: boolean
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
-  disabled?: boolean
 }
 
 export const MenuItemSwitch = ({
   checked,
+  disabled,
   icon,
   onClick,
   primary,
-  secondary,
-  disabled
-}: MenuItemSwitchProps): JSX.Element => {
-  return (
-    <ListItem
-      button
-      style={{ color: 'var(--primaryTextColor)' }}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      <ListItemIcon>
-        <Icon icon={icon} />
-      </ListItemIcon>
+  secondary
+}: MenuItemSwitchProps): JSX.Element => (
+  <ListItem button onClick={onClick} disabled={disabled}>
+    <ListItemIcon>
+      <Icon icon={icon} />
+    </ListItemIcon>
 
-      <ListItemText
-        primaryTypographyProps={{ ellipsis: false }}
-        primary={primary}
-      />
+    <ListItemText primary={primary} secondary={secondary} />
 
-      {secondary && <ListItemText secondary={secondary} />}
-      <Switch checked={checked} color="primary" />
-    </ListItem>
-  )
-}
+    <Switch checked={checked} color="primary" />
+  </ListItem>
+)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, forwardRef } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
@@ -6,54 +6,49 @@ import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import ListItemIcon from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
-export const MenuItemNavLink = (props: {
-  icon: JSX.Element
+interface MenuItemNavLinkProps {
+  beforeEnd?: React.ReactNode
+  icon: () => JSX.Element
   primary: string
-  to: string
   secondary?: string
-}): JSX.Element => {
-  const { icon, primary, secondary, to } = props
+  to: string
+}
 
-  const renderLink = React.useMemo(
+export const MenuItemNavLink = (props: MenuItemNavLinkProps): JSX.Element => {
+  const { isMobile, isTablet } = useBreakpoints()
+  const { beforeEnd, icon, primary, secondary, to } = props
+
+  const renderLink = useMemo(
     () =>
-      React.forwardRef(function Link(itemProps, ref) {
-        return (
-          <NavLink
-            {...itemProps}
-            ref={ref as React.Ref<HTMLAnchorElement>}
-            to={to}
-            style={({ isActive }): React.CSSProperties => ({
-              ...(isActive
-                ? { backgroundColor: 'var(--defaultBackgroundColor)' }
-                : {}),
-              color: 'var(--primaryTextColor)'
-            })}
-          />
-        )
-      }),
+      // eslint-disable-next-line react/display-name
+      forwardRef((itemProps, ref) => (
+        <NavLink
+          {...itemProps}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          to={to}
+          style={({ isActive }): React.CSSProperties => ({
+            ...(isActive
+              ? { backgroundColor: 'var(--defaultBackgroundColor)' }
+              : {})
+          })}
+        />
+      )),
     [to]
   )
 
   return (
-    <li>
-      <ListItem button component={renderLink}>
-        <ListItemIcon>
-          <Icon icon={icon} />
-        </ListItemIcon>
+    <ListItem button component={renderLink}>
+      <ListItemIcon>
+        <Icon icon={icon} />
+      </ListItemIcon>
 
-        <ListItemText primary={primary} />
+      <ListItemText primary={primary} secondary={secondary} />
 
-        {secondary && <ListItemText secondary={secondary} align="right" />}
+      {beforeEnd}
 
-        <ListItemIcon>
-          <Icon
-            className="u-ml-1"
-            icon={RightIcon}
-            color="var(--secondaryTextColor)"
-          />
-        </ListItemIcon>
-      </ListItem>
-    </li>
+      {(isMobile || isTablet) && <Icon icon={RightIcon} />}
+    </ListItem>
   )
 }
