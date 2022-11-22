@@ -1,13 +1,6 @@
-/* global __PIWIK_TRACKER_URL__  __PIWIK_SITEID__ __PIWIK_DIMENSION_ID_APP__ */
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import {
-  shouldEnableTracking,
-  getTracker,
-  configureTracker
-} from 'cozy-ui/transpiled/react/helpers/tracker'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
 import ClaudyAction from 'services/ClaudyAction'
@@ -32,28 +25,9 @@ export class Claudy extends Component {
     this.getIcon = this.getIcon.bind(this)
     this.computeSelectedActionUrl = this.computeSelectedActionUrl.bind(this)
     this.selectAction = this.selectAction.bind(this)
-    this.trackActionLink = this.trackActionLink.bind(this)
     this.goBack = this.goBack.bind(this)
 
     this.checkIcon = require('assets/services/icon-check.svg')
-  }
-
-  componentDidMount() {
-    // if tracking enabled, init the piwik tracker
-    if (shouldEnableTracking()) {
-      const trackerInstance = getTracker(
-        __PIWIK_TRACKER_URL__,
-        __PIWIK_SITEID__,
-        false,
-        false
-      )
-      configureTracker({
-        appDimensionId: __PIWIK_DIMENSION_ID_APP__,
-        app: 'Cozy Settings Services',
-        heartbeat: 0
-      })
-      this.setState({ usageTracker: trackerInstance })
-    }
   }
 
   getIcon(iconName) {
@@ -116,16 +90,6 @@ export class Claudy extends Component {
   }
 
   selectAction(action) {
-    // if just previously selected
-    const usageTracker = this.state.usageTracker
-    if (usageTracker) {
-      usageTracker.push([
-        'trackEvent',
-        'Claudy',
-        'openAction',
-        `${action.slug}`
-      ])
-    }
     if (
       this.state.selectedAction &&
       this.state.selectedAction.slug === action.slug
@@ -133,18 +97,6 @@ export class Claudy extends Component {
       this.setState({ openedAction: true })
     } else {
       this.setState({ selectedAction: action, openedAction: true })
-    }
-  }
-
-  trackActionLink(action) {
-    const usageTracker = this.state.usageTracker
-    if (usageTracker) {
-      usageTracker.push([
-        'trackEvent',
-        'Claudy',
-        'openActionLink',
-        `${action.slug}`
-      ])
     }
   }
 
@@ -271,7 +223,6 @@ export class Claudy extends Component {
                 action={selectedAction}
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
-                onActionClick={() => this.trackActionLink(selectedAction)}
               />
             )}
             {SelectedActionComponent && (
@@ -279,7 +230,6 @@ export class Claudy extends Component {
                 action={selectedAction}
                 iconSrc={this.getIcon(selectedAction.icon)}
                 url={selectedActionUrl}
-                onActionClick={() => this.trackActionLink(selectedAction)}
                 onSuccess={this.goBack}
                 container={this.claudyContainer}
                 resizeIntent={height => this.resizeClaudy(height)}
