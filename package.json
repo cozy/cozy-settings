@@ -64,7 +64,6 @@
     "cozy-sharing": "3.10.0",
     "cozy-stack-client": "^33.4.0",
     "cozy-ui": "^76.2.0",
-    "piwik-react-router": "0.12.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
