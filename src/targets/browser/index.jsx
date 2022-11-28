@@ -6,6 +6,7 @@ import 'styles/index.styl'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { HashRouter } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
 import CozyClient, { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
@@ -14,7 +15,6 @@ import { RealtimePlugin } from 'cozy-realtime'
 import I18n from 'cozy-ui/transpiled/react/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
-import PiwikHashRouter from 'lib/PiwikHashRouter'
 import { WebviewIntentProvider } from 'cozy-intent'
 
 import App from 'components/App'
@@ -80,9 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
               <BreakpointsProvider>
                 <MuiCozyTheme>
-                  <PiwikHashRouter>
+                  <HashRouter>
                     <App />
-                  </PiwikHashRouter>
+                  </HashRouter>
                 </MuiCozyTheme>
               </BreakpointsProvider>
             </EnhancedI18n>

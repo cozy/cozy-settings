@@ -89,7 +89,7 @@
     "primary_wifi_sync": "Sync only on wifi",
     "profile": "Profile",
     "secondary_free": "Free",
-    "secondary_used": "used",
+    "secondary_used": "%{percent}% used",
     "sessions": "Connections",
     "storage": "Storage"
   },
