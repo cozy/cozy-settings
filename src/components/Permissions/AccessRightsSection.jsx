@@ -5,12 +5,15 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import ListItemIcon, {
   smallSize,
-  mediumSize
+  mediumSize,
+  largeSize
 } from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import CozyLockIcon from 'cozy-ui/transpiled/react/Icons/CozyLock'
+import CozyReleaseIcon from 'cozy-ui/transpiled/react/Icons/CozyRelease'
 import {
   displayPermissions,
   getPermissionIconName
@@ -30,11 +33,26 @@ const AccessRightsSection = ({
   return (
     <NavigationListSection>
       <ListItem>
-        <Typography variant="h5">
-          {!isRemoteDoctypes
-            ? t('Permissions.limited_right_access')
-            : t('Permissions.exit_rights')}
-        </Typography>
+        <ListItemIcon>
+          <Icon
+            icon={isRemoteDoctypes ? CozyReleaseIcon : CozyLockIcon}
+            size={largeSize}
+          />
+        </ListItemIcon>
+        <ListItemText
+          primary={
+            <Typography type="body2" style={{ fontWeight: 'bold' }}>
+              {isRemoteDoctypes
+                ? t('Permissions.exit_rights')
+                : t('Permissions.limited_right_access')}
+            </Typography>
+          }
+          secondary={
+            isRemoteDoctypes
+              ? t('Permissions.exit_rights_secondary')
+              : t('Permissions.limited_right_access_secondary')
+          }
+        />
       </ListItem>
       <Divider />
       {sortedPermissionsByName.map(({ name, title, verbs, type }, index) => {

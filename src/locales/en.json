@@ -463,7 +463,9 @@
     "monthly_statistics": "Monthly statistics",
     "monthly_stats_phrase": "Data release report from your cozy to %{app} on %{date}:",
     "exit_rights": "Outgoing data permissions",
-    "uninstall": "Uninstall"
+    "uninstall": "Uninstall",
+    "exit_rights_secondary": "The data can be taken out of the Cozy, it will not be kept secret anymore",
+    "limited_right_access_secondary": "The data is only accessible locally, it never leaves your Cozy."
   },
   "Accessibility": {
     "previous": "Previous"
