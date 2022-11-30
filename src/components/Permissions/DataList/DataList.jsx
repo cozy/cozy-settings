@@ -24,6 +24,7 @@ import { routes } from 'constants/routes'
 import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { buildAppsQuery, buildKonnectorsQuery } from 'lib/queries'
 import { useQuery } from 'cozy-client'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 const DataList = ({ t }) => {
   const appsQuery = buildAppsQuery()
@@ -33,14 +34,14 @@ const DataList = ({ t }) => {
     konnectorsQuery.definition,
     konnectorsQuery.options
   )
-
+  const { isMobile, isTablet } = useBreakpoints()
   const permissionsToDisplay = completePermission(
     queryResultApps,
     queryResultKonnectors
   )
 
   return (
-    <Page narrow>
+    <Page className="" withoutMarginTop={isMobile || isTablet}>
       <PageTitle>{t('Permissions.data')}</PageTitle>
       {(isQueryLoading(queryResultApps) ||
         isQueryLoading(queryResultKonnectors)) &&

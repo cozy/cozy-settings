@@ -3,6 +3,7 @@ import React from 'react'
 import AppList from './AppList'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import AppLike from 'test/AppLike'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 jest.mock('react-router-dom', () => {
   return {
@@ -134,9 +135,11 @@ describe('AppList', () => {
   it('should display appName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
     const { container } = render(
-      <AppLike>
-        <AppList />
-      </AppLike>
+      <BreakpointsProvider>
+        <AppLike>
+          <AppList />
+        </AppLike>
+      </BreakpointsProvider>
     )
     expect(container).toMatchSnapshot()
   })
@@ -145,9 +148,11 @@ describe('AppList', () => {
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(false)
     const { queryByTestId } = render(
-      <AppLike>
-        <AppList />
-      </AppLike>
+      <BreakpointsProvider>
+        <AppLike>
+          <AppList />
+        </AppLike>
+      </BreakpointsProvider>
     )
     expect(queryByTestId('Spinner')).toBeTruthy()
   })
@@ -155,9 +160,11 @@ describe('AppList', () => {
   it('should display sorted app and konnector names when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
     const { getAllByTestId, container } = render(
-      <AppLike>
-        <AppList />
-      </AppLike>
+      <BreakpointsProvider>
+        <AppLike>
+          <AppList />
+        </AppLike>
+      </BreakpointsProvider>
     )
     expect(container).toMatchSnapshot()
     expect(getAllByTestId('ListItemText')[1]).toHaveAttribute(
@@ -173,9 +180,11 @@ describe('AppList', () => {
   it('should not display Home, Settings and Store when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
     const { queryByText } = render(
-      <AppLike>
-        <AppList />
-      </AppLike>
+      <BreakpointsProvider>
+        <AppLike>
+          <AppList />
+        </AppLike>
+      </BreakpointsProvider>
     )
     expect(queryByText('Home')).toBeFalsy
     expect(queryByText('Settings')).toBeFalsy
@@ -186,9 +195,11 @@ describe('AppList', () => {
     useQuery.mockReset()
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
     const { queryByText } = render(
-      <AppLike>
-        <AppList />
-      </AppLike>
+      <BreakpointsProvider>
+        <AppLike>
+          <AppList />
+        </AppLike>
+      </BreakpointsProvider>
     )
     expect(queryByText('The request has failed')).toBeTruthy()
   })

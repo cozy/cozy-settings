@@ -3,7 +3,6 @@
 exports[`AppList should display appName when query has been loaded 1`] = `
 <div>
   <div
-    data-narrow="true"
     data-testid="page"
   >
     <div
@@ -118,7 +117,6 @@ exports[`AppList should display appName when query has been loaded 1`] = `
 exports[`AppList should display sorted app and konnector names when query is not loading 1`] = `
 <div>
   <div
-    data-narrow="true"
     data-testid="page"
   >
     <div
