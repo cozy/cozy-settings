@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
 import PermissionsTab from './PermissionsTab'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   return () => Component => {
@@ -60,16 +61,28 @@ jest.mock('./DataList/DataList', () => {
 
 describe('PermissionsTab', () => {
   it('should match snapshot', () => {
-    const { container } = render(<PermissionsTab />)
+    const { container } = render(
+      <BreakpointsProvider>
+        <PermissionsTab />
+      </BreakpointsProvider>
+    )
     expect(container).toMatchSnapshot()
   })
   it('should display AppList when Application Tab is selected', () => {
-    const { queryByTestId } = render(<PermissionsTab />)
+    const { queryByTestId } = render(
+      <BreakpointsProvider>
+        <PermissionsTab />
+      </BreakpointsProvider>
+    )
     expect(queryByTestId('AppList')).toBeTruthy()
   })
 
   it('should display DataList when Data Tab is selected', () => {
-    const { getByTestId } = render(<PermissionsTab />)
+    const { getByTestId } = render(
+      <BreakpointsProvider>
+        <PermissionsTab />
+      </BreakpointsProvider>
+    )
     const tabs = getByTestId('tabs')
     fireEvent.click(tabs, { event: 'event' })
     expect(mockNavigate).toHaveBeenCalledWith('/permissions/data')

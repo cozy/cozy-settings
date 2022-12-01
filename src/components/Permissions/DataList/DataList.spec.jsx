@@ -2,6 +2,7 @@ import { render } from '@testing-library/react'
 import React from 'react'
 import DataList from './DataList'
 import { useQuery, isQueryLoading } from 'cozy-client'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 jest.mock(
   'cozy-ui/transpiled/react/I18n/withLocales',
@@ -142,13 +143,21 @@ describe('DataList', () => {
   })
 
   it('should display DataList title', () => {
-    const { queryByText } = render(<DataList />)
+    const { queryByText } = render(
+      <BreakpointsProvider>
+        <DataList />
+      </BreakpointsProvider>
+    )
     expect(queryByText('Permissions.data')).toBeInTheDocument()
   })
 
   it('should display sorted permissions names when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { queryAllByTestId } = render(<DataList />)
+    const { queryAllByTestId } = render(
+      <BreakpointsProvider>
+        <DataList />
+      </BreakpointsProvider>
+    )
     expect(queryAllByTestId('ListItemText')[0]).toHaveAttribute(
       'data-primary',
       'CozyPermissions.io.cozy.apps'
@@ -165,7 +174,11 @@ describe('DataList', () => {
 
   it('should display number of applications when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { queryAllByTestId } = render(<DataList />)
+    const { queryAllByTestId } = render(
+      <BreakpointsProvider>
+        <DataList />
+      </BreakpointsProvider>
+    )
     expect(queryAllByTestId('ListItemText')[0]).toHaveAttribute(
       'data-secondary',
       'Permissions.numberOfApplications1'
@@ -182,14 +195,22 @@ describe('DataList', () => {
 
   it('should display permissions icons when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { queryAllByTestId } = render(<DataList />)
+    const { queryAllByTestId } = render(
+      <BreakpointsProvider>
+        <DataList />
+      </BreakpointsProvider>
+    )
     expect(queryAllByTestId('Icon').length).toEqual(6)
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
     useQuery.mockReset()
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
-    const { queryByText } = render(<DataList />)
+    const { queryByText } = render(
+      <BreakpointsProvider>
+        <DataList />
+      </BreakpointsProvider>
+    )
     expect(queryByText('Permissions.failedRequest')).toBeInTheDocument()
   })
 })

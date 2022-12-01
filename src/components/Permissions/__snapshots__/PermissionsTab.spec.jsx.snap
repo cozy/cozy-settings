@@ -3,7 +3,7 @@
 exports[`PermissionsTab should match snapshot 1`] = `
 <div>
   <div
-    class="u-mh-2 u-pb-3 Page--narrow u-mv-2"
+    class="u-mh-2 u-pb-3 u-mv-2"
   >
     <button
       data-testid="tabs"
