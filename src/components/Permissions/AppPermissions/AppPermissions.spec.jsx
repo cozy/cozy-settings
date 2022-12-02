@@ -10,6 +10,7 @@ import {
 } from 'cozy-client'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 import { completeAppPermission } from '../helpers/permissionsHelper'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   return () => Component => {
@@ -138,26 +139,42 @@ describe('AppPermissions', () => {
   it('should display slugName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
     useFetchJSON.mockReturnValue({ data: ['doctype1', 'doctype2'] })
-    const { container } = render(<AppPermissions />)
+    const { container } = render(
+      <BreakpointsProvider>
+        <AppPermissions />
+      </BreakpointsProvider>
+    )
     expect(container).toMatchSnapshot()
   })
 
   it('should render a spinner when query is loading and has not been loaded', () => {
     isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(false)
-    const { queryByTestId } = render(<AppPermissions />)
+    const { queryByTestId } = render(
+      <BreakpointsProvider>
+        <AppPermissions />
+      </BreakpointsProvider>
+    )
     expect(queryByTestId('Spinner')).toBeTruthy()
   })
 
   it('should display slugName when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
-    const { queryByText } = render(<AppPermissions />)
+    const { queryByText } = render(
+      <BreakpointsProvider>
+        <AppPermissions />
+      </BreakpointsProvider>
+    )
     expect(queryByText('DRIVE')).toBeInTheDocument()
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
-    const { queryByText } = render(<AppPermissions />)
+    const { queryByText } = render(
+      <BreakpointsProvider>
+        <AppPermissions />
+      </BreakpointsProvider>
+    )
     expect(queryByText('Permissions.failedRequest')).toBeTruthy()
   })
 

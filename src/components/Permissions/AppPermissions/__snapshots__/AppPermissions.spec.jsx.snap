@@ -3,7 +3,6 @@
 exports[`AppPermissions should display slugName when query has been loaded 1`] = `
 <div>
   <div
-    data-narrow="true"
     data-testid="page"
   >
     <div>
