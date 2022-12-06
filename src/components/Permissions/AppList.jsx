@@ -36,7 +36,10 @@ const AppList = () => {
   const toNotDisplay = ['home', 'store', 'settings']
 
   return (
-    <Page className="" withoutMarginTop={isMobile || isTablet}>
+    <Page
+      className={isMobile || isTablet ? '' : 'u-maw-7'}
+      withoutMarginTop={isMobile || isTablet}
+    >
       <PageTitle>{t('Permissions.applications')}</PageTitle>
       {(isQueryLoading(queryResultApps) ||
         isQueryLoading(queryResultKonnectors)) &&

@@ -29,10 +29,11 @@ import {
 } from 'lib/queries'
 import { useQuery } from 'cozy-client'
 import { UninstallButton } from '../UninstallButton'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 const AppPermissions = ({ t }) => {
   const { slug: slugName } = useParams()
-
+  const { isMobile, isTablet } = useBreakpoints()
   const appsQuery = buildAppsQueryBySlug(slugName)
   const queryResultApps = useQuery(appsQuery.definition, appsQuery.options)
   const konnectorsQuery = buildKonnectorsQueryBySlug(slugName)
@@ -86,7 +87,10 @@ const AppPermissions = ({ t }) => {
   )
 
   return (
-    <Page narrow>
+    <Page
+      className={isMobile || isTablet ? '' : 'u-maw-7 u-mh-2'}
+      withoutMarginTop={isMobile || isTablet}
+    >
       {(isQueryLoading(queryResultApps) &&
         !hasQueryBeenLoaded(queryResultApps)) ||
       (isQueryLoading(queryResultKonnectors) &&

@@ -41,7 +41,10 @@ const DataList = ({ t }) => {
   )
 
   return (
-    <Page className="" withoutMarginTop={isMobile || isTablet}>
+    <Page
+      className={isMobile || isTablet ? '' : 'u-maw-7'}
+      withoutMarginTop={isMobile || isTablet}
+    >
       <PageTitle>{t('Permissions.data')}</PageTitle>
       {(isQueryLoading(queryResultApps) ||
         isQueryLoading(queryResultKonnectors)) &&
