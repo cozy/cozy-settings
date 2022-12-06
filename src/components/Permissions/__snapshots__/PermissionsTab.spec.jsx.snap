@@ -5,42 +5,53 @@ exports[`PermissionsTab should match snapshot 1`] = `
   <div
     class="u-mh-2 u-pb-3 u-mv-2"
   >
-    <button
-      data-testid="tabs"
-      value="slug"
-    >
+    <div>
       <div
-        aria-controls="simple-tabpanel-0"
-        data-testid="tab"
-        href="#/permissions/slug"
-        id="simple-tab-0"
-        label="Permissions.applications"
-        value="slug"
-      />
+        class="u-flex"
+      >
+        <h2
+          class="MuiTypography-root u-flex MuiTypography-h2 MuiTypography-colorTextPrimary"
+        >
+          Permissions
+        </h2>
+        <button
+          data-testid="tabs"
+          value="slug"
+        >
+          <div
+            aria-controls="simple-tabpanel-0"
+            data-testid="tab"
+            href="#/permissions/slug"
+            id="simple-tab-0"
+            label="Permissions.applications"
+            value="slug"
+          />
+          <div
+            aria-controls="simple-tabpanel-1"
+            data-testid="tab"
+            href="#/permissions/data"
+            id="simple-tab-1"
+            label="Permissions.data"
+            value="data"
+          />
+        </button>
+      </div>
       <div
-        aria-controls="simple-tabpanel-1"
-        data-testid="tab"
-        href="#/permissions/data"
-        id="simple-tab-1"
-        label="Permissions.data"
-        value="data"
-      />
-    </button>
-    <div
-      aria-labelledby="simple-tab-slug"
-      id="simple-tabpanel-slug"
-      role="tabpanel"
-    >
+        aria-labelledby="simple-tab-slug"
+        id="simple-tabpanel-slug"
+        role="tabpanel"
+      >
+        <div
+          data-testid="AppList"
+        />
+      </div>
       <div
-        data-testid="AppList"
+        aria-labelledby="simple-tab-data"
+        hidden=""
+        id="simple-tabpanel-data"
+        role="tabpanel"
       />
     </div>
-    <div
-      aria-labelledby="simple-tab-data"
-      hidden=""
-      id="simple-tabpanel-data"
-      role="tabpanel"
-    />
   </div>
 </div>
 `;

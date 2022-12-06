@@ -142,15 +142,6 @@ describe('DataList', () => {
     useQuery.mockReturnValueOnce(queryResultKonnectors)
   })
 
-  it('should display DataList title', () => {
-    const { queryByText } = render(
-      <BreakpointsProvider>
-        <DataList />
-      </BreakpointsProvider>
-    )
-    expect(queryByText('Permissions.data')).toBeInTheDocument()
-  })
-
   it('should display sorted permissions names when query is not loading', () => {
     isQueryLoading.mockReturnValue(false)
     const { queryAllByTestId } = render(

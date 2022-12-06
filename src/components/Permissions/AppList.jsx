@@ -1,6 +1,5 @@
 import React from 'react'
 import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -40,7 +39,6 @@ const AppList = () => {
       className={isMobile || isTablet ? '' : 'u-maw-7'}
       withoutMarginTop={isMobile || isTablet}
     >
-      <PageTitle>{t('Permissions.applications')}</PageTitle>
       {(isQueryLoading(queryResultApps) ||
         isQueryLoading(queryResultKonnectors)) &&
       (!hasQueryBeenLoaded(queryResultApps) ||

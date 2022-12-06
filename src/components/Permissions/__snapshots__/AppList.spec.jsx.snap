@@ -6,11 +6,6 @@ exports[`AppList should display appName when query has been loaded 1`] = `
     data-testid="page"
   >
     <div
-      data-testid="page-title"
-    >
-      Applications
-    </div>
-    <div
       data-testid="NavigationList"
     >
       <div
@@ -119,11 +114,6 @@ exports[`AppList should display sorted app and konnector names when query is not
   <div
     data-testid="page"
   >
-    <div
-      data-testid="page-title"
-    >
-      Applications
-    </div>
     <div
       data-testid="NavigationList"
     >
