@@ -1,6 +1,5 @@
 import React from 'react'
 import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import NavigationList, {
   NavigationListSection
@@ -45,7 +44,6 @@ const DataList = ({ t }) => {
       className={isMobile || isTablet ? '' : 'u-maw-7'}
       withoutMarginTop={isMobile || isTablet}
     >
-      <PageTitle>{t('Permissions.data')}</PageTitle>
       {(isQueryLoading(queryResultApps) ||
         isQueryLoading(queryResultKonnectors)) &&
       (!hasQueryBeenLoaded(queryResultApps) ||
