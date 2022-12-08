@@ -108,28 +108,46 @@ const AppPermissions = ({ t }) => {
         </Typography>
       ) : (
         <div>
-          <IconButton className="u-mr-half" href="#/permissions">
-            <Icon icon={PreviousIcon} size={16} />
-          </IconButton>
-          <div className="u-flex u-flex-column u-flex-items-center">
-            <div style={{ width: '48px' }}>
-              <AppIcon app={slugName} />
+          <div
+            className={
+              isMobile || isTablet
+                ? 'u-flex u-flex-column u-flex-items-center'
+                : 'u-flex u-flex-justify-between'
+            }
+          >
+            <div
+              className={
+                isMobile || isTablet ? '' : 'u-flex u-flex-items-center'
+              }
+            >
+              {!isMobile && !isTablet && (
+                <IconButton className="u-mr-half" href="#/permissions">
+                  <Icon icon={PreviousIcon} size={16} />
+                </IconButton>
+              )}
+              <div style={{ width: '48px' }}>
+                <AppIcon app={slugName} />
+              </div>
+              <PageTitle className={isMobile || isTablet ? '' : 'u-mh-1'}>
+                {slugName.toUpperCase()}
+              </PageTitle>
             </div>
-            <PageTitle>{slugName.toUpperCase()}</PageTitle>
-            <div>
-              <OpenappButton
-                type={
-                  isKonnector(matchingQueryResult.data.type)
-                    ? 'konnector'
-                    : 'app'
-                }
-                appData={matchingQueryResult.data}
-              />
-              <AboutButton appData={matchingQueryResult.data} />
-              <UninstallButton appData={matchingQueryResult.data} />
+            <div className="u-flex u-flex-column u-flex-items-center">
+              <div>
+                <OpenappButton
+                  type={
+                    isKonnector(matchingQueryResult.data.type)
+                      ? 'konnector'
+                      : 'app'
+                  }
+                  appData={matchingQueryResult.data}
+                />
+                <AboutButton appData={matchingQueryResult.data} />
+                <UninstallButton appData={matchingQueryResult.data} />
+              </div>
             </div>
           </div>
-          <NavigationList>
+          <NavigationList className={isMobile || isTablet ? '' : 'u-mv-1'}>
             {sortedLimitedRightAccessPermissionsByName.length > 0 && (
               <AccessRightsSection
                 sortedPermissionsByName={

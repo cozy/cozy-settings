@@ -6,64 +6,72 @@ exports[`AppPermissions should display slugName when query has been loaded 1`] =
     data-testid="page"
   >
     <div>
-      <a
-        aria-disabled="false"
-        class="MuiButtonBase-root MuiIconButton-root u-mr-half large"
-        href="#/permissions"
-        tabindex="0"
-      >
-        <span
-          class="MuiIconButton-label"
-        >
-          <svg
-            class="styles__icon___23x3R"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-          >
-            <path
-              d="M3.414 7h11.58C15.548 7 16 7.444 16 8c0 .552-.45 1-1.007 1H3.414l5.293 5.293a1 1 0 01-1.414 1.414l-7-7a1 1 0 010-1.414l7-7a1 1 0 111.414 1.414L3.414 7z"
-              fill-rule="evenodd"
-            />
-          </svg>
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </a>
       <div
-        class="u-flex u-flex-column u-flex-items-center"
+        class="u-flex u-flex-justify-between"
       >
         <div
-          style="width: 48px;"
+          class="u-flex u-flex-items-center"
         >
-          <svg
-            class="styles__c-app-icon___2_O40 styles__c-app-icon-default___3CEmt styles__icon___23x3R"
-            height="100%"
-            style="fill: var(--coolGrey);"
-            viewBox="0 0 16 16"
-            width="100%"
+          <a
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root u-mr-half large"
+            href="#/permissions"
+            tabindex="0"
           >
-            <path
-              d="M1 11.009V5.5c0-.55.39-.773.872-.498l5.256 3.003c.476.272.872.944.872 1.495v5.508c0 .549-.39.772-.872.497l-5.256-3.003C1.396 12.231 1 11.56 1 11.01zm15 0c0 .55-.396 1.222-.872 1.494l-5.256 3.003c-.481.275-.872.052-.872-.497V9.5c0-.55.396-1.223.872-1.495l5.256-3.003c.481-.275.872-.052.872.498v5.508zM9.35 6.982c-.47.288-1.237.284-1.7 0l-4.8-2.954c-.47-.29-.463-.732.027-.995L7.623.477c.485-.261 1.264-.264 1.754 0l4.746 2.556c.485.26.49.71.027.995l-4.8 2.954z"
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                class="styles__icon___23x3R"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+              >
+                <path
+                  d="M3.414 7h11.58C15.548 7 16 7.444 16 8c0 .552-.45 1-1.007 1H3.414l5.293 5.293a1 1 0 01-1.414 1.414l-7-7a1 1 0 010-1.414l7-7a1 1 0 111.414 1.414L3.414 7z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
             />
-          </svg>
+          </a>
+          <div
+            style="width: 48px;"
+          >
+            <svg
+              class="styles__c-app-icon___2_O40 styles__c-app-icon-default___3CEmt styles__icon___23x3R"
+              height="100%"
+              style="fill: var(--coolGrey);"
+              viewBox="0 0 16 16"
+              width="100%"
+            >
+              <path
+                d="M1 11.009V5.5c0-.55.39-.773.872-.498l5.256 3.003c.476.272.872.944.872 1.495v5.508c0 .549-.39.772-.872.497l-5.256-3.003C1.396 12.231 1 11.56 1 11.01zm15 0c0 .55-.396 1.222-.872 1.494l-5.256 3.003c-.481.275-.872.052-.872-.497V9.5c0-.55.396-1.223.872-1.495l5.256-3.003c.481-.275.872-.052.872.498v5.508zM9.35 6.982c-.47.288-1.237.284-1.7 0l-4.8-2.954c-.47-.29-.463-.732.027-.995L7.623.477c.485-.261 1.264-.264 1.754 0l4.746 2.556c.485.26.49.71.027.995l-4.8 2.954z"
+              />
+            </svg>
+          </div>
+          <div
+            data-testid="pageTitle"
+          >
+            DRIVE
+          </div>
         </div>
         <div
-          data-testid="pageTitle"
+          class="u-flex u-flex-column u-flex-items-center"
         >
-          DRIVE
-        </div>
-        <div>
-          <div
-            data-testid="CircleButton"
-          />
-          <div
-            data-testid="CircleButton"
-          />
-          <div
-            data-testid="CircleButton"
-          />
+          <div>
+            <div
+              data-testid="CircleButton"
+            />
+            <div
+              data-testid="CircleButton"
+            />
+            <div
+              data-testid="CircleButton"
+            />
+          </div>
         </div>
       </div>
       <div
