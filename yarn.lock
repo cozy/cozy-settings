@@ -5447,10 +5447,10 @@ cozy-bar@7.21.0:
     redux-thunk "2.3.0"
     semver-compare "^1.0.0"
 
-cozy-bi-auth@0.0.24:
-  version "0.0.24"
-  resolved "https://registry.npmjs.org/cozy-bi-auth/-/cozy-bi-auth-0.0.24.tgz"
-  integrity sha512-7Dr08b6uE81x1jjO8jZfy2738mvaQpUS4N+tfZthpO1MB7kSeB0RPlULG+IEMBll+NDlixypjcmVPdJ8ZJUkNA==
+cozy-bi-auth@0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/cozy-bi-auth/-/cozy-bi-auth-0.0.25.tgz#00947925dc3cbb664f4fa54cedde80e47d55fdd0"
+  integrity sha512-GsGuQ+tWbD6qhoD3EaAb9+qtGY90dY1F2n3+4Y1GHy5NBjPyRORPygOADaFgQmrX+u6QrrSJLAWh7EMAzxUH6w==
   dependencies:
     cozy-logger "^1.3.0"
     lodash "^4.17.20"
@@ -5542,12 +5542,23 @@ cozy-device-helper@^2.6.0:
   dependencies:
     lodash "^4.17.19"
 
-cozy-doctypes@1.83.7, cozy-doctypes@^1.82.3, cozy-doctypes@^1.83.7:
+cozy-doctypes@1.83.7, cozy-doctypes@^1.82.3:
   version "1.83.7"
   resolved "https://registry.npmjs.org/cozy-doctypes/-/cozy-doctypes-1.83.7.tgz"
   integrity sha512-sAMZ/xajc2rXWmBFB0fP4NWQmUDh6FmStRE2KFpMrq7UGM6wIBouVl1CYD7grdlompBh3/1kBNmAb5PuWRMnBQ==
   dependencies:
     cozy-logger "^1.9.0"
+    date-fns "^1.30.1"
+    es6-promise-pool "^2.5.0"
+    lodash "^4.17.19"
+    prop-types "^15.7.2"
+
+cozy-doctypes@^1.86.1:
+  version "1.86.1"
+  resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.86.1.tgz#e3a9931ef260a08dab6c1174dc72217c4af0361a"
+  integrity sha512-A+bMfL/ifMp6LESSzI66ytsC+SWG+Eew6aIznPH1s+eAQ/7pHz9RRxmOQL5bGjPruiQdIeyK/Zk/4idBE6zE1g==
+  dependencies:
+    cozy-logger "^1.9.1"
     date-fns "^1.30.1"
     es6-promise-pool "^2.5.0"
     lodash "^4.17.19"
@@ -5567,16 +5578,16 @@ cozy-flags@^2.8.5, cozy-flags@^2.8.7:
   dependencies:
     microee "^0.0.6"
 
-cozy-harvest-lib@7.3.7:
-  version "7.3.7"
-  resolved "https://registry.npmjs.org/cozy-harvest-lib/-/cozy-harvest-lib-7.3.7.tgz"
-  integrity sha512-fh5dY55s4+jaV52+NBy3kXNXY+HFGltXiwwh+ItjI63uOkZ+WH6vZJVQzgBsflvO7R9wo4sQJTsvSgEgewLAww==
+cozy-harvest-lib@9.32.8:
+  version "9.32.8"
+  resolved "https://registry.yarnpkg.com/cozy-harvest-lib/-/cozy-harvest-lib-9.32.8.tgz#c3ce397317b62bb56548dd359e3b72e801be8cdf"
+  integrity sha512-c6xDUUd8u3zCr6zbr+xIlNNq1l0PtdXsli844jT6TMTXNiOjLeeOqqJjjNx2tXVFfMqRZdmjyb3GTs6JeQZ77g==
   dependencies:
     "@cozy/minilog" "^1.0.0"
     "@sentry/browser" "^6.0.1"
-    cozy-bi-auth "0.0.24"
-    cozy-doctypes "^1.83.7"
-    cozy-logger "^1.9.0"
+    cozy-bi-auth "0.0.25"
+    cozy-doctypes "^1.86.1"
+    cozy-logger "^1.9.1"
     date-fns "^1.30.1"
     final-form "^4.18.5"
     lodash "^4.17.19"
@@ -5584,6 +5595,7 @@ cozy-harvest-lib@7.3.7:
     node-polyglot "^2.4.0"
     react-final-form "^3.7.0"
     react-markdown "^4.2.2"
+    use-deep-compare-effect "^1.8.1"
     uuid "^3.3.2"
 
 cozy-intent@2.7.0:
@@ -5649,6 +5661,14 @@ cozy-logger@^1.6.0:
   version "1.6.0"
   resolved "https://registry.npmjs.org/cozy-logger/-/cozy-logger-1.6.0.tgz"
   integrity sha512-UkPR5lQDY6HldNv3N3c8HaxlfgcgAB/iRBFwJNFL2I17lhcM0u7w27vo1nuFeX6geMeFUjvedq/awawxZ1mTQg==
+  dependencies:
+    chalk "^2.4.2"
+    json-stringify-safe "5.0.1"
+
+cozy-logger@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/cozy-logger/-/cozy-logger-1.9.1.tgz#d5eb5a007eae6b4612fc6cc5a82fd70fe8c435bb"
+  integrity sha512-9P8A4chfSsdx5P32upo9SDx+ZyQj1RuFuggHd6BgVbcFo7folCulk6TCFRFEekT2fIYHbT2nRDc0RTOdz98lYw==
   dependencies:
     chalk "^2.4.2"
     json-stringify-safe "5.0.1"
@@ -6286,6 +6306,11 @@ depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/depd/-/depd-1.1.2.tgz"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
+
+dequal@^2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.3.tgz#2644214f1997d39ed0ee0ece72335490a7ac67be"
+  integrity sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==
 
 des.js@^1.0.0:
   version "1.0.1"
@@ -15708,6 +15733,14 @@ use-callback-ref@^1.2.3:
   version "1.2.5"
   resolved "https://registry.npmjs.org/use-callback-ref/-/use-callback-ref-1.2.5.tgz"
   integrity sha512-gN3vgMISAgacF7sqsLPByqoePooY3n2emTH59Ur5d/M8eg4WTWu1xp8i8DHjohftIyEx0S08RiYxbffr4j8Peg==
+
+use-deep-compare-effect@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/use-deep-compare-effect/-/use-deep-compare-effect-1.8.1.tgz#ef0ce3b3271edb801da1ec23bf0754ef4189d0c6"
+  integrity sha512-kbeNVZ9Zkc0RFGpfMN3MNfaKNvcLNyxOAAd9O4CBZ+kCBXXscn9s/4I+8ytUER4RDpEYs5+O6Rs4PqiZ+rHr5Q==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    dequal "^2.0.2"
 
 use-memo-one@^1.1.0:
   version "1.1.2"
