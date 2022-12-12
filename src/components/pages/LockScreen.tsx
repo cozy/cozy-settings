@@ -106,12 +106,14 @@ export const LockScreen = (): JSX.Element => {
   const onPinCodeLock = async (pinCode?: string): Promise<void> => {
     if (!pinCodeEnabled && !pinCode) return setPinModalVisible(true)
 
-    await handleChange(
+    const value = await handleChange(
       setPinCode,
       'PINLock',
       webviewIntent,
       pinCode ? { pinCode } : undefined
     )
+
+    value && setAutoLock(true)
 
     pinCode && setPinModalVisible(false)
   }
