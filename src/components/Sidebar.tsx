@@ -49,7 +49,7 @@ export const Sidebar = (): JSX.Element => {
           icon={PeopleIcon}
         />
 
-        {offersLink && (
+        {offersLink && !isFlagshipApp() && (
           <MenuItemAnchor
             primary={t('Nav.primary_plan')}
             href={offersLink}
