@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { isFlagshipApp } from 'cozy-device-helper'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import styles from 'styles/storage.styl'
@@ -60,7 +61,8 @@ class StorageView extends Component {
             >
               {`${percentUsage}%`}
             </span>
-            <OffersLink storageData={storageData} />
+
+            {!isFlagshipApp() && <OffersLink storageData={storageData} />}
           </div>
         )}
       </Page>
