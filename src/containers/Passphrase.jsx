@@ -14,6 +14,7 @@ import {
 import { fetchInfos } from 'actions'
 import PassphraseView from 'components/PassphraseView'
 import { useLocation } from 'react-router-dom'
+import { withClient } from 'cozy-client'
 
 const mapStateToProps = state => ({
   fields: state.fields,
@@ -57,7 +58,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onPassphraseSimpleSubmit: async (currentPassphrase, newPassphrase, hint) => {
     try {
       await dispatch(updateHint(hint))
-      await dispatch(updatePassphrase(currentPassphrase, newPassphrase))
+      await dispatch(
+        updatePassphrase(
+          currentPassphrase,
+          newPassphrase,
+          ownProps.client.getStackClient().uri
+        )
+      )
       showSuccessThenReload(ownProps.t, ownProps.location)
     } catch (e) {
       // eslint-disable-next-line no-console
@@ -66,7 +73,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   onPassphrase2FAStep1: async currentPassphrase => {
     try {
-      await dispatch(updatePassphrase2FAFirst(currentPassphrase))
+      await dispatch(
+        updatePassphrase2FAFirst(
+          currentPassphrase,
+          ownProps.client.getStackClient().uri
+        )
+      )
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
@@ -86,7 +98,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           currentPassphrase,
           newPassphrase,
           twoFactorCode,
-          twoFactorToken
+          twoFactorToken,
+          ownProps.client.getStackClient().uri
         )
       )
       showSuccessThenReload(ownProps.t, ownProps.location)
@@ -100,6 +113,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 const ComposedPassphrase = compose(
   translate(),
+  withClient,
   connect(mapStateToProps, mapDispatchToProps)
 )(PassphraseView)
 
