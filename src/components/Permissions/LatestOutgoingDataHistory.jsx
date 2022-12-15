@@ -16,6 +16,7 @@ import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import { sortDataByDate } from './helpers/permissionsHelper'
 import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
 import withAllLocales from '../../lib/withAllLocales'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 const LatestOutgoingDataHistory = ({
   queryResultRemoteRequests,
@@ -24,8 +25,8 @@ const LatestOutgoingDataHistory = ({
 }) => {
   const [modalOpened, setModalOpened] = useState(false)
   const [modalData, setModalData] = useState()
-
   const { f } = useI18n()
+  const { isMobile, isTablet } = useBreakpoints()
 
   const openModal = data => {
     setModalOpened(true)
@@ -42,7 +43,13 @@ const LatestOutgoingDataHistory = ({
   const handleClose = () => setModalOpened(false)
 
   return (
-    <div>
+    <div
+      style={
+        isMobile || isTablet
+          ? { borderTop: '16px solid var(--dividerColor)' }
+          : {}
+      }
+    >
       <NavigationListSection>
         <ListItem>
           <Typography variant="h5">

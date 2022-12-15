@@ -20,6 +20,7 @@ import {
 } from './helpers/permissionsHelper'
 import { routes } from 'constants/routes'
 import withAllLocales from '../../lib/withAllLocales'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 const AccessRightsSection = ({
   sortedPermissionsByName,
@@ -27,72 +28,81 @@ const AccessRightsSection = ({
   t,
   isRemoteDoctypes
 }) => {
+  const { isMobile, isTablet } = useBreakpoints()
   if (!sortedPermissionsByName || sortedPermissionsByName.length < 1) {
     return
   }
   return (
-    <NavigationListSection>
-      <ListItem>
-        <ListItemIcon>
-          <Icon
-            icon={isRemoteDoctypes ? CozyReleaseIcon : CozyLockIcon}
-            size={largeSize}
+    <div
+      style={
+        isMobile || isTablet
+          ? { borderTop: '16px solid var(--dividerColor)' }
+          : {}
+      }
+    >
+      <NavigationListSection>
+        <ListItem>
+          <ListItemIcon>
+            <Icon
+              icon={isRemoteDoctypes ? CozyReleaseIcon : CozyLockIcon}
+              size={largeSize}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary={
+              <Typography type="body2" style={{ fontWeight: 'bold' }}>
+                {isRemoteDoctypes
+                  ? t('Permissions.exit_rights')
+                  : t('Permissions.limited_right_access')}
+              </Typography>
+            }
+            secondary={
+              isRemoteDoctypes
+                ? t('Permissions.exit_rights_secondary')
+                : t('Permissions.limited_right_access_secondary')
+            }
           />
-        </ListItemIcon>
-        <ListItemText
-          primary={
-            <Typography type="body2" style={{ fontWeight: 'bold' }}>
-              {isRemoteDoctypes
-                ? t('Permissions.exit_rights')
-                : t('Permissions.limited_right_access')}
-            </Typography>
-          }
-          secondary={
-            isRemoteDoctypes
-              ? t('Permissions.exit_rights_secondary')
-              : t('Permissions.limited_right_access_secondary')
-          }
-        />
-      </ListItem>
-      <Divider />
-      {sortedPermissionsByName.map(({ name, title, verbs, type }, index) => {
-        const iconName = getPermissionIconName(type)
-        return (
-          <div key={name}>
-            <ListItem
-              button
-              component="a"
-              href={`/#${routes.appList}/${slugName}/${name}`}
-            >
-              <ListItemIcon>
-                <Icon
-                  icon={
-                    require(`cozy-ui/transpiled/react/Icons/${iconName}`)
-                      .default
-                  }
-                  size={mediumSize}
+        </ListItem>
+        <Divider />
+        {sortedPermissionsByName.map(({ name, title, verbs, type }, index) => {
+          const iconName = getPermissionIconName(type)
+          return (
+            <div key={name}>
+              <ListItem
+                button
+                component="a"
+                href={`/#${routes.appList}/${slugName}/${name}`}
+              >
+                <ListItemIcon>
+                  <Icon
+                    icon={
+                      require(`cozy-ui/transpiled/react/Icons/${iconName}`)
+                        .default
+                    }
+                    size={mediumSize}
+                  />
+                </ListItemIcon>
+                <ListItemText
+                  primary={title}
+                  secondary={t(displayPermissions(verbs))}
                 />
-              </ListItemIcon>
-              <ListItemText
-                primary={title}
-                secondary={t(displayPermissions(verbs))}
-              />
-              <ListItemSecondaryAction>
-                <Icon
-                  icon={RightIcon}
-                  size={smallSize}
-                  className="u-mr-1"
-                  style={{ color: 'var(--secondaryTextColor)' }}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-            {index !== sortedPermissionsByName.length - 1 && (
-              <Divider variant="inset" />
-            )}
-          </div>
-        )
-      })}
-    </NavigationListSection>
+                <ListItemSecondaryAction>
+                  <Icon
+                    icon={RightIcon}
+                    size={smallSize}
+                    className="u-mr-1"
+                    style={{ color: 'var(--secondaryTextColor)' }}
+                  />
+                </ListItemSecondaryAction>
+              </ListItem>
+              {index !== sortedPermissionsByName.length - 1 && (
+                <Divider variant="inset" />
+              )}
+            </div>
+          )
+        })}
+      </NavigationListSection>
+    </div>
   )
 }
 
