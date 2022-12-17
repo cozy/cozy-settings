@@ -1,6 +1,5 @@
 import { cozyFetch } from 'actions'
 import { WebVaultClient } from 'cozy-keys-lib'
-import { getStackDomain } from 'actions/domUtils'
 
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'
 export const UPDATE_PASSPHRASE_SUCCESS = 'UPDATE_PASSPHRASE_SUCCESS'
@@ -20,10 +19,6 @@ export const UPDATE_PASSPHRASE_2FA_2_FAILURE = 'UPDATE_PASSPHRASE_2FA_2_FAILURE'
 export const UPDATE_HINT = 'UPDATE_HINT'
 export const UPDATE_HINT_SUCCESS = 'UPDATE_HINT_SUCCESS'
 export const UPDATE_HINT_FAILURE = 'UPDATE_HINT_FAILURE'
-
-const getInstanceURL = () => {
-  return getStackDomain()
-}
 
 const invalidPassphraseErrorAction = {
   type: UPDATE_PASSPHRASE_FAILURE,
@@ -61,8 +56,17 @@ const updatePassphraseFailure = error => {
   return defaultErrorAction
 }
 
-export const updatePassphrase = (currentPassphrase, newPassphrase) => {
-  const instanceURL = getInstanceURL()
+/**
+ * @param {string} currentPassphrase
+ * @param {string} newPassphrase
+ * @param {string} instanceURL - Must be a string usable in the `URL()` constructor
+ * @returns {Promise<void>}
+ */
+export const updatePassphrase = (
+  currentPassphrase,
+  newPassphrase,
+  instanceURL
+) => {
   const vaultClient = new WebVaultClient(instanceURL)
 
   return async dispatch => {
@@ -91,8 +95,12 @@ export const updatePassphrase = (currentPassphrase, newPassphrase) => {
   }
 }
 
-export const updatePassphrase2FAFirst = currentPassphrase => {
-  const instanceURL = getInstanceURL()
+/**
+ * @param {string} currentPassphrase
+ * @param {string} instanceURL - Must be a string usable in the `URL()` constructor
+ * @returns {Promise<void>}
+ */
+export const updatePassphrase2FAFirst = (currentPassphrase, instanceURL) => {
   const vaultClient = new WebVaultClient(instanceURL)
 
   return async dispatch => {
@@ -117,17 +125,25 @@ export const updatePassphrase2FAFirst = currentPassphrase => {
   }
 }
 
+/**
+ * @param {string} currentPassphrase
+ * @param {string} newPassphrase
+ * @param {string} twoFactorCode
+ * @param {string} twoFactorToken
+ * @param {string} instanceURL - Must be a string usable in the `URL()` constructor
+ * @returns {Promise<void>}
+ */
 export const updatePassphrase2FASecond = (
   currentPassphrase,
   newPassphrase,
   twoFactorCode,
-  twoFactorToken
+  twoFactorToken,
+  instanceURL
 ) => {
   return async dispatch => {
     dispatch({ type: UPDATE_PASSPHRASE_2FA_2 })
 
     try {
-      const instanceURL = getInstanceURL()
       const vaultClient = new WebVaultClient(instanceURL)
 
       await vaultClient.login(currentPassphrase)
