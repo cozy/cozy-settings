@@ -465,7 +465,8 @@
     "exit_rights": "Droits de sortie",
     "uninstall": "Désinstaller",
     "exit_rights_secondary": "La donnée peut sortir hors du Cozy, elle ne sera alors plus maintenue secrète",
-    "limited_right_access_secondary": "La donnée est uniquement accessible localement, elle ne sort jamais de votre Cozy."
+    "limited_right_access_secondary": "La donnée est uniquement accessible localement, elle ne sort jamais de votre Cozy.",
+    "permissions": "Permissions"
   },
   "Accessibility": {
     "previous": "Précédent"
