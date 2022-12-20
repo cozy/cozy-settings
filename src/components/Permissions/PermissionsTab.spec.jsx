@@ -19,7 +19,9 @@ jest.mock('react-router-dom', () => {
 })
 
 jest.mock('cozy-client')
-
+jest.mock('components/PageTitle', () => {
+  return ({ children }) => <div data-testid="pageTitle">{children}</div>
+})
 jest.mock(
   'cozy-ui/transpiled/react/Tabs',
   () =>

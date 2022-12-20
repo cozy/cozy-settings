@@ -9,11 +9,11 @@ exports[`PermissionsTab should match snapshot 1`] = `
       <div
         class="u-flex"
       >
-        <h2
-          class="MuiTypography-root u-flex MuiTypography-h2 MuiTypography-colorTextPrimary"
+        <div
+          data-testid="pageTitle"
         >
-          Permissions
-        </h2>
+          Permissions.permissions
+        </div>
         <button
           data-testid="tabs"
           value="slug"

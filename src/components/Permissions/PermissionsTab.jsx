@@ -8,7 +8,7 @@ import { routes } from 'constants/routes'
 import { useParams, useNavigate } from 'react-router-dom'
 import withAllLocales from '../../lib/withAllLocales'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import Typography from 'cozy-ui/transpiled/react/Typography'
+import PageTitle from 'components/PageTitle'
 
 function a11yProps(index) {
   return {
@@ -52,9 +52,7 @@ const PermissionsTab = ({ t }) => {
               : 'u-flex'
           }
         >
-          <Typography variant="h2" className="u-flex">
-            Permissions
-          </Typography>
+          <PageTitle>{t('Permissions.permissions')}</PageTitle>
           <Tabs
             value={page}
             onChange={handleChange}
