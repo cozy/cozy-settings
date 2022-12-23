@@ -1,10 +1,8 @@
 import { DiskInfos, DiskInfosRaw } from 'lib/types'
 
-const Gigabyte = 1073741824
+const FallbackQuota = 1e11
 
-const FallbackQuota = Gigabyte * 100
-
-const convertBytesToGiB = (bytes: number): number => bytes / Math.pow(1024, 3)
+const convertBytesToGB = (bytes: number): number => bytes * 1e-9
 
 const formatDecimals = (value: number, fractionDigits = 2): string =>
   `${value % 1 ? value.toFixed(fractionDigits) : value}`
@@ -13,8 +11,8 @@ const computeDiskInfos = (
   usage: number,
   quota = FallbackQuota
 ): DiskInfosRaw => ({
-  diskQuota: convertBytesToGiB(quota),
-  diskUsage: convertBytesToGiB(usage),
+  diskQuota: convertBytesToGB(quota),
+  diskUsage: convertBytesToGB(usage),
   percentUsage: (usage / quota) * 100
 })
 
