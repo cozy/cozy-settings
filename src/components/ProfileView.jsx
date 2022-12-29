@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import compose from 'lodash/flowRight'
 import get from 'lodash/get'
+import { useParams } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
@@ -52,114 +53,110 @@ export const PasswordSection = () => {
   ) : null
 }
 
-class ProfileView extends Component {
-  UNSAFE_componentWillMount() {
-    this.props.fetchInfos()
-  }
+const ProfileView = props => {
+  useEffect(() => {
+    props.fetchInfos()
+    // eslint-disable-next-line
+  }, [])
 
-  render() {
-    const {
-      t,
-      match,
-      fields,
-      isFetching,
-      onFieldChange,
-      instance,
-      updateInfo,
-      exportData,
-      fetchExportData,
-      requestExport,
-      importData,
-      precheckImport,
-      submitImport,
-      twoFactor,
-      checkTwoFactorCode,
-      activate2FA,
-      desactivate2FA,
-      cancel2FAActivation,
-      breakpoints: { isMobile }
-    } = this.props
+  const {
+    t,
+    fields,
+    isFetching,
+    onFieldChange,
+    instance,
+    updateInfo,
+    exportData,
+    fetchExportData,
+    requestExport,
+    importData,
+    precheckImport,
+    submitImport,
+    twoFactor,
+    checkTwoFactorCode,
+    activate2FA,
+    desactivate2FA,
+    cancel2FAActivation,
+    breakpoints: { isMobile }
+  } = props
 
-    let exportId = null
-    if (match && match.params) {
-      exportId = match.params.exportId
-    }
-    const isTwoFactorEnabled =
-      fields.auth_mode && fields.auth_mode.value === AUTH_MODE.TWO_FA_MAIL
+  const { exportId } = useParams()
 
-    return (
-      <Page narrow>
-        {isFetching && (
-          <Spinner
-            className="u-pos-fixed-s"
-            middle
-            size="xxlarge"
-            loadingType="loading"
-          />
-        )}
-        {!isFetching && (
-          <>
-            <PageTitle className={!isMobile ? 'u-mb-1' : ''}>
-              {t('ProfileView.title')}
-            </PageTitle>
-            <Stack spacing="l">
-              <Input
-                name="email"
-                type="email"
-                title={t('ProfileView.email.title')}
-                label={t('ProfileView.email.label')}
-                {...fields.email}
-                onBlur={onFieldChange}
+  const isTwoFactorEnabled =
+    fields.auth_mode && fields.auth_mode.value === AUTH_MODE.TWO_FA_MAIL
+
+  return (
+    <Page narrow>
+      {isFetching && (
+        <Spinner
+          className="u-pos-fixed-s"
+          middle
+          size="xxlarge"
+          loadingType="loading"
+        />
+      )}
+      {!isFetching && (
+        <>
+          <PageTitle className={!isMobile ? 'u-mb-1' : ''}>
+            {t('ProfileView.title')}
+          </PageTitle>
+          <Stack spacing="l">
+            <Input
+              name="email"
+              type="email"
+              title={t('ProfileView.email.title')}
+              label={t('ProfileView.email.label')}
+              {...fields.email}
+              onBlur={onFieldChange}
+            />
+            <Input
+              name="public_name"
+              type="text"
+              title={t('ProfileView.public_name.title')}
+              label={t(`ProfileView.public_name.label`)}
+              {...fields.public_name}
+              onBlur={onFieldChange}
+            />
+            <PasswordSection />
+            <TwoFA
+              isTwoFactorEnabled={isTwoFactorEnabled}
+              instance={instance}
+              checkTwoFactorCode={checkTwoFactorCode}
+              twoFactor={twoFactor}
+              activate2FA={activate2FA}
+              desactivate2FA={desactivate2FA}
+              cancel2FAActivation={cancel2FAActivation}
+              updateInfo={updateInfo}
+            />
+            <LanguageSection fields={fields} onChange={onFieldChange} />
+            <TrackingSection
+              instance={instance}
+              fields={fields}
+              onChange={onFieldChange}
+            />
+            <div>
+              <ExportSection
+                email={fields.email && fields.email.value}
+                exportData={exportData}
+                exportId={exportId}
+                requestExport={requestExport}
+                fetchExportData={() => fetchExportData(exportId)}
+                parent="/profile"
               />
-              <Input
-                name="public_name"
-                type="text"
-                title={t('ProfileView.public_name.title')}
-                label={t(`ProfileView.public_name.label`)}
-                {...fields.public_name}
-                onBlur={onFieldChange}
+              <Import
+                importData={importData}
+                precheckImport={precheckImport}
+                submitImport={submitImport}
               />
-              <PasswordSection />
-              <TwoFA
-                isTwoFactorEnabled={isTwoFactorEnabled}
-                instance={instance}
-                checkTwoFactorCode={checkTwoFactorCode}
-                twoFactor={twoFactor}
-                activate2FA={activate2FA}
-                desactivate2FA={desactivate2FA}
-                cancel2FAActivation={cancel2FAActivation}
-                updateInfo={updateInfo}
-              />
-              <LanguageSection fields={fields} onChange={onFieldChange} />
-              <TrackingSection
-                instance={instance}
-                fields={fields}
-                onChange={onFieldChange}
-              />
-              <div>
-                <ExportSection
-                  email={fields.email && fields.email.value}
-                  exportData={exportData}
-                  exportId={exportId}
-                  requestExport={requestExport}
-                  fetchExportData={() => fetchExportData(exportId)}
-                  parent="/profile"
-                />
-                <Import
-                  importData={importData}
-                  precheckImport={precheckImport}
-                  submitImport={submitImport}
-                />
-              </div>
-            </Stack>
-            <div className="u-mt-2">
-              <DeleteAccount />
             </div>
-          </>
-        )}
-      </Page>
-    )
-  }
+          </Stack>
+          <div className="u-mt-2">
+            <DeleteAccount />
+          </div>
+        </>
+      )}
+    </Page>
+  )
 }
 
 export default compose(translate(), withBreakpoints())(ProfileView)
