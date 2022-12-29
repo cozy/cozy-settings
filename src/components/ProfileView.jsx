@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import compose from 'lodash/flowRight'
 import get from 'lodash/get'
 import { useParams } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Button'
-import withBreakpoints from 'cozy-ui/transpiled/react/helpers/withBreakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Stack from 'cozy-ui/transpiled/react/Stack'
@@ -60,7 +58,6 @@ const ProfileView = props => {
   }, [])
 
   const {
-    t,
     fields,
     isFetching,
     onFieldChange,
@@ -76,9 +73,10 @@ const ProfileView = props => {
     checkTwoFactorCode,
     activate2FA,
     desactivate2FA,
-    cancel2FAActivation,
-    breakpoints: { isMobile }
+    cancel2FAActivation
   } = props
+  const { t } = useI18n()
+  const { isMobile } = useBreakpoints()
 
   const { exportId } = useParams()
 
@@ -159,4 +157,4 @@ const ProfileView = props => {
   )
 }
 
-export default compose(translate(), withBreakpoints())(ProfileView)
+export default ProfileView
