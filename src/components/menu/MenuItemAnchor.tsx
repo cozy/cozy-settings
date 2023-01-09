@@ -26,7 +26,7 @@ export const MenuItemAnchor = ({
       <Icon icon={icon} />
     </ListItemIcon>
 
-    <ListItemText primary={primary} secondary={secondary} />
+    <ListItemText ellipsis={false} primary={primary} secondary={secondary} />
 
     {target === '_blank' && <Icon icon={OpenwithIcon} />}
   </ListItem>
