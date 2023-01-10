@@ -219,7 +219,7 @@
     },
     "locale": {
       "title": "Langue",
-      "label": "C’est la langue de votre Cozy.",
+      "label": "C'est la langue de votre Cozy.",
       "fr": "Français",
       "en": "Anglais",
       "es": "Espagnol",
@@ -301,12 +301,12 @@
     "title": "Révoquer cet appareil",
     "description": "Vous allez révoquer %{name}.",
     "subText": "La synchronisation depuis cet appareil s'arrêtera immédiatement.",
-    "validate": "Révoquer l’appareil",
+    "validate": "Révoquer l'appareil",
     "cancel": "Annuler",
-    "error": "Je ne parviens pas à révoquer l’appareil, essayez de recharger la page."
+    "error": "Je ne parviens pas à révoquer l'appareil, essayez de recharger la page."
   },
   "configureDevice": {
-    "load_error": "Une erreur s’est produite pendant le chargement de vos dossiers, merci de réessayer prochainement.",
+    "load_error": "Une erreur s'est produite pendant le chargement de vos dossiers, merci de réessayer prochainement.",
     "configure_success": "Les éléments à synchroniser ont bien été enregistrés.",
     "configure_error": "Je ne parviens pas à configurer les éléments à synchroniser avec votre ordinateur, essayez de recharger la page.",
     "description": "Sélectionner les dossiers à synchroniser avec votre ordinateur :",
@@ -321,7 +321,7 @@
   },
   "ServicesView": {
     "title": "Services activés",
-    "load_error": "Une erreur s’est produite pendant le chargement de vos services, merci de réessayer prochainement.",
+    "load_error": "Une erreur s'est produite pendant le chargement de vos services, merci de réessayer prochainement.",
     "head_services": "Services",
     "head_account": "Compte",
     "head_sync": "Dernière sychronisation",
@@ -368,12 +368,12 @@
     "cancel": "Annuler"
   },
   "LockScreenView": {
-    "choose_pin_body": "Définissez votre code PIN pour déverrouiller l’application après une période d’inactivité.",
+    "choose_pin_body": "Définissez votre code PIN pour déverrouiller l'application après une période d'inactivité.",
     "choose_pin_cancel": "Annuler",
     "choose_pin_label": "Code PIN",
     "choose_pin_next": "Suivant",
     "choose_pin_title": "Choisir un code PIN",
-    "confirm_pin_body": "Par sécurité, merci d’entrer à nouveau le code PIN choisi.",
+    "confirm_pin_body": "Par sécurité, merci d'entrer à nouveau le code PIN choisi.",
     "confirm_pin_cancel": "Annuler",
     "confirm_pin_error": "Les codes PIN ne correspondent pas",
     "confirm_pin_next": "Terminer",
@@ -382,7 +382,7 @@
   },
   "soon": {
     "title": "Bientôt",
-    "description": "Cette fonctionnalité n’est pas encore disponible. Pour plus d’informations, contactez-nous s’il-vous-plaît à contact@cozycloud.cc"
+    "description": "Cette fonctionnalité n'est pas encore disponible. Pour plus d'informations, contactez-nous s'il-vous-plaît à contact@cozycloud.cc"
   },
   "support": {
     "title": "Bonjour ! Pouvons-nous vous aider? ",
