@@ -23,6 +23,6 @@ export const MenuItemButton = ({
       <Icon icon={icon} />
     </ListItemIcon>
 
-    <ListItemText primary={primary} secondary={secondary} />
+    <ListItemText ellipsis={false} primary={primary} secondary={secondary} />
   </ListItem>
 )

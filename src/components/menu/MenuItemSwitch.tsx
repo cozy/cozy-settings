@@ -29,7 +29,7 @@ export const MenuItemSwitch = ({
       <Icon icon={icon} />
     </ListItemIcon>
 
-    <ListItemText primary={primary} secondary={secondary} />
+    <ListItemText ellipsis={false} primary={primary} secondary={secondary} />
 
     <Switch checked={checked} color="primary" />
   </ListItem>

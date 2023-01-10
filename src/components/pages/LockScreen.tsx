@@ -127,6 +127,13 @@ export const LockScreen = (): JSX.Element => {
 
       <nav>
         <List>
+          <MenuItemSwitch
+            checked={autoLockEnabled}
+            icon={Swap}
+            onClick={onAutoLock}
+            primary={t('Nav.primary_lock_switch')}
+          />
+
           {showBiometryOption && (
             <MenuItemSwitch
               primary={
@@ -149,13 +156,6 @@ export const LockScreen = (): JSX.Element => {
             icon={Password}
             onClick={(): void => void onPinCodeLock()}
             primary={t('Nav.primary_pin_switch')}
-          />
-
-          <MenuItemSwitch
-            checked={autoLockEnabled}
-            icon={Swap}
-            onClick={onAutoLock}
-            primary={t('Nav.primary_lock_switch')}
           />
         </List>
       </nav>
