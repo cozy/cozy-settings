@@ -130,7 +130,7 @@ const AccessRightsSection = ({
         title={modalData?.title ? modalData.title : ''}
         content={
           <>
-            <Typography variant="h4">
+            <Typography variant="h5" className="u-mb-half">
               {modalData
                 ? modalData.isRemoteDoctypes
                   ? t('Permissions.exit_right', {
@@ -145,7 +145,7 @@ const AccessRightsSection = ({
             </Typography>
             <Alert
               severity={modalData?.isRemoteDoctypes ? 'warning' : 'success'}
-              className="u-mv-1"
+              className="u-mb-1-half"
             >
               {modalData?.isRemoteDoctypes
                 ? t('Permissions.exit_right_description')
@@ -153,43 +153,49 @@ const AccessRightsSection = ({
                     app: slugName.toUpperCase()
                   })}
             </Alert>
-            <Typography variant="h4">
+            <Typography variant="h5" className="u-mb-half">
               {t('Permissions.right_reason', { app: slugName.toUpperCase() })}
             </Typography>
-            <p>{modalData?.description}</p>
-            <Typography variant="h4" className="u-mv-1">
+            <Typography variant="body1" className="u-mb-1-half">
+              {modalData?.description}
+            </Typography>
+            <Typography variant="h5" className="u-mb-half">
               {t('Permissions.details')}
             </Typography>
             {modalData &&
             displayPermissions(modalData.verbs) === 'Permissions.read' ? (
               <>
-                <Typography variant="h5">
+                <Typography variant="body1">
                   {t('Permissions.read_right_title')}
                 </Typography>
-                <p>{t('Permissions.read_right_text')}</p>
+                <Typography variant="caption">
+                  {t('Permissions.read_right_text')}
+                </Typography>
               </>
             ) : modalData &&
               displayPermissions(modalData.verbs) === 'Permissions.write' ? (
               <>
-                <Typography variant="h5">
+                <Typography variant="body1">
                   {t('Permissions.write_right_title')}
                 </Typography>
-                <p>{t('Permissions.write_right_text')}</p>
+                <Typography variant="caption">
+                  {t('Permissions.write_right_text')}
+                </Typography>
               </>
             ) : (
               <>
-                <Typography variant="h5">
+                <Typography variant="body1">
                   {t('Permissions.read_right_title')}
                 </Typography>
-                <p style={{ color: 'var(--secondaryTextColor)' }}>
+                <Typography variant="caption">
                   {t('Permissions.read_right_text')}
-                </p>
-                <Typography variant="h5">
+                </Typography>
+                <Typography variant="body1" className="u-mt-half">
                   {t('Permissions.write_right_title')}
                 </Typography>
-                <p style={{ color: 'var(--secondaryTextColor)' }}>
+                <Typography variant="caption">
                   {t('Permissions.write_right_text')}
-                </p>
+                </Typography>
               </>
             )}
           </>
