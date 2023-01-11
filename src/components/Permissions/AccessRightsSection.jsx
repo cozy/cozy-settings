@@ -40,6 +40,15 @@ const AccessRightsSection = ({
 
   const handleClose = () => setModalOpened(false)
 
+  const displayedPermissions = modalData && displayPermissions(modalData.verbs)
+
+  const hasReadPermissions =
+    displayedPermissions === 'Permissions.read' ||
+    displayedPermissions === 'Permissions.readAndWrite'
+  const hasWritePermissions =
+    displayedPermissions === 'Permissions.write' ||
+    displayedPermissions === 'Permissions.readAndWrite'
+
   if (!sortedPermissionsByName || sortedPermissionsByName.length < 1) {
     return
   }
@@ -162,35 +171,22 @@ const AccessRightsSection = ({
             <Typography variant="h5" className="u-mb-half">
               {t('Permissions.details')}
             </Typography>
-            {modalData &&
-            displayPermissions(modalData.verbs) === 'Permissions.read' ? (
+            {hasReadPermissions && (
               <>
                 <Typography variant="body1">
                   {t('Permissions.read_right_title')}
                 </Typography>
-                <Typography variant="caption">
+                <Typography
+                  variant="caption"
+                  className={hasWritePermissions ? 'u-mb-half' : ''}
+                >
                   {t('Permissions.read_right_text')}
                 </Typography>
               </>
-            ) : modalData &&
-              displayPermissions(modalData.verbs) === 'Permissions.write' ? (
+            )}
+            {hasWritePermissions && (
               <>
                 <Typography variant="body1">
-                  {t('Permissions.write_right_title')}
-                </Typography>
-                <Typography variant="caption">
-                  {t('Permissions.write_right_text')}
-                </Typography>
-              </>
-            ) : (
-              <>
-                <Typography variant="body1">
-                  {t('Permissions.read_right_title')}
-                </Typography>
-                <Typography variant="caption">
-                  {t('Permissions.read_right_text')}
-                </Typography>
-                <Typography variant="body1" className="u-mt-half">
                   {t('Permissions.write_right_title')}
                 </Typography>
                 <Typography variant="caption">
