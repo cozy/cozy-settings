@@ -466,7 +466,17 @@
     "uninstall": "Uninstall",
     "exit_rights_secondary": "The data can be taken out of the Cozy, it will not be kept secret anymore",
     "limited_right_access_secondary": "The data is only accessible locally, it never leaves your Cozy.",
-    "permissions": "Permissions"
+    "permissions": "Permissions",
+    "exit_right": "%{app} has outgoing rights on %{doctype}",
+    "exit_right_description": "The data is accessible outside the Cozy. It can be transmitted to the outside",
+    "access_right": "%{app} has local access rights on %{doctype}",
+    "access_right_description": "Data is only accessible locally in your Cozy. %{app} cannot transmit data outside of the Cozy Cloud or to anyone else.",
+    "details": "Details",
+    "read_right_title": "Reading right",
+    "read_right_text": "The app can read the data inside the Cozy without making it accessible to its editor",
+    "write_right_title": "Writing right",
+    "write_right_text": "The app can add, modify, or delete data",
+    "right_reason": "Why does %{app} request this permission?"
   },
   "Accessibility": {
     "previous": "Previous"
