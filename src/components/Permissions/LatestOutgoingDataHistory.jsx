@@ -46,7 +46,7 @@ const LatestOutgoingDataHistory = ({
     <div
       style={
         isMobile || isTablet
-          ? { borderTop: '16px solid var(--dividerColor)' }
+          ? { borderTop: '16px solid var(--defaultBackgroundColor)' }
           : {}
       }
     >

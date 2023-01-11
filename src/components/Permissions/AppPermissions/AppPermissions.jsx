@@ -46,12 +46,10 @@ const AppPermissions = ({ t }) => {
     remoteQuery.definition,
     remoteQuery.options
   )
-
   const { data: remoteDoctypes, ...queryResultRemoteDoctypes } = useFetchJSON(
     'GET',
     '/remote/_all_doctypes'
   )
-
   let matchingQueryResult
   if (queryResultApps.data) {
     matchingQueryResult = queryResultApps
