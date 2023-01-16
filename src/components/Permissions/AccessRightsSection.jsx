@@ -4,13 +4,11 @@ import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import ListItemIcon, {
-  smallSize,
   mediumSize,
   largeSize
 } from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import CozyLockIcon from 'cozy-ui/transpiled/react/Icons/CozyLock'
 import CozyReleaseIcon from 'cozy-ui/transpiled/react/Icons/CozyRelease'
@@ -20,7 +18,7 @@ import {
 } from './helpers/permissionsHelper'
 import withAllLocales from '../../lib/withAllLocales'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
+import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Alert from 'cozy-ui/transpiled/react/Alert'
 
 const AccessRightsSection = ({
@@ -38,7 +36,7 @@ const AccessRightsSection = ({
     setModalOpened(true)
   }
 
-  const handleClose = () => setModalOpened(false)
+  const closeModal = () => setModalOpened(false)
 
   const displayedPermissions = modalData && displayPermissions(modalData.verbs)
 
@@ -91,7 +89,6 @@ const AccessRightsSection = ({
               <div key={name}>
                 <ListItem
                   button
-                  component="a"
                   onClick={() =>
                     openModal({
                       description,
@@ -116,14 +113,7 @@ const AccessRightsSection = ({
                     primary={title}
                     secondary={t(displayPermissions(verbs))}
                   />
-                  <ListItemSecondaryAction>
-                    <Icon
-                      icon={RightIcon}
-                      size={smallSize}
-                      className="u-mr-1"
-                      style={{ color: 'var(--secondaryTextColor)' }}
-                    />
-                  </ListItemSecondaryAction>
+                  <Icon icon={RightIcon} />
                 </ListItem>
                 {index !== sortedPermissionsByName.length - 1 && (
                   <Divider variant="inset" />
@@ -133,70 +123,69 @@ const AccessRightsSection = ({
           }
         )}
       </NavigationListSection>
-      <DialogComponent
-        open={modalOpened}
-        onClose={handleClose}
-        title={modalData?.title ? modalData.title : ''}
-        content={
-          <>
-            <Typography variant="h5" className="u-mb-half">
-              {modalData
-                ? modalData.isRemoteDoctypes
-                  ? t('Permissions.exit_right', {
-                      app: slugName.toUpperCase(),
-                      doctype: modalData.title.toLowerCase()
-                    })
-                  : t('Permissions.access_right', {
-                      app: slugName.toUpperCase(),
-                      doctype: modalData.title.toLowerCase()
-                    })
-                : ''}
-            </Typography>
-            <Alert
-              severity={modalData?.isRemoteDoctypes ? 'warning' : 'success'}
-              className="u-mb-1-half"
-            >
-              {modalData?.isRemoteDoctypes
-                ? t('Permissions.exit_right_description')
-                : t('Permissions.access_right_description', {
-                    app: slugName.toUpperCase()
-                  })}
-            </Alert>
-            <Typography variant="h5" className="u-mb-half">
-              {t('Permissions.right_reason', { app: slugName.toUpperCase() })}
-            </Typography>
-            <Typography variant="body1" className="u-mb-1-half">
-              {modalData?.description}
-            </Typography>
-            <Typography variant="h5" className="u-mb-half">
-              {t('Permissions.details')}
-            </Typography>
-            {hasReadPermissions && (
-              <>
-                <Typography variant="body1">
-                  {t('Permissions.read_right_title')}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  className={hasWritePermissions ? 'u-mb-half' : ''}
-                >
-                  {t('Permissions.read_right_text')}
-                </Typography>
-              </>
-            )}
-            {hasWritePermissions && (
-              <>
-                <Typography variant="body1">
-                  {t('Permissions.write_right_title')}
-                </Typography>
-                <Typography variant="caption">
-                  {t('Permissions.write_right_text')}
-                </Typography>
-              </>
-            )}
-          </>
-        }
-      />
+      {modalOpened && (
+        <Dialog
+          open={true}
+          onClose={closeModal}
+          title={modalData?.title ? modalData.title : ''}
+          content={
+            <>
+              <Typography variant="h5" className="">
+                {modalData
+                  ? modalData.isRemoteDoctypes
+                    ? t('Permissions.exit_right', {
+                        app: slugName.toUpperCase(),
+                        doctype: modalData.title.toLowerCase()
+                      })
+                    : t('Permissions.access_right', {
+                        app: slugName.toUpperCase(),
+                        doctype: modalData.title.toLowerCase()
+                      })
+                  : ''}
+              </Typography>
+              <Alert
+                severity={modalData?.isRemoteDoctypes ? 'warning' : 'success'}
+                className="u-mt-half"
+              >
+                {modalData?.isRemoteDoctypes
+                  ? t('Permissions.exit_right_description')
+                  : t('Permissions.access_right_description', {
+                      app: slugName.toUpperCase()
+                    })}
+              </Alert>
+              <Typography variant="h5" className="u-mt-1-half">
+                {t('Permissions.right_reason', { app: slugName.toUpperCase() })}
+              </Typography>
+              <Typography className="u-mt-half">
+                {modalData?.description}
+              </Typography>
+              <Typography variant="h5" className="u-mt-1-half">
+                {t('Permissions.details')}
+              </Typography>
+              {hasReadPermissions && (
+                <>
+                  <Typography className="u-mt-half">
+                    {t('Permissions.read_right_title')}
+                  </Typography>
+                  <Typography variant="caption">
+                    {t('Permissions.read_right_text')}
+                  </Typography>
+                </>
+              )}
+              {hasWritePermissions && (
+                <>
+                  <Typography className="u-mt-half">
+                    {t('Permissions.write_right_title')}
+                  </Typography>
+                  <Typography variant="caption">
+                    {t('Permissions.write_right_text')}
+                  </Typography>
+                </>
+              )}
+            </>
+          }
+        />
+      )}
     </div>
   )
 }
