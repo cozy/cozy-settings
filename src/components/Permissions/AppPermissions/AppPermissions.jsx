@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react'
+import classNames from 'classnames'
+
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Page from 'components/Page'
@@ -109,7 +111,7 @@ const AppPermissions = ({ t }) => {
           <div
             className={
               isMobile || isTablet
-                ? 'u-flex u-flex-column u-flex-items-center'
+                ? 'u-flex u-flex-column u-flex-items-center u-mt-1-half'
                 : 'u-flex u-flex-justify-between'
             }
           >
@@ -130,7 +132,14 @@ const AppPermissions = ({ t }) => {
                 {slugName.toUpperCase()}
               </PageTitle>
             </div>
-            <div className="u-flex u-flex-column u-flex-items-center">
+            <div
+              className={classNames(
+                'u-flex u-flex-column u-flex-items-center',
+                {
+                  'u-mt-1': isMobile || isTablet
+                }
+              )}
+            >
               <div>
                 <OpenappButton
                   type={
@@ -145,7 +154,9 @@ const AppPermissions = ({ t }) => {
               </div>
             </div>
           </div>
-          <NavigationList className={isMobile || isTablet ? '' : 'u-mv-1'}>
+          <NavigationList
+            className={isMobile || isTablet ? 'u-mt-1' : 'u-mv-1'}
+          >
             {sortedLimitedRightAccessPermissionsByName.length > 0 && (
               <AccessRightsSection
                 sortedPermissionsByName={
