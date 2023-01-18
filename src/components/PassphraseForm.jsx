@@ -3,8 +3,6 @@ import styles from 'styles/passphrase.styl'
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-import get from 'lodash/get'
-
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -16,12 +14,11 @@ import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
 
-import { useClient } from 'cozy-client'
-
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import PageTitle from 'components/PageTitle'
 import passwordHelper from 'lib/passwordHelper'
 import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
+import { useCanAuthWith } from 'hooks/useCanAuthWith'
 
 const initialData = {
   currentPassphrase: '',
@@ -32,7 +29,6 @@ const initialData = {
 
 const PassphraseForm = ({ errors, submitting, saved, onSubmit }) => {
   const location = useLocation()
-  const client = useClient()
   const { t } = useI18n()
 
   const [formData, setFormData] = useState(initialData)
@@ -76,8 +72,7 @@ const PassphraseForm = ({ errors, submitting, saved, onSubmit }) => {
 
   const { cancelRedirectUrl } = parseRedirectUrlsFromUrlParams(location.search)
 
-  const canAuthWithPassword = get(client, 'capabilities.can_auth_with_password')
-  const canAuthWithOIDC = get(client, 'capabilities.can_auth_with_oidc')
+  const { canAuthWithPassword, canAuthWithOIDC } = useCanAuthWith()
   const shouldUseOIDCtitle = !canAuthWithPassword && canAuthWithOIDC
 
   return (

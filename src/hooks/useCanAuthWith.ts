@@ -1,0 +1,19 @@
+import flag from 'cozy-flags'
+
+import { useClient } from 'cozy-client'
+
+interface useCanAuthWithReturn {
+  canAuthWithOIDC: boolean
+  canAuthWithPassword: boolean
+}
+
+export const useCanAuthWith = (): useCanAuthWithReturn => {
+  const client = useClient()
+
+  return {
+    canAuthWithOIDC: flag('settings.oidc-auth')
+      ? true
+      : client.capabilities.can_auth_with_oidc ?? false,
+    canAuthWithPassword: client.capabilities.can_auth_with_password ?? false
+  }
+}
