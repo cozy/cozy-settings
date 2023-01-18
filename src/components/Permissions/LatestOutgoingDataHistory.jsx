@@ -26,7 +26,7 @@ const LatestOutgoingDataHistory = ({
   const [modalOpened, setModalOpened] = useState(false)
   const [modalData, setModalData] = useState()
   const { f } = useI18n()
-  const { isMobile, isTablet } = useBreakpoints()
+  const { isDesktop } = useBreakpoints()
 
   const openModal = data => {
     setModalOpened(true)
@@ -43,13 +43,15 @@ const LatestOutgoingDataHistory = ({
   const handleClose = () => setModalOpened(false)
 
   return (
-    <div
-      style={
-        isMobile || isTablet
-          ? { borderTop: '16px solid var(--defaultBackgroundColor)' }
-          : {}
-      }
-    >
+    <>
+      {!isDesktop && (
+        <Divider
+          style={{
+            height: '0.75rem',
+            backgroundColor: 'var(--defaultBackgroundColor)'
+          }}
+        />
+      )}
       <NavigationListSection>
         <ListItem>
           <Typography variant="h5">
@@ -115,7 +117,7 @@ const LatestOutgoingDataHistory = ({
           </>
         }
       />
-    </div>
+    </>
   )
 }
 

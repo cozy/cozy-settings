@@ -29,7 +29,7 @@ const AccessRightsSection = ({
 }) => {
   const [modalOpened, setModalOpened] = useState(false)
   const [modalData, setModalData] = useState()
-  const { isMobile, isTablet } = useBreakpoints()
+  const { isDesktop } = useBreakpoints()
 
   const openModal = data => {
     setModalData(data)
@@ -42,13 +42,15 @@ const AccessRightsSection = ({
     return
   }
   return (
-    <div
-      style={
-        isMobile || isTablet
-          ? { borderTop: '16px solid var(--defaultBackgroundColor)' }
-          : {}
-      }
-    >
+    <>
+      {!isDesktop && (
+        <Divider
+          style={{
+            height: '0.75rem',
+            backgroundColor: 'var(--defaultBackgroundColor)'
+          }}
+        />
+      )}
       <NavigationListSection>
         <ListItem>
           <ListItemIcon>
@@ -124,7 +126,7 @@ const AccessRightsSection = ({
           }
         />
       )}
-    </div>
+    </>
   )
 }
 
