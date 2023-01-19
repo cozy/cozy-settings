@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 
 import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
 
@@ -10,9 +11,11 @@ export class Support extends Component {
     super(props)
     this.state = {
       hideContent: false, // to avoid scrollbar in actions list view
-      message: ''
+      message: '',
+      consent: false
     }
     this.sendMessage = this.sendMessage.bind(this)
+    this.handleConsentChange = this.handleConsentChange.bind(this)
   }
 
   componentDidMount() {
@@ -30,14 +33,14 @@ export class Support extends Component {
       this.props.emailStatus.isSending &&
       !this.props.emailStatus.isSent
     ) {
-      this.setState({ message: '' })
+      this.setState({ message: '', consent: false })
       // usually go back on success
       this.props.onSuccess(this.props.t('claudy.actions.support.success'))
     }
   }
 
   onOpen() {
-    this.props.resizeIntent(30 * 16) // 30em
+    this.props.resizeIntent(32 * 16) // 32em
     this.setState({ hideContent: false })
     const listenerToFocus = e => {
       if (e.propertyName === 'transform') {
@@ -69,7 +72,16 @@ export class Support extends Component {
   }
 
   sendMessage() {
-    this.props.sendMessageToSupport(this.state.message)
+    const message = `${this.state.message}\n\n${
+      this.state.consent
+        ? this.props.t('support.response_email.allowConsent')
+        : ''
+    }`
+    this.props.sendMessageToSupport(message)
+  }
+
+  handleConsentChange() {
+    this.setState({ consent: !this.state.consent })
   }
 
   render() {
@@ -102,6 +114,12 @@ export class Support extends Component {
                 }}
               />
             </label>
+            <Checkbox
+              checked={this.state.consent}
+              className="u-mt-1"
+              label={t('support.fields.consent.label')}
+              onChange={this.handleConsentChange}
+            />
             {((!isSent && !isSending && !error) ||
               (isSent && !isSending && !error)) && (
               <p className="coz-claudy-menu-action-description-detail">
