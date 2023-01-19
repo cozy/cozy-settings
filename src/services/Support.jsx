@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
+import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 
 import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
 
@@ -13,16 +14,24 @@ const Support = ({
   const { t } = useI18n()
 
   const [message, setMessage] = useState('')
+  const [consent, setConsent] = useState(false)
 
   useEffect(() => {
     // reset message if successfully sent
     if (isSent) {
       setMessage('')
+      setConsent(false)
     }
   }, [isSent])
 
   const sendMessage = () => {
-    sendMessageToSupport(message)
+    sendMessageToSupport(
+      `${message}\n\n${consent ? t('support.response_email.allowConsent') : ''}`
+    )
+  }
+
+  const handleConsentChange = () => {
+    setConsent(!consent)
   }
 
   return (
@@ -43,6 +52,12 @@ const Support = ({
             }}
           />
         </label>
+        <Checkbox
+          checked={consent}
+          className="u-mt-1"
+          label={t('support.fields.consent.label')}
+          onChange={handleConsentChange}
+        />
         {((!isSent && !isSending && !error) ||
           (isSent && !isSending && !error && message)) && (
           <p className="set-support-form-detail">{t('support.emailDetail')}</p>

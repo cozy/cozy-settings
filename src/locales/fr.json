@@ -391,10 +391,14 @@
       "message": {
         "title": "Votre message",
         "placeholder": "Dites-nous tout ! Notre équipe est à votre écoute : un problème de connexion, d'activation d'un connecteur ou juste envie de nous dire Bonjour."
+      },
+      "consent": {
+        "label": "J’autorise Cozy à accéder à mes données afin de répondre à ma question"
       }
     },
     "response_email": {
       "subject": "Votre demande a bien été prise en compte",
+      "allowConsent": "Merci d'avoir autorisé Cozy à accéder à vos données afin de répondre à votre question.",
       "body": "Bonjour,\n\nNous avons bien reçu votre demande de support :\n%{message}\n\nNous faisons de notre mieux pour vous répondre dès que possible.\n\nClaude de Cozy."
     },
     "button": "C'est parti !",
