@@ -93,7 +93,7 @@ const DataPermissions = ({ t }) => {
               }
               size={mediumSize}
             />
-            <PageTitle>
+            <PageTitle backButtonPath="/permissions/data">
               {t('CozyPermissions.' + permission).toUpperCase()}
             </PageTitle>
             <Typography variant="body1" className="u-mb-1-half">

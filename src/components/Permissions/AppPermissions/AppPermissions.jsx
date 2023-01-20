@@ -134,7 +134,10 @@ const AppPermissions = ({ t }) => {
               <div style={{ width: '48px' }}>
                 <AppIcon app={slugName} />
               </div>
-              <PageTitle className={isMobile || isTablet ? '' : 'u-mh-1'}>
+              <PageTitle
+                className={isMobile || isTablet ? '' : 'u-mh-1'}
+                backButtonPath="/permissions/slug"
+              >
                 {slugName.toUpperCase()}
               </PageTitle>
             </div>

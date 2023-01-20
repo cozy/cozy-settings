@@ -16,10 +16,10 @@ const barTitleStyle = { height: '3rem', display: 'flex', alignItems: 'center' }
 const BarContainer = ({ children }) => {
   return <div style={barTitleStyle}>{children}</div>
 }
-const PageTitle = ({ children, ...rest }) => {
+const PageTitle = ({ children, backButtonPath, ...rest }) => {
   const isRoot = useMatch('/menu')
   const navigate = useNavigate()
-  const navigateBack = () => navigate('..')
+  const navigateBack = () => navigate(backButtonPath ? backButtonPath : '..')
   const { isMobile, isTablet } = useBreakpoints()
   const { t } = useI18n()
 
