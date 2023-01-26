@@ -7,6 +7,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
 import FormModal from 'components/DeleteAccount/FormModal'
+import { useCanAuthWith } from 'hooks/useCanAuthWith'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
@@ -25,6 +26,16 @@ const DeleteAccount = () => {
   const onRequested = () => {
     setStatus(IDLE)
     Alerter.success(t('DeleteAccount.success.message'))
+  }
+
+  const { canAuthWithOIDC } = useCanAuthWith()
+
+  const onClick = () => {
+    if (canAuthWithOIDC) {
+      setStatus(REQUESTING)
+    } else {
+      setStatus(CONFIRMING)
+    }
   }
 
   return (
@@ -53,7 +64,7 @@ const DeleteAccount = () => {
         label={t('DeleteAccount.button.label')}
         busy={status === REQUESTING}
         fullWidth
-        onClick={() => setStatus(CONFIRMING)}
+        onClick={onClick}
       />
     </>
   )
