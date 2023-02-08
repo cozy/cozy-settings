@@ -19,6 +19,7 @@ import Permission from 'components/Permissions/PermissionDetails'
 import PermissionsApplication from 'components/Permissions/AppPermissions/AppPermissions'
 import PermissionsTab from 'components/Permissions/PermissionsTab'
 import DataPermissions from 'components/Permissions/DataPermissions/DataPermissions'
+import Support from 'components/Support/Support'
 import Profile from 'containers/Profile'
 import Sessions from 'containers/Sessions'
 import Sidebar from 'components/Sidebar'
@@ -76,6 +77,7 @@ export class App extends Component {
               path="/permissions/data/:permission"
               element={<DataPermissions />}
             />
+            <Route path="/support" element={<Support />} />
             <Route
               path="*"
               element={

@@ -91,7 +91,8 @@
     "secondary_free": "Gratuit",
     "secondary_used": "%{percent}% utilisé",
     "sessions": "Connexions",
-    "storage": "Stockage"
+    "storage": "Stockage",
+    "contact_support": "Nous contacter"
   },
   "loading": {
     "loading": "Chargement"
