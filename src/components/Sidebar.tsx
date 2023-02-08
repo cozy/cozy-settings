@@ -9,6 +9,7 @@ import HelpIcon from 'cozy-ui/transpiled/react/Icons/Help'
 import LockScreen from 'cozy-ui/transpiled/react/Icons/LockScreen'
 import Logout from 'cozy-ui/transpiled/react/Icons/Logout'
 import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
+import EmailIcon from 'cozy-ui/transpiled/react/Icons/Email'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import flag from 'cozy-flags'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -105,7 +106,11 @@ export const Sidebar = (): JSX.Element => {
           target="_blank"
           icon={HelpIcon}
         />
-
+        <MenuItemNavLink
+          to={routes.support}
+          primary={t('Nav.contact_support')}
+          icon={EmailIcon}
+        />
         <MenuItemButton
           primary={t('Nav.primary_logout')}
           icon={Logout}

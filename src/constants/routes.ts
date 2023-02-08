@@ -6,5 +6,6 @@ export const routes = {
   lockScreen: '/lockScreen',
   profile: '/profile',
   sessions: '/sessions',
-  storage: '/storage'
+  storage: '/storage',
+  support: '/support'
 }
