@@ -15,11 +15,11 @@ import CozyReleaseIcon from 'cozy-ui/transpiled/react/Icons/CozyRelease'
 import {
   displayPermissions,
   getPermissionIconName
-} from './helpers/permissionsHelper'
-import withAllLocales from '../../lib/withAllLocales'
+} from '../helpers/permissionsHelper'
+import withAllLocales from '../../../lib/withAllLocales'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import AccessRightsDetailsSection from './AccessRightsDetailsSection'
+import AccessRightsDetailsSection from '../PermissionDetails/AccessRightsDetailsSection'
 
 const AccessRightsSection = ({
   sortedPermissionsByName,

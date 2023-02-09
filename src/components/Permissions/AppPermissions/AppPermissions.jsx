@@ -1,37 +1,37 @@
 import React, { useMemo } from 'react'
+import { useParams } from 'react-router-dom'
 import classNames from 'classnames'
 
+import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import { useParams } from 'react-router-dom'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
-import { OpenappButton } from 'components/Permissions/OpenappButton'
-import { AboutButton } from 'components/Permissions/AboutButton'
-import withAllLocales from 'lib/withAllLocales'
 import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
-import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import AccessRightsSection from 'components/Permissions/AccessRightsSection'
-import LatestOutgoingDataHistory from 'components/Permissions/LatestOutgoingDataHistory'
+import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+
+import withAllLocales from 'lib/withAllLocales'
+import AccessRightsSection from 'components/Permissions/AppPermissions/AccessRightsSection'
+import LatestOutgoingDataHistory from 'components/Permissions/AppPermissions/LatestOutgoingDataHistory'
 import {
   filterPermissions,
   sortPermissionsByName,
   completeAppPermission,
   filterRemoteRequests
 } from 'components/Permissions/helpers/permissionsHelper'
-import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 import {
   buildAppsQueryBySlug,
   buildKonnectorsQueryBySlug,
   buildRemoteRequestsQuery
 } from 'lib/queries'
-import { useQuery } from 'cozy-client'
-import { UninstallButton } from '../UninstallButton'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import Page from 'components/Page'
+import PageTitle from 'components/PageTitle'
+import { UninstallButton } from './UninstallButton'
+import { AboutButton } from './AboutButton'
+import { OpenappButton } from './OpenappButton'
 
 const styles = {
   actionButtons: {
