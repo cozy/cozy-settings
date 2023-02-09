@@ -13,9 +13,9 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import { sortDataByDate } from './helpers/permissionsHelper'
+import { sortDataByDate } from '../helpers/permissionsHelper'
 import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
-import withAllLocales from '../../lib/withAllLocales'
+import withAllLocales from '../../../lib/withAllLocales'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 const LatestOutgoingDataHistory = ({
