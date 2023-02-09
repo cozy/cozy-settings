@@ -33,6 +33,12 @@ import { useQuery } from 'cozy-client'
 import { UninstallButton } from '../UninstallButton'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
+const styles = {
+  actionButtons: {
+    gap: '2em'
+  }
+}
+
 const AppPermissions = ({ t }) => {
   const { slug: slugName } = useParams()
   const { isMobile, isTablet } = useBreakpoints()
@@ -133,25 +139,21 @@ const AppPermissions = ({ t }) => {
               </PageTitle>
             </div>
             <div
-              className={classNames(
-                'u-flex u-flex-column u-flex-items-center',
-                {
-                  'u-mt-1': isMobile || isTablet
-                }
-              )}
+              className={classNames('u-flex u-flex-row u-flex-items-center', {
+                'u-mt-1': isMobile || isTablet
+              })}
+              style={styles.actionButtons}
             >
-              <div>
-                <OpenappButton
-                  type={
-                    isKonnector(matchingQueryResult.data.type)
-                      ? 'konnector'
-                      : 'app'
-                  }
-                  appData={matchingQueryResult.data}
-                />
-                <AboutButton appData={matchingQueryResult.data} />
-                <UninstallButton appData={matchingQueryResult.data} />
-              </div>
+              <OpenappButton
+                type={
+                  isKonnector(matchingQueryResult.data.type)
+                    ? 'konnector'
+                    : 'app'
+                }
+                appData={matchingQueryResult.data}
+              />
+              <AboutButton appData={matchingQueryResult.data} />
+              <UninstallButton appData={matchingQueryResult.data} />
             </div>
           </div>
           <NavigationList

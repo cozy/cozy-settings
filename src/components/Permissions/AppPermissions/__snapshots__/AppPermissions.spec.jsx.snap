@@ -59,19 +59,18 @@ exports[`AppPermissions should display slugName when query has been loaded 1`] =
           </div>
         </div>
         <div
-          class="u-flex u-flex-column u-flex-items-center"
+          class="u-flex u-flex-row u-flex-items-center"
+          style="gap: 2em;"
         >
-          <div>
-            <div
-              data-testid="CircleButton"
-            />
-            <div
-              data-testid="CircleButton"
-            />
-            <div
-              data-testid="CircleButton"
-            />
-          </div>
+          <div
+            data-testid="CircleButton"
+          />
+          <div
+            data-testid="CircleButton"
+          />
+          <div
+            data-testid="CircleButton"
+          />
         </div>
       </div>
       <div
