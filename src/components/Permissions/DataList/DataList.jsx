@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from 'components/Page'
+
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import NavigationList, {
   NavigationListSection
@@ -13,44 +13,35 @@ import ListItemIcon, {
 } from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import withAllLocales from 'lib/withAllLocales'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import { getPermissionIconName } from 'components/Permissions/helpers/permissionsHelper'
-import { sortPermissionsByName } from './DataListHelpers'
-import { completePermission } from '../helpers/permissionsHelper'
-import { routes } from 'constants/routes'
-import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import { buildAppsQuery, buildKonnectorsQuery } from 'lib/queries'
-import { useQuery } from 'cozy-client'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
+import withAllLocales from 'lib/withAllLocales'
+import { routes } from 'constants/routes'
+import Page from 'components/Page'
+import {
+  completePermission,
+  getPermissionIconName
+} from 'components/Permissions/helpers/permissionsHelper'
+import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
+import { sortPermissionsByName } from 'components/Permissions/DataList/DataListHelpers'
+
 const DataList = ({ t }) => {
-  const appsQuery = buildAppsQuery()
-  const queryResultApps = useQuery(appsQuery.definition, appsQuery.options)
-  const konnectorsQuery = buildKonnectorsQuery()
-  const queryResultKonnectors = useQuery(
-    konnectorsQuery.definition,
-    konnectorsQuery.options
-  )
   const { isMobile, isTablet } = useBreakpoints()
-  const permissionsToDisplay = completePermission(
-    queryResultApps,
-    queryResultKonnectors
-  )
+  const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =
+    useAppsOrKonnectors()
+
+  const permissionsToDisplay = completePermission(appsResult, konnectorsResult)
 
   return (
     <Page
       className={isMobile || isTablet ? '' : 'u-maw-7'}
       withoutMarginTop={isMobile || isTablet}
     >
-      {(isQueryLoading(queryResultApps) ||
-        isQueryLoading(queryResultKonnectors)) &&
-      (!hasQueryBeenLoaded(queryResultApps) ||
-        !hasQueryBeenLoaded(queryResultKonnectors)) ? (
+      {isResultLoading ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
-      ) : queryResultApps.fetchStatus === 'failed' ||
-        queryResultKonnectors.fetchStatus === 'failed' ? (
+      ) : hasQueryFailed ? (
         <Typography variant="body1" className="u-mb-1-half">
           {t('Permissions.failedRequest')}
         </Typography>
