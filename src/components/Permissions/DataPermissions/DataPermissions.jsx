@@ -1,16 +1,8 @@
 import React from 'react'
-import withAllLocales from 'lib/withAllLocales'
-import {
-  getPermissionsVerbsByType,
-  completePermission,
-  displayPermissions,
-  getPermissionIconName
-} from 'components/Permissions/helpers/permissionsHelper'
 import { useParams } from 'react-router-dom'
-import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Page from 'components/Page'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
@@ -19,7 +11,6 @@ import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import PageTitle from 'components/PageTitle'
 import ListItemIcon, {
   smallSize,
   mediumSize
@@ -28,37 +19,41 @@ import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
-import { buildAppsQuery, buildKonnectorsQuery } from 'lib/queries'
-import { useQuery } from 'cozy-client'
+
+import Page from 'components/Page'
+import PageTitle from 'components/PageTitle'
+import withAllLocales from 'lib/withAllLocales'
+import {
+  getPermissionsVerbsByType,
+  completePermission,
+  displayPermissions,
+  getPermissionIconName
+} from 'components/Permissions/helpers/permissionsHelper'
+import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
 
 const DataPermissions = ({ t }) => {
   const { permission } = useParams()
 
-  const appsQuery = buildAppsQuery()
-  const queryResultApps = useQuery(appsQuery.definition, appsQuery.options)
-  const konnectorsQuery = buildKonnectorsQuery()
-  const queryResultKonnectors = useQuery(
-    konnectorsQuery.definition,
-    konnectorsQuery.options
-  )
+  const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =
+    useAppsOrKonnectors()
 
   const appsAndKonnectorsSlugs = completePermission(
-    queryResultApps,
-    queryResultKonnectors
+    appsResult,
+    konnectorsResult
   )[permission]
 
   const appsAndKonnectors = []
 
   if (appsAndKonnectorsSlugs?.length > 0) {
     for (let i = 0; i < appsAndKonnectorsSlugs.length; i++) {
-      const appToAdd = queryResultApps.data.find(
+      const appToAdd = appsResult.data.find(
         app => app.slug === appsAndKonnectorsSlugs[i]
       )
       if (appToAdd) {
         appsAndKonnectors.push(appToAdd)
       }
 
-      const konnectorToAdd = queryResultKonnectors.data.find(
+      const konnectorToAdd = konnectorsResult.data.find(
         konnector => konnector.slug === appsAndKonnectorsSlugs[i]
       )
       if (konnectorToAdd) {
@@ -71,13 +66,9 @@ const DataPermissions = ({ t }) => {
 
   return (
     <Page narrow>
-      {(isQueryLoading(queryResultApps) &&
-        !hasQueryBeenLoaded(queryResultApps)) ||
-      (isQueryLoading(queryResultKonnectors) &&
-        !hasQueryBeenLoaded(queryResultKonnectors)) ? (
+      {isResultLoading ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
-      ) : queryResultApps.fetchStatus === 'failed' &&
-        queryResultKonnectors.fetchStatus === 'failed' ? (
+      ) : hasQueryFailed ? (
         <Typography variant="body1" className="u-mb-1-half">
           {t('Permissions.failedRequest')}
         </Typography>

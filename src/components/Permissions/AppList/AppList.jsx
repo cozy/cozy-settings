@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from 'components/Page'
+
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -11,27 +11,24 @@ import ListItemIcon, {
 import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import { routes } from 'constants/routes'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
-import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import { buildAppsQuery, buildKonnectorsQuery } from 'lib/queries'
-import { useQuery } from 'cozy-client'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+
+import { routes } from 'constants/routes'
+import Page from 'components/Page'
+import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
 
 const AppList = () => {
   const { t } = useI18n()
-  const appsQuery = buildAppsQuery()
-  const queryResultApps = useQuery(appsQuery.definition, appsQuery.options)
-  const konnectorsQuery = buildKonnectorsQuery()
-  const queryResultKonnectors = useQuery(
-    konnectorsQuery.definition,
-    konnectorsQuery.options
-  )
   const { isMobile, isTablet } = useBreakpoints()
+
+  const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =
+    useAppsOrKonnectors()
+
   const toNotDisplay = ['home', 'store', 'settings']
 
   return (
@@ -39,21 +36,17 @@ const AppList = () => {
       className={isMobile || isTablet ? '' : 'u-maw-7'}
       withoutMarginTop={isMobile || isTablet}
     >
-      {(isQueryLoading(queryResultApps) ||
-        isQueryLoading(queryResultKonnectors)) &&
-      (!hasQueryBeenLoaded(queryResultApps) ||
-        !hasQueryBeenLoaded(queryResultKonnectors)) ? (
+      {isResultLoading ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
-      ) : queryResultApps.fetchStatus === 'failed' ||
-        queryResultKonnectors.fetchStatus === 'failed' ? (
+      ) : hasQueryFailed ? (
         <Typography variant="body1" className="u-mb-1-half">
           {t('Permissions.failedRequest')}
         </Typography>
       ) : (
         <NavigationList>
           <NavigationListSection>
-            {queryResultApps.data
-              .concat(queryResultKonnectors.data)
+            {appsResult.data
+              .concat(konnectorsResult.data)
               .sort((a, b) => a.slug.localeCompare(b.slug))
               .filter(a => !toNotDisplay.includes(a.slug))
               .map(appOrKonnector => {
