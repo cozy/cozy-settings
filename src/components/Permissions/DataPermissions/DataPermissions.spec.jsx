@@ -14,7 +14,8 @@ jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
 jest.mock('react-router-dom', () => {
   return {
     ...jest.requireActual('react-router-dom'),
-    useParams: () => ({ permission: 'io.cozy.files' })
+    useParams: () => ({ permissionType: 'io.cozy.files' }),
+    useNavigate: jest.fn()
   }
 })
 
