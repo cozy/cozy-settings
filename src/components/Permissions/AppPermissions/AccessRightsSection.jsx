@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavigationListSection } from 'cozy-ui/transpiled/react/NavigationList'
 import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -18,25 +18,19 @@ import {
 } from '../helpers/permissionsHelper'
 import withAllLocales from '../../../lib/withAllLocales'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import AccessRightsDetailsSection from '../PermissionDetails/AccessRightsDetailsSection'
+import { useNavigate } from 'react-router-dom'
 
 const AccessRightsSection = ({
   sortedPermissionsByName,
-  slugName,
   t,
   isRemoteDoctypes
 }) => {
-  const [modalOpened, setModalOpened] = useState(false)
-  const [modalData, setModalData] = useState()
   const { isDesktop } = useBreakpoints()
+  const navigate = useNavigate()
 
-  const openModal = data => {
-    setModalData(data)
-    setModalOpened(true)
+  const openModal = permissionType => {
+    navigate(`./details/${permissionType}`)
   }
-
-  const closeModal = () => setModalOpened(false)
 
   if (!sortedPermissionsByName || sortedPermissionsByName.length < 1) {
     return
@@ -75,57 +69,33 @@ const AccessRightsSection = ({
           />
         </ListItem>
         <Divider />
-        {sortedPermissionsByName.map(
-          ({ description, name, title, verbs, type }, index) => {
-            const iconName = getPermissionIconName(type)
-            return (
-              <div key={name}>
-                <ListItem
-                  button
-                  onClick={() =>
-                    openModal({
-                      description,
-                      name,
-                      title,
-                      verbs,
-                      type,
-                      isRemoteDoctypes
-                    })
-                  }
-                >
-                  <ListItemIcon>
-                    <Icon
-                      icon={
-                        require(`cozy-ui/transpiled/react/Icons/${iconName}`)
-                          .default
-                      }
-                      size={mediumSize}
-                    />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={title}
-                    secondary={t(displayPermissions(verbs))}
+        {sortedPermissionsByName.map(({ name, title, verbs, type }, index) => {
+          const iconName = getPermissionIconName(type)
+          return (
+            <div key={name}>
+              <ListItem button onClick={() => openModal(type)}>
+                <ListItemIcon>
+                  <Icon
+                    icon={
+                      require(`cozy-ui/transpiled/react/Icons/${iconName}`)
+                        .default
+                    }
+                    size={mediumSize}
                   />
-                  <Icon icon={RightIcon} />
-                </ListItem>
-                {index !== sortedPermissionsByName.length - 1 && (
-                  <Divider variant="inset" />
-                )}
-              </div>
-            )
-          }
-        )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={title}
+                  secondary={t(displayPermissions(verbs))}
+                />
+                <Icon icon={RightIcon} />
+              </ListItem>
+              {index !== sortedPermissionsByName.length - 1 && (
+                <Divider variant="inset" />
+              )}
+            </div>
+          )
+        })}
       </NavigationListSection>
-      {modalOpened && (
-        <Dialog
-          open={true}
-          onClose={closeModal}
-          title={modalData?.title ? modalData.title : ''}
-          content={
-            <AccessRightsDetailsSection modalData={modalData} slug={slugName} />
-          }
-        />
-      )}
     </>
   )
 }
