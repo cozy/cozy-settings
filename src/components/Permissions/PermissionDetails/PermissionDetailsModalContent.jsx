@@ -6,8 +6,15 @@ import Alert from 'cozy-ui/transpiled/react/Alert'
 import withAllLocales from 'lib/withAllLocales'
 import { displayPermissions } from 'components/Permissions/helpers/permissionsHelper'
 
-const AccessRightsDetailsSection = ({ modalData, slug, t }) => {
-  const displayedPermissions = modalData && displayPermissions(modalData.verbs)
+const PermissionDetailsModalContent = ({
+  slug,
+  verbs,
+  description,
+  isRemoteDoctypes,
+  title,
+  t
+}) => {
+  const displayedPermissions = displayPermissions(verbs)
 
   const hasReadPermissions =
     displayedPermissions === 'Permissions.read' ||
@@ -19,23 +26,21 @@ const AccessRightsDetailsSection = ({ modalData, slug, t }) => {
   return (
     <>
       <Typography variant="h5" className="">
-        {modalData
-          ? modalData.isRemoteDoctypes
-            ? t('Permissions.exit_right', {
-                app: slug.toUpperCase(),
-                doctype: modalData.title.toLowerCase()
-              })
-            : t('Permissions.access_right', {
-                app: slug.toUpperCase(),
-                doctype: modalData.title.toLowerCase()
-              })
-          : ''}
+        {isRemoteDoctypes
+          ? t('Permissions.exit_right', {
+              app: slug.toUpperCase(),
+              doctype: title.toLowerCase()
+            })
+          : t('Permissions.access_right', {
+              app: slug.toUpperCase(),
+              doctype: title.toLowerCase()
+            })}
       </Typography>
       <Alert
-        severity={modalData?.isRemoteDoctypes ? 'warning' : 'success'}
+        severity={isRemoteDoctypes ? 'warning' : 'success'}
         className="u-mt-half"
       >
-        {modalData?.isRemoteDoctypes
+        {isRemoteDoctypes
           ? t('Permissions.exit_right_description')
           : t('Permissions.access_right_description', {
               app: slug.toUpperCase()
@@ -44,7 +49,7 @@ const AccessRightsDetailsSection = ({ modalData, slug, t }) => {
       <Typography variant="h5" className="u-mt-1-half">
         {t('Permissions.right_reason', { app: slug.toUpperCase() })}
       </Typography>
-      <Typography className="u-mt-half">{modalData?.description}</Typography>
+      <Typography className="u-mt-half">{description}</Typography>
       <Typography variant="h5" className="u-mt-1-half">
         {t('Permissions.details')}
       </Typography>
@@ -72,4 +77,4 @@ const AccessRightsDetailsSection = ({ modalData, slug, t }) => {
   )
 }
 
-export default withAllLocales(AccessRightsDetailsSection)
+export default withAllLocales(PermissionDetailsModalContent)

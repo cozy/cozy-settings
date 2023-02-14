@@ -37,6 +37,7 @@ const DataPermissions = ({ t }) => {
   const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =
     useAppsOrKonnectors()
 
+  // Compute permissions
   const appsAndKonnectorsSlugs = completePermission(
     appsResult,
     konnectorsResult

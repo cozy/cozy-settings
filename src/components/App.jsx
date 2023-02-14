@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import { Route, Navigate, Routes } from 'react-router-dom'
+import { Route, Navigate, Routes, Outlet } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
@@ -15,11 +15,11 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Devices from 'containers/Devices'
 import IntentRedirect from 'services/IntentRedirect'
 import Passphrase from 'containers/Passphrase'
-import Permission from 'components/Permissions/PermissionDetails/PermissionDetails'
 import PermissionsApplication from 'components/Permissions/AppPermissions/AppPermissions'
 import PermissionsTab from 'components/Permissions/PermissionsTab'
 import DataPermissions from 'components/Permissions/DataPermissions/DataPermissions'
 import Support from 'components/Support/Support'
+import PermissionDetails from 'components/Permissions/PermissionDetails/PermissionDetails'
 import Profile from 'containers/Profile'
 import Sessions from 'containers/Sessions'
 import Sidebar from 'components/Sidebar'
@@ -31,6 +31,13 @@ import { initFlags } from 'lib/flags'
 import { routes } from 'constants/routes'
 
 initFlags()
+
+const OutletWrapper = ({ Component }) => (
+  <>
+    <Component />
+    <Outlet />
+  </>
+)
 
 export class App extends Component {
   render() {
@@ -58,16 +65,17 @@ export class App extends Component {
             <Route path="/connectedDevices/:deviceId" element={<Devices />} />
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/storage" element={<Storage />} />
-            <Route path="/permissions/:page" element={<PermissionsTab />} />
             <Route path={routes.lockScreen} element={<LockScreen />} />
+            <Route path="/permissions/:page" element={<PermissionsTab />} />
             <Route
               path="/permissions/slug/:slug"
-              element={<PermissionsApplication />}
-            />
-            <Route
-              path="/permissions/slug/:slug/:permission"
-              element={<Permission />}
-            />
+              element={<OutletWrapper Component={PermissionsApplication} />}
+            >
+              <Route
+                path="details/:permissionType"
+                element={<PermissionDetails />}
+              />
+            </Route>
             <Route path="/exports/:exportId" element={<Profile />} />
             <Route
               path="/permissions"
