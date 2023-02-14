@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -32,7 +32,8 @@ import {
 import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
 
 const DataPermissions = ({ t }) => {
-  const { permission } = useParams()
+  const { permissionType } = useParams()
+  const navigate = useNavigate()
 
   const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =
     useAppsOrKonnectors()
@@ -41,7 +42,7 @@ const DataPermissions = ({ t }) => {
   const appsAndKonnectorsSlugs = completePermission(
     appsResult,
     konnectorsResult
-  )[permission]
+  )[permissionType]
 
   const appsAndKonnectors = []
 
@@ -63,7 +64,11 @@ const DataPermissions = ({ t }) => {
     }
   }
 
-  const iconName = getPermissionIconName(permission)
+  const iconName = getPermissionIconName(permissionType)
+
+  const openModal = slug => {
+    navigate(`./details/${slug}`)
+  }
 
   return (
     <Page narrow>
@@ -86,12 +91,12 @@ const DataPermissions = ({ t }) => {
               size={mediumSize}
             />
             <PageTitle backButtonPath="/permissions/data">
-              {t('CozyPermissions.' + permission).toUpperCase()}
+              {t('CozyPermissions.' + permissionType).toUpperCase()}
             </PageTitle>
             <Typography variant="body1" className="u-mb-1-half">
               {t('Permissions.access') +
                 ' ' +
-                t('CozyPermissions.' + permission).toLowerCase()}
+                t('CozyPermissions.' + permissionType).toLowerCase()}
             </Typography>
           </div>
           <NavigationList>
@@ -101,7 +106,10 @@ const DataPermissions = ({ t }) => {
                 .map((appOrKonnector, index) => {
                   return (
                     <div key={appOrKonnector.name}>
-                      <ListItem button>
+                      <ListItem
+                        button
+                        onClick={() => openModal(appOrKonnector.slug)}
+                      >
                         <ListItemIcon>
                           <AppIcon app={appOrKonnector} />
                         </ListItemIcon>
@@ -111,7 +119,7 @@ const DataPermissions = ({ t }) => {
                             displayPermissions(
                               getPermissionsVerbsByType(
                                 appOrKonnector.permissions,
-                                permission
+                                permissionType
                               )
                             )
                           )}

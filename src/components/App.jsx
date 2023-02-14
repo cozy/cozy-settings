@@ -82,9 +82,11 @@ export class App extends Component {
               element={<Navigate to="/permissions/slug" replace />}
             />
             <Route
-              path="/permissions/data/:permission"
-              element={<DataPermissions />}
-            />
+              path="/permissions/data/:permissionType"
+              element={<OutletWrapper Component={DataPermissions} />}
+            >
+              <Route path="details/:slug" element={<PermissionDetails />} />
+            </Route>
             <Route path="/support" element={<Support />} />
             <Route
               path="*"
