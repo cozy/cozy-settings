@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react'
 import React from 'react'
-import AppPermissions from './AppPermissions'
+import { render } from '@testing-library/react'
+
 import {
   Q,
   useQuery,
@@ -9,8 +9,11 @@ import {
   hasQueryBeenLoaded
 } from 'cozy-client'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
-import { completeAppPermission } from '../helpers/permissionsHelper'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+
+import AppPermissions from 'components/Permissions/AppPermissions/AppPermissions'
+import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
+import { completeAppPermission } from 'components/Permissions/helpers/permissionsHelper'
 
 jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
   return () => Component => {
@@ -93,6 +96,8 @@ jest.mock('cozy-client/dist/hooks/useFetchJSON', () => ({
   default: jest.fn()
 }))
 
+jest.mock('../hooks/useAppsOrKonnectorsBySlug')
+
 describe('AppPermissions', () => {
   beforeEach(() => {
     const queryResult = {
@@ -138,6 +143,11 @@ describe('AppPermissions', () => {
   })
   it('should display slugName when query has been loaded', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
+    useAppsOrKonnectorsBySlug.mockReturnValue({
+      isResultLoading: false,
+      hasQueryFailed: false,
+      result: { fetchStatus: 'loaded', data: {} }
+    })
     useFetchJSON.mockReturnValue({ data: ['doctype1', 'doctype2'] })
     const { container } = render(
       <BreakpointsProvider>
@@ -148,8 +158,12 @@ describe('AppPermissions', () => {
   })
 
   it('should render a spinner when query is loading and has not been loaded', () => {
-    isQueryLoading.mockReturnValue(true)
     hasQueryBeenLoaded.mockReturnValue(false)
+    useAppsOrKonnectorsBySlug.mockReturnValue({
+      isResultLoading: true,
+      hasQueryFailed: false,
+      result: { fetchStatus: 'loading', data: {} }
+    })
     const { queryByTestId } = render(
       <BreakpointsProvider>
         <AppPermissions />
@@ -159,7 +173,11 @@ describe('AppPermissions', () => {
   })
 
   it('should display slugName when query is not loading', () => {
-    isQueryLoading.mockReturnValue(false)
+    useAppsOrKonnectorsBySlug.mockReturnValue({
+      isResultLoading: false,
+      hasQueryFailed: false,
+      result: { fetchStatus: 'loaded', data: {} }
+    })
     const { queryByText } = render(
       <BreakpointsProvider>
         <AppPermissions />
@@ -169,7 +187,11 @@ describe('AppPermissions', () => {
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {
-    useQuery.mockReturnValue({ fetchStatus: 'failed' })
+    useAppsOrKonnectorsBySlug.mockReturnValue({
+      isResultLoading: false,
+      hasQueryFailed: true,
+      result: { fetchStatus: 'loaded', data: {} }
+    })
     const { queryByText } = render(
       <BreakpointsProvider>
         <AppPermissions />

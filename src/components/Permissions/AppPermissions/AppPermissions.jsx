@@ -22,16 +22,13 @@ import {
   completeAppPermission,
   filterRemoteRequests
 } from 'components/Permissions/helpers/permissionsHelper'
-import {
-  buildAppsQueryBySlug,
-  buildKonnectorsQueryBySlug,
-  buildRemoteRequestsQuery
-} from 'lib/queries'
+import { buildRemoteRequestsQuery } from 'lib/queries'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
-import { UninstallButton } from './UninstallButton'
-import { AboutButton } from './AboutButton'
-import { OpenappButton } from './OpenappButton'
+import { UninstallButton } from 'components/Permissions/AppPermissions/UninstallButton'
+import { AboutButton } from 'components/Permissions/AppPermissions/AboutButton'
+import { OpenappButton } from 'components/Permissions/AppPermissions/OpenappButton'
+import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
 
 const styles = {
   actionButtons: {
@@ -42,37 +39,18 @@ const styles = {
 const AppPermissions = ({ t }) => {
   const { slug: slugName } = useParams()
   const { isMobile, isTablet } = useBreakpoints()
-  const appsQuery = buildAppsQueryBySlug(slugName)
-  const queryResultApps = useQuery(appsQuery.definition, appsQuery.options)
-  const konnectorsQuery = buildKonnectorsQueryBySlug(slugName)
-  const queryResultKonnectors = useQuery(
-    konnectorsQuery.definition,
-    konnectorsQuery.options
-  )
-  const remoteQuery = buildRemoteRequestsQuery()
-  const queryResultRemoteRequests = useQuery(
-    remoteQuery.definition,
-    remoteQuery.options
-  )
+  const { isResultLoading, hasQueryFailed, result } =
+    useAppsOrKonnectorsBySlug(slugName)
+
   const { data: remoteDoctypes, ...queryResultRemoteDoctypes } = useFetchJSON(
     'GET',
     '/remote/_all_doctypes'
   )
-  let matchingQueryResult
-  if (queryResultApps.data) {
-    matchingQueryResult = queryResultApps
-  }
-  if (queryResultKonnectors.data) {
-    matchingQueryResult = queryResultKonnectors
-  }
 
-  const filteredPermissions = useMemo(
-    () => filterPermissions(remoteDoctypes, matchingQueryResult),
-    [remoteDoctypes, matchingQueryResult]
+  const { limitedRightAccess, exitRights } = useMemo(
+    () => filterPermissions(remoteDoctypes, result),
+    [remoteDoctypes, result]
   )
-
-  const limitedRightAccess = filteredPermissions.limitedRightAccess
-  const exitRights = filteredPermissions.exitRights
 
   const sortedLimitedRightAccessPermissionsByName = sortPermissionsByName(
     completeAppPermission,
@@ -87,6 +65,12 @@ const AppPermissions = ({ t }) => {
 
   const isKonnector = type => type === 'io.cozy.konnectors'
 
+  const remoteQuery = buildRemoteRequestsQuery()
+  const queryResultRemoteRequests = useQuery(
+    remoteQuery.definition,
+    remoteQuery.options
+  )
+
   const filteredRemoteRequests = filterRemoteRequests(
     queryResultRemoteRequests,
     slugName
@@ -97,21 +81,16 @@ const AppPermissions = ({ t }) => {
       className={isMobile || isTablet ? '' : 'u-maw-7 u-mh-2'}
       withoutMarginTop={isMobile || isTablet}
     >
-      {(isQueryLoading(queryResultApps) &&
-        !hasQueryBeenLoaded(queryResultApps)) ||
-      (isQueryLoading(queryResultKonnectors) &&
-        !hasQueryBeenLoaded(queryResultKonnectors)) ||
-      (isQueryLoading(queryResultRemoteRequests) &&
-        !hasQueryBeenLoaded(queryResultRemoteRequests)) ||
-      (isQueryLoading(queryResultRemoteDoctypes) &&
-        !hasQueryBeenLoaded(queryResultRemoteDoctypes)) ? (
-        <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
-      ) : (queryResultApps.fetchStatus === 'failed' &&
-          queryResultKonnectors.fetchStatus === 'failed') ||
-        queryResultRemoteDoctypes.fetchStatus === 'error' ? (
+      {hasQueryFailed || queryResultRemoteDoctypes.fetchStatus === 'error' ? (
         <Typography variant="body1" className="u-mb-1-half">
           {t('Permissions.failedRequest')}
         </Typography>
+      ) : isResultLoading ||
+        (isQueryLoading(queryResultRemoteRequests) &&
+          !hasQueryBeenLoaded(queryResultRemoteRequests)) ||
+        (isQueryLoading(queryResultRemoteDoctypes) &&
+          !hasQueryBeenLoaded(queryResultRemoteDoctypes)) ? (
+        <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
       ) : (
         <div>
           <div
@@ -148,15 +127,11 @@ const AppPermissions = ({ t }) => {
               style={styles.actionButtons}
             >
               <OpenappButton
-                type={
-                  isKonnector(matchingQueryResult.data.type)
-                    ? 'konnector'
-                    : 'app'
-                }
-                appData={matchingQueryResult.data}
+                type={isKonnector(result.data.type) ? 'konnector' : 'app'}
+                appData={result.data}
               />
-              <AboutButton appData={matchingQueryResult.data} />
-              <UninstallButton appData={matchingQueryResult.data} />
+              <AboutButton appData={result.data} />
+              <UninstallButton appData={result.data} />
             </div>
           </div>
           <NavigationList
