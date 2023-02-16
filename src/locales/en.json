@@ -394,12 +394,12 @@
         "placeholder": "Tell us anything (ask for help, share a feedback or just say hello). We'll be happy to talk to you. "
       },
       "consent": {
-        "label": "I authorize Cozy to access my data in order to answer my question"
+        "label": "I temporarily authorize the Cozy Cloud support to view the necessary data in my Cozy, for the unique purpose of answering this question"
       }
     },
     "response_email": {
       "subject": "Your request has been correctly received",
-      "allowConsent": "Thank you for allowing Cozy to access your data in order to answer your question.",
+      "allowConsent": "Thank you for temporarily allowing Cozy Cloud support to view the necessary data in my Cozy, for the unique purpose of answering your question.",
       "body": "Hello,\n\nWe correctly received your support request:\n%{message}\n\nWe are doing our best to respond you as soon as possible.\n\nClaude from Cozy."
     },
     "button": "Let's go!",
