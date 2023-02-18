@@ -91,7 +91,8 @@
     "secondary_free": "Vrij",
     "secondary_used": "%{percent}% gebruikt",
     "sessions": "Verbindingen",
-    "storage": "Opslag"
+    "storage": "Opslag",
+    "contact_support": "Neem contact met ons op"
   },
   "loading": {
     "loading": "Bezig met laden"
@@ -393,12 +394,12 @@
         "placeholder": "Vertel ons iets (vraag om hulp, deel feedback of zeg gewoon 'hallo'). We staan klaar om met je te praten."
       },
       "consent": {
-        "label": "Ik geef Cozy toegang tot mijn gegevens zodat mijn vraag kan worden beantwoord"
+        "label": "Ik geef Cozy Cloud-ondersteuning hierbij tijdelijk toegang om de benodigde gegevens voor het beantwoorden van deze vraag te bekijken."
       }
     },
     "response_email": {
       "subject": "Je verzoek is ontvangen.",
-      "allowConsent": "Bedankt voor het toestaan; je vraag kan worden beantwoord.",
+      "allowConsent": "Bedankt voor het verlenen van tijdelijke toegang aan Cozy Cloud-ondersteuning.",
       "body": "Hallo,\n\nwe hebben je ondersteuningsverzoek ontvangen:\n%{message}\n\nWe doen ons best om dit zo snel mogelijk te beantwoorden.\n\nClaude van Cozy."
     },
     "button": "Gaan met die banaan!",
