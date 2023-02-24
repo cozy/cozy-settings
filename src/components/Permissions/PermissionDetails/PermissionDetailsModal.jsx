@@ -9,7 +9,7 @@ import withAllLocales from 'lib/withAllLocales'
 import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
 import PermissionDetailsModalContent from 'components/Permissions/PermissionDetails/PermissionDetailsModalContent'
 
-const PermissionDetailsModal = ({ slug, permissionType, t }) => {
+const PermissionDetailsModal = ({ slug, permissionType, t, appName }) => {
   const navigate = useNavigate()
 
   const closeModal = () => {
@@ -48,11 +48,11 @@ const PermissionDetailsModal = ({ slug, permissionType, t }) => {
       title={title}
       content={
         <PermissionDetailsModalContent
-          slug={slug}
           verbs={permission.verbs}
           description={permission.description}
           isRemoteDoctypes={isRemoteDoctypes}
           title={title}
+          appName={appName}
           t
         />
       }

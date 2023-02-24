@@ -172,18 +172,24 @@ describe('AppPermissions', () => {
     expect(queryByTestId('Spinner')).toBeTruthy()
   })
 
-  it('should display slugName when query is not loading', () => {
+  it('should display appName when query is not loading', () => {
     useAppsOrKonnectorsBySlug.mockReturnValue({
       isResultLoading: false,
       hasQueryFailed: false,
-      result: { fetchStatus: 'loaded', data: {} }
+      result: {
+        fetchStatus: 'loaded',
+        data: {
+          name: 'Drive',
+          name_prefix: 'Coz'
+        }
+      }
     })
     const { queryByText } = render(
       <BreakpointsProvider>
         <AppPermissions />
       </BreakpointsProvider>
     )
-    expect(queryByText('DRIVE')).toBeInTheDocument()
+    expect(queryByText('Coz Drive'.toUpperCase())).toBeInTheDocument()
   })
 
   it('should render Permissions.failedRequest when query status is failed', () => {

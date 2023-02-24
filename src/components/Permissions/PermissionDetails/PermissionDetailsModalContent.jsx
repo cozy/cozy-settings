@@ -7,11 +7,11 @@ import withAllLocales from 'lib/withAllLocales'
 import { displayPermissions } from 'components/Permissions/helpers/permissionsHelper'
 
 const PermissionDetailsModalContent = ({
-  slug,
   verbs,
   description,
   isRemoteDoctypes,
   title,
+  appName,
   t
 }) => {
   const displayedPermissions = displayPermissions(verbs)
@@ -28,11 +28,11 @@ const PermissionDetailsModalContent = ({
       <Typography variant="h5" className="">
         {isRemoteDoctypes
           ? t('Permissions.exit_right', {
-              app: slug.toUpperCase(),
+              app: appName.toUpperCase(),
               doctype: title.toLowerCase()
             })
           : t('Permissions.access_right', {
-              app: slug.toUpperCase(),
+              app: appName.toUpperCase(),
               doctype: title.toLowerCase()
             })}
       </Typography>
@@ -43,11 +43,11 @@ const PermissionDetailsModalContent = ({
         {isRemoteDoctypes
           ? t('Permissions.exit_right_description')
           : t('Permissions.access_right_description', {
-              app: slug.toUpperCase()
+              app: appName.toUpperCase()
             })}
       </Alert>
       <Typography variant="h5" className="u-mt-1-half">
-        {t('Permissions.right_reason', { app: slug.toUpperCase() })}
+        {t('Permissions.right_reason', { app: appName.toUpperCase() })}
       </Typography>
       <Typography className="u-mt-half">{description}</Typography>
       <Typography variant="h5" className="u-mt-1-half">

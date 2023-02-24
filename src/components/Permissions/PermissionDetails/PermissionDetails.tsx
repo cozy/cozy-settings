@@ -1,14 +1,31 @@
 import React, { FunctionComponent } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { getAppDisplayName } from 'cozy-client/dist/models/applications'
+
+import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
+
 import PermissionDetailsModal from 'components/Permissions/PermissionDetails/PermissionDetailsModal'
 
 const PermissionDetails: FunctionComponent = () => {
   const { slug, permissionType } = useParams()
-
-  if (slug && permissionType) {
+  const { isResultLoading, hasQueryFailed, result } =
+    useAppsOrKonnectorsBySlug(slug)
+  if (
+    !isResultLoading &&
+    !hasQueryFailed &&
+    result?.data &&
+    slug &&
+    permissionType
+  ) {
     return (
-      <PermissionDetailsModal slug={slug} permissionType={permissionType} />
+      <PermissionDetailsModal
+        slug={slug}
+        permissionType={permissionType}
+        // @ts-expect-error unsafe assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+        appName={getAppDisplayName(result.data)}
+      />
     )
   }
 
