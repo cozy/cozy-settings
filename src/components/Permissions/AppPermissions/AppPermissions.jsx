@@ -4,6 +4,8 @@ import classNames from 'classnames'
 
 import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
+import { getAppDisplayName } from 'cozy-client/dist/models/applications'
+
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
@@ -117,7 +119,9 @@ const AppPermissions = ({ t }) => {
                 className={isMobile || isTablet ? '' : 'u-mh-1'}
                 backButtonPath="/permissions/slug"
               >
-                {slugName.toUpperCase()}
+                {result.data.name
+                  ? getAppDisplayName(result.data).toUpperCase()
+                  : slugName.toUpperCase()}
               </PageTitle>
             </div>
             <div
