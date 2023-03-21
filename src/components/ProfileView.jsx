@@ -15,6 +15,7 @@ import Page from 'components/Page'
 import DeleteAccount from 'components/DeleteAccount'
 import Input from 'components/Input'
 import LanguageSection from 'components/LanguageSection'
+import DefaultRedirectionSection from 'components/DefaultRedirectionSection'
 import TwoFA from 'components/2FA'
 import Import from 'components/Import'
 import ExportSection from 'components/export/ExportSection'
@@ -127,6 +128,10 @@ const ProfileView = props => {
               updateInfo={updateInfo}
             />
             <LanguageSection fields={fields} onChange={onFieldChange} />
+            <DefaultRedirectionSection
+              fields={fields}
+              onChange={onFieldChange}
+            />
             <TrackingSection
               instance={instance}
               fields={fields}
