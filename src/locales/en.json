@@ -169,6 +169,11 @@
       "title": "Username",
       "label": "Your username will be displayed when you share files with Cozy users."
     },
+    "default_redirection": {
+      "title": "Home screen",
+      "label": "This is the first screen you will see when you open your Cozy.",
+      "app_list": "Application list"
+    },
     "tracking": {
       "title": "Help us to improve our product",
       "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product.<br/>[Be informed about Cozy commitments](https://files.cozycloud.cc/TOS%{version}.pdf)"

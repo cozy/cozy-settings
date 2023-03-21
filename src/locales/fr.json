@@ -169,6 +169,11 @@
       "title": "Nom d'usage",
       "label": "Votre nom d'usage est utilisé lorsque vous partagez des fichiers avec d'autres utilisateurs de Cozy."
     },
+    "default_redirection": {
+      "title": "Écran d'accueil",
+      "label": "C’est le premier écran que vous verrez en ouvrant votre Cozy.",
+      "app_list": "Liste des applications"
+    },
     "tracking": {
       "title": "Nous aider à améliorer notre produit",
       "label": "Autoriser Cozy à récupérer anonymement vos usages pour améliorer notre produit.<br/>[Soyez informé des engagements de Cozy](https://files.cozycloud.cc/TOS%{version}.pdf)"

@@ -104,6 +104,7 @@ const fields = combineReducers({
   email: createField('email'),
   locale: createField('locale'),
   public_name: createField('public_name'),
+  default_redirection: createField('default_redirection'),
   tracking: createField('tracking'),
   auth_mode: createField('auth_mode') // read only
 })

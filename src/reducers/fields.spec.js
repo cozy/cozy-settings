@@ -36,6 +36,12 @@ describe('fields reducer', () => {
         saved: false,
         errors: []
       },
+      default_redirection: {
+        value: '',
+        submitting: false,
+        saved: false,
+        errors: []
+      },
       tracking: {
         value: '',
         submitting: false,
