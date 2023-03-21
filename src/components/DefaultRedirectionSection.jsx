@@ -9,6 +9,8 @@ import {
 
 import Select from 'components/Select'
 import { buildAppsQuery } from 'lib/queries'
+import { useWebviewIntent } from 'cozy-intent'
+import { isFlagshipApp } from 'cozy-device-helper'
 
 const EXCLUDED_SLUGS = ['settings', 'store', 'home']
 
@@ -48,6 +50,7 @@ const formatDefaultRedirection = slug => `${slug}/`
 
 const DefaultRedirectionSection = props => {
   const { t } = useI18n()
+  const webviewIntent = useWebviewIntent()
   const appsQuery = buildAppsQuery()
   const appsResult = useQuery(appsQuery.definition, appsQuery.options)
 
@@ -77,9 +80,13 @@ const DefaultRedirectionSection = props => {
         })}
         fieldProps={fieldProps}
         value={selectedSlug}
-        onChange={sel =>
-          onChange(fieldName, formatDefaultRedirection(sel.value))
-        }
+        onChange={sel => {
+          const newDefaultRedirection = formatDefaultRedirection(sel.value)
+          onChange(fieldName, newDefaultRedirection)
+          if (isFlagshipApp()) {
+            webviewIntent.call('setDefaultRedirection', newDefaultRedirection)
+          }
+        }}
       />
     </div>
   )
