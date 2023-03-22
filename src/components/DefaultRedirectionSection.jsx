@@ -6,6 +6,7 @@ import {
   hasQueryBeenLoaded,
   deconstructRedirectLink
 } from 'cozy-client'
+import { getAppDisplayName } from 'cozy-client/dist/models/applications'
 
 import Select from 'components/Select'
 import { buildAppsQuery } from 'lib/queries'
@@ -22,9 +23,13 @@ const formatOptions = (appsResult, t) => {
     name: t('ProfileView.default_redirection.app_list')
   }
 
-  const filteredApps = appsResult.data.filter(
-    ({ slug }) => !EXCLUDED_SLUGS.includes(slug)
-  )
+  const filteredApps = appsResult.data
+    .filter(app => !EXCLUDED_SLUGS.includes(app.slug))
+    .map(app => ({
+      slug: app.slug,
+      name: getAppDisplayName(app)
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   return [renamedHome, ...filteredApps]
 }
