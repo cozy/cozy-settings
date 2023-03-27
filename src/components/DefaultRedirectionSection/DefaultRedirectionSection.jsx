@@ -48,6 +48,25 @@ const DefaultRedirectionSection = props => {
     t
   )
   const fieldName = 'default_redirection'
+
+  const onChangeSelection = sel => {
+    const newDefaultRedirection = formatDefaultRedirection(sel.value)
+    onChange(fieldName, newDefaultRedirection)
+
+    if (
+      shouldDisableDefaultRedirectionSnackbar(
+        fields.default_redirection.value,
+        homeSettings
+      )
+    ) {
+      disableDefaultRedirectionSnackbar(client, homeSettings)
+    }
+
+    if (isFlagshipApp()) {
+      webviewIntent.call('setDefaultRedirection', newDefaultRedirection)
+    }
+  }
+
   return (
     <div>
       <Select
@@ -60,23 +79,7 @@ const DefaultRedirectionSection = props => {
         })}
         fieldProps={fieldProps}
         value={selectedSlug}
-        onChange={sel => {
-          const newDefaultRedirection = formatDefaultRedirection(sel.value)
-          onChange(fieldName, newDefaultRedirection)
-
-          if (
-            shouldDisableDefaultRedirectionSnackbar(
-              fields.default_redirection.value,
-              homeSettings
-            )
-          ) {
-            disableDefaultRedirectionSnackbar(client, homeSettings)
-          }
-
-          if (isFlagshipApp()) {
-            webviewIntent.call('setDefaultRedirection', newDefaultRedirection)
-          }
-        }}
+        onChange={onChangeSelection}
       />
     </div>
   )
