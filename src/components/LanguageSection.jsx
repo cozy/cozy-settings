@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import Select from 'components/Select'
@@ -32,6 +33,7 @@ const LanguageSection = props => {
           label: t(`ProfileView.locale.${selectedLocale}`, { _: '' })
         }}
         onChange={sel => onChange(fieldName, sel.value)}
+        isSearchable={!isFlagshipApp()}
       />
     </div>
   )

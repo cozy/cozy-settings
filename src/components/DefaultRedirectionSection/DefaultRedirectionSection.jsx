@@ -80,6 +80,7 @@ const DefaultRedirectionSection = props => {
         fieldProps={fieldProps}
         value={selectedSlug}
         onChange={onChangeSelection}
+        isSearchable={!isFlagshipApp()}
       />
     </div>
   )
