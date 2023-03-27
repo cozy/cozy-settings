@@ -76,6 +76,11 @@
       "description": "",
       "type": "io.cozy.doctypes",
       "verbs": ["GET"]
+    },
+    "home": {
+      "description": "Required to manage your settings about default redirection",
+      "type": "io.cozy.home.settings",
+      "verbs": ["GET", "POST", "PUT"]
     }
   },
   "routes": {

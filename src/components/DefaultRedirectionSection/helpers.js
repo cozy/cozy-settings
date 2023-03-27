@@ -38,3 +38,31 @@ export const getSelectedOption = (defautRedirection, options, t) => {
 }
 
 export const formatDefaultRedirection = slug => `${slug}/`
+
+export const shouldDisableDefaultRedirectionSnackbar = (
+  defaultRedirection,
+  homeSettings
+) => {
+  const { default_redirection_snackbar_disabled } = homeSettings
+
+  try {
+    const { slug } = deconstructRedirectLink(defaultRedirection)
+
+    return slug === 'home' && !default_redirection_snackbar_disabled
+  } catch {
+    return false
+  }
+}
+
+export const disableDefaultRedirectionSnackbar = async (
+  client,
+  homeSettings
+) => {
+  const newHomeSettings = {
+    _type: 'io.cozy.home.settings',
+    ...homeSettings,
+    default_redirection_snackbar_disabled: true
+  }
+
+  return await client.save(newHomeSettings)
+}
