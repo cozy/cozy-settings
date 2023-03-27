@@ -1,17 +1,15 @@
-import { hasQueryBeenLoaded, deconstructRedirectLink } from 'cozy-client'
+import { deconstructRedirectLink } from 'cozy-client'
 import { getAppDisplayName } from 'cozy-client/dist/models/applications'
 
 const EXCLUDED_SLUGS = ['settings', 'store', 'home']
 
-export const formatOptions = (appsResult, t) => {
-  if (!hasQueryBeenLoaded(appsResult)) return []
-
+export const formatOptions = (apps, t) => {
   const renamedHome = {
     slug: 'home',
     name: t('ProfileView.default_redirection.app_list')
   }
 
-  const filteredApps = appsResult.data
+  const filteredApps = apps
     .filter(app => !EXCLUDED_SLUGS.includes(app.slug))
     .map(app => ({
       slug: app.slug,
