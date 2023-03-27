@@ -50,3 +50,11 @@ export const buildKonnectorsQuery = () => ({
     fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES)
   }
 })
+
+export const buildHomeSettingsQuery = () => ({
+  definition: Q('io.cozy.home.settings').limitBy(1),
+  options: {
+    as: 'io.cozy.home.settings',
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES)
+  }
+})
