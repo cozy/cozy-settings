@@ -20,7 +20,9 @@ const DefaultRedirectionSection = props => {
   const appsQuery = buildAppsQuery()
   const appsResult = useQuery(appsQuery.definition, appsQuery.options)
 
-  const options = formatOptions(appsResult, t)
+  const apps = appsResult.data || []
+
+  const options = formatOptions(apps, t)
 
   const { fields, onChange } = props
   const fieldProps = {
