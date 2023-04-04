@@ -8,12 +8,17 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
 import FormModal from 'components/DeleteAccount/FormModal'
 import { useCanAuthWith } from 'hooks/useCanAuthWith'
+import EmailConfirmationModal from 'components/DeleteAccount/EmailConfirmationModal'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
 const REQUESTING = 'requesting'
+const EMAIL_CONFIRMATION = 'email_confirmation'
 
-const DeleteAccount = () => {
+/**
+ * @param {string} email - User email display into confirmation process
+ */
+const DeleteAccount = ({ email }) => {
   const { t } = useI18n()
   const [status, setStatus] = useState(IDLE)
 
@@ -24,8 +29,7 @@ const DeleteAccount = () => {
   }
 
   const onRequested = () => {
-    setStatus(IDLE)
-    Alerter.success(t('DeleteAccount.success.message'))
+    setStatus(EMAIL_CONFIRMATION)
   }
 
   const { canAuthWithOIDC } = useCanAuthWith()
@@ -52,6 +56,9 @@ const DeleteAccount = () => {
           onError={onError}
           onSuccess={onRequested}
         />
+      )}
+      {status === EMAIL_CONFIRMATION && (
+        <EmailConfirmationModal email={email} onClose={() => setStatus(IDLE)} />
       )}
       <Typography variant="h5" gutterBottom>
         {t('DeleteAccount.title')}

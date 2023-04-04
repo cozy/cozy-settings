@@ -53,6 +53,15 @@
             "label": "Envoyer"
           }
         }
+      },
+      "email_confirmation": {
+        "title": "Ouvrez vos mails",
+        "description": "Un email vous a été envoyé à **%{email}**. Afin de confirmer la suppression de votre compte, veuillez cliquer sur le lien de confirmation présent dans cet email.",
+        "button": {
+          "submit": {
+            "label": "J'ai compris"
+          }
+        }
       }
     },
     "request": {
