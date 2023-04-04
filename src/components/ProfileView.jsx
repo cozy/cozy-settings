@@ -154,7 +154,7 @@ const ProfileView = props => {
             </div>
           </Stack>
           <div className="u-mt-2">
-            <DeleteAccount />
+            <DeleteAccount email={instance.data.attributes.email} />
           </div>
         </>
       )}

@@ -53,6 +53,15 @@
             "label": "Send"
           }
         }
+      },
+      "email_confirmation": {
+        "title": "Open your mails",
+        "description": "An email has been sent to **%{email}**. In order to confirm the deletion of your account, please click on the confirmation link in this email.",
+        "button": {
+          "submit": {
+            "label": "I understood"
+          }
+        }
       }
     },
     "request": {
