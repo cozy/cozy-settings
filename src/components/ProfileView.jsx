@@ -94,7 +94,7 @@ const ProfileView = props => {
           loadingType="loading"
         />
       )}
-      {!isFetching && (
+      {!isFetching && instance && (
         <>
           <PageTitle className={!isMobile ? 'u-mb-1' : ''}>
             {t('ProfileView.title')}
