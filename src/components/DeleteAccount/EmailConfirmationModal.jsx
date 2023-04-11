@@ -30,6 +30,7 @@ const EmailConfirmationModal = ({ onClose, email }) => {
       }
       content={
         <ReactMarkdown
+          className="u-ta-center"
           source={t('DeleteAccount.modal.email_confirmation.description', {
             email
           })}
