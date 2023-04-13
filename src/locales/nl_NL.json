@@ -181,7 +181,7 @@
     "default_redirection": {
       "title": "Voorpagina",
       "label": "Dit is de pagina die je ziet zodra je Cozy opent.",
-      "app_list": "Applijst"
+      "app_list": "Overzicht"
     },
     "tracking": {
       "title": "Help mee ons product te verbeteren",
