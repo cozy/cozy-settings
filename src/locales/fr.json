@@ -181,7 +181,7 @@
     "default_redirection": {
       "title": "Écran d'accueil",
       "label": "C’est le premier écran que vous verrez en ouvrant votre Cozy.",
-      "app_list": "Liste des applications"
+      "app_list": "Tableau de bord"
     },
     "tracking": {
       "title": "Nous aider à améliorer notre produit",

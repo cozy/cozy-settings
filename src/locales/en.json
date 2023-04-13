@@ -181,7 +181,7 @@
     "default_redirection": {
       "title": "Home screen",
       "label": "This is the first screen you will see when you open your Cozy.",
-      "app_list": "Application list"
+      "app_list": "Dashboard"
     },
     "tracking": {
       "title": "Help us to improve our product",
