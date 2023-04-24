@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Buttons'
+import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Field from 'cozy-ui/transpiled/react/Field'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import settingsConfig from 'config'
 
-const TwoFactorCode = ({ email, onCodeConfirmed, closeModal }) => {
+const TwoFactorCode = ({ email, onCodeConfirmed }) => {
   const { t } = useI18n()
   const client = useClient()
 
@@ -35,53 +35,36 @@ const TwoFactorCode = ({ email, onCodeConfirmed, closeModal }) => {
   const [twoFactorCode, setTwoFactorCode] = useState('')
 
   return (
-    <>
-      <div>
-        <Typography variant="h5">
-          {t('ProfileView.twofa.modal.confirmation_title')}
-        </Typography>
-        <ReactMarkdownWrapper
-          source={t('ProfileView.twofa.modal.confirmation_description', {
-            email: email
-          })}
-        />
-      </div>
-      <Field
+    <div className="u-h-100 u-flex u-flex-column u-flex-items-center u-ta-center">
+      <Typography variant="h4" className="u-mt-auto u-mb-half">
+        {t('ProfileView.twofa.modal.confirmation_title')}
+      </Typography>
+      <ReactMarkdownWrapper
+        source={t('ProfileView.twofa.modal.confirmation_description', {
+          email: email
+        })}
+      />
+      <TextField
+        className="u-mt-half u-mb-1"
+        id="two_factor_mail"
+        variant="outlined"
+        inputProps={{ pattern: '[0-9]+', inputMode: 'numeric', maxLength: '6' }}
         label={t('ProfileView.twofa.modal.code')}
-        name="two_factor_mail"
-        type="text"
         value={twoFactorCode}
         onChange={e => setTwoFactorCode(e.target.value)}
-        fullwidth
-        id="two_factor_mail"
         error={Boolean(error)}
+        {...(error && { helperText: t(error) })}
+        fullWidth
+        required
       />
-      {error ? (
-        <Typography variant="body1" className="u-error">
-          {t(error)}
-        </Typography>
-      ) : null}
-      <Typography variant="body1" gutterBottom>
-        <span>{t('ProfileView.twofa.modal.nocode')}</span>
-        <br />
-        {t('ProfileView.twofa.modal.nocode_claude')}
-        <a href={`mailto:${settingsConfig.contactEmail}`}>
-          {settingsConfig.contactEmail}
-        </a>
-      </Typography>
-      <div className="u-ta-right">
-        <Button
-          onClick={closeModal}
-          theme="secondary"
-          label={t('ProfileView.twofa.modal.button.cancel')}
-        />
-        <Button
-          onClick={() => checkCode(twoFactorCode)}
-          disabled={!twoFactorCode}
-          label={t('ProfileView.twofa.modal.button.validate')}
-        />
-      </div>
-    </>
+      <Button
+        className="u-mt-auto"
+        label={t('ProfileView.twofa.modal.button.confirm')}
+        onClick={() => checkCode(twoFactorCode)}
+        disabled={!twoFactorCode}
+        fullWidth
+      />
+    </div>
   )
 }
 

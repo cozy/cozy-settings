@@ -77,7 +77,6 @@ export const Activate2FA = ({ onActivation, closeModal, instance, images }) => {
           <TwoFactorCode
             email={instance && instance.data.attributes.email}
             onCodeConfirmed={onCodeConfirmed}
-            closeModal={closeModal}
           />
         )
       case 'passwordCreation':
@@ -88,7 +87,6 @@ export const Activate2FA = ({ onActivation, closeModal, instance, images }) => {
     images,
     instance,
     onConfirmed,
-    closeModal,
     validationError,
     onPasswordCreated
   ])
