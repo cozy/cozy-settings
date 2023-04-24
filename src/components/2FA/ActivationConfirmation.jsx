@@ -9,12 +9,14 @@ export const ActivationConfirmation = ({ images, error }) => {
   const { t } = useI18n()
   return (
     <>
-      <img
-        width={480}
-        height={116}
-        alt={t('ProfileView.twofa.title.activate')}
-        src={images.twoFaModalBanner}
-      />
+      <div className="u-flex">
+        <img
+          className="u-w-100 u-mh-auto"
+          alt={t('ProfileView.twofa.title.activate')}
+          src={images.twoFaModalBanner}
+          style={{ maxWidth: 480 }}
+        />
+      </div>
       <Typography variant="h5" className="u-ta-center u-mv-1-half">
         {t('ProfileView.twofa.modal.protect')}
       </Typography>
@@ -43,7 +45,7 @@ export const ActivationConfirmation = ({ images, error }) => {
             </Typography>
           </div>
         </Media>
-        <Media>
+        <Media className="u-mt-1-half">
           <Img>
             <img
               width={80}
