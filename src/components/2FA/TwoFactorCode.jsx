@@ -1,20 +1,36 @@
 import React, { useState } from 'react'
 
+import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { Button } from 'cozy-ui/transpiled/react/Button'
-import Field from 'cozy-ui/transpiled/react/Field'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import Field from 'cozy-ui/transpiled/react/Field'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import settingsConfig from 'config'
 
-const TwoFactorCode = ({
-  checkTwoFactorCode,
-  closeTwoFAActivationModal,
-  twoFactor,
-  email
-}) => {
+const TwoFactorCode = ({ email, onCodeConfirmed, closeModal }) => {
   const { t } = useI18n()
+  const client = useClient()
+
+  const [error, setError] = useState()
+
+  const checkCode = async code => {
+    setError()
+    try {
+      await client.stackClient.fetchJSON(
+        'PUT',
+        '/settings/instance/auth_mode',
+        {
+          two_factor_activation_code: code,
+          auth_mode: 'two_factor_mail'
+        }
+      )
+      onCodeConfirmed()
+    } catch (e) {
+      setError('ProfileView.infos.server_error')
+    }
+  }
 
   const [twoFactorCode, setTwoFactorCode] = useState('')
 
@@ -38,11 +54,11 @@ const TwoFactorCode = ({
         onChange={e => setTwoFactorCode(e.target.value)}
         fullwidth
         id="two_factor_mail"
-        error={Boolean(twoFactor.checkError)}
+        error={Boolean(error)}
       />
-      {twoFactor.checkError ? (
+      {error ? (
         <Typography variant="body1" className="u-error">
-          {t(twoFactor.checkError)}
+          {t(error)}
         </Typography>
       ) : null}
       <Typography variant="body1" gutterBottom>
@@ -55,12 +71,12 @@ const TwoFactorCode = ({
       </Typography>
       <div className="u-ta-right">
         <Button
-          onClick={closeTwoFAActivationModal}
+          onClick={closeModal}
           theme="secondary"
           label={t('ProfileView.twofa.modal.button.cancel')}
         />
         <Button
-          onClick={() => checkTwoFactorCode(twoFactorCode)}
+          onClick={() => checkCode(twoFactorCode)}
           disabled={!twoFactorCode}
           label={t('ProfileView.twofa.modal.button.validate')}
         />

@@ -3,16 +3,25 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/Button'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useClient } from 'cozy-client'
 
-export const Desactivate2FA = ({
-  desactivate2FA,
-  closeTwoFADesactivationModal
-}) => {
+export const Desactivate2FA = ({ closeModal, onDesactivation }) => {
   const { t } = useI18n()
+
+  const client = useClient()
+
+  const desactivate2FA = async () => {
+    await client.stackClient.fetchJSON('PUT', '/settings/instance/auth_mode', {
+      auth_mode: 'basic'
+    })
+    onDesactivation()
+    closeModal()
+  }
+
   return (
     <ConfirmDialog
       open
-      onClose={closeTwoFADesactivationModal}
+      onClose={closeModal}
       title={t('ProfileView.twofa.title.desactivate')}
       content={
         <>
@@ -27,7 +36,7 @@ export const Desactivate2FA = ({
       actions={
         <>
           <Button
-            onClick={closeTwoFADesactivationModal}
+            onClick={closeModal}
             theme="secondary"
             label={t('ProfileView.twofa.modal.button.cancel')}
           />

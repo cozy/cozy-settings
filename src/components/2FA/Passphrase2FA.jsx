@@ -37,7 +37,7 @@ export class Passphrase2FA extends Component {
         open
         onClose={closeTwoFAPassphraseModal}
         title={t('ProfileView.twofa.passphrase.title')}
-        size="s"
+        size="small"
         actions={
           <>
             <Button
