@@ -1,125 +1,95 @@
-import React, { Component } from 'react'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import React, { useEffect, useState } from 'react'
+
+import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { hasQueryBeenLoaded, useQuery } from 'cozy-client'
 
 import Input from 'components/Input'
 import Activate2FA from 'components/2FA/Activate2FA'
 import Desactivate2FA from 'components/2FA/Desactivate2FA'
+import { buildSettingsInstanceQuery } from 'lib/queries'
 
 const twoFaModalBanner = require('assets/images/double_authent_prez_banner.svg')
 const twoFaModalProtect = require('assets/images/protect_data_point.svg')
 const twoFaModalSecu = require('assets/images/niv_secu_point.svg')
 
-class TwoFA extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      twoFAActivationModalIsOpen: false,
-      twoFADesactivationModalIsOpen: false,
-      twoFAPassphraseModalIsOpen: false,
-      mailConfirmationCodeIsValid: false
+const TwoFA = ({ instance }) => {
+  const { t } = useI18n()
+
+  const instanceQuery = buildSettingsInstanceQuery()
+  const instanceResult = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
+
+  const [isTwoFactorEnabled, setTwoFactorEnabled] = useState(false)
+  const [isActivationModalOpen, setActivationModalOpen] = useState(false)
+  const [isDesactivationModalOpen, setDesactivationModalOpen] = useState(false)
+
+  useEffect(() => {
+    if (hasQueryBeenLoaded(instanceResult)) {
+      setTwoFactorEnabled(
+        instanceResult.data.attributes.auth_mode === 'two_factor_mail'
+      )
     }
-    // binding
-    this.activate2FA = this.activate2FA.bind(this)
-    this.desactivate2FA = this.desactivate2FA.bind(this)
-    this.openTwoFAActivationModal = this.openTwoFAActivationModal.bind(this)
-    this.closeTwoFAActivationModal = this.closeTwoFAActivationModal.bind(this)
-    this.openTwoFADesactivationModal =
-      this.openTwoFADesactivationModal.bind(this)
-    this.closeTwoFADesactivationModal =
-      this.closeTwoFADesactivationModal.bind(this)
+  }, [instanceResult, instanceResult.data])
+
+  const openActivationModal = () => {
+    setActivationModalOpen(true)
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    !this.props.isTwoFactorEnabled &&
-      nextProps.isTwoFactorEnabled &&
-      this.setState({ mailConfirmationCodeIsValid: true })
+  const closeActivationModal = () => {
+    setActivationModalOpen(false)
   }
 
-  activate2FA() {
-    // TODO: Open the password modal
-    this.props.activate2FA()
+  const openDesactivationModal = () => {
+    setDesactivationModalOpen(true)
+  }
+  const closeDesactivationModal = () => {
+    setDesactivationModalOpen(false)
   }
 
-  desactivate2FA() {
-    this.props.desactivate2FA()
-    this.setState({
-      mailConfirmationCodeIsValid: false
-    })
-    this.closeTwoFADesactivationModal()
+  const onActivation = () => {
+    setTwoFactorEnabled(true)
   }
 
-  openTwoFAActivationModal() {
-    this.setState({ twoFAActivationModalIsOpen: true })
-  }
-  closeTwoFAActivationModal() {
-    this.props.cancel2FAActivation()
-    this.setState({
-      twoFAActivationModalIsOpen: false
-    })
-  }
-  openTwoFADesactivationModal() {
-    this.setState({ twoFADesactivationModalIsOpen: true })
-  }
-  closeTwoFADesactivationModal() {
-    this.setState({ twoFADesactivationModalIsOpen: false })
+  const onDesactivation = () => {
+    setTwoFactorEnabled(false)
   }
 
-  render() {
-    const { t, isTwoFactorEnabled, instance, checkTwoFactorCode, twoFactor } =
-      this.props
-    const {
-      twoFAActivationModalIsOpen,
-      twoFADesactivationModalIsOpen,
-      mailConfirmationCodeIsValid
-    } = this.state
-    const root = document.querySelector('[role=application]')
-    const data = JSON.parse(root.dataset.cozy)
-    const cozyDomain = data.domain
-    return (
-      <div>
-        <Input
-          name="two_fa"
-          type="checkbox"
-          title={t('ProfileView.twofa.title.activate')}
-          label={t('ProfileView.twofa.label', {
-            link: 'https://support.cozy.io/article/114-doubleauthentification'
-          })}
-          value={isTwoFactorEnabled}
-          onChange={
-            isTwoFactorEnabled
-              ? this.openTwoFADesactivationModal
-              : this.openTwoFAActivationModal
-          }
+  return (
+    <div>
+      <Input
+        name="two_fa"
+        type="checkbox"
+        title={t('ProfileView.twofa.title.activate')}
+        label={t('ProfileView.twofa.label', {
+          link: 'https://support.cozy.io/article/114-doubleauthentification'
+        })}
+        value={isTwoFactorEnabled}
+        onChange={
+          isTwoFactorEnabled ? openDesactivationModal : openActivationModal
+        }
+      />
+      {isActivationModalOpen && (
+        <Activate2FA
+          onActivation={onActivation}
+          closeModal={closeActivationModal}
+          instance={instance}
+          images={{
+            twoFaModalBanner: twoFaModalBanner,
+            twoFaModalSecu: twoFaModalSecu,
+            twoFaModalProtect: twoFaModalProtect
+          }}
         />
-        {twoFAActivationModalIsOpen && (
-          <Activate2FA
-            activate2FA={() => this.activate2FA()}
-            checkTwoFactorCode={checkTwoFactorCode}
-            mailConfirmationCodeIsValid={mailConfirmationCodeIsValid}
-            closeTwoFAActivationModal={() => this.closeTwoFAActivationModal()}
-            instance={instance}
-            cozyDomain={cozyDomain}
-            isTwoFactorEnabled={isTwoFactorEnabled}
-            twoFactor={twoFactor}
-            images={{
-              twoFaModalBanner: twoFaModalBanner,
-              twoFaModalSecu: twoFaModalSecu,
-              twoFaModalProtect: twoFaModalProtect
-            }}
-          />
-        )}
-        {twoFADesactivationModalIsOpen && (
-          <Desactivate2FA
-            desactivate2FA={() => this.desactivate2FA()}
-            twoFactor={twoFactor}
-            closeTwoFADesactivationModal={() =>
-              this.closeTwoFADesactivationModal()
-            }
-          />
-        )}
-      </div>
-    )
-  }
+      )}
+      {isDesactivationModalOpen && (
+        <Desactivate2FA
+          onDesactivation={onDesactivation}
+          closeModal={closeDesactivationModal}
+        />
+      )}
+    </div>
+  )
 }
 
-export default translate()(TwoFA)
+export default TwoFA

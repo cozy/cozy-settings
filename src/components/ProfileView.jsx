@@ -22,8 +22,6 @@ import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
 import PageTitle from 'components/PageTitle'
 
-import { AUTH_MODE } from 'actions/twoFactor'
-
 export const PasswordSection = () => {
   const { t } = useI18n()
   const client = useClient()
@@ -63,26 +61,17 @@ const ProfileView = props => {
     isFetching,
     onFieldChange,
     instance,
-    updateInfo,
     exportData,
     fetchExportData,
     requestExport,
     importData,
     precheckImport,
-    submitImport,
-    twoFactor,
-    checkTwoFactorCode,
-    activate2FA,
-    desactivate2FA,
-    cancel2FAActivation
+    submitImport
   } = props
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
 
   const { exportId } = useParams()
-
-  const isTwoFactorEnabled =
-    fields.auth_mode && fields.auth_mode.value === AUTH_MODE.TWO_FA_MAIL
 
   return (
     <Page narrow>
@@ -117,16 +106,7 @@ const ProfileView = props => {
               onBlur={onFieldChange}
             />
             <PasswordSection />
-            <TwoFA
-              isTwoFactorEnabled={isTwoFactorEnabled}
-              instance={instance}
-              checkTwoFactorCode={checkTwoFactorCode}
-              twoFactor={twoFactor}
-              activate2FA={activate2FA}
-              desactivate2FA={desactivate2FA}
-              cancel2FAActivation={cancel2FAActivation}
-              updateInfo={updateInfo}
-            />
+            <TwoFA instance={instance} />
             <LanguageSection fields={fields} onChange={onFieldChange} />
             <DefaultRedirectionSection
               fields={fields}

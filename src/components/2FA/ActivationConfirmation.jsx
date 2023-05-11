@@ -5,7 +5,7 @@ import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 
-export const ActivationConfirmation = ({ images, twoFactor }) => {
+export const ActivationConfirmation = ({ images, error }) => {
   const { t } = useI18n()
   return (
     <>
@@ -63,9 +63,9 @@ export const ActivationConfirmation = ({ images, twoFactor }) => {
           </Bd>
         </Media>
       </div>
-      {twoFactor.error && (
+      {error && (
         <Typography variant="body1" className="u-error">
-          {t(twoFactor.error)}
+          {t(error)}
         </Typography>
       )}
     </>
