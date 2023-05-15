@@ -9,11 +9,13 @@ export const FETCH_EXPORT_DATA = 'FETCH_EXPORT_DATA'
 export const FETCH_EXPORT_DATA_FAILURE = 'FETCH_EXPORT_DATA_FAILURE'
 export const FETCH_EXPORT_DATA_SUCCESS = 'FETCH_EXPORT_DATA_SUCCESS'
 
-export const requestExport = () => {
+export const requestExport = client => {
   return dispatch => {
     dispatch({ type: REQUEST_EXPORT })
     //  we have to send a body due to the JsonAPI
-    return cozyFetch('POST', '/move/exports', { data: { attributes: {} } })
+    return cozyFetch(client, 'POST', '/move/exports', {
+      data: { attributes: {} }
+    })
       .then(() => {
         dispatch({ type: REQUEST_EXPORT_SUCCESS })
       })
@@ -26,10 +28,10 @@ export const requestExport = () => {
   }
 }
 
-export const fetchExportData = exportId => {
+export const fetchExportData = (client, exportId) => {
   return dispatch => {
     dispatch({ type: FETCH_EXPORT_DATA })
-    return cozyFetch('GET', `/move/exports/${exportId}`)
+    return cozyFetch(client, 'GET', `/move/exports/${exportId}`)
       .then(resp => {
         dispatch({ type: FETCH_EXPORT_DATA_SUCCESS, data: resp.data })
       })

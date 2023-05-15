@@ -63,6 +63,7 @@ const updatePassphraseFailure = error => {
  * @returns {Promise<void>}
  */
 export const updatePassphrase = (
+  client,
   currentPassphrase,
   newPassphrase,
   instanceURL
@@ -78,7 +79,7 @@ export const updatePassphrase = (
         currentPassphrase,
         newPassphrase
       )
-      await cozyFetch('PUT', '/settings/passphrase', {
+      await cozyFetch(client, 'PUT', '/settings/passphrase', {
         current_passphrase: newHashAndKeys.currentPasswordHash,
         new_passphrase: newHashAndKeys.newPasswordHash,
         key: newHashAndKeys.newEncryptionKey.encryptedString,
@@ -100,7 +101,11 @@ export const updatePassphrase = (
  * @param {string} instanceURL - Must be a string usable in the `URL()` constructor
  * @returns {Promise<void>}
  */
-export const updatePassphrase2FAFirst = (currentPassphrase, instanceURL) => {
+export const updatePassphrase2FAFirst = (
+  client,
+  currentPassphrase,
+  instanceURL
+) => {
   const vaultClient = new WebVaultClient(instanceURL)
 
   return async dispatch => {
@@ -110,7 +115,7 @@ export const updatePassphrase2FAFirst = (currentPassphrase, instanceURL) => {
       const currentPasswordHash = await vaultClient.computeHashedPassword(
         currentPassphrase
       )
-      const data = await cozyFetch('PUT', '/settings/passphrase', {
+      const data = await cozyFetch(client, 'PUT', '/settings/passphrase', {
         current_passphrase: currentPasswordHash
       })
       dispatch({
@@ -134,6 +139,7 @@ export const updatePassphrase2FAFirst = (currentPassphrase, instanceURL) => {
  * @returns {Promise<void>}
  */
 export const updatePassphrase2FASecond = (
+  client,
   currentPassphrase,
   newPassphrase,
   twoFactorCode,
@@ -151,7 +157,7 @@ export const updatePassphrase2FASecond = (
         currentPassphrase,
         newPassphrase
       )
-      await cozyFetch('PUT', '/settings/passphrase', {
+      await cozyFetch(client, 'PUT', '/settings/passphrase', {
         new_passphrase: newHashAndKeys.newPasswordHash,
         key: newHashAndKeys.newEncryptionKey.encryptedString,
         iterations: newHashAndKeys.kdfIterations,
@@ -181,12 +187,12 @@ export const updatePassphrase2FASecond = (
   }
 }
 
-export const updateHint = hint => {
+export const updateHint = (client, hint) => {
   return async dispatch => {
     dispatch({ type: UPDATE_HINT })
 
     try {
-      await cozyFetch('PUT', '/settings/hint', { hint })
+      await cozyFetch(client, 'PUT', '/settings/hint', { hint })
 
       dispatch({ type: UPDATE_HINT_SUCCESS })
     } catch (err) {

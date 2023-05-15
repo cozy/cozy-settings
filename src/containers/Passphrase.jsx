@@ -57,9 +57,10 @@ const showSuccessThenReload = (t, location) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onPassphraseSimpleSubmit: async (currentPassphrase, newPassphrase, hint) => {
     try {
-      await dispatch(updateHint(hint))
+      await dispatch(updateHint(ownProps.client, hint))
       await dispatch(
         updatePassphrase(
+          ownProps.client,
           currentPassphrase,
           newPassphrase,
           ownProps.client.getStackClient().uri
@@ -75,6 +76,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     try {
       await dispatch(
         updatePassphrase2FAFirst(
+          ownProps.client,
           currentPassphrase,
           ownProps.client.getStackClient().uri
         )
@@ -92,9 +94,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     hint
   ) => {
     try {
-      await dispatch(updateHint(hint))
+      await dispatch(updateHint(ownProps.client, hint))
       await dispatch(
         updatePassphrase2FASecond(
+          ownProps.client,
           currentPassphrase,
           newPassphrase,
           twoFactorCode,
@@ -108,7 +111,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       console.error(e)
     }
   },
-  fetchInfos: () => dispatch(fetchInfos())
+  fetchInfos: () => dispatch(fetchInfos(ownProps.client))
 })
 
 const ComposedPassphrase = compose(

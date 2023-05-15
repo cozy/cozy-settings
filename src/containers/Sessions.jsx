@@ -1,8 +1,10 @@
 import { connect } from 'react-redux'
+import compose from 'lodash/flowRight'
 
-import { fetchSessions, deleteOtherSessions } from 'actions'
+import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
+import { fetchSessions, deleteOtherSessions } from 'actions'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 import SessionsView from 'components/SessionsView'
 
@@ -13,15 +15,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchSessions: () => {
-    const { t } = ownProps
-    dispatch(fetchSessions()).catch(() =>
+    const { t, client } = ownProps
+    dispatch(fetchSessions(client)).catch(() =>
       Alerter.error(t('SessionsView.infos.server_error'))
     )
   },
   deleteOtherSessions: async () => {
-    const { t } = ownProps
+    const { t, client } = ownProps
     try {
-      await dispatch(deleteOtherSessions())
+      await dispatch(deleteOtherSessions(client))
       Alerter.success(t('SessionsView.infos.sessions_deleted'))
     } catch (error) {
       Alerter.error(t('SessionsView.infos.server_error'))
@@ -29,6 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 })
 
-export default translate()(
-  connect(mapStateToProps, mapDispatchToProps)(SessionsView)
-)
+export default compose(
+  translate(),
+  withClient,
+  connect(mapStateToProps, mapDispatchToProps)
+)(SessionsView)
