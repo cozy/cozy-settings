@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(createIntentService(intent, window))
   },
   fetchClaudy: () => {
-    dispatch(fetchClaudyInfos())
+    dispatch(fetchClaudyInfos(ownProps.client))
   },
   fetchInfos: () => {
     dispatch(fetchInfos())

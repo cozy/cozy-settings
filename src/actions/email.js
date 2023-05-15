@@ -103,7 +103,7 @@ export function sendEmail(
       priority: 10,
       max_exec_count: 1
     })
-    .then(({ data: { attributes: job } }) => waitForJobFinished(job))
+    .then(({ data: { attributes: job } }) => waitForJobFinished(client, job))
 }
 
 // monitor the status of the job and resolve when the email is sent
@@ -112,12 +112,12 @@ export const JOB_STATE = {
   ERRORED: 'errored',
   DONE: 'done'
 }
-function waitForJobFinished(job) {
+function waitForJobFinished(client, job) {
   return new Promise((resolve, reject) => {
     let idInterval
 
     idInterval = setInterval(() => {
-      cozyFetch('GET', `/jobs/${job._id}`)
+      cozyFetch(client, 'GET', `/jobs/${job._id}`)
         .then(response => {
           const job = response.data
           if (job.attributes.state === JOB_STATE.ERRORED) {

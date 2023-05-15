@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
+import compose from 'lodash/flowRight'
 
+import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
 
 import { updateInfo, fetchInfos } from 'actions'
 import { requestExport, fetchExportData } from 'actions/export'
 import { precheckImport, submitImport } from 'actions/import'
-
 import ProfileView from 'components/ProfileView'
 
 const mapStateToProps = state => ({
@@ -19,13 +20,13 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchInfos: () => dispatch(fetchInfos()),
+  fetchInfos: () => dispatch(fetchInfos(ownProps.client)),
   onFieldChange: (field, value) => {
-    dispatch(updateInfo(field, value))
+    dispatch(updateInfo(ownProps.client, field, value))
   },
   requestExport: async () => {
     try {
-      await dispatch(requestExport())
+      await dispatch(requestExport(ownProps.client))
       Alerter.success(ownProps.t('ProfileView.export.success'))
     } catch (e) {
       // eslint-disable-next-line no-console
@@ -33,16 +34,18 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
   },
   fetchExportData: exportId => {
-    dispatch(fetchExportData(exportId))
+    dispatch(fetchExportData(ownProps.client, exportId))
   },
   precheckImport: async url => {
-    return dispatch(precheckImport(url))
+    return dispatch(precheckImport(ownProps.client, url))
   },
   submitImport: async url => {
-    return dispatch(submitImport(url))
+    return dispatch(submitImport(ownProps.client, url))
   }
 })
 
-export default translate()(
-  connect(mapStateToProps, mapDispatchToProps)(ProfileView)
-)
+export default compose(
+  translate(),
+  withClient,
+  connect(mapStateToProps, mapDispatchToProps)
+)(ProfileView)

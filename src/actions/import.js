@@ -10,11 +10,11 @@ export const IMPORT_IMPORT = 'IMPORT_IMPORT'
 export const IMPORT_IMPORT_FAILURE = 'IMPORT_IMPORT_FAILURE'
 export const IMPORT_IMPORT_SUCCESS = 'IMPORT_IMPORT_SUCCESS'
 
-export const precheckImport = url => {
+export const precheckImport = (client, url) => {
   return async dispatch => {
     dispatch({ type: PRECHECK_IMPORT })
     try {
-      await cozyFetch('POST', '/move/imports/precheck', {
+      await cozyFetch(client, 'POST', '/move/imports/precheck', {
         data: { attributes: { url: url } }
       })
       dispatch({ type: PRECHECK_IMPORT_SUCCESS })
@@ -37,11 +37,11 @@ export const precheckImport = url => {
   }
 }
 
-export const submitImport = url => {
+export const submitImport = (client, url) => {
   return async dispatch => {
     dispatch({ type: PRECHECK_IMPORT })
     try {
-      await cozyFetch('POST', '/move/imports', {
+      await cozyFetch(client, 'POST', '/move/imports', {
         data: { attributes: { url: url } }
       })
       dispatch({ type: PRECHECK_IMPORT_SUCCESS })

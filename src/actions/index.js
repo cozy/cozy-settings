@@ -1,6 +1,5 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line no-redeclare
-/* global fetch */
 
 import { FallbackQuota } from 'lib/makeDiskInfos'
 import emailHelper from 'lib/emailHelper'
@@ -50,10 +49,10 @@ export const FETCH_STORAGE = 'FETCH_STORAGE'
 export const FETCH_STORAGE_SUCCESS = 'FETCH_STORAGE_SUCCESS'
 export const FETCH_STORAGE_FAILURE = 'FETCH_STORAGE_FAILURE'
 
-export const fetchInfos = () => {
+export const fetchInfos = client => {
   return dispatch => {
     dispatch({ type: FETCH_INFOS })
-    cozyFetch('GET', '/settings/instance')
+    cozyFetch(client, 'GET', '/settings/instance')
       .then(instance => {
         // tracking preference is stored as string, convert it to boolean for the checkbox
         if (
@@ -77,14 +76,14 @@ export const fetchInfos = () => {
   }
 }
 
-export const fetchStorageData = () => {
+export const fetchStorageData = client => {
   return async dispatch => {
     dispatch({ type: FETCH_STORAGE })
     let offersLink = null
     try {
       // should be not blocking
-      const ctx = await cozyFetch('GET', '/settings/context')
-      const instance = await cozyFetch('GET', '/settings/instance')
+      const ctx = await cozyFetch(client, 'GET', '/settings/context')
+      const instance = await cozyFetch(client, 'GET', '/settings/instance')
       const managerUrl =
         ctx &&
         ctx.data &&
@@ -112,7 +111,7 @@ export const fetchStorageData = () => {
         console.warn(e)
       }
     }
-    cozyFetch('GET', '/settings/disk-usage')
+    cozyFetch(client, 'GET', '/settings/disk-usage')
       .then(json => {
         dispatch({
           type: FETCH_STORAGE_SUCCESS,
@@ -132,14 +131,18 @@ export const fetchStorageData = () => {
   }
 }
 
-const tryUpdate = async (instance, { retries = 0 }) => {
+const tryUpdate = async (client, instance, { retries = 0 }) => {
   try {
-    return await cozyFetch('PUT', '/settings/instance', instance)
+    return await cozyFetch(client, 'PUT', '/settings/instance', instance)
   } catch (error) {
     const isConflictError =
       error.errors && error.errors[0] && error.errors[0].status === '409'
     if (isConflictError && retries) {
-      const remoteInstance = await cozyFetch('GET', '/settings/instance')
+      const remoteInstance = await cozyFetch(
+        client,
+        'GET',
+        '/settings/instance'
+      )
       remoteInstance.data.attributes = instance.data.attributes
       return tryUpdate(remoteInstance, { retries: retries - 1 })
     } else {
@@ -148,7 +151,7 @@ const tryUpdate = async (instance, { retries = 0 }) => {
   }
 }
 
-export const updateInfo = (field, value) => {
+export const updateInfo = (client, field, value) => {
   return async (dispatch, getState) => {
     dispatch({ type: UPDATE_INFO, field, value })
     // Check if the field is empty or not
@@ -182,7 +185,7 @@ export const updateInfo = (field, value) => {
     let updatedInstance
 
     try {
-      updatedInstance = await tryUpdate(instance, { retries: 3 })
+      updatedInstance = await tryUpdate(client, instance, { retries: 3 })
     } catch (error) {
       dispatch({
         type: UPDATE_INFO_FAILURE,
@@ -208,11 +211,11 @@ export const updateInfo = (field, value) => {
 }
 
 const DISPLAYED_CLIENTS = ['mobile', 'desktop', 'browser']
-export const fetchDevices = () => {
+export const fetchDevices = client => {
   return async dispatch => {
     dispatch({ type: FETCH_DEVICES })
 
-    cozyFetch('GET', '/settings/clients')
+    cozyFetch(client, 'GET', '/settings/clients')
       .then(response => {
         // transform th raw data into a more digestable format for the app
         let devices = response.data
@@ -231,7 +234,7 @@ export const fetchDevices = () => {
   }
 }
 
-export const fetchSessions = () => {
+export const fetchSessions = client => {
   return async dispatch => {
     dispatch({ type: FETCH_SESSIONS })
 
@@ -242,13 +245,18 @@ export const fetchSessions = () => {
     try {
       // GET all the sessions
       responseSessions = await cozyFetch(
+        client,
         'GET',
         '/data/io.cozy.sessions.logins/_all_docs?include_docs=true'
       )
       // Sort allSessions in an array
       responseSessions.rows.map(row => sessions.push(row.doc))
       // GET currents sessions id
-      responseCurrentsSessionsIds = await cozyFetch('GET', '/settings/sessions')
+      responseCurrentsSessionsIds = await cozyFetch(
+        client,
+        'GET',
+        '/settings/sessions'
+      )
     } catch (error) {
       dispatch({ type: FETCH_SESSIONS_FAILURE })
       throw error
@@ -268,10 +276,10 @@ export const fetchSessions = () => {
   }
 }
 
-export const deleteOtherSessions = () => {
+export const deleteOtherSessions = client => {
   return async dispatch => {
     dispatch({ type: SESSIONS_DELETE_OTHERS })
-    cozyFetch('DELETE', '/auth/login/others')
+    cozyFetch(client, 'DELETE', '/auth/login/others')
       .then(() => {
         dispatch({ type: SESSIONS_DELETE_OTHERS_SUCCESS })
       })
@@ -285,31 +293,6 @@ export const deleteOtherSessions = () => {
   }
 }
 
-export const cozyFetch = (method, path, body) => {
-  let params = {
-    method: method,
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${STACK_TOKEN}`
-    }
-  }
-  if (body) {
-    params.body = JSON.stringify(body)
-  }
-  return fetch(`${STACK_DOMAIN}${path}`, params).then(response => {
-    let data
-    const contentType = response.headers.get('content-type')
-    if (contentType && contentType.indexOf('json') >= 0) {
-      data = response.json()
-    } else {
-      data = response.text()
-    }
-
-    return response.status >= 200 && response.status <= 204
-      ? data
-      : // eslint-disable-next-line promise/no-nesting
-        data.then(Promise.reject.bind(Promise))
-  })
+export const cozyFetch = (client, method, path, body) => {
+  return client.stackClient.fetchJSON(method, path, body)
 }

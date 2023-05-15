@@ -31,10 +31,10 @@ export const createIntentService = (client, intent, window) => {
   }
 }
 
-export const fetchClaudyInfos = () => {
+export const fetchClaudyInfos = client => {
   return dispatch => {
     dispatch({ type: FETCH_CLAUDY_INFOS })
-    cozyFetch('GET', '/settings/context')
+    cozyFetch(client, 'GET', '/settings/context')
       .then(context => {
         const contextActions =
           (context.data &&
