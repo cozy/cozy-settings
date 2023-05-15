@@ -142,6 +142,10 @@
         "desactivate": "Désactiver l'authentification en deux étapes",
         "validation": "Validation de la double authentification"
       },
+      "password_creation": {
+        "title": "Choisir un mot de passe",
+        "help": "Utiliser au moins huit caractères avec des lettres, des chiffres et des symboles."
+      },
       "passphrase": {
         "title": "Authentification en deux étapes",
         "description": "Votre Cozy vous a envoyé un code de validation à 6 chiffres à l'adresse suivante : %{email}<br/>Saississez-le ci-dessous pour activer l'authentification :"
@@ -170,7 +174,9 @@
           "cancel": "Annuler",
           "desactivate": "Désactiver",
           "validate": "Valider",
-          "terminate": "Terminer"
+          "terminate": "Terminer",
+          "confirm": "Confirmer",
+          "next": "Suivant"
         }
       }
     },

@@ -142,6 +142,10 @@
         "desactivate": "Desactivate two steps authentication",
         "validation": "Two steps authentication validation"
       },
+      "password_creation": {
+        "title": "Choose a password",
+        "help": "Use at least eight characters with letters, numbers and symbols."
+      },
       "passphrase": {
         "title": "Two steps authentication",
         "description": "Your Cozy sent a 6 digits validation code to %{email}.<br/>Entre the code inside to change your password:"
@@ -170,7 +174,9 @@
           "cancel": "cancel",
           "desactivate": "desactivate",
           "validate": "validate",
-          "terminate": "terminate"
+          "terminate": "terminate",
+          "confirm": "confirm",
+          "next": "Next"
         }
       }
     },
