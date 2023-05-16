@@ -1,10 +1,10 @@
 import styles from 'styles/passphrase.styl'
 
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import { Button } from 'cozy-ui/transpiled/react/Button'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Input from 'cozy-ui/transpiled/react/Input'
 import Icon from 'cozy-ui/transpiled/react/Icon'
@@ -17,7 +17,6 @@ import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import PageTitle from 'components/PageTitle'
 import passwordHelper from 'lib/passwordHelper'
-import { parseRedirectUrlsFromUrlParams } from 'containers/Passphrase'
 import { useCanAuthWith } from 'hooks/useCanAuthWith'
 
 const initialData = {
@@ -28,7 +27,6 @@ const initialData = {
 }
 
 const PassphraseForm = ({ errors, submitting, saved, onSubmit }) => {
-  const location = useLocation()
   const { t } = useI18n()
 
   const [formData, setFormData] = useState(initialData)
@@ -69,8 +67,6 @@ const PassphraseForm = ({ errors, submitting, saved, onSubmit }) => {
     newPassphraseMatch &&
     strength.label !== 'weak' &&
     !hintSameAsPassphrase
-
-  const { cancelRedirectUrl } = parseRedirectUrlsFromUrlParams(location.search)
 
   const { canAuthWithPassword, canAuthWithOIDC } = useCanAuthWith()
   const shouldUseOIDCtitle = !canAuthWithPassword && canAuthWithOIDC
@@ -191,22 +187,13 @@ const PassphraseForm = ({ errors, submitting, saved, onSubmit }) => {
         >
           {saved && <Icon className="u-ml-half u-valid" icon={CheckIcon} />}
         </Button>
-        {cancelRedirectUrl ? (
-          <ButtonLink
-            href={cancelRedirectUrl}
-            label={t('PassphraseView.cancel')}
-            theme="secondary"
-            extension="full"
-          />
-        ) : (
-          <Button
-            tag={Link}
-            to="/profile"
-            label={t('PassphraseView.cancel')}
-            theme="secondary"
-            extension="full"
-          />
-        )}
+        <Button
+          tag={Link}
+          to="/profile"
+          label={t('PassphraseView.cancel')}
+          theme="secondary"
+          extension="full"
+        />
       </Stack>
     </Stack>
   )

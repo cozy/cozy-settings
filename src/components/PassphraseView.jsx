@@ -24,12 +24,16 @@ const PassphraseView = props => {
   const [newPassphrase, setNewPassphrase] = useState('')
   const [hint, setHint] = useState('')
 
-  const handlePassphrase2FAStep1 = (currentPassphrase, newPassphrase, hint) => {
+  const handlePassphrase2FAStep1 = async (
+    currentPassphrase,
+    newPassphrase,
+    hint
+  ) => {
     setCurrentPassphrase(currentPassphrase)
     setNewPassphrase(newPassphrase)
     setHint(hint)
     setTwoFAModalOpen(true)
-    onPassphrase2FAStep1(currentPassphrase)
+    await onPassphrase2FAStep1(currentPassphrase)
   }
 
   const handlePassphrase2FASubmit = twoFactorCode => {

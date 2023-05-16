@@ -24,34 +24,8 @@ const mapStateToProps = state => ({
   passphrase: state.passphrase
 })
 
-export const parseRedirectUrlsFromUrlParams = urlParamsStr => {
-  const urlParams = new URLSearchParams(urlParamsStr)
-
-  return {
-    successRedirectUrl: urlParams.get('redirect_success'),
-    cancelRedirectUrl: urlParams.get('redirect_cancel')
-  }
-}
-
-const showSuccessThenReload = (t, location) => {
-  const { successRedirectUrl } = parseRedirectUrlsFromUrlParams(location.search)
-
-  const translatationKey = successRedirectUrl
-    ? 'PassphraseView.redirect'
-    : 'PassphraseView.reload'
-
-  const ALERT_DURATION = 4000
-  Alerter.info(t(translatationKey), { duration: ALERT_DURATION })
-
-  setTimeout(() => {
-    if (successRedirectUrl) {
-      window.location = successRedirectUrl
-    } else {
-      // the token changes after a password change, so we need to reload
-      // the page to get the new one
-      window.location.reload()
-    }
-  }, ALERT_DURATION)
+const showSuccess = t => {
+  Alerter.success(t('PassphraseView.success'))
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -66,7 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           ownProps.client.getStackClient().uri
         )
       )
-      showSuccessThenReload(ownProps.t, ownProps.location)
+      showSuccess(ownProps.t)
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
@@ -105,7 +79,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           ownProps.client.getStackClient().uri
         )
       )
-      showSuccessThenReload(ownProps.t, ownProps.location)
+      showSuccess(ownProps.t)
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e)
