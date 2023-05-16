@@ -26,6 +26,7 @@ const submitting = (state = false, action) => {
     case UPDATE_PASSPHRASE_FAILURE:
     case UPDATE_PASSPHRASE_2FA_1_FAILURE:
     case UPDATE_PASSPHRASE_2FA_1_SUCCESS:
+    case RESET_PASSPHRASE_FIELD:
       return false
     default:
       return state

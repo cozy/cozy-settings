@@ -373,8 +373,7 @@
     "cancel": "Garder mon mot de passe actuel",
     "server_error": "Une erreur s'est produite. Votre mot de passe n'a pas été sauvegardé.",
     "wrong_two_fa_code": "Le code d'authentification en deux étapes fourni semble mauvais.",
-    "reload": "Votre mot de passe a été changé. La page va se recharger afin que le changement prenne effet.",
-    "redirect": "Votre mot de passe a été changé. Vous allez être redirigé(e)."
+    "success": "Votre mot de passe a été changé."
   },
   "BiometryDeniedDialog": {
     "title": "Activation impossible",
