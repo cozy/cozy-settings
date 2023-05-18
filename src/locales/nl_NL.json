@@ -142,13 +142,17 @@
         "desactivate": "Authenticatie in twee stappen uitschakelen",
         "validation": "Verificatie van authenticatie in twee stappen"
       },
+      "password_creation": {
+        "title": "Kies een wachtwoord",
+        "help": "Gebruik minimaal acht tekens: letters, cijfers en speciale tekens."
+      },
       "passphrase": {
         "title": "Authenticatie in twee stappen",
         "description": "Cozy heeft een verificatiecode van 6 getallen verstuurd naar %{email}.<br/>Voer die code hier in om je wachtwoord te wijzigen:"
       },
       "label": "Twee stappen zijn beter dan één: daarom kun je de veiligheid verbeteren met een extra stap.<br/>[Bekijk onze hulppagina →](%{link})",
       "modal": {
-        "code": "code",
+        "code": "Code (6 cijfers)",
         "protect": "Bescherm je Cozy met authenticatie in twee stappen",
         "change": "**Wat verandert er?** Elke keer als je verbinding maakt met je Cozy, dan heb je je wachtwoord nodig en een verificatiecode.<br/>[Bekijk onze hulppagina →](%{link})",
         "secu_title": "Voeg een extra beveiligingsniveau toe",
@@ -157,8 +161,8 @@
         "protect_description": "Zelfs als een dief je wachtwoord raadt, dan blijf jij de enige die kan verbinden met je Cozy.",
         "desactivate_title": "Weet je zeker dat je deze optie wilt uitschakelen?",
         "desactivate_description": "Als je op de knop ‘Uitschakelen’ klikt, dan wordt je wachtwoord de enige toegang tot je Cozy. Je verwijdert hiermee dus een beveiligingsniveau.",
-        "confirmation_title": "Verificatiecode-bevestiging",
-        "confirmation_description": "Cozy heeft een verificatiecode van 6 getallen verstuurd naar %{email}.<br/>Voer die code hier in om de authenticatie in te schakelen:",
+        "confirmation_title": "Verificatie in 2 stappen",
+        "confirmation_description": "Voer de verificatiecode in die verstuurd is naar **%{email}**",
         "nocode": "Heb je geen code ontvangen?",
         "nocode_claude": "Neem dan contact op met Claude via",
         "validation_title": "Gefeliciteerd! Je e-mailadres is bevestigd.",
@@ -170,7 +174,9 @@
           "cancel": "annuleren",
           "desactivate": "uitschakelen",
           "validate": "verifiëren",
-          "terminate": "afbreken"
+          "terminate": "afbreken",
+          "confirm": "Bevestigen",
+          "next": "Volgende"
         }
       }
     },
@@ -373,8 +379,7 @@
     "cancel": "Huidige wachtwoord behouden",
     "server_error": "Er is een fout opgetreden; je wachtwoord is niet opgeslagen.",
     "wrong_two_fa_code": "De opgegeven tweestapscode is onjuist.",
-    "reload": "Je wachtwoord is gewijzigd. De pagina wordt herladen zodat de wijziging kan worden toegepast.",
-    "redirect": "Je wachtwoord is gewijzigd - je wordt doorgestuurd."
+    "success": "Je wachtwoord is gewijzigd."
   },
   "BiometryDeniedDialog": {
     "title": "Inschakelen mislukt",
