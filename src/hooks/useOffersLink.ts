@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import CozyClient, { useClient, Q } from 'cozy-client'
 import logger from 'lib/logger'
+import { buildSettingsInstanceQuery } from 'lib/queries'
 
 const warn = (logger as unknown as { warn: (...args: unknown[]) => void }).warn
 
@@ -29,14 +30,9 @@ export const useOffersLink = (): undefined | string | null => {
               singleDocData: true
             }
           })) as ExpectedContext,
-          (await client.fetchQueryAndGetFromState({
-            definition: Q('io.cozy.settings').getById('instance'),
-            options: {
-              fetchPolicy: CozyClient.fetchPolicies.olderThan(3000 * 1000),
-              as: `io.cozy.settings/instance`,
-              singleDocData: true
-            }
-          })) as ExpectedInstance
+          (await client.fetchQueryAndGetFromState(
+            buildSettingsInstanceQuery()
+          )) as ExpectedInstance
         ])
         const { manager_url, enable_premium_links } = context.attributes
         const { uuid } = instance.attributes
