@@ -5,7 +5,7 @@ import set from 'lodash/set'
 import CozyClient from 'cozy-client'
 
 import AppLike from '../../test/AppLike'
-import { PasswordSection } from './ProfileView'
+import PasswordSection from 'components/PasswordSection'
 
 describe('PasswordSection', () => {
   const setup = ({ can_auth_with_password }) => {
