@@ -50,24 +50,24 @@ export const PasswordSection = () => {
   ) : null
 }
 
-const ProfileView = ({
-  fields,
-  isFetching,
-  onFieldChange,
-  instance,
-  exportData,
-  fetchExportData,
-  requestExport,
-  importData,
-  precheckImport,
-  submitImport,
-  fetchInfos
-}) => {
+const ProfileView = props => {
   useEffect(() => {
-    fetchInfos()
+    props.fetchInfos()
     // eslint-disable-next-line
   }, [])
 
+  const {
+    fields,
+    isFetching,
+    onFieldChange,
+    instance,
+    exportData,
+    fetchExportData,
+    requestExport,
+    importData,
+    precheckImport,
+    submitImport
+  } = props
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
 
@@ -106,7 +106,7 @@ const ProfileView = ({
               onBlur={onFieldChange}
             />
             <PasswordSection />
-            <TwoFA instance={instance} updateInstance={fetchInfos} />
+            <TwoFA instance={instance} />
             <LanguageSection fields={fields} onChange={onFieldChange} />
             <DefaultRedirectionSection
               fields={fields}
