@@ -8,37 +8,8 @@ import {
   RESET_INFO_FIELD
 } from 'actions'
 
-import {
-  CHECK_TWO_FACTOR_CODE_SUCCESS,
-  DESACTIVATE_2FA_SUCCESS,
-  AUTH_MODE
-} from 'actions/twoFactor'
-
-const composeReducers = (...fns) => {
-  return (state, action) => {
-    for (let i = 0; i < fns.length; i++) {
-      const reducer = fns[fns.length - i - 1]
-      // eslint-disable-next-line no-param-reassign
-      state = reducer(state, action)
-    }
-    return state
-  }
-}
-
-/** Special reducer for the auth_mode value */
-const authModeValue = (state = AUTH_MODE.BASIC, action) => {
-  switch (action.type) {
-    case CHECK_TWO_FACTOR_CODE_SUCCESS:
-      return AUTH_MODE.TWO_FA_MAIL
-    case DESACTIVATE_2FA_SUCCESS:
-      return AUTH_MODE.BASIC
-    default:
-      return state
-  }
-}
-
 const createField = name => {
-  const normalValue = (state = '', action) => {
+  const value = (state = '', action) => {
     switch (action.type) {
       case FETCH_INFOS_SUCCESS:
         return action.instance.data.attributes[name] || ''
@@ -48,11 +19,6 @@ const createField = name => {
         return state
     }
   }
-
-  const value =
-    name == 'auth_mode'
-      ? composeReducers(authModeValue, normalValue)
-      : normalValue
 
   const submitting = (state = false, action) => {
     if (name !== action.field) return state
