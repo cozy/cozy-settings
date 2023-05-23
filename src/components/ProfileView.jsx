@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import get from 'lodash/get'
 import { useParams } from 'react-router-dom'
 
-import { useClient } from 'cozy-client'
-import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 
 import Page from 'components/Page'
@@ -21,57 +16,29 @@ import Import from 'components/Import'
 import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
 import PageTitle from 'components/PageTitle'
+import PasswordSection from 'components/PasswordSection'
 
-export const PasswordSection = () => {
-  const { t } = useI18n()
-  const client = useClient()
-
-  // If we have no capabilities, consider that we can login to the cozy with password
-  const canAuthWithPassword = get(
-    client,
-    'capabilities.can_auth_with_password',
-    true
-  )
-
-  return canAuthWithPassword ? (
-    <div>
-      <Typography variant="h5" gutterBottom>
-        {t('ProfileView.password.title')}
-      </Typography>
-      <Typography variant="body1">{t('ProfileView.password.label')}</Typography>
-      <Button
-        tag={Link}
-        to="/profile/password"
-        label={t('ProfileView.password.cta')}
-        theme="secondary"
-        className="u-mt-half u-mh-0"
-      />
-    </div>
-  ) : null
-}
-
-const ProfileView = props => {
-  useEffect(() => {
-    props.fetchInfos()
-    // eslint-disable-next-line
-  }, [])
-
-  const {
-    fields,
-    isFetching,
-    onFieldChange,
-    instance,
-    exportData,
-    fetchExportData,
-    requestExport,
-    importData,
-    precheckImport,
-    submitImport
-  } = props
+const ProfileView = ({
+  fields,
+  isFetching,
+  onFieldChange,
+  instance,
+  exportData,
+  fetchExportData,
+  requestExport,
+  importData,
+  precheckImport,
+  submitImport,
+  fetchInfos
+}) => {
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
-
   const { exportId } = useParams()
+
+  useEffect(() => {
+    fetchInfos()
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <Page narrow>
