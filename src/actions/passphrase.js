@@ -34,8 +34,7 @@ const defaultErrorAction = {
 
 export const getErrorDetails = error => {
   const vaultError = error && error.response && error.response.error
-  const stackError =
-    error && error.errors && error.errors[0] && error.errors[0].detail
+  const stackError = error?.reason?.errors?.[0]?.detail
 
   return vaultError || stackError
 }
@@ -167,7 +166,7 @@ export const updatePassphrase2FASecond = (
       dispatch({ type: UPDATE_PASSPHRASE_2FA_2_SUCCESS })
       dispatch({ type: RESET_PASSPHRASE_FIELD })
     } catch (error) {
-      const errors = error.errors || []
+      const errors = error.reason?.errors || []
       if (
         errors.length &&
         errors[0].detail === 'Invalid two-factor parameters'
