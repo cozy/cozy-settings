@@ -20,7 +20,7 @@ export const precheckImport = (client, url) => {
       dispatch({ type: PRECHECK_IMPORT_SUCCESS })
     } catch (e) {
       let error = 'server_error'
-      switch (e.errors && e.errors[0] && +e.errors[0].status) {
+      switch (e.status) {
         case 412:
           error = 'invalid_url'
           break

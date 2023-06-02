@@ -103,13 +103,8 @@ export const fetchStorageData = client => {
         offersLink = `${managerUrl}/cozy/instances/${uuid}/premium`
       }
     } catch (e) {
-      if (e.error && e.error !== 'Not Found') {
-        // eslint-disable-next-line no-console
-        console.warn(e)
-      } else if (!e.error) {
-        // eslint-disable-next-line no-console
-        console.warn(e)
-      }
+      // eslint-disable-next-line no-console
+      console.warn(e)
     }
     cozyFetch(client, 'GET', '/settings/disk-usage')
       .then(json => {
@@ -135,8 +130,7 @@ const tryUpdate = async (client, instance, { retries = 0 }) => {
   try {
     return await cozyFetch(client, 'PUT', '/settings/instance', instance)
   } catch (error) {
-    const isConflictError =
-      error.errors && error.errors[0] && error.errors[0].status === '409'
+    const isConflictError = error.status === 409
     if (isConflictError && retries) {
       const remoteInstance = await cozyFetch(
         client,
@@ -144,7 +138,7 @@ const tryUpdate = async (client, instance, { retries = 0 }) => {
         '/settings/instance'
       )
       remoteInstance.data.attributes = instance.data.attributes
-      return tryUpdate(remoteInstance, { retries: retries - 1 })
+      return tryUpdate(client, remoteInstance, { retries: retries - 1 })
     } else {
       throw error
     }
