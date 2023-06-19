@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import { Route, Navigate, Routes, Outlet } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
 import Alerter from 'cozy-ui/transpiled/react/Alerter'
@@ -10,7 +9,6 @@ import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
 import { RealTimeQueries } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import Devices from 'containers/Devices'
 import IntentRedirect from 'services/IntentRedirect'
@@ -39,82 +37,67 @@ const OutletWrapper = ({ Component }) => (
   </>
 )
 
-export class App extends Component {
-  render() {
-    const { isMobile, isTablet } = this.props
-    const isSmallView = isMobile || isTablet
-    const isBigView = !isSmallView
+export const App = () => {
+  const { isMobile, isTablet } = useBreakpoints()
+  const isSmallView = isMobile || isTablet
+  const isBigView = !isSmallView
 
-    return (
-      <Layout
-        className={classNames({ [styles['Layout--small-view']]: isSmallView })}
-      >
-        {App.renderExtra()}
-        <FlagSwitcher />
-        <Alerter />
-        {isBigView && <Sidebar />}
-        <RealTimeQueries doctype="io.cozy.oauth.clients" />
-
-        <Main>
-          <Routes>
-            {isSmallView && <Route path="/menu" element={<Menu />} />}
-            <Route path="/redirect" element={<IntentRedirect />} />
-            <Route path="/profile/*" element={<Profile />} />
-            <Route path="/profile/password" element={<Passphrase />} />
-            <Route path="/connectedDevices/*" element={<Devices />} />
-            <Route path="/connectedDevices/:deviceId" element={<Devices />} />
-            <Route path="/sessions" element={<Sessions />} />
-            <Route path="/storage" element={<Storage />} />
-            <Route path={routes.lockScreen} element={<LockScreen />} />
-            <Route path="/permissions/:page" element={<PermissionsTab />} />
+  return (
+    <Layout
+      className={classNames({ [styles['Layout--small-view']]: isSmallView })}
+    >
+      {App.renderExtra()}
+      <FlagSwitcher />
+      <Alerter />
+      {isBigView && <Sidebar />}
+      <RealTimeQueries doctype="io.cozy.oauth.clients" />
+      <Main>
+        <Routes>
+          {isSmallView && <Route path="/menu" element={<Menu />} />}
+          <Route path="/redirect" element={<IntentRedirect />} />
+          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/profile/password" element={<Passphrase />} />
+          <Route path="/connectedDevices/*" element={<Devices />} />
+          <Route path="/connectedDevices/:deviceId" element={<Devices />} />
+          <Route path="/sessions" element={<Sessions />} />
+          <Route path="/storage" element={<Storage />} />
+          <Route path={routes.lockScreen} element={<LockScreen />} />
+          <Route path="/permissions/:page" element={<PermissionsTab />} />
+          <Route
+            path="/permissions/slug/:slug"
+            element={<OutletWrapper Component={PermissionsApplication} />}
+          >
             <Route
-              path="/permissions/slug/:slug"
-              element={<OutletWrapper Component={PermissionsApplication} />}
-            >
-              <Route
-                path="details/:permissionType"
-                element={<PermissionDetails />}
-              />
-            </Route>
-            <Route path="/exports/:exportId" element={<Profile />} />
-            <Route
-              path="/permissions"
-              element={<Navigate to="/permissions/slug" replace />}
+              path="details/:permissionType"
+              element={<PermissionDetails />}
             />
-            <Route
-              path="/permissions/data/:permissionType"
-              element={<OutletWrapper Component={DataPermissions} />}
-            >
-              <Route path="details/:slug" element={<PermissionDetails />} />
-            </Route>
-            <Route path="/support" element={<Support />} />
-            <Route
-              path="*"
-              element={
-                <Navigate to={isSmallView ? '/menu' : '/profile'} replace />
-              }
-            />
-          </Routes>
-        </Main>
-        <Sprite />
-      </Layout>
-    )
-  }
+          </Route>
+          <Route path="/exports/:exportId" element={<Profile />} />
+          <Route
+            path="/permissions"
+            element={<Navigate to="/permissions/slug" replace />}
+          />
+          <Route
+            path="/permissions/data/:permissionType"
+            element={<OutletWrapper Component={DataPermissions} />}
+          >
+            <Route path="details/:slug" element={<PermissionDetails />} />
+          </Route>
+          <Route path="/support" element={<Support />} />
+          <Route
+            path="*"
+            element={
+              <Navigate to={isSmallView ? '/menu' : '/profile'} replace />
+            }
+          />
+        </Routes>
+      </Main>
+      <Sprite />
+    </Layout>
+  )
 }
 
 // This is to facilitate the extension of App in apps overrides
 App.renderExtra = () => null
 
-const mapStateToProps = state => ({
-  alert: state.ui.alert
-})
-
-const AppWithBreakpoints = props => {
-  const { isMobile, isTablet } = useBreakpoints()
-
-  return <App {...props} isMobile={isMobile} isTablet={isTablet} />
-}
-
-export default hot(module)(
-  translate()(connect(mapStateToProps)(AppWithBreakpoints))
-)
+export default hot(module)(App)
