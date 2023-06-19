@@ -99,7 +99,7 @@
     "profile": "Profil",
     "secondary_free": "Gratuit",
     "secondary_used": "%{percent}% utilisé",
-    "sessions": "Connexions",
+    "sessions": "Connexions web",
     "storage": "Stockage",
     "contact_support": "Nous contacter"
   },
@@ -305,7 +305,7 @@
     "see_offer": "Augmenter mon espace"
   },
   "SessionsView": {
-    "title": "Historique de connexions",
+    "title": "Historique de connexions web",
     "sync_date_format": "D MMM YYYY",
     "delete": "Déconnecter toutes mes sessions",
     "infos": {

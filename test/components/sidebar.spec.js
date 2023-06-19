@@ -17,6 +17,6 @@ describe('Sidebar component', () => {
     )
     root.getByText('Connected devices')
     root.getByText('Storage')
-    root.getByText('Connections')
+    root.getByText('Web connections')
   })
 })
