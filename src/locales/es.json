@@ -68,7 +68,7 @@
     "profile": "Perfil",
     "activated_services": "Servicios activados",
     "connected_devices": "Periféricos conectados",
-    "sessions": "Conexiones",
+    "sessions": "Conexiones web",
     "storage": "Almacenamiento",
     "email_notifications": "Notificaciones por correo electrónico",
     "permissions": "Permisos"
@@ -261,7 +261,7 @@
     "see_offer": "Actualizar mi almacenamiento"
   },
   "SessionsView": {
-    "title": "Historial de conexiones",
+    "title": "Historial de conexiones web",
     "sync_date_format": "MMM D, YYYY",
     "delete": "Borrar todas las otras sesiones",
     "infos": {
