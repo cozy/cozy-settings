@@ -9,6 +9,8 @@ import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
 import { RealTimeQueries } from 'cozy-client'
+import CozyDevtools from 'cozy-client/dist/devtools'
+import flag from 'cozy-flags'
 
 import Devices from 'containers/Devices'
 import IntentRedirect from 'services/IntentRedirect'
@@ -93,6 +95,7 @@ export const App = () => {
         </Routes>
       </Main>
       <Sprite />
+      {flag('debug') ? <CozyDevtools /> : null}
     </Layout>
   )
 }
