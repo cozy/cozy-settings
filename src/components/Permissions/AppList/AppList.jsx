@@ -16,15 +16,12 @@ import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListI
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 import { routes } from 'constants/routes'
-import Page from 'components/Page'
 import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
 
 const AppList = () => {
   const { t } = useI18n()
-  const { isMobile, isTablet } = useBreakpoints()
 
   const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =
     useAppsOrKonnectors()
@@ -32,10 +29,7 @@ const AppList = () => {
   const toNotDisplay = ['home', 'store', 'settings']
 
   return (
-    <Page
-      className={isMobile || isTablet ? '' : 'u-maw-7'}
-      withoutMarginTop={isMobile || isTablet}
-    >
+    <>
       {isResultLoading ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
       ) : hasQueryFailed ? (
@@ -84,7 +78,7 @@ const AppList = () => {
           </NavigationListSection>
         </NavigationList>
       )}
-    </Page>
+    </>
   )
 }
 

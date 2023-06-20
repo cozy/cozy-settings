@@ -243,8 +243,9 @@ const DevicesView = () => {
 
   return (
     <Page
-      narrow={!isFetching && devices.length === 0}
-      withoutMarginTop={isMobile}
+      withoutVerticalMargin={isMobile}
+      fullHeight
+      className="u-flex u-flex-column u-pb-3"
     >
       <PageTitle>{t('DevicesView.title')}</PageTitle>
       {isFetching ? (

@@ -13,6 +13,7 @@ const NoDevicesMessage = () => {
   const { t } = useI18n()
   return (
     <Empty
+      className="u-maw-6"
       icon={EmptyIcon}
       title={t('Empty.devices.title')}
       text={t('Empty.devices.text')}
