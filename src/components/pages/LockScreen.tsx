@@ -122,7 +122,7 @@ export const LockScreen = (): JSX.Element => {
     void handleChange(setAutoLock, 'autoLock', webviewIntent)
 
   return isFlagshipApp() || flag('settings.flagship-mode') ? (
-    <Page className="u-m-0" withoutMarginTop>
+    <Page withoutMargin>
       <PageTitle>{t('LockScreenView.title')}</PageTitle>
 
       <nav>

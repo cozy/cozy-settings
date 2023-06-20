@@ -37,7 +37,7 @@ const DataList = ({ t }) => {
   return (
     <Page
       className={isMobile || isTablet ? '' : 'u-maw-7'}
-      withoutMarginTop={isMobile || isTablet}
+      withoutVerticalMargin={isMobile || isTablet}
     >
       {isResultLoading ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />

@@ -42,7 +42,7 @@ const PermissionsTab = ({ t }) => {
   return (
     <Page
       className={isMobile || isTablet ? '' : undefined}
-      withoutMarginTop={isMobile || isTablet}
+      withoutMarginVertical={isMobile || isTablet}
     >
       <div>
         <div

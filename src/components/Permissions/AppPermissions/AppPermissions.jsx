@@ -81,7 +81,7 @@ const AppPermissions = ({ t }) => {
   return (
     <Page
       className={isMobile || isTablet ? '' : 'u-maw-7 u-mh-2'}
-      withoutMarginTop={isMobile || isTablet}
+      withoutVerticalMargin={isMobile || isTablet}
     >
       {hasQueryFailed || queryResultRemoteDoctypes.fetchStatus === 'error' ? (
         <Typography variant="body1" className="u-mb-1-half">
