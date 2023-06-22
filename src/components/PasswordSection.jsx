@@ -1,24 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import get from 'lodash/get'
 
-import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
+import { useHasPassword } from 'hooks/useHasPassword'
+
 const PasswordSection = () => {
   const { t } = useI18n()
-  const client = useClient()
+  const hasPassword = useHasPassword()
 
-  // If we have no capabilities, consider that we can login to the cozy with password
-  const canAuthWithPassword = get(
-    client,
-    'capabilities.can_auth_with_password',
-    true
-  )
-
-  return canAuthWithPassword ? (
+  return hasPassword ? (
     <div>
       <Typography variant="h5" gutterBottom>
         {t('ProfileView.password.title')}
