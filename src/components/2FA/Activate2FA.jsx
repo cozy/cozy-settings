@@ -9,7 +9,7 @@ import ActivationConfirmation from 'components/2FA/ActivationConfirmation'
 import TwoFactorCode from 'components/2FA/TwoFactorCode'
 import ActivationConfirmed from 'components/2FA/ActivationConfirmed'
 import CreatePassword from 'components/2FA/CreatePassword'
-import { useShouldCreatePassword } from 'hooks/useShouldCreatePassword'
+import { useHasPassword } from 'hooks/useHasPassword'
 
 /**
  * Activation of 2FA requires a 3-step process with an additional step if the user has not configured a password.
@@ -17,7 +17,7 @@ import { useShouldCreatePassword } from 'hooks/useShouldCreatePassword'
 export const Activate2FA = ({ onActivation, closeModal, instance, images }) => {
   const { t } = useI18n()
   const client = useClient()
-  const shouldCreatePassword = useShouldCreatePassword()
+  const hasPassword = useHasPassword()
 
   const [currentStep, setCurrentStep] = useState('validation')
   const [submitting, setSubmitting] = useState(false)
@@ -41,10 +41,10 @@ export const Activate2FA = ({ onActivation, closeModal, instance, images }) => {
   }, [client.stackClient])
 
   const onValidation = () => {
-    if (shouldCreatePassword) {
-      setCurrentStep('passwordCreation')
-    } else {
+    if (hasPassword) {
       activate2FA()
+    } else {
+      setCurrentStep('passwordCreation')
     }
   }
 

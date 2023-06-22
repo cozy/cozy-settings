@@ -7,8 +7,8 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
 import FormModal from 'components/DeleteAccount/FormModal'
-import { useCanAuthWith } from 'hooks/useCanAuthWith'
 import EmailConfirmationModal from 'components/DeleteAccount/EmailConfirmationModal'
+import { useHasPassword } from 'hooks/useHasPassword'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
@@ -32,13 +32,12 @@ const DeleteAccount = ({ email }) => {
     setStatus(EMAIL_CONFIRMATION)
   }
 
-  const { canAuthWithOIDC } = useCanAuthWith()
-
+  const hasPassword = useHasPassword()
   const onClick = () => {
-    if (canAuthWithOIDC) {
-      setStatus(REQUESTING)
-    } else {
+    if (hasPassword) {
       setStatus(CONFIRMING)
+    } else {
+      setStatus(REQUESTING)
     }
   }
 
