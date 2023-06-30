@@ -15,10 +15,7 @@ const IDLE = 'idle'
 const REQUESTING = 'requesting'
 const EMAIL_CONFIRMATION = 'email_confirmation'
 
-/**
- * @param {string} email - User email display into confirmation process
- */
-const DeleteAccount = ({ email }) => {
+const DeleteAccount = () => {
   const { t } = useI18n()
   const [status, setStatus] = useState(IDLE)
 
@@ -42,7 +39,7 @@ const DeleteAccount = ({ email }) => {
   }
 
   return (
-    <>
+    <div className="u-mt-2">
       {status === CONFIRMING && (
         <ConfirmModal
           dismissAction={() => setStatus(IDLE)}
@@ -57,7 +54,7 @@ const DeleteAccount = ({ email }) => {
         />
       )}
       {status === EMAIL_CONFIRMATION && (
-        <EmailConfirmationModal email={email} onClose={() => setStatus(IDLE)} />
+        <EmailConfirmationModal onClose={() => setStatus(IDLE)} />
       )}
       <Typography variant="h5" gutterBottom>
         {t('DeleteAccount.title')}
@@ -72,7 +69,7 @@ const DeleteAccount = ({ email }) => {
         fullWidth
         onClick={onClick}
       />
-    </>
+    </div>
   )
 }
 
