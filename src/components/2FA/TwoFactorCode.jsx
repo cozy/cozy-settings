@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
 
-import { useClient } from 'cozy-client'
+import { useClient, useQuery } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import TextField from 'cozy-ui/transpiled/react/TextField'
-
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import { buildSettingsInstanceQuery } from 'lib/queries'
 
-const TwoFactorCode = ({ email, onCodeConfirmed }) => {
+const TwoFactorCode = ({ onCodeConfirmed }) => {
   const { t } = useI18n()
   const client = useClient()
+
+  const instanceQuery = buildSettingsInstanceQuery()
+  const { data: instance } = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
 
   const [error, setError] = useState()
 
@@ -41,7 +47,7 @@ const TwoFactorCode = ({ email, onCodeConfirmed }) => {
       </Typography>
       <ReactMarkdownWrapper
         source={t('ProfileView.twofa.modal.confirmation_description', {
-          email: email
+          email: instance.email
         })}
       />
       <TextField

@@ -14,7 +14,7 @@ import { useHasPassword } from 'hooks/useHasPassword'
 /**
  * Activation of 2FA requires a 3-step process with an additional step if the user has not configured a password.
  */
-export const Activate2FA = ({ onActivation, closeModal, instance, images }) => {
+export const Activate2FA = ({ onActivation, closeModal, images }) => {
   const { t } = useI18n()
   const client = useClient()
   const hasPassword = useHasPassword()
@@ -69,27 +69,13 @@ export const Activate2FA = ({ onActivation, closeModal, instance, images }) => {
           <ActivationConfirmation images={images} error={validationError} />
         )
       case 'confirmed':
-        return (
-          <ActivationConfirmed onConfirmed={onConfirmed} instance={instance} />
-        )
+        return <ActivationConfirmed onConfirmed={onConfirmed} />
       case 'confirmation':
-        return (
-          <TwoFactorCode
-            email={instance && instance.data.attributes.email}
-            onCodeConfirmed={onCodeConfirmed}
-          />
-        )
+        return <TwoFactorCode onCodeConfirmed={onCodeConfirmed} />
       case 'passwordCreation':
         return <CreatePassword onSuccess={onPasswordCreated} />
     }
-  }, [
-    currentStep,
-    images,
-    instance,
-    onConfirmed,
-    validationError,
-    onPasswordCreated
-  ])
+  }, [currentStep, images, onConfirmed, validationError, onPasswordCreated])
 
   const title = useMemo(() => {
     if (currentStep === 'validation') {

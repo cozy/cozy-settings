@@ -73,11 +73,7 @@ const ProfileView = ({
               onBlur={onFieldChange}
             />
             <PasswordSection />
-            <TwoFA
-              instance={instance}
-              fields={fields}
-              onChange={onFieldChange}
-            />
+            <TwoFA fields={fields} onChange={onFieldChange} />
             <LanguageSection fields={fields} onChange={onFieldChange} />
             <DefaultRedirectionSection
               fields={fields}
