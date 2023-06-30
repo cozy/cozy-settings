@@ -104,9 +104,7 @@ const ProfileView = ({
               />
             </div>
           </Stack>
-          <div className="u-mt-2">
-            <DeleteAccount email={instance.data.attributes.email} />
-          </div>
+          <DeleteAccount />
         </>
       )}
     </Page>

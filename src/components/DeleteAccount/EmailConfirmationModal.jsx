@@ -6,15 +6,22 @@ import Button from 'cozy-ui/transpiled/react/Buttons'
 import { IllustrationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import { useQuery } from 'cozy-client'
 
 import EmailIllustration from 'assets/icons/email-illustration.svg'
+import { buildSettingsInstanceQuery } from 'lib/queries'
 
 /**
  * @param {string} onClose - Callback when the user performs an action on the modal
- * @param {string} email - User email display into confirmation process
  */
-const EmailConfirmationModal = ({ onClose, email }) => {
+const EmailConfirmationModal = ({ onClose }) => {
   const { t } = useI18n()
+
+  const instanceQuery = buildSettingsInstanceQuery()
+  const { data: instance } = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
 
   return (
     <IllustrationDialog
@@ -32,7 +39,7 @@ const EmailConfirmationModal = ({ onClose, email }) => {
         <ReactMarkdown
           className="u-ta-center"
           source={t('DeleteAccount.modal.email_confirmation.description', {
-            email
+            email: instance.email
           })}
           renderers={{
             paragraph: props => <span className="u-mv-0">{props.children}</span>
