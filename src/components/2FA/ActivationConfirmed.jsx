@@ -1,13 +1,21 @@
 import React from 'react'
 
-import { useClient } from 'cozy-client'
+import { useClient, useQuery } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-export const ActivationConfirmed = ({ instance, onConfirmed }) => {
+import { buildSettingsInstanceQuery } from 'lib/queries'
+
+export const ActivationConfirmed = ({ onConfirmed }) => {
   const { t } = useI18n()
   const client = useClient()
+
+  const instanceQuery = buildSettingsInstanceQuery()
+  const { data: instance } = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
 
   return (
     <>
@@ -21,7 +29,7 @@ export const ActivationConfirmed = ({ instance, onConfirmed }) => {
         {t('ProfileView.twofa.modal.validation_logs')}
       </Typography>
       <ul>
-        <li>{instance && instance.data.attributes.email}</li>
+        <li>{instance.email}</li>
         <li>{client.stackClient.uri}</li>
       </ul>
       <div className="u-ta-right">

@@ -10,7 +10,7 @@ const twoFaModalBanner = require('assets/images/double_authent_prez_banner.svg')
 const twoFaModalProtect = require('assets/images/protect_data_point.svg')
 const twoFaModalSecu = require('assets/images/niv_secu_point.svg')
 
-const TwoFA = ({ instance, fields, onChange }) => {
+const TwoFA = ({ fields, onChange }) => {
   const { t } = useI18n()
 
   const [isActivationModalOpen, setActivationModalOpen] = useState(false)
@@ -59,7 +59,6 @@ const TwoFA = ({ instance, fields, onChange }) => {
         <Activate2FA
           onActivation={onActivation}
           closeModal={closeActivationModal}
-          instance={instance}
           images={{
             twoFaModalBanner: twoFaModalBanner,
             twoFaModalSecu: twoFaModalSecu,
