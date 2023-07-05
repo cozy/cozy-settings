@@ -23,12 +23,10 @@
           }
         },
         "password": {
-          "hide": "隠す",
-          "show": "表示",
           "required": "この項目は必須です。",
           "errors": {
-            "passphrase": "パスワードが正しくないようです",
-            "others": "エラーが発生しました、もう一度やり直してください"
+            "invalid_password": "パスワードが正しくないようです",
+            "server_error": "エラーが発生しました、もう一度やり直してください"
           }
         },
         "button": {

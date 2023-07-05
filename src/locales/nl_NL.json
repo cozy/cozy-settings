@@ -23,12 +23,10 @@
           }
         },
         "password": {
-          "hide": "Verbergen",
-          "show": "Tonen",
           "required": "Dit veld is vereist",
           "errors": {
-            "passphrase": "Het wachtwoord is onjuist",
-            "others": "Er is een fout opgetreden - probeer het opnieuw"
+            "invalid_password": "Het wachtwoord is onjuist",
+            "server_error": "Er is een fout opgetreden - probeer het opnieuw"
           }
         },
         "button": {
