@@ -29,6 +29,7 @@ import { LockScreen } from 'components/pages/LockScreen'
 import { Menu } from 'components/pages/Menu'
 import { initFlags } from 'lib/flags'
 import { routes } from 'constants/routes'
+import ChangeEmail from 'components/Email/ChangeEmail'
 
 initFlags()
 
@@ -53,11 +54,14 @@ export const App = () => {
       <Alerter />
       {isBigView && <Sidebar />}
       <RealTimeQueries doctype="io.cozy.oauth.clients" />
+      <RealTimeQueries doctype="io.cozy.settings" />
       <Main>
         <Routes>
           {isSmallView && <Route path="/menu" element={<Menu />} />}
           <Route path="/redirect" element={<IntentRedirect />} />
-          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/profile" element={<Profile />}>
+            <Route path="/profile/email" element={<ChangeEmail />} />
+          </Route>
           <Route path="/profile/password" element={<Passphrase />} />
           <Route path="/connectedDevices/*" element={<Devices />} />
           <Route path="/connectedDevices/:deviceId" element={<Devices />} />
