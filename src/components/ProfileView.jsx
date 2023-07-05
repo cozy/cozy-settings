@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
@@ -17,6 +17,7 @@ import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/TrackingSection'
 import PageTitle from 'components/PageTitle'
 import PasswordSection from 'components/PasswordSection'
+import EmailSection from 'components/Email/EmailSection'
 
 const ProfileView = ({
   fields,
@@ -56,14 +57,7 @@ const ProfileView = ({
             {t('ProfileView.title')}
           </PageTitle>
           <Stack spacing="l">
-            <Input
-              name="email"
-              type="email"
-              title={t('ProfileView.email.title')}
-              label={t('ProfileView.email.label')}
-              {...fields.email}
-              onBlur={onFieldChange}
-            />
+            <EmailSection />
             <Input
               name="public_name"
               type="text"
@@ -103,6 +97,7 @@ const ProfileView = ({
           <DeleteAccount />
         </>
       )}
+      <Outlet />
     </Page>
   )
 }

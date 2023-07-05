@@ -131,11 +131,6 @@
       "server_error": "Something went wrong. Your informations has not been saved.",
       "empty": "This field cannot be empty"
     },
-    "email": {
-      "title": "E-mail for authentication and contact",
-      "label": "Cozy needs your e-mail to send you notifications and allow you to recover your password",
-      "error": "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
-    },
     "twofa": {
       "title": {
         "activate": "Two steps authentication",
@@ -504,5 +499,30 @@
   },
   "Accessibility": {
     "previous": "Previous"
+  },
+  "EmailSection": {
+    "title": "E-mail",
+    "subtitle": "Cozy needs your e-mail address to send you notifications and to enable you to recover your password.",
+    "action": "Modify email",
+    "alert": {
+      "title": "Modification pending",
+      "content": "An email has been sent to %{pendingEmail} to verify your identity and finalise the change to your email address.",
+      "resend": "Resend email",
+      "cancel": "Cancel"
+    },
+    "snackbar": {
+      "server_error": "Something went wrong with the server. Please, reload the page.",
+      "resend_success": "An email has been sent to %{pendingEmail}"
+    }
+  },
+  "EmailModal": {
+    "title": "New email",
+    "cancel": "Cancel",
+    "submit": "Ok",
+    "errors": {
+      "server": "Something went wrong with the server. Please, reload the page.",
+      "same_email": "Your new email cannot be the same as your old one.",
+      "email_format": "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
+    }
   }
 }
