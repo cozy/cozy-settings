@@ -23,12 +23,10 @@
           }
         },
         "password": {
-          "hide": "Ausblenden",
-          "show": "Anzeigen",
           "required": "Dieses Feld ist obligatorisch.",
           "errors": {
-            "passphrase": "Ihr Passwort scheint nicht korrekt zu sein",
-            "others": "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
+            "invalid_password": "Ihr Passwort scheint nicht korrekt zu sein",
+            "server_error": "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
           }
         },
         "button": {

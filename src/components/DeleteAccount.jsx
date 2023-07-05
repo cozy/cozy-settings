@@ -42,8 +42,8 @@ const DeleteAccount = () => {
     <div className="u-mt-2">
       {status === CONFIRMING && (
         <ConfirmModal
-          dismissAction={() => setStatus(IDLE)}
-          primaryAction={() => setStatus(REQUESTING)}
+          onClose={() => setStatus(IDLE)}
+          onSuccess={() => setStatus(REQUESTING)}
         />
       )}
       {status === REQUESTING && (

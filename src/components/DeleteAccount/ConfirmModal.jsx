@@ -1,40 +1,43 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
-import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Field from 'cozy-ui/transpiled/react/Field'
+import PasswordField from 'cozy-ui/transpiled/react/PasswordField'
 
-import { submitPassword } from './helpers'
+import useCheckPassword from 'hooks/useCheckPassword'
 
-const ConfirmModal = ({ dismissAction, primaryAction }) => {
+/**
+ * Password confirmation for account deletion requests
+ */
+const ConfirmModal = ({ onClose, onSuccess }) => {
   const { t } = useI18n()
-  const client = useClient()
-  const [currentPassphrase, setCurrentPassphrase] = useState('')
-  const [isBusy, setIsBusy] = useState(false)
-  const [isRequired, setIsRequired] = useState(false)
-  const [error, setError] = useState('')
+  const [password, setPassword] = useState('')
+  const [isRequired, setRequired] = useState(false)
+  const { checkPassword, isLoading, error } = useCheckPassword()
 
   const handleChange = ev => {
-    const value = ev.target.value
-    if (value) {
-      setIsRequired(false)
-    }
-    setCurrentPassphrase(value)
+    setPassword(ev.target.value)
   }
 
-  const handleSubmit = () =>
-    submitPassword({
-      client,
-      t,
-      currentPassphrase,
-      primaryAction,
-      setError,
-      setIsRequired,
-      setIsBusy
-    })
+  const handleSubmit = () => {
+    const passwordRequired = password.length > 0
+    setRequired(!passwordRequired)
+    if (passwordRequired) {
+      checkPassword(password, onSuccess)
+    }
+  }
+
+  const helperText = useMemo(() => {
+    if (isRequired) {
+      return t('DeleteAccount.modal.confirm.password.required')
+    }
+
+    if (error) {
+      return t(`DeleteAccount.modal.confirm.password.errors.${error}`)
+    }
+  }, [error, isRequired, t])
 
   return (
     <ConfirmDialog
@@ -50,29 +53,17 @@ const ConfirmModal = ({ dismissAction, primaryAction }) => {
           <Typography variant="body1">
             {t('DeleteAccount.modal.confirm.description.line.4')}
           </Typography>
-          <Field
+          <PasswordField
+            required
+            autoFocus
+            fullWidth
             className="u-mt-1 u-mb-0"
-            value={currentPassphrase}
-            type="password"
-            error={isRequired}
-            secondaryLabels={{
-              hideLabel: t('DeleteAccount.modal.confirm.password.hide'),
-              showLabel: t('DeleteAccount.modal.confirm.password.show')
-            }}
+            value={password}
+            error={Boolean(error) || isRequired}
             onChange={handleChange}
+            disabled={isLoading}
+            helperText={helperText}
           />
-          <Typography
-            className={!isRequired && 'u-o-0'}
-            variant="body1"
-            color="error"
-          >
-            {t('DeleteAccount.modal.confirm.password.required')}
-          </Typography>
-          {error && (
-            <Typography variant="body1" color="error">
-              {error}
-            </Typography>
-          )}
         </>
       }
       actions={
@@ -80,17 +71,18 @@ const ConfirmModal = ({ dismissAction, primaryAction }) => {
           <Button
             label={t('DeleteAccount.modal.confirm.button.submit.label')}
             color="error"
-            busy={isBusy}
+            busy={isLoading}
+            disabled={isLoading}
             onClick={handleSubmit}
           />
           <Button
             label={t('DeleteAccount.modal.confirm.button.cancel.label')}
             variant="secondary"
-            onClick={dismissAction}
+            onClick={onClose}
           />
         </>
       }
-      onClose={dismissAction}
+      onClose={onClose}
     />
   )
 }
