@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { Route, Navigate, Routes, Outlet } from 'react-router-dom'
 import { hot } from 'react-hot-loader'
 
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'

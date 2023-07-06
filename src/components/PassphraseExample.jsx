@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import InlineCard from 'cozy-ui/transpiled/react/InlineCard'
+import InlineCard from 'cozy-ui/transpiled/react/deprecated/InlineCard'
 
 const alphaRegexp = /^[a-z]$/i
 const numberRegexp = /^[0-9]$/

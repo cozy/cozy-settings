@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import ButtonAction from 'cozy-ui/transpiled/react/ButtonAction'
+import ButtonAction from 'cozy-ui/transpiled/react/deprecated/ButtonAction'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 

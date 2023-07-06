@@ -5,7 +5,7 @@ import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
 
 import { fetchSessions, deleteOtherSessions } from 'actions'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import SessionsView from 'components/SessionsView'
 
 const mapStateToProps = state => ({
