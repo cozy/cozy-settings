@@ -20,7 +20,7 @@ jest.mock('cozy-ui/transpiled/react/Collapse', () => {
   const FakeCollapse = ({ children }) => <>{children}</>
   return FakeCollapse
 })
-jest.mock('cozy-ui/transpiled/react/Alerter', () => ({
+jest.mock('cozy-ui/transpiled/react/deprecated/Alerter', () => ({
   error: jest.fn(),
   success: jest.fn()
 }))

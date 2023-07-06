@@ -84,7 +84,7 @@ exports[`DataPermissions should display DataPermissions 1`] = `
           >
             <div
               aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+              class="MuiButtonBase-root MuiListItem-root medium MuiListItem-gutters makeStyles-gutters-1 makeStyles-gutters-3 MuiListItem-button MuiListItem-secondaryAction makeStyles-secondaryAction-2 makeStyles-secondaryAction-4"
               role="button"
               tabindex="0"
             >
@@ -131,7 +131,7 @@ exports[`DataPermissions should display DataPermissions 1`] = `
           >
             <div
               aria-disabled="false"
-              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+              class="MuiButtonBase-root MuiListItem-root medium MuiListItem-gutters makeStyles-gutters-1 makeStyles-gutters-5 MuiListItem-button MuiListItem-secondaryAction makeStyles-secondaryAction-2 makeStyles-secondaryAction-6"
               role="button"
               tabindex="0"
             >
