@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import ReactMarkdown from 'react-markdown'
 
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
-import Button from 'cozy-ui/transpiled/react/Button'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import Button from 'cozy-ui/transpiled/react/deprecated/Button'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import IconCircle2Arrows from '../assets/icons/IconCircle2Arrows'
-import { Media, Bd, Img } from 'cozy-ui/transpiled/react/Media'
+import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
 
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
