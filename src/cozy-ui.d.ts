@@ -1,24 +1,24 @@
-declare module 'cozy-ui/transpiled/react/MuiCozyTheme/List' {
+declare module 'cozy-ui/transpiled/react/List' {
   import List from '@material-ui/core/List'
   export default List
 }
 
-declare module 'cozy-ui/transpiled/react/MuiCozyTheme/ListSubheader' {
+declare module 'cozy-ui/transpiled/react/ListSubheader' {
   import ListSubheader from '@material-ui/core/ListSubheader'
   export default ListSubheader
 }
 
-declare module 'cozy-ui/transpiled/react/MuiCozyTheme/Divider' {
+declare module 'cozy-ui/transpiled/react/Divider' {
   import Divider from '@material-ui/core/Divider'
   export default Divider
 }
 
-declare module 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem' {
+declare module 'cozy-ui/transpiled/react/ListItem' {
   import ListItem from '@material-ui/core/ListItem'
   export default ListItem
 }
 
-declare module 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon' {
+declare module 'cozy-ui/transpiled/react/ListItemIcon' {
   import ListItemIcon from '@material-ui/core/ListItemIcon'
   export default ListItemIcon as ListItemIcon & { align: string }
 }
@@ -66,17 +66,17 @@ declare module 'cozy-ui/transpiled/react/I18n' {
   export { useI18n }
 }
 
-declare module 'cozy-ui/transpiled/react/MuiCozyTheme/Switch' {
+declare module 'cozy-ui/transpiled/react/Switch' {
   import Switch from '@material-ui/core/Switch'
   export default Switch
 }
 
-declare module 'cozy-ui/transpiled/react/MuiCozyTheme/TextField' {
+declare module 'cozy-ui/transpiled/react/TextField' {
   import TextField from '@material-ui/core/TextField'
   export default TextField
 }
 
-declare module 'cozy-ui/transpiled/react/Button'
+declare module 'cozy-ui/transpiled/react/deprecated/Button'
 declare module 'cozy-ui/transpiled/react/Typography'
 declare module 'cozy-ui/transpiled/react/CozyDialogs'
 
