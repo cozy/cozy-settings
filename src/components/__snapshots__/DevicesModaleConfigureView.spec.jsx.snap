@@ -10,7 +10,7 @@ Object {
       aria-hidden="true"
     />
     <div
-      class="MuiDialog-root"
+      class="MuiDialog-root CozyTheme--undefined"
       role="presentation"
       style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px;"
     >
@@ -65,7 +65,7 @@ Object {
             </button>
           </div>
           <div
-            class="MuiDialogTitle-root u-ellipsis dialogTitleWithClose"
+            class="MuiDialogTitle-root cozyDialogTitle u-ellipsis dialogTitleWithClose"
             id="modal-title-50"
           >
             Mock Device
@@ -74,7 +74,7 @@ Object {
             class="MuiDivider-root"
           />
           <div
-            class="MuiDialogContent-root"
+            class="MuiDialogContent-root cozyDialogContent"
           >
             <div
               class="dialogContentInner"
@@ -94,7 +94,7 @@ Object {
                   >
                     <label
                       aria-disabled="false"
-                      class="styles__c-input-radio___XJQt1"
+                      class="styles__c-input-radio___1f4CB"
                     >
                       <input
                         color="primary"
@@ -115,7 +115,7 @@ Object {
                   >
                     <label
                       aria-disabled="false"
-                      class="styles__c-input-radio___XJQt1"
+                      class="styles__c-input-radio___1f4CB"
                     >
                       <input
                         checked=""
@@ -224,10 +224,10 @@ Object {
                           class="MuiTypography-root MuiTreeItem-label makeStyles-label-1094 MuiTypography-body1"
                         >
                           <div
-                            class="styles__media___cSJMp"
+                            class="styles__media___1rIBu"
                           >
                             <div
-                              class="styles__img___3SHpG u-pr-half"
+                              class="styles__img___3sztD u-pr-half"
                             >
                               <button
                                 class="MuiButtonBase-root MuiIconButton-root small"
@@ -273,7 +273,7 @@ Object {
                               </button>
                             </div>
                             <div
-                              class="styles__img___3SHpG u-pr-1"
+                              class="styles__img___3sztD u-pr-1"
                             >
                               <svg
                                 class="styles__icon___23x3R"
@@ -325,10 +325,10 @@ Object {
                           class="MuiTypography-root MuiTreeItem-label makeStyles-label-1097 MuiTypography-body1"
                         >
                           <div
-                            class="styles__media___cSJMp"
+                            class="styles__media___1rIBu"
                           >
                             <div
-                              class="styles__img___3SHpG u-pr-half"
+                              class="styles__img___3sztD u-pr-half"
                             >
                               <button
                                 class="MuiButtonBase-root MuiIconButton-root small"
@@ -374,7 +374,7 @@ Object {
                               </button>
                             </div>
                             <div
-                              class="styles__img___3SHpG u-pr-1"
+                              class="styles__img___3sztD u-pr-1"
                             >
                               <svg
                                 class="styles__icon___23x3R"
@@ -426,10 +426,10 @@ Object {
                           class="MuiTypography-root MuiTreeItem-label makeStyles-label-1100 MuiTypography-body1"
                         >
                           <div
-                            class="styles__media___cSJMp"
+                            class="styles__media___1rIBu"
                           >
                             <div
-                              class="styles__img___3SHpG u-pr-half"
+                              class="styles__img___3sztD u-pr-half"
                             >
                               <button
                                 class="MuiButtonBase-root MuiIconButton-root small"
@@ -475,7 +475,7 @@ Object {
                               </button>
                             </div>
                             <div
-                              class="styles__img___3SHpG u-pr-1"
+                              class="styles__img___3sztD u-pr-1"
                             >
                               <svg
                                 class="styles__icon___23x3R"
@@ -539,10 +539,10 @@ Object {
                           class="MuiTypography-root MuiTreeItem-label makeStyles-label-1103 MuiTypography-body1"
                         >
                           <div
-                            class="styles__media___cSJMp"
+                            class="styles__media___1rIBu"
                           >
                             <div
-                              class="styles__img___3SHpG u-pr-half"
+                              class="styles__img___3sztD u-pr-half"
                             >
                               <button
                                 class="MuiButtonBase-root MuiIconButton-root small"
@@ -588,7 +588,7 @@ Object {
                               </button>
                             </div>
                             <div
-                              class="styles__img___3SHpG u-pr-1"
+                              class="styles__img___3sztD u-pr-1"
                             >
                               <svg
                                 class="styles__icon___23x3R"
@@ -651,10 +651,10 @@ Object {
                             class="MuiTypography-root MuiTreeItem-label makeStyles-label-1106 MuiTypography-body1"
                           >
                             <div
-                              class="styles__media___cSJMp"
+                              class="styles__media___1rIBu"
                             >
                               <div
-                                class="styles__img___3SHpG u-pr-half"
+                                class="styles__img___3sztD u-pr-half"
                               >
                                 <button
                                   class="MuiButtonBase-root MuiIconButton-root small"
@@ -700,7 +700,7 @@ Object {
                                 </button>
                               </div>
                               <div
-                                class="styles__img___3SHpG u-pr-1"
+                                class="styles__img___3sztD u-pr-1"
                               >
                                 <svg
                                   class="styles__icon___23x3R"
@@ -751,10 +751,10 @@ Object {
                               class="MuiTypography-root MuiTreeItem-label makeStyles-label-1109 MuiTypography-body1"
                             >
                               <div
-                                class="styles__media___cSJMp"
+                                class="styles__media___1rIBu"
                               >
                                 <div
-                                  class="styles__img___3SHpG u-pr-half"
+                                  class="styles__img___3sztD u-pr-half"
                                 >
                                   <button
                                     class="MuiButtonBase-root MuiIconButton-root small"
@@ -800,7 +800,7 @@ Object {
                                   </button>
                                 </div>
                                 <div
-                                  class="styles__img___3SHpG u-pr-1"
+                                  class="styles__img___3sztD u-pr-1"
                                 >
                                   <svg
                                     class="styles__icon___23x3R"
@@ -854,10 +854,10 @@ Object {
                           class="MuiTypography-root MuiTreeItem-label makeStyles-label-1112 MuiTypography-body1"
                         >
                           <div
-                            class="styles__media___cSJMp"
+                            class="styles__media___1rIBu"
                           >
                             <div
-                              class="styles__img___3SHpG u-pr-half"
+                              class="styles__img___3sztD u-pr-half"
                             >
                               <button
                                 class="MuiButtonBase-root MuiIconButton-root small"
@@ -902,7 +902,7 @@ Object {
                               </button>
                             </div>
                             <div
-                              class="styles__img___3SHpG u-pr-1"
+                              class="styles__img___3sztD u-pr-1"
                             >
                               <svg
                                 class="styles__icon___23x3R"
@@ -966,10 +966,10 @@ Object {
                           class="MuiTypography-root MuiTreeItem-label makeStyles-label-1115 MuiTypography-body1"
                         >
                           <div
-                            class="styles__media___cSJMp"
+                            class="styles__media___1rIBu"
                           >
                             <div
-                              class="styles__img___3SHpG u-pr-half"
+                              class="styles__img___3sztD u-pr-half"
                             >
                               <button
                                 class="MuiButtonBase-root MuiIconButton-root small"
@@ -1014,7 +1014,7 @@ Object {
                               </button>
                             </div>
                             <div
-                              class="styles__img___3SHpG u-pr-1"
+                              class="styles__img___3sztD u-pr-1"
                             >
                               <svg
                                 class="styles__icon___23x3R"
@@ -1077,10 +1077,10 @@ Object {
                             class="MuiTypography-root MuiTreeItem-label makeStyles-label-1118 MuiTypography-body1"
                           >
                             <div
-                              class="styles__media___cSJMp"
+                              class="styles__media___1rIBu"
                             >
                               <div
-                                class="styles__img___3SHpG u-pr-half"
+                                class="styles__img___3sztD u-pr-half"
                               >
                                 <button
                                   class="MuiButtonBase-root MuiIconButton-root small"
@@ -1125,7 +1125,7 @@ Object {
                                 </button>
                               </div>
                               <div
-                                class="styles__img___3SHpG u-pr-1"
+                                class="styles__img___3sztD u-pr-1"
                               >
                                 <svg
                                   class="styles__icon___23x3R"
@@ -1176,10 +1176,10 @@ Object {
                               class="MuiTypography-root MuiTreeItem-label makeStyles-label-1121 MuiTypography-body1"
                             >
                               <div
-                                class="styles__media___cSJMp"
+                                class="styles__media___1rIBu"
                               >
                                 <div
-                                  class="styles__img___3SHpG u-pr-half"
+                                  class="styles__img___3sztD u-pr-half"
                                 >
                                   <button
                                     class="MuiButtonBase-root MuiIconButton-root small"
@@ -1224,7 +1224,7 @@ Object {
                                   </button>
                                 </div>
                                 <div
-                                  class="styles__img___3SHpG u-pr-1"
+                                  class="styles__img___3sztD u-pr-1"
                                 >
                                   <svg
                                     class="styles__icon___23x3R"
@@ -1275,7 +1275,7 @@ Object {
             class="MuiDialogActions-root cozyDialogActions"
           >
             <button
-              class="styles__c-btn___-2Vnj styles__c-btn--secondary___3Br_N styles__c-btn--center___16_Xh"
+              class="styles__c-btn___3kXsk styles__c-btn--secondary___1hLVM styles__c-btn--center___Nny0n"
               type="submit"
             >
               <span>
@@ -1285,7 +1285,7 @@ Object {
               </span>
             </button>
             <button
-              class="styles__c-btn___-2Vnj styles__c-btn--center___16_Xh"
+              class="styles__c-btn___3kXsk styles__c-btn--center___Nny0n"
               type="submit"
             >
               <span>
