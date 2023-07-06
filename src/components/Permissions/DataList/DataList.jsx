@@ -4,16 +4,16 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
-import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
-import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+import Divider from 'cozy-ui/transpiled/react/Divider'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItemIcon, {
   smallSize,
   mediumSize
-} from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+} from 'cozy-ui/transpiled/react/ListItemIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 
 import withAllLocales from 'lib/withAllLocales'

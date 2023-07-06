@@ -1,8 +1,8 @@
 import React, { ReactChild, ReactNode } from 'react'
 
-import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
-import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
-import ListSubheader from 'cozy-ui/transpiled/react/MuiCozyTheme/ListSubheader'
+import Divider from 'cozy-ui/transpiled/react/Divider'
+import List from 'cozy-ui/transpiled/react/List'
+import ListSubheader from 'cozy-ui/transpiled/react/ListSubheader'
 
 interface MenuListProps {
   children: ReactChild | ReactChild[] | ReactNode | ReactNode[]

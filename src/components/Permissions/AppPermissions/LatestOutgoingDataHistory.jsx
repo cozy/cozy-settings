@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { NavigationListSection } from 'cozy-ui/transpiled/react/NavigationList'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
-import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
+import Divider from 'cozy-ui/transpiled/react/Divider'
 import ListItemIcon, {
   smallSize,
   mediumSize
-} from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+} from 'cozy-ui/transpiled/react/ListItemIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import RiseIcon from 'cozy-ui/transpiled/react/Icons/Rise'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import { sortDataByDate } from '../helpers/permissionsHelper'
 import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
