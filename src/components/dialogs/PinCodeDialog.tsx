@@ -9,7 +9,7 @@ import React, {
 
 import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { Button } from 'cozy-ui/transpiled/react/Button'
+import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 

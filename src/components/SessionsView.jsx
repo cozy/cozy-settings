@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import SessionsViewRow from 'components/SessionsViewRow'
-import { Button } from 'cozy-ui/transpiled/react/Button'
+import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 import {
   Table,
   TableHead,

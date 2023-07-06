@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, ButtonLink } from 'cozy-ui/transpiled/react/Button'
+import { Button, ButtonLink } from 'cozy-ui/transpiled/react/deprecated/Button'
 import { useI18n } from 'cozy-ui/transpiled/react'
 
 export const ClaudyAction = ({ action, iconSrc, url, onActionClick }) => {

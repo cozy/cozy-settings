@@ -10,8 +10,8 @@ import semver from 'semver'
 import ActionMenu, {
   ActionMenuHeader,
   ActionMenuItem
-} from 'cozy-ui/transpiled/react/ActionMenu'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+} from 'cozy-ui/transpiled/react/deprecated/ActionMenu'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
 import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
@@ -27,7 +27,7 @@ import {
   TableCell
 } from 'cozy-ui/transpiled/react/Table'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import { Media, Img, Bd } from 'cozy-ui/transpiled/react/Media'
+import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'

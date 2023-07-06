@@ -6,7 +6,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { Media, Bd, Img } from 'cozy-ui/transpiled/react/Media'
+import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'

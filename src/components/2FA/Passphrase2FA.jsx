@@ -3,7 +3,7 @@ import { translate } from 'cozy-ui/transpiled/react/I18n'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Input from 'cozy-ui/transpiled/react/Input'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { Button } from 'cozy-ui/transpiled/react/Button'
+import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import settingsConfig from 'config'

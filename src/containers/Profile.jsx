@@ -3,7 +3,7 @@ import compose from 'lodash/flowRight'
 
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/I18n'
-import Alerter from 'cozy-ui/transpiled/react/Alerter'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
 import { updateInfo, fetchInfos } from 'actions'
 import { requestExport, fetchExportData } from 'actions/export'
