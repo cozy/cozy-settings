@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import TextField from 'cozy-ui/transpiled/react/TextField'
 
 import Typography from 'cozy-ui/transpiled/react/Typography'
 

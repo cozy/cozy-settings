@@ -7,7 +7,7 @@ import React, {
   useState
 } from 'react'
 
-import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import TextField from 'cozy-ui/transpiled/react/TextField'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'

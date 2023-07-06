@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 
 import FaceId from 'cozy-ui/transpiled/react/Icons/FaceId'
 import Fingerprint from 'cozy-ui/transpiled/react/Icons/Fingerprint'
-import List from 'cozy-ui/transpiled/react/MuiCozyTheme/List'
+import List from 'cozy-ui/transpiled/react/List'
 import Password from 'cozy-ui/transpiled/react/Icons/Password'
 import Swap from 'cozy-ui/transpiled/react/Icons/Swap'
 import flag from 'cozy-flags'

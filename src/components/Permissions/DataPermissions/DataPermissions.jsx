@@ -6,7 +6,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
-import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
@@ -14,11 +14,11 @@ import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import ListItemIcon, {
   smallSize,
   mediumSize
-} from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
-import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+} from 'cozy-ui/transpiled/react/ListItemIcon'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
+import Divider from 'cozy-ui/transpiled/react/Divider'
 
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
