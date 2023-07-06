@@ -1,12 +1,12 @@
 import React from 'react'
 import { NavigationListSection } from 'cozy-ui/transpiled/react/NavigationList'
-import ListItem from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItem'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
+import Divider from 'cozy-ui/transpiled/react/Divider'
 import ListItemIcon, {
   mediumSize,
   largeSize
-} from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemIcon'
+} from 'cozy-ui/transpiled/react/ListItemIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'

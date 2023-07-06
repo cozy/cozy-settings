@@ -17,7 +17,7 @@ import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
 import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import MuiButton from 'cozy-ui/transpiled/react/MuiCozyTheme/Buttons'
+import MuiButton from 'cozy-ui/transpiled/react/Button'
 import {
   Table,
   TableHead,

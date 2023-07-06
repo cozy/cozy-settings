@@ -6,7 +6,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import TextField from 'cozy-ui/transpiled/react/MuiCozyTheme/TextField'
+import TextField from 'cozy-ui/transpiled/react/TextField'
 
 const CreatePasswordHint = ({ value, onChange, sameAsPassword }) => {
   const { t } = useI18n()

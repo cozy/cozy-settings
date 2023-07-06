@@ -1,5 +1,5 @@
 import React from 'react'
-import Switch from 'cozy-ui/transpiled/react/MuiCozyTheme/Switch'
+import Switch from 'cozy-ui/transpiled/react/Switch'
 import Field from 'components/Field'
 import UIInput from 'cozy-ui/transpiled/react/Input'
 
