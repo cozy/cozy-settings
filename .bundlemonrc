@@ -33,8 +33,7 @@
             "maxPercentIncrease": 5
         },
         {
-            "path": "img/*.*",
-            "maxPercentIncrease": 5
+            "path": "img/*.*"
         }
     ],
     "reportOutput": ["github"]
