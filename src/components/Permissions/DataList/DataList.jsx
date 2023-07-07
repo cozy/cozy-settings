@@ -15,11 +15,9 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/MuiCozyTheme/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 
 import withAllLocales from 'lib/withAllLocales'
 import { routes } from 'constants/routes'
-import Page from 'components/Page'
 import {
   completePermission,
   getPermissionIconName
@@ -28,17 +26,13 @@ import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnector
 import { sortPermissionsByName } from 'components/Permissions/DataList/DataListHelpers'
 
 const DataList = ({ t }) => {
-  const { isMobile, isTablet } = useBreakpoints()
   const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =
     useAppsOrKonnectors()
 
   const permissionsToDisplay = completePermission(appsResult, konnectorsResult)
 
   return (
-    <Page
-      className={isMobile || isTablet ? '' : 'u-maw-7'}
-      withoutVerticalMargin={isMobile || isTablet}
-    >
+    <>
       {isResultLoading ? (
         <Spinner size="large" className="u-flex u-flex-justify-center u-mt-1" />
       ) : hasQueryFailed ? (
@@ -90,7 +84,7 @@ const DataList = ({ t }) => {
           </NavigationListSection>
         </NavigationList>
       )}
-    </Page>
+    </>
   )
 }
 
