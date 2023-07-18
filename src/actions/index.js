@@ -1,7 +1,6 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line no-redeclare
 
-import { FallbackQuota } from 'lib/makeDiskInfos'
 import emailHelper from 'lib/emailHelper'
 import { getStackDomain, getStackToken } from './domUtils'
 
@@ -72,56 +71,6 @@ export const fetchInfos = client => {
           type: FETCH_INFOS_FAILURE,
           error: 'ProfileView.infos.server_error'
         })
-      })
-  }
-}
-
-export const fetchStorageData = client => {
-  return async dispatch => {
-    dispatch({ type: FETCH_STORAGE })
-    let offersLink = null
-    try {
-      // should be not blocking
-      const ctx = await cozyFetch(client, 'GET', '/settings/context')
-      const instance = await cozyFetch(client, 'GET', '/settings/instance')
-      const managerUrl =
-        ctx &&
-        ctx.data &&
-        ctx.data.attributes &&
-        ctx.data.attributes.manager_url
-      const enablePremiumLinks =
-        ctx &&
-        ctx.data &&
-        ctx.data.attributes &&
-        ctx.data.attributes.enable_premium_links
-      const uuid =
-        instance &&
-        instance.data &&
-        instance.data.attributes &&
-        instance.data.attributes.uuid
-      if (enablePremiumLinks && managerUrl && uuid) {
-        offersLink = `${managerUrl}/cozy/instances/${uuid}/premium`
-      }
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.warn(e)
-    }
-    cozyFetch(client, 'GET', '/settings/disk-usage')
-      .then(json => {
-        dispatch({
-          type: FETCH_STORAGE_SUCCESS,
-          storageData: {
-            usage: parseInt(json.data.attributes.used, 10),
-            // TODO Better handling when no quota provided
-            quota: parseInt(json.data.attributes.quota, 10) || FallbackQuota,
-            isLimited: json.data.attributes.is_limited,
-            offersLink
-          }
-        })
-      })
-      .catch(error => {
-        dispatch({ type: FETCH_STORAGE_FAILURE })
-        throw error
       })
   }
 }
