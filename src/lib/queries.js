@@ -68,3 +68,21 @@ export const buildSettingsInstanceQuery = () => ({
     singleDocData: true
   }
 })
+
+export const buildDiskUsageQuery = () => ({
+  definition: () => Q(SETTINGS_DOCTYPE).getById('disk-usage'),
+  options: {
+    as: `${SETTINGS_DOCTYPE}/disk-usage`,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES),
+    singleDocData: true
+  }
+})
+
+export const buildContextQuery = () => ({
+  definition: () => Q(SETTINGS_DOCTYPE).getById('context'),
+  options: {
+    as: `${SETTINGS_DOCTYPE}/context`,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES),
+    singleDocData: true
+  }
+})
