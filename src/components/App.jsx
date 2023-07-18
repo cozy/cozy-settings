@@ -23,7 +23,7 @@ import PermissionDetails from 'components/Permissions/PermissionDetails/Permissi
 import Profile from 'containers/Profile'
 import Sessions from 'containers/Sessions'
 import Sidebar from 'components/Sidebar'
-import Storage from 'containers/Storage'
+import { Storage } from 'components/Storage/Storage'
 import styles from 'styles/index.styl'
 import { LockScreen } from 'components/pages/LockScreen'
 import { Menu } from 'components/pages/Menu'
