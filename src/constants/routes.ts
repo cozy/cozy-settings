@@ -7,5 +7,6 @@ export const routes = {
   profile: '/profile',
   sessions: '/sessions',
   storage: '/storage',
-  support: '/support'
+  support: '/support',
+  subscription: '/subscription'
 }

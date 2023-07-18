@@ -504,5 +504,21 @@
   },
   "Accessibility": {
     "previous": "Précédent"
+  },
+  "Subscription": {
+    "title": "Forfait",
+    "included": {
+      "title": "Inclus dans votre offre :",
+      "flags": {
+        "harvest.accounts.max": "Nombre de comptes connectés",
+        "mespapiers.papers.max": "Nombre de Papiers ajoutés manuellement",
+        "drive.office.enabled": "Edition de documents en ligne",
+        "passwords.can-share-organizations": "Partage de mots de passe"
+      },
+      "storage": "Stockage : %{humanDiskQuota} Go",
+      "numeric_flag": ": jusqu’à %{smart_count}",
+      "numeric_flag_unlimited": ": illimité"
+    },
+    "action": "Voir les offres"
   }
 }
