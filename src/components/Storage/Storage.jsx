@@ -5,7 +5,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import OffersLink from 'components/OffersLink'
+import OffersLink from 'components/SubscriptionLink'
 
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
