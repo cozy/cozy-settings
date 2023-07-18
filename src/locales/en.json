@@ -522,5 +522,21 @@
       "same_email": "Your new email cannot be the same as your old one.",
       "email_format": "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     }
+  },
+  "Subscription": {
+    "title": "Plans",
+    "included": {
+      "title": "Included in your plan:",
+      "flags": {
+        "harvest.accounts.max": "Number of connected accounts",
+        "mespapiers.papers.max": "Number of papers added manually",
+        "drive.office.enabled": "Online document editing",
+        "passwords.can-share-organizations": "Sharing passwords"
+      },
+      "storage": "Storage: %{humanDiskQuota} GB",
+      "numeric_flag": ": up to %{smart_count}",
+      "numeric_flag_unlimited": ": unlimited"
+    },
+    "action": "Check our plans"
   }
 }

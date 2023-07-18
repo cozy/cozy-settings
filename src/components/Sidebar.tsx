@@ -1,6 +1,5 @@
 import React from 'react'
 
-import CozyCircle from 'cozy-ui/transpiled/react/Icons/CozyCircle'
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import GlobeIcon from 'cozy-ui/transpiled/react/Icons/Globe'
 import GraphCircle from 'cozy-ui/transpiled/react/Icons/GraphCircle'
@@ -24,6 +23,7 @@ import { routes } from 'constants/routes'
 import { useDiskPercentage } from 'hooks/useDiskPercentage'
 import { useLogout } from 'hooks/useLogout'
 import { useOffersLink } from 'hooks/useOffersLink'
+import { SubscriptionMenuItem } from './Subscription/SubscriptionMenuItem'
 
 export const Sidebar = (): JSX.Element => {
   const logout = useLogout()
@@ -51,12 +51,7 @@ export const Sidebar = (): JSX.Element => {
         />
 
         {offersLink && !isFlagshipApp() && (
-          <MenuItemAnchor
-            primary={t('Nav.primary_plan')}
-            href={offersLink}
-            target="_blank"
-            icon={CozyCircle}
-          />
+          <SubscriptionMenuItem offersLink={offersLink} />
         )}
 
         <MenuItemNavLink

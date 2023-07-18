@@ -30,6 +30,7 @@ import { Menu } from 'components/pages/Menu'
 import { initFlags } from 'lib/flags'
 import { routes } from 'constants/routes'
 import ChangeEmail from 'components/Email/ChangeEmail'
+import { Subscription } from 'components/Subscription/Subscription'
 
 initFlags()
 
@@ -90,6 +91,9 @@ export const App = () => {
             <Route path="details/:slug" element={<PermissionDetails />} />
           </Route>
           <Route path="/support" element={<Support />} />
+          {flag('settings.subscription') && (
+            <Route path="/subscription" element={<Subscription />} />
+          )}
           <Route
             path="*"
             element={

@@ -5,7 +5,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
-import OffersLink from 'components/SubscriptionLink'
+import { SubscriptionLink } from 'components/SubscriptionLink'
 
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
@@ -30,7 +30,14 @@ const Storage = () => {
       {isLoaded ? (
         <>
           <StorageProgress />
-          {!isFlagshipApp() && <OffersLink />}
+          {!isFlagshipApp() && (
+            <>
+              <Typography variant="h5" gutterBottom>
+                {t('StorageView.more_space')}
+              </Typography>
+              <SubscriptionLink label={t('StorageView.see_offer')} />
+            </>
+          )}
         </>
       ) : (
         <Spinner
