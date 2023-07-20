@@ -4,6 +4,7 @@ import { isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 
 import Select from 'components/Select'
+import { useSetLang } from 'hooks/useSetLang'
 
 const LANG_OPTIONS = ['en', 'fr', 'es']
 
@@ -17,6 +18,10 @@ const LanguageSection = props => {
   }
   const selectedLocale = fields.locale.value
   const fieldName = 'locale'
+
+  // Flagship App side-effect to set the locale
+  useSetLang(selectedLocale)
+
   return (
     <div>
       <Select
