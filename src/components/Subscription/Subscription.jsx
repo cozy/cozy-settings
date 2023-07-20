@@ -9,6 +9,7 @@ import CategoriesIcon from 'cozy-ui/transpiled/react/Icons/Categories'
 import ShareCircleIcon from 'cozy-ui/transpiled/react/Icons/ShareCircle'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import { isFlagshipApp } from 'cozy-device-helper'
 
 import { SubscriptionFlagItem } from 'components/Subscription/SubscriptionFlagItem'
 import { SubscriptionStorageItem } from 'components/Subscription/SubscriptionStorageItem'
@@ -54,10 +55,12 @@ const Subscription = () => {
               />
             </List>
           </Paper>
-          <SubscriptionLink
-            className="u-mt-1"
-            label={t('Subscription.action')}
-          />
+          {!isFlagshipApp() && (
+            <SubscriptionLink
+              className="u-mt-1"
+              label={t('Subscription.action')}
+            />
+          )}
         </>
       ) : (
         <Spinner

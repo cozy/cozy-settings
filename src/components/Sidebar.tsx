@@ -22,12 +22,10 @@ import { isFlagshipApp } from 'cozy-device-helper'
 import { routes } from 'constants/routes'
 import { useDiskPercentage } from 'hooks/useDiskPercentage'
 import { useLogout } from 'hooks/useLogout'
-import { useOffersLink } from 'hooks/useOffersLink'
-import { SubscriptionMenuItem } from './Subscription/SubscriptionMenuItem'
+import { SubscriptionMenuItem } from 'components/Subscription/SubscriptionMenuItem'
 
 export const Sidebar = (): JSX.Element => {
   const logout = useLogout()
-  const offersLink = useOffersLink()
   const percent = useDiskPercentage()
   const { t } = useI18n()
 
@@ -49,11 +47,7 @@ export const Sidebar = (): JSX.Element => {
           primary={t('Nav.profile')}
           icon={PeopleIcon}
         />
-
-        {offersLink && !isFlagshipApp() && (
-          <SubscriptionMenuItem offersLink={offersLink} />
-        )}
-
+        <SubscriptionMenuItem />
         <MenuItemNavLink
           to={routes.storage}
           primary={t('Nav.storage')}
