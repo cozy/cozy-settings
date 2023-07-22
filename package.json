@@ -61,7 +61,7 @@
     "cozy-intent": "2.7.0",
     "cozy-interapp": "0.7.7",
     "cozy-keys-lib": "5.0.0",
-    "cozy-realtime": "3.14.4",
+    "cozy-realtime": "4.6.0",
     "cozy-sharing": "3.10.0",
     "cozy-stack-client": "^36.0.0",
     "cozy-ui": "88.5.0",
