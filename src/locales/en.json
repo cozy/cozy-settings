@@ -512,7 +512,7 @@
       "flags": {
         "harvest.accounts.max": "Number of connected accounts",
         "mespapiers.papers.max": "Number of papers added manually",
-        "drive.office.enabled": "Online document editing",
+        "drive.office.write": "Online document editing",
         "passwords.can-share-organizations": "Sharing passwords"
       },
       "storage": "Storage: %{humanDiskQuota} GB",
