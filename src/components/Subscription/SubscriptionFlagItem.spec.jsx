@@ -11,10 +11,7 @@ import flag from 'cozy-flags'
 jest.mock('cozy-flags')
 
 describe('SubscriptionFlagItem', () => {
-  const setup = ({
-    name = 'drive.office.enabled',
-    returnValue = null
-  } = {}) => {
+  const setup = ({ name = 'drive.office.write', returnValue = null } = {}) => {
     flag.mockReturnValue(returnValue)
 
     render(

@@ -47,7 +47,7 @@ const Subscription = () => {
               />
               <SubscriptionFlagItem
                 icon={CategoriesIcon}
-                name="drive.office.enabled"
+                name="drive.office.write"
               />
               <SubscriptionFlagItem
                 icon={ShareCircleIcon}
