@@ -97,7 +97,7 @@
     "profile": "Profiel",
     "secondary_free": "Vrij",
     "secondary_used": "%{percent}% gebruikt",
-    "sessions": "Verbindingen",
+    "sessions": "Webkoppelingen",
     "storage": "Opslag",
     "contact_support": "Neem contact met ons op"
   },
@@ -128,11 +128,6 @@
       "success": "Je gegevens zijn gewijzigd.",
       "server_error": "Er is een fout opgetreden; je gegevens zijn niet opgeslagen.",
       "empty": "Dit veld mag niet leeg worden gelaten"
-    },
-    "email": {
-      "title": "E-mailadres voor authenticatie en contact",
-      "label": "Cozy heeft je e-mailadres nodig zodat je meldingen kunt ontvangen en je je wachtwoord kunt herstellen.",
-      "error": "Dit e-mailadres lijkt onjuist. Weet je zeker dat je het goed geschreven hebt (bijv. jan@jansen.nl)?"
     },
     "twofa": {
       "title": {
@@ -303,7 +298,7 @@
     "see_offer": "Mijn opslag uitbreiden"
   },
   "SessionsView": {
-    "title": "Verbindingsgeschiedenis",
+    "title": "Webkoppelingsgeschiedenis",
     "sync_date_format": "D MMM YYYY",
     "delete": "Alle andere sessie verwijderen",
     "infos": {
@@ -502,5 +497,46 @@
   },
   "Accessibility": {
     "previous": "Vorige"
+  },
+  "EmailSection": {
+    "title": "E-mailadres",
+    "subtitle": "Cozy heeft je e-mailadres nodig zodat je meldingen kunt ontvangen en je je wachtwoord kunt herstellen.",
+    "action": "E-mailadres bewerken",
+    "alert": {
+      "title": "Bewerking in behandeling",
+      "content": "Er is een e-mail verstuurd naar %{pendingEmail} om je identiteit te verifiëren en je e-mailadreswĳziging te bevestigen.",
+      "resend": "E-mail opnieuw versturen",
+      "cancel": "Annuleren"
+    },
+    "snackbar": {
+      "server_error": "Er is een fout opgetreden op de server - herlaad de pagina.",
+      "resend_success": "Er is een e-mail verstuurd naar %{pendingEmail}"
+    }
+  },
+  "EmailModal": {
+    "title": "Nieuwe e-mail",
+    "cancel": "Annuleren",
+    "submit": "Oké",
+    "errors": {
+      "server": "Er is een fout opgetreden op de server - herlaad de pagina.",
+      "same_email": "Het nieuwe e-mailadres mag niet gelĳk zĳn aan het oude.",
+      "email_format": "Dit e-mailadres lijkt onjuist. Weet je zeker dat je het goed geschreven hebt (bijv. jan@jansen.nl)?"
+    }
+  },
+  "Subscription": {
+    "title": "Pakketten",
+    "included": {
+      "title": "Inbegrepen in je pakket:",
+      "flags": {
+        "harvest.accounts.max": "Aantal gekoppelde accounts",
+        "mespapiers.papers.max": "Aantal zelf-toegevoegde documenten",
+        "drive.office.write": "Online documenten bewerken",
+        "passwords.can-share-organizations": "Wachtwoorden delen"
+      },
+      "storage": "Opslagruimte: %{humanDiskQuota} GB",
+      "numeric_flag": ": tot %{smart_count}",
+      "numeric_flag_unlimited": ": onbeperkt"
+    },
+    "action": "Bekĳk onze pakketten"
   }
 }
