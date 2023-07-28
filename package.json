@@ -53,7 +53,7 @@
   "dependencies": {
     "@material-ui/lab": "4.0.0-alpha.61",
     "classnames": "2.3.1",
-    "cozy-client": "^38.11.1",
+    "cozy-client": "^40.0.1",
     "cozy-device-helper": "^2.6.0",
     "cozy-doctypes": "1.83.7",
     "cozy-flags": "^3.0.1",
@@ -63,7 +63,7 @@
     "cozy-keys-lib": "5.0.0",
     "cozy-realtime": "3.14.4",
     "cozy-sharing": "3.10.0",
-    "cozy-stack-client": "^36.0.0",
+    "cozy-stack-client": "^40.0.1",
     "cozy-ui": "88.5.0",
     "piwik-react-router": "0.12.1",
     "prop-types": "15.8.1",
