@@ -24,7 +24,11 @@ describe('SubscriptionFlagItem', () => {
   it('should display the label by default', () => {
     setup({ returnValue: true })
 
-    expect(screen.getByText('Online document editing')).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        'Online Office document editing (spreadsheet, word processing)'
+      )
+    ).toBeInTheDocument()
   })
 
   it('should display the label with the limit when the flag return a number', () => {

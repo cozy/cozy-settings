@@ -528,9 +528,9 @@
     "included": {
       "title": "Included in your plan:",
       "flags": {
-        "harvest.accounts.max": "Number of connected accounts",
+        "harvest.accounts.max": "Automatic document and data retrieval",
         "mespapiers.papers.max": "Number of papers added manually",
-        "drive.office.write": "Online document editing",
+        "drive.office.write": "Online Office document editing (spreadsheet, word processing)",
         "passwords.can-share-organizations": "Sharing passwords"
       },
       "storage": "Storage: %{humanDiskQuota} GB",
