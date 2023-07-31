@@ -23,7 +23,7 @@ const SubscriptionStorageItem = () => {
   )
 
   return (
-    <ListItem size="small">
+    <ListItem size="small" ellipsis={false}>
       <ListItemIcon>
         <Icon icon={FolderIcon} />
       </ListItemIcon>
