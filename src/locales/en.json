@@ -535,7 +535,9 @@
       },
       "storage": "Storage: %{humanDiskQuota} GB",
       "numeric_flag": ": up to %{smart_count}",
-      "numeric_flag_unlimited": ": unlimited"
+      "numeric_account_flag": ": up to one connected account |||| : up to %{smart_count} connected accounts",
+      "numeric_flag_unlimited": ": unlimited",
+      "numeric_account_flag_unlimited": ": unlimited connected account"
     },
     "action": "Check our plans"
   }
