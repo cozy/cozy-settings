@@ -46,4 +46,24 @@ describe('SubscriptionFlagItem', () => {
       screen.getByText('Number of papers added manually: unlimited')
     ).toBeInTheDocument()
   })
+
+  it('should display the label with the limit when the flag related to account return a number', () => {
+    setup({ name: 'harvest.accounts.max', returnValue: 10 })
+
+    expect(
+      screen.getByText(
+        'Automatic document and data retrieval: up to 10 connected accounts'
+      )
+    ).toBeInTheDocument()
+  })
+
+  it('should display the label with ulimited when the flag related to account return -1', () => {
+    setup({ name: 'harvest.accounts.max', returnValue: -1 })
+
+    expect(
+      screen.getByText(
+        'Automatic document and data retrieval: unlimited connected account'
+      )
+    ).toBeInTheDocument()
+  })
 })

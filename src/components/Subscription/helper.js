@@ -24,12 +24,18 @@ export function computeFlagLabel(name, t, lang) {
   const flagLabel = t(`Subscription.included.flags.${name}`)
   const value = flag(name)
   if (Number.isInteger(value)) {
+    const accountPrefix = name.includes('accounts') ? 'account_' : ''
+    const unlimited = t(
+      `Subscription.included.numeric_${accountPrefix}flag_unlimited`
+    )
+    const numberic = t(`Subscription.included.numeric_${accountPrefix}flag`, {
+      smart_count: value
+    })
+
     return (
       flagLabel +
       (lang === 'fr' ? ' ' : '') +
-      (value === -1
-        ? t(`Subscription.included.numeric_flag_unlimited`)
-        : t(`Subscription.included.numeric_flag`, { smart_count: value }))
+      (value === -1 ? unlimited : numberic)
     )
   }
   return flagLabel
