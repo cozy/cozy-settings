@@ -3,7 +3,7 @@ import React from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import List from 'cozy-ui/transpiled/react/List'
 import Paper from 'cozy-ui/transpiled/react/Paper'
-import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
+import ExchangeIcon from 'cozy-ui/transpiled/react/Icons/Exchange'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import CategoriesIcon from 'cozy-ui/transpiled/react/Icons/Categories'
 import ShareCircleIcon from 'cozy-ui/transpiled/react/Icons/ShareCircle'
@@ -38,7 +38,7 @@ const Subscription = () => {
             <List dense>
               <SubscriptionStorageItem />
               <SubscriptionFlagItem
-                icon={PeopleIcon}
+                icon={ExchangeIcon}
                 name="harvest.accounts.max"
               />
               <SubscriptionFlagItem
