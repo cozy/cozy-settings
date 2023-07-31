@@ -22,7 +22,7 @@ const SubscriptionFlagItem = ({ icon, name }) => {
   const label = computeFlagLabel(name, t, lang)
 
   return (
-    <ListItem size="small" disabled={disabled}>
+    <ListItem size="small" disabled={disabled} ellipsis={false}>
       <ListItemIcon>
         <Icon icon={icon} />
       </ListItemIcon>
