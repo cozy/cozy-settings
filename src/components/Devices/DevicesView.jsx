@@ -43,21 +43,13 @@ import browserIcon from 'assets/icons/icon-device-browser.svg'
 import laptopIcon from 'assets/icons/icon-device-laptop.svg'
 import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
 
-import { Q, isQueryLoading, useQuery } from 'cozy-client'
+import { isQueryLoading, useQuery } from 'cozy-client'
 
 import {
   COZY_DESKTOP_SOFTWARE_ID,
-  DISPLAYED_CLIENTS,
-  OAUTH_CLIENTS_DOCTYPE
+  DISPLAYED_CLIENTS
 } from 'lib/deviceConfigurationHelper'
-
-const DEVICES_QUERY_LIMIT = 1000
-const buildDevicesQuery = () => ({
-  definition: () => Q(OAUTH_CLIENTS_DOCTYPE).limitBy(DEVICES_QUERY_LIMIT),
-  options: {
-    as: `${OAUTH_CLIENTS_DOCTYPE} _id asc`
-  }
-})
+import { buildDevicesQuery } from 'lib/queries'
 
 const deviceKindToIcon = {
   mobile: mobileIcon,
