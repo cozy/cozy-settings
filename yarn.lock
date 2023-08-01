@@ -8753,13 +8753,6 @@ cozy-client@^38.2.1:
     sift "^6.0.0"
     url-search-params-polyfill "^8.0.0"
 
-cozy-device-helper@^1.12.0:
-  version "1.12.0"
-  resolved "https://registry.npmjs.org/cozy-device-helper/-/cozy-device-helper-1.12.0.tgz"
-  integrity sha512-7pFbltgkD8rSO0PEf8pd6aBB37RUnNYH7fb3pkbcvo5rk4quCfSLREV94gZwXxowzP4vjZcAumTM09DfI42mJA==
-  dependencies:
-    lodash "^4.17.19"
-
 cozy-device-helper@^1.15.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/cozy-device-helper/-/cozy-device-helper-1.18.0.tgz#45b37e68c30ec1104c8c40180b472d3662bc2534"
@@ -8781,7 +8774,7 @@ cozy-device-helper@^2.6.0:
   dependencies:
     lodash "^4.17.19"
 
-cozy-doctypes@1.83.7, cozy-doctypes@^1.82.3:
+cozy-doctypes@1.83.7:
   version "1.83.7"
   resolved "https://registry.npmjs.org/cozy-doctypes/-/cozy-doctypes-1.83.7.tgz"
   integrity sha512-sAMZ/xajc2rXWmBFB0fP4NWQmUDh6FmStRE2KFpMrq7UGM6wIBouVl1CYD7grdlompBh3/1kBNmAb5PuWRMnBQ==
@@ -8982,18 +8975,18 @@ cozy-scripts@8.1.1:
     webpack-dev-server "3.10.3"
     webpack-merge "4.2.2"
 
-cozy-sharing@3.10.0:
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/cozy-sharing/-/cozy-sharing-3.10.0.tgz"
-  integrity sha512-eiQBQKngn3tMQxtqgxRKLCni0wVKAU2jqvkVrfhgsuPrUbzoff1u/Fxt3QHDwvySY696laHYEPpAy8fzPGz3lQ==
+cozy-sharing@8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/cozy-sharing/-/cozy-sharing-8.3.0.tgz#0d8b84702f302c4ee6cc49a68d58874acd1cf5ca"
+  integrity sha512-WjSaDj49yjIbpOz7vKp8PRpkvvMDJwHUjYQCECwrtMtQw8j1XFnqZbXgvcsYOQ7HGKTy+lJJRB807DQwicDb1A==
   dependencies:
     "@cozy/minilog" "^1.0.0"
     classnames "^2.2.6"
     copy-text-to-clipboard "^2.1.1"
-    cozy-device-helper "^1.12.0"
-    cozy-doctypes "^1.82.3"
+    cozy-device-helper "^2.7.0"
+    cozy-doctypes "^1.88.6"
     lodash "^4.17.19"
-    react-autosuggest "^9.4.3"
+    react-autosuggest "^10.1.0"
     react-tooltip "^3.11.1"
     snarkdown "^2.0.0"
 
@@ -17688,7 +17681,7 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-autosuggest@9.4.3, react-autosuggest@^9.4.3:
+react-autosuggest@9.4.3:
   version "9.4.3"
   resolved "https://registry.npmjs.org/react-autosuggest/-/react-autosuggest-9.4.3.tgz"
   integrity sha512-wFbp5QpgFQRfw9cwKvcgLR8theikOUkv8PFsuLYqI2PUgVlx186Cz8MYt5bLxculi+jxGGUUVt+h0esaBZZouw==
@@ -17696,6 +17689,17 @@ react-autosuggest@9.4.3, react-autosuggest@^9.4.3:
     prop-types "^15.5.10"
     react-autowhatever "^10.1.2"
     shallow-equal "^1.0.0"
+
+react-autosuggest@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/react-autosuggest/-/react-autosuggest-10.1.0.tgz#4d25b8acc78bb518eb70189bb96bcd777dc71ffb"
+  integrity sha512-/azBHmc6z/31s/lBf6irxPf/7eejQdR0IqnZUzjdSibtlS8+Rw/R79pgDAo6Ft5QqCUTyEQ+f0FhL+1olDQ8OA==
+  dependencies:
+    es6-promise "^4.2.8"
+    prop-types "^15.7.2"
+    react-themeable "^1.1.0"
+    section-iterator "^2.0.0"
+    shallow-equal "^1.2.1"
 
 react-autowhatever@^10.1.2:
   version "10.2.1"
