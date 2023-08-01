@@ -4,9 +4,6 @@ import classNames from 'classnames'
 
 import tableStyles from 'styles/table.styl'
 
-import flag from 'cozy-flags'
-import semver from 'semver'
-
 import ActionMenu, {
   ActionMenuHeader,
   ActionMenuItem
@@ -37,35 +34,14 @@ import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
 import DevicesModaleConfigureView from 'components/DevicesModaleConfigureView'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
+import { getDeviceIcon, canConfigureDevice } from 'components/Devices/helpers'
 
-import mobileIcon from 'assets/icons/icon-device-phone.svg'
-import browserIcon from 'assets/icons/icon-device-browser.svg'
-import laptopIcon from 'assets/icons/icon-device-laptop.svg'
 import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
 
 import { isQueryLoading, useQuery } from 'cozy-client'
 
-import {
-  COZY_DESKTOP_SOFTWARE_ID,
-  DISPLAYED_CLIENTS
-} from 'lib/deviceConfigurationHelper'
+import { DISPLAYED_CLIENTS } from 'lib/deviceConfigurationHelper'
 import { buildDevicesQuery } from 'lib/queries'
-
-const deviceKindToIcon = {
-  mobile: mobileIcon,
-  browser: browserIcon
-}
-
-const getDeviceIcon = device => {
-  return deviceKindToIcon[device.client_kind] || laptopIcon
-}
-
-const isCozyDesktopApp = device =>
-  device.software_id === COZY_DESKTOP_SOFTWARE_ID
-const canConfigureDevice = device =>
-  isCozyDesktopApp(device) &&
-  semver.gte(device.software_version, '3.32.0-beta.3') &&
-  flag('settings.partial-desktop-sync.show-synced-folders-selection')
 
 const MoreButton = ({ onClick }) => {
   const { t } = useI18n()
