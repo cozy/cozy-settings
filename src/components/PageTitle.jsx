@@ -46,7 +46,7 @@ const PageTitle = ({ children, backButtonPath, ...rest }) => {
       </BarCenter>
     </>
   ) : (
-    <Typography variant="h3" {...rest} gutterBottom>
+    <Typography variant="h3" gutterBottom {...rest}>
       {children}
     </Typography>
   )
