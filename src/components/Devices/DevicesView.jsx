@@ -24,12 +24,17 @@ import { DevicesEmpty } from 'components/Devices/DevicesEmpty'
 import { DevicesModaleRevokeView } from 'components/Devices/DevicesModaleRevokeView'
 import DevicesModaleConfigureView from 'components/Devices/DevicesModaleConfigureView'
 import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import { getDeviceIcon, canConfigureDevice } from 'components/Devices/helpers'
+import { PageHeader } from 'components/PageHeader'
+import {
+  getDeviceIcon,
+  canConfigureDevice,
+  getSubtitle
+} from 'components/Devices/helpers'
 import { DevicesMoreMenu } from 'components/Devices/DevicesMoreMenu'
 import { DISPLAYED_CLIENTS } from 'lib/deviceConfigurationHelper'
 import { buildDevicesQuery } from 'lib/queries'
 import tableStyles from 'styles/table.styl'
+import { SubscriptionLink } from 'components/SubscriptionLink'
 
 const DevicesView = () => {
   const { t, f, lang } = useI18n()
@@ -106,9 +111,19 @@ const DevicesView = () => {
     <Page
       withoutVerticalMargin={isMobile}
       fullHeight
-      className="u-flex u-flex-column u-pb-3"
+      className="u-flex u-flex-column u-pb-3 u-mt-1-half-s"
     >
-      <PageTitle>{t('DevicesView.title')}</PageTitle>
+      <PageHeader
+        title={t('DevicesView.header.title')}
+        subtitle={!isFetching ? t(...getSubtitle(devices.length)) : null}
+        actions={
+          <SubscriptionLink
+            variant="secondary"
+            label={t('DevicesView.header.subscribe')}
+            fullWidth={false}
+          />
+        }
+      />
       {isFetching ? (
         <Spinner
           className="u-pos-fixed-s"

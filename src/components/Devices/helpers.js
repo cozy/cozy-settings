@@ -23,3 +23,24 @@ export const canConfigureDevice = device =>
   isCozyDesktopApp(device) &&
   semver.gte(device.software_version, '3.32.0-beta.3') &&
   flag('settings.partial-desktop-sync.show-synced-folders-selection')
+
+/**
+ * Get subtitle translation key with interpolation value
+ * @param {number} deviceCount Number of connected devices
+ * @returns array with the translation key and an object of interpolation value
+ */
+export const getSubtitle = deviceCount => {
+  const flagValue = flag('cozy.oauthclients.max')
+
+  if (flagValue !== null && flagValue >= 0) {
+    return [
+      'DevicesView.header.subtitle',
+      { smart_count: deviceCount, limit: flagValue }
+    ]
+  }
+
+  return [
+    'DevicesView.header.subtitle_without_flag',
+    { smart_count: deviceCount }
+  ]
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import {
@@ -13,7 +14,7 @@ import { useInstanceInfo } from 'hooks/useInstanceInfo'
 /**
  * Button to redirect to the plan page
  */
-const SubscriptionLink = ({ label, className }) => {
+const SubscriptionLink = ({ label, className, variant, fullWidth }) => {
   const instance = useInstanceInfo()
   const link = buildPremiumLink(instance)
 
@@ -23,16 +24,28 @@ const SubscriptionLink = ({ label, className }) => {
   if (arePremiumLinksEnabled(instance) && link) {
     return (
       <Button
-        fullWidth
+        fullWidth={fullWidth}
         component="a"
         className={className}
         label={label}
         href={link}
+        variant={variant}
       />
     )
   }
 
   return null
+}
+
+SubscriptionLink.propTypes = {
+  label: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  variant: PropTypes.string,
+  fullWidth: PropTypes.bool
+}
+
+SubscriptionLink.defaultProps = {
+  fullWidth: true
 }
 
 export { SubscriptionLink }
