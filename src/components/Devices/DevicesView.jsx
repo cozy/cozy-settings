@@ -389,4 +389,4 @@ const DevicesView = () => {
   )
 }
 
-export default DevicesView
+export { DevicesView }
