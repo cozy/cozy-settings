@@ -1,7 +1,12 @@
 import React from 'react'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import { buildPremiumLink } from 'cozy-client/dist/models/instance'
+import {
+  buildPremiumLink,
+  arePremiumLinksEnabled
+} from 'cozy-client/dist/models/instance'
+import { isFlagshipApp } from 'cozy-device-helper'
+import flag from 'cozy-flags'
 
 import { useInstanceInfo } from 'hooks/useInstanceInfo'
 
@@ -12,7 +17,10 @@ const SubscriptionLink = ({ label, className }) => {
   const instance = useInstanceInfo()
   const link = buildPremiumLink(instance)
 
-  if (link) {
+  const isIapEnabled = flag('flagship.iap.enabled')
+  if (isFlagshipApp() && !isIapEnabled) return null
+
+  if (arePremiumLinksEnabled(instance) && link) {
     return (
       <Button
         fullWidth

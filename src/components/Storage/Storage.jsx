@@ -31,13 +31,11 @@ const Storage = () => {
         <>
           <StorageProgress />
           {!isFlagshipApp() && (
-            <>
-              <Typography variant="h5" gutterBottom>
-                {t('StorageView.more_space')}
-              </Typography>
-              <SubscriptionLink label={t('StorageView.see_offer')} />
-            </>
+            <Typography variant="h5" gutterBottom>
+              {t('StorageView.more_space')}
+            </Typography>
           )}
+          <SubscriptionLink label={t('StorageView.see_offer')} />
         </>
       ) : (
         <Spinner
