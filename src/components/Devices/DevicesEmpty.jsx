@@ -9,7 +9,7 @@ import EmptyIcon from 'assets/icons/icon-devices.svg'
 /**
  * Empty state to be displayed when no device is connected
  */
-const NoDevicesMessage = () => {
+const DevicesEmpty = () => {
   const { t } = useI18n()
   return (
     <Empty
@@ -26,4 +26,4 @@ const NoDevicesMessage = () => {
   )
 }
 
-export default NoDevicesMessage
+export { DevicesEmpty }

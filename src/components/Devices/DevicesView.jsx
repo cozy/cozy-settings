@@ -20,9 +20,9 @@ import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
 
-import NoDevicesMessage from 'components/NoDevicesMessage'
-import DevicesModaleRevokeView from 'components/DevicesModaleRevokeView'
-import DevicesModaleConfigureView from 'components/DevicesModaleConfigureView'
+import { DevicesEmpty } from 'components/Devices/DevicesEmpty'
+import { DevicesModaleRevokeView } from 'components/Devices/DevicesModaleRevokeView'
+import DevicesModaleConfigureView from 'components/Devices/DevicesModaleConfigureView'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { getDeviceIcon, canConfigureDevice } from 'components/Devices/helpers'
@@ -117,7 +117,7 @@ const DevicesView = () => {
           loadingType="loading"
         />
       ) : devices.length === 0 ? (
-        <NoDevicesMessage />
+        <DevicesEmpty />
       ) : (
         <Table className={tableStyles['coz-table']}>
           {deviceToRevoke != null ? (

@@ -5,7 +5,7 @@ import cloneDeep from 'lodash/cloneDeep'
 
 import { createMockClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import AppLike from '../../test/AppLike'
+import AppLike from '../../../test/AppLike'
 
 import {
   ROOT_FOLDER_ID,
