@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import Button from 'cozy-ui/transpiled/react/deprecated/Button'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import IconCircle2Arrows from '../assets/icons/IconCircle2Arrows'
+import IconCircle2Arrows from '../../assets/icons/IconCircle2Arrows'
 import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
 
 import { useClient } from 'cozy-client'
@@ -13,7 +13,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import logger from 'lib/logger'
 
-const RevokeDeviceDialog = ({ device, cancelAction, onDeviceRevoked }) => {
+const DevicesModaleRevokeView = ({ device, cancelAction, onDeviceRevoked }) => {
   const { t } = useI18n()
   const client = useClient()
   const revokeDevice = useCallback(async () => {
@@ -66,4 +66,4 @@ const RevokeDeviceDialog = ({ device, cancelAction, onDeviceRevoked }) => {
   )
 }
 
-export default RevokeDeviceDialog
+export { DevicesModaleRevokeView }
