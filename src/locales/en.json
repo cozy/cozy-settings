@@ -280,7 +280,7 @@
       "title": "Connected devices",
       "subtitle": "%{smart_count}/%{limit} connected device |||| %{smart_count}/%{limit} connected devices",
       "subtitle_without_flag": "%{smart_count} connected device |||| %{smart_count} connected devices",
-      "action": "Increase limit"
+      "subscribe": "Increase limit"
     },
     "load_error": "An error occured while loading your devices, please try again later.",
     "device_load_error": "We could not find the requested device.",
