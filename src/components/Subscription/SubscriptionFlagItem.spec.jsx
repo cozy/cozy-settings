@@ -26,7 +26,7 @@ describe('SubscriptionFlagItem', () => {
 
     expect(
       screen.getByText(
-        'Online Office document editing (spreadsheet, word processing)'
+        'Online Office documents editor (word processing, spreadsheet, and presentation)'
       )
     ).toBeInTheDocument()
   })
@@ -52,7 +52,7 @@ describe('SubscriptionFlagItem', () => {
 
     expect(
       screen.getByText(
-        'Automatic document and data retrieval: up to 10 connected accounts'
+        'Automatic document and data retrieval: up to 10 personnal accounts connected'
       )
     ).toBeInTheDocument()
   })
@@ -62,7 +62,7 @@ describe('SubscriptionFlagItem', () => {
 
     expect(
       screen.getByText(
-        'Automatic document and data retrieval: unlimited connected account'
+        'Automatic document and data retrieval: unlimited personnal accounts connected'
       )
     ).toBeInTheDocument()
   })

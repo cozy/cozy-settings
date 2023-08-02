@@ -535,14 +535,14 @@
       "flags": {
         "harvest.accounts.max": "Automatic document and data retrieval",
         "mespapiers.papers.max": "Number of papers added manually",
-        "drive.office.write": "Online Office document editing (spreadsheet, word processing)",
+        "drive.office.write": "Online Office documents editor (word processing, spreadsheet, and presentation)",
         "passwords.can-share-organizations": "Sharing passwords"
       },
       "storage": "Storage: %{humanDiskQuota} GB",
       "numeric_flag": ": up to %{smart_count}",
-      "numeric_account_flag": ": up to one connected account |||| : up to %{smart_count} connected accounts",
+      "numeric_account_flag": ": up to 1 personnal account connected |||| : up to %{smart_count} personnal accounts connected",
       "numeric_flag_unlimited": ": unlimited",
-      "numeric_account_flag_unlimited": ": unlimited connected account"
+      "numeric_account_flag_unlimited": ": unlimited personnal accounts connected"
     },
     "action": "Check our plans"
   }
