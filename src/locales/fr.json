@@ -540,7 +540,7 @@
       },
       "storage": "Stockage : %{humanDiskQuota} Go",
       "numeric_flag": ": jusqu’à %{smart_count}",
-      "numeric_account_flag": ": 1 compte personnel connecté |||| jusqu'à %{smart_count} comptes personnels connectés",
+      "numeric_account_flag": ": 1 compte personnel connecté |||| : jusqu'à %{smart_count} comptes personnels connectés",
       "numeric_flag_unlimited": ": illimité",
       "numeric_account_flag_unlimited": ": nombre de comptes personnels connectés illimités"
     },
