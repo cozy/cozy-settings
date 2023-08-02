@@ -280,7 +280,7 @@
       "title": "Appareils connectés",
       "subtitle": "%{smart_count}/%{limit} appareil connecté |||| %{smart_count}/%{limit} appareils connectés",
       "subtitle_without_flag": "%{smart_count} appareil connecté |||| %{smart_count} appareils connectés",
-      "subscribe": "Augmenter la limite"
+      "action": "Augmenter la limite"
     },
     "load_error": "Une erreur s'est produite lors du chargement de vos appareils, merci de réessayer plus tard.",
     "device_load_error": "Nous ne trouvons pas l'appareil demandé.",
