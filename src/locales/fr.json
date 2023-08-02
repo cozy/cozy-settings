@@ -280,7 +280,7 @@
       "title": "Appareils connectés",
       "subtitle": "%{smart_count}/%{limit} appareil connecté |||| %{smart_count}/%{limit} appareils connectés",
       "subtitle_without_flag": "%{smart_count} appareil connecté |||| %{smart_count} appareils connectés",
-      "action": "Augmenter la limite"
+      "subscribe": "Augmenter la limite"
     },
     "load_error": "Une erreur s'est produite lors du chargement de vos appareils, merci de réessayer plus tard.",
     "device_load_error": "Nous ne trouvons pas l'appareil demandé.",
@@ -535,14 +535,14 @@
       "flags": {
         "harvest.accounts.max": "Récupération automatiques de documents et données",
         "mespapiers.papers.max": "Nombre de Papiers ajoutés manuellement",
-        "drive.office.write": "Edition de document Office en ligne (tableur, traitement de texte)",
+        "drive.office.write": "Edition de document Office en ligne (traitement de texte, tableur, et présentation)",
         "passwords.can-share-organizations": "Partage de mots de passe"
       },
       "storage": "Stockage : %{humanDiskQuota} Go",
       "numeric_flag": ": jusqu’à %{smart_count}",
-      "numeric_account_flag": ": jusqu'à un compte connecté |||| jusqu'à %{smart_count} comptes connectés",
+      "numeric_account_flag": ": 1 compte personnel connecté |||| jusqu'à %{smart_count} comptes personnels connectés",
       "numeric_flag_unlimited": ": illimité",
-      "numeric_account_flag_unlimited": ": compte connecté illimité"
+      "numeric_account_flag_unlimited": ": nombre de comptes personnels connectés illimités"
     },
     "action": "Voir les offres"
   }
