@@ -19,6 +19,7 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
 import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
+import flag from 'cozy-flags'
 
 import { DevicesEmpty } from 'components/Devices/DevicesEmpty'
 import { DevicesModaleRevokeView } from 'components/Devices/DevicesModaleRevokeView'
@@ -107,6 +108,8 @@ const DevicesView = () => {
     deviceToConfigure
   ])
 
+  const hasUnlimitedDevices = flag('cozy.oauthclients.max') === -1
+
   return (
     <Page
       withoutVerticalMargin={isMobile}
@@ -117,11 +120,13 @@ const DevicesView = () => {
         title={t('DevicesView.header.title')}
         subtitle={!isFetching ? t(...getSubtitle(devices.length)) : null}
         actions={
-          <SubscriptionLink
-            variant="secondary"
-            label={t('DevicesView.header.subscribe')}
-            fullWidth={false}
-          />
+          !hasUnlimitedDevices ? (
+            <SubscriptionLink
+              variant="secondary"
+              label={t('DevicesView.header.subscribe')}
+              fullWidth={false}
+            />
+          ) : null
         }
       />
       {isFetching ? (
