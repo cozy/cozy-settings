@@ -55,7 +55,11 @@ const DevicesView = () => {
     () =>
       Array.isArray(data)
         ? data
-            .filter(device => DISPLAYED_CLIENTS.includes(device.client_kind))
+            .filter(
+              device =>
+                DISPLAYED_CLIENTS.includes(device.client_kind) &&
+                !device.pending
+            )
             .sort((a, b) => {
               return a.client_name.localeCompare(b.client_name, lang, {
                 sensitivity: 'base',
