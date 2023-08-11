@@ -9,7 +9,7 @@ import { useClient, useQuery } from 'cozy-client'
 import emailHelper from 'lib/emailHelper'
 import { buildSettingsInstanceQuery } from 'lib/queries'
 
-const EmailModal = ({ onClose, onSuccess, passwordHash }) => {
+const EmailModal = ({ onClose, onSuccess, passwordHash, skipConfirmation }) => {
   const client = useClient()
   const { t } = useI18n()
   const [status, setStatus] = useState('idle')
@@ -34,10 +34,21 @@ const EmailModal = ({ onClose, onSuccess, passwordHash }) => {
 
     setStatus('loading')
     try {
-      await client.stackClient.fetchJSON('POST', '/settings/email', {
-        email,
-        passphrase: passwordHash
-      })
+      if (skipConfirmation) {
+        await client.save({
+          _rev: instance.meta.rev,
+          ...instance,
+          attributes: {
+            ...instance.attributes,
+            email: email
+          }
+        })
+      } else {
+        await client.stackClient.fetchJSON('POST', '/settings/email', {
+          email,
+          passphrase: passwordHash
+        })
+      }
       setStatus('success')
       onSuccess()
     } catch (e) {
