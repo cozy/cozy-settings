@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import EmailModal from './EmailModal'
-import AuthentificationModal from './AuthentificationModal'
+import flag from 'cozy-flags'
+
+import { useHasPassword } from 'hooks/useHasPassword'
+import EmailModal from 'components/Email/EmailModal'
+import AuthentificationModal from 'components/Email/AuthentificationModal'
 
 const ChangeEmail = () => {
   const navigate = useNavigate()
-  const [passwordHash, setPasswordHash] = useState()
+  const hasPassword = useHasPassword()
+
+  const [passwordHash, setPasswordHash] = useState('')
 
   const goToProfile = () => {
     navigate('/profile')
@@ -16,12 +21,18 @@ const ChangeEmail = () => {
     setPasswordHash(currentPasswordHash)
   }
 
-  if (passwordHash) {
+  if (hasPassword === undefined) return null
+
+  const skipEmailConfirmation =
+    !hasPassword && !!flag('settings.skip_email_confirmation')
+
+  if (passwordHash || skipEmailConfirmation) {
     return (
       <EmailModal
         onClose={goToProfile}
         passwordHash={passwordHash}
         onSuccess={goToProfile}
+        skipConfirmation={skipEmailConfirmation}
       />
     )
   } else {
