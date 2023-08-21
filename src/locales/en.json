@@ -386,16 +386,16 @@
     "cancel": "Cancel"
   },
   "LockScreenView": {
-    "choose_pin_body": "choose_pin_body",
-    "choose_pin_cancel": "choose_pin_cancel",
-    "choose_pin_label": "choose_pin_label",
-    "choose_pin_next": "choose_pin_next",
-    "choose_pin_title": "choose_pin_title",
-    "confirm_pin_body": "confirm_pin_body",
-    "confirm_pin_cancel": "confirm_pin_cancel",
-    "confirm_pin_error": "confirm_pin_error",
-    "confirm_pin_next": "confirm_pin_next",
-    "confirm_pin_title": "confirm_pin_title",
+    "choose_pin_body": "Set your PIN to unlock the application after a period of inactivity",
+    "choose_pin_cancel": "Cancel",
+    "choose_pin_label": "PIN Code",
+    "choose_pin_next": "Next",
+    "choose_pin_title": "Choose a PIN code",
+    "confirm_pin_body": "For security reasons, please re-enter your PIN code.",
+    "confirm_pin_cancel": "Cancel",
+    "confirm_pin_error": "PIN codes do not match",
+    "confirm_pin_next": "Complete",
+    "confirm_pin_title": "Confirm PIN code",
     "title": "Unlock screen"
   },
   "soon": {
