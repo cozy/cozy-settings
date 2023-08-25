@@ -11,12 +11,20 @@ import flag from 'cozy-flags'
 jest.mock('cozy-flags')
 
 describe('SubscriptionFlagItem', () => {
-  const setup = ({ name = 'drive.office.write', returnValue = null } = {}) => {
+  const setup = ({
+    name = 'drive.office.write',
+    returnValue = null,
+    hideWithoutFlag = false
+  } = {}) => {
     flag.mockReturnValue(returnValue)
 
-    render(
+    return render(
       <I18n lang="en" dictRequire={() => en}>
-        <SubscriptionFlagItem name={name} icon={PaperIcon} />
+        <SubscriptionFlagItem
+          name={name}
+          icon={PaperIcon}
+          hideWithoutFlag={hideWithoutFlag}
+        />
       </I18n>
     )
   }
@@ -64,6 +72,28 @@ describe('SubscriptionFlagItem', () => {
       screen.getByText(
         'Automatic document and data retrieval: unlimited personnal accounts connected'
       )
+    ).toBeInTheDocument()
+  })
+
+  it('should hide the label when the flag unset and hideWithoutFlag is true', () => {
+    const { container } = setup({
+      name: 'mespapiers.papers.max',
+      returnValue: null,
+      hideWithoutFlag: true
+    })
+
+    expect(container).toBeEmptyDOMElement()
+  })
+
+  it('should display the label when the flag has a value and hideWithoutFlag is true', () => {
+    setup({
+      name: 'mespapiers.papers.max',
+      returnValue: 3,
+      hideWithoutFlag: true
+    })
+
+    expect(
+      screen.getByText('Number of papers added manually: up to 3')
     ).toBeInTheDocument()
   })
 })

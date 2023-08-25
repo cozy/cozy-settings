@@ -536,7 +536,8 @@
         "harvest.accounts.max": "Automatic document and data retrieval",
         "mespapiers.papers.max": "Number of papers added manually",
         "drive.office.write": "Online Office documents editor (word processing, spreadsheet, and presentation)",
-        "passwords.can-share-organizations": "Sharing passwords"
+        "passwords.can-share-organizations": "Sharing passwords",
+        "cozy.oauthclients.max": "Max authorized devices"
       },
       "storage": "Storage: %{humanDiskQuota} GB",
       "numeric_flag": ": up to %{smart_count}",

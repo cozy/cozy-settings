@@ -7,6 +7,7 @@ import ExchangeIcon from 'cozy-ui/transpiled/react/Icons/Exchange'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import CategoriesIcon from 'cozy-ui/transpiled/react/Icons/Categories'
 import ShareCircleIcon from 'cozy-ui/transpiled/react/Icons/ShareCircle'
+import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
@@ -51,6 +52,11 @@ const Subscription = () => {
               <SubscriptionFlagItem
                 icon={ShareCircleIcon}
                 name="passwords.can-share-organizations"
+              />
+              <SubscriptionFlagItem
+                icon={DevicesIcon}
+                name="cozy.oauthclients.max"
+                hideWithoutFlag
               />
             </List>
           </Paper>

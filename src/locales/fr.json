@@ -536,7 +536,8 @@
         "harvest.accounts.max": "Récupération automatiques de documents et données",
         "mespapiers.papers.max": "Nombre de Papiers ajoutés manuellement",
         "drive.office.write": "Edition de documents Office en ligne (traitement de texte, tableur, et présentation)",
-        "passwords.can-share-organizations": "Partage de mots de passe"
+        "passwords.can-share-organizations": "Partage de mots de passe",
+        "cozy.oauthclients.max": "Nombre d'appareils autorisés"
       },
       "storage": "Stockage : %{humanDiskQuota} Go",
       "numeric_flag": ": jusqu’à %{smart_count}",
