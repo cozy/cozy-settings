@@ -6,6 +6,7 @@ import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import flag from 'cozy-flags'
 
 import {
   isFlagDisabled,
@@ -15,11 +16,13 @@ import {
 /**
  * ListItem to display how the feature flag included in the user plan
  */
-const SubscriptionFlagItem = ({ icon, name }) => {
+const SubscriptionFlagItem = ({ icon, name, hideWithoutFlag = false }) => {
   const { t, lang } = useI18n()
 
   const disabled = isFlagDisabled(name)
   const label = computeFlagLabel(name, t, lang)
+
+  if (flag(name) === null && hideWithoutFlag) return null
 
   return (
     <ListItem size="small" disabled={disabled} ellipsis={false}>
