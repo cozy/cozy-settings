@@ -24,7 +24,7 @@ const ChangeEmail = () => {
   if (hasPassword === undefined) return null
 
   const skipEmailConfirmation =
-    !hasPassword && !!flag('settings.skip_email_confirmation')
+    !hasPassword && !!flag('settings.skip-email-confirmation')
 
   if (passwordHash || skipEmailConfirmation) {
     return (
