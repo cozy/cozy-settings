@@ -386,16 +386,16 @@
     "cancel": "Annuleer"
   },
   "LockScreenView": {
-    "choose_pin_body": "choose_pin_body",
-    "choose_pin_cancel": "choose_pin_cancel",
-    "choose_pin_label": "choose_pin_label",
-    "choose_pin_next": "choose_pin_next",
-    "choose_pin_title": "choose_pin_title",
-    "confirm_pin_body": "confirm_pin_body",
-    "confirm_pin_cancel": "confirm_pin_cancel",
-    "confirm_pin_error": "confirm_pin_error",
-    "confirm_pin_next": "confirm_pin_next",
-    "confirm_pin_title": "confirm_pin_title",
+    "choose_pin_body": "Stel een pincode in om de app na een periode van inactiviteit te ontgrendelen",
+    "choose_pin_cancel": "Annuleren",
+    "choose_pin_label": "Pincode",
+    "choose_pin_next": "Volgende",
+    "choose_pin_title": "Kies een pincode",
+    "confirm_pin_body": "Herhaal de pincode",
+    "confirm_pin_cancel": "Annuleren",
+    "confirm_pin_error": "De pincodes komen niet overeen",
+    "confirm_pin_next": "Voltooien",
+    "confirm_pin_title": "Bevestig de pincode",
     "title": "Scherm ontgrendelen"
   },
   "soon": {
@@ -536,7 +536,8 @@
         "harvest.accounts.max": "Automatisch documenten en gegevens ophalen",
         "mespapiers.papers.max": "Aantal zelf-toegevoegde documenten",
         "drive.office.write": "Online-documentbewerking (werkbladen, tekstverwerker en presentaties)",
-        "passwords.can-share-organizations": "Wachtwoorden delen"
+        "passwords.can-share-organizations": "Wachtwoorden delen",
+        "cozy.oauthclients.max": "Max. aantal goedgekeurde apparaten"
       },
       "storage": "Opslagruimte: %{humanDiskQuota} GB",
       "numeric_flag": ": tot %{smart_count}",
