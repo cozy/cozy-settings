@@ -391,7 +391,7 @@
     "choose_pin_label": "Pincode",
     "choose_pin_next": "Volgende",
     "choose_pin_title": "Kies een pincode",
-    "confirm_pin_body": "Herhaal de pincode",
+    "confirm_pin_body": "Herhaal de pincode (omwille van beveiligingsredenen).",
     "confirm_pin_cancel": "Annuleren",
     "confirm_pin_error": "De pincodes komen niet overeen",
     "confirm_pin_next": "Voltooien",
