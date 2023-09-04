@@ -8,7 +8,7 @@ import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { updateInfo, fetchInfos } from 'actions'
 import { requestExport, fetchExportData } from 'actions/export'
 import { precheckImport, submitImport } from 'actions/import'
-import ProfileView from 'components/ProfileView'
+import ProfileView from 'components/Profile/ProfileView'
 
 const mapStateToProps = state => ({
   fields: state.fields,
