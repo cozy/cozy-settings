@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
@@ -19,43 +19,34 @@ import TrackingSection from 'components/Profile/TrackingSection'
 import PasswordSection from 'components/Profile/PasswordSection'
 import EmailSection from 'components/Email/EmailSection'
 import { PublicNameSection } from 'components/Profile/PublicNameSection'
+import { hasQueryBeenLoaded, useQuery } from 'cozy-client'
+import { buildSettingsInstanceQuery } from 'lib/queries'
 
 const ProfileView = ({
-  fields,
-  isFetching,
-  instance,
   exportData,
   fetchExportData,
   requestExport,
   importData,
   precheckImport,
-  submitImport,
-  fetchInfos
+  submitImport
 }) => {
   const { t } = useI18n()
   const { isMobile } = useBreakpoints()
   const { exportId } = useParams()
 
-  useEffect(() => {
-    fetchInfos()
-    // eslint-disable-next-line
-  }, [])
+  const instanceQuery = buildSettingsInstanceQuery()
+  const instanceResult = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
 
   return (
     <Page narrow>
-      {isFetching && (
-        <Spinner
-          className="u-pos-fixed-s"
-          middle
-          size="xxlarge"
-          loadingType="loading"
-        />
-      )}
-      {!isFetching && instance && (
+      <PageTitle className={!isMobile ? 'u-mb-1' : ''}>
+        {t('ProfileView.title')}
+      </PageTitle>
+      {hasQueryBeenLoaded(instanceResult) ? (
         <>
-          <PageTitle className={!isMobile ? 'u-mb-1' : ''}>
-            {t('ProfileView.title')}
-          </PageTitle>
           <Stack spacing="l">
             <EmailSection />
             <PublicNameSection />
@@ -66,7 +57,7 @@ const ProfileView = ({
             <TrackingSection />
             <div>
               <ExportSection
-                email={fields.email && fields.email.value}
+                email={instanceResult.data.email}
                 exportData={exportData}
                 exportId={exportId}
                 requestExport={requestExport}
@@ -82,6 +73,13 @@ const ProfileView = ({
           </Stack>
           <DeleteAccount />
         </>
+      ) : (
+        <Spinner
+          className="u-pos-fixed-s"
+          middle
+          size="xxlarge"
+          loadingType="loading"
+        />
       )}
       <Outlet />
     </Page>
