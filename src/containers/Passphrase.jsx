@@ -1,26 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import get from 'lodash/get'
 import compose from 'lodash/flowRight'
+import { useLocation } from 'react-router-dom'
+
+import { withClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
-import { AUTH_MODE } from 'actions/twoFactor'
+
 import {
   updatePassphrase,
   updatePassphrase2FAFirst,
   updatePassphrase2FASecond,
   updateHint
 } from 'actions/passphrase'
-import { fetchInfos } from 'actions'
 import PassphraseView from 'components/PassphraseView'
-import { useLocation } from 'react-router-dom'
-import { withClient } from 'cozy-client'
 
 const mapStateToProps = state => ({
-  fields: state.fields,
-  isTwoFactorEnabled:
-    get(state, 'fields.auth_mode.value') === AUTH_MODE.TWO_FA_MAIL,
-  instance: state.instance,
   passphrase: state.passphrase
 })
 
@@ -84,8 +79,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       // eslint-disable-next-line no-console
       console.error(e)
     }
-  },
-  fetchInfos: () => dispatch(fetchInfos(ownProps.client))
+  }
 })
 
 const ComposedPassphrase = compose(

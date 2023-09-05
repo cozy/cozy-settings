@@ -31,7 +31,7 @@ export class Passphrase2FA extends Component {
       submitting
     } = this.props
     const { twoFactorCode } = this.state
-    const email = instance && instance.data.attributes.email
+    const email = instance && instance.email
     return (
       <Dialog
         open
