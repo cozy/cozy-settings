@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 
-import fields from 'reducers/fields'
 import twoFactor from 'reducers/twoFactor'
 import exportData from 'reducers/export'
 import importData from 'reducers/import'
@@ -19,7 +18,6 @@ import ui from 'reducers/ui'
 const appReducer = client =>
   combineReducers({
     devices,
-    fields,
     twoFactor,
     exportData,
     importData,
