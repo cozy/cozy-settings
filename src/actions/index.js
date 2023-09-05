@@ -1,7 +1,6 @@
 /* eslint-disable promise/always-return */
 // eslint-disable-next-line no-redeclare
 
-import emailHelper from 'lib/emailHelper'
 import { getStackDomain, getStackToken } from './domUtils'
 
 export let STACK_DOMAIN = getStackDomain()
@@ -72,84 +71,6 @@ export const fetchInfos = client => {
           error: 'ProfileView.infos.server_error'
         })
       })
-  }
-}
-
-const tryUpdate = async (client, instance, { retries = 0 }) => {
-  try {
-    return await cozyFetch(client, 'PUT', '/settings/instance', instance)
-  } catch (error) {
-    const isConflictError = error.status === 409
-    if (isConflictError && retries) {
-      const remoteInstance = await cozyFetch(
-        client,
-        'GET',
-        '/settings/instance'
-      )
-      remoteInstance.data.attributes = instance.data.attributes
-      return tryUpdate(client, remoteInstance, { retries: retries - 1 })
-    } else {
-      throw error
-    }
-  }
-}
-
-export const updateInfo = (client, field, value) => {
-  return async (dispatch, getState) => {
-    dispatch({ type: UPDATE_INFO, field, value })
-    // Check if the field is empty or not
-    if (value === '') {
-      dispatch({
-        type: UPDATE_INFO_FAILURE,
-        field,
-        error: 'ProfileView.infos.empty'
-      })
-      return
-    }
-    if (field === 'email' && !emailHelper.isValidEmail(value)) {
-      dispatch({
-        type: UPDATE_INFO_FAILURE,
-        field,
-        error: 'ProfileView.email.error'
-      })
-      return
-    }
-    // tracking field must be stored as string
-    // eslint-disable-next-line no-param-reassign
-    if (field === 'tracking') value = value.toString()
-    const instance = { ...getState().instance }
-    // We are actually mutating also getState().instance.data.attributes here.
-    // TODO: Avoid mutation of getState().instance.data.attributes, and check
-    // if the whole form keeps working.
-    // The whole form could be refactored with latests improvements from
-    // CozyCllient and use react-final-form.
-    instance.data.attributes[field] = value
-
-    let updatedInstance
-
-    try {
-      updatedInstance = await tryUpdate(client, instance, { retries: 3 })
-    } catch (error) {
-      dispatch({
-        type: UPDATE_INFO_FAILURE,
-        field,
-        error: 'ProfileView.infos.server_error'
-      })
-
-      return instance
-    }
-
-    dispatch({ type: UPDATE_INFO_SUCCESS, field, instance })
-
-    setTimeout(() => {
-      dispatch({ type: RESET_INFO_FIELD, field })
-    }, 3000)
-
-    if (field === 'locale') {
-      dispatch({ type: SET_LANG, lang: value })
-    }
-
-    return updatedInstance
   }
 }
 
