@@ -4,8 +4,11 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import twoFaModalBanner from 'assets/images/double_authent_prez_banner.svg'
+import twoFaModalProtect from 'assets/images/protect_data_point.svg'
+import twoFaModalSecu from 'assets/images/niv_secu_point.svg'
 
-export const ActivationConfirmation = ({ images, error }) => {
+export const ActivationConfirmation = ({ error }) => {
   const { t } = useI18n()
   return (
     <>
@@ -13,7 +16,7 @@ export const ActivationConfirmation = ({ images, error }) => {
         <img
           className="u-w-100 u-mh-auto"
           alt={t('ProfileView.twofa.title.activate')}
-          src={images.twoFaModalBanner}
+          src={twoFaModalBanner}
           style={{ maxWidth: 480 }}
         />
       </div>
@@ -33,7 +36,7 @@ export const ActivationConfirmation = ({ images, error }) => {
               height={100}
               className="u-mr-1-half"
               alt={t('ProfileView.twofa.modal.secu_title')}
-              src={images.twoFaModalSecu}
+              src={twoFaModalSecu}
             />
           </Img>
           <div>
@@ -52,7 +55,7 @@ export const ActivationConfirmation = ({ images, error }) => {
               height={100}
               className="u-mr-1-half"
               alt={t('ProfileView.twofa.modal.protect_title')}
-              src={images.twoFaModalProtect}
+              src={twoFaModalProtect}
             />
           </Img>
           <Bd>

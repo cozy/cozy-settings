@@ -6,10 +6,6 @@ import Input from 'components/Input'
 import Activate2FA from 'components/2FA/Activate2FA'
 import Desactivate2FA from 'components/2FA/Desactivate2FA'
 
-const twoFaModalBanner = require('assets/images/double_authent_prez_banner.svg')
-const twoFaModalProtect = require('assets/images/protect_data_point.svg')
-const twoFaModalSecu = require('assets/images/niv_secu_point.svg')
-
 const TwoFA = ({ fields, onChange }) => {
   const { t } = useI18n()
 
@@ -59,11 +55,6 @@ const TwoFA = ({ fields, onChange }) => {
         <Activate2FA
           onActivation={onActivation}
           closeModal={closeActivationModal}
-          images={{
-            twoFaModalBanner: twoFaModalBanner,
-            twoFaModalSecu: twoFaModalSecu,
-            twoFaModalProtect: twoFaModalProtect
-          }}
         />
       )}
       {isDesactivationModalOpen && (
