@@ -1,7 +1,7 @@
 {
   "name": "Settings",
   "name_prefix": "Cozy",
-  "slug": "app",
+  "slug": "settings",
   "icon": "app-icon.svg",
   "source": "https://github.com/cozy/cozy-settings",
   "editor": "Cozy",
@@ -160,5 +160,37 @@
       "href": "/#/redirect"
     }
   ],
-  "type": "webapp"
+  "type": "webapp",
+  "locales": {
+    "de": {
+      "name": "Einstellungen"
+    },
+    "de_DE": {
+      "name": "Einstellungen"
+    },
+    "en": {
+      "name": "Settings"
+    },
+    "es": {
+      "name": "Ajustes"
+    },
+    "fr": {
+      "name": "Paramètres"
+    },
+    "ja": {
+      "name": "設定"
+    },
+    "nl_NL": {
+      "name": "Instellingen"
+    }
+  },
+  "langs": [
+    "de",
+    "de_DE",
+    "en",
+    "es",
+    "fr",
+    "ja",
+    "nl_NL"
+  ]
 }
