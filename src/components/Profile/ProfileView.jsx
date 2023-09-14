@@ -23,7 +23,6 @@ import { PublicNameSection } from 'components/Profile/PublicNameSection'
 const ProfileView = ({
   fields,
   isFetching,
-  onFieldChange,
   instance,
   exportData,
   fetchExportData,
@@ -63,10 +62,7 @@ const ProfileView = ({
             <PasswordSection />
             <TwoFA />
             <LanguageSection />
-            <DefaultRedirectionSection
-              fields={fields}
-              onChange={onFieldChange}
-            />
+            <DefaultRedirectionSection />
             <TrackingSection />
             <div>
               <ExportSection
