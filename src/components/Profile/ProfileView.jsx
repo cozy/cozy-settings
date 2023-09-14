@@ -74,11 +74,7 @@ const ProfileView = ({
               fields={fields}
               onChange={onFieldChange}
             />
-            <TrackingSection
-              instance={instance}
-              fields={fields}
-              onChange={onFieldChange}
-            />
+            <TrackingSection />
             <div>
               <ExportSection
                 email={fields.email && fields.email.value}
