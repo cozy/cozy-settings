@@ -61,7 +61,7 @@ const ProfileView = ({
             <EmailSection />
             <PublicNameSection />
             <PasswordSection />
-            <TwoFA fields={fields} onChange={onFieldChange} />
+            <TwoFA />
             <LanguageSection fields={fields} onChange={onFieldChange} />
             <DefaultRedirectionSection
               fields={fields}
