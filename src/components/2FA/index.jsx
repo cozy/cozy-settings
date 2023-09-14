@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useQuery, useMutation } from 'cozy-client'
 
 import Input from 'components/Input'
 import Activate2FA from 'components/2FA/Activate2FA'
 import Desactivate2FA from 'components/2FA/Desactivate2FA'
+import { buildSettingsInstanceQuery } from 'lib/queries'
 
-const TwoFA = ({ fields, onChange }) => {
+const TwoFA = () => {
   const { t } = useI18n()
+
+  const instanceQuery = buildSettingsInstanceQuery()
+  const { data: instance } = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
+
+  const { mutate } = useMutation()
 
   const [isActivationModalOpen, setActivationModalOpen] = useState(false)
   const [isDesactivationModalOpen, setDesactivationModalOpen] = useState(false)
@@ -28,14 +38,28 @@ const TwoFA = ({ fields, onChange }) => {
   }
 
   const onActivation = () => {
-    onChange('auth_mode', 'two_factor_mail')
+    mutate({
+      _rev: instance.meta.rev,
+      ...instance,
+      attributes: {
+        ...instance.attributes,
+        auth_mode: 'two_factor_mail'
+      }
+    })
   }
 
   const onDesactivation = () => {
-    onChange('auth_mode', 'basic')
+    mutate({
+      _rev: instance.meta.rev,
+      ...instance,
+      attributes: {
+        ...instance.attributes,
+        auth_mode: 'basic'
+      }
+    })
   }
 
-  const isTwoFactorEnabled = fields.auth_mode.value === 'two_factor_mail'
+  const isTwoFactorEnabled = instance.auth_mode === 'two_factor_mail'
 
   return (
     <div>
