@@ -8,7 +8,6 @@ import Stack from 'cozy-ui/transpiled/react/Stack'
 
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
-import Input from 'components/Input'
 
 import DeleteAccount from 'components/Profile/DeleteAccount'
 import LanguageSection from 'components/Profile/LanguageSection'
@@ -19,6 +18,7 @@ import ExportSection from 'components/export/ExportSection'
 import TrackingSection from 'components/Profile/TrackingSection'
 import PasswordSection from 'components/Profile/PasswordSection'
 import EmailSection from 'components/Email/EmailSection'
+import { PublicNameSection } from 'components/Profile/PublicNameSection'
 
 const ProfileView = ({
   fields,
@@ -59,14 +59,7 @@ const ProfileView = ({
           </PageTitle>
           <Stack spacing="l">
             <EmailSection />
-            <Input
-              name="public_name"
-              type="text"
-              title={t('ProfileView.public_name.title')}
-              label={t(`ProfileView.public_name.label`)}
-              {...fields.public_name}
-              onBlur={onFieldChange}
-            />
+            <PublicNameSection />
             <PasswordSection />
             <TwoFA fields={fields} onChange={onFieldChange} />
             <LanguageSection fields={fields} onChange={onFieldChange} />
