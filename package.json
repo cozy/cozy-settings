@@ -32,6 +32,8 @@
   },
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
+    "@rspack/cli": "^0.3.2",
+    "@rspack/plugin-node-polyfill": "^0.3.4",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.3.0",
     "@testing-library/user-event": "^14.4.3",
@@ -42,12 +44,18 @@
     "bundlemon": "1.4.0",
     "cozy-bar": "7.28.0",
     "cozy-scripts": "8.1.1",
+    "css-loader": "^6.8.1",
     "eslint-config-cozy-app": "5.1.0",
+    "html-webpack-plugin": "^5.5.3",
     "jest": "28.1.3",
     "jest-environment-jsdom": "28.1.3",
     "npm-run-all": "4.1.5",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.29",
+    "postcss-loader": "^7.3.3",
     "react-hot-loader": "4.13.0",
     "react-test-renderer": "18.2.0",
+    "template-ejs-loader": "^0.9.4",
     "typescript-plugin-css-modules": "3.4.0"
   },
   "dependencies": {
