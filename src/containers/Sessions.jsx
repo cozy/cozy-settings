@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import compose from 'lodash/flowRight'
 
 import { withClient } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { fetchSessions, deleteOtherSessions } from 'actions'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'

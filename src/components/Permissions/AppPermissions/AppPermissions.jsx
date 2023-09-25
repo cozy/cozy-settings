@@ -13,7 +13,7 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import withAllLocales from 'lib/withAllLocales'
 import AccessRightsSection from 'components/Permissions/AppPermissions/AccessRightsSection'

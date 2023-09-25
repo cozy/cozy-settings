@@ -11,7 +11,7 @@ import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
 import EmailIcon from 'cozy-ui/transpiled/react/Icons/Email'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import flag from 'cozy-flags'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import styles from 'components/Sidebar.styl'
 import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'

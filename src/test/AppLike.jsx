@@ -1,6 +1,6 @@
 import React from 'react'
 
-import I18n from 'cozy-ui/transpiled/react/I18n'
+import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import langEn from '../locales/en.json'
 
 export const TestI18n = ({ children }) => {

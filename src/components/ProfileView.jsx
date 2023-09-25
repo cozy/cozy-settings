@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 

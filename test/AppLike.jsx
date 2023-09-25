@@ -2,8 +2,8 @@ import React from 'react'
 import { HashRouter } from 'react-router-dom'
 
 import CozyClient, { CozyProvider } from 'cozy-client'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { WebviewIntentProvider } from 'cozy-intent'
 
 import en from 'locales/en.json'

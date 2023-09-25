@@ -4,7 +4,7 @@ import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import FolderIcon from 'cozy-ui/transpiled/react/Icons/Folder'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { makeDiskInfos } from 'cozy-client/dist/models/instance'
 
 import { useInstanceInfo } from 'hooks/useInstanceInfo'

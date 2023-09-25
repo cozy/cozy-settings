@@ -1,13 +1,13 @@
 import React from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
 
-import CozyTheme from 'cozy-ui/transpiled/react/CozyTheme'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 /* global cozy */
 const { BarCenter, BarLeft } = cozy.bar

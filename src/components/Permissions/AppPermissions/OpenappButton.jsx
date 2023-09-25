@@ -4,7 +4,7 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import OpenappIcon from 'cozy-ui/transpiled/react/Icons/Openapp'
 import AppLinker, { generateWebLink } from 'cozy-ui/transpiled/react/AppLinker'
 import { useClient } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 export const OpenappButton = ({ type, appData }) => {
   const { t } = useI18n()

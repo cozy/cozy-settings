@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { isQueryLoading, useQuery } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import MuiButton from 'cozy-ui/transpiled/react/Button'
 import {
@@ -17,7 +17,7 @@ import {
 } from 'cozy-ui/transpiled/react/Table'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
 import flag from 'cozy-flags'
 

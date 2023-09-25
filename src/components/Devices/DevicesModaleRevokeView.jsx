@@ -8,7 +8,7 @@ import IconCircle2Arrows from '../../assets/icons/IconCircle2Arrows'
 import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
 
 import { useClient } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import logger from 'lib/logger'

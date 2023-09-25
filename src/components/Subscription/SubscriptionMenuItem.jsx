@@ -2,7 +2,7 @@ import React from 'react'
 
 import flag from 'cozy-flags'
 import CozyCircle from 'cozy-ui/transpiled/react/Icons/CozyCircle'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { isFlagshipApp } from 'cozy-device-helper'
 
 import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'

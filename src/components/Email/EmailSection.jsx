@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useClient, useQuery } from 'cozy-client'
 import Alert from 'cozy-ui/transpiled/react/Alert'

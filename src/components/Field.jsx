@@ -2,7 +2,7 @@ import styles from 'styles/fields.styl'
 
 import React from 'react'
 import classNames from 'classnames'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
 import Typography from 'cozy-ui/transpiled/react/Typography'

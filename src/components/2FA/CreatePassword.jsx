@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 
 import { useClient } from 'cozy-client'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import PasswordInput from 'cozy-ui/transpiled/react/Labs/PasswordInput'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import Button from 'cozy-ui/transpiled/react/Buttons'

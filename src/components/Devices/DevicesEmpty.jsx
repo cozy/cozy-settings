@@ -2,7 +2,7 @@ import React from 'react'
 
 import Empty from 'cozy-ui/transpiled/react/Empty'
 import { ButtonLink } from 'cozy-ui/transpiled/react/deprecated/Button'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import EmptyIcon from 'assets/icons/icon-devices.svg'
 

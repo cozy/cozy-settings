@@ -17,7 +17,7 @@ import {
   getPermissionIconName
 } from '../helpers/permissionsHelper'
 import withAllLocales from '../../../lib/withAllLocales'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useNavigate } from 'react-router-dom'
 
 const AccessRightsSection = ({
