@@ -5,7 +5,7 @@ import { useQuery, isQueryLoading } from 'cozy-client'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 jest.mock(
-  'cozy-ui/transpiled/react/I18n/withLocales',
+  'cozy-ui/transpiled/react/providers/I18n/withLocales',
   () => () => Component => () =>
     (
       <Component

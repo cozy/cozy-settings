@@ -15,7 +15,7 @@ import AppPermissions from 'components/Permissions/AppPermissions/AppPermissions
 import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
 import { completeAppPermission } from 'components/Permissions/helpers/permissionsHelper'
 
-jest.mock('cozy-ui/transpiled/react/I18n/withLocales', () => {
+jest.mock('cozy-ui/transpiled/react/providers/I18n/withLocales', () => {
   return () => Component => {
     const t = text => text
     const match = { params: { slug: 'Drive' } }
@@ -88,7 +88,7 @@ jest.mock('cozy-ui/transpiled/react/Spinner', () => {
 jest.mock('cozy-ui/transpiled/react/CircleButton', () => {
   return () => <div data-testid="CircleButton"></div>
 })
-jest.mock('cozy-ui/transpiled/react/I18n', () => {
+jest.mock('cozy-ui/transpiled/react/providers/I18n', () => {
   return { useI18n: () => ({ t: x => x }) }
 })
 jest.mock('cozy-client/dist/hooks/useFetchJSON', () => ({

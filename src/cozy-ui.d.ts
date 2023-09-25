@@ -53,7 +53,7 @@ declare module 'cozy-ui/transpiled/react/Icons/*' {
   export default (): JSX.Element => element as JSX.Element
 }
 
-declare module 'cozy-ui/transpiled/react/I18n' {
+declare module 'cozy-ui/transpiled/react/providers/I18n' {
   const useI18n = (): {
     t: (key: string, vars?: Record<string, unknown>) => string
   } => {
@@ -80,7 +80,7 @@ declare module 'cozy-ui/transpiled/react/deprecated/Button'
 declare module 'cozy-ui/transpiled/react/Typography'
 declare module 'cozy-ui/transpiled/react/CozyDialogs'
 
-declare module 'cozy-ui/transpiled/react/hooks/useBreakpoints' {
+declare module 'cozy-ui/transpiled/react/providers/Breakpoints' {
   export default function useBreakpoints(): {
     isMobile: boolean
     isTablet: boolean

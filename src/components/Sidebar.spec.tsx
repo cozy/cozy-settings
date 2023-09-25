@@ -7,7 +7,7 @@ import Sidebar from 'components/Sidebar'
 
 const mockFlag = flag as jest.MockedFunction<typeof flag>
 
-jest.mock('cozy-ui/transpiled/react/I18n', () => ({
+jest.mock('cozy-ui/transpiled/react/providers/I18n', () => ({
   useI18n: (): {
     t: (name: string) => string
   } => ({ t: name => name })
@@ -21,7 +21,7 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock('cozy-flags')
 
-jest.mock('cozy-ui/transpiled/react/hooks/useBreakpoints', () => ({
+jest.mock('cozy-ui/transpiled/react/providers/Breakpoints', () => ({
   __esModule: true,
   default: (): {
     isMobile: boolean
