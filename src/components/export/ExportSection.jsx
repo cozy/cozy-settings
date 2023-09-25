@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { STACK_DOMAIN } from 'actions'
 
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { isFlagshipApp } from 'cozy-device-helper'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Select from 'components/Select'
 import { useSetLang } from 'hooks/useSetLang'

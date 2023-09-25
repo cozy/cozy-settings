@@ -1,6 +1,6 @@
 import { UAParser } from 'ua-parser-js'
 import React from 'react'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import tableStyles from 'styles/table.styl'
 
 interface Session {

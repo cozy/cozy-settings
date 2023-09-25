@@ -9,7 +9,7 @@ import {
   hasQueryBeenLoaded
 } from 'cozy-client'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import AppPermissions from 'components/Permissions/AppPermissions/AppPermissions'
 import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'

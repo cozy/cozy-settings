@@ -7,7 +7,7 @@ import DataList from './DataList/DataList'
 import { routes } from 'constants/routes'
 import { useParams, useNavigate } from 'react-router-dom'
 import withAllLocales from '../../lib/withAllLocales'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import PageTitle from 'components/PageTitle'
 
 function a11yProps(index) {

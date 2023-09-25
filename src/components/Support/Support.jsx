@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { useClient } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 import Label from 'cozy-ui/transpiled/react/Label'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'

@@ -8,7 +8,7 @@ import Password from 'cozy-ui/transpiled/react/Icons/Password'
 import Swap from 'cozy-ui/transpiled/react/Icons/Swap'
 import flag from 'cozy-flags'
 import { getFlagshipMetadata, isFlagshipApp } from 'cozy-device-helper'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useWebviewIntent, WebviewService } from 'cozy-intent'
 
 import Page from 'components/Page'

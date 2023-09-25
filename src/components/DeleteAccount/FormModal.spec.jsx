@@ -5,7 +5,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import FormModal from './FormModal'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { I18n } from 'cozy-ui/transpiled/react'
 import langEn from 'locales/en.json'
 

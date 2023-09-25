@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import List from 'cozy-ui/transpiled/react/List'
 import Paper from 'cozy-ui/transpiled/react/Paper'
 import ExchangeIcon from 'cozy-ui/transpiled/react/Icons/Exchange'

@@ -10,13 +10,13 @@ import ListItemIcon, {
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import RiseIcon from 'cozy-ui/transpiled/react/Icons/Rise'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import { sortDataByDate } from '../helpers/permissionsHelper'
 import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
 import withAllLocales from '../../../lib/withAllLocales'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 const LatestOutgoingDataHistory = ({
   queryResultRemoteRequests,

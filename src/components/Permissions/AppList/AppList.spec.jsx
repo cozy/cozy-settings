@@ -3,7 +3,7 @@ import React from 'react'
 import AppList from './AppList'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import AppLike from 'test/AppLike'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 jest.mock('react-router-dom', () => {
   return {

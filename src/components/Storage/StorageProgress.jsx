@@ -4,7 +4,7 @@ import cx from 'classnames'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { makeDiskInfos } from 'cozy-client/dist/models/instance'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useInstanceInfo } from 'hooks/useInstanceInfo'
 
 import styles from 'styles/storage.styl'

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import { translate } from 'cozy-ui/transpiled/react/I18n'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Input from 'components/Input'
 

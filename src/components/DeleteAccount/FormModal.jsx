@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react'
 import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
 
 import { sendDeleteAccountReasonEmail } from 'actions/email'

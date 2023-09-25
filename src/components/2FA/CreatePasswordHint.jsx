@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import BottomIcon from 'cozy-ui/transpiled/react/Icons/Bottom'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'

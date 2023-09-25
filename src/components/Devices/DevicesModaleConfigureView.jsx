@@ -21,7 +21,7 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { TreeItem, TreeView } from 'components/CozyTreeView'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useClient } from 'cozy-client'
 
 import {

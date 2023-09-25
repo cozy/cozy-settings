@@ -4,7 +4,7 @@ import React from 'react'
 import { UAParser } from 'ua-parser-js'
 
 import { TableRow, TableCell } from 'cozy-ui/transpiled/react/Table'
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import BrowserBraveIcon from 'cozy-ui/transpiled/react/Icons/BrowserBrave'
 import BrowserChromeIcon from 'cozy-ui/transpiled/react/Icons/BrowserChrome'
 import BrowserDuckduckgoIcon from 'cozy-ui/transpiled/react/Icons/BrowserDuckduckgo'
@@ -13,7 +13,7 @@ import BrowserFirefoxIcon from 'cozy-ui/transpiled/react/Icons/BrowserFirefox'
 import BrowserIeIcon from 'cozy-ui/transpiled/react/Icons/BrowserIe'
 import BrowserSafariIcon from 'cozy-ui/transpiled/react/Icons/BrowserSafari'
 import DeviceBrowserIcon from 'cozy-ui/transpiled/react/Icons/DeviceBrowser'
-import useBreakpoints from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
 const getBrowserIcon = session => {

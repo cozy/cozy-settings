@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/I18n'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Input from 'components/Input'
 import Activate2FA from 'components/2FA/Activate2FA'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
+import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 
 import { SubscriptionFlagItem } from 'components/Subscription/SubscriptionFlagItem'
