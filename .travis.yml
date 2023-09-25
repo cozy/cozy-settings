@@ -1,12 +1,12 @@
+dist: jammy
 language: node_js
 node_js:
-- '16'
+  - '20'
 branches:
- branches:
-   only:
-   - master
-   # tags
-   - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
+  only:
+  - master
+  # tags
+  - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
 env:
   global:
   - MATTERMOST_CHANNEL='{"dev":"app---settings","beta":"app---settings,publication","stable":"app---settings,publication"}'
