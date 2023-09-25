@@ -10,7 +10,7 @@ Object {
       aria-hidden="true"
     />
     <div
-      class="MuiDialog-root CozyTheme--undefined"
+      class="MuiDialog-root CozyTheme--normal"
       role="presentation"
       style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px;"
     >
@@ -176,6 +176,7 @@ Object {
                             <input
                               aria-checked="mixed"
                               aria-disabled="false"
+                              aria-label=""
                               checked=""
                               class="PrivateSwitchBase-input-1090"
                               data-indeterminate="true"
@@ -248,6 +249,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
+                                        aria-label=""
                                         checked=""
                                         class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
@@ -349,6 +351,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
+                                        aria-label=""
                                         checked=""
                                         class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
@@ -450,6 +453,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
+                                        aria-label=""
                                         checked=""
                                         class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
@@ -563,6 +567,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
+                                        aria-label=""
                                         checked=""
                                         class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
@@ -675,6 +680,7 @@ Object {
                                         <input
                                           aria-checked=""
                                           aria-disabled="false"
+                                          aria-label=""
                                           checked=""
                                           class="PrivateSwitchBase-input-1090"
                                           data-indeterminate="false"
@@ -775,6 +781,7 @@ Object {
                                           <input
                                             aria-checked=""
                                             aria-disabled="false"
+                                            aria-label=""
                                             checked=""
                                             class="PrivateSwitchBase-input-1090"
                                             data-indeterminate="false"
@@ -878,6 +885,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
+                                        aria-label=""
                                         class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
@@ -990,6 +998,7 @@ Object {
                                       <input
                                         aria-checked=""
                                         aria-disabled="false"
+                                        aria-label=""
                                         class="PrivateSwitchBase-input-1090"
                                         data-indeterminate="false"
                                         type="checkbox"
@@ -1101,6 +1110,7 @@ Object {
                                         <input
                                           aria-checked=""
                                           aria-disabled="false"
+                                          aria-label=""
                                           class="PrivateSwitchBase-input-1090"
                                           data-indeterminate="false"
                                           type="checkbox"
@@ -1200,6 +1210,7 @@ Object {
                                           <input
                                             aria-checked=""
                                             aria-disabled="false"
+                                            aria-label=""
                                             class="PrivateSwitchBase-input-1090"
                                             data-indeterminate="false"
                                             type="checkbox"

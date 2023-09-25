@@ -11,7 +11,7 @@ jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn()
 }))
 
-jest.mock('cozy-ui/transpiled/react/hooks/useBreakpoints', () =>
+jest.mock('cozy-ui/transpiled/react/providers/Breakpoints', () =>
   jest.fn(() => ({
     isMobile: false,
     isTablet: false

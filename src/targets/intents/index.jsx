@@ -7,8 +7,8 @@ import { Provider } from 'react-redux'
 
 import CozyClient, { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
-import { I18n } from 'cozy-ui/transpiled/react/I18n'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/hooks/useBreakpoints'
+import I18n from 'cozy-ui/transpiled/react/providers/I18n'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 
