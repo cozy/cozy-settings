@@ -79,6 +79,6 @@
     "redux-thunk": "2.4.1",
     "semver": "7.3.7",
     "terser-webpack-plugin": "1.4.4",
-    "ua-parser-js": "0.7.24"
+    "ua-parser-js": "0.7.33"
   }
 }
