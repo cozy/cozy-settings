@@ -31,6 +31,7 @@ import { initFlags } from 'lib/flags'
 import { routes } from 'constants/routes'
 import ChangeEmail from 'components/Email/ChangeEmail'
 import { Subscription } from 'components/Subscription/Subscription'
+import SettingsRealTimeQueries from 'components/SettingsRealTimeQueries'
 
 initFlags()
 
@@ -55,7 +56,7 @@ export const App = () => {
       <Alerter />
       {isBigView && <Sidebar />}
       <RealTimeQueries doctype="io.cozy.oauth.clients" />
-      <RealTimeQueries doctype="io.cozy.settings" />
+      <SettingsRealTimeQueries />
       <Main>
         <Routes>
           {isSmallView && <Route path="/menu" element={<Menu />} />}
