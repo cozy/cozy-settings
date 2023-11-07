@@ -540,10 +540,11 @@
         "cozy.oauthclients.max": "Max authorized devices"
       },
       "storage": "Storage: %{humanDiskQuota} GB",
+      "accounts": ": 1 connected service |||| : %{smart_count} connected services",
+      "accounts_unlimited": ": unlimited number of connected services",
+      "accounts_offer": "(%{max} included in the offer + 1 offered) |||| (%{max} included in the offer + %{smart_count} offered)",
       "numeric_flag": ": up to %{smart_count}",
-      "numeric_account_flag": ": up to 1 personnal account connected |||| : up to %{smart_count} personnal accounts connected",
-      "numeric_flag_unlimited": ": unlimited",
-      "numeric_account_flag_unlimited": ": unlimited personnal accounts connected"
+      "numeric_flag_unlimited": ": unlimited"
     },
     "action": "Check our plans"
   }

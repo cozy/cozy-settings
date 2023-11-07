@@ -3,7 +3,6 @@ import React from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import List from 'cozy-ui/transpiled/react/List'
 import Paper from 'cozy-ui/transpiled/react/Paper'
-import ExchangeIcon from 'cozy-ui/transpiled/react/Icons/Exchange'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import CategoriesIcon from 'cozy-ui/transpiled/react/Icons/Categories'
 import ShareCircleIcon from 'cozy-ui/transpiled/react/Icons/ShareCircle'
@@ -17,6 +16,7 @@ import { useInstanceInfo } from 'hooks/useInstanceInfo'
 import { SubscriptionLink } from 'components/SubscriptionLink'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
+import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
 
 /**
  * Page showing the features included in the user plan
@@ -37,10 +37,7 @@ const Subscription = () => {
             </Typography>
             <List dense>
               <SubscriptionStorageItem />
-              <SubscriptionFlagItem
-                icon={ExchangeIcon}
-                name="harvest.accounts.max"
-              />
+              <SubscriptionAccountsItem />
               <SubscriptionFlagItem
                 icon={PaperIcon}
                 name="mespapiers.papers.max"
