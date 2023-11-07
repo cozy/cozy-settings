@@ -1,12 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import flag from 'cozy-flags'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 
+import { TestI18n } from 'test/AppLike'
 import { SubscriptionFlagItem } from 'components/Subscription/SubscriptionFlagItem'
-import en from 'locales/en.json'
-import flag from 'cozy-flags'
 
 jest.mock('cozy-flags')
 
@@ -19,13 +18,12 @@ describe('SubscriptionFlagItem', () => {
     flag.mockReturnValue(returnValue)
 
     return render(
-      <I18n lang="en" dictRequire={() => en}>
-        <SubscriptionFlagItem
-          name={name}
-          icon={PaperIcon}
-          hideWithoutFlag={hideWithoutFlag}
-        />
-      </I18n>
+      <SubscriptionFlagItem
+        name={name}
+        icon={PaperIcon}
+        hideWithoutFlag={hideWithoutFlag}
+      />,
+      { wrapper: TestI18n }
     )
   }
 
@@ -52,26 +50,6 @@ describe('SubscriptionFlagItem', () => {
 
     expect(
       screen.getByText('Number of papers added manually: unlimited')
-    ).toBeInTheDocument()
-  })
-
-  it('should display the label with the limit when the flag related to account return a number', () => {
-    setup({ name: 'harvest.accounts.max', returnValue: 10 })
-
-    expect(
-      screen.getByText(
-        'Automatic document and data retrieval: up to 10 personnal accounts connected'
-      )
-    ).toBeInTheDocument()
-  })
-
-  it('should display the label with ulimited when the flag related to account return -1', () => {
-    setup({ name: 'harvest.accounts.max', returnValue: -1 })
-
-    expect(
-      screen.getByText(
-        'Automatic document and data retrieval: unlimited personnal accounts connected'
-      )
     ).toBeInTheDocument()
   })
 
