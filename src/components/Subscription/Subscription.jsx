@@ -41,6 +41,7 @@ const Subscription = () => {
               <SubscriptionFlagItem
                 icon={PaperIcon}
                 name="mespapiers.papers.max"
+                hideWithoutFlag
               />
               <SubscriptionFlagItem
                 icon={CategoriesIcon}
