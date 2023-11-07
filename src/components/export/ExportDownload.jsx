@@ -65,20 +65,20 @@ class ExportDownload extends Component {
                     rightIcon="download"
                     onClick={() => this.download()}
                   />
-                  {cursors &&
-                    cursors.length &&
-                    cursors.map((cursor, index) => {
-                      return (
-                        <ButtonAction
-                          label={t('ProfileView.export.download.CTA_part', {
-                            number: index + 1
-                          })}
-                          rightIcon="download"
-                          onClick={() => this.download(cursor)}
-                          key={index}
-                        />
-                      )
-                    })}
+                  {cursors && cursors.length
+                    ? cursors.map((cursor, index) => {
+                        return (
+                          <ButtonAction
+                            label={t('ProfileView.export.download.CTA_part', {
+                              number: index + 1
+                            })}
+                            rightIcon="download"
+                            onClick={() => this.download(cursor)}
+                            key={index}
+                          />
+                        )
+                      })
+                    : null}
                 </div>
               )}
             </div>
