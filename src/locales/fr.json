@@ -540,7 +540,7 @@
         "cozy.oauthclients.max": "Nombre d'appareils autorisés"
       },
       "storage": "Stockage : %{humanDiskQuota} Go",
-      "accounts": ": 1 service connecté |||| : %{smart_count} services connectés",
+      "accounts": ": %{smart_count} service connecté |||| : %{smart_count} services connectés",
       "accounts_unlimited": ": nombre de services connectés illimités",
       "accounts_offer": "(%{max} inclus dans l'offre + 1 offert) |||| (%{max} inclus dans l'offre + %{smart_count} offerts)",
       "numeric_flag": ": jusqu’à %{smart_count}",
