@@ -19,7 +19,6 @@ export const initFlags = () => {
 
 const flagsList = () => {
   flag('switcher', true)
-  flag('settings.partial-desktop-sync.show-synced-folders-selection')
   flag('settings.permissions-dashboard')
   flag('settings.flagship-mode')
   flag('settings.subscription')

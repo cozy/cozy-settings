@@ -21,8 +21,7 @@ const isCozyDesktopApp = device =>
 
 export const canConfigureDevice = device =>
   isCozyDesktopApp(device) &&
-  semver.gte(device.software_version, '3.32.0-beta.3') &&
-  flag('settings.partial-desktop-sync.show-synced-folders-selection')
+  semver.gte(device.software_version, '3.32.0-beta.3')
 
 /**
  * Get subtitle translation key with interpolation value
