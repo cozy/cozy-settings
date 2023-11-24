@@ -90,7 +90,7 @@
     "primary_logout": "Déconnexion",
     "primary_photo_sync": "Synchronisation auto des photos",
     "primary_pin_switch": "Déverrouiller avec un code PIN",
-    "primary_plan": "Forfait",
+    "primary_plan": "Offres et options",
     "primary_save_journeys": "Mémoriser mes trajets",
     "primary_support": "Support",
     "primary_wifi_sync": "Synchroniser seulement en wifi",
@@ -529,7 +529,7 @@
     }
   },
   "Subscription": {
-    "title": "Forfait",
+    "title": "Offres et options",
     "included": {
       "title": "Inclus dans votre offre :",
       "flags": {

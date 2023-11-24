@@ -90,7 +90,7 @@
     "primary_logout": "Log out",
     "primary_photo_sync": "Picture auto sync",
     "primary_pin_switch": "Unlock with PIN Code",
-    "primary_plan": "Plans",
+    "primary_plan": "Plans and options",
     "primary_save_journeys": "Trip recordings",
     "primary_support": "Support",
     "primary_wifi_sync": "Sync only on wifi",
@@ -529,7 +529,7 @@
     }
   },
   "Subscription": {
-    "title": "Plans",
+    "title": "Plans and options",
     "included": {
       "title": "Included in your plan:",
       "flags": {
