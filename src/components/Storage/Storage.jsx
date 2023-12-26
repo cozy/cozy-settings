@@ -4,13 +4,11 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useInstanceInfo } from 'cozy-client'
 
 import { SubscriptionLink } from 'components/SubscriptionLink'
-
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
-
-import { useInstanceInfo } from 'hooks/useInstanceInfo'
 import { StorageProgress } from './StorageProgress'
 
 /**
