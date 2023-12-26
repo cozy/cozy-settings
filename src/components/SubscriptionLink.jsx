@@ -8,8 +8,7 @@ import {
 } from 'cozy-client/dist/models/instance'
 import { isFlagshipApp } from 'cozy-device-helper'
 import flag from 'cozy-flags'
-
-import { useInstanceInfo } from 'hooks/useInstanceInfo'
+import { useInstanceInfo } from 'cozy-client'
 
 /**
  * Button to redirect to the plan page

@@ -5,9 +5,12 @@ import { isFlagshipApp } from 'cozy-device-helper'
 import flag from 'cozy-flags'
 
 import { SubscriptionLink } from 'components/SubscriptionLink'
-import { useInstanceInfo } from 'hooks/useInstanceInfo'
+import { useInstanceInfo } from 'cozy-client'
 
-jest.mock('hooks/useInstanceInfo')
+jest.mock('cozy-client', () => ({
+  ...jest.requireActual('cozy-client'),
+  useInstanceInfo: jest.fn()
+}))
 jest.mock('cozy-device-helper', () => ({
   ...jest.requireActual('cozy-device-helper'),
   isFlagshipApp: jest.fn()
