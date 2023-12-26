@@ -3,9 +3,10 @@ import { render, screen } from '@testing-library/react'
 
 import { isFlagshipApp } from 'cozy-device-helper'
 import flag from 'cozy-flags'
+import { useWebviewIntent } from 'cozy-intent'
+import { useInstanceInfo } from 'cozy-client'
 
 import { SubscriptionLink } from 'components/SubscriptionLink'
-import { useInstanceInfo } from 'cozy-client'
 
 jest.mock('cozy-client', () => ({
   ...jest.requireActual('cozy-client'),
@@ -16,6 +17,10 @@ jest.mock('cozy-device-helper', () => ({
   isFlagshipApp: jest.fn()
 }))
 jest.mock('cozy-flags')
+jest.mock('cozy-intent', () => ({
+  ...jest.requireActual('cozy-intent'),
+  useWebviewIntent: jest.fn()
+}))
 
 describe('SubscriptionLink', () => {
   beforeEach(() => {
@@ -26,7 +31,8 @@ describe('SubscriptionLink', () => {
     enablePremiumLinks = false,
     hasUuid = false,
     isFlagshipApp: isFlagshipAppReturnValue = false,
-    isIapEnabled = null
+    isIapEnabled = null,
+    isIapAvailable = null
   } = {}) => {
     useInstanceInfo.mockReturnValue({
       context: {
@@ -46,6 +52,9 @@ describe('SubscriptionLink', () => {
 
     isFlagshipApp.mockReturnValue(isFlagshipAppReturnValue)
     flag.mockReturnValue(isIapEnabled)
+    useWebviewIntent.mockReturnValue({
+      call: jest.fn().mockResolvedValue(isIapAvailable)
+    })
 
     return render(<SubscriptionLink label="Subscribe" />)
   }
@@ -83,25 +92,40 @@ describe('SubscriptionLink', () => {
     expect(container).toBeEmptyDOMElement()
   })
 
-  it('should return null when flashship and flag flagship.iap.enabled set to false', () => {
+  it('should return null when the flagship app has not IAP available and when the flag flagship.iap.enabled is false', () => {
     const { container } = setup({
       hasUuid: true,
       enablePremiumLinks: true,
       isFlagshipApp: true,
-      isIapEnabled: false
+      isIapEnabled: false,
+      isIapAvailable: false
     })
 
     expect(container).toBeEmptyDOMElement()
   })
 
-  it('should be display when flashship and flag flagship.iap.enabled set to true', () => {
+  it('should return null when the flagship app has not IAP available and when the flag flagship.iap.enabled is true', () => {
+    const { container } = setup({
+      hasUuid: true,
+      enablePremiumLinks: true,
+      isFlagshipApp: true,
+      isIapEnabled: true,
+      isIapAvailable: false
+    })
+
+    expect(container).toBeEmptyDOMElement()
+  })
+
+  it('should be displayed when the flagship app has IAP available and when the flag flagship.iap.enabled is true', async () => {
     setup({
       hasUuid: true,
       enablePremiumLinks: true,
       isFlagshipApp: true,
-      isIapEnabled: true
+      isIapEnabled: true,
+      isIapAvailable: true
     })
 
-    expect(screen.getByText('Subscribe')).toBeInTheDocument()
+    const premiumButton = await screen.findByText('Subscribe')
+    expect(premiumButton).toBeInTheDocument()
   })
 })

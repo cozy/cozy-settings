@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -9,6 +9,7 @@ import {
 import { isFlagshipApp } from 'cozy-device-helper'
 import flag from 'cozy-flags'
 import { useInstanceInfo } from 'cozy-client'
+import { useWebviewIntent } from 'cozy-intent'
 
 /**
  * Button to redirect to the plan page
@@ -16,11 +17,26 @@ import { useInstanceInfo } from 'cozy-client'
 const SubscriptionLink = ({ label, className, variant, fullWidth }) => {
   const instance = useInstanceInfo()
   const link = buildPremiumLink(instance)
+  const webviewIntent = useWebviewIntent()
+  const [hasIAP, setIAP] = useState(false)
 
-  const isIapEnabled = flag('flagship.iap.enabled')
-  if (isFlagshipApp() && !isIapEnabled) return null
+  useEffect(() => {
+    const fetchIapAvailability = async () => {
+      const isAvailable =
+        (await webviewIntent?.call('isAvailable', 'iap')) ?? false
+      const isEnabled = !!flag('flagship.iap.enabled')
+      setIAP(isAvailable && isEnabled)
+    }
 
-  if (arePremiumLinksEnabled(instance) && link) {
+    if (isFlagshipApp()) {
+      fetchIapAvailability()
+    }
+  }, [webviewIntent])
+
+  const canOpenPremiumLink =
+    arePremiumLinksEnabled(instance) && (!isFlagshipApp() || hasIAP)
+
+  if (canOpenPremiumLink && link) {
     return (
       <Button
         fullWidth={fullWidth}
