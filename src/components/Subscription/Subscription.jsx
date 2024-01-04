@@ -7,6 +7,7 @@ import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import CategoriesIcon from 'cozy-ui/transpiled/react/Icons/Categories'
 import ShareCircleIcon from 'cozy-ui/transpiled/react/Icons/ShareCircle'
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
+import LocationIcon from 'cozy-ui/transpiled/react/Icons/Location'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useInstanceInfo } from 'cozy-client'
@@ -54,6 +55,11 @@ const Subscription = () => {
               <SubscriptionFlagItem
                 icon={DevicesIcon}
                 name="cozy.oauthclients.max"
+                hideWithoutFlag
+              />
+              <SubscriptionFlagItem
+                icon={LocationIcon}
+                name="coachco2.max-days-to-capture"
                 hideWithoutFlag
               />
             </List>

@@ -537,9 +537,11 @@
         "mespapiers.papers.max": "Number of papers added manually",
         "drive.office.write": "Online Office documents editor (word processing, spreadsheet, and presentation)",
         "passwords.can-share-organizations": "Sharing passwords",
-        "cozy.oauthclients.max": "Max authorized devices"
+        "cozy.oauthclients.max": "Max authorized devices",
+        "coachco2.max-days-to-capture": "Trip recordings"
       },
       "storage": "Storage: %{humanDiskQuota} GB",
+      "max_days": ": %{smart_count} day max |||| : %{smart_count} days max",
       "accounts": ": %{smart_count} connected service |||| : %{smart_count} connected services",
       "accounts_unlimited": ": unlimited number of connected services",
       "accounts_offer": "(%{max} included in the offer + 1 offered) |||| (%{max} included in the offer + %{smart_count} offered)",
