@@ -537,9 +537,11 @@
         "mespapiers.papers.max": "Nombre de Papiers ajoutés manuellement",
         "drive.office.write": "Edition de documents Office en ligne (traitement de texte, tableur, et présentation)",
         "passwords.can-share-organizations": "Partage de mots de passe",
-        "cozy.oauthclients.max": "Nombre d'appareils autorisés"
+        "cozy.oauthclients.max": "Nombre d'appareils autorisés",
+        "coachco2.max-days-to-capture": "Enregistrement de vos trajets"
       },
       "storage": "Stockage : %{humanDiskQuota} Go",
+      "max_days": ": %{smart_count} jour max |||| : %{smart_count} jours max",
       "accounts": ": %{smart_count} service connecté |||| : %{smart_count} services connectés",
       "accounts_unlimited": ": nombre de services connectés illimités",
       "accounts_offer": "(%{max} inclus dans l'offre + 1 offert) |||| (%{max} inclus dans l'offre + %{smart_count} offerts)",

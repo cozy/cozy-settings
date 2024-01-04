@@ -34,6 +34,12 @@ export function computeFlagLabel(name, t, lang) {
     return `${beginning}${t(`Subscription.included.numeric_flag_unlimited`)}`
   }
 
+  if (name === 'coachco2.max-days-to-capture') {
+    return `${beginning}${t(`Subscription.included.max_days`, {
+      smart_count: value
+    })}`
+  }
+
   return `${beginning}${t(`Subscription.included.numeric_flag`, {
     smart_count: value
   })}`
