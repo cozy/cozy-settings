@@ -6770,6 +6770,13 @@ cozy-flags@^3.0.1:
   dependencies:
     microee "^0.0.6"
 
+cozy-flags@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/cozy-flags/-/cozy-flags-3.2.2.tgz#778b148ec6db0d9d9988fee43952e4b21547fb71"
+  integrity sha512-IWp/naaY+F9baSkLOjzi4M2UYHdIYAAiUBYGRempu3UbFQ1muCeclsut0OBy4oD8f8ENG4HhDQAdwSBAULOoFw==
+  dependencies:
+    microee "^0.0.6"
+
 cozy-harvest-lib@16.1.0:
   version "16.1.0"
   resolved "https://registry.yarnpkg.com/cozy-harvest-lib/-/cozy-harvest-lib-16.1.0.tgz#01e11b12b8ac2cf7448cf98c51c5c1ab80b97faf"
