@@ -552,10 +552,12 @@
   },
   "BlockingSubscriptionModal": {
     "title": {
-      "delete": "Supprimer votre Cozy ?"
+      "delete": "Supprimer votre Cozy ?",
+      "move": "Déménager votre Cozy ?"
     },
     "content": {
-      "delete": "Merci de résilier votre offre avant de procéder à la suppression de votre Cozy."
+      "delete": "Merci de résilier votre offre avant de procéder à la suppression de votre Cozy.",
+      "move": "Merci de résilier votre offre avant de déménager votre Cozy."
     },
     "confirm": "Gérer mon offre",
     "cancel": "Annuler"
