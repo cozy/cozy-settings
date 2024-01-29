@@ -548,7 +548,7 @@
       "numeric_flag": ": up to %{smart_count}",
       "numeric_flag_unlimited": ": unlimited"
     },
-    "action": "Check our plans"
+    "action": "Manage my plan"
   },
   "BlockingSubscriptionModal": {
     "title": {
