@@ -95,3 +95,13 @@ export const buildDevicesQuery = () => ({
     as: `${OAUTH_CLIENTS_DOCTYPE} _id asc`
   }
 })
+
+export const buildExternalTiesQuery = () => ({
+  definition: () =>
+    Q(SETTINGS_DOCTYPE).getById('io.cozy.settings.external-ties'),
+  options: {
+    as: `${SETTINGS_DOCTYPE}/io.cozy.settings.external-ties`,
+    fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES),
+    singleDocData: true
+  }
+})
