@@ -11,7 +11,7 @@ jest.mock('hooks/useHasPassword', () => ({
 
 describe('PasswordSection', () => {
   const setup = ({ hasPassword }) => {
-    useHasPassword.mockReturnValue(hasPassword)
+    useHasPassword.mockReturnValue({ hasPassword })
     render(
       <AppLike>
         <PasswordSection />

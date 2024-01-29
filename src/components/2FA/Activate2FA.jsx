@@ -17,7 +17,7 @@ import { useHasPassword } from 'hooks/useHasPassword'
 export const Activate2FA = ({ onActivation, closeModal }) => {
   const { t } = useI18n()
   const client = useClient()
-  const hasPassword = useHasPassword()
+  const { hasPassword } = useHasPassword()
 
   const [currentStep, setCurrentStep] = useState('validation')
   const [submitting, setSubmitting] = useState(false)

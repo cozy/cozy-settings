@@ -9,7 +9,7 @@ import { useHasPassword } from 'hooks/useHasPassword'
 
 const PasswordSection = () => {
   const { t } = useI18n()
-  const hasPassword = useHasPassword()
+  const { hasPassword } = useHasPassword()
 
   return hasPassword ? (
     <div>
