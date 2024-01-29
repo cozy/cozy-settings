@@ -30,6 +30,7 @@ import { Menu } from 'components/pages/Menu'
 import { initFlags } from 'lib/flags'
 import { routes } from 'constants/routes'
 import ChangeEmail from 'components/Email/ChangeEmail'
+import { DeleteAccount } from 'components/DeleteAccount'
 import { Subscription } from 'components/Subscription/Subscription'
 import SettingsRealTimeQueries from 'components/SettingsRealTimeQueries'
 
@@ -63,6 +64,7 @@ export const App = () => {
           <Route path="/redirect" element={<IntentRedirect />} />
           <Route path="/profile" element={<Profile />}>
             <Route path="/profile/email" element={<ChangeEmail />} />
+            <Route path="/profile/delete" element={<DeleteAccount />} />
           </Route>
           <Route path="/profile/password" element={<Passphrase />} />
           <Route path="/connectedDevices/*" element={<Devices />} />
