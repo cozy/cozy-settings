@@ -549,5 +549,15 @@
       "numeric_flag_unlimited": ": illimité"
     },
     "action": "Voir les offres"
+  },
+  "BlockingSubscriptionModal": {
+    "title": {
+      "delete": "Supprimer votre Cozy ?"
+    },
+    "content": {
+      "delete": "Merci de résilier votre offre avant de procéder à la suppression de votre Cozy."
+    },
+    "confirm": "Gérer mon offre",
+    "cancel": "Annuler"
   }
 }

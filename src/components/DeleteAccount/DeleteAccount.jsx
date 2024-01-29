@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
@@ -10,6 +9,8 @@ import FormModal from 'components/DeleteAccount/FormModal'
 import EmailConfirmationModal from 'components/DeleteAccount/EmailConfirmationModal'
 import { useHasPassword } from 'hooks/useHasPassword'
 import { LoaderModal } from 'components/DeleteAccount/LoaderModal'
+import { useHasBlockingSubscription } from 'hooks/useHasBlockingSubscription'
+import { BlockingSubscriptionModal } from 'components/BlockingSubscriptionModal'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
@@ -20,6 +21,7 @@ const DeleteAccount = () => {
   const { t } = useI18n()
   const navigate = useNavigate()
   const { hasPassword, isComputing } = useHasPassword()
+  const { isLoaded, hasBlockingSubscription } = useHasBlockingSubscription()
 
   const [status, setStatus] = useState(IDLE)
 
@@ -41,8 +43,12 @@ const DeleteAccount = () => {
     navigate('..')
   }
 
-  if (isComputing) {
+  if (!isLoaded && isComputing) {
     return <LoaderModal />
+  }
+
+  if (hasBlockingSubscription) {
+    return <BlockingSubscriptionModal onClose={handleClose} reason="delete" />
   }
 
   if (status === CONFIRMING) {
