@@ -9,6 +9,7 @@ export const useHasPassword = () => {
   const client = useClient()
 
   const [hasPassword, setHasPassword] = useState()
+  const [isComputing, setIsComputing] = useState(true)
 
   const handlePassphraseCreated = settings => {
     if (settings._id === 'io.cozy.settings.passphrase') {
@@ -34,9 +35,10 @@ export const useHasPassword = () => {
   useEffect(() => {
     const compute = async () => {
       setHasPassword(await computeHasPassword(client))
+      setIsComputing(false)
     }
     compute()
   }, [client])
 
-  return hasPassword
+  return { hasPassword, isComputing }
 }

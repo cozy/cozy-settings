@@ -9,7 +9,7 @@ import AuthentificationModal from 'components/Email/AuthentificationModal'
 
 const ChangeEmail = () => {
   const navigate = useNavigate()
-  const hasPassword = useHasPassword()
+  const { hasPassword } = useHasPassword()
 
   const [passwordHash, setPasswordHash] = useState('')
 

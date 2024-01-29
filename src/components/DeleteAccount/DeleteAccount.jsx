@@ -9,6 +9,7 @@ import ConfirmModal from 'components/DeleteAccount/ConfirmModal'
 import FormModal from 'components/DeleteAccount/FormModal'
 import EmailConfirmationModal from 'components/DeleteAccount/EmailConfirmationModal'
 import { useHasPassword } from 'hooks/useHasPassword'
+import { LoaderModal } from 'components/DeleteAccount/LoaderModal'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
@@ -18,7 +19,7 @@ const EMAIL_CONFIRMATION = 'email_confirmation'
 const DeleteAccount = () => {
   const { t } = useI18n()
   const navigate = useNavigate()
-  const hasPassword = useHasPassword()
+  const { hasPassword, isComputing } = useHasPassword()
 
   const [status, setStatus] = useState(IDLE)
 
@@ -38,6 +39,10 @@ const DeleteAccount = () => {
 
   const handleClose = () => {
     navigate('..')
+  }
+
+  if (isComputing) {
+    return <LoaderModal />
   }
 
   if (status === CONFIRMING) {
