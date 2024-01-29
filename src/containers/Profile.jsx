@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import compose from 'lodash/flowRight'
 
 import { withClient } from 'cozy-client'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
 import { requestExport, fetchExportData } from 'actions/export'
@@ -37,6 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 export default compose(
+  translate(),
   withClient,
   connect(mapStateToProps, mapDispatchToProps)
 )(ProfileView)
