@@ -548,7 +548,7 @@
       "numeric_flag": ": jusqu’à %{smart_count}",
       "numeric_flag_unlimited": ": illimité"
     },
-    "action": "Voir les offres"
+    "action": "Gérer mon offre"
   },
   "BlockingSubscriptionModal": {
     "title": {
