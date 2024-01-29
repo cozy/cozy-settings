@@ -552,10 +552,12 @@
   },
   "BlockingSubscriptionModal": {
     "title": {
-      "delete": "Delete your Cozy?"
+      "delete": "Delete your Cozy?",
+      "move": "Move your Cozy?"
     },
     "content": {
-      "delete": "Please cancel your offer before deleting your Cozy."
+      "delete": "Please cancel your offer before deleting your Cozy.",
+      "move": "Please cancel your offer before moving your Cozy."
     },
     "confirm": "Manage my plan",
     "cancel": "Cancel"

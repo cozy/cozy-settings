@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { STACK_DOMAIN } from 'actions'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
@@ -9,8 +8,7 @@ import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import ExportDownload from 'components/export/ExportDownload'
 
 import { IllustrationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-
-import flag from 'cozy-flags'
+import { MoveButton } from 'components/export/MoveButton'
 
 const exportImage = require('assets/images/export-cozy-mail.svg')
 
@@ -41,17 +39,7 @@ const ExportSection = ({
         <Typography variant="h5" gutterBottom>
           {t('ProfileView.export.title')}
         </Typography>
-        {flag('settings.moving-cozy') && (
-          <div className="u-mv-half">
-            <form
-              action={STACK_DOMAIN + '/move/initialize'}
-              method="post"
-              target="_blank"
-            >
-              <Button label={t('ProfileView.move.button')} extension="full" />
-            </form>
-          </div>
-        )}
+        <MoveButton />
         <Typography variant="body1" gutterBottom>
           {t('ProfileView.export.label')}
         </Typography>
