@@ -9,7 +9,7 @@ import Stack from 'cozy-ui/transpiled/react/Stack'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 
-import DeleteAccount from 'components/Profile/DeleteAccount'
+import { DeleteSection } from 'components/Profile/DeleteSection'
 import LanguageSection from 'components/Profile/LanguageSection'
 import DefaultRedirectionSection from 'components/Profile/DefaultRedirectionSection'
 import TwoFA from 'components/2FA'
@@ -71,7 +71,7 @@ const ProfileView = ({
               />
             </div>
           </Stack>
-          <DeleteAccount />
+          <DeleteSection />
         </>
       ) : (
         <Spinner
