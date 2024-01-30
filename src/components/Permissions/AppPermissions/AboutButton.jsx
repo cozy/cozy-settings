@@ -2,9 +2,9 @@ import React from 'react'
 import CircleButton from 'cozy-ui/transpiled/react/CircleButton'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
-import AppLinker, { generateWebLink } from 'cozy-ui/transpiled/react/AppLinker'
+import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { useClient } from 'cozy-client'
+import { useClient, generateWebLink } from 'cozy-client'
 
 export const AboutButton = ({ appData }) => {
   const { t } = useI18n()
@@ -16,7 +16,7 @@ export const AboutButton = ({ appData }) => {
       cozyUrl: client.getStackClient().uri,
       slug: 'store',
       subDomainType,
-      nativePath: `discover/${appData.slug}`
+      hash: `discover/${appData.slug}`
     })
 
   return (
