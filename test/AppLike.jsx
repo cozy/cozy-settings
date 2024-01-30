@@ -5,6 +5,7 @@ import CozyClient, { CozyProvider } from 'cozy-client'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { WebviewIntentProvider } from 'cozy-intent'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 
 import en from 'locales/en.json'
 
@@ -25,7 +26,7 @@ const AppLike = ({ children, client }) => {
         <HashRouter>
           <BreakpointsProvider>
             <I18n lang="en" dictRequire={() => en}>
-              {children}
+              <CozyTheme>{children}</CozyTheme>
             </I18n>
           </BreakpointsProvider>
         </HashRouter>

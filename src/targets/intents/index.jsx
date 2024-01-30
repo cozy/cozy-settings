@@ -9,7 +9,7 @@ import CozyClient, { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
 import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 
 import IntentService from 'containers/IntentService'
@@ -54,12 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <Provider store={store}>
           <I18n lang={lang} dictRequire={lang => require(`locales/${lang}`)}>
             <BreakpointsProvider>
-              <MuiCozyTheme>
+              <CozyTheme className="u-w-100">
                 <div className="set-services">
                   <IntentService window={window} />
                   <Sprite />
                 </div>
-              </MuiCozyTheme>
+              </CozyTheme>
             </BreakpointsProvider>
           </I18n>
         </Provider>
