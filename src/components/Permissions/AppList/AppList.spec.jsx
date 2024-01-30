@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import React from 'react'
 import AppList from './AppList'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import AppLike from 'test/AppLike'
+import { TestI18n } from 'test/AppLike'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 jest.mock('react-router-dom', () => {
@@ -136,9 +136,9 @@ describe('AppList', () => {
     hasQueryBeenLoaded.mockReturnValue(true)
     const { container } = render(
       <BreakpointsProvider>
-        <AppLike>
+        <TestI18n>
           <AppList />
-        </AppLike>
+        </TestI18n>
       </BreakpointsProvider>
     )
     expect(container).toMatchSnapshot()
@@ -149,9 +149,9 @@ describe('AppList', () => {
     hasQueryBeenLoaded.mockReturnValue(false)
     const { queryByTestId } = render(
       <BreakpointsProvider>
-        <AppLike>
+        <TestI18n>
           <AppList />
-        </AppLike>
+        </TestI18n>
       </BreakpointsProvider>
     )
     expect(queryByTestId('Spinner')).toBeTruthy()
@@ -161,9 +161,9 @@ describe('AppList', () => {
     isQueryLoading.mockReturnValue(false)
     const { getAllByTestId, container } = render(
       <BreakpointsProvider>
-        <AppLike>
+        <TestI18n>
           <AppList />
-        </AppLike>
+        </TestI18n>
       </BreakpointsProvider>
     )
     expect(container).toMatchSnapshot()
@@ -181,9 +181,9 @@ describe('AppList', () => {
     isQueryLoading.mockReturnValue(false)
     const { queryByText } = render(
       <BreakpointsProvider>
-        <AppLike>
+        <TestI18n>
           <AppList />
-        </AppLike>
+        </TestI18n>
       </BreakpointsProvider>
     )
     expect(queryByText('Home')).toBeFalsy
@@ -196,9 +196,9 @@ describe('AppList', () => {
     useQuery.mockReturnValue({ fetchStatus: 'failed' })
     const { queryByText } = render(
       <BreakpointsProvider>
-        <AppLike>
+        <TestI18n>
           <AppList />
-        </AppLike>
+        </TestI18n>
       </BreakpointsProvider>
     )
     expect(queryByText('The request has failed')).toBeTruthy()
