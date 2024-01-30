@@ -8,6 +8,14 @@ import { WebviewIntentProvider } from 'cozy-intent'
 
 import en from 'locales/en.json'
 
+export const TestI18n = ({ children }) => {
+  return (
+    <I18n lang="en" dictRequire={() => en}>
+      {children}
+    </I18n>
+  )
+}
+
 const defaultClient = new CozyClient()
 
 const AppLike = ({ children, client }) => {
