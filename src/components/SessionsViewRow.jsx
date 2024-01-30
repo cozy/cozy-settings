@@ -55,11 +55,7 @@ const SessionsViewRow = ({ session, displayModal }) => {
     return (
       <TableRow className={tableStyles['row']} onClick={callRow}>
         <TableCell className={tableStyles['browser']}>
-          <Icon
-            icon={getBrowserIcon(session)}
-            size={16}
-            color="var(--textIconColor)"
-          />
+          <Icon icon={getBrowserIcon(session)} size={16} />
         </TableCell>
         <TableCell className={tableStyles['main']}>
           <span className={tableStyles['title']}>

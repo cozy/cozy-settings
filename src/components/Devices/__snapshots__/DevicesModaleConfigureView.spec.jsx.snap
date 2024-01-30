@@ -10,13 +10,13 @@ Object {
       aria-hidden="true"
     >
       <div
-        class="CozyTheme--normal"
+        class="CozyTheme--light-normal u-dc"
       />
     </div>
     <div
-      class="MuiDialog-root CozyTheme--normal"
+      class="MuiDialog-root CozyTheme--light-normal"
       role="presentation"
-      style="position: fixed; z-index: #fff; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+      style="position: fixed; z-index: var(--zIndex-modal); right: 0px; bottom: 0px; top: 0px; left: 0px;"
     >
       <div
         aria-hidden="true"
@@ -1322,7 +1322,7 @@ Object {
     aria-hidden="true"
   >
     <div
-      class="CozyTheme--normal"
+      class="CozyTheme--light-normal u-dc"
     />
   </div>,
   "debug": [Function],
