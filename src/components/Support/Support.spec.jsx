@@ -11,16 +11,13 @@ jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn()
 }))
 
-jest.mock('cozy-ui/transpiled/react/providers/Breakpoints', () =>
-  jest.fn(() => ({
+jest.mock('cozy-ui/transpiled/react/providers/Breakpoints', () => ({
+  ...jest.requireActual('cozy-ui/transpiled/react/providers/Breakpoints'),
+  __esModule: true,
+  default: jest.fn(() => ({
     isMobile: false,
     isTablet: false
   }))
-)
-
-jest.mock('cozy-client', () => ({
-  ...jest.requireActual('cozy-client'),
-  useClient: jest.fn(() => ({}))
 }))
 
 describe('Support component', () => {
