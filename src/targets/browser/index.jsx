@@ -14,7 +14,7 @@ import { RealtimePlugin } from 'cozy-realtime'
 
 import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import MuiCozyTheme from 'cozy-ui/transpiled/react/MuiCozyTheme'
+import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { WebviewIntentProvider } from 'cozy-intent'
 
 import App from 'components/App'
@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <Provider store={store}>
             <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
               <BreakpointsProvider>
-                <MuiCozyTheme>
+                <CozyTheme className="u-w-100">
                   <HashRouter>
                     <App />
                   </HashRouter>
-                </MuiCozyTheme>
+                </CozyTheme>
               </BreakpointsProvider>
             </EnhancedI18n>
           </Provider>
