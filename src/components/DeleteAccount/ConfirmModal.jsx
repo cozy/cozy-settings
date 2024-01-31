@@ -69,16 +69,16 @@ const ConfirmModal = ({ onClose, onSuccess }) => {
       actions={
         <>
           <Button
+            label={t('DeleteAccount.modal.confirm.button.cancel.label')}
+            variant="secondary"
+            onClick={onClose}
+          />
+          <Button
             label={t('DeleteAccount.modal.confirm.button.submit.label')}
             color="error"
             busy={isLoading}
             disabled={isLoading}
             onClick={handleSubmit}
-          />
-          <Button
-            label={t('DeleteAccount.modal.confirm.button.cancel.label')}
-            variant="secondary"
-            onClick={onClose}
           />
         </>
       }
