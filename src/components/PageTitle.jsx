@@ -1,16 +1,13 @@
 import React from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
 
-import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-
-/* global cozy */
-const { BarCenter, BarLeft } = cozy.bar
+import { BarCenter, BarLeft } from 'cozy-bar'
 
 const barTitleStyle = { height: '3rem', display: 'flex', alignItems: 'center' }
 const BarContainer = ({ children }) => {
@@ -38,11 +35,9 @@ const PageTitle = ({ children, backButtonPath, ...rest }) => {
       )}
 
       <BarCenter>
-        <CozyTheme variant="normal">
-          <BarContainer>
-            <Typography variant="h4">{children}</Typography>
-          </BarContainer>
-        </CozyTheme>
+        <BarContainer>
+          <Typography variant="h4">{children}</Typography>
+        </BarContainer>
       </BarCenter>
     </>
   ) : (
