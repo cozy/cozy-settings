@@ -8,16 +8,19 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
+import { CaptureConsole } from '@sentry/integrations'
+import * as Sentry from '@sentry/react'
+
 import CozyClient, { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
 import { RealtimePlugin } from 'cozy-realtime'
-
 import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { WebviewIntentProvider } from 'cozy-intent'
 
 import App from 'components/App'
+import manifest from '../../../manifest.webapp'
 
 import {
   StylesProvider,
@@ -70,6 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
     appEditor: data.app.editor,
     iconPath: data.app.icon,
     lang: data.locale
+  })
+
+  Sentry.init({
+    dsn: 'https://b97751b58d0d3e5e7e3d80a396b51cd9@errors.cozycloud.cc/72',
+    environment: process.env.NODE_ENV,
+    release: manifest.version,
+    integrations: [
+      new CaptureConsole({ levels: ['error'] }), // We also want to capture the `console.error` to, among other things, report the logs present in the `try/catch`
+      new Sentry.BrowserTracing()
+    ],
+    tracesSampleRate: 1,
+    // React log these warnings(bad Proptypes), in a console.error, it is not relevant to report this type of information to Sentry
+    ignoreErrors: [/^Warning: /]
   })
 
   root.render(
