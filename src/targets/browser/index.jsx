@@ -1,7 +1,6 @@
-/* global cozy */
-
 import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'cozy-ui/dist/cozy-ui.utils.min.css'
+import 'cozy-bar/dist/stylesheet.css'
 import 'styles/index.styl'
 
 import React from 'react'
@@ -48,12 +47,6 @@ const generateClassName = createGenerateClassName({
 
 const EnhancedI18n = connect(state => {
   const { lang } = state.ui
-  try {
-    cozy.bar.setLocale && cozy.bar.setLocale(lang)
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.warn(`The dict phrases for "${lang}" can't be loaded`)
-  }
   return { lang }
 })(I18n)
 
@@ -72,14 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
   cozyClient.setStore(store)
   cozyClient.registerPlugin(flag.plugin)
   cozyClient.registerPlugin(RealtimePlugin)
-
-  cozy.bar.init({
-    cozyClient,
-    appName: data.app.name,
-    appEditor: data.app.editor,
-    iconPath: data.app.icon,
-    lang: data.locale
-  })
 
   Sentry.init({
     dsn: 'https://b97751b58d0d3e5e7e3d80a396b51cd9@errors.cozycloud.cc/72',
