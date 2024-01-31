@@ -96,12 +96,13 @@ export const buildDevicesQuery = () => ({
   }
 })
 
+// This query don't have realtime updates so we always need to fetch it
+// as update can append in background
 export const buildExternalTiesQuery = () => ({
   definition: () =>
     Q(SETTINGS_DOCTYPE).getById('io.cozy.settings.external-ties'),
   options: {
     as: `${SETTINGS_DOCTYPE}/io.cozy.settings.external-ties`,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES),
     singleDocData: true
   }
 })

@@ -6,7 +6,7 @@ import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
 import { SubscriptionLink } from 'components/SubscriptionLink'
 
-const BlockingSubscriptionModal = ({ onClose, reason }) => {
+const BlockingSubscriptionModal = ({ onClose, onResume, reason }) => {
   const { t } = useI18n()
 
   return (
@@ -16,14 +16,14 @@ const BlockingSubscriptionModal = ({ onClose, reason }) => {
       content={t(`BlockingSubscriptionModal.content.${reason}`)}
       actions={
         <>
-          <SubscriptionLink
-            label={t('BlockingSubscriptionModal.confirm')}
-            fullWidth={false}
-          />
           <Buttons
-            label={t('BlockingSubscriptionModal.cancel')}
+            label={t('BlockingSubscriptionModal.resume')}
             variant="secondary"
-            onClick={onClose}
+            onClick={onResume}
+          />
+          <SubscriptionLink
+            label={t('BlockingSubscriptionModal.manage')}
+            fullWidth={false}
           />
         </>
       }
