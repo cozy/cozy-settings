@@ -6,7 +6,13 @@ import 'styles/index.styl'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
+import {
+  HashRouter,
+  useLocation,
+  useNavigationType,
+  createRoutesFromChildren,
+  matchRoutes
+} from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
 import { CaptureConsole } from '@sentry/integrations'
 import * as Sentry from '@sentry/react'
@@ -81,7 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
     release: manifest.version,
     integrations: [
       new CaptureConsole({ levels: ['error'] }), // We also want to capture the `console.error` to, among other things, report the logs present in the `try/catch`
-      new Sentry.BrowserTracing()
+      new Sentry.BrowserTracing({
+        routingInstrumentation: Sentry.reactRouterV6Instrumentation(
+          React.useEffect,
+          useLocation,
+          useNavigationType,
+          createRoutesFromChildren,
+          matchRoutes
+        )
+      })
     ],
     tracesSampleRate: 1,
     // React log these warnings(bad Proptypes), in a console.error, it is not relevant to report this type of information to Sentry

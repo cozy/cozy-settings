@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { Route, Navigate, Routes, Outlet } from 'react-router-dom'
 import { hot } from 'react-hot-loader'
+import * as Sentry from '@sentry/react'
 
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
@@ -43,6 +44,8 @@ const OutletWrapper = ({ Component }) => (
   </>
 )
 
+const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes)
+
 export const App = () => {
   const { isMobile, isTablet } = useBreakpoints()
   const isSmallView = isMobile || isTablet
@@ -59,7 +62,7 @@ export const App = () => {
       <RealTimeQueries doctype="io.cozy.oauth.clients" />
       <SettingsRealTimeQueries />
       <Main>
-        <Routes>
+        <SentryRoutes>
           {isSmallView && <Route path="/menu" element={<Menu />} />}
           <Route path="/redirect" element={<IntentRedirect />} />
           <Route path="/profile" element={<Profile />}>
@@ -103,7 +106,7 @@ export const App = () => {
               <Navigate to={isSmallView ? '/menu' : '/profile'} replace />
             }
           />
-        </Routes>
+        </SentryRoutes>
       </Main>
       <Sprite />
       {flag('debug') ? <CozyDevtools /> : null}
