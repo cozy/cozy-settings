@@ -556,10 +556,10 @@
       "move": "Déménager votre Cozy ?"
     },
     "content": {
-      "delete": "Merci de résilier votre offre avant de procéder à la suppression de votre Cozy.",
-      "move": "Merci de résilier votre offre avant de déménager votre Cozy."
+      "delete": "Vous avez souscrit à une offre Cozy via le Play store ou l'App Store. Merci de résilier votre abonnement avant de supprimer votre compte Cozy. Si vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer la suppression de votre Cozy.",
+      "move": "Vous avez souscrit à une offre Cozy via le Play store ou l'App Store. Merci de résilier votre abonnement avant de déménager votre compte Cozy. Si vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer le déménagement de votre Cozy."
     },
-    "confirm": "Gérer mon offre",
-    "cancel": "Annuler"
+    "manage": "Gérer mon offre",
+    "resume": "Continuer"
   }
 }

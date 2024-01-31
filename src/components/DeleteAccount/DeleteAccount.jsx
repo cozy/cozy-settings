@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { useQuery, hasQueryBeenLoaded } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
@@ -9,8 +10,11 @@ import FormModal from 'components/DeleteAccount/FormModal'
 import EmailConfirmationModal from 'components/DeleteAccount/EmailConfirmationModal'
 import { useHasPassword } from 'hooks/useHasPassword'
 import { LoaderModal } from 'components/DeleteAccount/LoaderModal'
-import { useHasBlockingSubscription } from 'hooks/useHasBlockingSubscription'
-import { BlockingSubscriptionModal } from 'components/BlockingSubscriptionModal'
+import { buildExternalTiesQuery } from 'lib/queries'
+import {
+  BlockingSubscriptionModal,
+  hasBlockingSubscription
+} from 'components/BlockingSubscriptionModal'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'
@@ -21,9 +25,14 @@ const DeleteAccount = () => {
   const { t } = useI18n()
   const navigate = useNavigate()
   const { hasPassword, isComputing } = useHasPassword()
-  const { isLoaded, hasBlockingSubscription } = useHasBlockingSubscription()
+  const externalTiesQuery = buildExternalTiesQuery()
+  const externalTiesResult = useQuery(
+    externalTiesQuery.definition,
+    externalTiesQuery.options
+  )
 
   const [status, setStatus] = useState(IDLE)
+  const [isBlockingResumed, setBlockingResumed] = useState(false)
 
   useEffect(() => {
     setStatus(hasPassword ? CONFIRMING : REQUESTING)
@@ -43,12 +52,22 @@ const DeleteAccount = () => {
     navigate('..')
   }
 
-  if (!isLoaded && isComputing) {
+  const handleResume = () => {
+    setBlockingResumed(true)
+  }
+
+  if (!hasQueryBeenLoaded(externalTiesResult) || isComputing) {
     return <LoaderModal />
   }
 
-  if (hasBlockingSubscription) {
-    return <BlockingSubscriptionModal onClose={handleClose} reason="delete" />
+  if (hasBlockingSubscription(externalTiesResult) && !isBlockingResumed) {
+    return (
+      <BlockingSubscriptionModal
+        onClose={handleClose}
+        onResume={handleResume}
+        reason="delete"
+      />
+    )
   }
 
   if (status === CONFIRMING) {

@@ -5,18 +5,28 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
 import { STACK_DOMAIN } from 'actions'
-import { useHasBlockingSubscription } from 'hooks/useHasBlockingSubscription'
-import { BlockingSubscriptionModal } from 'components/BlockingSubscriptionModal'
+import {
+  BlockingSubscriptionModal,
+  hasBlockingSubscription
+} from 'components/BlockingSubscriptionModal'
+import { buildExternalTiesQuery } from 'lib/queries'
+import { useClient } from 'cozy-client'
 
 const MoveButton = () => {
   const { t } = useI18n()
-  const { isLoaded, hasBlockingSubscription } = useHasBlockingSubscription()
+  const client = useClient()
+  const externalTiesQuery = buildExternalTiesQuery()
 
   const [isBlockingDisplayed, setBlockingDisplayed] = useState(false)
   const form = useRef(null)
 
-  const handleSubmit = () => {
-    if (hasBlockingSubscription) {
+  const handleSubmit = async () => {
+    const externalTiesResult = await client.query(
+      externalTiesQuery.definition(),
+      externalTiesQuery.options
+    )
+
+    if (hasBlockingSubscription(externalTiesResult)) {
       setBlockingDisplayed(true)
     } else {
       form.current.submit()
@@ -24,6 +34,11 @@ const MoveButton = () => {
   }
 
   const handleClose = () => {
+    setBlockingDisplayed(false)
+  }
+
+  const handleResume = () => {
+    form.current.submit()
     setBlockingDisplayed(false)
   }
 
@@ -40,10 +55,13 @@ const MoveButton = () => {
           label={t('ProfileView.move.button')}
           fullWidth
           onClick={handleSubmit}
-          isBusy={isLoaded}
         />
         {isBlockingDisplayed ? (
-          <BlockingSubscriptionModal onClose={handleClose} reason="move" />
+          <BlockingSubscriptionModal
+            onClose={handleClose}
+            onResume={handleResume}
+            reason="move"
+          />
         ) : null}
       </form>
     )
