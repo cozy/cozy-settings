@@ -4,6 +4,7 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
+import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { SubscriptionLink } from 'components/SubscriptionLink'
 
 const BlockingSubscriptionModal = ({ onClose, onResume, reason }) => {
@@ -13,7 +14,11 @@ const BlockingSubscriptionModal = ({ onClose, onResume, reason }) => {
     <ConfirmDialog
       open
       title={t(`BlockingSubscriptionModal.title.${reason}`)}
-      content={t(`BlockingSubscriptionModal.content.${reason}`)}
+      content={
+        <ReactMarkdownWrapper
+          source={t(`BlockingSubscriptionModal.content.${reason}`)}
+        />
+      }
       actions={
         <>
           <Buttons
