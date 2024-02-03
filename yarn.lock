@@ -7606,10 +7606,10 @@ cozy-app-publish@^0.27.2:
     request "^2.88.0"
     tar "^4.4.13"
 
-cozy-bar@7.28.0:
-  version "7.28.0"
-  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-7.28.0.tgz#f9db69bb153cc156b850bf6e15edc3fb179b72e8"
-  integrity sha512-UUrz+dyNQ/bXgZ1FZW9RVOtxC5ME/HHWgskNqQKtV5lgJ99RqI04M33WNdtIIoz+rJ4quvkr90Oy1YI4LC0BAA==
+cozy-bar@7.29.0:
+  version "7.29.0"
+  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-7.29.0.tgz#c1e84548678e22fc50edc8638463ab6f2033e93c"
+  integrity sha512-vn+7BzJbL/SJThms9x4PuwrHbSwFtmnhrJXp3q/pEFmEHSpa3CdN7VTnQitLrLvwx5Jx1iQeUGxWShjSPLWyWA==
   dependencies:
     "@cozy/minilog" "^1.0.0"
     cozy-client "^38.2.1"

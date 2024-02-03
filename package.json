@@ -40,7 +40,7 @@
     "babel-preset-cozy-app": "2.0.3",
     "browser-resolve": "2.0.0",
     "bundlemon": "1.4.0",
-    "cozy-bar": "7.28.0",
+    "cozy-bar": "7.29.0",
     "cozy-scripts": "8.3.0",
     "eslint-config-cozy-app": "5.1.0",
     "jest": "28.1.3",
