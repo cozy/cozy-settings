@@ -53,7 +53,7 @@ const MoveButton = () => {
       >
         <Buttons
           label={t('ProfileView.move.button')}
-          fullWidth
+          variant="secondary"
           onClick={handleSubmit}
         />
         {isBlockingDisplayed ? (

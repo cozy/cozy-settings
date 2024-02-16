@@ -76,7 +76,7 @@ class Import extends Component {
           <Buttons
             onClick={this.toggleModal}
             label={t('ProfileView.import.link')}
-            fullWidth
+            variant="secondary"
           />
         </div>
         {displayModal && (
