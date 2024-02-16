@@ -13,8 +13,8 @@ import {
   matchRoutes
 } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
-import { CaptureConsole } from '@sentry/integrations'
 import * as Sentry from '@sentry/react'
+import { captureConsoleIntegration } from '@sentry/integrations'
 
 import CozyClient, { CozyProvider } from 'cozy-client'
 import flag from 'cozy-flags'
@@ -71,18 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
     environment: process.env.NODE_ENV,
     release: manifest.version,
     integrations: [
-      new CaptureConsole({ levels: ['error'] }), // We also want to capture the `console.error` to, among other things, report the logs present in the `try/catch`
-      new Sentry.BrowserTracing({
-        routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-          React.useEffect,
-          useLocation,
-          useNavigationType,
-          createRoutesFromChildren,
-          matchRoutes
-        )
+      captureConsoleIntegration({ levels: ['error'] }), // We also want to capture the `console.error` to, among other things, report the logs present in the `try/catch`
+      Sentry.reactRouterV6BrowserTracingIntegration({
+        useEffect: React.useEffect,
+        useLocation,
+        useNavigationType,
+        createRoutesFromChildren,
+        matchRoutes
       })
     ],
-    tracesSampleRate: 1,
+    tracesSampleRate: 0.1,
     // React log these warnings(bad Proptypes), in a console.error, it is not relevant to report this type of information to Sentry
     ignoreErrors: [/^Warning: /]
   })
