@@ -24,7 +24,6 @@ const DeleteSection = () => {
         variant="secondary"
         color="error"
         label={t('DeleteAccount.button.label')}
-        fullWidth
         onClick={handleClick}
       />
     </div>

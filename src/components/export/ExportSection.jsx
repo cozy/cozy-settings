@@ -47,7 +47,7 @@ const ExportSection = ({
           <Buttons
             onClick={toggleModal}
             label={t('ProfileView.export.link')}
-            fullWidth
+            variant="secondary"
           />
         </div>
       </div>
