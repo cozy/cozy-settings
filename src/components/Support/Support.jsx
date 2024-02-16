@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Label from 'cozy-ui/transpiled/react/Label'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
@@ -91,7 +91,7 @@ export const Support = ({
           </p>
         )}
       </div>
-      <Button
+      <Buttons
         className="u-m-0"
         onClick={() => sendMessage()}
         disabled={!message}

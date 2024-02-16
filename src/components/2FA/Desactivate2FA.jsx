@@ -1,6 +1,6 @@
 import React from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useClient } from 'cozy-client'
@@ -35,14 +35,14 @@ export const Desactivate2FA = ({ closeModal, onDesactivation }) => {
       }
       actions={
         <>
-          <Button
+          <Buttons
             onClick={closeModal}
-            theme="secondary"
+            variant="secondary"
             label={t('ProfileView.twofa.modal.button.cancel')}
           />
-          <Button
+          <Buttons
             onClick={desactivate2FA}
-            theme="danger"
+            color="error"
             label={t('ProfileView.twofa.modal.button.desactivate')}
           />
         </>

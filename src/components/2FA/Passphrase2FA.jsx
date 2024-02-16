@@ -3,7 +3,7 @@ import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Input from 'cozy-ui/transpiled/react/Input'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import settingsConfig from 'config'
@@ -40,12 +40,12 @@ export class Passphrase2FA extends Component {
         size="small"
         actions={
           <>
-            <Button
+            <Buttons
               onClick={closeTwoFAPassphraseModal}
-              theme="secondary"
+              variant="secondary"
               label={t('ProfileView.twofa.modal.button.cancel')}
             />
-            <Button
+            <Buttons
               onClick={() => onPassphrase2FASubmit(twoFactorCode)}
               aria-busy={submitting}
               disabled={!email}

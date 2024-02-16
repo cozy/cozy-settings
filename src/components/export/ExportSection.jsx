@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
@@ -44,10 +44,10 @@ const ExportSection = ({
           {t('ProfileView.export.label')}
         </Typography>
         <div className="u-mb-half">
-          <Button
+          <Buttons
             onClick={toggleModal}
             label={t('ProfileView.export.link')}
-            extension="full"
+            fullWidth
           />
         </div>
       </div>
@@ -79,15 +79,14 @@ const ExportSection = ({
           }
           actions={
             <>
-              <Button
+              <Buttons
                 className="u-flex-grow-1"
-                theme="secondary"
+                variant="secondary"
                 onClick={toggleModal}
                 label={t('ProfileView.export.modal.cancel')}
               />
-              <Button
+              <Buttons
                 className="u-flex-grow-1"
-                theme="primary"
                 onClick={submitExport}
                 busy={exportData.submitting}
                 disabled={exportData.submitting}

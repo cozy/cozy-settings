@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useClient, useQuery } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import { buildSettingsInstanceQuery } from 'lib/queries'
@@ -33,7 +33,7 @@ export const ActivationConfirmed = ({ onConfirmed }) => {
         <li>{client.stackClient.uri}</li>
       </ul>
       <div className="u-ta-right">
-        <Button
+        <Buttons
           onClick={onConfirmed}
           label={t('ProfileView.twofa.modal.button.terminate')}
         />
