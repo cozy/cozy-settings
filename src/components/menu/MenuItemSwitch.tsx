@@ -24,12 +24,12 @@ export const MenuItemSwitch = ({
   primary,
   secondary
 }: MenuItemSwitchProps): JSX.Element => (
-  <ListItem button onClick={onClick} disabled={disabled}>
+  <ListItem button onClick={onClick} disabled={disabled} ellipsis={false}>
     <ListItemIcon>
       <Icon icon={icon} />
     </ListItemIcon>
 
-    <ListItemText ellipsis={false} primary={primary} secondary={secondary} />
+    <ListItemText primary={primary} secondary={secondary} />
 
     <Switch checked={checked} color="primary" />
   </ListItem>
