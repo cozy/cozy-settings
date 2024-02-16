@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Input from 'cozy-ui/transpiled/react/Input'
 import Icon from 'cozy-ui/transpiled/react/Icon'
@@ -178,21 +178,21 @@ const PassphraseForm = ({ errors, submitting, saved, onSubmit }) => {
         <ReactMarkdownWrapper source={t('PassphraseView.hint.description')} />
       </Stack>
       <Stack spacing="xs">
-        <Button
+        <Buttons
           busy={submitting}
           disabled={!canSubmit}
           label={t('PassphraseView.submit')}
-          extension="full"
+          fullWidth
           className="u-mb-half"
         >
           {saved && <Icon className="u-ml-half u-valid" icon={CheckIcon} />}
-        </Button>
-        <Button
-          tag={Link}
+        </Buttons>
+        <Buttons
+          component={Link}
           to="/profile"
           label={t('PassphraseView.cancel')}
-          theme="secondary"
-          extension="full"
+          variant="secondary"
+          fullWidth
         />
       </Stack>
     </Stack>

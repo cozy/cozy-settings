@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Empty from 'cozy-ui/transpiled/react/Empty'
-import { ButtonLink } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import EmptyIcon from 'assets/icons/icon-devices.svg'
@@ -18,7 +18,7 @@ const DevicesEmpty = () => {
       title={t('Empty.devices.title')}
       text={t('Empty.devices.text')}
     >
-      <ButtonLink
+      <Buttons
         href={t('Empty.devices.link.href')}
         label={t('Empty.devices.link.text')}
       />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Button from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
@@ -17,11 +17,11 @@ const PasswordSection = () => {
         {t('ProfileView.password.title')}
       </Typography>
       <Typography variant="body1">{t('ProfileView.password.label')}</Typography>
-      <Button
-        tag={Link}
+      <Buttons
+        component={Link}
         to="/profile/password"
         label={t('ProfileView.password.cta')}
-        theme="secondary"
+        variant="secondary"
         className="u-mt-half u-mh-0"
       />
     </div>

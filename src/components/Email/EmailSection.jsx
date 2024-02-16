@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useClient, useQuery } from 'cozy-client'
@@ -99,11 +98,11 @@ const EmailSection = () => {
           })}
         </Alert>
       ) : (
-        <Button
-          tag={Link}
+        <Buttons
+          component={Link}
           to="/profile/email"
           label={t('EmailSection.action')}
-          theme="secondary"
+          variant="secondary"
           className="u-mt-half u-mh-0"
         />
       )}

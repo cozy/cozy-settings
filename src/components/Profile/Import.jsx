@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { STACK_DOMAIN } from 'actions'
 
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import TextField from 'cozy-ui/transpiled/react/TextField'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
@@ -73,10 +73,10 @@ class Import extends Component {
     return (
       <>
         <div>
-          <Button
+          <Buttons
             onClick={this.toggleModal}
             label={t('ProfileView.import.link')}
-            extension="full"
+            fullWidth
           />
         </div>
         {displayModal && (
@@ -117,12 +117,12 @@ class Import extends Component {
             }
             actions={
               <>
-                <Button
+                <Buttons
                   theme="secondary"
                   onClick={this.toggleModal}
                   label={t('ProfileView.import.modal.cancel')}
                 />
-                <Button
+                <Buttons
                   theme="primary"
                   onClick={this.precheckImport}
                   busy={importData.checking}
@@ -155,13 +155,13 @@ class Import extends Component {
             }
             actions={
               <>
-                <Button
-                  theme="secondary"
+                <Buttons
+                  variant="secondary"
                   onClick={this.toggleConfirmation}
                   label={t('ProfileView.import.confirmation.cancel')}
                 />
-                <Button
-                  theme="danger"
+                <Buttons
+                  color="error"
                   onClick={this.submitImport}
                   busy={importData.submitting}
                   disabled={importData.submitting}

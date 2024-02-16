@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import SessionsViewRow from 'components/SessionsViewRow'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import {
   Table,
   TableHead,
@@ -11,13 +10,14 @@ import {
   TableHeader
 } from 'cozy-ui/transpiled/react/Table'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import SessionsViewRow from 'components/SessionsViewRow'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import tableStyles from 'styles/table.styl'
-import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react'
-import SessionDialog from './SessionsView/SessionDialog'
+import SessionDialog from 'components/SessionsView/SessionDialog'
 
 const SessionsView = ({
   fetchSessions,
@@ -40,9 +40,9 @@ const SessionsView = ({
     <Page>
       <PageTitle>{t('SessionsView.title')}</PageTitle>
       <Typography variant="body1" className="u-mb-1-half">
-        <Button
+        <Buttons
           className="u-ml-0"
-          theme="danger"
+          color="error"
           onClick={deleteOtherSessions}
           label={t('SessionsView.delete')}
         />
