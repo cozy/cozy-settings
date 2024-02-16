@@ -15,7 +15,7 @@ declare module 'cozy-ui/transpiled/react/Divider' {
 
 declare module 'cozy-ui/transpiled/react/ListItem' {
   import ListItem from '@material-ui/core/ListItem'
-  export default ListItem
+  export default ListItem as ListItem & { ellipsis: boolean }
 }
 
 declare module 'cozy-ui/transpiled/react/ListItemIcon' {
