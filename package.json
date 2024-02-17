@@ -55,7 +55,7 @@
     "@sentry/integrations": "7.88.0",
     "@sentry/react": "7.88.0",
     "classnames": "2.3.1",
-    "cozy-client": "45.4.0",
+    "cozy-client": "45.10.0",
     "cozy-device-helper": "^3.0.0",
     "cozy-doctypes": "1.83.7",
     "cozy-flags": "^3.2.2",
