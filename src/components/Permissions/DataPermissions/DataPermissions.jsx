@@ -109,6 +109,7 @@ const DataPermissions = ({ t }) => {
                       <ListItem
                         button
                         onClick={() => openModal(appOrKonnector.slug)}
+                        ellipsis={false}
                       >
                         <ListItemIcon>
                           <AppIcon app={appOrKonnector} />
