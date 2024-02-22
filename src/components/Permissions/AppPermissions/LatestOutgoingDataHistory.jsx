@@ -53,7 +53,7 @@ const LatestOutgoingDataHistory = ({
         />
       )}
       <NavigationListSection>
-        <ListItem>
+        <ListItem ellipsis={false}>
           <Typography variant="h5">
             {t('Permissions.latest_data_releases')}
           </Typography>
@@ -62,7 +62,7 @@ const LatestOutgoingDataHistory = ({
         {sortDataByDate(queryResultRemoteRequests).map((data, index) => {
           return (
             <div key={data.id}>
-              <ListItem button onClick={() => openModal(data)}>
+              <ListItem button onClick={() => openModal(data)} ellipsis={false}>
                 <ListItemIcon>
                   <Icon
                     icon={RiseIcon}

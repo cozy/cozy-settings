@@ -46,7 +46,7 @@ const AccessRightsSection = ({
         />
       )}
       <NavigationListSection>
-        <ListItem>
+        <ListItem ellipsis={false}>
           <ListItemIcon>
             <Icon
               icon={isRemoteDoctypes ? CozyReleaseIcon : CozyLockIcon}
@@ -73,7 +73,7 @@ const AccessRightsSection = ({
           const iconName = getPermissionIconName(type)
           return (
             <div key={name}>
-              <ListItem button onClick={() => openModal(type)}>
+              <ListItem button onClick={() => openModal(type)} ellipsis={false}>
                 <ListItemIcon>
                   <Icon
                     icon={

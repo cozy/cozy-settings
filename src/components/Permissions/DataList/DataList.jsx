@@ -51,6 +51,7 @@ const DataList = ({ t }) => {
                       button
                       component="a"
                       href={`/#${routes.dataList}/${key}`}
+                      ellipsis={false}
                     >
                       <ListItemIcon>
                         <Icon
