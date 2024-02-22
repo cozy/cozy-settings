@@ -5,7 +5,6 @@ import { hot } from 'react-hot-loader'
 import * as Sentry from '@sentry/react'
 
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import FlagSwitcher from 'cozy-flags/dist/FlagSwitcher'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
@@ -59,7 +58,6 @@ export const App = () => {
       <BarProvider>
         <BarComponent />
         {App.renderExtra()}
-        <FlagSwitcher />
         <Alerter />
         {isBigView && <Sidebar />}
         <RealTimeQueries doctype="io.cozy.oauth.clients" />
