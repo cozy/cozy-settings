@@ -1,25 +1,13 @@
 import flag from 'cozy-flags'
 
 export const initFlags = () => {
-  let activateFlags = flag('switcher') === true
-
-  if (process.env.NODE_ENV !== 'production' && flag('switcher') == null) {
-    activateFlags = true
+  if (flag('debug')) {
+    flag('settings.permissions-dashboard')
+    flag('settings.flagship-mode')
+    flag('settings.subscription')
+    flag('settings.hasBlockingSubscription')
+    flag('settings.skip-email-confirmation')
+    flag('settings.oidc-auth')
+    flag('settings.moving-cozy')
   }
-
-  const searchParams = new URL(window.location).searchParams
-  if (!activateFlags && searchParams.get('flags') != null) {
-    activateFlags = true
-  }
-
-  if (activateFlags) {
-    flagsList()
-  }
-}
-
-const flagsList = () => {
-  flag('switcher', true)
-  flag('settings.permissions-dashboard')
-  flag('settings.flagship-mode')
-  flag('settings.subscription')
 }
