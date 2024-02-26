@@ -6,49 +6,22 @@ import 'styles/index.styl'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import {
-  HashRouter,
   useLocation,
   useNavigationType,
   createRoutesFromChildren,
   matchRoutes
 } from 'react-router-dom'
-import { Provider, connect } from 'react-redux'
 import * as Sentry from '@sentry/react'
 import { captureConsoleIntegration } from '@sentry/integrations'
 
-import CozyClient, { CozyProvider } from 'cozy-client'
+import CozyClient from 'cozy-client'
 import flag from 'cozy-flags'
 import { RealtimePlugin } from 'cozy-realtime'
-import I18n from 'cozy-ui/transpiled/react/providers/I18n'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
-import { WebviewIntentProvider } from 'cozy-intent'
 
-import App from 'components/App'
 import manifest from '../../../manifest.webapp'
-
-import {
-  StylesProvider,
-  createGenerateClassName
-} from '@material-ui/core/styles'
-
+import App from 'components/App'
 import createStore from '../../store'
-
-/*
-With MUI V4, it is possible to generate deterministic class names.
-In the case of multiple react roots, it is necessary to disable this
-feature. Since we have the cozy-bar root, we need to disable the
-feature.
-https://material-ui.com/styles/api/#stylesprovider
-*/
-const generateClassName = createGenerateClassName({
-  disableGlobal: true
-})
-
-const EnhancedI18n = connect(state => {
-  const { lang } = state.ui
-  return { lang }
-})(I18n)
+import { AppProviders } from 'components/AppProviders'
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('[role=application]')
@@ -86,22 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   root.render(
-    <WebviewIntentProvider>
-      <StylesProvider generateClassName={generateClassName}>
-        <CozyProvider client={cozyClient}>
-          <Provider store={store}>
-            <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
-              <BreakpointsProvider>
-                <CozyTheme className="u-w-100">
-                  <HashRouter>
-                    <App />
-                  </HashRouter>
-                </CozyTheme>
-              </BreakpointsProvider>
-            </EnhancedI18n>
-          </Provider>
-        </CozyProvider>
-      </StylesProvider>
-    </WebviewIntentProvider>
+    <AppProviders client={cozyClient} store={store}>
+      <App />
+    </AppProviders>
   )
 })

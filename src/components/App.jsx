@@ -10,7 +10,7 @@ import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
 import { RealTimeQueries } from 'cozy-client'
 import CozyDevtools from 'cozy-client/dist/devtools'
 import flag from 'cozy-flags'
-import { BarComponent, BarProvider } from 'cozy-bar'
+import { BarComponent } from 'cozy-bar'
 
 import Sidebar from 'components/Sidebar'
 import styles from 'styles/index.styl'
@@ -29,19 +29,17 @@ export const App = () => {
     <Layout
       className={classNames({ [styles['Layout--small-view']]: isSmallView })}
     >
-      <BarProvider>
-        <BarComponent />
-        {App.renderExtra()}
-        <Alerter />
-        {isBigView && <Sidebar />}
-        <RealTimeQueries doctype="io.cozy.oauth.clients" />
-        <SettingsRealTimeQueries />
-        <Main>
-          <AppRouter />
-        </Main>
-        <Sprite />
-        {flag('debug') ? <CozyDevtools /> : null}
-      </BarProvider>
+      <BarComponent />
+      {App.renderExtra()}
+      <Alerter />
+      {isBigView && <Sidebar />}
+      <RealTimeQueries doctype="io.cozy.oauth.clients" />
+      <SettingsRealTimeQueries />
+      <Main>
+        <AppRouter />
+      </Main>
+      <Sprite />
+      {flag('debug') ? <CozyDevtools /> : null}
     </Layout>
   )
 }
