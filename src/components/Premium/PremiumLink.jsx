@@ -14,7 +14,7 @@ import { useWebviewIntent } from 'cozy-intent'
 /**
  * Button to redirect to the plan page
  */
-const SubscriptionLink = ({ label, className, variant, fullWidth }) => {
+const PremiumLink = ({ label, className, variant, fullWidth }) => {
   const instance = useInstanceInfo()
   const link = buildPremiumLink(instance)
   const webviewIntent = useWebviewIntent()
@@ -52,15 +52,15 @@ const SubscriptionLink = ({ label, className, variant, fullWidth }) => {
   return null
 }
 
-SubscriptionLink.propTypes = {
+PremiumLink.propTypes = {
   label: PropTypes.string.isRequired,
   className: PropTypes.string,
   variant: PropTypes.string,
   fullWidth: PropTypes.bool
 }
 
-SubscriptionLink.defaultProps = {
+PremiumLink.defaultProps = {
   fullWidth: true
 }
 
-export { SubscriptionLink }
+export { PremiumLink }

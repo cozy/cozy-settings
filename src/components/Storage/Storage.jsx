@@ -6,7 +6,7 @@ import { isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useInstanceInfo } from 'cozy-client'
 
-import { SubscriptionLink } from 'components/SubscriptionLink'
+import { PremiumLink } from 'components/Premium/PremiumLink'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { StorageProgress } from './StorageProgress'
@@ -33,7 +33,7 @@ const Storage = () => {
               {t('StorageView.more_space')}
             </Typography>
           )}
-          <SubscriptionLink label={t('StorageView.see_offer')} />
+          <PremiumLink label={t('StorageView.see_offer')} />
         </>
       ) : (
         <Spinner

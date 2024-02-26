@@ -5,7 +5,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import { SubscriptionLink } from 'components/SubscriptionLink'
+import { PremiumLink } from 'components/Premium/PremiumLink'
 
 const BlockingSubscriptionModal = ({ onClose, onResume, reason }) => {
   const { t } = useI18n()
@@ -26,7 +26,7 @@ const BlockingSubscriptionModal = ({ onClose, onResume, reason }) => {
             variant="secondary"
             onClick={onResume}
           />
-          <SubscriptionLink
+          <PremiumLink
             label={t('BlockingSubscriptionModal.manage')}
             fullWidth={false}
           />
