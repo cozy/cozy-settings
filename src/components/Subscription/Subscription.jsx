@@ -14,7 +14,7 @@ import { useInstanceInfo } from 'cozy-client'
 
 import { SubscriptionFlagItem } from 'components/Subscription/SubscriptionFlagItem'
 import { SubscriptionStorageItem } from 'components/Subscription/SubscriptionStorageItem'
-import { SubscriptionLink } from 'components/SubscriptionLink'
+import { PremiumLink } from 'components/Premium/PremiumLink'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
@@ -64,10 +64,7 @@ const Subscription = () => {
               />
             </List>
           </Paper>
-          <SubscriptionLink
-            className="u-mt-1"
-            label={t('Subscription.action')}
-          />
+          <PremiumLink className="u-mt-1" label={t('Subscription.action')} />
         </>
       ) : (
         <Spinner

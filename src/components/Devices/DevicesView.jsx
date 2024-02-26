@@ -35,7 +35,7 @@ import { DevicesMoreMenu } from 'components/Devices/DevicesMoreMenu'
 import { DISPLAYED_CLIENTS } from 'lib/deviceConfigurationHelper'
 import { buildDevicesQuery } from 'lib/queries'
 import tableStyles from 'styles/table.styl'
-import { SubscriptionLink } from 'components/SubscriptionLink'
+import { PremiumLink } from 'components/Premium/PremiumLink'
 
 const DevicesView = () => {
   const { t, f, lang } = useI18n()
@@ -125,7 +125,7 @@ const DevicesView = () => {
         subtitle={!isFetching ? t(...getSubtitle(devices.length)) : null}
         actions={
           !hasUnlimitedDevices ? (
-            <SubscriptionLink
+            <PremiumLink
               variant="secondary"
               label={t('DevicesView.header.subscribe')}
               fullWidth={false}

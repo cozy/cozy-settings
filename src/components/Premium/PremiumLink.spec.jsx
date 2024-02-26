@@ -6,7 +6,7 @@ import flag from 'cozy-flags'
 import { useWebviewIntent } from 'cozy-intent'
 import { useInstanceInfo } from 'cozy-client'
 
-import { SubscriptionLink } from 'components/SubscriptionLink'
+import { PremiumLink } from 'components/Premium/PremiumLink'
 
 jest.mock('cozy-client', () => ({
   ...jest.requireActual('cozy-client'),
@@ -22,7 +22,7 @@ jest.mock('cozy-intent', () => ({
   useWebviewIntent: jest.fn()
 }))
 
-describe('SubscriptionLink', () => {
+describe('PremiumLink', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -56,7 +56,7 @@ describe('SubscriptionLink', () => {
       call: jest.fn().mockResolvedValue(isIapAvailable)
     })
 
-    return render(<SubscriptionLink label="Subscribe" />)
+    return render(<PremiumLink label="Subscribe" />)
   }
 
   it('should return null when there no link', () => {
