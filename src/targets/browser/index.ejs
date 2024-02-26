@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="<%- file %>">
   <% }); %>
   <% if (__STACK_ASSETS__) { %>
-  {{.CozyClientJS}}
+    {{.CozyClientJS}}
+    {{.CozyFonts}}
   <% } else { %>
-  <link rel="stylesheet" type="text/css" href="//{{.Domain}}/assets/fonts/fonts.css">
+      <link rel="stylesheet" type="text/css" href="//{{.Domain}}/assets/fonts/fonts.css">
   <% } %>
 </head>
 <div
