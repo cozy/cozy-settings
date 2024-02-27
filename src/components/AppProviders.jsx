@@ -13,6 +13,8 @@ import {
 } from 'cozy-ui/transpiled/react/styles'
 import { BarProvider } from 'cozy-bar'
 
+import { PremiumProvider } from 'components/Premium/PremiumProvider'
+
 /*
 With MUI V4, it is possible to generate deterministic class names.
 In the case of multiple react roots, it is necessary to disable this
@@ -39,7 +41,9 @@ const AppProviders = ({ client, store, children }) => {
               <BreakpointsProvider>
                 <CozyTheme className="u-w-100">
                   <BarProvider>
-                    <HashRouter>{children}</HashRouter>
+                    <PremiumProvider>
+                      <HashRouter>{children}</HashRouter>
+                    </PremiumProvider>
                   </BarProvider>
                 </CozyTheme>
               </BreakpointsProvider>

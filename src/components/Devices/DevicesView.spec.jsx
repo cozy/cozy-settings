@@ -32,6 +32,10 @@ const sharingDevice = {
   client_name: 'Mock Sharing xyz'
 }
 
+jest.mock('components/Premium/PremiumLink', () => ({
+  PremiumLink: () => <div>PremiumLink</div>
+}))
+
 describe('DevicesView', () => {
   const setup = ({ devices = [] }) => {
     const mockClient = createMockClient({
