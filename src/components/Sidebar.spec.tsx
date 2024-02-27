@@ -1,19 +1,15 @@
 import React, { ReactChild } from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import flag from 'cozy-flags'
 
 import Sidebar from 'components/Sidebar'
+import AppLike from 'test/AppLike'
 
 const mockFlag = flag as jest.MockedFunction<typeof flag>
 
-jest.mock('cozy-ui/transpiled/react/providers/I18n', () => ({
-  useI18n: (): {
-    t: (name: string) => string
-  } => ({ t: name => name })
-}))
-
 jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   NavLink: ({ children }: { children: ReactChild }): JSX.Element => (
     <div data-testid="NavLink">{children}</div>
   )
@@ -21,24 +17,36 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock('cozy-flags')
 
-jest.mock('cozy-ui/transpiled/react/providers/Breakpoints', () => ({
-  __esModule: true,
-  default: (): {
-    isMobile: boolean
-    isTablet: boolean
-  } => ({ isMobile: false, isTablet: false })
+jest.mock('components/Premium/PremiumProvider', () => ({
+  usePremium: jest.fn(() => ({ isPremium: false }))
 }))
 
 describe('Sidebar', () => {
+  const setup = (): void => {
+    render(
+      <AppLike>
+        <Sidebar />
+      </AppLike>
+    )
+  }
+
+  it('should be rendered correctly', () => {
+    setup()
+
+    screen.getByText('Connected devices')
+    screen.getByText('Storage')
+    screen.getByText('Web connections')
+  })
+
   it('should display Permission table when flag is on', () => {
     // given
     mockFlag.mockReturnValue(true)
 
     // when
-    const { queryByText } = render(<Sidebar />)
+    setup()
 
     // then
-    expect(queryByText('Nav.permissions')).toBeTruthy()
+    screen.getByText('Permissions')
   })
 
   it('should not display Permission table when flag is off', () => {
@@ -46,9 +54,9 @@ describe('Sidebar', () => {
     mockFlag.mockReturnValue(false)
 
     // when
-    const { queryByText } = render(<Sidebar />)
+    setup()
 
     // then
-    expect(queryByText('Nav.permissions')).toBeFalsy()
+    expect(screen.queryByText('Permissions')).toBeNull()
   })
 })

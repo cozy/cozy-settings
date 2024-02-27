@@ -25,9 +25,9 @@ const AppLike = ({ children, client }) => {
       <CozyProvider client={client || defaultClient}>
         <HashRouter>
           <BreakpointsProvider>
-            <I18n lang="en" dictRequire={() => en}>
+            <TestI18n>
               <CozyTheme>{children}</CozyTheme>
-            </I18n>
+            </TestI18n>
           </BreakpointsProvider>
         </HashRouter>
       </CozyProvider>
