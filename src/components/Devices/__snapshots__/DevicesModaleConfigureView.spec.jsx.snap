@@ -75,7 +75,7 @@ Object {
             Mock Device
           </div>
           <hr
-            class="MuiDivider-root"
+            class="MuiDivider-root divider--dialog"
           />
           <div
             class="MuiDialogContent-root cozyDialogContent"
