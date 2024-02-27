@@ -10,7 +10,6 @@ import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import LocationIcon from 'cozy-ui/transpiled/react/Icons/Location'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { useInstanceInfo } from 'cozy-client'
 
 import { SubscriptionFlagItem } from 'components/Subscription/SubscriptionFlagItem'
 import { SubscriptionStorageItem } from 'components/Subscription/SubscriptionStorageItem'
@@ -18,6 +17,7 @@ import { PremiumLink } from 'components/Premium/PremiumLink'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
+import { usePremium } from 'components/Premium/PremiumProvider'
 
 /**
  * Page showing the features included in the user plan
@@ -25,7 +25,7 @@ import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
 const Subscription = () => {
   const { t } = useI18n()
 
-  const { isLoaded } = useInstanceInfo()
+  const { isLoaded } = usePremium()
 
   return (
     <Page narrow>
