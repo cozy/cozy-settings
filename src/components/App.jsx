@@ -29,7 +29,7 @@ export const App = () => {
     <Layout
       className={classNames({ [styles['Layout--small-view']]: isSmallView })}
     >
-      <BarComponent />
+      <BarComponent appNamePrefix={null} />
       {App.renderExtra()}
       <Alerter />
       {isBigView && <Sidebar />}
