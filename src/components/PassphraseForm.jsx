@@ -184,6 +184,7 @@ const PassphraseForm = ({ errors, submitting, saved, onSubmit }) => {
           label={t('PassphraseView.submit')}
           fullWidth
           className="u-mb-half"
+          type="submit"
         >
           {saved && <Icon className="u-ml-half u-valid" icon={CheckIcon} />}
         </Buttons>
