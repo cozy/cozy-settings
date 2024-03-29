@@ -48,12 +48,6 @@ jobs:
       - provider: script
         repo: cozy/cozy-settings
         skip-cleanup: true
-        script: yarn cozyPublish
+        script: yarn semantic-release
         on:
           branch: master
-      - provider: script
-        repo: cozy/cozy-settings
-        skip-cleanup: true
-        script: yarn cozyPublish
-        on:
-          tags: true
