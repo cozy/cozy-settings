@@ -16,7 +16,8 @@
     "deploy": "cs deploy",
     "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost",
     "test": "cozy-scripts test",
-    "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev"
+    "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
   },
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.3.0",
     "@testing-library/user-event": "14.5.1",
@@ -47,6 +50,8 @@
     "npm-run-all": "4.1.5",
     "react-hot-loader": "4.13.0",
     "react-test-renderer": "18.2.0",
+    "semantic-release": "^23.0.6",
+    "semantic-release-replace-plugin": "^1.2.7",
     "typescript-plugin-css-modules": "3.4.0"
   },
   "dependencies": {
