@@ -52,14 +52,14 @@
     "react-test-renderer": "18.2.0",
     "semantic-release": "^23.0.6",
     "semantic-release-replace-plugin": "^1.2.7",
-    "typescript-plugin-css-modules": "3.4.0"
+    "typescript-plugin-css-modules": "3.4.0",
+    "cozy-app-publish": "0.33.0"
   },
   "dependencies": {
     "@material-ui/lab": "4.0.0-alpha.61",
     "@sentry/integrations": "7.101.1",
     "@sentry/react": "7.101.1",
     "classnames": "2.3.1",
-    "cozy-app-publish": "^0.33.0",
     "cozy-bar": "12.0.0",
     "cozy-client": "45.13.0",
     "cozy-device-helper": "^3.0.0",
