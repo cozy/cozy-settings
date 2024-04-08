@@ -8,7 +8,7 @@ module.exports = {
       {
         replacements: [
           {
-            files: ['manifest.webapp'],
+            files: ['manifest.webapp', 'package.json'],
             from: '"version": ".*"',
             to: '"version": "${nextRelease.version}"',
             results: [
@@ -38,7 +38,13 @@ module.exports = {
         publishCmd: 'yarn cozyPublish'
       }
     ],
-    '@semantic-release/github'
+    [
+      '@semantic-release/github',
+      {
+        successComment: false,
+        failComment: false
+      }
+    ]
   ],
   tagFormat: '${version}'
 }
