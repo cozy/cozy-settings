@@ -5,8 +5,6 @@ node_js:
 branches:
   only:
   - master
-  # tags
-  - /^\d+\.\d+\.\d+(\-beta.\d+)?$/
 env:
   global:
   - MATTERMOST_CHANNEL='{"dev":"app---settings","beta":"app---settings,publication","stable":"app---settings,publication"}'
@@ -17,9 +15,7 @@ env:
   # GITHUB_TOKEN
   - secure: kwV1mQZGyJKytlvaQyiC2R0cNG8KsWwFRwgwL0R8gaC3TwqWrRn6PVE7FUCyHs1rZCt6/d/Z9lpV+s0PfFOB3in6Zwmgpgtq208JQnduQncEk29Cg6AbwnZJ6JcKQAoosIinfY6FsTzlnOtaCF1vPyvjSsyP+zSYjOK2cuL/q/krZvIjp+hWKZdkPY4LHwj6c+SLCcGxebxF7q7pjX41PYmdi6yz6/uXh5XAdVKeBBqiRW9OlXwR40A4Df8PMubdfIWxBNBxkzWLBGHvHL55Wlt8qSH/Emv6YBFjmUJHSwha2oMD1lYRZxAeHxxXuQvjCsxAhAMc3Ji0PrdthC9s/06tErKEvRjVIWhQYHdOYQtky4wFlnR3Le7gToaGCjX+81ATiLsQoFx2TNtgavAUf27awwm3LbkhoGDESouaF8llEn50E1gyKUH4F99lWDrVzB5VhF7RBYLI0Tod5BPBUNQsNt0eq/fO0lzbpoTyXJNGWUwm4SxYFte01RrDlAJ9/q8CMV6CDijg28wDFIGgLOM8bvzsw5H2qQ1CKCUoANHTAw2KJy8UyMEup+fozEFFQKU79DwhSVTgv9N4C72VRi0cYjTyC1AFs4vOmj7mbjkPsYoNg3Z8jLzU/ePgsFphMsqVyJ7lIIllPIYlwNuke/vT9Hvfb6BiZ9lnarRwfyo=
 cache:
-  yarn: true
-  directories:
-    - node_modules
+  npm: false
 stages:
   - prebuild
   - build
