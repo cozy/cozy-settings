@@ -8206,6 +8206,22 @@ cosmiconfig@^9.0.0:
     js-yaml "^4.1.0"
     parse-json "^5.2.0"
 
+cozy-app-publish@0.33.0:
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/cozy-app-publish/-/cozy-app-publish-0.33.0.tgz#889f68b9fe0b88db01c141c706ba7570e41f373c"
+  integrity sha512-qNl517FBbXznnxrcdSuslt1Gj/E2SzHhxGk6xBOQjoqUbZ7+y460/GrTSi1krsOqxN1ev/aMeDmcTK706OFA2g==
+  dependencies:
+    argparse "^2.0.1"
+    chalk "^2.4.2"
+    cross-spawn "^6.0.5"
+    fs-extra "^7.0.1"
+    lodash "^4.17.19"
+    node-fetch "^2.6.1"
+    prompt "^1.0.0"
+    request "^2.88.0"
+    tar "^6.1.11"
+    verror "^1.10.1"
+
 cozy-app-publish@^0.27.2:
   version "0.27.2"
   resolved "https://registry.yarnpkg.com/cozy-app-publish/-/cozy-app-publish-0.27.2.tgz#5b81565733821bd74f7768b22e08343e58061817"
@@ -21094,6 +21110,15 @@ verror@1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/verror/-/verror-1.10.0.tgz#3a105ca17053af55d6e270c1f8288682e18da400"
   integrity sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==
+  dependencies:
+    assert-plus "^1.0.0"
+    core-util-is "1.0.2"
+    extsprintf "^1.2.0"
+
+verror@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/verror/-/verror-1.10.1.tgz#4bf09eeccf4563b109ed4b3d458380c972b0cdeb"
+  integrity sha512-veufcmxri4e3XSrT0xwfUR7kguIkaxBeosDg00yDWhk49wdwkSUrvvsm7nc75e1PUyvIeZj6nS8VQRYz2/S4Xg==
   dependencies:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
