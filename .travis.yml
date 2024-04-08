@@ -41,12 +41,10 @@ jobs:
         - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then eval "$(ssh-agent -s)"; fi
         - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then chmod 600 /tmp/id_rsa_downcloud_cozy-settings; fi
         - if [ "$TRAVIS_SECURE_ENV_VARS" != "false" ]; then ssh-add /tmp/id_rsa_downcloud_cozy-settings; fi
-      before_deploy:
-        - yarn add cozy-app-publish # to be sure to have the last version before deploy
       deploy:
-      - provider: script
-        repo: cozy/cozy-settings
-        skip-cleanup: true
-        script: yarn semantic-release
-        on:
-          branch: master
+        - provider: script
+          repo: cozy/cozy-settings
+          skip-cleanup: true
+          script: yarn semantic-release
+          on:
+            branch: master
