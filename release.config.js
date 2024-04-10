@@ -8,12 +8,18 @@ module.exports = {
       {
         replacements: [
           {
-            files: ['manifest.webapp'],
+            files: ['manifest.webapp', 'package.json'],
             from: '"version": ".*"',
             to: '"version": "${nextRelease.version}"',
             results: [
               {
                 file: 'manifest.webapp',
+                hasChanged: true,
+                numMatches: 1,
+                numReplacements: 1
+              },
+              {
+                file: 'package.json',
                 hasChanged: true,
                 numMatches: 1,
                 numReplacements: 1
