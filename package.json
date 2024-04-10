@@ -14,7 +14,7 @@
     "watch:mobile": "cozy-scripts watch --mobile --barV7 false",
     "start": "cozy-scripts start --hot --barV7 false",
     "deploy": "cs deploy",
-    "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost",
+    "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --mode manual",
     "test": "cozy-scripts test",
     "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
     "semantic-release": "semantic-release"
@@ -53,7 +53,7 @@
     "semantic-release": "^23.0.6",
     "semantic-release-replace-plugin": "^1.2.7",
     "typescript-plugin-css-modules": "3.4.0",
-    "cozy-app-publish": "0.33.0"
+    "cozy-app-publish": "0.34.0"
   },
   "dependencies": {
     "@material-ui/lab": "4.0.0-alpha.61",
