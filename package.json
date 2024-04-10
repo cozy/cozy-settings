@@ -14,7 +14,7 @@
     "watch:mobile": "cozy-scripts watch --mobile --barV7 false",
     "start": "cozy-scripts start --hot --barV7 false",
     "deploy": "cs deploy",
-    "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --mode manual",
+    "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --mode manual --yes",
     "test": "cozy-scripts test",
     "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
     "semantic-release": "semantic-release"
