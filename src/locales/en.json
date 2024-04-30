@@ -556,8 +556,13 @@
       "move": "Move your Cozy?"
     },
     "content": {
-      "delete": "You have subscribed to a Cozy offer via the Play store or App Store. **Please cancel your subscription before deleting your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue deleting your Cozy.",
-      "move": "You have subscribed to a Cozy offer via the Play store or App Store. **Please cancel your subscription before moving your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue moving your Cozy."
+      "delete": "You have subscribed to a Cozy offer via the %{vendor}. **Please cancel your subscription before deleting your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue deleting your Cozy.",
+      "move": "You have subscribed to a Cozy offer via the %{vendor}. **Please cancel your subscription before moving your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue moving your Cozy.",
+      "vendor": {
+        "android": "Play store",
+        "ios": "App Store",
+        "both": "Play store or App Store"
+      }
     },
     "manage": "Manage my plan",
     "resume": "Continue"

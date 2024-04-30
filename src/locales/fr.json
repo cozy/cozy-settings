@@ -556,8 +556,13 @@
       "move": "Déménager votre Cozy ?"
     },
     "content": {
-      "delete": "Vous avez souscrit à une offre Cozy via le Play store ou l'App Store. **Merci de résilier votre abonnement avant de supprimer votre compte Cozy.**\n\nSi vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer la suppression de votre Cozy.",
-      "move": "Vous avez souscrit à une offre Cozy via le Play store ou l'App Store. **Merci de résilier votre abonnement avant de déménager votre compte Cozy.**\n\nSi vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer le déménagement de votre Cozy."
+      "delete": "Vous avez souscrit à une offre Cozy via %{vendor}. **Merci de résilier votre abonnement avant de supprimer votre compte Cozy.**\n\nSi vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer la suppression de votre Cozy.",
+      "move": "Vous avez souscrit à une offre Cozy via %{vendor}. **Merci de résilier votre abonnement avant de déménager votre compte Cozy.**\n\nSi vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer le déménagement de votre Cozy.",
+      "vendor": {
+        "android": "le Play store",
+        "ios": "l'App Store",
+        "both": "le Play store ou l'App Store"
+      }
     },
     "manage": "Gérer mon offre",
     "resume": "Continuer"

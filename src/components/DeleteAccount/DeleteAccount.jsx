@@ -13,7 +13,8 @@ import { LoaderModal } from 'components/DeleteAccount/LoaderModal'
 import { buildExternalTiesQuery } from 'lib/queries'
 import {
   BlockingSubscriptionModal,
-  hasBlockingSubscription
+  hasBlockingSubscription,
+  getBlockingSubscriptionVendor
 } from 'components/BlockingSubscriptionModal'
 
 const CONFIRMING = 'confirming'
@@ -65,6 +66,7 @@ const DeleteAccount = () => {
       <BlockingSubscriptionModal
         onClose={handleClose}
         onResume={handleResume}
+        vendor={getBlockingSubscriptionVendor(externalTiesResult)}
         reason="delete"
       />
     )
