@@ -7,6 +7,7 @@ import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { STACK_DOMAIN } from 'actions'
 import {
   BlockingSubscriptionModal,
+  getBlockingSubscriptionVendor,
   hasBlockingSubscription
 } from 'components/BlockingSubscriptionModal'
 import { buildExternalTiesQuery } from 'lib/queries'
@@ -18,6 +19,8 @@ const MoveButton = () => {
   const externalTiesQuery = buildExternalTiesQuery()
 
   const [isBlockingDisplayed, setBlockingDisplayed] = useState(false)
+  const [blockingSubscriptionVendor, setBlockingSubscriptionVendor] =
+    useState(null)
   const form = useRef(null)
 
   const handleSubmit = async () => {
@@ -25,9 +28,11 @@ const MoveButton = () => {
       externalTiesQuery.definition(),
       externalTiesQuery.options
     )
-
     if (hasBlockingSubscription(externalTiesResult)) {
       setBlockingDisplayed(true)
+      setBlockingSubscriptionVendor(
+        getBlockingSubscriptionVendor(externalTiesResult)
+      )
     } else {
       form.current.submit()
     }
@@ -60,6 +65,7 @@ const MoveButton = () => {
           <BlockingSubscriptionModal
             onClose={handleClose}
             onResume={handleResume}
+            vendor={blockingSubscriptionVendor}
             reason="move"
           />
         ) : null}

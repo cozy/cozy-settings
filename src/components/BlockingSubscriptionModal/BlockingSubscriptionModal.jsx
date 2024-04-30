@@ -7,7 +7,7 @@ import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
 import { PremiumLink } from 'components/Premium/PremiumLink'
 
-const BlockingSubscriptionModal = ({ onClose, onResume, reason }) => {
+const BlockingSubscriptionModal = ({ onClose, onResume, reason, vendor }) => {
   const { t } = useI18n()
 
   return (
@@ -16,7 +16,9 @@ const BlockingSubscriptionModal = ({ onClose, onResume, reason }) => {
       title={t(`BlockingSubscriptionModal.title.${reason}`)}
       content={
         <ReactMarkdownWrapper
-          source={t(`BlockingSubscriptionModal.content.${reason}`)}
+          source={t(`BlockingSubscriptionModal.content.${reason}`, {
+            vendor: t(`BlockingSubscriptionModal.content.vendor.${vendor}`)
+          })}
         />
       }
       actions={
