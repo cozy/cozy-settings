@@ -14,7 +14,7 @@ import {
   TableRow,
   TableHeader,
   TableCell
-} from 'cozy-ui/transpiled/react/Table'
+} from 'cozy-ui/transpiled/react/deprecated/Table'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
