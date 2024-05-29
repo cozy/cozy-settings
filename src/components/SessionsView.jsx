@@ -8,7 +8,7 @@ import {
   TableBody,
   TableRow,
   TableHeader
-} from 'cozy-ui/transpiled/react/Table'
+} from 'cozy-ui/transpiled/react/deprecated/Table'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'

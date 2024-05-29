@@ -3,7 +3,7 @@ import tableStyles from 'styles/table.styl'
 import React from 'react'
 import { UAParser } from 'ua-parser-js'
 
-import { TableRow, TableCell } from 'cozy-ui/transpiled/react/Table'
+import { TableRow, TableCell } from 'cozy-ui/transpiled/react/deprecated/Table'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import BrowserBraveIcon from 'cozy-ui/transpiled/react/Icons/BrowserBrave'
 import BrowserChromeIcon from 'cozy-ui/transpiled/react/Icons/BrowserChrome'
