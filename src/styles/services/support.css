@@ -59,16 +59,16 @@
 }
 
 .set-services .set-support-form-error {
-  color: var(--pomegranate);
+  color: var(--errorColor);
   font-size: 14px;
 }
 
 .set-services .set-support-form-success {
-  color: var(--malachite);
+  color: var(--successColor);
   font-size: 14px;
 }
 
 .set-services .set-support-form-detail {
-  color: var(--coolGrey);
+  color: var(--primaryTextColor);
   font-size: 14px;
 }

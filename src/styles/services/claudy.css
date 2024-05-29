@@ -13,9 +13,9 @@
   width: calc(100% - 1.5em);
   height: 2em;
   padding: .75em;
-  background: var(--paleGrey);
+  background: var(--defaultBackgroundColor);
   border-radius: .3em .3em 0 0;
-  border-bottom: 1px solid var(--silver);
+  border-bottom: 1px solid var(--borderMainColor);
   overflow: hidden;
   z-index: 1;
 }
@@ -71,7 +71,7 @@
     background:  transparent;
     vertical-align:  top;
     text-align:  center;
-    color:  white;
+    color:  var(--primaryContrastTextColor);
     font-size:  .875rem;
     line-height:  1;
     text-transform:  uppercase;
@@ -107,16 +107,16 @@
   align-items: center;
   cursor: pointer;
   height: 3em;
-  color: var(--dodgerBlue);
+  color: var(--primaryColor);
   padding: .5em 1em;
 }
 
 .coz-claudy-menu-action:hover {
-  background: var(--paleGrey);
+  background: var(--defaultBackgroundColor);
 }
 
 .coz-claudy-menu-action[data-complete=true] {
-  color: var(--emerald);
+  color: var(--successColor);
 }
 
 /* Only for text-decoration property, since it cannot be overwritten
@@ -159,10 +159,10 @@ by child elements */
   width: 1.5em;
   margin-top: calc(50% - 2rem);
   border-radius: 100%;
-  background: var(--malachite);
+  background: var(--successColor);
   text-align: center;
   line-height: 1.5em;
-  color: white;
+  color: var(--successColorContrastText);
   font-weight: 700;
 }
 
@@ -175,7 +175,7 @@ by child elements */
   flex-direction: row;
   align-items: center;
   padding: .5em 1em;
-  color: black;
+  color: var(--primaryTextColor);
   font-weight: 700;
 }
 
@@ -192,19 +192,19 @@ by child elements */
 }
 
 .coz-claudy-menu-action-description-detail {
-  color: var(--coolGrey);
+  color: var(--primaryTextColor);
   font-size: 14px;
 }
 
 .coz-claudy-menu-action-description-error {
-  color: var(--pomegranate);
+  color: var(--errorColor);
   font-size: 14px;
 }
 
 .coz-claudy-menu-action-description-success {
   margin: 0;
   padding: 1em;
-  background-color: var(--malachite);
+  background-color: var(--successColor);
   color: white;
   font-size: 14px;
   overflow: hidden;
@@ -216,7 +216,7 @@ by child elements */
 .coz-claudy-menu-action-description .coz-claudy-menu-action-description-button:visited,
 .coz-claudy-menu-action-description .coz-claudy-menu-action-description-button:active,
 .coz-claudy-menu-action-description .coz-claudy-menu-action-description-button:hover {
-  color: white;
+  color: var(--primaryContrastTextColor);
   width: 100%;
   margin: 0;
   text-decoration: none;
