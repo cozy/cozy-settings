@@ -77,6 +77,7 @@ declare module 'cozy-ui/transpiled/react/TextField' {
 }
 
 declare module 'cozy-ui/transpiled/react/deprecated/Button'
+declare module 'cozy-ui/transpiled/react/Buttons'
 declare module 'cozy-ui/transpiled/react/Typography'
 declare module 'cozy-ui/transpiled/react/CozyDialogs'
 

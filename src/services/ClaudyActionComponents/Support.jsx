@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 
@@ -145,10 +145,9 @@ export class Support extends Component {
               onClick={() => this.sendMessage()}
               disabled={!message}
               busy={isSending}
-            >
-              <Icon icon={PaperplaneIcon} />
-              {t('claudy.actions.support.button')}
-            </Button>
+              startIcon={<Icon icon={PaperplaneIcon} />}
+              label={t('claudy.actions.support.button')}
+            />
           </div>
         )}
       </div>

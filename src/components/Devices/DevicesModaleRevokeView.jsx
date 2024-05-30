@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import Button from 'cozy-ui/transpiled/react/deprecated/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import IconCircle2Arrows from '../../assets/icons/IconCircle2Arrows'
 import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
@@ -35,12 +35,12 @@ const DevicesModaleRevokeView = ({ device, cancelAction, onDeviceRevoked }) => {
         <>
           <Button
             label={t('revokeDevice.validate')}
-            theme="danger"
+            color="error"
             onClick={revokeDevice}
           />
           <Button
             label={t('revokeDevice.cancel')}
-            theme="secondary"
+            variant="secondary"
             onClick={cancelAction}
           />
         </>

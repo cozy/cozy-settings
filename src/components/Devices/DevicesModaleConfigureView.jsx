@@ -4,7 +4,7 @@ import cx from 'classnames'
 
 import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import Button from 'cozy-ui/transpiled/react/deprecated/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import Card from 'cozy-ui/transpiled/react/Card'
 import CardContent from 'cozy-ui/transpiled/react/CardContent'
 import CardHeader from 'cozy-ui/transpiled/react/CardHeader'
@@ -15,7 +15,7 @@ import FormControlLabel from 'cozy-ui/transpiled/react/FormControlLabel'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import { Media, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
-import Radio from 'cozy-ui/transpiled/react/deprecated/Radio'
+import Radio from 'cozy-ui/transpiled/react/Radios'
 import RadioGroup from 'cozy-ui/transpiled/react/RadioGroup'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -424,12 +424,11 @@ const ConfigureDeviceSyncDialog = ({
         <>
           <Button
             label={t('configureDevice.cancel')}
-            theme="secondary"
+            variant="secondary"
             onClick={cancelAction}
           />
           <Button
             label={t('configureDevice.validate')}
-            theme="primary"
             onClick={configureDevice}
           />
         </>
@@ -449,13 +448,13 @@ const ConfigureDeviceSyncDialog = ({
               >
                 <FormControlLabel
                   value="false"
-                  control={<Radio color="primary" />}
+                  control={<Radio />}
                   label={t('configureDevice.partialSync.disable')}
                 />
                 <FormControlLabel
                   value="true"
                   disabled={!hasFolders}
-                  control={<Radio color="primary" />}
+                  control={<Radio />}
                   label={t('configureDevice.partialSync.enable')}
                 />
               </RadioGroup>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
-
 import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
 
 const Support = ({
@@ -79,7 +80,7 @@ const Support = ({
           onClick={() => sendMessage()}
           disabled={!message}
           busy={isSending}
-          icon={PaperplaneIcon}
+          startIcon={<Icon icon={PaperplaneIcon} />}
           label={t('support.button')}
         />
       </div>
