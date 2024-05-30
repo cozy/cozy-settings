@@ -9,7 +9,7 @@ import React, {
 
 import TextField from 'cozy-ui/transpiled/react/TextField'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
@@ -75,7 +75,7 @@ export const PinCodeDialog = ({
         <>
           <Button
             onClick={onCancel}
-            theme="secondary"
+            variant="secondary"
             label={t(
               `LockScreenView.${
                 flowStep === 'initial' ? 'choose' : 'confirm'

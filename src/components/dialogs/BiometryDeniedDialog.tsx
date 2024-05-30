@@ -1,7 +1,7 @@
 import React from 'react'
 import { useWebviewIntent } from 'cozy-intent'
 
-import { Button } from 'cozy-ui/transpiled/react/deprecated/Button'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
@@ -42,7 +42,7 @@ export const BiometryDeniedDialog = ({
         <>
           <Button
             onClick={onCancel}
-            theme="secondary"
+            variant="secondary"
             label={t('BiometryDeniedDialog.cancel')}
           />
           <Button
