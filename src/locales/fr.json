@@ -95,6 +95,7 @@
     "primary_support": "Support",
     "primary_wifi_sync": "Synchroniser seulement en wifi",
     "profile": "Profil",
+    "appearance": "Apparence",
     "secondary_free": "Gratuit",
     "secondary_used": "%{percent}% utilisé",
     "sessions": "Connexions web",
@@ -274,6 +275,13 @@
       "es_ES": "Espagnol (Espagne)",
       "sv": "Suedois"
     }
+  },
+  "AppearanceView": {
+    "title": "Apparence",
+    "subtitle": "Mode",
+    "light": "Mode Clair",
+    "dark": "Mode Sombre",
+    "auto": "Dynamique (réglage du terminal)"
   },
   "DevicesView": {
     "header": {

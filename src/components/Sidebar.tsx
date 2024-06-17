@@ -2,6 +2,7 @@ import React from 'react'
 
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import GlobeIcon from 'cozy-ui/transpiled/react/Icons/Globe'
+import PaletteIcon from 'cozy-ui/transpiled/react/Icons/Palette'
 import GraphCircle from 'cozy-ui/transpiled/react/Icons/GraphCircle'
 import HandIcon from 'cozy-ui/transpiled/react/Icons/Hand'
 import HelpIcon from 'cozy-ui/transpiled/react/Icons/Help'
@@ -47,6 +48,13 @@ export const Sidebar = (): JSX.Element => {
           primary={t('Nav.profile')}
           icon={PeopleIcon}
         />
+        {flag('ui.darkmode.enabled') && (
+          <MenuItemNavLink
+            to={routes.appearance}
+            primary={t('Nav.appearance')}
+            icon={PaletteIcon}
+          />
+        )}
         <SubscriptionMenuItem />
         <MenuItemNavLink
           to={routes.storage}

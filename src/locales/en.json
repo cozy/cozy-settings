@@ -95,6 +95,7 @@
     "primary_support": "Support",
     "primary_wifi_sync": "Sync only on wifi",
     "profile": "Profile",
+    "appearance": "Appearance",
     "secondary_free": "Free",
     "secondary_used": "%{percent}% used",
     "sessions": "Web connections",
@@ -274,6 +275,13 @@
       "es_ES": "Spanish (Spain)",
       "sv": "Swedish"
     }
+  },
+  "AppearanceView": {
+    "title": "Appearance",
+    "subtitle": "Mode",
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "auto": "Dynamic (device settings)"
   },
   "DevicesView": {
     "header": {
