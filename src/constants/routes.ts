@@ -5,6 +5,7 @@ export const routes = {
   external_faq: 'https://support.cozy.io/',
   lockScreen: '/lockScreen',
   profile: '/profile',
+  appearance: '/appearance',
   sessions: '/sessions',
   storage: '/storage',
   support: '/support',

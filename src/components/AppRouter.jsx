@@ -14,6 +14,7 @@ import DataPermissions from 'components/Permissions/DataPermissions/DataPermissi
 import Support from 'components/Support/Support'
 import PermissionDetails from 'components/Permissions/PermissionDetails/PermissionDetails'
 import Profile from 'containers/Profile'
+import Appearance from 'containers/Appearance'
 import Sessions from 'containers/Sessions'
 import { routes } from 'constants/routes'
 import ChangeEmail from 'components/Email/ChangeEmail'
@@ -45,6 +46,7 @@ const AppRouter = () => {
         <Route path="/profile/delete" element={<DeleteAccount />} />
       </Route>
       <Route path="/profile/password" element={<Passphrase />} />
+      <Route path="/appearance" element={<Appearance />} />
       <Route path="/connectedDevices/*" element={<Devices />} />
       <Route path="/connectedDevices/:deviceId" element={<Devices />} />
       <Route path="/sessions" element={<Sessions />} />
