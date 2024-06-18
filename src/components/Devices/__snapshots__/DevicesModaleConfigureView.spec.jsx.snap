@@ -4,6 +4,7 @@ exports[`DevicesModaleConfigureView when the folders query yields folders with h
 Object {
   "asFragment": [Function],
   "baseElement": <body
+    class="CozyTheme--light-normal"
     style="padding-right: 0px; overflow: hidden;"
   >
     <div
