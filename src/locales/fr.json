@@ -278,7 +278,7 @@
   },
   "AppearanceView": {
     "title": "Apparence",
-    "subtitle": "Mode",
+    "subtitle": "Mode d'affichage (clair/sombre)",
     "light": "Mode Clair",
     "dark": "Mode Sombre",
     "auto": "Dynamique (réglage du terminal)"

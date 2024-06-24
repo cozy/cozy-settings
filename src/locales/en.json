@@ -278,7 +278,7 @@
   },
   "AppearanceView": {
     "title": "Appearance",
-    "subtitle": "Mode",
+    "subtitle": "Display mode (light/dark)",
     "light": "Light mode",
     "dark": "Dark mode",
     "auto": "Dynamic (device settings)"
