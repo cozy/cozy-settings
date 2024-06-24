@@ -18,7 +18,7 @@
           "line": {
             "1": "Votre Cozy sera supprimé",
             "2": "Vous ne pourrez plus accéder à votre Cozy",
-            "3": "L'ensemble de vos données seront supprimées",
+            "3": "L'ensemble de vos données sera supprimé",
             "4": "Veuillez saisir votre mot de passe pour valider cette action :"
           }
         },
@@ -89,13 +89,13 @@
     "primary_lock_switch": "Verrouiller automatiquement l'app",
     "primary_logout": "Déconnexion",
     "primary_photo_sync": "Synchronisation auto des photos",
-    "primary_pin_switch": "Déverrouiller avec un code PIN",
-    "primary_plan": "Offres et options",
+    "primary_pin_switch": "Déverouiller avec un code PIN",
+    "primary_plan": "Plans and options",
     "primary_save_journeys": "Mémoriser mes trajets",
     "primary_support": "Support",
     "primary_wifi_sync": "Synchroniser seulement en wifi",
     "profile": "Profil",
-    "appearance": "Apparence",
+    "appearance": "Appearance",
     "secondary_free": "Gratuit",
     "secondary_used": "%{percent}% utilisé",
     "sessions": "Connexions web",
@@ -277,11 +277,11 @@
     }
   },
   "AppearanceView": {
-    "title": "Apparence",
-    "subtitle": "Mode d'affichage (clair/sombre)",
-    "light": "Mode Clair",
-    "dark": "Mode Sombre",
-    "auto": "Dynamique (réglage du terminal)"
+    "title": "Appearance",
+    "subtitle": "Display mode (light/dark)",
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "auto": "Dynamic (device settings)"
   },
   "DevicesView": {
     "header": {
@@ -394,16 +394,16 @@
     "cancel": "Annuler"
   },
   "LockScreenView": {
-    "choose_pin_body": "Définissez votre code PIN pour déverrouiller l'application après une période d'inactivité.",
-    "choose_pin_cancel": "Annuler",
-    "choose_pin_label": "Code PIN",
-    "choose_pin_next": "Suivant",
-    "choose_pin_title": "Choisir un code PIN",
-    "confirm_pin_body": "Par sécurité, merci d'entrer à nouveau le code PIN choisi.",
-    "confirm_pin_cancel": "Annuler",
-    "confirm_pin_error": "Les codes PIN ne correspondent pas",
-    "confirm_pin_next": "Terminer",
-    "confirm_pin_title": "Confirmer code PIN",
+    "choose_pin_body": "Set your PIN to unlock the application after a period of inactivity",
+    "choose_pin_cancel": "Cancel",
+    "choose_pin_label": "PIN Code",
+    "choose_pin_next": "Next",
+    "choose_pin_title": "Choose a PIN code",
+    "confirm_pin_body": "For security reasons, please re-enter your PIN code.",
+    "confirm_pin_cancel": "Cancel",
+    "confirm_pin_error": "PIN codes do not match",
+    "confirm_pin_next": "Complete",
+    "confirm_pin_title": "Confirm PIN code",
     "title": "Écran de verrouillage"
   },
   "soon": {
@@ -537,7 +537,7 @@
     }
   },
   "Subscription": {
-    "title": "Offres et options",
+    "title": "Plans and options",
     "included": {
       "title": "Inclus dans votre offre :",
       "flags": {
@@ -545,34 +545,34 @@
         "mespapiers.papers.max": "Nombre de Papiers ajoutés manuellement",
         "drive.office.write": "Edition de documents Office en ligne (traitement de texte, tableur, et présentation)",
         "passwords.can-share-organizations": "Partage de mots de passe",
-        "cozy.oauthclients.max": "Nombre d'appareils autorisés",
-        "coachco2.max-days-to-capture": "Enregistrement de vos trajets"
+        "cozy.oauthclients.max": "Max authorized devices",
+        "coachco2.max-days-to-capture": "Trip recordings"
       },
       "storage": "Stockage : %{humanDiskQuota} Go",
-      "max_days": ": %{smart_count} jour max |||| : %{smart_count} jours max",
-      "accounts": ": %{smart_count} service connecté |||| : %{smart_count} services connectés",
-      "accounts_unlimited": ": nombre de services connectés illimités",
-      "accounts_offer": "(%{max} inclus dans l'offre + 1 offert) |||| (%{max} inclus dans l'offre + %{smart_count} offerts)",
+      "max_days": ": %{smart_count} day max |||| : %{smart_count} days max",
+      "accounts": ": %{smart_count} connected service |||| : %{smart_count} connected services",
+      "accounts_unlimited": ": unlimited number of connected services",
+      "accounts_offer": "(%{max} included in the offer + 1 offered) |||| (%{max} included in the offer + %{smart_count} offered)",
       "numeric_flag": ": jusqu’à %{smart_count}",
       "numeric_flag_unlimited": ": illimité"
     },
-    "action": "Gérer mon offre"
+    "action": "Manage my plan"
   },
   "BlockingSubscriptionModal": {
     "title": {
-      "delete": "Supprimer votre Cozy ?",
-      "move": "Déménager votre Cozy ?"
+      "delete": "Delete your Cozy?",
+      "move": "Move your Cozy?"
     },
     "content": {
-      "delete": "Vous avez souscrit à une offre Cozy via %{vendor}. **Merci de résilier votre abonnement avant de supprimer votre compte Cozy.**\n\nSi vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer la suppression de votre Cozy.",
-      "move": "Vous avez souscrit à une offre Cozy via %{vendor}. **Merci de résilier votre abonnement avant de déménager votre compte Cozy.**\n\nSi vous l'avez déjà fait, ou si vous souhaitez le faire ultérieurement directement via votre store, vous pouvez ignorer ce message et continuer le déménagement de votre Cozy.",
+      "delete": "You have subscribed to a Cozy offer via the %{vendor}. **Please cancel your subscription before deleting your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue deleting your Cozy.",
+      "move": "You have subscribed to a Cozy offer via the %{vendor}. **Please cancel your subscription before moving your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue moving your Cozy.",
       "vendor": {
-        "android": "le Play store",
-        "ios": "l'App Store",
-        "both": "le Play store ou l'App Store"
+        "android": "Play store",
+        "ios": "App Store",
+        "both": "Play store or App Store"
       }
     },
-    "manage": "Gérer mon offre",
-    "resume": "Continuer"
+    "manage": "Manage my plan",
+    "resume": "Continue"
   }
 }
