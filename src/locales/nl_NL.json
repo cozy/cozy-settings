@@ -90,11 +90,12 @@
     "primary_logout": "Uitloggen",
     "primary_photo_sync": "Foto's automatisch synchroniseren",
     "primary_pin_switch": "Ontgrendelen met pincode",
-    "primary_plan": "Pakketten",
+    "primary_plan": "Plans and options",
     "primary_save_journeys": "Reisopnames",
     "primary_support": "Ondersteuning",
     "primary_wifi_sync": "Alleen synchroniseren via wifi",
     "profile": "Profiel",
+    "appearance": "Appearance",
     "secondary_free": "Vrij",
     "secondary_used": "%{percent}% gebruikt",
     "sessions": "Webkoppelingen",
@@ -274,6 +275,13 @@
       "es_ES": "Spaans (Spanje)",
       "sv": "Zweeds"
     }
+  },
+  "AppearanceView": {
+    "title": "Appearance",
+    "subtitle": "Display mode (light/dark)",
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "auto": "Dynamic (device settings)"
   },
   "DevicesView": {
     "header": {
@@ -529,7 +537,7 @@
     }
   },
   "Subscription": {
-    "title": "Pakketten",
+    "title": "Plans and options",
     "included": {
       "title": "Inbegrepen in je pakket:",
       "flags": {
@@ -537,14 +545,34 @@
         "mespapiers.papers.max": "Aantal zelf-toegevoegde documenten",
         "drive.office.write": "Online-documentbewerking (werkbladen, tekstverwerker en presentaties)",
         "passwords.can-share-organizations": "Wachtwoorden delen",
-        "cozy.oauthclients.max": "Max. aantal goedgekeurde apparaten"
+        "cozy.oauthclients.max": "Max. aantal goedgekeurde apparaten",
+        "coachco2.max-days-to-capture": "Trip recordings"
       },
       "storage": "Opslagruimte: %{humanDiskQuota} GB",
+      "max_days": ": %{smart_count} day max |||| : %{smart_count} days max",
+      "accounts": ": %{smart_count} connected service |||| : %{smart_count} connected services",
+      "accounts_unlimited": ": onbeperkt aantal gekoppelde diensten",
+      "accounts_offer": "(%{max} included in the offer + 1 offered) |||| (%{max} included in the offer + %{smart_count} offered)",
       "numeric_flag": ": tot %{smart_count}",
-      "numeric_account_flag": ": tot 1 persoonlĳk account |||| : tot %{smart_count} persoonlĳke accounts",
-      "numeric_flag_unlimited": ": onbeperkt",
-      "numeric_account_flag_unlimited": ": onbeperkt aantal persoonlĳke accounts"
+      "numeric_flag_unlimited": ": onbeperkt"
     },
-    "action": "Bekĳk onze pakketten"
+    "action": "Manage my plan"
+  },
+  "BlockingSubscriptionModal": {
+    "title": {
+      "delete": "Delete your Cozy?",
+      "move": "Move your Cozy?"
+    },
+    "content": {
+      "delete": "You have subscribed to a Cozy offer via the %{vendor}. **Please cancel your subscription before deleting your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue deleting your Cozy.",
+      "move": "You have subscribed to a Cozy offer via the %{vendor}. **Please cancel your subscription before moving your Cozy account.**\n\nIf you have already done so, or if you wish to do so later directly via your store, you can ignore this message and continue moving your Cozy.",
+      "vendor": {
+        "android": "Play store",
+        "ios": "App Store",
+        "both": "Play store or App Store"
+      }
+    },
+    "manage": "Manage my plan",
+    "resume": "Continue"
   }
 }
