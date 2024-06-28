@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { useClient } from 'cozy-client'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
@@ -14,7 +14,8 @@ const AppearanceView = ({ instance }) => {
   const { isMobile } = useBreakpoints()
   const { t } = useI18n()
   const client = useClient()
-  const [value, setValue] = useState(instance?.colorScheme || 'auto')
+
+  const colorSchemeValue = instance?.colorScheme || 'auto'
 
   const options = [
     {
@@ -32,14 +33,14 @@ const AppearanceView = ({ instance }) => {
   ]
 
   const handleChange = async ev => {
-    setValue(ev.target.value)
+    const newColorScheme = ev.target.value
 
     await client.save({
       _rev: instance.meta.rev,
       ...instance,
       attributes: {
         ...instance.attributes,
-        colorScheme: ev.target.value
+        colorScheme: newColorScheme
       }
     })
   }
@@ -54,7 +55,7 @@ const AppearanceView = ({ instance }) => {
       </Typography>
       <TextField
         variant="outlined"
-        value={value}
+        value={colorSchemeValue}
         options={options}
         select
         fullWidth
