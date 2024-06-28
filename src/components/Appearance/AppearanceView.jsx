@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useClient } from 'cozy-client'
+import { useWebviewIntent } from 'cozy-intent'
+import { isFlagshipApp } from 'cozy-device-helper'
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import TextField from 'cozy-ui/transpiled/react/TextField'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
-
+import { useTheme } from 'cozy-ui/transpiled/react/styles'
+import { useCozyTheme } from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import Page from 'components/Page'
 import PageTitle from 'components/PageTitle'
 
@@ -14,6 +17,9 @@ const AppearanceView = ({ instance }) => {
   const { isMobile } = useBreakpoints()
   const { t } = useI18n()
   const client = useClient()
+  const webviewIntent = useWebviewIntent()
+  const theme = useTheme()
+  const { isLight } = useCozyTheme()
 
   const colorSchemeValue = instance?.colorScheme || 'auto'
 
@@ -44,6 +50,29 @@ const AppearanceView = ({ instance }) => {
       }
     })
   }
+
+  useEffect(() => {
+    const updateThemeOnFlagshipApp = async () => {
+      const isColorSchemeAvailable = await webviewIntent.call(
+        'isAvailable',
+        'colorScheme'
+      )
+
+      if (isColorSchemeAvailable) {
+        await webviewIntent.call('setColorScheme', colorSchemeValue)
+        await webviewIntent.call('setFlagshipUI', {
+          bottomTheme: isLight ? 'dark' : 'light',
+          bottomBackground: theme.palette.background.paper,
+          topTheme: isLight ? 'dark' : 'light',
+          topBackground: theme.palette.background.paper
+        })
+      }
+    }
+
+    if (isFlagshipApp()) {
+      updateThemeOnFlagshipApp()
+    }
+  }, [webviewIntent, colorSchemeValue, isLight, theme])
 
   return (
     <Page narrow>
