@@ -5442,16 +5442,16 @@ cozy-bi-auth@0.0.25:
     lodash "^4.17.20"
     node-jose "^1.1.4"
 
-cozy-client@^48.3.0:
-  version "48.3.0"
-  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-48.3.0.tgz#e33779a6fefa9efdecce7b8a2062c44f692e60e7"
-  integrity sha512-8FruXXw9kWnk36SBzejEjVf3ZSrOnBOGYVmVpPj1aB6XFL0TD2OSumvIG6wEH9y3JSf9xM8c9HhUfbP0eb3AmQ==
+cozy-client@^48.8.0:
+  version "48.8.0"
+  resolved "https://registry.yarnpkg.com/cozy-client/-/cozy-client-48.8.0.tgz#66bfe0d1866013080ca39083faf6dd0d59548c33"
+  integrity sha512-o/TmAlgn0xbdxrV928eVYtORE1g0Xykx32LeT83iQaRe26F4mnz4WVpcwizNH1zV7OTue8LNhLHPHZypCO23AQ==
   dependencies:
     "@cozy/minilog" "1.0.0"
     "@types/jest" "^26.0.20"
     "@types/lodash" "^4.14.170"
     btoa "^1.2.1"
-    cozy-stack-client "^48.2.0"
+    cozy-stack-client "^48.6.0"
     date-fns "2.29.3"
     json-stable-stringify "^1.0.1"
     lodash "^4.17.13"
@@ -5685,10 +5685,19 @@ cozy-stack-client@^48.2.0:
     mime "^2.4.0"
     qs "^6.7.0"
 
-cozy-ui@^110.8.1:
-  version "110.8.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-110.8.1.tgz#03c14552a0049ef54c75a955c4c20563870ce42e"
-  integrity sha512-TLndyKGIghJ0j22DTFHOf8LlLfL7dbW+H5f0HpCHK9iR/Y8vDoUQfp6nzQ+EA2Yei5EG0g8kE+9j1+fZKfANxg==
+cozy-stack-client@^48.6.0:
+  version "48.6.0"
+  resolved "https://registry.yarnpkg.com/cozy-stack-client/-/cozy-stack-client-48.6.0.tgz#c2d2697fcc9061c87425a2f9abc69aff41a94882"
+  integrity sha512-pYrGc1ZWJPWZ2jshBb+IRvGHl8ByHcRCqkgSaAsEzcrlrZzxPWnkSAVekZrPbSDx+Pwg2UE/d8puCF+wEtk+6w==
+  dependencies:
+    detect-node "^2.0.4"
+    mime "^2.4.0"
+    qs "^6.7.0"
+
+cozy-ui@^111.1.0:
+  version "111.1.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-111.1.0.tgz#d319081734128f09b88aceff493739250dd1e89b"
+  integrity sha512-GxvWGys0YrDj7DxB9kYDY7NxaSvGJPpn6J8A4/Ifl3nxixVz6iAYPdIX8AWh131lI6LIbyZj6k1v820WMd5enA==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@material-ui/core" "4.12.3"
