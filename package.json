@@ -33,6 +33,8 @@
   },
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
+    "@rspack/cli": "^0.7.5",
+    "@rspack/core": "^0.7.5",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@testing-library/jest-dom": "5.16.5",
