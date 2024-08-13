@@ -6,17 +6,9 @@
     "tx": "tx pull --all || true",
     "lint": "yarn lint:js",
     "lint:js": "eslint '{src,test}/**/*.{js,jsx,ts,tsx}'",
-    "build": "yarn build:browser",
-    "build:browser": "cozy-scripts build --browser --barV7 false",
-    "build:mobile": "cozy-scripts build --mobile --barV7 false",
-    "watch": "yarn watch:browser",
-    "watch:browser": "cozy-scripts watch --browser --barV7 false",
-    "watch:mobile": "cozy-scripts watch --mobile --barV7 false",
-    "start": "cozy-scripts start --hot --barV7 false",
-    "deploy": "cs deploy",
-    "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --mode manual --yes",
-    "test": "cozy-scripts test",
-    "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
+    "serve": "rspack serve",
+    "build": "rspack build",
+    "watch": "rspack build --watch",
     "semantic-release": "semantic-release"
   },
   "repository": {
@@ -57,6 +49,7 @@
   },
   "dependencies": {
     "@material-ui/lab": "4.0.0-alpha.61",
+    "@rspack/plugin-node-polyfill": "^0.5.8",
     "@sentry/integrations": "7.101.1",
     "@sentry/react": "7.101.1",
     "classnames": "2.3.1",
@@ -73,6 +66,8 @@
     "cozy-sharing": "^15.0.0",
     "cozy-stack-client": "^48.2.0",
     "cozy-ui": "^111.1.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
     "piwik-react-router": "0.12.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
@@ -86,6 +81,8 @@
     "redux-logger": "3.0.6",
     "redux-thunk": "2.4.1",
     "semver": "7.5.2",
+    "style-loader": "^4.0.0",
+    "stylus-loader": "^8.1.0",
     "ua-parser-js": "0.7.33"
   }
 }
