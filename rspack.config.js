@@ -42,15 +42,18 @@ module.exports = {
       },
       {
         test: /\.styl$/,
-
         use: [
-          rspack.CssExtractRspackPlugin.loader,
+          'style-loader',
           'css-loader',
           {
             loader: require.resolve('stylus-loader'),
+            options: {
+              stylusOptions: {
+                paths: [path.resolve(__dirname, "node_modules", 'cozy-ui/stylus')]
+              }
+            }
           }
         ],
-        type: 'javascript/auto'
       },
       {
         test: /\.ejs$/i,
@@ -101,14 +104,21 @@ module.exports = {
     }
   },
   plugins: [
-    new rspack.CssExtractRspackPlugin({
-
+    new polyfillPlugin(),
+    new rspack.CopyRspackPlugin({
+      patterns: [
+        {
+          from: 'manifest.webapp',
+        },
+        {
+          from: 'README.md'
+        },
+        {
+          from: 'LICENSE'
+        }
+      ],
     }),
-    new polyfillPlugin()
   ],
   target: 'web',
-  mode: 'development',
-  experiments: {
-    css: false
-  }
+  mode: 'development'
 }
