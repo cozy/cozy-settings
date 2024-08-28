@@ -1,9 +1,8 @@
 const path = require('path')
 const cozyUIPlugin = require('cozy-ui/stylus')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const rspack = require('@rspack/core');
-const polyfillPlugin = require("@rspack/plugin-node-polyfill");
-
+const rspack = require('@rspack/core')
+const polyfillPlugin = require("@rspack/plugin-node-polyfill")
 
 module.exports = {
   entry: {
@@ -56,10 +55,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.ejs$/i,
-        use: ['template-ejs-loader']
-      },
-      {
         test: /\.jsx$/,
         use: {
           loader: 'builtin:swc-loader',
@@ -88,22 +83,18 @@ module.exports = {
           },
         },
         type: 'javascript/auto',
+      },
+      {
+        test: /\.ejs$/i,
+        use: ['html-loader', 'template-ejs-loader']
       }
     ]
   },
-  builtins: {
-    html: [
-      {
-        template: path.resolve(__dirname, 'src/targets/browser/index.html'),
-        filename: 'index.html'
-      }
-    ],
-    define: {
-      "process.env.NODE_ENV": "'production'",
-      __DEVELOPMENT__: true
-    }
-  },
   plugins: [
+    new rspack.HtmlRspackPlugin({
+      template: 'src/targets/browser/index.ejs',
+      title: 'Cozy Settings'
+    }),
     new polyfillPlugin(),
     new rspack.CopyRspackPlugin({
       patterns: [
