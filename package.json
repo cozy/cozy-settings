@@ -70,7 +70,7 @@
     "cozy-interapp": "0.7.7",
     "cozy-keys-lib": "6.0.0",
     "cozy-realtime": "4.6.0",
-    "cozy-sharing": "^15.0.0",
+    "cozy-sharing": "^15.0.3",
     "cozy-stack-client": "^48.2.0",
     "cozy-ui": "^111.1.0",
     "piwik-react-router": "0.12.1",
