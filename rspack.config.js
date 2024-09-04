@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const rspack = require('@rspack/core')
 const polyfillPlugin = require("@rspack/plugin-node-polyfill")
 
+
 module.exports = {
   entry: {
     main: './src/targets/browser/index.jsx'
@@ -38,6 +39,14 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/inline'
+      },
+      {
+        test: /\.css$/,
+        type: 'javascript/auto', // Cover the default CSS module type and treat it as a regular JS file.
+        use: [
+          rspack.CssExtractRspackPlugin.loader,
+          'css-loader'
+        ]
       },
       {
         test: /\.styl$/,
@@ -91,6 +100,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new rspack.CssExtractRspackPlugin({}),
     new rspack.HtmlRspackPlugin({
       template: 'src/targets/browser/index.ejs',
       title: 'Cozy Settings'
@@ -111,5 +121,8 @@ module.exports = {
     }),
   ],
   target: 'web',
-  mode: 'development'
+  mode: 'development',
+  experiments: {
+    css: false
+  }
 }
