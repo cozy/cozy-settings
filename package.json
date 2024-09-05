@@ -6,17 +6,9 @@
     "tx": "tx pull --all || true",
     "lint": "yarn lint:js",
     "lint:js": "eslint '{src,test}/**/*.{js,jsx,ts,tsx}'",
-    "build": "yarn build:browser",
-    "build:browser": "cozy-scripts build --browser --barV7 false",
-    "build:mobile": "cozy-scripts build --mobile --barV7 false",
-    "watch": "yarn watch:browser",
-    "watch:browser": "cozy-scripts watch --browser --barV7 false",
-    "watch:mobile": "cozy-scripts watch --mobile --barV7 false",
-    "start": "cozy-scripts start --hot --barV7 false",
-    "deploy": "cs deploy",
-    "cozyPublish": "cozy-scripts publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost --mode manual --yes",
-    "test": "cozy-scripts test",
-    "stack:docker": "docker run --rm -it -p 8080:8080 -v \"$(pwd)/build\":/data/cozy-app/app cozy/cozy-app-dev",
+    "serve": "rspack serve",
+    "build": "rspack build",
+    "watch": "rspack build --watch",
     "semantic-release": "semantic-release"
   },
   "repository": {
@@ -33,6 +25,9 @@
   },
   "homepage": "https://github.com/cozy/cozy-settings#readme",
   "devDependencies": {
+    "@rspack/cli": "^0.7.5",
+    "@rspack/core": "^0.7.5",
+    "@rspack/plugin-node-polyfill": "^0.5.8",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@testing-library/jest-dom": "5.16.5",
@@ -40,12 +35,12 @@
     "@testing-library/user-event": "14.5.1",
     "@types/react-input-mask": "3.0.2",
     "@types/ua-parser-js": "0.7.37",
-    "babel-preset-cozy-app": "2.0.3",
     "browser-resolve": "2.0.0",
     "bundlemon": "1.4.0",
     "cozy-app-publish": "0.34.0",
-    "cozy-scripts": "8.3.0",
+    "css-loader": "^7.1.2",
     "eslint-config-cozy-app": "5.1.0",
+    "html-webpack-plugin": "^5.6.0",
     "jest": "28.1.3",
     "jest-environment-jsdom": "28.1.3",
     "npm-run-all": "4.1.5",
@@ -53,6 +48,9 @@
     "react-test-renderer": "18.2.0",
     "semantic-release": "^23.0.6",
     "semantic-release-replace-plugin": "^1.2.7",
+    "style-loader": "^4.0.0",
+    "stylus": "^0.63.0",
+    "stylus-loader": "^8.1.0",
     "typescript-plugin-css-modules": "3.4.0"
   },
   "dependencies": {
@@ -86,7 +84,6 @@
     "redux-logger": "3.0.6",
     "redux-thunk": "2.4.1",
     "semver": "7.5.2",
-    "terser-webpack-plugin": "1.4.4",
     "ua-parser-js": "0.7.33"
   }
 }

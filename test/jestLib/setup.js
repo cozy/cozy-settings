@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 process.env.USE_REACT = true
 
-window.__DEVELOPMENT__ = false
+// window.__DEVELOPMENT__ = false
 
 jest.mock('cozy-intent', () => ({
   WebviewIntentProvider: ({ children }) => children,

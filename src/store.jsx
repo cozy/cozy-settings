@@ -1,5 +1,3 @@
-/* global __DEVELOPMENT__ */
-
 import appReducer from 'reducers'
 import thunkMiddleware from 'redux-thunk'
 import {
@@ -10,14 +8,14 @@ import {
 
 const createStore = client => {
   // Enable Redux dev tools
-  const composeEnhancers =
-    (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+  // const composeEnhancers =
+  //  (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
   const middlewares = [thunkMiddleware]
 
   const store = reduxCreateStore(
     appReducer(client),
-    composeEnhancers(applyMiddleware(...middlewares))
+    compose(applyMiddleware(...middlewares))
   )
 
   return store
