@@ -40,8 +40,6 @@ const ProfileView = ({
     instanceQuery.options
   )
 
-  console.log('ProfileView', instanceResult)
-
   return (
     <Page narrow>
       <PageTitle className={!isMobile ? 'u-mb-1' : ''}>

@@ -51,8 +51,16 @@ module.exports = {
       {
         test: /\.styl$/,
         use: [
-          'style-loader',
-          'css-loader',
+          rspack.CssExtractRspackPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                namedExport: false
+              },
+
+            }
+          },
           {
             loader: require.resolve('stylus-loader'),
             options: {
@@ -124,5 +132,6 @@ module.exports = {
   mode: 'development',
   experiments: {
     css: false
-  }
+  },
+
 }
