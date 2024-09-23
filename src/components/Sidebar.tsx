@@ -48,13 +48,11 @@ export const Sidebar = (): JSX.Element => {
           primary={t('Nav.profile')}
           icon={PeopleIcon}
         />
-        {flag('ui.darkmode.enabled') && (
-          <MenuItemNavLink
-            to={routes.appearance}
-            primary={t('Nav.appearance')}
-            icon={PaletteIcon}
-          />
-        )}
+        <MenuItemNavLink
+          to={routes.appearance}
+          primary={t('Nav.appearance')}
+          icon={PaletteIcon}
+        />
         <SubscriptionMenuItem />
         <MenuItemNavLink
           to={routes.storage}
