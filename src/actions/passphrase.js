@@ -20,6 +20,8 @@ export const UPDATE_HINT = 'UPDATE_HINT'
 export const UPDATE_HINT_SUCCESS = 'UPDATE_HINT_SUCCESS'
 export const UPDATE_HINT_FAILURE = 'UPDATE_HINT_FAILURE'
 
+const KDF_ITERATIONS = 650000
+
 const invalidPassphraseErrorAction = {
   type: UPDATE_PASSPHRASE_FAILURE,
   errors: {
@@ -76,7 +78,8 @@ export const updatePassphrase = (
 
       const newHashAndKeys = await vaultClient.computeNewHashAndKeys(
         currentPassphrase,
-        newPassphrase
+        newPassphrase,
+        KDF_ITERATIONS
       )
       await cozyFetch(client, 'PUT', '/settings/passphrase', {
         current_passphrase: newHashAndKeys.currentPasswordHash,
@@ -154,7 +157,8 @@ export const updatePassphrase2FASecond = (
       await vaultClient.login(currentPassphrase)
       const newHashAndKeys = await vaultClient.computeNewHashAndKeys(
         currentPassphrase,
-        newPassphrase
+        newPassphrase,
+        KDF_ITERATIONS
       )
       await cozyFetch(client, 'PUT', '/settings/passphrase', {
         new_passphrase: newHashAndKeys.newPasswordHash,
