@@ -148,7 +148,7 @@
     },
     "tracking": {
       "title": "Ayúdenos a mejorar nuestro producto",
-      "label": "Autorizar Cozy Cloud a adquirir anónimamente sus datos de uso para mejorar nuestro producto. [Manténgase informado sobre los compromisis de Cozy](https://files.cozycloud.cc/TOS%{version}.pdf)"
+      "label": "Autorizar Cozy Cloud a adquirir anónimamente sus datos de uso para mejorar nuestro producto."
     },
     "move": {
       "button": "Desplazar mi Cozy"

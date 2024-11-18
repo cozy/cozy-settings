@@ -184,7 +184,7 @@
     },
     "tracking": {
       "title": "Help mee ons product te verbeteren",
-      "label": "Geef Cozy Cloud toestemming om anonieme gebruiksgegevens te verzamelen voor het verbeteren van ons product.<br/>[Lees meer over Cozy's privacywaarborg](https://files.cozycloud.cc/TOS%{version}.pdf)"
+      "label": "Geef Cozy Cloud toestemming om anonieme gebruiksgegevens te verzamelen voor het verbeteren van ons product."
     },
     "move": {
       "button": "Cozy verplaatsen"

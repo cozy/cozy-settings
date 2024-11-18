@@ -12,7 +12,9 @@ import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
 import EmailIcon from 'cozy-ui/transpiled/react/Icons/Email'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import flag from 'cozy-flags'
+import ContractIcon from 'cozy-ui/transpiled/react/Icons/Contract'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useInstanceInfo } from 'cozy-client'
 
 import styles from 'components/Sidebar.styl'
 import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'
@@ -29,6 +31,8 @@ export const Sidebar = (): JSX.Element => {
   const logout = useLogout()
   const percent = useDiskPercentage()
   const { t } = useI18n()
+
+  const { instance } = useInstanceInfo()
 
   return (
     <nav role="navigation" className={styles.Sidebar}>
@@ -105,6 +109,14 @@ export const Sidebar = (): JSX.Element => {
           to={routes.support}
           primary={t('Nav.contact_support')}
           icon={EmailIcon}
+        />
+        <MenuItemAnchor
+          primary={t('Nav.terms_of_service')}
+          href={`https://files.cozycloud.cc/TOS${
+            instance.data.tos ? `-${instance.data.tos}` : '-201711'
+          }.pdf`}
+          target="_blank"
+          icon={ContractIcon}
         />
         <MenuItemButton
           primary={t('Nav.primary_logout')}

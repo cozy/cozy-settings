@@ -100,7 +100,8 @@
     "secondary_used": "%{percent}% utilisé",
     "sessions": "Connexions web",
     "storage": "Stockage",
-    "contact_support": "Nous contacter"
+    "contact_support": "Nous contacter",
+    "terms_of_service": "Conditions générales d’utilisation"
   },
   "loading": {
     "loading": "Chargement"
@@ -185,7 +186,7 @@
     },
     "tracking": {
       "title": "Nous aider à améliorer notre produit",
-      "label": "Autoriser Cozy à récupérer anonymement vos usages pour améliorer notre produit.<br/>[Soyez informé des engagements de Cozy](https://files.cozycloud.cc/TOS%{version}.pdf)"
+      "label": "Autoriser Cozy à récupérer anonymement vos usages pour améliorer notre produit."
     },
     "move": {
       "button": "Déménager mon Cozy"

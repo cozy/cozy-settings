@@ -21,6 +21,16 @@ jest.mock('components/Premium/PremiumProvider', () => ({
   usePremium: jest.fn(() => ({ isPremium: false }))
 }))
 
+jest.mock('cozy-client', () => ({
+  ...jest.requireActual('cozy-client'),
+  __esModule: true,
+  useInstanceInfo: jest.fn(() => ({
+    isLoaded: true,
+    instance: { data: {} },
+    diskUsage: { data: { used: 100, quota: 200 } }
+  }))
+}))
+
 describe('Sidebar', () => {
   const setup = (): void => {
     render(

@@ -148,7 +148,7 @@
     },
     "tracking": {
       "title": "Hilf uns, unser Produkt zu verbessern",
-      "label": "Autorisiere Cozy Cloud, anonyme Nutzungsdaten zu sammeln, um unser Produkt zu verbessern. </br>[Über Cozy Verpflichtungen informiert werden](https://files.cozycloud.cc/TOS%{version}.pdf)"
+      "label": "Autorisiere Cozy Cloud, anonyme Nutzungsdaten zu sammeln, um unser Produkt zu verbessern."
     },
     "export": {
       "title": "Meine Daten",

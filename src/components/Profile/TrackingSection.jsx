@@ -32,9 +32,7 @@ export const TrackingSection = () => {
       name="tracking"
       type="checkbox"
       title={t('ProfileView.tracking.title')}
-      label={t('ProfileView.tracking.label', {
-        version: instance?.tos ? `-${instance.tos}` : '-201711'
-      })}
+      label={t('ProfileView.tracking.label')}
       value={Boolean(instance.tracking)}
       onChange={handleChange}
       submitting={mutationStatus === 'loading'}

@@ -148,7 +148,7 @@
     },
     "tracking": {
       "title": "製品の改善にご協力ください",
-      "label": "製品を改善するために、Cozy クラウドが使用状況のデータを匿名で取得する権限を与えます。<br/>[Cozy のコミットメントについて](https://files.cozycloud.cc/TOS%{version}.pdf)"
+      "label": "製品を改善するために、Cozy クラウドが使用状況のデータを匿名で取得する権限を与えます."
     },
     "export": {
       "title": "自分のデータ",
