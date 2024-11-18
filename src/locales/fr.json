@@ -101,7 +101,8 @@
     "sessions": "Connexions web",
     "storage": "Stockage",
     "contact_support": "Nous contacter",
-    "terms_of_service": "Conditions générales d’utilisation"
+    "terms_of_service": "Conditions générales d’utilisation",
+    "legal_notice": "Mentions légales"
   },
   "loading": {
     "loading": "Chargement"

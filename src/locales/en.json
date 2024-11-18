@@ -101,7 +101,8 @@
     "sessions": "Web connections",
     "storage": "Storage",
     "contact_support": "Contact us",
-    "terms_of_service": "Terms of Service"
+    "terms_of_service": "Terms of Service",
+    "legal_notice": "Legal notice"
   },
   "loading": {
     "loading": "Loading"
