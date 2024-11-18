@@ -8,7 +8,7 @@ import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
 import { RealTimeQueries } from 'cozy-client'
-import CozyDevtools from 'cozy-client/dist/devtools'
+import CozyDevtools from 'cozy-devtools'
 import flag from 'cozy-flags'
 import { BarComponent } from 'cozy-bar'
 
