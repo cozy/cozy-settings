@@ -15,6 +15,7 @@ import flag from 'cozy-flags'
 import ContractIcon from 'cozy-ui/transpiled/react/Icons/Contract'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useInstanceInfo } from 'cozy-client'
+import JusticeIcon from 'cozy-ui/transpiled/react/Icons/Justice'
 
 import styles from 'components/Sidebar.styl'
 import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'
@@ -110,6 +111,14 @@ export const Sidebar = (): JSX.Element => {
           primary={t('Nav.contact_support')}
           icon={EmailIcon}
         />
+        {instance.data.legal_notice_url && (
+          <MenuItemAnchor
+            primary={t('Nav.legal_notice')}
+            href={instance.data.legal_notice_url}
+            target="_blank"
+            icon={JusticeIcon}
+          />
+        )}
         <MenuItemAnchor
           primary={t('Nav.terms_of_service')}
           href={`https://files.cozycloud.cc/TOS${
