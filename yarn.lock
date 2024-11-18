@@ -4822,6 +4822,15 @@ cozy-device-helper@^3.0.0:
   dependencies:
     lodash "^4.17.19"
 
+cozy-devtools@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/cozy-devtools/-/cozy-devtools-1.2.1.tgz#680976ab69ebdf2d2727cffc07243705794d1a83"
+  integrity sha512-6hMoeEdT3coU/LMBlwnFWrBNB6dpa6HlzB8ejHbb6pZwQtvtX6Sr4IzvCuqqd2ztjrlTZ/wivWE5sZeu+G7f0Q==
+  dependencies:
+    date-fns "2.29.3"
+    lodash "4.17.13"
+    react-inspector "5.1.1"
+
 cozy-doctypes@1.83.7:
   version "1.83.7"
   resolved "https://registry.yarnpkg.com/cozy-doctypes/-/cozy-doctypes-1.83.7.tgz#258448aa5fa8f76d557c7635c148d9bfe54bbe33"
@@ -9956,6 +9965,11 @@ lodash.unionwith@4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.unionwith/-/lodash.unionwith-4.6.0.tgz#74d140b5ca8146e6c643c3724f5152538d9ac1f0"
   integrity sha512-Hk8otPCkVM4UxRoft3E5dAREwExyXci6iVPCibHIEiG7neb9KAdWHYS75MYpVTvxDrnpp7WCJNZ84vAk7j7tVA==
+
+lodash@4.17.13:
+  version "4.17.13"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.13.tgz#0bdc3a6adc873d2f4e0c4bac285df91b64fc7b93"
+  integrity sha512-vm3/XWXfWtRua0FkUyEHBZy8kCPjErNBT9fJx8Zvs+U6zjqPbTUOpkaoum3O5uiA8sm+yNMHXfYkTUHFoMxFNA==
 
 lodash@4.17.19:
   version "4.17.19"
