@@ -4873,11 +4873,12 @@ cozy-harvest-lib@^26.0.0:
     use-deep-compare-effect "^1.8.1"
     uuid "^3.3.2"
 
-cozy-intent@2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/cozy-intent/-/cozy-intent-2.7.0.tgz#7a9c4defead521eef2edd7078c04245e00b68bd2"
-  integrity sha512-gkHH8FjD0bG1jJaTONGSlPIf0ODSo4+w3dFJFJ4PE3YikGeO8z9ur1NISLA8BRX9sO4rlXABrNk1WWr4LcDmmQ==
+cozy-intent@2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/cozy-intent/-/cozy-intent-2.29.1.tgz#929d6dfe1e7d619ed5d62447483c5899914b04ed"
+  integrity sha512-Es+7WkPU+mkrMM1RDjuVXZqWeXEYXo0xLZinEBJIYyTrz/gopLLztHcrjfL4bglKqAt9XTdDxrT1KxsenDd1bw==
   dependencies:
+    cozy-minilog "^3.9.1"
     post-me "0.4.5"
 
 cozy-interapp@0.7.7:
@@ -4927,6 +4928,13 @@ cozy-logger@^1.10.4, cozy-logger@^1.3.0:
   dependencies:
     chalk "^2.4.2"
     json-stringify-safe "5.0.1"
+
+cozy-minilog@^3.9.1:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/cozy-minilog/-/cozy-minilog-3.9.1.tgz#8a89743664145da7b1808d78cc53daacaa97e758"
+  integrity sha512-UwtNfRWKIWpNA4NK2MovPvUalijmYpFk726r1zxLlMixRTBtHTqVZtEcDF+3PrE5o5UiUAUC8Z+MWiz3ivstbw==
+  dependencies:
+    microee "0.0.6"
 
 cozy-realtime@4.6.0:
   version "4.6.0"
