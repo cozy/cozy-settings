@@ -16,6 +16,7 @@ import ContractIcon from 'cozy-ui/transpiled/react/Icons/Contract'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useInstanceInfo } from 'cozy-client'
 import JusticeIcon from 'cozy-ui/transpiled/react/Icons/Justice'
+import { makeDiskInfos } from 'cozy-client/dist/models/instance'
 
 import styles from 'components/Sidebar.styl'
 import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'
@@ -24,16 +25,19 @@ import { MenuItemNavLink } from 'components/menu/MenuItemNavLink'
 import { MenuList } from 'components/menu/MenuList'
 import { isFlagshipApp } from 'cozy-device-helper'
 import { routes } from 'constants/routes'
-import { useDiskPercentage } from 'hooks/useDiskPercentage'
 import { useLogout } from 'hooks/useLogout'
 import { SubscriptionMenuItem } from 'components/Subscription/SubscriptionMenuItem'
 
 export const Sidebar = (): JSX.Element => {
   const logout = useLogout()
-  const percent = useDiskPercentage()
+
   const { t } = useI18n()
 
-  const { instance } = useInstanceInfo()
+  const { isLoaded, instance, diskUsage } = useInstanceInfo()
+
+  const percent = isLoaded
+    ? makeDiskInfos(diskUsage.data.used, diskUsage.data.quota).percentUsage
+    : ''
 
   return (
     <nav role="navigation" className={styles.Sidebar}>
