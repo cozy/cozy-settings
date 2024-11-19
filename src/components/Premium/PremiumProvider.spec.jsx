@@ -34,15 +34,13 @@ describe('PremiumProvider', () => {
       isLoaded: true,
       context: {
         data: {
-          attributes: {
-            enable_premium_links: enablePremiumLinks,
-            manager_url: 'http://mycozy.cloud'
-          }
+          enable_premium_links: enablePremiumLinks,
+          manager_url: 'http://mycozy.cloud'
         }
       },
       instance: {
         data: {
-          attributes: { uuid: hasUuid ? '1223' : null }
+          uuid: hasUuid ? '1223' : null
         }
       }
     })

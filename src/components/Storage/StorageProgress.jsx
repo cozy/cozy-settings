@@ -17,8 +17,8 @@ const StorageProgress = () => {
   const { diskUsage } = useInstanceInfo()
 
   const { humanDiskQuota, humanDiskUsage, percentUsage } = makeDiskInfos(
-    diskUsage?.data?.attributes?.used,
-    diskUsage?.data?.attributes?.quota
+    diskUsage.data?.used,
+    diskUsage.data?.quota
   )
 
   return (
