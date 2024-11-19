@@ -18,8 +18,8 @@ const SubscriptionStorageItem = () => {
   const { diskUsage } = useInstanceInfo()
 
   const { humanDiskQuota } = makeDiskInfos(
-    diskUsage?.data?.attributes?.used,
-    diskUsage?.data?.attributes?.quota
+    diskUsage.data?.used,
+    diskUsage.data?.quota
   )
 
   return (
