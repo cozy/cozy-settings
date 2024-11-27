@@ -11,7 +11,7 @@ import {
   DESACTIVATE_2FA_SUCCESS,
   CHECK_TWO_FACTOR_CODE_SUCCESS,
   CANCEL_2FA_ACTIVATION
-} from 'actions/twoFactor'
+} from '@/actions/twoFactor'
 
 const submitting = (state = false, action) => {
   switch (action.type) {

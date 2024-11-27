@@ -5,9 +5,9 @@ import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 
-import withAllLocales from 'lib/withAllLocales'
-import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
-import PermissionDetailsModalContent from 'components/Permissions/PermissionDetails/PermissionDetailsModalContent'
+import withAllLocales from '@/lib/withAllLocales'
+import useAppsOrKonnectorsBySlug from '@/components/Permissions/hooks/useAppsOrKonnectorsBySlug'
+import PermissionDetailsModalContent from '@/components/Permissions/PermissionDetails/PermissionDetailsModalContent'
 
 const PermissionDetailsModal = ({ slug, permissionType, t, appName }) => {
   const navigate = useNavigate()

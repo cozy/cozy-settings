@@ -4,9 +4,9 @@ import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { fetchSessions, deleteOtherSessions } from 'actions'
+import { fetchSessions, deleteOtherSessions } from '@/actions'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import SessionsView from 'components/SessionsView'
+import SessionsView from '@/components/SessionsView'
 
 const mapStateToProps = state => ({
   sessions: state.sessions,

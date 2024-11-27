@@ -19,7 +19,7 @@ jest.mock('react-router-dom', () => {
 })
 
 jest.mock('cozy-client')
-jest.mock('components/PageTitle', () => {
+jest.mock('@/components/PageTitle', () => {
   return ({ children }) => <div data-testid="pageTitle">{children}</div>
 })
 jest.mock(

@@ -7,7 +7,7 @@ import {
   IMPORT_IMPORT,
   IMPORT_IMPORT_FAILURE,
   IMPORT_IMPORT_SUCCESS
-} from 'actions/import'
+} from '@/actions/import'
 
 const checking = (state = false, action) => {
   switch (action.type) {

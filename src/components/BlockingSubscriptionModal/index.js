@@ -1,6 +1,6 @@
 import flag from 'cozy-flags'
 
-export { BlockingSubscriptionModal } from 'components/BlockingSubscriptionModal/BlockingSubscriptionModal'
+export { BlockingSubscriptionModal } from '@/components/BlockingSubscriptionModal/BlockingSubscriptionModal'
 
 /**
  * Checks if there is a blocking subscription.

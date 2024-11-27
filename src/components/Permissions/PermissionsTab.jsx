@@ -1,14 +1,14 @@
 import React from 'react'
-import Page from 'components/Page'
+import Page from '@/components/Page'
 import Tabs from 'cozy-ui/transpiled/react/Tabs'
 import Tab from 'cozy-ui/transpiled/react/Tab'
 import AppList from './AppList/AppList'
 import DataList from './DataList/DataList'
-import { routes } from 'constants/routes'
+import { routes } from '@/constants/routes'
 import { useParams, useNavigate } from 'react-router-dom'
 import withAllLocales from '../../lib/withAllLocales'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import PageTitle from 'components/PageTitle'
+import PageTitle from '@/components/PageTitle'
 
 function a11yProps(index) {
   return {

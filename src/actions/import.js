@@ -1,6 +1,6 @@
-import { cozyFetch } from 'actions'
+import { cozyFetch } from '@/actions'
 
-import { STACK_DOMAIN } from 'actions'
+import { STACK_DOMAIN } from '@/actions'
 
 export const PRECHECK_IMPORT = 'PRECHECK_IMPORT'
 export const PRECHECK_IMPORT_FAILURE = 'PRECHECK_IMPORT_FAILURE'

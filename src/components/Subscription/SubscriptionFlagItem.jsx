@@ -11,7 +11,7 @@ import flag from 'cozy-flags'
 import {
   isFlagDisabled,
   computeFlagLabel
-} from 'components/Subscription/helper'
+} from '@/components/Subscription/helper'
 
 /**
  * ListItem to display how the feature flag included in the user plan

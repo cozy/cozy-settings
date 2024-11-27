@@ -1,5 +1,5 @@
 import flag from 'cozy-flags'
-import { isFlagDisabled } from 'components/Subscription/helper'
+import { isFlagDisabled } from '@/components/Subscription/helper'
 
 jest.mock('cozy-flags')
 

@@ -1,7 +1,7 @@
 import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'cozy-ui/dist/cozy-ui.utils.min.css'
 import 'cozy-bar/dist/stylesheet.css'
-import 'styles/index.styl'
+import '@/styles/index.styl'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
@@ -19,9 +19,9 @@ import flag from 'cozy-flags'
 import { RealtimePlugin } from 'cozy-realtime'
 
 import manifest from '../../../manifest.webapp'
-import App from 'components/App'
+import App from '@/components/App'
 import createStore from '../../store'
-import { AppProviders } from 'components/AppProviders'
+import { AppProviders } from '@/components/AppProviders'
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('[role=application]')

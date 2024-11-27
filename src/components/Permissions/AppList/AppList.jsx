@@ -15,8 +15,8 @@ import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
 
-import { routes } from 'constants/routes'
-import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
+import { routes } from '@/constants/routes'
+import useAppsOrKonnectors from '@/components/Permissions/hooks/useAppsOrKonnectors'
 
 const AppList = () => {
   const { t } = useI18n()

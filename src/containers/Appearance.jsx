@@ -4,8 +4,8 @@ import { useQuery, isQueryLoading } from 'cozy-client'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
-import AppearanceView from 'components/Appearance/AppearanceView'
-import { buildSettingsInstanceQuery } from 'src/lib/queries'
+import AppearanceView from '@/components/Appearance/AppearanceView'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const Appearance = () => {
   const instanceQuery = buildSettingsInstanceQuery()

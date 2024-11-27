@@ -4,7 +4,7 @@ import {
   SEND_EMAIL,
   SEND_EMAIL_SUCCESS,
   SEND_EMAIL_FAILURE
-} from 'actions/email'
+} from '@/actions/email'
 
 export const isSent = (state = false, action) => {
   switch (action.type) {

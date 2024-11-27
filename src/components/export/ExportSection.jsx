@@ -4,13 +4,13 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import ExportDownload from 'components/export/ExportDownload'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
+import ExportDownload from '@/components/export/ExportDownload'
 
 import { IllustrationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { MoveButton } from 'components/export/MoveButton'
+import { MoveButton } from '@/components/export/MoveButton'
 
-const exportImage = require('assets/images/export-cozy-mail.svg')
+const exportImage = require('@/assets/images/export-cozy-mail.svg')
 
 const ExportSection = ({
   email,

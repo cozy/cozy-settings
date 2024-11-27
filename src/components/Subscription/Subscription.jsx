@@ -11,13 +11,13 @@ import LocationIcon from 'cozy-ui/transpiled/react/Icons/Location'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import { SubscriptionFlagItem } from 'components/Subscription/SubscriptionFlagItem'
-import { SubscriptionStorageItem } from 'components/Subscription/SubscriptionStorageItem'
-import { PremiumLink } from 'components/Premium/PremiumLink'
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
+import { SubscriptionFlagItem } from '@/components/Subscription/SubscriptionFlagItem'
+import { SubscriptionStorageItem } from '@/components/Subscription/SubscriptionStorageItem'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
 import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
-import { usePremium } from 'components/Premium/PremiumProvider'
+import { usePremium } from '@/components/Premium/PremiumProvider'
 
 /**
  * Page showing the features included in the user plan
