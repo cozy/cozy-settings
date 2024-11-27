@@ -1,4 +1,4 @@
-import { cozyFetch } from 'actions'
+import { cozyFetch } from '@/actions'
 import { WebVaultClient } from 'cozy-keys-lib'
 
 export const UPDATE_PASSPHRASE = 'UPDATE_PASSPHRASE'

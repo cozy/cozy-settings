@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withClient } from 'cozy-client'
 
-import Claudy from 'services/Claudy'
-import Support from 'services/Support'
+import Claudy from '@/services/Claudy'
+import Support from '@/services/Support'
 
 class IntentView extends Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class IntentView extends Component {
         return (
           <Support
             service={service}
-            iconSrc={require('assets/services/claudyActions/icon-question-mark.svg')}
+            iconSrc={require('@/assets/services/claudyActions/icon-question-mark.svg')}
             emailStatus={emailStatus}
             sendMessageToSupport={sendMessageToSupport}
           />

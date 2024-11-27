@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/react'
 import { createMockClient } from 'cozy-client'
 
 import { DevicesView } from './DevicesView'
-import AppLike from 'test/AppLike'
-import { OAUTH_CLIENTS_DOCTYPE } from 'doctypes'
+import AppLike from '@/test/AppLike'
+import { OAUTH_CLIENTS_DOCTYPE } from '@/doctypes'
 
 const pendingDevice = {
   id: 'mock-device-pending',
@@ -32,7 +32,7 @@ const sharingDevice = {
   client_name: 'Mock Sharing xyz'
 }
 
-jest.mock('components/Premium/PremiumLink', () => ({
+jest.mock('@/components/Premium/PremiumLink', () => ({
   PremiumLink: () => <div>PremiumLink</div>
 }))
 

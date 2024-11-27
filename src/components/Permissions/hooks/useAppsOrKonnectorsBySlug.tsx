@@ -10,7 +10,7 @@ import {
 import { UseQueryReturnValue } from 'cozy-client/types/types'
 import { RegistryApp } from 'cozy-client/types/registry'
 
-import { buildAppsQueryBySlug, buildKonnectorsQueryBySlug } from 'lib/queries'
+import { buildAppsQueryBySlug, buildKonnectorsQueryBySlug } from '@/lib/queries'
 
 interface useAppsOrKonnectorsBySlugReturns {
   isResultLoading: boolean

@@ -1,4 +1,4 @@
-import { computeDocumentFromRealTime } from 'components/SettingsRealTimeQueries'
+import { computeDocumentFromRealTime } from '@/components/SettingsRealTimeQueries'
 
 describe('computeDocumentFromRealTime', () => {
   const client = {

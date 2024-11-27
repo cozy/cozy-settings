@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
-import ClaudyAction from 'services/ClaudyAction'
+import ClaudyAction from '@/services/ClaudyAction'
 
 import CrossIcon from 'cozy-ui/transpiled/react/Icons/Cross'
 
@@ -27,11 +27,11 @@ export class Claudy extends Component {
     this.selectAction = this.selectAction.bind(this)
     this.goBack = this.goBack.bind(this)
 
-    this.checkIcon = require('assets/services/icon-check.svg')
+    this.checkIcon = require('@/assets/services/icon-check.svg')
   }
 
   getIcon(iconName) {
-    return require(`assets/services/claudyActions/${iconName}`)
+    return require(`@/assets/services/claudyActions/${iconName}`)
   }
 
   computeSelectedActionUrl(selectedAction) {

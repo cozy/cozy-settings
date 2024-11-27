@@ -6,7 +6,10 @@ import flag from 'cozy-flags'
 import { useWebviewIntent } from 'cozy-intent'
 import { useInstanceInfo } from 'cozy-client'
 
-import { PremiumProvider, usePremium } from 'components/Premium/PremiumProvider'
+import {
+  PremiumProvider,
+  usePremium
+} from '@/components/Premium/PremiumProvider'
 
 jest.mock('cozy-client', () => ({
   ...jest.requireActual('cozy-client'),

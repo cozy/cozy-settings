@@ -20,16 +20,16 @@ import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import Divider from 'cozy-ui/transpiled/react/Divider'
 
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import withAllLocales from 'lib/withAllLocales'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
+import withAllLocales from '@/lib/withAllLocales'
 import {
   getPermissionsVerbsByType,
   completePermission,
   displayPermissions,
   getPermissionIconName
-} from 'components/Permissions/helpers/permissionsHelper'
-import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
+} from '@/components/Permissions/helpers/permissionsHelper'
+import useAppsOrKonnectors from '@/components/Permissions/hooks/useAppsOrKonnectors'
 
 const DataPermissions = ({ t }) => {
   const { permissionType } = useParams()

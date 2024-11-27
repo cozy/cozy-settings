@@ -16,14 +16,14 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 
-import withAllLocales from 'lib/withAllLocales'
-import { routes } from 'constants/routes'
+import withAllLocales from '@/lib/withAllLocales'
+import { routes } from '@/constants/routes'
 import {
   completePermission,
   getPermissionIconName
-} from 'components/Permissions/helpers/permissionsHelper'
-import useAppsOrKonnectors from 'components/Permissions/hooks/useAppsOrKonnectors'
-import { sortPermissionsByName } from 'components/Permissions/DataList/DataListHelpers'
+} from '@/components/Permissions/helpers/permissionsHelper'
+import useAppsOrKonnectors from '@/components/Permissions/hooks/useAppsOrKonnectors'
+import { sortPermissionsByName } from '@/components/Permissions/DataList/DataListHelpers'
 
 const DataList = ({ t }) => {
   const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =

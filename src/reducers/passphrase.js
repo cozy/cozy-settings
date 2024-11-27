@@ -14,7 +14,7 @@ import {
   UPDATE_HINT,
   UPDATE_HINT_SUCCESS,
   UPDATE_HINT_FAILURE
-} from 'actions/passphrase'
+} from '@/actions/passphrase'
 
 const submitting = (state = false, action) => {
   switch (action.type) {

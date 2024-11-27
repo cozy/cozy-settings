@@ -8,9 +8,9 @@ import Stack from 'cozy-ui/transpiled/react/Stack'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import FormTextHelper from 'cozy-ui/transpiled/react/FormHelperText'
 
-import passwordHelper from 'lib/passwordHelper'
-import CreatePasswordHint from 'components/2FA/CreatePasswordHint'
-import { forceSetPassphrase } from 'components/2FA/helpers'
+import passwordHelper from '@/lib/passwordHelper'
+import CreatePasswordHint from '@/components/2FA/CreatePasswordHint'
+import { forceSetPassphrase } from '@/components/2FA/helpers'
 
 const initialData = {
   passphrase: '',

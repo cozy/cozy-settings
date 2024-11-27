@@ -2,7 +2,7 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import styles from 'styles/index.styl'
+import styles from '@/styles/index.styl'
 
 const LinkRenderer = props => (
   <a

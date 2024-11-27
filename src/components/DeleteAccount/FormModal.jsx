@@ -6,8 +6,8 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
 
-import { sendDeleteAccountReasonEmail } from 'actions/email'
-import { getStackDomain } from 'actions/domUtils'
+import { sendDeleteAccountReasonEmail } from '@/actions/email'
+import { getStackDomain } from '@/actions/domUtils'
 import { sendDeleteAccountRequest } from './helpers'
 
 const DONE = 'done'

@@ -1,4 +1,4 @@
-import styles from 'styles/fields.styl'
+import styles from '@/styles/fields.styl'
 
 import React from 'react'
 import classNames from 'classnames'
@@ -9,7 +9,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 
 const absoluteStyle = {
   position: 'absolute',

@@ -2,10 +2,10 @@ import semver from 'semver'
 
 import flag from 'cozy-flags'
 
-import { COZY_DESKTOP_SOFTWARE_ID } from 'lib/deviceConfigurationHelper'
-import mobileIcon from 'assets/icons/icon-device-phone.svg'
-import browserIcon from 'assets/icons/icon-device-browser.svg'
-import laptopIcon from 'assets/icons/icon-device-laptop.svg'
+import { COZY_DESKTOP_SOFTWARE_ID } from '@/lib/deviceConfigurationHelper'
+import mobileIcon from '@/assets/icons/icon-device-phone.svg'
+import browserIcon from '@/assets/icons/icon-device-browser.svg'
+import laptopIcon from '@/assets/icons/icon-device-laptop.svg'
 
 const deviceKindToIcon = {
   mobile: mobileIcon,

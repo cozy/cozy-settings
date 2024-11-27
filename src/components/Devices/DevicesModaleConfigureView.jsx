@@ -19,7 +19,7 @@ import Radio from 'cozy-ui/transpiled/react/Radios'
 import RadioGroup from 'cozy-ui/transpiled/react/RadioGroup'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { TreeItem, TreeView } from 'components/CozyTreeView'
+import { TreeItem, TreeView } from '@/components/CozyTreeView'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useClient } from 'cozy-client'
@@ -28,8 +28,8 @@ import {
   ROOT_FOLDER_ID,
   updateDirectoriesExclusions,
   useFolders
-} from 'lib/deviceConfigurationHelper'
-import logger from 'lib/logger'
+} from '@/lib/deviceConfigurationHelper'
+import logger from '@/lib/logger'
 
 const isNotSynchronized = (folder, device) =>
   folder.not_synchronized_on != null &&

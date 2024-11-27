@@ -21,21 +21,21 @@ import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
 import flag from 'cozy-flags'
 
-import { DevicesEmpty } from 'components/Devices/DevicesEmpty'
-import { DevicesModaleRevokeView } from 'components/Devices/DevicesModaleRevokeView'
-import DevicesModaleConfigureView from 'components/Devices/DevicesModaleConfigureView'
-import Page from 'components/Page'
-import { PageHeader } from 'components/PageHeader'
+import { DevicesEmpty } from '@/components/Devices/DevicesEmpty'
+import { DevicesModaleRevokeView } from '@/components/Devices/DevicesModaleRevokeView'
+import DevicesModaleConfigureView from '@/components/Devices/DevicesModaleConfigureView'
+import Page from '@/components/Page'
+import { PageHeader } from '@/components/PageHeader'
 import {
   getDeviceIcon,
   canConfigureDevice,
   getSubtitle
-} from 'components/Devices/helpers'
-import { DevicesMoreMenu } from 'components/Devices/DevicesMoreMenu'
-import { DISPLAYED_CLIENTS } from 'lib/deviceConfigurationHelper'
-import { buildDevicesQuery } from 'lib/queries'
-import tableStyles from 'styles/table.styl'
-import { PremiumLink } from 'components/Premium/PremiumLink'
+} from '@/components/Devices/helpers'
+import { DevicesMoreMenu } from '@/components/Devices/DevicesMoreMenu'
+import { DISPLAYED_CLIENTS } from '@/lib/deviceConfigurationHelper'
+import { buildDevicesQuery } from '@/lib/queries'
+import tableStyles from '@/styles/table.styl'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
 
 const DevicesView = () => {
   const { t, f, lang } = useI18n()

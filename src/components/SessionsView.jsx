@@ -13,11 +13,11 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import SessionsViewRow from 'components/SessionsViewRow'
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import tableStyles from 'styles/table.styl'
-import SessionDialog from 'components/SessionsView/SessionDialog'
+import SessionsViewRow from '@/components/SessionsViewRow'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
+import tableStyles from '@/styles/table.styl'
+import SessionDialog from '@/components/SessionsView/SessionDialog'
 
 const SessionsView = ({
   fetchSessions,

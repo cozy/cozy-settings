@@ -1,5 +1,5 @@
 /* eslint-disable promise/always-return */
-import { cozyFetch } from 'actions'
+import { cozyFetch } from '@/actions'
 
 export const REQUEST_EXPORT = 'REQUEST_EXPORT'
 export const REQUEST_EXPORT_FAILURE = 'REQUEST_EXPORT_FAILURE'

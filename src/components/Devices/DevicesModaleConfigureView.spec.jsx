@@ -5,13 +5,13 @@ import cloneDeep from 'lodash/cloneDeep'
 
 import { createMockClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import AppLike from 'test/AppLike'
+import AppLike from '@/test/AppLike'
 
 import {
   ROOT_FOLDER_ID,
   updateDirectoriesExclusions,
   useFolders
-} from 'lib/deviceConfigurationHelper'
+} from '@/lib/deviceConfigurationHelper'
 import DevicesModaleConfigureView from './DevicesModaleConfigureView'
 
 jest.mock('cozy-ui/transpiled/react/Collapse', () => {
@@ -24,8 +24,8 @@ jest.mock('cozy-ui/transpiled/react/deprecated/Alerter', () => ({
   error: jest.fn(),
   success: jest.fn()
 }))
-jest.mock('lib/deviceConfigurationHelper', () => {
-  const original = jest.requireActual('lib/deviceConfigurationHelper') // Step 2.
+jest.mock('@/lib/deviceConfigurationHelper', () => {
+  const original = jest.requireActual('@/lib/deviceConfigurationHelper') // Step 2.
   return {
     ...original,
     updateDirectoriesExclusions: jest.fn(),
