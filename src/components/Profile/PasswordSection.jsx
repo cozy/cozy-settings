@@ -5,7 +5,7 @@ import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import { useHasPassword } from 'hooks/useHasPassword'
+import { useHasPassword } from '@/hooks/useHasPassword'
 
 const PasswordSection = () => {
   const { t } = useI18n()

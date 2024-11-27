@@ -1,6 +1,6 @@
 import React from 'react'
 import Switch from 'cozy-ui/transpiled/react/Switch'
-import Field from 'components/Field'
+import Field from '@/components/Field'
 import UIInput from 'cozy-ui/transpiled/react/Input'
 
 const Input = ({

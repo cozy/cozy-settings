@@ -5,7 +5,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import { buildSettingsInstanceQuery } from 'lib/queries'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 export const ActivationConfirmed = ({ onConfirmed }) => {
   const { t } = useI18n()

@@ -12,10 +12,10 @@ import CozyDevtools from 'cozy-devtools'
 import flag from 'cozy-flags'
 import { BarComponent } from 'cozy-bar'
 
-import Sidebar from 'components/Sidebar'
-import styles from 'styles/index.styl'
-import { initFlags } from 'lib/flags'
-import SettingsRealTimeQueries from 'components/SettingsRealTimeQueries'
+import Sidebar from '@/components/Sidebar'
+import styles from '@/styles/index.styl'
+import { initFlags } from '@/lib/flags'
+import SettingsRealTimeQueries from '@/components/SettingsRealTimeQueries'
 import { AppRouter } from './AppRouter'
 
 initFlags()

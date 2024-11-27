@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/react'
 import flag from 'cozy-flags'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 
-import { TestI18n } from 'test/AppLike'
-import { SubscriptionFlagItem } from 'components/Subscription/SubscriptionFlagItem'
+import { TestI18n } from '@/test/AppLike'
+import { SubscriptionFlagItem } from '@/components/Subscription/SubscriptionFlagItem'
 
 jest.mock('cozy-flags')
 

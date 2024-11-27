@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { PremiumLink } from 'components/Premium/PremiumLink'
-import { usePremium } from 'components/Premium/PremiumProvider'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
+import { usePremium } from '@/components/Premium/PremiumProvider'
 
-jest.mock('components/Premium/PremiumProvider', () => ({
+jest.mock('@/components/Premium/PremiumProvider', () => ({
   usePremium: jest.fn()
 }))
 

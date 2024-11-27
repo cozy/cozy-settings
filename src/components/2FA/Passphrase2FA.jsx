@@ -5,8 +5,8 @@ import Input from 'cozy-ui/transpiled/react/Input'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import settingsConfig from 'config'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
+import settingsConfig from '@/config'
 
 export class Passphrase2FA extends Component {
   constructor(props) {

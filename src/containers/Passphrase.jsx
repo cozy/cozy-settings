@@ -12,8 +12,8 @@ import {
   updatePassphrase2FAFirst,
   updatePassphrase2FASecond,
   updateHint
-} from 'actions/passphrase'
-import PassphraseView from 'components/PassphraseView'
+} from '@/actions/passphrase'
+import PassphraseView from '@/components/PassphraseView'
 
 const mapStateToProps = state => ({
   passphrase: state.passphrase

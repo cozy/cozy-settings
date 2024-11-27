@@ -7,14 +7,14 @@ import { render, fireEvent } from '@testing-library/react'
 import FormModal from './FormModal'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { I18n } from 'cozy-ui/transpiled/react'
-import langEn from 'locales/en.json'
+import langEn from '@/locales/en.json'
 
-jest.mock('actions/domUtils', () => ({
+jest.mock('@/actions/domUtils', () => ({
   getStackDomain: () => 'http://cozy.tools:8080',
   getStackToken: () => 'fake-token'
 }))
 
-jest.mock('actions/email', () => ({
+jest.mock('@/actions/email', () => ({
   sendDeleteAccountReasonEmail: jest.fn()
 }))
 
@@ -38,7 +38,7 @@ describe('FormModal component', () => {
   })
 
   it('should read correctly Cozy Domain on send action ', async () => {
-    const { sendDeleteAccountReasonEmail } = require('actions/email')
+    const { sendDeleteAccountReasonEmail } = require('@/actions/email')
 
     const root = render(
       <BreakpointsProvider>
@@ -53,6 +53,6 @@ describe('FormModal component', () => {
     expect(sendDeleteAccountReasonEmail.mock.calls[0][1]).toEqual(
       expect.stringContaining(mockDomain)
     )
-    jest.dontMock('actions/email')
+    jest.dontMock('@/actions/email')
   })
 })

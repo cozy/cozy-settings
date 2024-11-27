@@ -1,11 +1,11 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
 
-import AppLike from 'test/AppLike'
-import PasswordSection from 'components/Profile/PasswordSection'
-import { useHasPassword } from 'hooks/useHasPassword'
+import AppLike from '@/test/AppLike'
+import PasswordSection from '@/components/Profile/PasswordSection'
+import { useHasPassword } from '@/hooks/useHasPassword'
 
-jest.mock('hooks/useHasPassword', () => ({
+jest.mock('@/hooks/useHasPassword', () => ({
   useHasPassword: jest.fn()
 }))
 

@@ -1,4 +1,4 @@
-import styles from 'styles/passphrase.styl'
+import styles from '@/styles/passphrase.styl'
 
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -14,10 +14,10 @@ import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
 import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
 import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
 
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import PageTitle from 'components/PageTitle'
-import passwordHelper from 'lib/passwordHelper'
-import { useCanAuthWith } from 'hooks/useCanAuthWith'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
+import PageTitle from '@/components/PageTitle'
+import passwordHelper from '@/lib/passwordHelper'
+import { useCanAuthWith } from '@/hooks/useCanAuthWith'
 
 const initialData = {
   currentPassphrase: '',

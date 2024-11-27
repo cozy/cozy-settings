@@ -3,7 +3,7 @@ import { screen, render, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Support } from './Support'
-import AppLike from 'test/AppLike'
+import AppLike from '@/test/AppLike'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

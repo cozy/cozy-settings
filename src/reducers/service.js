@@ -4,7 +4,7 @@ import {
   CREATE_INTENT_SERVICE,
   CREATE_INTENT_SERVICE_SUCCESS,
   CREATE_INTENT_SERVICE_FAILURE
-} from 'actions/services'
+} from '@/actions/services'
 
 export const instance = (state = null, action) => {
   switch (action.type) {

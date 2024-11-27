@@ -1,6 +1,6 @@
 /* global __DEVELOPMENT__ */
 
-import appReducer from 'reducers'
+import appReducer from '@/reducers'
 import thunkMiddleware from 'redux-thunk'
 import {
   compose,

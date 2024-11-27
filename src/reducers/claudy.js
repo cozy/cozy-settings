@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 
-import { FETCH_DEVICES_SUCCESS } from 'actions'
+import { FETCH_DEVICES_SUCCESS } from '@/actions'
 
 import {
   FETCH_CLAUDY_INFOS,
   FETCH_CLAUDY_INFOS_SUCCESS,
   FETCH_CLAUDY_INFOS_FAILURE
-} from 'actions/services'
+} from '@/actions/services'
 
 export const actions = (state = [], action) => {
   switch (action.type) {

@@ -3,8 +3,8 @@ import React, { useMemo, useState } from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useQuery, useMutation } from 'cozy-client'
 
-import Input from 'components/Input'
-import { buildSettingsInstanceQuery } from 'lib/queries'
+import Input from '@/components/Input'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const PublicNameSection = () => {
   const { t } = useI18n()

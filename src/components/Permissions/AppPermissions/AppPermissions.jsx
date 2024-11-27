@@ -15,22 +15,22 @@ import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
-import withAllLocales from 'lib/withAllLocales'
-import AccessRightsSection from 'components/Permissions/AppPermissions/AccessRightsSection'
-import LatestOutgoingDataHistory from 'components/Permissions/AppPermissions/LatestOutgoingDataHistory'
+import withAllLocales from '@/lib/withAllLocales'
+import AccessRightsSection from '@/components/Permissions/AppPermissions/AccessRightsSection'
+import LatestOutgoingDataHistory from '@/components/Permissions/AppPermissions/LatestOutgoingDataHistory'
 import {
   filterPermissions,
   sortPermissionsByName,
   completeAppPermission,
   filterRemoteRequests
-} from 'components/Permissions/helpers/permissionsHelper'
-import { buildRemoteRequestsQuery } from 'lib/queries'
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import { UninstallButton } from 'components/Permissions/AppPermissions/UninstallButton'
-import { AboutButton } from 'components/Permissions/AppPermissions/AboutButton'
-import { OpenappButton } from 'components/Permissions/AppPermissions/OpenappButton'
-import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
+} from '@/components/Permissions/helpers/permissionsHelper'
+import { buildRemoteRequestsQuery } from '@/lib/queries'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
+import { UninstallButton } from '@/components/Permissions/AppPermissions/UninstallButton'
+import { AboutButton } from '@/components/Permissions/AppPermissions/AboutButton'
+import { OpenappButton } from '@/components/Permissions/AppPermissions/OpenappButton'
+import useAppsOrKonnectorsBySlug from '@/components/Permissions/hooks/useAppsOrKonnectorsBySlug'
 
 const styles = {
   actionButtons: {

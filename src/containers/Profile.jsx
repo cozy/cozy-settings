@@ -5,9 +5,9 @@ import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 
-import { requestExport, fetchExportData } from 'actions/export'
-import { precheckImport, submitImport } from 'actions/import'
-import ProfileView from 'components/Profile/ProfileView'
+import { requestExport, fetchExportData } from '@/actions/export'
+import { precheckImport, submitImport } from '@/actions/import'
+import ProfileView from '@/components/Profile/ProfileView'
 
 const mapStateToProps = state => ({
   passphrase: state.passphrase,

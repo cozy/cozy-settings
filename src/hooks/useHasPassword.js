@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useClient } from 'cozy-client'
 import { hasPassword as computeHasPassword } from 'cozy-client/dist/models/user'
 
-import { SETTINGS_DOCTYPE } from 'doctypes'
+import { SETTINGS_DOCTYPE } from '@/doctypes'
 
 export const useHasPassword = () => {
   const client = useClient()

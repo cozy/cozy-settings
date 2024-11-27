@@ -5,7 +5,7 @@ import {
   REMOTE_REQUEST_DOCTYPES,
   SETTINGS_DOCTYPE,
   OAUTH_CLIENTS_DOCTYPE
-} from 'doctypes'
+} from '@/doctypes'
 
 const FIVE_MINUTES = 5 * 60 * 1000
 

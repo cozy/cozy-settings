@@ -18,15 +18,15 @@ import { useInstanceInfo } from 'cozy-client'
 import JusticeIcon from 'cozy-ui/transpiled/react/Icons/Justice'
 import { makeDiskInfos } from 'cozy-client/dist/models/instance'
 
-import styles from 'components/Sidebar.styl'
-import { MenuItemAnchor } from 'components/menu/MenuItemAnchor'
-import { MenuItemButton } from 'components/menu/MenuItemButton'
-import { MenuItemNavLink } from 'components/menu/MenuItemNavLink'
-import { MenuList } from 'components/menu/MenuList'
+import styles from '@/components/Sidebar.styl'
+import { MenuItemAnchor } from '@/components/menu/MenuItemAnchor'
+import { MenuItemButton } from '@/components/menu/MenuItemButton'
+import { MenuItemNavLink } from '@/components/menu/MenuItemNavLink'
+import { MenuList } from '@/components/menu/MenuList'
 import { isFlagshipApp } from 'cozy-device-helper'
-import { routes } from 'constants/routes'
-import { useLogout } from 'hooks/useLogout'
-import { SubscriptionMenuItem } from 'components/Subscription/SubscriptionMenuItem'
+import { routes } from '@/constants/routes'
+import { useLogout } from '@/hooks/useLogout'
+import { SubscriptionMenuItem } from '@/components/Subscription/SubscriptionMenuItem'
 
 export const Sidebar = (): JSX.Element => {
   const logout = useLogout()

@@ -9,7 +9,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import {
   isFlagDisabled,
   computeAccountsLabel
-} from 'components/Subscription/helper'
+} from '@/components/Subscription/helper'
 
 /**
  * Display the number of konnector accounts authorised for the user

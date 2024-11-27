@@ -6,8 +6,8 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import TextField from 'cozy-ui/transpiled/react/TextField'
 import { useClient, useQuery } from 'cozy-client'
 
-import emailHelper from 'lib/emailHelper'
-import { buildSettingsInstanceQuery } from 'lib/queries'
+import emailHelper from '@/lib/emailHelper'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const EmailModal = ({ onClose, onSuccess, passwordHash, skipConfirmation }) => {
   const client = useClient()

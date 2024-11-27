@@ -2,9 +2,9 @@ import React from 'react'
 
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import Sidebar from 'components/Sidebar'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
+import Sidebar from '@/components/Sidebar'
 
 export const Menu = (): JSX.Element => {
   const { t } = useI18n()

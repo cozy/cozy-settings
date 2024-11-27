@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Q } from 'cozy-client'
 
-import logger from 'lib/logger'
+import logger from '@/lib/logger'
 
 export const FILES_DOCTYPE = 'io.cozy.files'
 export const OAUTH_CLIENTS_DOCTYPE = 'io.cozy.oauth.clients'

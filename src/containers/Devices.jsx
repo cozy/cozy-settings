@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { DevicesView } from 'components/Devices/DevicesView'
+import { DevicesView } from '@/components/Devices/DevicesView'
 
 const mapStateToProps = state => ({
   openDeviceRevokeModale: state.openDeviceRevokeModale,
