@@ -1,5 +1,3 @@
-/* global __DEVELOPMENT__ */
-
 import appReducer from '@/reducers'
 import thunkMiddleware from 'redux-thunk'
 import {
@@ -7,11 +5,12 @@ import {
   createStore as reduxCreateStore,
   applyMiddleware
 } from 'redux'
+import flag from 'cozy-flags'
 
 const createStore = client => {
   // Enable Redux dev tools
   const composeEnhancers =
-    (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+    (flag('debug') && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
   const middlewares = [thunkMiddleware]
 
