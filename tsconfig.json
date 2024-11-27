@@ -1,9 +1,7 @@
 {
-  "include": ["./src/**/*"],
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
@@ -16,6 +14,10 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "es5",
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/test/*": ["./test/*"]
+    }
   }
 }

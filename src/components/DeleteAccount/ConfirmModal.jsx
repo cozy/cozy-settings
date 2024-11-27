@@ -6,7 +6,7 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import PasswordField from 'cozy-ui/transpiled/react/PasswordField'
 
-import useCheckPassword from 'hooks/useCheckPassword'
+import useCheckPassword from '@/hooks/useCheckPassword'
 
 /**
  * Password confirmation for account deletion requests

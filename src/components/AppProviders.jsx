@@ -13,7 +13,7 @@ import {
 } from 'cozy-ui/transpiled/react/styles'
 import { BarProvider } from 'cozy-bar'
 
-import { PremiumProvider } from 'components/Premium/PremiumProvider'
+import { PremiumProvider } from '@/components/Premium/PremiumProvider'
 
 /*
 With MUI V4, it is possible to generate deterministic class names.
@@ -37,7 +37,9 @@ const AppProviders = ({ client, store, children }) => {
       <StylesProvider generateClassName={generateClassName}>
         <CozyProvider client={client}>
           <Provider store={store}>
-            <EnhancedI18n dictRequire={lang => require(`locales/${lang}.json`)}>
+            <EnhancedI18n
+              dictRequire={lang => require(`@/locales/${lang}.json`)}
+            >
               <BreakpointsProvider>
                 <CozyTheme className="u-w-100">
                   <BarProvider>

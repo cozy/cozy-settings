@@ -4,13 +4,13 @@ import flag from 'cozy-flags'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
-import { STACK_DOMAIN } from 'actions'
+import { STACK_DOMAIN } from '@/actions'
 import {
   BlockingSubscriptionModal,
   getBlockingSubscriptionVendor,
   hasBlockingSubscription
-} from 'components/BlockingSubscriptionModal'
-import { buildExternalTiesQuery } from 'lib/queries'
+} from '@/components/BlockingSubscriptionModal'
+import { buildExternalTiesQuery } from '@/lib/queries'
 import { useClient } from 'cozy-client'
 
 const MoveButton = () => {

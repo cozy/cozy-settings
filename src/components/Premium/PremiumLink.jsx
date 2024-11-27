@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
 
-import { usePremium } from 'components/Premium/PremiumProvider'
+import { usePremium } from '@/components/Premium/PremiumProvider'
 
 /**
  * Button to redirect to the plan page

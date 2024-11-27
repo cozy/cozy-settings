@@ -5,7 +5,7 @@ import { useClient, useQuery, useMutation } from 'cozy-client'
 import { useWebviewIntent } from 'cozy-intent'
 import { isFlagshipApp } from 'cozy-device-helper'
 
-import Select from 'components/Select'
+import Select from '@/components/Select'
 import {
   formatOptions,
   getSelectedOption,
@@ -17,7 +17,7 @@ import {
   buildSettingsInstanceQuery,
   buildAppsQuery,
   buildHomeSettingsQuery
-} from 'lib/queries'
+} from '@/lib/queries'
 
 const DefaultRedirectionSection = () => {
   const { t } = useI18n()

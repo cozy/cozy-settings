@@ -1,5 +1,5 @@
 import 'cozy-ui/transpiled/react/stylesheet.css'
-import 'styles/services/index'
+import '@/styles/services/index'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
@@ -12,7 +12,7 @@ import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoi
 import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 
-import IntentService from 'containers/IntentService'
+import IntentService from '@/containers/IntentService'
 
 import {
   StylesProvider,
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <StylesProvider generateClassName={generateClassName}>
       <CozyProvider client={cozyClient}>
         <Provider store={store}>
-          <I18n lang={lang} dictRequire={lang => require(`locales/${lang}`)}>
+          <I18n lang={lang} dictRequire={lang => require(`@/locales/${lang}`)}>
             <BreakpointsProvider>
               <CozyTheme className="u-w-100">
                 <div className="set-services">

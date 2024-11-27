@@ -8,8 +8,8 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import { useQuery } from 'cozy-client'
 
-import EmailIllustration from 'assets/icons/email-illustration.svg'
-import { buildSettingsInstanceQuery } from 'lib/queries'
+import EmailIllustration from '@/assets/icons/email-illustration.svg'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 /**
  * @param {string} onClose - Callback when the user performs an action on the modal

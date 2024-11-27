@@ -2,9 +2,9 @@
 import Intents from 'cozy-interapp'
 import { Q } from 'cozy-client'
 
-import CLAUDY_ACTIONS from 'config/claudyActions'
+import CLAUDY_ACTIONS from '@/config/claudyActions'
 
-import { cozyFetch, fetchDevices } from 'actions'
+import { cozyFetch, fetchDevices } from '@/actions'
 
 export const FETCH_CLAUDY_INFOS = 'FETCH_CLAUDY_INFOS'
 export const FETCH_CLAUDY_INFOS_SUCCESS = 'FETCH_CLAUDY_INFOS_SUCCESS'
