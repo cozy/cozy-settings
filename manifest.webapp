@@ -2,7 +2,7 @@
   "name": "Settings",
   "name_prefix": "Cozy",
   "slug": "settings",
-  "icon": "app-icon.svg",
+  "icon": "assets/app-icon.svg",
   "source": "https://github.com/cozy/cozy-settings",
   "editor": "Cozy",
   "developer": {
