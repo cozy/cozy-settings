@@ -1,5 +1,5 @@
 import 'cozy-ui/transpiled/react/stylesheet.css'
-import '@/styles/services/index'
+import '@/styles/services/index.styl'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
