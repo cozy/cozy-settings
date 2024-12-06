@@ -73,6 +73,9 @@ class Import extends Component {
     return (
       <>
         <div>
+          <Typography variant="body1" gutterBottom>
+            {t('ProfileView.import.label')}
+          </Typography>
           <Buttons
             onClick={this.toggleModal}
             label={t('ProfileView.import.link')}

@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import flag from 'cozy-flags'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import { STACK_DOMAIN } from 'actions'
 import {
@@ -56,6 +57,9 @@ const MoveButton = () => {
         className="u-mv-half"
         ref={form}
       >
+        <Typography variant="body1" gutterBottom>
+          {t('ProfileView.move.label')}
+        </Typography>
         <Buttons
           label={t('ProfileView.move.button')}
           variant="secondary"
