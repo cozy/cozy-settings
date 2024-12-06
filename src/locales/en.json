@@ -190,11 +190,12 @@
       "label": "Authorize Cozy Cloud to get anonymously your usage data to improve our product."
     },
     "move": {
-      "button": "Move my Cozy"
+      "button": "Move my Cozy",
+      "label": "Change your Cozy without losing your data"
     },
     "export": {
       "title": "My data",
-      "label": "Cozy is committed to provide you all your data that it stores about you:",
+      "label": "Save all your Cozy data",
       "link": "Export my Cozy",
       "server_error": "Something went wrong, please try again or contact us.",
       "fetch_error": "Something went wrong when fetching your export data. Please try again or contact us.",
@@ -215,6 +216,7 @@
     },
     "import": {
       "link": "Import a Cozy",
+      "label": "Import your data coming from another Cozy",
       "server_error": "Something went wrong, pleasy try again or contact us.",
       "invalid_url": "The link does not seem to correspond to the download link of a Cozy.",
       "quota_too_small": "The storage space of your Cozy is insufficient to import all your data. 2 solutions are available: increase the storage space of your Cozy or delete the data not required for import.",

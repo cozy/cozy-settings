@@ -190,11 +190,12 @@
       "label": "Autoriser Cozy à récupérer anonymement vos usages pour améliorer notre produit."
     },
     "move": {
-      "button": "Déménager mon Cozy"
+      "button": "Déménager mon Cozy",
+      "label": "Changez de Cozy sans perdre vos données"
     },
     "export": {
       "title": "Mes données",
-      "label": "Cozy s'engage à vous fournir la totalité des informations qu'il stocke sur vous :",
+      "label": "Sauvegardez toutes les données de votre Cozy",
       "link": "Exporter mon Cozy",
       "server_error": "Une erreur s'est produite. Veuillez recommencer ou nous contacter.",
       "fetch_error": "Une erreur en récupérant vos données. Veuillez recommencer ou nous contacter.",
@@ -215,6 +216,7 @@
     },
     "import": {
       "link": "Importer un Cozy",
+      "label": "Importez les données provenant d'un autre Cozy",
       "server_error": "Une erreur s'est produite. Veuillez recommencer ou nous contacter.",
       "invalid_url": "Le lien ne semble pas correspondre au lien de téléchargement d'un Cozy.",
       "quota_too_small": "L'espace de stockage de votre Cozy est insuffisant pour importer l'ensemble de vos données. 2 solutions s'offrent : augmenter l'espace de stockage de votre Cozy ou supprimer les données non nécessaires à l'import.",
