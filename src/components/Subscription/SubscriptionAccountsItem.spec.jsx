@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react'
 
 import flag from 'cozy-flags'
 
-import { TestI18n } from 'test/AppLike'
-import { SubscriptionAccountsItem } from 'components/Subscription/SubscriptionAccountsItem'
+import { TestI18n } from '@/test/AppLike'
+import { SubscriptionAccountsItem } from '@/components/Subscription/SubscriptionAccountsItem'
 
 jest.mock('cozy-flags')
 

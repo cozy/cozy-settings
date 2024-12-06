@@ -4,11 +4,11 @@ import compose from 'lodash/flowRight'
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { fetchClaudyInfos, createIntentService } from 'actions/services'
-import { fetchInfos } from 'actions'
-import { sendMessageToSupport } from 'actions/email'
+import { fetchClaudyInfos, createIntentService } from '@/actions/services'
+import { fetchInfos } from '@/actions'
+import { sendMessageToSupport } from '@/actions/email'
 
-import IntentView from 'components/IntentView'
+import IntentView from '@/components/IntentView'
 
 const mapStateToProps = state => ({
   claudy: state.claudy,

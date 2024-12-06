@@ -9,9 +9,9 @@ import Textarea from 'cozy-ui/transpiled/react/Textarea'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
 
-import { sendMessageToSupport } from 'actions/email'
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
+import { sendMessageToSupport } from '@/actions/email'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
 import styles from './support.styl'
 
 export const Support = ({

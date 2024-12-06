@@ -5,11 +5,11 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useClient } from 'cozy-client'
 
-import ActivationConfirmation from 'components/2FA/ActivationConfirmation'
-import TwoFactorCode from 'components/2FA/TwoFactorCode'
-import ActivationConfirmed from 'components/2FA/ActivationConfirmed'
-import CreatePassword from 'components/2FA/CreatePassword'
-import { useHasPassword } from 'hooks/useHasPassword'
+import ActivationConfirmation from '@/components/2FA/ActivationConfirmation'
+import TwoFactorCode from '@/components/2FA/TwoFactorCode'
+import ActivationConfirmed from '@/components/2FA/ActivationConfirmed'
+import CreatePassword from '@/components/2FA/CreatePassword'
+import { useHasPassword } from '@/hooks/useHasPassword'
 
 /**
  * Activation of 2FA requires a 3-step process with an additional step if the user has not configured a password.

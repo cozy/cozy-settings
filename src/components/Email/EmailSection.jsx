@@ -9,7 +9,7 @@ import AlertTitle from 'cozy-ui/transpiled/react/AlertTitle'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Snackbar from 'cozy-ui/transpiled/react/Snackbar'
 
-import { buildSettingsInstanceQuery } from 'lib/queries'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const EmailSection = () => {
   const { t } = useI18n()

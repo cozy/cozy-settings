@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom'
 
 import { getAppDisplayName } from 'cozy-client/dist/models/applications'
 
-import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
+import useAppsOrKonnectorsBySlug from '@/components/Permissions/hooks/useAppsOrKonnectorsBySlug'
 
-import PermissionDetailsModal from 'components/Permissions/PermissionDetails/PermissionDetailsModal'
+import PermissionDetailsModal from '@/components/Permissions/PermissionDetails/PermissionDetailsModal'
 
 const PermissionDetails: FunctionComponent = () => {
   const { slug, permissionType } = useParams()

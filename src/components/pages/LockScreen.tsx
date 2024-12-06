@@ -11,12 +11,12 @@ import { getFlagshipMetadata, isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useWebviewIntent, WebviewService } from 'cozy-intent'
 
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
-import logger from 'lib/logger'
-import { MenuItemSwitch } from 'components/menu/MenuItemSwitch'
-import { BiometryDeniedDialog } from 'components/dialogs/BiometryDeniedDialog'
-import { PinCodeDialog } from 'components/dialogs/PinCodeDialog'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
+import logger from '@/lib/logger'
+import { MenuItemSwitch } from '@/components/menu/MenuItemSwitch'
+import { BiometryDeniedDialog } from '@/components/dialogs/BiometryDeniedDialog'
+import { PinCodeDialog } from '@/components/dialogs/PinCodeDialog'
 
 const handleChange = async (
   dispatch: React.Dispatch<React.SetStateAction<boolean>>,

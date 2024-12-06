@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react'
 
 import flag from 'cozy-flags'
 
-import Sidebar from 'components/Sidebar'
-import AppLike from 'test/AppLike'
+import Sidebar from '@/components/Sidebar'
+import AppLike from '@/test/AppLike'
 
 const mockFlag = flag as jest.MockedFunction<typeof flag>
 
@@ -17,7 +17,7 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock('cozy-flags')
 
-jest.mock('components/Premium/PremiumProvider', () => ({
+jest.mock('@/components/Premium/PremiumProvider', () => ({
   usePremium: jest.fn(() => ({ isPremium: false }))
 }))
 

@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import React from 'react'
 import AppList from './AppList'
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import { TestI18n } from 'test/AppLike'
+import { TestI18n } from '@/test/AppLike'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 jest.mock('react-router-dom', () => {
@@ -18,7 +18,7 @@ jest.mock('react-router-dom', () => {
 
 jest.mock('cozy-client')
 
-jest.mock('components/Page', () => {
+jest.mock('@/components/Page', () => {
   // eslint-disable-next-line react/display-name
   return ({ narrow, children }) => (
     <div data-testid="page" data-narrow={narrow}>
@@ -27,7 +27,7 @@ jest.mock('components/Page', () => {
   )
 })
 
-jest.mock('components/PageTitle', () => {
+jest.mock('@/components/PageTitle', () => {
   // eslint-disable-next-line react/display-name
   return ({ children }) => <div data-testid="page-title">{children}</div>
 })

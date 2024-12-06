@@ -10,8 +10,8 @@ import TextField from 'cozy-ui/transpiled/react/TextField'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import { useTheme } from 'cozy-ui/transpiled/react/styles'
 import { useCozyTheme } from 'cozy-ui/transpiled/react/providers/CozyTheme'
-import Page from 'components/Page'
-import PageTitle from 'components/PageTitle'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
 
 const AppearanceView = ({ instance }) => {
   const { isMobile } = useBreakpoints()

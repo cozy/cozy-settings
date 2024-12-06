@@ -1,4 +1,4 @@
-import tableStyles from 'styles/table.styl'
+import tableStyles from '@/styles/table.styl'
 
 import React from 'react'
 import { UAParser } from 'ua-parser-js'

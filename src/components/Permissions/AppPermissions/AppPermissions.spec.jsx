@@ -11,9 +11,9 @@ import {
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
-import AppPermissions from 'components/Permissions/AppPermissions/AppPermissions'
-import useAppsOrKonnectorsBySlug from 'components/Permissions/hooks/useAppsOrKonnectorsBySlug'
-import { completeAppPermission } from 'components/Permissions/helpers/permissionsHelper'
+import AppPermissions from '@/components/Permissions/AppPermissions/AppPermissions'
+import useAppsOrKonnectorsBySlug from '@/components/Permissions/hooks/useAppsOrKonnectorsBySlug'
+import { completeAppPermission } from '@/components/Permissions/helpers/permissionsHelper'
 
 jest.mock('cozy-ui/transpiled/react/providers/I18n/withLocales', () => {
   return () => Component => {
@@ -71,7 +71,7 @@ jest.mock('cozy-client', () => ({
   useClient: jest.fn()
 }))
 
-jest.mock('components/Page', () => {
+jest.mock('@/components/Page', () => {
   return ({ narrow, children }) => (
     <div data-testid="page" data-narrow={narrow}>
       {children}
@@ -79,7 +79,7 @@ jest.mock('components/Page', () => {
   )
 })
 
-jest.mock('components/PageTitle', () => {
+jest.mock('@/components/PageTitle', () => {
   return ({ children }) => <div data-testid="pageTitle">{children}</div>
 })
 jest.mock('cozy-ui/transpiled/react/Spinner', () => {
