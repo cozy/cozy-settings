@@ -10,7 +10,7 @@
     "watch": "rsbuild build --watch --mode development",
     "analyze": "RSDOCTOR=true yarn build",
     "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --prepublish downcloud --postpublish mattermost",
-    "test": "cs test"
+    "test": "env NODE_ENV='test' jest"
   },
   "repository": {
     "type": "git",
