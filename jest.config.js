@@ -22,6 +22,6 @@ module.exports = {
     __TARGET__: 'browser',
     cozy: {}
   },
-  testEnvironment: '<rootDir>/test/jestLib/custom-test-env.js',
+  testEnvironment: 'jsdom',
   resolver: '<rootDir>/test/jestLib/resolver.js'
 }
