@@ -15,7 +15,7 @@ describe('emailStatus reducer', () => {
   })
 
   it('should send an email', () => {
-    let state = emailStatusReducer(state, { type: SEND_EMAIL })
+    let state = emailStatusReducer(undefined, { type: SEND_EMAIL })
     expect(state).toEqual({
       error: null,
       isSending: true,
@@ -31,7 +31,7 @@ describe('emailStatus reducer', () => {
   })
 
   it('should handle errors', () => {
-    let state = emailStatusReducer(state, { type: SEND_EMAIL })
+    let state = emailStatusReducer(undefined, { type: SEND_EMAIL })
     expect(state).toEqual({
       error: null,
       isSending: true,
