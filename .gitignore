@@ -23,3 +23,6 @@ desktop.ini
 
 # Default
 !.gitkeep
+
+# SWC
+.swc

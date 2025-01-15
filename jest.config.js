@@ -17,6 +17,35 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   transformIgnorePatterns: ['node_modules/(?!cozy-ui)/'],
+  transform: {
+    '\\.(js|jsx|mjs)$': [
+      '@swc/jest',
+      {
+        jsc: {
+          experimental: {
+            plugins: [['swc_mut_cjs_exports', {}]]
+          },
+          parser: {
+            jsx: true
+          }
+        }
+      }
+    ],
+    '\\.(ts|tsx)$': [
+      '@swc/jest',
+      {
+        jsc: {
+          experimental: {
+            plugins: [['swc_mut_cjs_exports', {}]]
+          },
+          parser: {
+            syntax: 'typescript',
+            tsx: true
+          }
+        }
+      }
+    ]
+  },
   globals: {
     __ALLOW_HTTP__: false,
     __TARGET__: 'browser',
