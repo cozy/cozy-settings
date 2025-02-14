@@ -6,7 +6,7 @@ import { makeDiskInfos } from 'cozy-client/dist/models/instance'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useInstanceInfo } from 'cozy-client'
 
-import styles from 'styles/storage.styl'
+import styles from '@/styles/storage.styl'
 
 /**
  * Show remaining disk space with a progress bar

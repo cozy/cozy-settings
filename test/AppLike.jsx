@@ -7,7 +7,7 @@ import { I18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { WebviewIntentProvider } from 'cozy-intent'
 import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
 
-import en from 'locales/en.json'
+import en from '@/locales/en.json'
 
 export const TestI18n = ({ children }) => {
   return (

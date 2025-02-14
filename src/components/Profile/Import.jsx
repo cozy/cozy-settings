@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 
-import { STACK_DOMAIN } from 'actions'
+import { STACK_DOMAIN } from '@/actions'
 
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import TextField from 'cozy-ui/transpiled/react/TextField'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 
 import {
   IllustrationDialog,
   ConfirmDialog
 } from 'cozy-ui/transpiled/react/CozyDialogs'
 
-const importImage = require('assets/images/import-cozy.svg')
+const importImage = require('@/assets/images/import-cozy.svg')
 
 class Import extends Component {
   constructor(props) {

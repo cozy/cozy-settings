@@ -1,26 +1,50 @@
 {
     "baseDir": "./build",
+    "pathLabels": {
+      "chunkId": "[\\d-]+"
+    },
     "files": [
         {
-            "path": "app/settings.<hash>.js"
+        "path": "intent/static/js/<chunkId>.<hash>.js"
         },
         {
-            "path": "intents/settings.<hash>.js"
+        "path": "intent/static/js/cozy.<hash>.js"
         },
         {
-            "path": "vendors/settings.<hash>.js"
+        "path": "intent/static/js/intents.<hash>.js"
         },
         {
-            "path": "img/*.<hash>.svg"
+        "path": "intent/static/js/lib-react.<hash>.js"
         },
         {
-            "path": "app-settings.<hash>.min.css"
+        "path": "intent/static/css/cozy.<hash>.css"
         },
         {
-            "path": "intents-settings.<hash>.min.css"
+        "path": "intent/static/css/intents.<hash>.css"
         },
         {
-            "path": "vendors-settings.<hash>.min.css"
+        "path": "static/js/<chunkId>.<hash>.js"
+        },
+        {
+        "path": "static/js/cozy.<hash>.js"
+        },
+        {
+        "path": "static/js/main.<hash>.js"
+        },
+        {
+        "path": "static/js/lib-react.<hash>.js"
+        },
+        {
+        "path": "static/js/lib-router.<hash>.js"
+        },
+        {
+        "path": "static/css/cozy.<hash>.css"
+        },
+        {
+        "path": "static/css/main.<hash>.css"
+        },
+        {
+        "path": "static/svg/*.<hash>.svg"
         }
     ],
     "groups": [
@@ -31,7 +55,7 @@
             "path": "**/*.css"
         },
         {
-            "path": "img/*.*"
+            "path": "**/*.{png,svg,ico}"
         }
     ],
     "reportOutput": ["github"]

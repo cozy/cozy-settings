@@ -1,4 +1,4 @@
-import { useCanAuthWith } from 'hooks/useCanAuthWith'
+import { useCanAuthWith } from '@/hooks/useCanAuthWith'
 import { renderHook } from '@testing-library/react'
 import { useClient } from 'cozy-client'
 import flag from 'cozy-flags'

@@ -1,7 +1,7 @@
 import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import { UseQueryReturnValue } from 'cozy-client/types/types'
 
-import { buildAppsQuery, buildKonnectorsQuery } from 'lib/queries'
+import { buildAppsQuery, buildKonnectorsQuery } from '@/lib/queries'
 
 interface useAppsOrKonnectorsReturns {
   isResultLoading: boolean

@@ -4,8 +4,8 @@ import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 
-import ReactMarkdownWrapper from 'components/ReactMarkdownWrapper'
-import { PremiumLink } from 'components/Premium/PremiumLink'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
 
 const BlockingSubscriptionModal = ({ onClose, onResume, reason, vendor }) => {
   const { t } = useI18n()

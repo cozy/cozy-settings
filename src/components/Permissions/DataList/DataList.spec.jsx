@@ -29,7 +29,7 @@ jest.mock('react-router-dom', () => {
 
 jest.mock('cozy-client')
 
-jest.mock('components/Page', () => {
+jest.mock('@/components/Page', () => {
   // eslint-disable-next-line react/display-name
   return ({ narrow, children }) => (
     <div data-testid="page" data-narrow={narrow}>
@@ -38,7 +38,7 @@ jest.mock('components/Page', () => {
   )
 })
 
-jest.mock('components/PageTitle', () => ({ children }) => (
+jest.mock('@/components/PageTitle', () => ({ children }) => (
   <div data-testid="page-title">{children}</div>
 ))
 

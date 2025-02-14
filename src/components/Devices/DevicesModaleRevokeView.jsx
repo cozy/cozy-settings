@@ -11,7 +11,7 @@ import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import logger from 'lib/logger'
+import logger from '@/lib/logger'
 
 const DevicesModaleRevokeView = ({ device, cancelAction, onDeviceRevoked }) => {
   const { t } = useI18n()
