@@ -180,6 +180,11 @@
       "title": "Nom d'usage",
       "label": "Votre nom d'usage est utilisé lorsque vous partagez des fichiers avec d'autres utilisateurs de Cozy."
     },
+    "phone_number": {
+      "title": "Numéro de téléphone",
+      "label": "Votre numéro de téléphone est utilisé pour vous envoyer des notifications par SMS.",
+      "invalid": "Le numéro de téléphone que vous avez entré ne semble pas correct."
+    },
     "default_redirection": {
       "title": "Écran d'accueil",
       "label": "C’est le premier écran que vous verrez en ouvrant votre Cozy.",

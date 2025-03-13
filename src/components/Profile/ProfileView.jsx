@@ -19,6 +19,7 @@ import TrackingSection from 'components/Profile/TrackingSection'
 import PasswordSection from 'components/Profile/PasswordSection'
 import EmailSection from 'components/Email/EmailSection'
 import { PublicNameSection } from 'components/Profile/PublicNameSection'
+import { PhoneNumberSection } from 'components/Profile/PhoneNumberSection'
 import { hasQueryBeenLoaded, useQuery } from 'cozy-client'
 import { buildSettingsInstanceQuery } from 'lib/queries'
 
@@ -50,6 +51,7 @@ const ProfileView = ({
           <Stack spacing="l">
             <EmailSection />
             <PublicNameSection />
+            <PhoneNumberSection />
             <PasswordSection />
             <TwoFA />
             <LanguageSection />
