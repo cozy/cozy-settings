@@ -146,6 +146,11 @@
       "title": "Benutzername",
       "label": "Dein Benutzername wird angezeigt, wenn du Dateien mit Cozy-Benutzern teilst."
     },
+    "phone_number": {
+      "title": "Telefonnummer",
+      "label": "Deine Telefonnummer wird verwendet, um dich zu benachrichtigen, wenn du dein Passwort vergisst.",
+      "invalid": "Die Telefonnummer fühlt sich nicht richtig an."
+    },
     "tracking": {
       "title": "Hilf uns, unser Produkt zu verbessern",
       "label": "Autorisiere Cozy Cloud, anonyme Nutzungsdaten zu sammeln, um unser Produkt zu verbessern."

@@ -177,6 +177,11 @@
       "title": "Gebruikersnaam",
       "label": "Je gebruikersnaam wordt getoond als je bestanden deelt met Cozy-gebruikers."
     },
+    "phone_number": {
+      "title": "Telefoonnummer",
+      "label": "Je telefoonnummer wordt gebruikt voor tweestapsverificatie en om je te informeren over belangrijke gebeurtenissen.",
+      "invalid": "Dit telefoonnummer is ongeldig."
+    },
     "default_redirection": {
       "title": "Voorpagina",
       "label": "Dit is de pagina die je ziet zodra je Cozy opent.",

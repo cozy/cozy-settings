@@ -180,6 +180,11 @@
       "title": "Username",
       "label": "Your username will be displayed when you share files with Cozy users."
     },
+    "phone_number": {
+      "title": "Phone number",
+      "label": "Your phone number will be used to send you notifications and to enable you to recover your password.",
+      "invalid": "The phone number is invalid"
+    },
     "default_redirection": {
       "title": "Home screen",
       "label": "This is the first screen you will see when you open your Cozy.",
