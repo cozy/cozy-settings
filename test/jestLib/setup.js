@@ -16,6 +16,10 @@ jest.mock('../../src/actions/domUtils.js', () => ({
   getStackToken: () => 'http://test.mycozy.cloud'
 }))
 
+jest.mock('cozy-dataproxy-lib', () => ({
+  DataProxyProvider: ({ children }) => children
+}))
+
 // polyfill for requestAnimationFrame
 /* istanbul ignore next */
 global.requestAnimationFrame = cb => {
