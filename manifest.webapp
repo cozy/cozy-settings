@@ -47,6 +47,11 @@
       "type": "io.cozy.apps",
       "verbs": ["GET", "POST", "PUT"]
     },
+    "contacts": {
+      "description": "Required by the cozy-bar to display contacts",
+      "type": "io.cozy.contacts",
+      "verbs": ["GET"]
+    },
      "konnectors": {
       "description": "Required to get the list of konnectors",
       "type": "io.cozy.konnectors",

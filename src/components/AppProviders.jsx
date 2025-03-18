@@ -2,6 +2,12 @@ import React from 'react'
 import { HashRouter } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
 import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
+import {
+  FILES_DOCTYPE,
+  CONTACTS_DOCTYPE,
+  APPS_DOCTYPE
+} from '@/doctypes'
+import { DataProxyProvider } from 'cozy-dataproxy-lib'
 
 import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
@@ -44,11 +50,15 @@ const AppProviders = ({ client, store, children }) => {
               <BreakpointsProvider>
                 <AlertProvider>
                   <CozyTheme className="u-w-100">
+                  <DataProxyProvider options={{
+                doctypes: [FILES_DOCTYPE, CONTACTS_DOCTYPE, APPS_DOCTYPE]
+              }}>
                     <BarProvider>
                       <PremiumProvider>
                         <HashRouter>{children}</HashRouter>
                       </PremiumProvider>
                     </BarProvider>
+                    </DataProxyProvider>
                   </CozyTheme>
                 </AlertProvider>
               </BreakpointsProvider>
