@@ -309,7 +309,7 @@
     "head_actions": "Actions",
     "revoke": "révoquer",
     "configure": "configurer",
-    "sync_date_format": "D MMM YYYY"
+    "sync_date_format": "d LLL yyyy"
   },
   "StorageView": {
     "title": "Stockage",
@@ -321,7 +321,7 @@
   },
   "SessionsView": {
     "title": "Historique de connexions web",
-    "sync_date_format": "D MMM YYYY",
+    "sync_date_format": "d LLL yyyy",
     "delete": "Déconnecter toutes mes sessions",
     "infos": {
       "server_error": "Une erreur s'est produite. Merci de recharger la page.",

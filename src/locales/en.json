@@ -309,7 +309,7 @@
     "head_actions": "Actions",
     "revoke": "revoke",
     "configure": "configure",
-    "sync_date_format": "MMM D, YYYY"
+    "sync_date_format": "LLL d, yyyy"
   },
   "StorageView": {
     "title": "Storage",
@@ -321,7 +321,7 @@
   },
   "SessionsView": {
     "title": "Web connection history",
-    "sync_date_format": "MMM D, YYYY",
+    "sync_date_format": "LLL d, yyyy",
     "delete": "Delete all others sessions",
     "infos": {
       "server_error": "Something went wrong with the server. Please, reload the page.",

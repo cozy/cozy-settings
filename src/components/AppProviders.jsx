@@ -1,6 +1,7 @@
 import React from 'react'
 import { HashRouter } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
+import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 
 import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
@@ -41,13 +42,15 @@ const AppProviders = ({ client, store, children }) => {
               dictRequire={lang => require(`@/locales/${lang}.json`)}
             >
               <BreakpointsProvider>
-                <CozyTheme className="u-w-100">
-                  <BarProvider>
-                    <PremiumProvider>
-                      <HashRouter>{children}</HashRouter>
-                    </PremiumProvider>
-                  </BarProvider>
-                </CozyTheme>
+                <AlertProvider>
+                  <CozyTheme className="u-w-100">
+                    <BarProvider>
+                      <PremiumProvider>
+                        <HashRouter>{children}</HashRouter>
+                      </PremiumProvider>
+                    </BarProvider>
+                  </CozyTheme>
+                </AlertProvider>
               </BreakpointsProvider>
             </EnhancedI18n>
           </Provider>

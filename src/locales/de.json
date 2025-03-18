@@ -250,7 +250,7 @@
     "head_permissions": "Berechtigungen",
     "head_actions": "Aktionen",
     "revoke": "widerrufen",
-    "sync_date_format": "MM TT, JJJJ"
+    "sync_date_format": "LL dd, yyyy"
   },
   "StorageView": {
     "title": "Speicher",
@@ -262,7 +262,7 @@
   },
   "SessionsView": {
     "title": "Verbindungsverlauf",
-    "sync_date_format": "MM TT, JJJJ",
+    "sync_date_format": "LL dd, yyyy",
     "delete": "Lösche alle anderen Sitzungen",
     "infos": {
       "server_error": "Mit dem Server ist etwas schiefgelaufen. Bitte lade die Seite neu.",

@@ -229,7 +229,7 @@
     "head_permissions": "アクセス許可",
     "head_actions": "操作",
     "revoke": "取消",
-    "sync_date_format": "YYYY/MM/DD"
+    "sync_date_format": "yyyy/LL/dd"
   },
   "StorageView": {
     "title": "ストレージ",
@@ -241,7 +241,7 @@
   },
   "SessionsView": {
     "title": "接続履歴",
-    "sync_date_format": "YYYY/MM/DD",
+    "sync_date_format": "yyyy/LL/dd",
     "delete": "他のセッションをすべて削除",
     "infos": {
       "server_error": "サーバーで問題が発生しました。ページを再読み込みしてください。",

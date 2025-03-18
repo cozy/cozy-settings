@@ -296,16 +296,22 @@ Object {
                                         type="checkbox"
                                         value=""
                                       />
-                                      <svg
-                                        aria-hidden="true"
-                                        class="MuiSvgIcon-root"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
+                                      <div
+                                        class="u-flex u-flex-items-center u-flex-justify-center"
+                                        style="width: 24px; height: 24px;"
                                       >
-                                        <path
-                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                        />
-                                      </svg>
+                                        <svg
+                                          class="styles__icon___23x3R"
+                                          height="18"
+                                          viewBox="0 0 16 16"
+                                          width="18"
+                                        >
+                                          <path
+                                            d="M0 1.994C0 .893.895 0 1.994 0h12.012C15.107 0 16 .895 16 1.994v12.012A1.995 1.995 0 0114.006 16H1.994A1.995 1.995 0 010 14.006V1.994zm3.707 7.299a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l8-8a1 1 0 00-1.414-1.414L5 10.586 3.707 9.293z"
+                                            fill-rule="evenodd"
+                                          />
+                                        </svg>
+                                      </div>
                                     </span>
                                   </span>
                                 </span>
@@ -398,16 +404,22 @@ Object {
                                         type="checkbox"
                                         value=""
                                       />
-                                      <svg
-                                        aria-hidden="true"
-                                        class="MuiSvgIcon-root"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
+                                      <div
+                                        class="u-flex u-flex-items-center u-flex-justify-center"
+                                        style="width: 24px; height: 24px;"
                                       >
-                                        <path
-                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                        />
-                                      </svg>
+                                        <svg
+                                          class="styles__icon___23x3R"
+                                          height="18"
+                                          viewBox="0 0 16 16"
+                                          width="18"
+                                        >
+                                          <path
+                                            d="M0 1.994C0 .893.895 0 1.994 0h12.012C15.107 0 16 .895 16 1.994v12.012A1.995 1.995 0 0114.006 16H1.994A1.995 1.995 0 010 14.006V1.994zm3.707 7.299a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l8-8a1 1 0 00-1.414-1.414L5 10.586 3.707 9.293z"
+                                            fill-rule="evenodd"
+                                          />
+                                        </svg>
+                                      </div>
                                     </span>
                                   </span>
                                 </span>
@@ -500,16 +512,22 @@ Object {
                                         type="checkbox"
                                         value=""
                                       />
-                                      <svg
-                                        aria-hidden="true"
-                                        class="MuiSvgIcon-root"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
+                                      <div
+                                        class="u-flex u-flex-items-center u-flex-justify-center"
+                                        style="width: 24px; height: 24px;"
                                       >
-                                        <path
-                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                        />
-                                      </svg>
+                                        <svg
+                                          class="styles__icon___23x3R"
+                                          height="18"
+                                          viewBox="0 0 16 16"
+                                          width="18"
+                                        >
+                                          <path
+                                            d="M0 1.994C0 .893.895 0 1.994 0h12.012C15.107 0 16 .895 16 1.994v12.012A1.995 1.995 0 0114.006 16H1.994A1.995 1.995 0 010 14.006V1.994zm3.707 7.299a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l8-8a1 1 0 00-1.414-1.414L5 10.586 3.707 9.293z"
+                                            fill-rule="evenodd"
+                                          />
+                                        </svg>
+                                      </div>
                                     </span>
                                   </span>
                                 </span>
@@ -614,16 +632,22 @@ Object {
                                         type="checkbox"
                                         value=""
                                       />
-                                      <svg
-                                        aria-hidden="true"
-                                        class="MuiSvgIcon-root"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
+                                      <div
+                                        class="u-flex u-flex-items-center u-flex-justify-center"
+                                        style="width: 24px; height: 24px;"
                                       >
-                                        <path
-                                          d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                        />
-                                      </svg>
+                                        <svg
+                                          class="styles__icon___23x3R"
+                                          height="18"
+                                          viewBox="0 0 16 16"
+                                          width="18"
+                                        >
+                                          <path
+                                            d="M0 1.994C0 .893.895 0 1.994 0h12.012C15.107 0 16 .895 16 1.994v12.012A1.995 1.995 0 0114.006 16H1.994A1.995 1.995 0 010 14.006V1.994zm3.707 7.299a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l8-8a1 1 0 00-1.414-1.414L5 10.586 3.707 9.293z"
+                                            fill-rule="evenodd"
+                                          />
+                                        </svg>
+                                      </div>
                                     </span>
                                   </span>
                                 </span>
@@ -727,16 +751,22 @@ Object {
                                           type="checkbox"
                                           value=""
                                         />
-                                        <svg
-                                          aria-hidden="true"
-                                          class="MuiSvgIcon-root"
-                                          focusable="false"
-                                          viewBox="0 0 24 24"
+                                        <div
+                                          class="u-flex u-flex-items-center u-flex-justify-center"
+                                          style="width: 24px; height: 24px;"
                                         >
-                                          <path
-                                            d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                          />
-                                        </svg>
+                                          <svg
+                                            class="styles__icon___23x3R"
+                                            height="18"
+                                            viewBox="0 0 16 16"
+                                            width="18"
+                                          >
+                                            <path
+                                              d="M0 1.994C0 .893.895 0 1.994 0h12.012C15.107 0 16 .895 16 1.994v12.012A1.995 1.995 0 0114.006 16H1.994A1.995 1.995 0 010 14.006V1.994zm3.707 7.299a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l8-8a1 1 0 00-1.414-1.414L5 10.586 3.707 9.293z"
+                                              fill-rule="evenodd"
+                                            />
+                                          </svg>
+                                        </div>
                                       </span>
                                     </span>
                                   </span>
@@ -828,16 +858,22 @@ Object {
                                             type="checkbox"
                                             value=""
                                           />
-                                          <svg
-                                            aria-hidden="true"
-                                            class="MuiSvgIcon-root"
-                                            focusable="false"
-                                            viewBox="0 0 24 24"
+                                          <div
+                                            class="u-flex u-flex-items-center u-flex-justify-center"
+                                            style="width: 24px; height: 24px;"
                                           >
-                                            <path
-                                              d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                            />
-                                          </svg>
+                                            <svg
+                                              class="styles__icon___23x3R"
+                                              height="18"
+                                              viewBox="0 0 16 16"
+                                              width="18"
+                                            >
+                                              <path
+                                                d="M0 1.994C0 .893.895 0 1.994 0h12.012C15.107 0 16 .895 16 1.994v12.012A1.995 1.995 0 0114.006 16H1.994A1.995 1.995 0 010 14.006V1.994zm3.707 7.299a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l8-8a1 1 0 00-1.414-1.414L5 10.586 3.707 9.293z"
+                                                fill-rule="evenodd"
+                                              />
+                                            </svg>
+                                          </div>
                                         </span>
                                       </span>
                                     </span>
@@ -1320,7 +1356,7 @@ Object {
             </div>
           </div>
           <hr
-            class="MuiDivider-root"
+            class="MuiDivider-root divider--dialog"
           />
           <div
             class="MuiDialogActions-root cozyDialogActions"
