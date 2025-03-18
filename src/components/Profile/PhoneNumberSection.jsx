@@ -3,9 +3,9 @@ import React, { useMemo, useState } from 'react'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useQuery, useMutation } from 'cozy-client'
 
-import Input from 'components/Input'
-import { buildSettingsInstanceQuery } from 'lib/queries'
-import { validatePhoneNumber } from 'lib/phoneHelper'
+import Input from '@/components/Input'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
+import { validatePhoneNumber } from '@/lib/phoneHelper'
 
 const PhoneNumberSection = () => {
   const { t } = useI18n()
