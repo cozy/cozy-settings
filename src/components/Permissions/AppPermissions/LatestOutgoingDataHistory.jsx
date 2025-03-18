@@ -37,7 +37,7 @@ const LatestOutgoingDataHistory = ({
   }
 
   const formatDate = ({ f, date }) => {
-    return f(date, 'DD MMMM YYYY')
+    return f(date, 'dd LLLL yyyy')
   }
 
   const handleClose = () => setModalOpened(false)

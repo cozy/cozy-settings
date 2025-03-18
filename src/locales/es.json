@@ -253,7 +253,7 @@
     "head_permissions": "Autorizaciones",
     "head_actions": "Acciones",
     "revoke": "revocar",
-    "sync_date_format": "MMM D, YYYY"
+    "sync_date_format": "LLL d, yyyy"
   },
   "StorageView": {
     "title": "Almacenamiento",
@@ -265,7 +265,7 @@
   },
   "SessionsView": {
     "title": "Historial de conexiones web",
-    "sync_date_format": "MMM D, YYYY",
+    "sync_date_format": "LLL d, yyyy",
     "delete": "Borrar todas las otras sesiones",
     "infos": {
       "server_error": "Algo no ha funcionado en el servidor. Por favor, recargue la página.",

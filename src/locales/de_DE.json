@@ -250,7 +250,7 @@
     "head_permissions": "Berechtigungen",
     "head_actions": "Aktionen",
     "revoke": "Widerrufen",
-    "sync_date_format": "DD.MM.YYYY"
+    "sync_date_format": "dd.LL.yyyy"
   },
   "StorageView": {
     "title": "Speicher",
@@ -262,7 +262,7 @@
   },
   "SessionsView": {
     "title": "Verbindungsverlauf",
-    "sync_date_format": "DD.MM.YYYY",
+    "sync_date_format": "dd.LL.yyyy",
     "delete": "Alle anderen Sitzungen löschen",
     "infos": {
       "server_error": "Etwas ging mit dem Server schief. Bitte lade die Seite neu.",

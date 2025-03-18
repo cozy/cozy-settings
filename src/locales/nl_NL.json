@@ -297,7 +297,7 @@
     "head_actions": "Acties",
     "revoke": "intrekken",
     "configure": "Instellen",
-    "sync_date_format": "D MMM YYYY"
+    "sync_date_format": "d LLL yyyy"
   },
   "StorageView": {
     "title": "Opslag",
@@ -309,7 +309,7 @@
   },
   "SessionsView": {
     "title": "Webkoppelingsgeschiedenis",
-    "sync_date_format": "D MMM YYYY",
+    "sync_date_format": "d LLL yyyy",
     "delete": "Alle andere sessie verwijderen",
     "infos": {
       "server_error": "Er is een fout opgetreden op de server. Herlaad de pagina.",
