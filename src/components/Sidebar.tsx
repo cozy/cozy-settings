@@ -5,7 +5,7 @@ import GlobeIcon from 'cozy-ui/transpiled/react/Icons/Globe'
 import PaletteIcon from 'cozy-ui/transpiled/react/Icons/Palette'
 import GraphCircle from 'cozy-ui/transpiled/react/Icons/GraphCircle'
 import HandIcon from 'cozy-ui/transpiled/react/Icons/Hand'
-import HelpIcon from 'cozy-ui/transpiled/react/Icons/Help'
+import HelpOutlinedIcon from 'cozy-ui/transpiled/react/Icons/HelpOutlined'
 import LockScreen from 'cozy-ui/transpiled/react/Icons/LockScreen'
 import Logout from 'cozy-ui/transpiled/react/Icons/Logout'
 import PeopleIcon from 'cozy-ui/transpiled/react/Icons/People'
@@ -108,7 +108,7 @@ export const Sidebar = (): JSX.Element => {
           primary={t('Nav.primary_faq')}
           href={routes.external_faq}
           target="_blank"
-          icon={HelpIcon}
+          icon={HelpOutlinedIcon}
         />
         <MenuItemNavLink
           to={routes.support}

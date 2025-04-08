@@ -1,7 +1,7 @@
 import React from 'react'
 
 import flag from 'cozy-flags'
-import CozyCircle from 'cozy-ui/transpiled/react/Icons/CozyCircle'
+import CloudIcon from 'cozy-ui/transpiled/react/Icons/Cloud'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { MenuItemAnchor } from '@/components/menu/MenuItemAnchor'
@@ -21,7 +21,7 @@ const SubscriptionMenuItem = () => {
       <MenuItemNavLink
         to={routes.subscription}
         primary={t('Nav.primary_plan')}
-        icon={CozyCircle}
+        icon={CloudIcon}
       />
     )
   }
@@ -32,7 +32,7 @@ const SubscriptionMenuItem = () => {
         primary={t('Nav.primary_plan')}
         href={premiumLink}
         target="_blank"
-        icon={CozyCircle}
+        icon={CloudIcon}
       />
     )
   }
