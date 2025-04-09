@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 
+import { useClient } from 'cozy-client'
 import flag from 'cozy-flags'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { STACK_DOMAIN } from '@/actions'
 import {
@@ -12,7 +13,6 @@ import {
   hasBlockingSubscription
 } from '@/components/BlockingSubscriptionModal'
 import { buildExternalTiesQuery } from '@/lib/queries'
-import { useClient } from 'cozy-client'
 
 const MoveButton = () => {
   const { t } = useI18n()

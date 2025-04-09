@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
+import React, { Component } from 'react'
+
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import CrossIcon from 'cozy-ui/transpiled/react/Icons/Cross'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ClaudyAction from '@/services/ClaudyAction'
-
-import CrossIcon from 'cozy-ui/transpiled/react/Icons/Cross'
 
 const MOBILE_CLIENT_KIND = 'mobile'
 const DESKTOP_CLIENT_KIND = 'desktop'

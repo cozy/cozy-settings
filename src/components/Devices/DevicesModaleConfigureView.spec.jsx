@@ -5,14 +5,15 @@ import cloneDeep from 'lodash/cloneDeep'
 
 import { createMockClient } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import AppLike from '@/test/AppLike'
+
+import DevicesModaleConfigureView from './DevicesModaleConfigureView'
 
 import {
   ROOT_FOLDER_ID,
   updateDirectoriesExclusions,
   useFolders
 } from '@/lib/deviceConfigurationHelper'
-import DevicesModaleConfigureView from './DevicesModaleConfigureView'
+import AppLike from '@/test/AppLike'
 
 jest.mock('cozy-ui/transpiled/react/Collapse', () => {
   // Make sure the Collapse transition renders instantly so its children appear

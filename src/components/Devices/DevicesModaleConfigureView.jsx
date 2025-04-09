@@ -1,29 +1,28 @@
+import cx from 'classnames'
 import React, { useCallback, useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import cx from 'classnames'
 
-import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Card from 'cozy-ui/transpiled/react/Card'
 import CardContent from 'cozy-ui/transpiled/react/CardContent'
 import CardHeader from 'cozy-ui/transpiled/react/CardHeader'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
-import FileTypeFolderIcon from 'cozy-ui/transpiled/react/Icons/FileTypeFolder'
+import { FixedDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import FormControl from 'cozy-ui/transpiled/react/FormControl'
 import FormControlLabel from 'cozy-ui/transpiled/react/FormControlLabel'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
-import { Media, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
-import Radio from 'cozy-ui/transpiled/react/Radios'
+import FileTypeFolderIcon from 'cozy-ui/transpiled/react/Icons/FileTypeFolder'
 import RadioGroup from 'cozy-ui/transpiled/react/RadioGroup'
+import Radio from 'cozy-ui/transpiled/react/Radios'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { TreeItem, TreeView } from '@/components/CozyTreeView'
-
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { Media, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { useClient } from 'cozy-client'
 
+import { TreeItem, TreeView } from '@/components/CozyTreeView'
 import {
   ROOT_FOLDER_ID,
   updateDirectoriesExclusions,

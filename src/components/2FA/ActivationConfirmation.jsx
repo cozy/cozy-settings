@@ -1,12 +1,13 @@
 import React from 'react'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 import twoFaModalBanner from '@/assets/images/double_authent_prez_banner.svg'
-import twoFaModalProtect from '@/assets/images/protect_data_point.svg'
 import twoFaModalSecu from '@/assets/images/niv_secu_point.svg'
+import twoFaModalProtect from '@/assets/images/protect_data_point.svg'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 
 export const ActivationConfirmation = ({ error }) => {
   const { t } = useI18n()

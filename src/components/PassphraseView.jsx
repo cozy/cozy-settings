@@ -3,9 +3,9 @@ import React, { useCallback, useState } from 'react'
 import { useQuery, hasQueryBeenLoaded } from 'cozy-client'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
-import PassphraseForm from '@/components/PassphraseForm'
 import Passphrase2FA from '@/components/2FA/Passphrase2FA'
 import Page from '@/components/Page'
+import PassphraseForm from '@/components/PassphraseForm'
 import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const PassphraseView = ({

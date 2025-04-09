@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
-import { NavigationListSection } from 'cozy-ui/transpiled/react/NavigationList'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import ListItem from 'cozy-ui/transpiled/react/ListItem'
+
+import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Divider from 'cozy-ui/transpiled/react/Divider'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import RiseIcon from 'cozy-ui/transpiled/react/Icons/Rise'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import ListItemIcon, {
   smallSize,
   mediumSize
 } from 'cozy-ui/transpiled/react/ListItemIcon'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import RiseIcon from 'cozy-ui/transpiled/react/Icons/Rise'
-import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
-import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
-import { sortDataByDate } from '../helpers/permissionsHelper'
-import { Dialog as DialogComponent } from 'cozy-ui/transpiled/react/CozyDialogs'
-import withAllLocales from '../../../lib/withAllLocales'
+import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
+import { NavigationListSection } from 'cozy-ui/transpiled/react/NavigationList'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import withAllLocales from '../../../lib/withAllLocales'
+import { sortDataByDate } from '../helpers/permissionsHelper'
 
 const LatestOutgoingDataHistory = ({
   queryResultRemoteRequests,

@@ -1,7 +1,9 @@
-import withAllLocales from './withAllLocales'
-import React from 'react'
 import { render } from '@testing-library/react'
+import React from 'react'
+
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import withAllLocales from './withAllLocales'
 
 describe('withAllLocales', () => {
   it('should provide translations from CozyClient and CozySettings', () => {

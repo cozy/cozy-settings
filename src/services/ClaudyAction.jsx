@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Button, ButtonLink } from 'cozy-ui/transpiled/react/deprecated/Button'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 

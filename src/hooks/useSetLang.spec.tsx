@@ -1,6 +1,7 @@
 import { render, act } from '@testing-library/react'
-import { useSetLang } from './useSetLang'
 import React from 'react'
+
+import { useSetLang } from './useSetLang'
 
 const mockWebviewIntent = {
   call: jest.fn().mockResolvedValue(true)

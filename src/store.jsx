@@ -1,11 +1,13 @@
-import appReducer from '@/reducers'
-import thunkMiddleware from 'redux-thunk'
 import {
   compose,
   createStore as reduxCreateStore,
   applyMiddleware
 } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+
 import flag from 'cozy-flags'
+
+import appReducer from '@/reducers'
 
 const createStore = client => {
   // Enable Redux dev tools

@@ -1,9 +1,9 @@
-import { connect } from 'react-redux'
 import compose from 'lodash/flowRight'
+import { connect } from 'react-redux'
 
 import { withClient } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { requestExport, fetchExportData } from '@/actions/export'
 import { precheckImport, submitImport } from '@/actions/import'

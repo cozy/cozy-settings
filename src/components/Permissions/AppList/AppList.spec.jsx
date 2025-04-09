@@ -1,9 +1,12 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import AppList from './AppList'
+
 import { Q, useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
-import { TestI18n } from '@/test/AppLike'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+
+import AppList from './AppList'
+
+import { TestI18n } from '@/test/AppLike'
 
 jest.mock('react-router-dom', () => {
   return {

@@ -5,17 +5,17 @@ import { useQuery, hasQueryBeenLoaded } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ConfirmModal from '@/components/DeleteAccount/ConfirmModal'
-import FormModal from '@/components/DeleteAccount/FormModal'
-import EmailConfirmationModal from '@/components/DeleteAccount/EmailConfirmationModal'
-import { useHasPassword } from '@/hooks/useHasPassword'
-import { LoaderModal } from '@/components/DeleteAccount/LoaderModal'
-import { buildExternalTiesQuery } from '@/lib/queries'
 import {
   BlockingSubscriptionModal,
   hasBlockingSubscription,
   getBlockingSubscriptionVendor
 } from '@/components/BlockingSubscriptionModal'
+import ConfirmModal from '@/components/DeleteAccount/ConfirmModal'
+import EmailConfirmationModal from '@/components/DeleteAccount/EmailConfirmationModal'
+import FormModal from '@/components/DeleteAccount/FormModal'
+import { LoaderModal } from '@/components/DeleteAccount/LoaderModal'
+import { useHasPassword } from '@/hooks/useHasPassword'
+import { buildExternalTiesQuery } from '@/lib/queries'
 
 const CONFIRMING = 'confirming'
 const IDLE = 'idle'

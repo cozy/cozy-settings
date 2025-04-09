@@ -2,10 +2,10 @@ import React, { useMemo, forwardRef } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 interface MenuItemNavLinkProps {

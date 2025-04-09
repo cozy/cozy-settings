@@ -1,13 +1,13 @@
 import React from 'react'
 
+import { useInstanceInfo } from 'cozy-client'
+import { makeDiskInfos } from 'cozy-client/dist/models/instance'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import FolderIcon from 'cozy-ui/transpiled/react/Icons/Folder'
 import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import FolderIcon from 'cozy-ui/transpiled/react/Icons/Folder'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { makeDiskInfos } from 'cozy-client/dist/models/instance'
-import { useInstanceInfo } from 'cozy-client'
 
 /**
  * Show user storage quota

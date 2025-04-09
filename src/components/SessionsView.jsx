@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import {
   Table,
   TableHead,
@@ -9,15 +11,14 @@ import {
   TableRow,
   TableHeader
 } from 'cozy-ui/transpiled/react/deprecated/Table'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import SessionsViewRow from '@/components/SessionsViewRow'
+import tableStyles from '@/styles/table.styl'
+
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import tableStyles from '@/styles/table.styl'
 import SessionDialog from '@/components/SessionsView/SessionDialog'
+import SessionsViewRow from '@/components/SessionsViewRow'
 
 const SessionsView = ({
   fetchSessions,

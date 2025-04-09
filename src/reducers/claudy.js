@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 
 import { FETCH_DEVICES_SUCCESS } from '@/actions'
-
 import {
   FETCH_CLAUDY_INFOS,
   FETCH_CLAUDY_INFOS_SUCCESS,

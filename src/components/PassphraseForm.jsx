@@ -1,23 +1,23 @@
-import styles from '@/styles/passphrase.styl'
-
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import Input from 'cozy-ui/transpiled/react/Input'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import Stack from 'cozy-ui/transpiled/react/Stack'
-import PasswordInput from 'cozy-ui/transpiled/react/Labs/PasswordInput'
 import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
-import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
+import Input from 'cozy-ui/transpiled/react/Input'
+import PasswordInput from 'cozy-ui/transpiled/react/Labs/PasswordInput'
 import PasswordExample from 'cozy-ui/transpiled/react/PasswordExample'
+import Stack from 'cozy-ui/transpiled/react/Stack'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { UnorderedList, ListItem } from 'cozy-ui/transpiled/react/UnorderedList'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
+import styles from '@/styles/passphrase.styl'
+
 import PageTitle from '@/components/PageTitle'
-import passwordHelper from '@/lib/passwordHelper'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 import { useCanAuthWith } from '@/hooks/useCanAuthWith'
+import passwordHelper from '@/lib/passwordHelper'
 
 const initialData = {
   currentPassphrase: '',

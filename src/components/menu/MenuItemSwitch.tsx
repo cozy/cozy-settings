@@ -9,7 +9,7 @@ import Switch from 'cozy-ui/transpiled/react/Switch'
 interface MenuItemSwitchProps {
   checked?: boolean
   disabled?: boolean
-  icon: () => JSX.Element | JSX.Element
+  icon: () => JSX.Element
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
   primary: string

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useQuery, isQueryLoading } from 'cozy-client'
-
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
 import AppearanceView from '@/components/Appearance/AppearanceView'

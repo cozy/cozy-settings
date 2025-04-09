@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
+
 import { useWebviewIntent } from 'cozy-intent'
+
 import logger from '@/lib/logger'
 
 export const useSetLang = (selectedLocale?: string | null): void => {

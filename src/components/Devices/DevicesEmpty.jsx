@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Empty from 'cozy-ui/transpiled/react/Empty'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
+import Empty from 'cozy-ui/transpiled/react/Empty'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import EmptyIcon from '@/assets/icons/icon-devices.svg'

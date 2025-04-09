@@ -1,26 +1,22 @@
 import React from 'react'
-import { HashRouter } from 'react-router-dom'
 import { Provider, connect } from 'react-redux'
-import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
-import {
-  FILES_DOCTYPE,
-  CONTACTS_DOCTYPE,
-  APPS_DOCTYPE
-} from '@/doctypes'
-import { DataProxyProvider } from 'cozy-dataproxy-lib'
+import { HashRouter } from 'react-router-dom'
 
-import I18n from 'cozy-ui/transpiled/react/providers/I18n'
+import { BarProvider } from 'cozy-bar'
+import { CozyProvider } from 'cozy-client'
+import { DataProxyProvider } from 'cozy-dataproxy-lib'
+import { WebviewIntentProvider } from 'cozy-intent'
+import AlertProvider from 'cozy-ui/transpiled/react/providers/Alert'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import CozyTheme from 'cozy-ui/transpiled/react/providers/CozyTheme'
-import { WebviewIntentProvider } from 'cozy-intent'
-import { CozyProvider } from 'cozy-client'
+import I18n from 'cozy-ui/transpiled/react/providers/I18n'
 import {
   StylesProvider,
   createGenerateClassName
 } from 'cozy-ui/transpiled/react/styles'
-import { BarProvider } from 'cozy-bar'
 
 import { PremiumProvider } from '@/components/Premium/PremiumProvider'
+import { FILES_DOCTYPE, CONTACTS_DOCTYPE, APPS_DOCTYPE } from '@/doctypes'
 
 /*
 With MUI V4, it is possible to generate deterministic class names.
@@ -50,14 +46,20 @@ const AppProviders = ({ client, store, children }) => {
               <BreakpointsProvider>
                 <AlertProvider>
                   <CozyTheme className="u-w-100">
-                  <DataProxyProvider options={{
-                doctypes: [FILES_DOCTYPE, CONTACTS_DOCTYPE, APPS_DOCTYPE]
-              }}>
-                    <BarProvider>
-                      <PremiumProvider>
-                        <HashRouter>{children}</HashRouter>
-                      </PremiumProvider>
-                    </BarProvider>
+                    <DataProxyProvider
+                      options={{
+                        doctypes: [
+                          FILES_DOCTYPE,
+                          CONTACTS_DOCTYPE,
+                          APPS_DOCTYPE
+                        ]
+                      }}
+                    >
+                      <BarProvider>
+                        <PremiumProvider>
+                          <HashRouter>{children}</HashRouter>
+                        </PremiumProvider>
+                      </BarProvider>
                     </DataProxyProvider>
                   </CozyTheme>
                 </AlertProvider>

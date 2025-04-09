@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
-import { isFlagshipApp } from 'cozy-device-helper'
 import { useClient } from 'cozy-client'
+import { isFlagshipApp } from 'cozy-device-helper'
 import { useWebviewIntent } from 'cozy-intent'
 
 export const useLogout = (): (() => Promise<void>) => {

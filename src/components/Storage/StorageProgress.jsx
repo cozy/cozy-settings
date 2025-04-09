@@ -1,10 +1,10 @@
-import React from 'react'
 import cx from 'classnames'
+import React from 'react'
 
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import { makeDiskInfos } from 'cozy-client/dist/models/instance'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useInstanceInfo } from 'cozy-client'
+import { makeDiskInfos } from 'cozy-client/dist/models/instance'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import styles from '@/styles/storage.styl'
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import { useClient } from 'cozy-client'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import { useClient } from 'cozy-client'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 export const Desactivate2FA = ({ closeModal, onDesactivation }) => {
   const { t } = useI18n()

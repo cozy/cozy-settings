@@ -1,13 +1,14 @@
-import styles from '@/styles/fields.styl'
-
-import React from 'react'
 import classNames from 'classnames'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import React from 'react'
+
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import CheckIcon from 'cozy-ui/transpiled/react/Icons/Check'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
-import Icon from 'cozy-ui/transpiled/react/Icon'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import styles from '@/styles/fields.styl'
 
 import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 

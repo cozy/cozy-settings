@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import Alert from 'cozy-ui/transpiled/react/Alert'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import withAllLocales from '@/lib/withAllLocales'
 import { displayPermissions } from '@/components/Permissions/helpers/permissionsHelper'
+import withAllLocales from '@/lib/withAllLocales'
 
 const PermissionDetailsModalContent = ({
   verbs,

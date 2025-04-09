@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Textarea from 'cozy-ui/transpiled/react/Textarea'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
+import Textarea from 'cozy-ui/transpiled/react/Textarea'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 const Support = ({
   iconSrc,

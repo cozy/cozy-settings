@@ -7,8 +7,8 @@ import {
   useClient,
   Registry
 } from 'cozy-client'
-import { UseQueryReturnValue } from 'cozy-client/types/types'
 import { RegistryApp } from 'cozy-client/types/registry'
+import { UseQueryReturnValue } from 'cozy-client/types/types'
 
 import { buildAppsQueryBySlug, buildKonnectorsQueryBySlug } from '@/lib/queries'
 

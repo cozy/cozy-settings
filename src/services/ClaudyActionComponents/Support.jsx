@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
-import Button from 'cozy-ui/transpiled/react/Buttons'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 
+import Button from 'cozy-ui/transpiled/react/Buttons'
+import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 export class Support extends Component {
   constructor(props) {

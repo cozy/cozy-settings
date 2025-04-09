@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import DataPermissions from './DataPermissions'
+
 import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
+
+import DataPermissions from './DataPermissions'
 
 jest.mock('cozy-ui/transpiled/react/providers/I18n/withLocales', () => {
   return () => Component => {

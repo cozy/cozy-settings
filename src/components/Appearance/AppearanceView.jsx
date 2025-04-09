@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 
 import { useClient } from 'cozy-client'
-import { useWebviewIntent } from 'cozy-intent'
 import { isFlagshipApp } from 'cozy-device-helper'
-import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import TextField from 'cozy-ui/transpiled/react/TextField'
+import { useWebviewIntent } from 'cozy-intent'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
-import { useTheme } from 'cozy-ui/transpiled/react/styles'
+import TextField from 'cozy-ui/transpiled/react/TextField'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useCozyTheme } from 'cozy-ui/transpiled/react/providers/CozyTheme'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useTheme } from 'cozy-ui/transpiled/react/styles'
+
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
 

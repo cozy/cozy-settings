@@ -1,5 +1,6 @@
-import React from 'react'
 import cx from 'classnames'
+import React from 'react'
+
 import InlineCard from 'cozy-ui/transpiled/react/deprecated/InlineCard'
 
 const alphaRegexp = /^[a-z]$/i

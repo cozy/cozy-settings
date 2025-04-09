@@ -1,7 +1,9 @@
-import { useCanAuthWith } from '@/hooks/useCanAuthWith'
 import { renderHook } from '@testing-library/react'
+
 import { useClient } from 'cozy-client'
 import flag from 'cozy-flags'
+
+import { useCanAuthWith } from '@/hooks/useCanAuthWith'
 
 jest.mock('cozy-client', () => ({
   useClient: jest.fn(() => ({

@@ -4,10 +4,11 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { PremiumLink } from '@/components/Premium/PremiumLink'
+import { StorageProgress } from './StorageProgress'
+
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import { StorageProgress } from './StorageProgress'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
 import { usePremium } from '@/components/Premium/PremiumProvider'
 
 /**

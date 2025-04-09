@@ -1,28 +1,27 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import Typography from 'cozy-ui/transpiled/react/Typography'
+import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
+import Divider from 'cozy-ui/transpiled/react/Divider'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
-import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
-import NavigationList, {
-  NavigationListSection
-} from 'cozy-ui/transpiled/react/NavigationList'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import ListItemIcon, {
   smallSize,
   mediumSize
 } from 'cozy-ui/transpiled/react/ListItemIcon'
-import ListItem from 'cozy-ui/transpiled/react/ListItem'
-import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
+import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import Divider from 'cozy-ui/transpiled/react/Divider'
+import NavigationList, {
+  NavigationListSection
+} from 'cozy-ui/transpiled/react/NavigationList'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import withAllLocales from '@/lib/withAllLocales'
 import {
   getPermissionsVerbsByType,
   completePermission,
@@ -30,6 +29,7 @@ import {
   getPermissionIconName
 } from '@/components/Permissions/helpers/permissionsHelper'
 import useAppsOrKonnectors from '@/components/Permissions/hooks/useAppsOrKonnectors'
+import withAllLocales from '@/lib/withAllLocales'
 
 const DataPermissions = ({ t }) => {
   const { permissionType } = useParams()

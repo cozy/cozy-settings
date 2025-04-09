@@ -1,10 +1,10 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import React from 'react'
 
 import flag from 'cozy-flags'
 
-import { TestI18n } from '@/test/AppLike'
 import { SubscriptionAccountsItem } from '@/components/Subscription/SubscriptionAccountsItem'
+import { TestI18n } from '@/test/AppLike'
 
 jest.mock('cozy-flags')
 

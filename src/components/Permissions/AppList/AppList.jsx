@@ -1,22 +1,22 @@
 import React from 'react'
 
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import ListItem from 'cozy-ui/transpiled/react/ListItem'
-import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import ListItemIcon, { smallSize } from 'cozy-ui/transpiled/react/ListItemIcon'
-import Divider from 'cozy-ui/transpiled/react/Divider'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Divider from 'cozy-ui/transpiled/react/Divider'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import ListItem from 'cozy-ui/transpiled/react/ListItem'
+import ListItemIcon, { smallSize } from 'cozy-ui/transpiled/react/ListItemIcon'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
+import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import NavigationList, {
   NavigationListSection
 } from 'cozy-ui/transpiled/react/NavigationList'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { routes } from '@/constants/routes'
 import useAppsOrKonnectors from '@/components/Permissions/hooks/useAppsOrKonnectors'
+import { routes } from '@/constants/routes'
 
 const AppList = () => {
   const { t } = useI18n()
