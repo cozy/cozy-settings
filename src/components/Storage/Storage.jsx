@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import StorageContent from './StorageContent'
@@ -19,11 +18,8 @@ const Storage = () => {
   const { isLoaded } = usePremium()
 
   return (
-    <Page narrow>
+    <Page>
       <PageTitle>{t('StorageView.title')}</PageTitle>
-      <Typography variant="h5" gutterBottom>
-        {t('StorageView.storage_title')}
-      </Typography>
       {isLoaded ? (
         <StorageContent />
       ) : (

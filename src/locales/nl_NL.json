@@ -301,11 +301,13 @@
   },
   "StorageView": {
     "title": "Opslag",
-    "load_error": "Er is een fout opgetreden tijdens het laden van je opslaginformatie. Probeer het later opnieuw.",
-    "storage_title": "Totale ruimte",
-    "storage_phrase": "%{humanDiskUsage} GB van %{humanDiskQuota} GB gebruikt",
-    "more_space": "Meer opslagruimte nodig?",
-    "see_offer": "Mijn opslag uitbreiden"
+    "load_error": "Er is een fout opgetreden tijdens het laden van uw opslaginformatie, probeer het later opnieuw.",
+    "storage_title": "Beschikbare ruimte in Twake Workplace",
+    "storage_used": "%{humanDiskUsage} GB",
+    "storage_total": " van %{humanDiskQuota} GB gebruikt",
+    "storage_available": "Beschikbaar: %{spaceAvailable} GB",
+    "storage_warning": "De opslag is bijna vol. U kunt ruimte vrijmaken door onnodige bestanden te verwijderen of door een abonnement te nemen voor extra ruimte.",
+    "see_offer": "Opslag upgraden"
   },
   "SessionsView": {
     "title": "Webkoppelingsgeschiedenis",

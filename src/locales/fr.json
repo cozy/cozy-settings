@@ -314,10 +314,12 @@
   "StorageView": {
     "title": "Stockage",
     "load_error": "Une erreur s'est produite lors du chargement de vos informations de stockage, merci de re-essayer plus tard.",
-    "storage_title": "Espace total",
-    "storage_phrase": "%{humanDiskUsage} Go sur %{humanDiskQuota} Go",
-    "more_space": "Besoin de plus de stockage?",
-    "see_offer": "Augmenter mon espace"
+    "storage_title": "Espace disponible dans Twake Workplace",
+    "storage_used": "%{humanDiskUsage} Go",
+    "storage_total": " sur %{humanDiskQuota} Go utilisés",
+    "storage_available": "Disponible : %{spaceAvailable} Go",
+    "storage_warning": "Le stockage est presque plein. Vous pouvez libérer de l'espace en supprimant les fichiers inutiles ou en vous abonnant pour obtenir de l'espace supplémentaire.",
+    "see_offer": "Mettre à niveau le stockage"
   },
   "SessionsView": {
     "title": "Historique de connexions web",
