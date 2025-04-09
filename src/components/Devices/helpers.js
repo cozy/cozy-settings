@@ -3,17 +3,18 @@ import semver from 'semver'
 import flag from 'cozy-flags'
 
 import { COZY_DESKTOP_SOFTWARE_ID } from '@/lib/deviceConfigurationHelper'
-import mobileIcon from '@/assets/icons/icon-device-phone.svg'
-import browserIcon from '@/assets/icons/icon-device-browser.svg'
-import laptopIcon from '@/assets/icons/icon-device-laptop.svg'
+
+import PhoneIcon from 'cozy-ui/transpiled/react/Icons/Phone'
+import LaptopIcon from 'cozy-ui/transpiled/react/Icons/Laptop'
+import DeviceBrowserIcon from 'cozy-ui/transpiled/react/Icons/DeviceBrowser'
 
 const deviceKindToIcon = {
-  mobile: mobileIcon,
-  browser: browserIcon
+  mobile: PhoneIcon,
+  browser: DeviceBrowserIcon
 }
 
 export const getDeviceIcon = device => {
-  return deviceKindToIcon[device.client_kind] || laptopIcon
+  return deviceKindToIcon[device.client_kind] || LaptopIcon
 }
 
 const isCozyDesktopApp = device =>
