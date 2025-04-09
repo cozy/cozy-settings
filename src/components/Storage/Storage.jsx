@@ -4,11 +4,10 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { StorageProgress } from './StorageProgress'
+import StorageContent from './StorageContent'
 
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import { PremiumLink } from '@/components/Premium/PremiumLink'
 import { usePremium } from '@/components/Premium/PremiumProvider'
 
 /**
@@ -17,7 +16,7 @@ import { usePremium } from '@/components/Premium/PremiumProvider'
 const Storage = () => {
   const { t } = useI18n()
 
-  const { isLoaded, canOpenPremiumLink } = usePremium()
+  const { isLoaded } = usePremium()
 
   return (
     <Page narrow>
@@ -26,15 +25,7 @@ const Storage = () => {
         {t('StorageView.storage_title')}
       </Typography>
       {isLoaded ? (
-        <>
-          <StorageProgress />
-          {canOpenPremiumLink ? (
-            <Typography variant="h5" gutterBottom>
-              {t('StorageView.more_space')}
-            </Typography>
-          ) : null}
-          <PremiumLink label={t('StorageView.see_offer')} />
-        </>
+        <StorageContent />
       ) : (
         <Spinner
           className="u-pos-fixed-s"
