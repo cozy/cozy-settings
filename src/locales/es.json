@@ -257,11 +257,13 @@
   },
   "StorageView": {
     "title": "Almacenamiento",
-    "load_error": "Ha ocurrido un error al cargar la información de su almacenamiento, por favor vuelva a ensayar más tarde.",
-    "storage_title": "Espacio total",
-    "storage_phrase": "%{humanDiskUsage} GB de %{humanDiskQuota} GB usado",
-    "more_space": "¿Necesita más espacio de almacenamiento?",
-    "see_offer": "Actualizar mi almacenamiento"
+    "load_error": "Se ha producido un error al cargar su información de almacenamiento, por favor inténtelo de nuevo más tarde.",
+    "storage_title": "Espacio disponible en Twake Workplace",
+    "storage_used": "%{humanDiskUsage} GB",
+    "storage_total": " de %{humanDiskQuota} GB usados",
+    "storage_available": "Disponible: %{spaceAvailable} GB",
+    "storage_warning": "El almacenamiento está casi lleno. Puede liberar espacio eliminando archivos innecesarios o suscribiéndose para obtener más espacio.",
+    "see_offer": "Actualizar almacenamiento"
   },
   "SessionsView": {
     "title": "Historial de conexiones web",

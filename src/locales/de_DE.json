@@ -254,11 +254,13 @@
   },
   "StorageView": {
     "title": "Speicher",
-    "load_error": "Beim Laden deiner Speicherinformationen ist ein Fehler aufetreten. Bitte versuche es später erneut.",
-    "storage_title": "Gesamter Speicherplatz",
-    "storage_phrase": "%{humanDiskUsage} GB of %{humanDiskQuota} GB used",
-    "more_space": "Du brauchst mehr Speicherplatz?",
-    "see_offer": "Meinen Speicherplatz nachrüsten"
+    "load_error": "Beim Laden Ihrer Speicherinformationen ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+    "storage_title": "Verfügbarer Speicherplatz in Twake Workplace",
+    "storage_used": "%{humanDiskUsage} GB",
+    "storage_total": " von %{humanDiskQuota} GB verwendet",
+    "storage_available": "Verfügbar: %{spaceAvailable} GB",
+    "storage_warning": "Der Speicher ist fast voll. Sie können Platz schaffen, indem Sie unnötige Dateien löschen oder ein Abonnement für zusätzlichen Speicherplatz abschließen.",
+    "see_offer": "Speicherplatz erweitern"
   },
   "SessionsView": {
     "title": "Verbindungsverlauf",

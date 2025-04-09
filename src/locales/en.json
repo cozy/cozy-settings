@@ -313,11 +313,13 @@
   },
   "StorageView": {
     "title": "Storage",
-    "load_error": "An error occured while loading your storage information, please try again later.",
-    "storage_title": "Total space",
-    "storage_phrase": "%{humanDiskUsage} GB of %{humanDiskQuota} GB used",
-    "more_space": "Need more storage space?",
-    "see_offer": "Upgrade my storage"
+    "load_error": "An error occurred while loading your storage information, please try again later.",
+    "storage_title": "Space available in Twake Workplace",
+    "storage_used": "%{humanDiskUsage} GB",
+    "storage_total": " of %{humanDiskQuota} GB used",
+    "storage_available": "Available: %{spaceAvailable} GB",
+    "storage_warning": "Storage is almost full. You can free up space by deleting unnecessary files or subscribing for more space.",
+    "see_offer": "Upgrade storage"
   },
   "SessionsView": {
     "title": "Web connection history",
