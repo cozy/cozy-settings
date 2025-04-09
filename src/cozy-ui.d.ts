@@ -1,3 +1,5 @@
+// TODO: eslint-disable should be removed and fixed
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 declare module 'cozy-ui/transpiled/react/List' {
   import List from '@material-ui/core/List'
   export default List
