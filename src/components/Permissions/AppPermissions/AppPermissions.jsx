@@ -1,36 +1,35 @@
+import classNames from 'classnames'
 import React, { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
-import classNames from 'classnames'
 
 import { useQuery, isQueryLoading, hasQueryBeenLoaded } from 'cozy-client'
 import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 import { getAppDisplayName } from 'cozy-client/dist/models/applications'
-
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PreviousIcon from 'cozy-ui/transpiled/react/Icons/Previous'
 import NavigationList from 'cozy-ui/transpiled/react/NavigationList'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
-import withAllLocales from '@/lib/withAllLocales'
+import Page from '@/components/Page'
+import PageTitle from '@/components/PageTitle'
+import { AboutButton } from '@/components/Permissions/AppPermissions/AboutButton'
 import AccessRightsSection from '@/components/Permissions/AppPermissions/AccessRightsSection'
 import LatestOutgoingDataHistory from '@/components/Permissions/AppPermissions/LatestOutgoingDataHistory'
+import { OpenappButton } from '@/components/Permissions/AppPermissions/OpenappButton'
+import { UninstallButton } from '@/components/Permissions/AppPermissions/UninstallButton'
 import {
   filterPermissions,
   sortPermissionsByName,
   completeAppPermission,
   filterRemoteRequests
 } from '@/components/Permissions/helpers/permissionsHelper'
-import { buildRemoteRequestsQuery } from '@/lib/queries'
-import Page from '@/components/Page'
-import PageTitle from '@/components/PageTitle'
-import { UninstallButton } from '@/components/Permissions/AppPermissions/UninstallButton'
-import { AboutButton } from '@/components/Permissions/AppPermissions/AboutButton'
-import { OpenappButton } from '@/components/Permissions/AppPermissions/OpenappButton'
 import useAppsOrKonnectorsBySlug from '@/components/Permissions/hooks/useAppsOrKonnectorsBySlug'
+import { buildRemoteRequestsQuery } from '@/lib/queries'
+import withAllLocales from '@/lib/withAllLocales'
 
 const styles = {
   actionButtons: {

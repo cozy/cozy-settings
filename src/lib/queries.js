@@ -1,4 +1,5 @@
 import CozyClient, { Q } from 'cozy-client'
+
 import {
   APPS_DOCTYPE,
   KONNECTORS_DOCTYPE,

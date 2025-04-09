@@ -1,20 +1,21 @@
 import React, { useCallback, useState } from 'react'
 
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
+import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
+import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import ActionMenu, {
   ActionMenuHeader
 } from 'cozy-ui/transpiled/react/deprecated/ActionMenu'
-import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import Icon from 'cozy-ui/transpiled/react/Icon'
 import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
-import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import tableStyles from '@/styles/table.styl'
 
 import { DevicesMoreButton } from '@/components/Devices/DevicesMoreButton'
 import { DevicesMoreMenuItem } from '@/components/Devices/DevicesMoreMenuItem'
 import { getDeviceIcon, canConfigureDevice } from '@/components/Devices/helpers'
-import tableStyles from '@/styles/table.styl'
 
 const DevicesMoreMenu = ({ device, onRevoke, onConfigure, isMobile }) => {
   const { f, t } = useI18n()

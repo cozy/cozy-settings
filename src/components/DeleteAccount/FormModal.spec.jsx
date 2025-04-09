@@ -2,11 +2,14 @@
 
 /* eslint-env jest */
 
-import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import FormModal from './FormModal'
-import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import React from 'react'
+
 import { I18n } from 'cozy-ui/transpiled/react'
+import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+
+import FormModal from './FormModal'
+
 import langEn from '@/locales/en.json'
 
 jest.mock('@/actions/domUtils', () => ({

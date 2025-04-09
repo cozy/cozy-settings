@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useClient, useQuery } from 'cozy-client'
 import Alert from 'cozy-ui/transpiled/react/Alert'
 import AlertTitle from 'cozy-ui/transpiled/react/AlertTitle'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Snackbar from 'cozy-ui/transpiled/react/Snackbar'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { buildSettingsInstanceQuery } from '@/lib/queries'
 

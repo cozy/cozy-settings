@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useQuery } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { IllustrationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import { useQuery } from 'cozy-client'
+import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import EmailIllustration from '@/assets/icons/email-illustration.svg'
 import { buildSettingsInstanceQuery } from '@/lib/queries'

@@ -1,4 +1,3 @@
-import InputMask from 'react-input-mask'
 import React, {
   ChangeEvent,
   KeyboardEvent,
@@ -6,11 +5,12 @@ import React, {
   useRef,
   useState
 } from 'react'
+import InputMask from 'react-input-mask'
 
-import TextField from 'cozy-ui/transpiled/react/TextField'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import TextField from 'cozy-ui/transpiled/react/TextField'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 interface PinCodeDialogProps {

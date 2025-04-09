@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import { useQuery, useMutation } from 'cozy-client'
 import { isFlagshipApp } from 'cozy-device-helper'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { useQuery, useMutation } from 'cozy-client'
 
+import { SET_LANG } from '@/actions'
 import Select from '@/components/Select'
 import { useSetLang } from '@/hooks/useSetLang'
 import { buildSettingsInstanceQuery } from '@/lib/queries'
-import { SET_LANG } from '@/actions'
 
 const LANG_OPTIONS = ['en', 'fr', 'es']
 

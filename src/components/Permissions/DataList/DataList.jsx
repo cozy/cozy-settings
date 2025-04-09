@@ -1,29 +1,29 @@
 import React from 'react'
 
-import Typography from 'cozy-ui/transpiled/react/Typography'
-import NavigationList, {
-  NavigationListSection
-} from 'cozy-ui/transpiled/react/NavigationList'
 import Divider from 'cozy-ui/transpiled/react/Divider'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
 import ListItem from 'cozy-ui/transpiled/react/ListItem'
-import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import ListItemIcon, {
   smallSize,
   mediumSize
 } from 'cozy-ui/transpiled/react/ListItemIcon'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import ListItemSecondaryAction from 'cozy-ui/transpiled/react/ListItemSecondaryAction'
-import RightIcon from 'cozy-ui/transpiled/react/Icons/Right'
+import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
+import NavigationList, {
+  NavigationListSection
+} from 'cozy-ui/transpiled/react/NavigationList'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
-import withAllLocales from '@/lib/withAllLocales'
-import { routes } from '@/constants/routes'
+import { sortPermissionsByName } from '@/components/Permissions/DataList/DataListHelpers'
 import {
   completePermission,
   getPermissionIconName
 } from '@/components/Permissions/helpers/permissionsHelper'
 import useAppsOrKonnectors from '@/components/Permissions/hooks/useAppsOrKonnectors'
-import { sortPermissionsByName } from '@/components/Permissions/DataList/DataListHelpers'
+import { routes } from '@/constants/routes'
+import withAllLocales from '@/lib/withAllLocales'
 
 const DataList = ({ t }) => {
   const { isResultLoading, hasQueryFailed, appsResult, konnectorsResult } =

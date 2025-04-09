@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useQuery, useMutation } from 'cozy-client'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import Input from '@/components/Input'
 import Activate2FA from '@/components/2FA/Activate2FA'
 import Desactivate2FA from '@/components/2FA/Desactivate2FA'
+import Input from '@/components/Input'
 import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const TwoFA = () => {

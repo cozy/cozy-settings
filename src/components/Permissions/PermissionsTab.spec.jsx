@@ -1,7 +1,9 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
-import PermissionsTab from './PermissionsTab'
+
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+
+import PermissionsTab from './PermissionsTab'
 
 jest.mock('cozy-ui/transpiled/react/providers/I18n/withLocales', () => {
   return () => Component => {

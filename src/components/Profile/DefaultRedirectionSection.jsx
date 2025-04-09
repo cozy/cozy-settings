@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useClient, useQuery, useMutation } from 'cozy-client'
-import { useWebviewIntent } from 'cozy-intent'
 import { isFlagshipApp } from 'cozy-device-helper'
+import { useWebviewIntent } from 'cozy-intent'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import Select from '@/components/Select'
 import {
   formatOptions,
   getSelectedOption,
@@ -13,6 +12,8 @@ import {
   shouldDisableDefaultRedirectionSnackbar,
   disableDefaultRedirectionSnackbar
 } from './helpers'
+
+import Select from '@/components/Select'
 import {
   buildSettingsInstanceQuery,
   buildAppsQuery,

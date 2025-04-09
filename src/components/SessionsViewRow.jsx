@@ -1,10 +1,7 @@
-import tableStyles from '@/styles/table.styl'
-
 import React from 'react'
 import { UAParser } from 'ua-parser-js'
 
-import { TableRow, TableCell } from 'cozy-ui/transpiled/react/deprecated/Table'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import Icon from 'cozy-ui/transpiled/react/Icon'
 import BrowserBraveIcon from 'cozy-ui/transpiled/react/Icons/BrowserBrave'
 import BrowserChromeIcon from 'cozy-ui/transpiled/react/Icons/BrowserChrome'
 import BrowserDuckduckgoIcon from 'cozy-ui/transpiled/react/Icons/BrowserDuckduckgo'
@@ -13,8 +10,11 @@ import BrowserFirefoxIcon from 'cozy-ui/transpiled/react/Icons/BrowserFirefox'
 import BrowserIeIcon from 'cozy-ui/transpiled/react/Icons/BrowserIe'
 import BrowserSafariIcon from 'cozy-ui/transpiled/react/Icons/BrowserSafari'
 import DeviceBrowserIcon from 'cozy-ui/transpiled/react/Icons/DeviceBrowser'
+import { TableRow, TableCell } from 'cozy-ui/transpiled/react/deprecated/Table'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import Icon from 'cozy-ui/transpiled/react/Icon'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import tableStyles from '@/styles/table.styl'
 
 const getBrowserIcon = session => {
   const ua = UAParser(session.user_agent)

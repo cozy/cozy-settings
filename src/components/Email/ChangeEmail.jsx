@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 import flag from 'cozy-flags'
 
-import { useHasPassword } from '@/hooks/useHasPassword'
-import EmailModal from '@/components/Email/EmailModal'
 import AuthentificationModal from '@/components/Email/AuthentificationModal'
+import EmailModal from '@/components/Email/EmailModal'
+import { useHasPassword } from '@/hooks/useHasPassword'
 
 const ChangeEmail = () => {
   const navigate = useNavigate()

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { CozyUtils } from 'cozy-keys-lib'
 import { useClient } from 'cozy-client'
+import { CozyUtils } from 'cozy-keys-lib'
 
 /**
  *

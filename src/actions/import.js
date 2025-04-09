@@ -1,5 +1,4 @@
 import { cozyFetch } from '@/actions'
-
 import { STACK_DOMAIN } from '@/actions'
 
 export const PRECHECK_IMPORT = 'PRECHECK_IMPORT'

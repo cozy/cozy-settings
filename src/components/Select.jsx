@@ -1,6 +1,7 @@
 import React from 'react'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
+
 import SelectBox from 'cozy-ui/transpiled/react/SelectBox'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import Field from '@/components/Field'
 

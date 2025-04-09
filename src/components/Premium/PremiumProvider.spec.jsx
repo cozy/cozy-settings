@@ -1,10 +1,10 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import React from 'react'
 
+import { useInstanceInfo } from 'cozy-client'
 import { isFlagshipApp } from 'cozy-device-helper'
 import flag from 'cozy-flags'
 import { useWebviewIntent } from 'cozy-intent'
-import { useInstanceInfo } from 'cozy-client'
 
 import {
   PremiumProvider,

@@ -1,11 +1,12 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import React from 'react'
 
 import { createMockClient } from 'cozy-client'
 
 import { DevicesView } from './DevicesView'
-import AppLike from '@/test/AppLike'
+
 import { OAUTH_CLIENTS_DOCTYPE } from '@/doctypes'
+import AppLike from '@/test/AppLike'
 
 const pendingDevice = {
   id: 'mock-device-pending',

@@ -1,6 +1,6 @@
+import compose from 'lodash/flowRight'
 import React from 'react'
 import { connect } from 'react-redux'
-import compose from 'lodash/flowRight'
 import { useLocation } from 'react-router-dom'
 
 import { withClient } from 'cozy-client'

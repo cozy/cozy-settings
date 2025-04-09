@@ -6,13 +6,13 @@ import React, {
   useMemo
 } from 'react'
 
+import { useInstanceInfo } from 'cozy-client'
 import {
   buildPremiumLink,
   arePremiumLinksEnabled
 } from 'cozy-client/dist/models/instance'
 import { isFlagshipApp } from 'cozy-device-helper'
 import flag from 'cozy-flags'
-import { useInstanceInfo } from 'cozy-client'
 import { useWebviewIntent } from 'cozy-intent'
 
 const PremiumContext = createContext()

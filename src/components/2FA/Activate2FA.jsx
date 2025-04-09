@@ -1,14 +1,14 @@
 import React, { useState, useMemo, useCallback } from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useClient } from 'cozy-client'
+import Button from 'cozy-ui/transpiled/react/Buttons'
+import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ActivationConfirmation from '@/components/2FA/ActivationConfirmation'
-import TwoFactorCode from '@/components/2FA/TwoFactorCode'
 import ActivationConfirmed from '@/components/2FA/ActivationConfirmed'
 import CreatePassword from '@/components/2FA/CreatePassword'
+import TwoFactorCode from '@/components/2FA/TwoFactorCode'
 import { useHasPassword } from '@/hooks/useHasPassword'
 
 /**

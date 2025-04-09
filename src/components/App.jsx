@@ -1,22 +1,23 @@
-import React from 'react'
 import classNames from 'classnames'
-
+import React from 'react'
 import { hot } from 'react-hot-loader'
 
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
-import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
+import { BarComponent } from 'cozy-bar'
 import { RealTimeQueries } from 'cozy-client'
 import CozyDevtools from 'cozy-devtools'
 import flag from 'cozy-flags'
-import { BarComponent } from 'cozy-bar'
+import Sprite from 'cozy-ui/transpiled/react/Icon/Sprite'
+import { Layout, Main } from 'cozy-ui/transpiled/react/Layout'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
-import Sidebar from '@/components/Sidebar'
-import styles from '@/styles/index.styl'
-import { initFlags } from '@/lib/flags'
-import SettingsRealTimeQueries from '@/components/SettingsRealTimeQueries'
 import { AppRouter } from './AppRouter'
+
+import styles from '@/styles/index.styl'
+
+import SettingsRealTimeQueries from '@/components/SettingsRealTimeQueries'
+import Sidebar from '@/components/Sidebar'
+import { initFlags } from '@/lib/flags'
 
 initFlags()
 

@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { useClient } from 'cozy-client'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
-import Label from 'cozy-ui/transpiled/react/Label'
-import Textarea from 'cozy-ui/transpiled/react/Textarea'
 import Checkbox from 'cozy-ui/transpiled/react/Checkbox'
 import PaperplaneIcon from 'cozy-ui/transpiled/react/Icons/Paperplane'
+import Label from 'cozy-ui/transpiled/react/Label'
+import Textarea from 'cozy-ui/transpiled/react/Textarea'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import styles from './support.styl'
 
 import { sendMessageToSupport } from '@/actions/email'
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import styles from './support.styl'
 
 export const Support = ({
   emailStatus: { isSending, isSent, error },

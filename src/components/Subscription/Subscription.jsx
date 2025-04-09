@@ -1,23 +1,24 @@
 import React from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import List from 'cozy-ui/transpiled/react/List'
-import Paper from 'cozy-ui/transpiled/react/Paper'
-import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import CategoriesIcon from 'cozy-ui/transpiled/react/Icons/Categories'
-import ShareCircleIcon from 'cozy-ui/transpiled/react/Icons/ShareCircle'
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import LocationIcon from 'cozy-ui/transpiled/react/Icons/Location'
+import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
+import ShareCircleIcon from 'cozy-ui/transpiled/react/Icons/ShareCircle'
+import List from 'cozy-ui/transpiled/react/List'
+import Paper from 'cozy-ui/transpiled/react/Paper'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { SubscriptionFlagItem } from '@/components/Subscription/SubscriptionFlagItem'
-import { SubscriptionStorageItem } from '@/components/Subscription/SubscriptionStorageItem'
-import { PremiumLink } from '@/components/Premium/PremiumLink'
+import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
+
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
 import { usePremium } from '@/components/Premium/PremiumProvider'
+import { SubscriptionFlagItem } from '@/components/Subscription/SubscriptionFlagItem'
+import { SubscriptionStorageItem } from '@/components/Subscription/SubscriptionStorageItem'
 
 /**
  * Page showing the features included in the user plan

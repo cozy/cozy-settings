@@ -3,12 +3,13 @@ import React, { useState, useRef } from 'react'
 import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { sendDeleteAccountReasonEmail } from '@/actions/email'
-import { getStackDomain } from '@/actions/domUtils'
 import { sendDeleteAccountRequest } from './helpers'
+
+import { getStackDomain } from '@/actions/domUtils'
+import { sendDeleteAccountReasonEmail } from '@/actions/email'
 
 const DONE = 'done'
 const ERRORED = 'errored'

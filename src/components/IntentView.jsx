@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { withClient } from 'cozy-client'
 
 import Claudy from '@/services/Claudy'

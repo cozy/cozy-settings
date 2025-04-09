@@ -4,10 +4,10 @@ import flag from 'cozy-flags'
 import CloudIcon from 'cozy-ui/transpiled/react/Icons/Cloud'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import { usePremium } from '@/components/Premium/PremiumProvider'
 import { MenuItemAnchor } from '@/components/menu/MenuItemAnchor'
 import { MenuItemNavLink } from '@/components/menu/MenuItemNavLink'
 import { routes } from '@/constants/routes'
-import { usePremium } from '@/components/Premium/PremiumProvider'
 
 /**
  * Sidebar menu link for plan

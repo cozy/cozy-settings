@@ -1,10 +1,10 @@
 import React from 'react'
 
 import Icon from 'cozy-ui/transpiled/react/Icon'
+import OpenwithIcon from 'cozy-ui/transpiled/react/Icons/Openwith'
 import ListItem from 'cozy-ui/transpiled/react/ListItem'
 import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import OpenwithIcon from 'cozy-ui/transpiled/react/Icons/Openwith'
 
 interface MenuItemAnchorProps {
   href: string

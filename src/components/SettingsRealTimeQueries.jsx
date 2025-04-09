@@ -1,4 +1,5 @@
 import { memo, useEffect } from 'react'
+
 import { useClient, Mutations } from 'cozy-client'
 import { receiveMutationResult } from 'cozy-client/dist/store'
 

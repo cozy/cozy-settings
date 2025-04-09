@@ -1,13 +1,12 @@
-import { connect } from 'react-redux'
 import compose from 'lodash/flowRight'
+import { connect } from 'react-redux'
 
 import { withClient } from 'cozy-client'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import { fetchClaudyInfos, createIntentService } from '@/actions/services'
 import { fetchInfos } from '@/actions'
 import { sendMessageToSupport } from '@/actions/email'
-
+import { fetchClaudyInfos, createIntentService } from '@/actions/services'
 import IntentView from '@/components/IntentView'
 
 const mapStateToProps = state => ({

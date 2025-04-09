@@ -3,12 +3,11 @@ import React, { Component } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { withClient } from 'cozy-client'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
-import ButtonAction from 'cozy-ui/transpiled/react/deprecated/ButtonAction'
+import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-
-import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import ButtonAction from 'cozy-ui/transpiled/react/deprecated/ButtonAction'
+import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 class ExportDownload extends Component {
   componentDidMount() {

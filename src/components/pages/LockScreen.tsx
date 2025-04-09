@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
+import { getFlagshipMetadata, isFlagshipApp } from 'cozy-device-helper'
+import flag from 'cozy-flags'
+import { useWebviewIntent, WebviewService } from 'cozy-intent'
 import FaceId from 'cozy-ui/transpiled/react/Icons/FaceId'
 import Fingerprint from 'cozy-ui/transpiled/react/Icons/Fingerprint'
-import List from 'cozy-ui/transpiled/react/List'
 import Password from 'cozy-ui/transpiled/react/Icons/Password'
 import Swap from 'cozy-ui/transpiled/react/Icons/Swap'
-import flag from 'cozy-flags'
-import { getFlagshipMetadata, isFlagshipApp } from 'cozy-device-helper'
+import List from 'cozy-ui/transpiled/react/List'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import { useWebviewIntent, WebviewService } from 'cozy-intent'
 
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import logger from '@/lib/logger'
-import { MenuItemSwitch } from '@/components/menu/MenuItemSwitch'
 import { BiometryDeniedDialog } from '@/components/dialogs/BiometryDeniedDialog'
 import { PinCodeDialog } from '@/components/dialogs/PinCodeDialog'
+import { MenuItemSwitch } from '@/components/menu/MenuItemSwitch'
+import logger from '@/lib/logger'
 
 const handleChange = async (
   dispatch: React.Dispatch<React.SetStateAction<boolean>>,

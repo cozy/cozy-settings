@@ -1,6 +1,5 @@
-import flag from 'cozy-flags'
-
 import { useClient } from 'cozy-client'
+import flag from 'cozy-flags'
 
 interface useCanAuthWithReturn {
   canAuthWithOIDC: boolean

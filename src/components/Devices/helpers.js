@@ -1,12 +1,11 @@
 import semver from 'semver'
 
 import flag from 'cozy-flags'
+import DeviceBrowserIcon from 'cozy-ui/transpiled/react/Icons/DeviceBrowser'
+import LaptopIcon from 'cozy-ui/transpiled/react/Icons/Laptop'
+import PhoneIcon from 'cozy-ui/transpiled/react/Icons/Phone'
 
 import { COZY_DESKTOP_SOFTWARE_ID } from '@/lib/deviceConfigurationHelper'
-
-import PhoneIcon from 'cozy-ui/transpiled/react/Icons/Phone'
-import LaptopIcon from 'cozy-ui/transpiled/react/Icons/Laptop'
-import DeviceBrowserIcon from 'cozy-ui/transpiled/react/Icons/DeviceBrowser'
 
 const deviceKindToIcon = {
   mobile: PhoneIcon,

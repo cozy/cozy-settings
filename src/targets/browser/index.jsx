@@ -1,8 +1,9 @@
 import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'cozy-ui/dist/cozy-ui.utils.min.css'
 import 'cozy-bar/dist/stylesheet.css'
-import '@/styles/index.styl'
 
+import { captureConsoleIntegration } from '@sentry/integrations'
+import * as Sentry from '@sentry/react'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import {
@@ -11,16 +12,19 @@ import {
   createRoutesFromChildren,
   matchRoutes
 } from 'react-router-dom'
-import * as Sentry from '@sentry/react'
-import { captureConsoleIntegration } from '@sentry/integrations'
 
 import CozyClient from 'cozy-client'
 import flag from 'cozy-flags'
 import { RealtimePlugin } from 'cozy-realtime'
 
 import manifest from '../../../manifest.webapp'
+
 import App from '@/components/App'
+
 import createStore from '../../store'
+
+import '@/styles/index.styl'
+
 import { AppProviders } from '@/components/AppProviders'
 
 document.addEventListener('DOMContentLoaded', () => {

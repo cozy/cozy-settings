@@ -1,12 +1,15 @@
+import classNames from 'classnames'
 import React, { useMemo, useState } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
-import classNames from 'classnames'
 
 import { isQueryLoading, useQuery } from 'cozy-client'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import flag from 'cozy-flags'
 import MuiButton from 'cozy-ui/transpiled/react/Button'
+import Icon from 'cozy-ui/transpiled/react/Icon'
+import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
+import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import {
   Table,
   TableHead,
@@ -15,27 +18,25 @@ import {
   TableHeader,
   TableCell
 } from 'cozy-ui/transpiled/react/deprecated/Table'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import { Media, Img, Bd } from 'cozy-ui/transpiled/react/deprecated/Media'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import SyncIcon from 'cozy-ui/transpiled/react/Icons/Sync'
-import flag from 'cozy-flags'
+import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+
+import tableStyles from '@/styles/table.styl'
 
 import { DevicesEmpty } from '@/components/Devices/DevicesEmpty'
-import { DevicesModaleRevokeView } from '@/components/Devices/DevicesModaleRevokeView'
 import DevicesModaleConfigureView from '@/components/Devices/DevicesModaleConfigureView'
-import Page from '@/components/Page'
-import { PageHeader } from '@/components/PageHeader'
+import { DevicesModaleRevokeView } from '@/components/Devices/DevicesModaleRevokeView'
+import { DevicesMoreMenu } from '@/components/Devices/DevicesMoreMenu'
 import {
   getDeviceIcon,
   canConfigureDevice,
   getSubtitle
 } from '@/components/Devices/helpers'
-import { DevicesMoreMenu } from '@/components/Devices/DevicesMoreMenu'
+import Page from '@/components/Page'
+import { PageHeader } from '@/components/PageHeader'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
 import { DISPLAYED_CLIENTS } from '@/lib/deviceConfigurationHelper'
 import { buildDevicesQuery } from '@/lib/queries'
-import tableStyles from '@/styles/table.styl'
-import { PremiumLink } from '@/components/Premium/PremiumLink'
 
 const DevicesView = () => {
   const { t, f, lang } = useI18n()

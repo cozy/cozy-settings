@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import DataList from './DataList'
+
 import { useQuery, isQueryLoading } from 'cozy-client'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
+
+import DataList from './DataList'
 
 jest.mock(
   'cozy-ui/transpiled/react/providers/I18n/withLocales',

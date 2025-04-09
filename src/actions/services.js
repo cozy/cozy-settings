@@ -1,10 +1,9 @@
 /* eslint-disable promise/always-return */
-import Intents from 'cozy-interapp'
 import { Q } from 'cozy-client'
-
-import CLAUDY_ACTIONS from '@/config/claudyActions'
+import Intents from 'cozy-interapp'
 
 import { cozyFetch, fetchDevices } from '@/actions'
+import CLAUDY_ACTIONS from '@/config/claudyActions'
 
 export const FETCH_CLAUDY_INFOS = 'FETCH_CLAUDY_INFOS'
 export const FETCH_CLAUDY_INFOS_SUCCESS = 'FETCH_CLAUDY_INFOS_SUCCESS'

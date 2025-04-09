@@ -1,5 +1,5 @@
-import React from 'react'
 import { render } from '@testing-library/react'
+import React from 'react'
 
 import {
   Q,
@@ -12,8 +12,8 @@ import useFetchJSON from 'cozy-client/dist/hooks/useFetchJSON'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import AppPermissions from '@/components/Permissions/AppPermissions/AppPermissions'
-import useAppsOrKonnectorsBySlug from '@/components/Permissions/hooks/useAppsOrKonnectorsBySlug'
 import { completeAppPermission } from '@/components/Permissions/helpers/permissionsHelper'
+import useAppsOrKonnectorsBySlug from '@/components/Permissions/hooks/useAppsOrKonnectorsBySlug'
 
 jest.mock('cozy-ui/transpiled/react/providers/I18n/withLocales', () => {
   return () => Component => {
