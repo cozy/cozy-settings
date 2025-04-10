@@ -569,6 +569,31 @@
     },
     "action": "Manage my plan"
   },
+  "AvatarSection": {
+    "success": {
+      "updated": "Avatar updated successfully",
+      "deleted": "Avatar deleted successfully"
+    },
+    "error": {
+      "timeout": "The avatar upload has timed out. Please try again.",
+      "fileSizeLimit": "The file size limit is 5MB.",
+      "fileType": "The file type is not supported. Please try again.",
+      "deleteFailed": "The avatar deletion has failed. Please try again.",
+      "uploadFailed": "The avatar upload has failed. Please try again.",
+      "serverError": "The avatar could not be updated. Please try again.",
+      "verificationFailed": "Action completed, but failed to verify the change. Please refresh."
+    },
+    "menu": {
+      "update": "Update avatar",
+      "delete": "Delete avatar"
+    },
+    "deleteConfirm": {
+      "title": "Confirm Deletion",
+      "message": "Are you sure you want to delete your avatar?",
+      "cancel": "Cancel",
+      "confirm": "Delete"
+    }
+  },
   "BlockingSubscriptionModal": {
     "title": {
       "delete": "Delete your Twake?",

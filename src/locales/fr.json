@@ -569,6 +569,31 @@
     },
     "action": "Gérer mon offre"
   },
+  "AvatarSection": {
+    "success": {
+      "updated": "Avatar mis à jour avec succès",
+      "deleted": "Avatar supprimé avec succès"
+    },
+    "error": {
+      "timeout": "La mise à jour de l'avatar a expiré. Merci de réessayer.",
+      "fileSizeLimit": "La taille du fichier est limitée à 5MB.",
+      "fileType": "Le type de fichier n'est pas supporté. Merci de réessayer.",
+      "deleteFailed": "La suppression de l'avatar a échoué. Merci de réessayer.",
+      "uploadFailed": "La mise à jour de l'avatar a échoué. Merci de réessayer.",
+      "serverError": "La mise à jour de l'avatar a échoué. Merci de réessayer.",
+      "verificationFailed": "L'action a été effectuée, mais la vérification a échoué. Merci de rafraîchir la page."
+    },
+    "menu": {
+      "update": "Mettre à jour l'avatar",
+      "delete": "Supprimer l'avatar"
+    },
+    "deleteConfirm": {
+      "title": "Confirmation de suppression",
+      "message": "Êtes-vous sûr de vouloir supprimer votre avatar ?",
+      "cancel": "Annuler",
+      "confirm": "Supprimer"
+    }
+  },
   "BlockingSubscriptionModal": {
     "title": {
       "delete": "Supprimer votre Twake ?",

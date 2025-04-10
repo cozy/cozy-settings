@@ -16,11 +16,14 @@ import { DeleteSection } from '@/components/Profile/DeleteSection'
 import Import from '@/components/Profile/Import'
 import LanguageSection from '@/components/Profile/LanguageSection'
 import PasswordSection from '@/components/Profile/PasswordSection'
+import AvatarSection from '@/components/Profile/AvatarSection'
 import { PhoneNumberSection } from '@/components/Profile/PhoneNumberSection'
 import { PublicNameSection } from '@/components/Profile/PublicNameSection'
 import TrackingSection from '@/components/Profile/TrackingSection'
 import { ExportSection } from '@/components/export/ExportSection'
 import { buildSettingsInstanceQuery } from '@/lib/queries'
+
+import '../../styles/twakeProducts/profile.css'
 
 const ProfileView = ({
   exportData,
@@ -48,6 +51,7 @@ const ProfileView = ({
       {hasQueryBeenLoaded(instanceResult) ? (
         <>
           <Stack spacing="l">
+            <AvatarSection />
             <EmailSection />
             <PublicNameSection />
             <PhoneNumberSection />

@@ -16,6 +16,7 @@ import {
 } from 'cozy-ui/transpiled/react/styles'
 
 import { PremiumProvider } from '@/components/Premium/PremiumProvider'
+import { AvatarProvider } from '@/components/Profile/AvatarContext'
 import { FILES_DOCTYPE, CONTACTS_DOCTYPE, APPS_DOCTYPE } from '@/doctypes'
 
 /*
@@ -57,7 +58,9 @@ const AppProviders = ({ client, store, children }) => {
                     >
                       <BarProvider>
                         <PremiumProvider>
-                          <HashRouter>{children}</HashRouter>
+                          <AvatarProvider>
+                            <HashRouter>{children}</HashRouter>
+                          </AvatarProvider>
                         </PremiumProvider>
                       </BarProvider>
                     </DataProxyProvider>
