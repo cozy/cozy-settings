@@ -4,7 +4,7 @@
   },
   "DeleteAccount": {
     "title": "Account verwijderen",
-    "label": "Je kunt je Cozy op elk gewenst moment verwijderen. Maar wees voorzichtig, want als je account verwijdert, worden al je gegevens ook verwijderd en dit is onomkeerbaar!",
+    "label": "Je kunt je Twake op elk gewenst moment verwijderen. Maar wees voorzichtig, want als je account verwijdert, worden al je gegevens ook verwijderd en dit is onomkeerbaar!",
     "button": {
       "label": "Mijn account verwijderen"
     },
@@ -13,11 +13,11 @@
     },
     "modal": {
       "confirm": {
-        "title": "Wil je je Cozy verwijderen?",
+        "title": "Wil je je Twake verwijderen?",
         "description": {
           "line": {
-            "1": "Je Cozy zal worden verwijderd.",
-            "2": "Hierdoor heb je geen toegang meer tot je Cozy.",
+            "1": "Je Twake zal worden verwijderd.",
+            "2": "Hierdoor heb je geen toegang meer tot je Twake.",
             "3": "Al je gegevens worden verwijderd.",
             "4": "Voer je wachtwoord in om deze actie goed te keuren:"
           }
@@ -39,9 +39,9 @@
         }
       },
       "form": {
-        "title": "Verwijderingsverzoek voor je Cozy",
+        "title": "Verwijderingsverzoek voor je Twake",
         "reason": {
-          "label": "Waarom wil je je Cozy verwijderen (optioneel)?"
+          "label": "Waarom wil je je Twake verwijderen (optioneel)?"
         },
         "button": {
           "cancel": {
@@ -64,7 +64,7 @@
     },
     "request": {
       "mail": {
-        "subject": "Redenen voor het verwijderen van Cozy %{domain}"
+        "subject": "Redenen voor het verwijderen van Twake %{domain}"
       }
     },
     "success": {
@@ -107,7 +107,7 @@
   "Empty": {
     "devices": {
       "title": "Je hebt geen apparaten verbonden.",
-      "text": "Door het installeren van de verschillende clients, heb je toegang tot je bestanden op alle schermen tegelijkertijd. Cozy is altijd binnen handbereik, zelfs als je onderweg bent!",
+      "text": "Door het installeren van de verschillende clients, heb je toegang tot je bestanden op alle schermen tegelijkertijd. Twake is altijd binnen handbereik, zelfs als je onderweg bent!",
       "link": {
         "href": "https://cozy.io/en/download/",
         "text": "Download een van onze apps"
@@ -121,7 +121,7 @@
     "title": "Profiel",
     "password": {
       "title": "Wachtwoord",
-      "label": "Je Cozy is momenteel beveiligd met een wachtwoord",
+      "label": "Je Twake is momenteel beveiligd met een wachtwoord",
       "cta": "Wachtwoord bijwerken"
     },
     "infos": {
@@ -141,25 +141,25 @@
       },
       "passphrase": {
         "title": "Authenticatie in twee stappen",
-        "description": "Cozy heeft een verificatiecode van 6 getallen verstuurd naar %{email}.<br/>Voer die code hier in om je wachtwoord te wijzigen:"
+        "description": "Twake heeft een verificatiecode van 6 getallen verstuurd naar %{email}.<br/>Voer die code hier in om je wachtwoord te wijzigen:"
       },
       "label": "Twee stappen zijn beter dan één: daarom kun je de veiligheid verbeteren met een extra stap.<br/>[Bekijk onze hulppagina →](%{link})",
       "modal": {
         "code": "Code (6 cijfers)",
-        "protect": "Bescherm je Cozy met authenticatie in twee stappen",
-        "change": "**Wat verandert er?** Elke keer als je verbinding maakt met je Cozy, dan heb je je wachtwoord nodig en een verificatiecode.<br/>[Bekijk onze hulppagina →](%{link})",
+        "protect": "Bescherm je Twake met authenticatie in twee stappen",
+        "change": "**Wat verandert er?** Elke keer als je verbinding maakt met je Twake, dan heb je je wachtwoord nodig en een verificatiecode.<br/>[Bekijk onze hulppagina →](%{link})",
         "secu_title": "Voeg een extra beveiligingsniveau toe",
-        "secu_description": "Een wachtwoord is goed, maar als het niet ‘complex’ genoeg is, dan kan een dief dit gemakkelijk raden. Ontvang per mail een verificatiecode om de veiligheid van je Cozy te waarborgen.",
+        "secu_description": "Een wachtwoord is goed, maar als het niet ‘complex’ genoeg is, dan kan een dief dit gemakkelijk raden. Ontvang per mail een verificatiecode om de veiligheid van je Twake te waarborgen.",
         "protect_title": "Verbeter de beveiliging van je gegevens",
-        "protect_description": "Zelfs als een dief je wachtwoord raadt, dan blijf jij de enige die kan verbinden met je Cozy.",
+        "protect_description": "Zelfs als een dief je wachtwoord raadt, dan blijf jij de enige die kan verbinden met je Twake.",
         "desactivate_title": "Weet je zeker dat je deze optie wilt uitschakelen?",
-        "desactivate_description": "Als je op de knop ‘Uitschakelen’ klikt, dan wordt je wachtwoord de enige toegang tot je Cozy. Je verwijdert hiermee dus een beveiligingsniveau.",
+        "desactivate_description": "Als je op de knop ‘Uitschakelen’ klikt, dan wordt je wachtwoord de enige toegang tot je Twake. Je verwijdert hiermee dus een beveiligingsniveau.",
         "confirmation_title": "Verificatie in 2 stappen",
         "confirmation_description": "Voer de verificatiecode in die verstuurd is naar **%{email}**",
         "nocode": "Heb je geen code ontvangen?",
         "nocode_claude": "Neem dan contact op met Claude via",
         "validation_title": "Gefeliciteerd! Je e-mailadres is bevestigd.",
-        "validation_description": "Je Cozy wordt nu beveiligd door authenticatie in twee stappen.",
+        "validation_description": "Je Twake wordt nu beveiligd door authenticatie in twee stappen.",
         "validation_logs": "Inloggegevens onthouden:",
         "email": "Je moet een geldig e-mailadres opgeven.",
         "button": {
@@ -175,7 +175,7 @@
     },
     "public_name": {
       "title": "Gebruikersnaam",
-      "label": "Je gebruikersnaam wordt getoond als je bestanden deelt met Cozy-gebruikers."
+      "label": "Je gebruikersnaam wordt getoond als je bestanden deelt met Twake-gebruikers."
     },
     "phone_number": {
       "title": "Telefoonnummer",
@@ -184,51 +184,51 @@
     },
     "default_redirection": {
       "title": "Voorpagina",
-      "label": "Dit is de pagina die je ziet zodra je Cozy opent.",
+      "label": "Dit is de pagina die je ziet zodra je Twake opent.",
       "app_list": "Overzicht"
     },
     "tracking": {
       "title": "Help mee ons product te verbeteren",
-      "label": "Geef Cozy Cloud toestemming om anonieme gebruiksgegevens te verzamelen voor het verbeteren van ons product."
+      "label": "Geef Twake Workplace toestemming om anonieme gebruiksgegevens te verzamelen voor het verbeteren van ons product."
     },
     "move": {
-      "button": "Cozy verplaatsen"
+      "button": "Twake verplaatsen"
     },
     "export": {
       "title": "Mijn gegevens",
-      "label": "Cozy zorgt ervoor dat alle opgeslagen gegevens met je worden gedeeld:",
-      "link": "Cozy exporteren",
+      "label": "Twake zorgt ervoor dat alle opgeslagen gegevens met je worden gedeeld:",
+      "link": "Twake exporteren",
       "server_error": "Er is een fout opgetreden. Probeer het opnieuw of neem contact met ons op.",
       "fetch_error": "Er is een fout opgetreden tijdens het opvragen van je gegevens. Probeer het opnieuw of neem contact met ons op.",
       "missing_error": "Het archief ontbreekt of is verouderd. Probeer het opnieuw of neem contact met ons op.",
       "success": "Je verzoek is verstuurd!",
       "modal": {
         "title": "Geef me mijn gegevens terug",
-        "description": "Cozy is bezig al je opgeslagen gegevens te verzamelen en dit om te zetten naar een downloadbaar archief.<br/><br/>De downloadlink zal worden verstuurd naar het e-mailadres '__%{email}__' zodra het archief beschikbaar is.",
+        "description": "Twake is bezig al je opgeslagen gegevens te verzamelen en dit om te zetten naar een downloadbaar archief.<br/><br/>De downloadlink zal worden verstuurd naar het e-mailadres '__%{email}__' zodra het archief beschikbaar is.",
         "cancel": "Annuleren",
         "CTA": "Geef me mijn gegevens"
       },
       "download": {
         "title": "Download mijn gegevens",
-        "description": "Hier zijn alle gegevensarchieven, beschikbaar in je Cozy:",
+        "description": "Hier zijn alle gegevensarchieven, beschikbaar in je Twake:",
         "CTA": "Archief downloaden",
         "CTA_part": "(part %{number}) downloaden"
       }
     },
     "import": {
-      "link": "Cozy importeren",
+      "link": "Twake importeren",
       "server_error": "Er is een fout opgetreden. Probeer het opnieuw of neem contact met ons op.",
-      "invalid_url": "De link verwijst niet naar een downloadlink van een Cozy.",
-      "quota_too_small": "Je hebt onvoldoende opslagruimte op je Cozy om alle gegevens te importeren. Er zijn hiervoor 2 oplossingen: vergroot de opslagruimte of verwijder onbelangrijke gegevens uit de import.",
+      "invalid_url": "De link verwijst niet naar een downloadlink van een Twake.",
+      "quota_too_small": "Je hebt onvoldoende opslagruimte op je Twake om alle gegevens te importeren. Er zijn hiervoor 2 oplossingen: vergroot de opslagruimte of verwijder onbelangrijke gegevens uit de import.",
       "modal": {
-        "title": "Cozy importeren",
+        "title": "Twake importeren",
         "description": "Volg de downloadlink die naar je e-mailadres is verstuurd. Ga naar het onderdeel 'Exporteren' om een downloadlink aan te maken.",
         "cancel": "Annuleren",
         "CTA": "Importeren"
       },
       "confirmation": {
         "title": "Waarschuwing",
-        "description": "Tijdens het importeren worden reeds aanwezige gegevens op **%{url}** overschreven. Je Cozy is ontoegankelijk totdat deze handeling is afgerond.\n\nWeet je zeker dat je wilt doorgaan?",
+        "description": "Tijdens het importeren worden reeds aanwezige gegevens op **%{url}** overschreven. Je Twake is ontoegankelijk totdat deze handeling is afgerond.\n\nWeet je zeker dat je wilt doorgaan?",
         "cancel": "Annuleren",
         "CTA": "Gegevens overschrijven"
       },
@@ -238,7 +238,7 @@
     },
     "locale": {
       "title": "Taal",
-      "label": "Dit is de taal die zal worden gebruikt in je Cozy.",
+      "label": "Dit is de taal die zal worden gebruikt in je Twake.",
       "fr": "Frans",
       "en": "Engels",
       "es": "Spaans",
@@ -336,10 +336,10 @@
     "configure_success": "De te synchroniseren items zijn opgeslagen.",
     "configure_error": "De te synchroniseren items kunnen niet worden ingesteld. Herlaad de pagina en probeer het opnieuw.",
     "description": "Selecteer de te synchroniseren mappen.",
-    "no_folders": "Je hebt nog geen mappen op je Cozy.",
-    "my_cozy": "Mijn Cozy",
+    "no_folders": "Je hebt nog geen mappen op je Twake.",
+    "my_cozy": "Mijn Twake",
     "partialSync": {
-      "disable": "Gehele Cozy synchroniseren",
+      "disable": "Gehele Twake synchroniseren",
       "enable": "Deselecteer de mappen die niet moeten worden gesynchroniseerd:"
     },
     "validate": "Verifiëren",
@@ -357,7 +357,7 @@
   },
   "PassphraseView": {
     "title": "Wachtwoord bijwerken",
-    "title_oidc": "Cozy Pass-wachtwoord bijwerken",
+    "title_oidc": "Twake Pass-wachtwoord bijwerken",
     "current_passphrase": {
       "label": "Voer je huidige wachtwoord in",
       "placeholder": "Huidige wachtwoord:",
@@ -371,7 +371,7 @@
     },
     "advices": {
       "strong_passphrase": "**Gebruik een sterk wachtwoord:** een lang wachtwoord met cijfers en speciale tekens is onmogelijk te kraken.",
-      "memorize": "**Onthoud het goed:** als je je wachtwoord kwijtraakt, kun je de versleutelde wachtwoorden op je Cozy niet herstellen.",
+      "memorize": "**Onthoud het goed:** als je je wachtwoord kwijtraakt, kun je de versleutelde wachtwoorden op je Twake niet herstellen.",
       "our_tip": "**Aanbeveling:** kies een korte zin die bij je past, zoals: "
     },
     "hint": {
@@ -411,20 +411,20 @@
   },
   "support": {
     "title": "Hallo! Kunnen we je helpen?",
-    "emailDetail": "Je bericht wordt verstuurd middels het e-mailadres dat je hebt opgegeven in je Cozy-instellingen.",
+    "emailDetail": "Je bericht wordt verstuurd middels het e-mailadres dat je hebt opgegeven in je Twake-instellingen.",
     "fields": {
       "message": {
         "title": "Je verzoek",
         "placeholder": "Vertel ons iets (vraag om hulp, deel feedback of zeg gewoon 'hallo'). We staan klaar om met je te praten."
       },
       "consent": {
-        "label": "Ik geef Cozy Cloud-ondersteuning hierbij tijdelijk toegang om de benodigde gegevens voor het beantwoorden van deze vraag te bekijken."
+        "label": "Ik geef Twake Workplace-ondersteuning hierbij tijdelijk toegang om de benodigde gegevens voor het beantwoorden van deze vraag te bekijken."
       }
     },
     "response_email": {
       "subject": "Je verzoek is ontvangen.",
-      "allowConsent": "Bedankt voor het verlenen van tijdelijke toegang aan Cozy Cloud-ondersteuning.",
-      "body": "Hallo,\n\nwe hebben je ondersteuningsverzoek ontvangen:\n%{message}\n\nWe doen ons best om dit zo snel mogelijk te beantwoorden.\n\nClaude van Cozy."
+      "allowConsent": "Bedankt voor het verlenen van tijdelijke toegang aan Twake Workplace-ondersteuning.",
+      "body": "Hallo,\n\nwe hebben je ondersteuningsverzoek ontvangen:\n%{message}\n\nWe doen ons best om dit zo snel mogelijk te beantwoorden.\n\nClaude van Twake."
     },
     "button": "Gaan met die banaan!",
     "sending": "Bezig met versturen...",
@@ -432,29 +432,29 @@
     "error": "Er is een fout opgetreden tijdens het versturen van je bericht."
   },
   "claudy": {
-    "title": "Hoe ga ik met Cozy om?",
+    "title": "Hoe ga ik met Twake om?",
     "actions": {
       "desktop": {
         "title": "Verkrijg toegang tot alle bestanden op je computer",
-        "description": "Synchroniseer alle Cozy Drive-bestanden naar je computer",
-        "button": "Installeer Cozy Drive op je computer",
+        "description": "Synchroniseer alle Twake Drive-bestanden naar je computer",
+        "button": "Installeer Twake Drive op je computer",
         "link": "https://cozy.io/en/download/"
       },
       "mobile": {
         "title": "Back-up en synchroniseer de afbeeldingen op je telefoon",
-        "description": "Al je herinneringen zijn veilig op Cozy Drive",
-        "button": "Installeer de Cozy Drive-app op je telefoon",
+        "description": "Al je herinneringen zijn veilig op Twake Drive",
+        "button": "Installeer de Twake Drive-app op je telefoon",
         "link": "https://cozy.io/en/download/"
       },
       "cozy-collect": {
         "title": "Krijg je rekeningen direct terug",
-        "description": "Cozy Collect - organiseer al je bestanden direct",
-        "button": "Ontdek Cozy Collect"
+        "description": "Twake Collect - organiseer al je bestanden direct",
+        "button": "Ontdek Twake Collect"
       },
       "support": {
         "title": "Neem contact met ons op",
         "description": "Hallo! Kunnen we je helpen?",
-        "emailDetail": "Je bericht wordt verstuurd middels het e-mailadres dat je hebt opgegeven in je Cozy-instellingen.",
+        "emailDetail": "Je bericht wordt verstuurd middels het e-mailadres dat je hebt opgegeven in je Twake-instellingen.",
         "fields": {
           "message": {
             "title": "Je verzoek",
@@ -469,7 +469,7 @@
     }
   },
   "errors": {
-    "noEmailFound": "Er is geen e-mailadres aangetroffen. Voeg er één toe in je Cozy-instellingen en probeer het opnieuw."
+    "noEmailFound": "Er is geen e-mailadres aangetroffen. Voeg er één toe in je Twake-instellingen en probeer het opnieuw."
   },
   "Toolbar": {
     "more": "Meer"
@@ -490,19 +490,19 @@
     "limited_right_access": "Lokale gegevensbevoegdheden",
     "latest_data_releases": "Recentste uitgaande gegevens",
     "monthly_statistics": "Maandelijkse statistieken",
-    "monthly_stats_phrase": "Gegevensoverdrachtsverslag van je Cozy naar %{app} op %{date}:",
+    "monthly_stats_phrase": "Gegevensoverdrachtsverslag van je Twake naar %{app} op %{date}:",
     "exit_rights": "Uitgaande gegevensbevoegdheden",
     "uninstall": "Verwijderen",
     "exit_rights_secondary": "De gegevens kunnen worden geëxporteerd zodat ze geen geheim meer vormen",
-    "limited_right_access_secondary": "De gegevens zijn alléén lokaal toegankelijk, dus niet buiten je Cozy om.",
+    "limited_right_access_secondary": "De gegevens zijn alléén lokaal toegankelijk, dus niet buiten je Twake om.",
     "permissions": "Bevoegdheden",
     "exit_right": "%{app} heeft uitgaande bevoegdheden op %{doctype}",
-    "exit_right_description": "De gegevens zijn toegankelijk buiten je Cozy om en kunnen worden uitgelezen.",
+    "exit_right_description": "De gegevens zijn toegankelijk buiten je Twake om en kunnen worden uitgelezen.",
     "access_right": "%{app} heeft lokale bevoegdheden op %{doctype}",
-    "access_right_description": "De gegevens zijn alléén toegankelijk binnen je Cozy. %{app} kan geen gegevens buiten je Cozy om versturen.",
+    "access_right_description": "De gegevens zijn alléén toegankelijk binnen je Twake. %{app} kan geen gegevens buiten je Twake om versturen.",
     "details": "Details",
     "read_right_title": "Uitlezen",
-    "read_right_text": "De app kan gegevens op je Cozy uitlezen zonder bewerkbaar te zijn",
+    "read_right_text": "De app kan gegevens op je Twake uitlezen zonder bewerkbaar te zijn",
     "write_right_title": "Wegschrijven",
     "write_right_text": "De app kan gegevens toevoegen, bewerken of verwijderen",
     "right_reason": "Waarom heeft %{app} deze bevoegdheid nodig?"
@@ -512,7 +512,7 @@
   },
   "EmailSection": {
     "title": "E-mailadres",
-    "subtitle": "Cozy heeft je e-mailadres nodig zodat je meldingen kunt ontvangen en je je wachtwoord kunt herstellen.",
+    "subtitle": "Twake heeft je e-mailadres nodig zodat je meldingen kunt ontvangen en je je wachtwoord kunt herstellen.",
     "action": "E-mailadres bewerken",
     "alert": {
       "title": "Bewerking in behandeling",

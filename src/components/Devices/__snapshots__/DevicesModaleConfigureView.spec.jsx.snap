@@ -129,7 +129,7 @@ Object {
                     <span
                       class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
                     >
-                      Synchronize my whole Cozy
+                      Synchronize my whole Twake
                     </span>
                   </label>
                   <label
@@ -190,7 +190,7 @@ Object {
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextSecondary MuiTypography-displayInline"
                       >
-                        My Cozy
+                        My Twake
                       </h6>
                     </span>
                   </div>

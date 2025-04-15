@@ -4,7 +4,7 @@
   },
   "DeleteAccount": {
     "title": "Dein Konto löschen",
-    "label": "Du kannst dein Cozy jederzeit löschen. Sei aber vorsichtig, denn sobald dein Konto gelöscht ist, werden  alle deine Daten unwiderruflich gelöscht.",
+    "label": "Du kannst dein Twake jederzeit löschen. Sei aber vorsichtig, denn sobald dein Konto gelöscht ist, werden  alle deine Daten unwiderruflich gelöscht.",
     "button": {
       "label": "Mein Konto löschen"
     },
@@ -13,11 +13,11 @@
     },
     "modal": {
       "confirm": {
-        "title": "Dein Cozy löschen?",
+        "title": "Dein Twake löschen?",
         "description": {
           "line": {
-            "1": "Dein Cozy wird entfernt",
-            "2": "Du wirst nicht mehr auf dein Cozy zugreifen können",
+            "1": "Dein Twake wird entfernt",
+            "2": "Du wirst nicht mehr auf dein Twake zugreifen können",
             "3": "Alle deine Daten werden entfernt",
             "4": "Bitte geben Sie Ihr Passwort ein, um diese Aktion zu bestätigen :"
           }
@@ -39,9 +39,9 @@
         }
       },
       "form": {
-        "title": "Lösch-Anfrage für deinen Cozy",
+        "title": "Lösch-Anfrage für deinen Twake",
         "reason": {
-          "label": "Warum möchtest du dein Cozy löschen (optional)?"
+          "label": "Warum möchtest du dein Twake löschen (optional)?"
         },
         "button": {
           "cancel": {
@@ -77,7 +77,7 @@
   "Empty": {
     "devices": {
       "title": "Du hast keine verbundenen Geräte",
-      "text": "Durch die Installation der verschiedenen Clients kannst du auf deine Dateien auf all deinen Bildschirmen gleichzeitig zugreifen. Cozy ist immer in Reichweite, auch wenn du immer unterwegs bist!",
+      "text": "Durch die Installation der verschiedenen Clients kannst du auf deine Dateien auf all deinen Bildschirmen gleichzeitig zugreifen. Twake ist immer in Reichweite, auch wenn du immer unterwegs bist!",
       "link": {
         "href": "https://cozy.io/en/download/",
         "text": "Lade eine unserer Anwendungen herunter"
@@ -91,7 +91,7 @@
     "title": "Profil",
     "password": {
       "title": "Passwort",
-      "label": "Dein Cozy ist zurzeit durch ein Passwort geschützt.",
+      "label": "Dein Twake ist zurzeit durch ein Passwort geschützt.",
       "cta": "Mein Passwort aktualisieren"
     },
     "infos": {
@@ -101,7 +101,7 @@
     },
     "email": {
       "title": "E-Mail zur Authentifizierung und Kontaktaufnahme",
-      "label": "Cozy braucht deine E-Mail, um dir Benachrichtigungen zuzusenden und dein Passwort wiederherzustellen",
+      "label": "Twake braucht deine E-Mail, um dir Benachrichtigungen zuzusenden und dein Passwort wiederherzustellen",
       "error": "Die E-Mail-Adresse fühlt sich nicht richtig an. Bist du sicher, dass du sie richtig geschrieben hast (z. B. john@wayne.com)?"
     },
     "twofa": {
@@ -112,25 +112,25 @@
       },
       "passphrase": {
         "title": "Zwei-Faktor-Authentifizierung",
-        "description": "Dein Cozy hat einen 6-stelligen Bestätigungscode an %{email} geschickt.<br/>Gib den Code ein, um dein Passwort zu ändern:"
+        "description": "Dein Twake hat einen 6-stelligen Bestätigungscode an %{email} geschickt.<br/>Gib den Code ein, um dein Passwort zu ändern:"
       },
-      "label": "Weil zwei Schritte besser sind als einer, verbessere deine Cozy Sicherheit mit einem zusätzlichen Schritt.<br/>[Schaue auch auf unsere Unterstützungswebsite →](%{link})",
+      "label": "Weil zwei Schritte besser sind als einer, verbessere deine Twake Sicherheit mit einem zusätzlichen Schritt.<br/>[Schaue auch auf unsere Unterstützungswebsite →](%{link})",
       "modal": {
         "code": "Code",
-        "protect": "Schütze deinen Cozy mit der Zwei-Faktor-Authentifizierung",
-        "change": "**Was ändert sich?** Für jedes Mal, das du dich mit deinem Cozy verbindest, wirst du dein Passwort und einen Validierungscode brauchen.</br>[Check out our assistance website →](%{link})",
+        "protect": "Schütze deinen Twake mit der Zwei-Faktor-Authentifizierung",
+        "change": "**Was ändert sich?** Für jedes Mal, das du dich mit deinem Twake verbindest, wirst du dein Passwort und einen Validierungscode brauchen.</br>[Check out our assistance website →](%{link})",
         "secu_title": "Füge eine weitere Sicherheitsebene hinzu",
-        "secu_description": "Passwörter sind gut. Aber wenn es nicht \"kompliziert\" genug ist, kann ein Dieb es leicht erraten. Erhalte einen Überprüfungscode per E-Mail, um die Kontrolle über dein Cozy zu sichern.",
+        "secu_description": "Passwörter sind gut. Aber wenn es nicht \"kompliziert\" genug ist, kann ein Dieb es leicht erraten. Erhalte einen Überprüfungscode per E-Mail, um die Kontrolle über dein Twake zu sichern.",
         "protect_title": "Verbessere den Schutz deiner Daten",
-        "protect_description": "Selbst wenn ein Dieb dein Passwort erhält, bleibst du der einzige Kapitän mit Zugriff auf dein Cozy",
+        "protect_description": "Selbst wenn ein Dieb dein Passwort erhält, bleibst du der einzige Kapitän mit Zugriff auf dein Twake",
         "desactivate_title": "Bist du sicher, dass du diese Option abschalten möchtest?",
-        "desactivate_description": "Beim Klicken auf den \"Deaktivieren\" Button, wird dein Passwort der einzige Zugangsschlüssel zu deinem Cozy sein. Du wirst eine Sicherheitsebene verlieren.",
+        "desactivate_description": "Beim Klicken auf den \"Deaktivieren\" Button, wird dein Passwort der einzige Zugangsschlüssel zu deinem Twake sein. Du wirst eine Sicherheitsebene verlieren.",
         "confirmation_title": "Validierungscode-Bestätigung",
-        "confirmation_description": "Dein Cozy hat einen 6-stelligen Bestätigungscode an %{email} gesendet.<br/>Gib den Code ein, um die Echtheitsprüfung zu aktivieren.",
+        "confirmation_description": "Dein Twake hat einen 6-stelligen Bestätigungscode an %{email} gesendet.<br/>Gib den Code ein, um die Echtheitsprüfung zu aktivieren.",
         "nocode": "Du hast keinen Code bekommen?",
         "nocode_claude": "Kontaktiere Claude über",
         "validation_title": "Glückwunsch! Deine E-Mail wurde bestätigt.",
-        "validation_description": "Dein Cozy ist nun mit 2 Schritten abgesichert.",
+        "validation_description": "Dein Twake ist nun mit 2 Schritten abgesichert.",
         "validation_logs": "Merke dir deine Kennungen:",
         "email": "Du solltest eine gültige E-Mail Adresse angeben",
         "button": {
@@ -144,7 +144,7 @@
     },
     "public_name": {
       "title": "Benutzername",
-      "label": "Dein Benutzername wird angezeigt, wenn du Dateien mit Cozy-Benutzern teilst."
+      "label": "Dein Benutzername wird angezeigt, wenn du Dateien mit Twake-Benutzern teilst."
     },
     "phone_number": {
       "title": "Telefonnummer",
@@ -153,19 +153,19 @@
     },
     "tracking": {
       "title": "Hilf uns, unser Produkt zu verbessern",
-      "label": "Autorisiere Cozy Cloud, anonyme Nutzungsdaten zu sammeln, um unser Produkt zu verbessern."
+      "label": "Autorisiere Twake Workplace, anonyme Nutzungsdaten zu sammeln, um unser Produkt zu verbessern."
     },
     "export": {
       "title": "Meine Daten",
-      "label": "Cozy ist verpflichtet, all jene Daten bereitzustellen, die es über dich gespeichert hat",
-      "link": "Mein Cozy exportieren",
+      "label": "Twake ist verpflichtet, all jene Daten bereitzustellen, die es über dich gespeichert hat",
+      "link": "Mein Twake exportieren",
       "server_error": "Etwas ist schiefgelaufen, bitte versuche es erneut oder kontaktiere uns.",
       "fetch_error": "Etwas ist beim Abrufen deiner Exportdaten schiefgelaufen. Bitte versuche es später ernuet oder kontaktiere uns.",
       "missing_error": "Das Archive scheint zu fehlen oder ist abgelaufen. Bitte versucht es erneut oder kontaktiere uns.",
       "success": "Deine Anfrage wurde erfolgreich gesendet!",
       "modal": {
         "title": "Meine Daten zurückbekommen",
-        "description": "Cozy ist dafür verantwortlich, all die über dich gesammelten Daten zu bündeln und sie dir als herunterladbares Archiv zuzusenden.<br/><br/>Der Download Link wird dir an __%{email}__ gesendet, sobald das Archiv verfügbar ist.",
+        "description": "Twake ist dafür verantwortlich, all die über dich gesammelten Daten zu bündeln und sie dir als herunterladbares Archiv zuzusenden.<br/><br/>Der Download Link wird dir an __%{email}__ gesendet, sobald das Archiv verfügbar ist.",
         "cancel": "Abbrechen",
         "CTA": "Sende mir meine Daten"
       },
@@ -177,19 +177,19 @@
       }
     },
     "import": {
-      "link": "Ein Cozy importieren",
+      "link": "Ein Twake importieren",
       "server_error": "Etwas ist schiefgelaufen, bitte versuche es erneut oder kontaktiere uns.",
-      "invalid_url": "Der Link scheint nicht mit einem Downloadlink von Cozy übereinzustimmen.",
+      "invalid_url": "Der Link scheint nicht mit einem Downloadlink von Twake übereinzustimmen.",
       "quota_too_small": "Der Speicherplatz deines Cozys ist zu gering, um all deine Daten zu importieren. Zwei Lösungen sind vorhanden: erhöhe den Speicherplatz deines Cozys oder entferne Daten, die für den Import nicht benötigt werden. ",
       "modal": {
-        "title": "Ein Cozy importieren",
+        "title": "Ein Twake importieren",
         "description": "Füge unten den Downloadlink aus der E-Mail ein. Um den Downloadlink eines Cozys zu erhalten, musst du lediglich seinen Export starten.",
         "cancel": "Abbrechen",
         "CTA": "Importieren"
       },
       "confirmation": {
         "title": "Warnung",
-        "description": "Beim Importieren in dein Cozy **%{url}**, werden bereits vorhandene Daten überschrieben. Der Zugriff auf dein Cozy wird solange geblockt, bis dieser Vorgang abgeschlossen ist.\n\nMöchtest du wirklich fortfahren?",
+        "description": "Beim Importieren in dein Twake **%{url}**, werden bereits vorhandene Daten überschrieben. Der Zugriff auf dein Twake wird solange geblockt, bis dieser Vorgang abgeschlossen ist.\n\nMöchtest du wirklich fortfahren?",
         "cancel": "Abbrechen",
         "CTA": "Daten überschreiben"
       },
@@ -199,7 +199,7 @@
     },
     "locale": {
       "title": "Sprache",
-      "label": "Dies wird die Sprache sein, die in deinem Cozy verwendet wird.",
+      "label": "Dies wird die Sprache sein, die in deinem Twake verwendet wird.",
       "fr": "Französisch ",
       "en": "Englisch",
       "es": "Spanisch",
@@ -297,13 +297,13 @@
     },
     "new_passphrase": {
       "label": "Wähle ein neues Passwort:",
-      "placeholder": "Neues Cozy Passwort",
+      "placeholder": "Neues Twake Passwort",
       "confirmation_placeholder": "Passwort bestätigen",
       "dont_match": "Die Passwörter stimmen nicht überein"
     },
     "advices": {
       "strong_passphrase": "**Bevorzuge ein starkes Passwort:** Ein langes Passwort mit Nummern und Spezialzeichen wird unmöglich zu knacken sein.",
-      "memorize": "**Merk' es dir gut:** Im Falle des Verlusts, wirst du deine verschlüsselten Passwörter in deinem Cozy nicht retten können.",
+      "memorize": "**Merk' es dir gut:** Im Falle des Verlusts, wirst du deine verschlüsselten Passwörter in deinem Twake nicht retten können.",
       "our_tip": "**Unser Tipp:** Finde eine kurze Phrase, die zu dir passt, zum Beispiel:"
     },
     "hint": {
@@ -325,7 +325,7 @@
   },
   "support": {
     "title": "Hallo! Wie können wir dir helfen?",
-    "emailDetail": "Deine Nachricht wird von der E-Mail-Adresse gesendet, die du in den Cozy Einstellungen gespeichert hast.",
+    "emailDetail": "Deine Nachricht wird von der E-Mail-Adresse gesendet, die du in den Twake Einstellungen gespeichert hast.",
     "fields": {
       "message": {
         "title": "Deine Anfrage",
@@ -334,7 +334,7 @@
     },
     "response_email": {
       "subject": "Deine Anfrage wurde erfolgreich erhalten",
-      "body": "Hallo,\n\nwir haben deine Anfrage erfolgreich erhalten:\n%{message}\n\nWir tun unser Bestes, dir schnellstmöglich zu antworten.\n\nClaude von Cozy."
+      "body": "Hallo,\n\nwir haben deine Anfrage erfolgreich erhalten:\n%{message}\n\nWir tun unser Bestes, dir schnellstmöglich zu antworten.\n\nClaude von Twake."
     },
     "button": "Los geht's!",
     "sending": "Sendet...",
@@ -342,29 +342,29 @@
     "error": "Beim Senden der Nachricht ist ein Fehler aufgetreten"
   },
   "claudy": {
-    "title": "Wie willst du dein Cozy steuern?",
+    "title": "Wie willst du dein Twake steuern?",
     "actions": {
       "desktop": {
         "title": "Hol' dir Zugang zu deinen Dateien auf deinem Computer",
-        "description": "Synchronisiere alle deine Cozy Drive-Dateien auf deinem Computer",
-        "button": "Installiere Cozy Drive auf deinem Desktop",
+        "description": "Synchronisiere alle deine Twake Drive-Dateien auf deinem Computer",
+        "button": "Installiere Twake Drive auf deinem Desktop",
         "link": "https://cozy.io/en/download/"
       },
       "mobile": {
         "title": "Sichere und synchronisiere deine Bilder vom Handy",
-        "description": "Alle deine Erinnerungen sind auf Cozy Drive sicher",
-        "button": "Installiere die Cozy Drive App auf deinem Handy",
+        "description": "Alle deine Erinnerungen sind auf Twake Drive sicher",
+        "button": "Installiere die Twake Drive App auf deinem Handy",
         "link": "https://cozy.io/en/download/"
       },
       "cozy-collect": {
         "title": "Hol' dein Geld sofort zurück",
-        "description": "Cozy Collect organisiert alle deine Dateien sofort",
-        "button": "Entdecke Cozy Collect"
+        "description": "Twake Collect organisiert alle deine Dateien sofort",
+        "button": "Entdecke Twake Collect"
       },
       "support": {
         "title": "Kontaktiere uns",
         "description": "Hallo! Wie können wir dir helfen?",
-        "emailDetail": "Deine Nachricht wird von der E-Mail-Adresse gesendet, die du in den Cozy Einstellungen gespeichert hast.",
+        "emailDetail": "Deine Nachricht wird von der E-Mail-Adresse gesendet, die du in den Twake Einstellungen gespeichert hast.",
         "fields": {
           "message": {
             "title": "Deine Anfrage",
@@ -379,6 +379,6 @@
     }
   },
   "errors": {
-    "noEmailFound": "Keine E-Mail-Adresse gefunden. Bitte füge eine in deinen Cozy Einstellungen hinzu und versuche es dann nochmal."
+    "noEmailFound": "Keine E-Mail-Adresse gefunden. Bitte füge eine in deinen Twake Einstellungen hinzu und versuche es dann nochmal."
   }
 }
