@@ -134,7 +134,7 @@ describe('DevicesModaleConfigureView', () => {
   const partialSyncSelector = root =>
     root.getByLabelText('Unselect folders which should not be synchronized:')
   const completeSyncSelector = root =>
-    root.getByLabelText('Synchronize my whole Cozy')
+    root.getByLabelText('Synchronize my whole Twake')
   const cancelButton = root => root.getByRole('button', { name: 'Cancel' })
   const validateButton = root => root.getByRole('button', { name: 'Validate' })
   const allFoldersToggle = root =>
@@ -255,7 +255,7 @@ describe('DevicesModaleConfigureView', () => {
     it('should render an Empty-like warning', () => {
       const { root } = setup()
       expect(
-        root.getByText("You don't have any folders in your Cozy.")
+        root.getByText("You don't have any folders in your Twake.")
       ).toBeVisible()
     })
 
