@@ -124,7 +124,7 @@
     "title": "Profile",
     "password": {
       "title": "Password",
-      "label": "Your cozy is currently protected by a password",
+      "label": "Your Twake is currently protected by a password",
       "cta": "Update my password"
     },
     "infos": {
@@ -377,13 +377,13 @@
     },
     "new_passphrase": {
       "label": "Choose a new password",
-      "placeholder": "New cozy password",
+      "placeholder": "New Twake password",
       "confirmation_placeholder": "Confirm the password",
       "dont_match": "Password don't match"
     },
     "advices": {
       "strong_passphrase": "**Privilege a strong password:** A long password with numbers and special characters will be impossible to break.",
-      "memorize": "**Memorize it well:** In case of loss, you will not be able to recover the encrypted passwords in your cozy.",
+      "memorize": "**Memorize it well:** In case of loss, you will not be able to recover the encrypted passwords in your Twake.",
       "our_tip": "**Our tip:** Find a short phrase that suits you, for example: "
     },
     "hint": {
@@ -502,7 +502,7 @@
     "limited_right_access": "Local data permissions",
     "latest_data_releases": "Latest outgoing data history",
     "monthly_statistics": "Monthly statistics",
-    "monthly_stats_phrase": "Data release report from your cozy to %{app} on %{date}:",
+    "monthly_stats_phrase": "Data release report from your Twake to %{app} on %{date}:",
     "exit_rights": "Outgoing data permissions",
     "uninstall": "Uninstall",
     "exit_rights_secondary": "The data can be taken out of the Twake, it will not be kept secret anymore",

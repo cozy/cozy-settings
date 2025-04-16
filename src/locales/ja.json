@@ -276,13 +276,13 @@
     },
     "new_passphrase": {
       "label": "新しいパスワードを選択:",
-      "placeholder": "新しい cozy パスワード",
+      "placeholder": "新しい Twake パスワード",
       "confirmation_placeholder": "パスワードの確認",
       "dont_match": "パスワードが一致しません"
     },
     "advices": {
       "strong_passphrase": "**強力なパスワードの特権:** 数字と記号を含む長いパスワードは破ることができません。",
-      "memorize": "**よく覚えておいてください:** 紛失した場合、cozy の暗号化されたパスワードを回復することはできません。",
+      "memorize": "**よく覚えておいてください:** 紛失した場合、Twake の暗号化されたパスワードを回復することはできません。",
       "our_tip": "**ヒント:** あなたに合った短いフレーズを見つけてください。例:"
     },
     "hint": {
