@@ -365,7 +365,7 @@
     },
     "new_passphrase": {
       "label": "Voer een nieuw wachtwoord in",
-      "placeholder": "Nieuw cozy-wachtwoord",
+      "placeholder": "Nieuw Twake-wachtwoord",
       "confirmation_placeholder": "Bevestig het wachtwoord",
       "dont_match": "De wachtwoorden konen niet overeen"
     },

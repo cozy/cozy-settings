@@ -91,7 +91,7 @@
     "title": "Perfil",
     "password": {
       "title": "Contraseña",
-      "label": "Su cozy está actualmente protegido por una contraseña",
+      "label": "Su Twake está actualmente protegido por una contraseña",
       "cta": "Actualizar mi contraseña"
     },
     "infos": {
@@ -302,13 +302,13 @@
     },
     "new_passphrase": {
       "label": "Escoja una nueva contraseña",
-      "placeholder": "Nueva contraseña cozy",
+      "placeholder": "Nueva contraseña Twake",
       "confirmation_placeholder": "Confirmar la contraseña",
       "dont_match": "La contraseña no coincide"
     },
     "advices": {
       "strong_passphrase": "*Preferir una contraseña fuerte:** Una contraseña larga con números y caracteres especiales será imposible de romper.",
-      "memorize": "**Memorícela bien:** En caso de pérdida, no podrá recuperar las contraseñas encriptadas en su cozy.",
+      "memorize": "**Memorícela bien:** En caso de pérdida, no podrá recuperar las contraseñas encriptadas en su Twake.",
       "our_tip": "**Nuestro consejo:** Encuentre una frase corta que le guste, por ejemplo: "
     },
     "hint": {

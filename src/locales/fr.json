@@ -124,7 +124,7 @@
     "title": "Profil",
     "password": {
       "title": "Mot de passe",
-      "label": "Votre cozy est actuellement protégé par un mot de passe.",
+      "label": "Votre Twake est actuellement protégé par un mot de passe.",
       "cta": "Modifier le mot de passe"
     },
     "infos": {
@@ -377,13 +377,13 @@
     },
     "new_passphrase": {
       "label": "Choisissez un nouveau mot de passe",
-      "placeholder": "Nouveau mot de passe cozy",
+      "placeholder": "Nouveau mot de passe Twake",
       "confirmation_placeholder": "Confirmer le mot de passe",
       "dont_match": "Le mot de passe ne correspond pas"
     },
     "advices": {
       "strong_passphrase": "**Privilégiez un mot de passe fort :** Un mot de passe long avec des chiffres et des caractères spéciaux sera impossible à casser.",
-      "memorize": "**Mémorisez-le bien :** En cas de perte, il vous sera impossible de récupérer les mots de passes chiffrés dans votre cozy.",
+      "memorize": "**Mémorisez-le bien :** En cas de perte, il vous sera impossible de récupérer les mots de passes chiffrés dans votre Twake.",
       "our_tip": "**Notre conseil :** Trouvez une phrase qui vous corresponde, par exemple : "
     },
     "hint": {
@@ -502,7 +502,7 @@
     "limited_right_access": "Droit d'accès limité",
     "latest_data_releases": "Dernières sorties de données",
     "monthly_statistics": "Statistiques mensuelles",
-    "monthly_stats_phrase": "Compte rendu de la sortie de données depuis votre cozy vers %{app} le %{date}:",
+    "monthly_stats_phrase": "Compte rendu de la sortie de données depuis votre Twake vers %{app} le %{date}:",
     "exit_rights": "Droits de sortie",
     "uninstall": "Désinstaller",
     "exit_rights_secondary": "La donnée peut sortir hors du Twake, elle ne sera alors plus maintenue secrète",
