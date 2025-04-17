@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import CategoriesIcon from 'cozy-ui/transpiled/react/Icons/Categories'
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import LocationIcon from 'cozy-ui/transpiled/react/Icons/Location'
@@ -15,7 +16,6 @@ import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
 
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
-import { PremiumLink } from '@/components/Premium/PremiumLink'
 import { usePremium } from '@/components/Premium/PremiumProvider'
 import { SubscriptionFlagItem } from '@/components/Subscription/SubscriptionFlagItem'
 import { SubscriptionStorageItem } from '@/components/Subscription/SubscriptionStorageItem'
@@ -24,9 +24,10 @@ import { SubscriptionStorageItem } from '@/components/Subscription/SubscriptionS
  * Page showing the features included in the user plan
  */
 const Subscription = () => {
-  const { t } = useI18n()
-
+  const { t, lang } = useI18n()
   const { isLoaded } = usePremium()
+
+  const linkLang = ['en', 'fr', 'es'].includes(lang) ? lang : 'en'
 
   return (
     <Page narrow>
@@ -65,7 +66,14 @@ const Subscription = () => {
               />
             </List>
           </Paper>
-          <PremiumLink className="u-mt-1" label={t('Subscription.action')} />
+          <Button
+            className="u-mt-1"
+            component="a"
+            target="_blank"
+            href={`https://cozy.io/${linkLang}/pricing/`}
+            label={t('Subscription.action')}
+            fullWidth
+          />
         </>
       ) : (
         <Spinner
