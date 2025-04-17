@@ -1,6 +1,7 @@
 import 'cozy-ui/transpiled/react/stylesheet.css'
 import 'cozy-ui/dist/cozy-ui.utils.min.css'
 import 'cozy-bar/dist/stylesheet.css'
+import 'cozy-search/dist/stylesheet.css'
 
 import { captureConsoleIntegration } from '@sentry/integrations'
 import * as Sentry from '@sentry/react'
