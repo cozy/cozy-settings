@@ -69,6 +69,28 @@
     },
     "success": {
       "message": "Votre demande a bien été envoyée."
+    },
+    "popup": {
+      "deleteLater": "Supprimer plus tard",
+      "continue": "Continuer",
+      "chat": {
+        "conversations": {
+          "title": "Perte de conversations",
+          "description": "En supprimant votre compte, toutes vos conversations sur Twake Chat seront définitivement perdues. Vous ne pourrez plus accéder ni récupérer votre historique de discussions."
+        },
+        "groupChat": {
+          "title": "Vos discussions de groupe",
+          "description": "Une fois votre compte supprimé, tous les messages privés et de groupe seront effacés sans possibilité de récupération. Veuillez sauvegarder toutes les conversations importantes avant de continuer."
+        }
+      },
+      "drive": {
+        "title": "Perte de vos fichiers",
+        "description": "Tous les fichiers stockés dans votre Twake Drive seront supprimés. Assurez-vous de sauvegarder vos données avant de supprimer votre compte."
+      },
+      "mail": {
+        "title": "Perte de vos emails",
+        "description": "En supprimant votre compte, tous vos emails Twake Mail seront définitivement effacés. Si vous avez des informations importantes, veuillez les archiver avant de continuer."
+      }
     }
   },
   "Nav": {
@@ -101,11 +123,14 @@
     "sessions": "Connexions web",
     "storage": "Stockage",
     "contact_support": "Nous contacter",
-    "terms_of_service": "Conditions générales d’utilisation",
+    "terms_of_service": "Conditions générales d'utilisation",
     "legal_notice": "Mentions légales"
   },
   "loading": {
     "loading": "Chargement"
+  },
+  "Input": {
+    "copied": "Copié dans le presse-papier"
   },
   "Empty": {
     "devices": {
@@ -183,11 +208,12 @@
     "phone_number": {
       "title": "Numéro de téléphone",
       "label": "Votre numéro de téléphone est utilisé pour vous envoyer des notifications par SMS.",
+      "change_button": "Modifier le numéro de téléphone",
       "invalid": "Le numéro de téléphone que vous avez entré ne semble pas correct."
     },
     "default_redirection": {
       "title": "Écran d'accueil",
-      "label": "C’est le premier écran que vous verrez en ouvrant votre Twake.",
+      "label": "C'est le premier écran que vous verrez en ouvrant votre Twake.",
       "app_list": "Tableau de bord"
     },
     "tracking": {
@@ -525,11 +551,11 @@
   "EmailSection": {
     "title": "E-mail",
     "subtitle": "Twake a besoin de votre e-mail pour vous envoyer des notifications et vous permettre de récupérer votre mot de passe.",
-    "action": "Modifier l’email",
+    "action": "Modifier l'email",
     "alert": {
       "title": "Modification en attente",
       "content": "Un email vous a été envoyé à %{pendingEmail} pour vérifier votre identité et finaliser la modification de votre email.",
-      "resend": "Renvoyer l’email",
+      "resend": "Renvoyer l'email",
       "cancel": "Annuler"
     },
     "snackbar": {
@@ -564,7 +590,7 @@
       "accounts": ": %{smart_count} service connecté |||| : %{smart_count} services connectés",
       "accounts_unlimited": ": nombre de services connectés illimités",
       "accounts_offer": "(%{max} inclus dans l'offre + 1 offert) |||| (%{max} inclus dans l'offre + %{smart_count} offerts)",
-      "numeric_flag": ": jusqu’à %{smart_count}",
+      "numeric_flag": ": jusqu'à %{smart_count}",
       "numeric_flag_unlimited": ": illimité"
     },
     "action": "Gérer mon offre"
@@ -586,12 +612,6 @@
     "menu": {
       "update": "Mettre à jour l'avatar",
       "delete": "Supprimer l'avatar"
-    },
-    "deleteConfirm": {
-      "title": "Confirmation de suppression",
-      "message": "Êtes-vous sûr de vouloir supprimer votre avatar ?",
-      "cancel": "Annuler",
-      "confirm": "Supprimer"
     }
   },
   "BlockingSubscriptionModal": {

@@ -57,6 +57,7 @@ const PublicNameSection = () => {
       submitting={mutationStatus === 'loading'}
       saved={mutationStatus === 'loaded'}
       errors={errors}
+      copyable={true}
     />
   )
 }

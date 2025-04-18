@@ -11,6 +11,28 @@
     "error": {
       "message": "An error occurred during account deletion request. Please retry or contact our support."
     },
+    "popup": {
+      "deleteLater": "Delete later",
+      "continue": "Continue",
+      "chat": {
+        "conversations": {
+          "title": "Loss of conversations",
+          "description": "By deleting your account, all your conversations on Twake Chat will be permanently lost. You will no longer be able to access or recover your chat history."
+        },
+        "groupChat": {
+          "title": "Your group chat",
+          "description": "Once your account is deleted, all private and group messages will be erased with no possibility of recovery. Please make sure to save any important conversations before proceeding."
+        }
+      },
+      "drive": {
+        "title": "Loss of your files",
+        "description": "All files stored in your Twake Drive will be deleted. Ensure you back up your data before deleting your account."
+      },
+      "mail": {
+        "title": "Loss of your emails",
+        "description": "By deleting your account, all your Twake Mail emails will be permanently erased. If you have important information, please archive it before proceeding."
+      }
+    },
     "modal": {
       "confirm": {
         "title": "Delete your Twake ?",
@@ -107,6 +129,9 @@
   "loading": {
     "loading": "Loading"
   },
+  "Input": {
+    "copied": "Copied to clipboard"
+  },
   "Empty": {
     "devices": {
       "title": "You don't have any connected devices",
@@ -183,6 +208,7 @@
     "phone_number": {
       "title": "Phone number",
       "label": "Your phone number will be used to send you notifications and to enable you to recover your password.",
+      "change_button": "Change the phone number",
       "invalid": "The phone number is invalid"
     },
     "default_redirection": {
@@ -586,12 +612,6 @@
     "menu": {
       "update": "Update avatar",
       "delete": "Delete avatar"
-    },
-    "deleteConfirm": {
-      "title": "Confirm Deletion",
-      "message": "Are you sure you want to delete your avatar?",
-      "cancel": "Cancel",
-      "confirm": "Delete"
     }
   },
   "BlockingSubscriptionModal": {

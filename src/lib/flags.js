@@ -10,5 +10,6 @@ export const initFlags = () => {
     flag('settings.oidc-auth')
     flag('settings.moving-cozy')
     flag('settings.specify-blocking-subscription-vendor-dev')
+    flag('settings.2fa.enabled')
   }
 }

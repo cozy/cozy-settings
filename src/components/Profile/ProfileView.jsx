@@ -6,6 +6,7 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import flag from 'cozy-flags'
 
 import TwoFA from '@/components/2FA'
 import EmailSection from '@/components/Email/EmailSection'
@@ -43,6 +44,8 @@ const ProfileView = ({
     instanceQuery.options
   )
 
+  const isTwoFAEnabled = flag('settings.2fa.enabled')
+
   return (
     <Page narrow>
       <PageTitle className={!isMobile ? 'u-mb-1' : ''}>
@@ -56,7 +59,7 @@ const ProfileView = ({
             <PublicNameSection />
             <PhoneNumberSection />
             <PasswordSection />
-            <TwoFA />
+            {isTwoFAEnabled && <TwoFA />}
             <LanguageSection />
             <DefaultRedirectionSection />
             <TrackingSection />

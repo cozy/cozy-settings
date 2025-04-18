@@ -14,19 +14,23 @@ const Input = ({
   errors,
   onChange,
   onBlur
-}) => (
-  <UIInput
-    type={type}
-    placeholder={placeholder}
-    defaultValue={value}
-    value={undefined}
-    name={name}
-    onChange={onChange && (e => onChange(name, e.target.value))}
-    onBlur={onBlur && (e => onBlur(name, e.target.value))}
-    className={errors && errors.length !== 0 ? 'u-error' : ''}
-    aria-busy={submitting}
-  />
-)
+}) => {
+  return (
+    <div className="u-pos-relative">
+      <UIInput
+        type={type}
+        placeholder={placeholder}
+        defaultValue={value}
+        value={undefined}
+        name={name}
+        onChange={onChange && (e => onChange(name, e.target.value))}
+        onBlur={onBlur && (e => onBlur(name, e.target.value))}
+        className={errors && errors.length !== 0 ? 'u-error' : ''}
+        aria-busy={submitting}
+      />
+    </div>
+  )
+}
 
 const SwitchCheckBox = ({ name, value, onChange }) => (
   <span>
@@ -39,14 +43,16 @@ const SwitchCheckBox = ({ name, value, onChange }) => (
   </span>
 )
 
-const SwitchOrInput = props => (
-  <Field {...props}>
-    {props.type === 'checkbox' ? (
-      <SwitchCheckBox {...props} />
-    ) : (
-      <Input {...props} />
-    )}
-  </Field>
-)
+const SwitchOrInput = props => {
+  return (
+    <Field {...props}>
+      {props.type === 'checkbox' ? (
+        <SwitchCheckBox {...props} />
+      ) : (
+        <Input {...props} />
+      )}
+    </Field>
+  )
+}
 
 export default SwitchOrInput
