@@ -1,11 +1,8 @@
 import React, { useState, useRef } from 'react'
 import { useQuery, useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Avatar from 'cozy-ui/transpiled/react/Avatar'
 import Menu from 'cozy-ui/transpiled/react/Menu'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
@@ -15,17 +12,17 @@ import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
 import CameraIcon from 'cozy-ui/transpiled/react/Icons/Camera'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { buildSettingsInstanceQuery } from '@/lib/queries'
 import { useAvatar } from './AvatarContext'
 
 const AvatarSection = () => {
   const { t } = useI18n()
+  const { showAlert } = useAlert()
   const { uploadAvatar, deleteAvatar } = useAvatar()
   const [showMenu, setShowMenu] = useState(false)
   const [avatarStatus, setAvatarStatus] = useState('PRESENT')
   const [avatarTimestamp, setAvatarTimestamp] = useState(Date.now())
-  const [isConfirmDeleteDialogOpen, setIsConfirmDeleteDialogOpen] =
-    useState(false)
 
   const fileInputRef = useRef(null)
   const menuAnchorRef = useRef(null)
@@ -44,13 +41,19 @@ const AvatarSection = () => {
 
     const MAX_FILE_SIZE = 5 * 1024 * 1024
     if (file.size > MAX_FILE_SIZE) {
-      Alerter.error(t('AvatarSection.error.fileSizeLimit'))
+      showAlert({
+        message: t('AvatarSection.error.fileSizeLimit'),
+        type: 'error'
+      })
       return
     }
 
     const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
     if (!ALLOWED_TYPES.includes(file.type)) {
-      Alerter.error(t('AvatarSection.error.fileType'))
+      showAlert({
+        message: t('AvatarSection.error.fileType'),
+        type: 'error'
+      })
       return
     }
 
@@ -67,16 +70,20 @@ const AvatarSection = () => {
       const newTimestamp = Date.now()
       setAvatarStatus('PRESENT')
       setAvatarTimestamp(newTimestamp)
-      Alerter.success(t('AvatarSection.success.updated', 'Updated successful'))
+      showAlert({
+        message: t('AvatarSection.success.updated', 'Updated successful'),
+        type: 'success'
+      })
     } catch (error) {
       clearTimeout(timeoutId)
       setAvatarStatus(previousAvatarStatus)
-      Alerter.error(
-        t(
+      showAlert({
+        message: t(
           'AvatarSection.error.uploadFailed',
           'Upload failed. Please try again.'
-        )
-      )
+        ),
+        type: 'error'
+      })
     } finally {
       setShowMenu(false)
       if (fileInputRef.current) {
@@ -90,20 +97,6 @@ const AvatarSection = () => {
     fileInputRef.current.click()
   }
 
-  const openDeleteConfirmation = () => {
-    setShowMenu(false)
-    setIsConfirmDeleteDialogOpen(true)
-  }
-
-  const closeDeleteConfirmation = () => {
-    setIsConfirmDeleteDialogOpen(false)
-  }
-
-  const handleConfirmDelete = () => {
-    closeDeleteConfirmation()
-    confirmDeleteAvatar()
-  }
-
   const toggleMenu = () => {
     setShowMenu(prev => !prev)
   }
@@ -112,7 +105,9 @@ const AvatarSection = () => {
     setShowMenu(false)
   }
 
-  const confirmDeleteAvatar = async () => {
+  const handleDeleteAvatar = async () => {
+    closeMenu()
+
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 30000)
     const previousAvatarStatus = avatarStatus
@@ -126,11 +121,17 @@ const AvatarSection = () => {
 
       setAvatarStatus('ABSENT')
       setAvatarTimestamp(checkTimestamp)
-      Alerter.success(t('AvatarSection.success.deleted', 'Avatar deleted'))
+      showAlert({
+        message: t('AvatarSection.success.deleted', 'Avatar deleted'),
+        type: 'success'
+      })
     } catch (error) {
       clearTimeout(timeoutId)
       setAvatarStatus(previousAvatarStatus)
-      Alerter.error(t('AvatarSection.error.deleteFailed'))
+      showAlert({
+        message: t('AvatarSection.error.deleteFailed'),
+        type: 'error'
+      })
     }
   }
 
@@ -210,7 +211,7 @@ const AvatarSection = () => {
                   primary={t('AvatarSection.menu.update', 'Update avatar')}
                 />
               </MenuItem>
-              <MenuItem onClick={openDeleteConfirmation}>
+              <MenuItem onClick={handleDeleteAvatar}>
                 <ListItemIcon>
                   <Icon icon={TrashIcon} />
                 </ListItemIcon>
@@ -222,38 +223,6 @@ const AvatarSection = () => {
           </div>
         </div>
       </div>
-
-      {isConfirmDeleteDialogOpen && (
-        <ConfirmDialog
-          open={isConfirmDeleteDialogOpen}
-          onClose={closeDeleteConfirmation}
-          title={t('AvatarSection.deleteConfirm.title', 'Confirm Deletion')}
-          content={
-            <p>
-              {t(
-                'AvatarSection.deleteConfirm.message',
-                'Are you sure you want to delete your avatar? This action cannot be undone.'
-              )}
-            </p>
-          }
-          actions={
-            <>
-              <Buttons
-                variant="secondary"
-                label={t('AvatarSection.deleteConfirm.cancel', 'Cancel')}
-                onClick={closeDeleteConfirmation}
-              />
-              <Buttons
-                variant="primary"
-                color="error"
-                label={t('AvatarSection.deleteConfirm.confirm', 'Delete')}
-                onClick={handleConfirmDelete}
-                busy={avatarStatus === 'LOADING'}
-              />
-            </>
-          }
-        />
-      )}
     </div>
   )
 }

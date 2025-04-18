@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react'
 
 import { useQuery, useMutation } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import Button from 'cozy-ui/transpiled/react/Buttons'
+import Stack from 'cozy-ui/transpiled/react/Stack'
 
 import Input from '@/components/Input'
 import { validatePhoneNumber } from '@/lib/phoneHelper'
@@ -53,18 +55,27 @@ const PhoneNumberSection = () => {
   }
 
   return (
-    <Input
-      name="phone_number"
-      type="tel"
-      title={t('ProfileView.phone_number.title')}
-      label={t(`ProfileView.phone_number.label`)}
-      value={instance?.phone_number || ''}
-      onBlur={handleBlur}
-      onChange={handleChange}
-      submitting={mutationStatus === 'loading'}
-      saved={mutationStatus === 'loaded'}
-      errors={errors}
-    />
+    <Stack spacing="m">
+      <Input
+        name="phone_number"
+        type="tel"
+        title={t('ProfileView.phone_number.title')}
+        label={t(`ProfileView.phone_number.label`)}
+        value={instance?.phone_number || ''}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        submitting={mutationStatus === 'loading'}
+        saved={mutationStatus === 'loaded'}
+        errors={errors}
+        copyable={true}
+      />
+      <Button
+        variant="secondary"
+        size="medium"
+        label={t('ProfileView.phone_number.change_button')}
+        href="https://sign-up.twake.app/"
+      />
+    </Stack>
   )
 }
 
