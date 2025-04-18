@@ -2,6 +2,7 @@ import * as Sentry from '@sentry/react'
 import React from 'react'
 import { Route, Navigate, Routes, Outlet } from 'react-router-dom'
 
+import { BarRoutes } from 'cozy-bar'
 import flag from 'cozy-flags'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
@@ -74,6 +75,7 @@ const AppRouter = () => {
       {flag('settings.subscription') && (
         <Route path="/subscription" element={<Subscription />} />
       )}
+      {BarRoutes.map(BarRoute => BarRoute)}
       <Route
         path="*"
         element={<Navigate to={isSmallView ? '/menu' : '/profile'} replace />}
