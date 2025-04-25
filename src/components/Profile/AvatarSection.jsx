@@ -177,7 +177,7 @@ const AvatarSection = () => {
               }
 
               if (avatarStatus === 'PRESENT') {
-                additionalProps.src = `${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=404`
+                additionalProps.src = `${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`
               }
 
               return <Avatar {...commonAvatarProps} {...additionalProps} />
