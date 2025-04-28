@@ -12,7 +12,7 @@ import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 import { STACK_DOMAIN } from '@/actions'
 import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 
-const importImage = require('@/assets/images/import-cozy.svg')
+import importImage from '@/assets/images/import-cozy.svg?url'
 
 class Import extends Component {
   constructor(props) {
