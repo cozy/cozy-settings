@@ -1,5 +1,6 @@
 import { deconstructRedirectLink } from 'cozy-client'
 import { getAppDisplayName } from 'cozy-client/dist/models/applications'
+import flag from 'cozy-flags'
 
 const EXCLUDED_SLUGS = ['settings', 'store', 'home']
 
@@ -9,8 +10,11 @@ export const formatOptions = (apps, t) => {
     name: t('ProfileView.default_redirection.app_list')
   }
 
+  const hiddenApps = flag('apps.hidden') || []
+
   const filteredApps = apps
     .filter(app => !EXCLUDED_SLUGS.includes(app.slug))
+    .filter(app => !hiddenApps.includes(app.slug))
     .map(app => ({
       slug: app.slug,
       name: getAppDisplayName(app)
