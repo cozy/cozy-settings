@@ -324,7 +324,7 @@
     "description": "Diese Funktion ist noch nicht verfügbar. Für weitere Informationen kontaktiere uns bitte unter contact@cozycloud.cc"
   },
   "support": {
-    "title": "Hallo! Wie können wir dir helfen?",
+    "title": "Kontaktiere uns",
     "emailDetail": "Deine Nachricht wird von der E-Mail-Adresse gesendet, die du in den Twake Einstellungen gespeichert hast.",
     "fields": {
       "message": {

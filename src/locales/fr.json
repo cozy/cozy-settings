@@ -448,7 +448,7 @@
     "description": "Cette fonctionnalité n'est pas encore disponible. Pour plus d'informations, contactez-nous s'il-vous-plaît à contact@cozycloud.cc"
   },
   "support": {
-    "title": "Bonjour ! Pouvons-nous vous aider? ",
+    "title": "Nous contacter",
     "emailDetail": "Votre message sera envoyé depuis votre adresse courriel enregistrée dans les paramètres de votre Twake.",
     "fields": {
       "message": {

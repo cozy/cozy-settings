@@ -303,7 +303,7 @@
     "description": "この機能はまだご利用できません。 詳細については、 contact@cozycloud.cc までご連絡ください"
   },
   "support": {
-    "title": "こんにちは! 何かお手伝いしますか?",
+    "title": "お問い合せ",
     "emailDetail": "Twake 設定で保存されたメールアドレスからメッセージが送信されます。",
     "fields": {
       "message": {
