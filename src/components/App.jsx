@@ -37,7 +37,7 @@ export const App = () => {
       <RealTimeQueries doctype="io.cozy.oauth.clients" />
       <SettingsRealTimeQueries />
       <Main>
-        <Content className="u-p-1">
+        <Content>
           <AppRouter />
         </Content>
       </Main>
