@@ -187,10 +187,6 @@
       "label": "Dit is de pagina die je ziet zodra je Twake opent.",
       "app_list": "Overzicht"
     },
-    "tracking": {
-      "title": "Help mee ons product te verbeteren",
-      "label": "Geef Twake Workplace toestemming om anonieme gebruiksgegevens te verzamelen voor het verbeteren van ons product."
-    },
     "move": {
       "button": "Twake verplaatsen"
     },

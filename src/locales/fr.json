@@ -216,10 +216,6 @@
       "label": "C'est le premier écran que vous verrez en ouvrant votre Twake.",
       "app_list": "Tableau de bord"
     },
-    "tracking": {
-      "title": "Nous aider à améliorer notre produit",
-      "label": "Autoriser Twake à récupérer anonymement vos usages pour améliorer notre produit."
-    },
     "move": {
       "button": "Déménager mon Twake",
       "label": "Changez de Twake sans perdre vos données"

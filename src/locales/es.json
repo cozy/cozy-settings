@@ -151,10 +151,6 @@
       "label": "Su número de teléfono será utilizado para enviarle notificaciones por SMS.",
       "invalid": "Su número de teléfono no parece correcto."
     },
-    "tracking": {
-      "title": "Ayúdenos a mejorar nuestro producto",
-      "label": "Autorizar Twake Workplace a adquirir anónimamente sus datos de uso para mejorar nuestro producto."
-    },
     "move": {
       "button": "Desplazar mi Twake"
     },
