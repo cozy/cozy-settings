@@ -88,7 +88,6 @@
     "cozy-stack-client": "^57.2.0",
     "cozy-ui": "^123.1.1",
     "identity-obj-proxy": "^3.0.0",
-    "piwik-react-router": "0.12.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
