@@ -216,10 +216,6 @@
       "label": "This is the first screen you will see when you open your Twake.",
       "app_list": "Dashboard"
     },
-    "move": {
-      "button": "Move my Twake",
-      "label": "Change your Twake without losing your data"
-    },
     "export": {
       "title": "My data",
       "label": "Save all your Twake data",

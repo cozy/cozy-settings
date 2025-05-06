@@ -187,9 +187,6 @@
       "label": "Dit is de pagina die je ziet zodra je Twake opent.",
       "app_list": "Overzicht"
     },
-    "move": {
-      "button": "Twake verplaatsen"
-    },
     "export": {
       "title": "Mijn gegevens",
       "label": "Twake zorgt ervoor dat alle opgeslagen gegevens met je worden gedeeld:",

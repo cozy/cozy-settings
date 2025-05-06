@@ -151,9 +151,6 @@
       "label": "Su número de teléfono será utilizado para enviarle notificaciones por SMS.",
       "invalid": "Su número de teléfono no parece correcto."
     },
-    "move": {
-      "button": "Desplazar mi Twake"
-    },
     "export": {
       "title": "Mis datos",
       "label": "Twake se compromete a proporcionarle todos los datos que la plataforma almacena sobre usted:",

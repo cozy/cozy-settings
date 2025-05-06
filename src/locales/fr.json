@@ -216,10 +216,6 @@
       "label": "C'est le premier écran que vous verrez en ouvrant votre Twake.",
       "app_list": "Tableau de bord"
     },
-    "move": {
-      "button": "Déménager mon Twake",
-      "label": "Changez de Twake sans perdre vos données"
-    },
     "export": {
       "title": "Mes données",
       "label": "Sauvegardez toutes les données de votre Twake",

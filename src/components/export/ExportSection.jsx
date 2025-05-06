@@ -7,7 +7,6 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 import ExportDownload from '@/components/export/ExportDownload'
-import { MoveButton } from '@/components/export/MoveButton'
 import exportImage from '@/assets/images/export-cozy-mail.svg?url'
 
 const ExportSection = ({
@@ -37,7 +36,6 @@ const ExportSection = ({
         <Typography variant="h5" gutterBottom>
           {t('ProfileView.export.title')}
         </Typography>
-        <MoveButton />
         <Typography variant="body1" gutterBottom>
           {t('ProfileView.export.label')}
         </Typography>
