@@ -329,7 +329,7 @@
     "description": "Esta función no está válida todavía. Para mayores informes, no dude en contáctarnos en contact@cozycloud.cc"
   },
   "support": {
-    "title": "¡Hola! ¿Podemos ayudarle?",
+    "title": "Contáctenos",
     "emailDetail": "Su mensaje se enviará a partir de su email que aparece en los parámetros de Twake.",
     "fields": {
       "message": {
