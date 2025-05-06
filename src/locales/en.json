@@ -216,10 +216,6 @@
       "label": "This is the first screen you will see when you open your Twake.",
       "app_list": "Dashboard"
     },
-    "tracking": {
-      "title": "Help us to improve our product",
-      "label": "Authorize Twake Workplace to get anonymously your usage data to improve our product."
-    },
     "move": {
       "button": "Move my Twake",
       "label": "Change your Twake without losing your data"

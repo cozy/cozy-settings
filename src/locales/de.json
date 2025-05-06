@@ -151,10 +151,6 @@
       "label": "Deine Telefonnummer wird verwendet, um dich zu benachrichtigen, wenn du dein Passwort vergisst.",
       "invalid": "Die Telefonnummer fühlt sich nicht richtig an."
     },
-    "tracking": {
-      "title": "Hilf uns, unser Produkt zu verbessern",
-      "label": "Autorisiere Twake Workplace, anonyme Nutzungsdaten zu sammeln, um unser Produkt zu verbessern."
-    },
     "export": {
       "title": "Meine Daten",
       "label": "Twake ist verpflichtet, all jene Daten bereitzustellen, die es über dich gespeichert hat",
