@@ -22,7 +22,6 @@ import LanguageSection from '@/components/Profile/LanguageSection'
 import PasswordSection from '@/components/Profile/PasswordSection'
 import { PhoneNumberSection } from '@/components/Profile/PhoneNumberSection'
 import { PublicNameSection } from '@/components/Profile/PublicNameSection'
-import TrackingSection from '@/components/Profile/TrackingSection'
 import { ExportSection } from '@/components/export/ExportSection'
 import { buildSettingsInstanceQuery } from '@/lib/queries'
 
@@ -63,7 +62,6 @@ const ProfileView = ({
             {isTwoFAEnabled && <TwoFA />}
             <LanguageSection />
             <DefaultRedirectionSection />
-            <TrackingSection />
             <div>
               <ExportSection
                 email={instanceResult.data.email}
