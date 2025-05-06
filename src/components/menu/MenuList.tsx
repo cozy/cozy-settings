@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactNode } from 'react'
+import React, { ReactChild, ReactNode, isValidElement } from 'react'
 
 import Divider from 'cozy-ui/transpiled/react/Divider'
 import List from 'cozy-ui/transpiled/react/List'
@@ -13,7 +13,9 @@ export const MenuList = ({ title, children }: MenuListProps): JSX.Element => (
   <List subheader={<ListSubheader>{title}</ListSubheader>}>
     {Array.isArray(children)
       ? children
-          .filter(value => value)
+          .filter(
+            child => isValidElement(child) && child.type(child.props) !== null
+          )
           .map((child, index, array) => (
             <React.Fragment key={index}>
               {child}
