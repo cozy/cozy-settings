@@ -2,29 +2,29 @@ import React from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 
 import { hasQueryBeenLoaded, useQuery } from 'cozy-client'
+import flag from 'cozy-flags'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
-import flag from 'cozy-flags'
+
+import '../../styles/twakeProducts/profile.css'
 
 import TwoFA from '@/components/2FA'
 import EmailSection from '@/components/Email/EmailSection'
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
+import AvatarSection from '@/components/Profile/AvatarSection'
 import DefaultRedirectionSection from '@/components/Profile/DefaultRedirectionSection'
 import { DeleteSection } from '@/components/Profile/DeleteSection'
 import Import from '@/components/Profile/Import'
 import LanguageSection from '@/components/Profile/LanguageSection'
 import PasswordSection from '@/components/Profile/PasswordSection'
-import AvatarSection from '@/components/Profile/AvatarSection'
 import { PhoneNumberSection } from '@/components/Profile/PhoneNumberSection'
 import { PublicNameSection } from '@/components/Profile/PublicNameSection'
 import TrackingSection from '@/components/Profile/TrackingSection'
 import { ExportSection } from '@/components/export/ExportSection'
 import { buildSettingsInstanceQuery } from '@/lib/queries'
-
-import '../../styles/twakeProducts/profile.css'
 
 const ProfileView = ({
   exportData,
@@ -45,6 +45,7 @@ const ProfileView = ({
   )
 
   const isTwoFAEnabled = flag('settings.2fa.enabled')
+  const isDeleteEnabled = flag('settings.delete.enabled')
 
   return (
     <Page narrow>
@@ -79,7 +80,7 @@ const ProfileView = ({
               />
             </div>
           </Stack>
-          <DeleteSection />
+          {isDeleteEnabled && <DeleteSection />}
         </>
       ) : (
         <Spinner
