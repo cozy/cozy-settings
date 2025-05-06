@@ -7,7 +7,6 @@ import flag from 'cozy-flags'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import { DeleteAccount } from '@/components/DeleteAccount'
-import ChangeEmail from '@/components/Email/ChangeEmail'
 import PermissionsApplication from '@/components/Permissions/AppPermissions/AppPermissions'
 import DataPermissions from '@/components/Permissions/DataPermissions/DataPermissions'
 import PermissionDetails from '@/components/Permissions/PermissionDetails/PermissionDetails'
@@ -43,7 +42,6 @@ const AppRouter = () => {
       {isSmallView && <Route path="/menu" element={<Menu />} />}
       <Route path="/redirect" element={<IntentRedirect />} />
       <Route path="/profile" element={<Profile />}>
-        <Route path="/profile/email" element={<ChangeEmail />} />
         <Route path="/profile/delete" element={<DeleteAccount />} />
       </Route>
       <Route path="/profile/password" element={<Passphrase />} />

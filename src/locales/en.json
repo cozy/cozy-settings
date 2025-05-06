@@ -555,16 +555,6 @@
       "resend_success": "An email has been sent to %{pendingEmail}"
     }
   },
-  "EmailModal": {
-    "title": "New email",
-    "cancel": "Cancel",
-    "submit": "Ok",
-    "errors": {
-      "server": "Something went wrong with the server. Please, reload the page.",
-      "same_email": "Your new email cannot be the same as your old one.",
-      "email_format": "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
-    }
-  },
   "Subscription": {
     "title": "Plans and options",
     "included": {

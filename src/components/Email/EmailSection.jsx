@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import { useClient, useQuery } from 'cozy-client'
 import Alert from 'cozy-ui/transpiled/react/Alert'
@@ -70,7 +69,7 @@ const EmailSection = () => {
       <Typography variant="body1" style={{ fontWeight: 700 }}>
         {instance.email}
       </Typography>
-      {instance.pending_email ? (
+      {instance.pending_email && (
         <Alert
           className="u-mt-half"
           severity="primary"
@@ -97,14 +96,6 @@ const EmailSection = () => {
             pendingEmail: instance.pending_email
           })}
         </Alert>
-      ) : (
-        <Buttons
-          component={Link}
-          to="/profile/email"
-          label={t('EmailSection.action')}
-          variant="secondary"
-          className="u-mt-half u-mh-0"
-        />
       )}
       {snackbar !== null && (
         <Snackbar open onClose={onSnackbarClose}>
