@@ -4415,10 +4415,10 @@ cozy-app-publish@0.34.0:
     tar "^6.1.11"
     verror "^1.10.1"
 
-cozy-bar@^21.2.0:
-  version "21.2.0"
-  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-21.2.0.tgz#2ea5cf893fe43aca520aa182c9df7bf65d87a17b"
-  integrity sha512-4rxFb0A8jqpV2uE6B9/DwrHoZoisWVJOUrjP0KDKGNiuGp0QEa9glkHLZvHUq/Qmji/L/O+kG7QX5h1ItBc9wA==
+cozy-bar@^22.0.0:
+  version "22.0.0"
+  resolved "https://registry.yarnpkg.com/cozy-bar/-/cozy-bar-22.0.0.tgz#229547dd104ac78cdc9833e6a272329ba2e3c84d"
+  integrity sha512-WAirFpwOwd0Xb7Eng+M50x2AS6ue1pWHEpaC7QJCdIrplMkhixe/HszURpXGAgZRvpaL3DafNalM32SRaGTr9Q==
   dependencies:
     hammerjs "2.0.8"
     lodash.debounce "4.0.8"
@@ -4669,10 +4669,10 @@ cozy-stack-client@^57.2.0:
     mime "^2.4.0"
     qs "^6.7.0"
 
-cozy-ui@^122.12.0:
-  version "122.12.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-122.12.0.tgz#e4b2135443e18af5750b1f57fab30d382e0217dc"
-  integrity sha512-z6+QP2utnVVmYANTqkjNvZPyitAvhL0f6v+x2NW6ogJn5cAezokZsMtVr6t6bJD8A9zTOKo7mTsv67wqSY0ywQ==
+cozy-ui@^122.12.1:
+  version "122.12.1"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-122.12.1.tgz#58c88823643a112d5c4b58e308c6c374b3a8cbf6"
+  integrity sha512-jrXzAhcVZAwN1Y+ikdlSnSbzKPPb0M7x5cKltTQWeJI75iGtt1477WdPfGPUhbEj1/BTXFURBAPchNWjlGT7Fg==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@date-io/date-fns" "1"
