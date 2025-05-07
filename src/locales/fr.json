@@ -216,14 +216,6 @@
       "label": "C'est le premier écran que vous verrez en ouvrant votre Twake.",
       "app_list": "Tableau de bord"
     },
-    "tracking": {
-      "title": "Nous aider à améliorer notre produit",
-      "label": "Autoriser Twake à récupérer anonymement vos usages pour améliorer notre produit."
-    },
-    "move": {
-      "button": "Déménager mon Twake",
-      "label": "Changez de Twake sans perdre vos données"
-    },
     "export": {
       "title": "Mes données",
       "label": "Sauvegardez toutes les données de votre Twake",
@@ -561,16 +553,6 @@
     "snackbar": {
       "server_error": "Une erreur s'est produite. Merci de recharger la page.",
       "resend_success": "Un email vous a été renvoyé à %{pendingEmail}"
-    }
-  },
-  "EmailModal": {
-    "title": "Nouvel email",
-    "cancel": "Annuler",
-    "submit": "Ok",
-    "errors": {
-      "server": "Une erreur s'est produite. Merci de recharger la page.",
-      "same_email": "Votre nouvel email ne peut pas être le même que l'ancien.",
-      "email_format": "L'adresse e-mail que vous avez entré ne semble pas correcte. Êtes-vous sûr(e) de l'avoir bien écrite sous la forme georges@abitbol.com ?"
     }
   },
   "Subscription": {

@@ -151,10 +151,6 @@
       "label": "Deine Telefonnummer wird verwendet, um dich über wichtige Ereignisse zu informieren.",
       "invalid": "Die Telefonnummer scheint nicht korrekt zu sein. Bitte überprüfe sie und versuche es erneut."
     },
-    "tracking": {
-      "title": "Hilf uns, unser Produkt zu verbessern",
-      "label": "Erlaube es Twake Workplace, anonyme Nutzungsdaten zur Verbesserung des Dienstes zu sammeln."
-    },
     "export": {
       "title": "Meine Daten",
       "label": "Twake ist verpfichtet, alle über dich gespeicherten Daten bereitzustellen.",

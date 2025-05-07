@@ -216,14 +216,6 @@
       "label": "This is the first screen you will see when you open your Twake.",
       "app_list": "Dashboard"
     },
-    "tracking": {
-      "title": "Help us to improve our product",
-      "label": "Authorize Twake Workplace to get anonymously your usage data to improve our product."
-    },
-    "move": {
-      "button": "Move my Twake",
-      "label": "Change your Twake without losing your data"
-    },
     "export": {
       "title": "My data",
       "label": "Save all your Twake data",
@@ -561,16 +553,6 @@
     "snackbar": {
       "server_error": "Something went wrong with the server. Please, reload the page.",
       "resend_success": "An email has been sent to %{pendingEmail}"
-    }
-  },
-  "EmailModal": {
-    "title": "New email",
-    "cancel": "Cancel",
-    "submit": "Ok",
-    "errors": {
-      "server": "Something went wrong with the server. Please, reload the page.",
-      "same_email": "Your new email cannot be the same as your old one.",
-      "email_format": "The e-mail address does not feel right. Are you sure you wrote it correctly (e.g. john@wayne.com)?"
     }
   },
   "Subscription": {
