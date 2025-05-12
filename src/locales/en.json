@@ -205,6 +205,10 @@
       "title": "Username",
       "label": "Your username will be displayed when you share files with Twake users."
     },
+    "matrix_id": {
+      "title": "Matrix ID",
+      "label": "Matrix ID is a unique identifier in the Twake platform used for real-time messaging in the open-source Matrix protocol."
+    },
     "phone_number": {
       "title": "Phone number",
       "label": "Your phone number will be used to send you notifications and to enable you to recover your password.",

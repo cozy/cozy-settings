@@ -19,6 +19,7 @@ import DefaultRedirectionSection from '@/components/Profile/DefaultRedirectionSe
 import { DeleteSection } from '@/components/Profile/DeleteSection'
 import Import from '@/components/Profile/Import'
 import LanguageSection from '@/components/Profile/LanguageSection'
+import { MatrixIdSection } from '@/components/Profile/MatrixIdSection'
 import PasswordSection from '@/components/Profile/PasswordSection'
 import { PhoneNumberSection } from '@/components/Profile/PhoneNumberSection'
 import { PublicNameSection } from '@/components/Profile/PublicNameSection'
@@ -44,6 +45,7 @@ const ProfileView = ({
   )
 
   const isTwoFAEnabled = flag('settings.2fa.enabled')
+  const isMatrixEnabled = flag('settings.matrix.enabled')
   const isDeleteEnabled = flag('settings.delete.enabled')
 
   return (
@@ -57,6 +59,7 @@ const ProfileView = ({
             <AvatarSection />
             <EmailSection />
             <PublicNameSection />
+            {isMatrixEnabled && <MatrixIdSection />}
             <PhoneNumberSection />
             <PasswordSection />
             {isTwoFAEnabled && <TwoFA />}
