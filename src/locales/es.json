@@ -146,6 +146,10 @@
       "title": "Usuario",
       "label": "Su nombre de usuario será visualizado cuando usted comparta archivos con usuarios Twake."
     },
+    "matrix_id": {
+      "title": "Matrix ID",
+      "label": "Matrix ID es un identificador único en la plataforma Twake utilizado para la mensajería en tiempo real en el protocolo de código abierto Matrix."
+    },
     "phone_number": {
       "title": "Número de teléfono",
       "label": "Su número de teléfono será utilizado para enviarle notificaciones por SMS.",
