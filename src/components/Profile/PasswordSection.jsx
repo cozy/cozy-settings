@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import flag from 'cozy-flags'
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
@@ -23,6 +24,7 @@ const PasswordSection = () => {
         label={t('ProfileView.password.cta')}
         variant="secondary"
         className="u-mt-half u-mh-0"
+        disabled={flag('settings.password.readonly')}
       />
     </div>
   ) : null
