@@ -153,8 +153,8 @@
     },
     "export": {
       "title": "Meine Daten",
-      "label": "Twake ist verpflichtet, all jene Daten bereitzustellen, die es über dich gespeichert hat",
-      "link": "Mein Twake exportieren",
+      "label": "Twake Drive ist bestrebt, Ihnen alle gespeicherten Dateien zur Verfügung zu stellen:",
+      "link": "Twake Drive-Daten exportieren",
       "server_error": "Etwas ist schiefgelaufen, bitte versuche es erneut oder kontaktiere uns.",
       "fetch_error": "Etwas ist beim Abrufen deiner Exportdaten schiefgelaufen. Bitte versuche es später ernuet oder kontaktiere uns.",
       "missing_error": "Das Archive scheint zu fehlen oder ist abgelaufen. Bitte versucht es erneut oder kontaktiere uns.",
@@ -173,7 +173,7 @@
       }
     },
     "import": {
-      "link": "Ein Twake importieren",
+      "link": "Twake Drive-Daten importieren",
       "server_error": "Etwas ist schiefgelaufen, bitte versuche es erneut oder kontaktiere uns.",
       "invalid_url": "Der Link scheint nicht mit einem Downloadlink von Twake übereinzustimmen.",
       "quota_too_small": "Der Speicherplatz deines Twakes ist zu gering, um all deine Daten zu importieren. Zwei Lösungen sind vorhanden: erhöhe den Speicherplatz deines Twakes oder entferne Daten, die für den Import nicht benötigt werden. ",

@@ -160,8 +160,8 @@
     },
     "export": {
       "title": "Mis datos",
-      "label": "Twake se compromete a proporcionarle todos los datos que la plataforma almacena sobre usted:",
-      "link": "Exportar mi Twake",
+      "label": "Twake Drive se compromete a poner a su disposición todos los archivos que almacena:",
+      "link": "Exportar datos de Twake Drive",
       "server_error": "Algo no funciona, por favor vuelva a ensayar o contáctenos.",
       "fetch_error": "Algo salió mal al tratar de obtener sus datos de exportación. Por favor, inténtelo de nuevo o póngase en contacto con nosotros.",
       "missing_error": "Parece que el archivo ha desaparecido o ha caducado. Por favor, inténtelo de nuevo o póngase en contacto con nosotros.",
@@ -180,7 +180,7 @@
       }
     },
     "import": {
-      "link": "Importar un Twake.",
+      "link": "Importar datos de Twake Drive",
       "server_error": "Algo ha salido mal, por favor vuelva a ensayar o contáctenos.",
       "invalid_url": "El enlace no parece corresponder al enlace de descarga de un Twake.",
       "quota_too_small": "El espacio de almacenamiento de su Twake es insuficiente para importar todos sus datos. Existen dos soluciones: aumentar el espacio de almacenamiento de su Twake o eliminar los datos no necesarios para la importación.",
