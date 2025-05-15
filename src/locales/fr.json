@@ -563,6 +563,10 @@
       "resend_success": "Un email vous a été renvoyé à %{pendingEmail}"
     }
   },
+  "EmailReadOnlySection": {
+    "title": "E-mail",
+    "subtitle": "L'adresse email est fixe et utilisée pour l'authentification au sein du réseau Matrix."
+  },
   "EmailModal": {
     "title": "Nouvel email",
     "cancel": "Annuler",
