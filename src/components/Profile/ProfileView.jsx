@@ -60,8 +60,8 @@ const ProfileView = ({
         <>
           <Stack spacing="l">
             <AvatarSection />
-            {isEmailReadOnly ? <EmailReadOnlySection /> : <EmailSection />}
             <PublicNameSection />
+            {isEmailReadOnly ? <EmailReadOnlySection /> : <EmailSection />}
             {isMatrixEnabled && <MatrixIdSection />}
             {isPhoneEnabled && <PhoneNumberSection />}
             <PasswordSection />
