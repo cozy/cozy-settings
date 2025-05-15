@@ -47,6 +47,7 @@ const ProfileView = ({
 
   const isTwoFAEnabled = flag('settings.2fa.enabled')
   const isMatrixEnabled = flag('settings.matrix.enabled')
+  const isPhoneEnabled = flag('settings.phone.enabled')
   const isDeleteEnabled = flag('settings.delete.enabled')
   const isEmailReadOnly = flag('settings.email.readonly')
 
@@ -62,7 +63,7 @@ const ProfileView = ({
             {isEmailReadOnly ? <EmailReadOnlySection /> : <EmailSection />}
             <PublicNameSection />
             {isMatrixEnabled && <MatrixIdSection />}
-            <PhoneNumberSection />
+            {isPhoneEnabled && <PhoneNumberSection />}
             <PasswordSection />
             {isTwoFAEnabled && <TwoFA />}
             <LanguageSection />
