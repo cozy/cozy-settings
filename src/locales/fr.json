@@ -226,8 +226,8 @@
     },
     "export": {
       "title": "Mes données",
-      "label": "Sauvegardez toutes les données de votre Twake",
-      "link": "Exporter mon Twake",
+      "label": "Twake Drive s'engage à vous fournir tous les fichiers qu'il stocke :",
+      "link": "Exporter les données de Twake Drive",
       "server_error": "Une erreur s'est produite. Veuillez recommencer ou nous contacter.",
       "fetch_error": "Une erreur en récupérant vos données. Veuillez recommencer ou nous contacter.",
       "missing_error": "L'archive semble être manquant ou a expiré. Veuillez recommencer ou nous contacter.",
@@ -246,8 +246,7 @@
       }
     },
     "import": {
-      "link": "Importer un Twake",
-      "label": "Importez les données provenant d'un autre Twake",
+      "link": "Importer les données de Twake Drive",
       "server_error": "Une erreur s'est produite. Veuillez recommencer ou nous contacter.",
       "invalid_url": "Le lien ne semble pas correspondre au lien de téléchargement d'un Twake.",
       "quota_too_small": "L'espace de stockage de votre Twake est insuffisant pour importer l'ensemble de vos données. 2 solutions s'offrent : augmenter l'espace de stockage de votre Twake ou supprimer les données non nécessaires à l'import.",

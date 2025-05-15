@@ -192,8 +192,8 @@
     },
     "export": {
       "title": "Mijn gegevens",
-      "label": "Twake zorgt ervoor dat alle opgeslagen gegevens met je worden gedeeld:",
-      "link": "Twake exporteren",
+      "label": "Twake Drive doet er alles aan om u te voorzien van alle bestanden die het opslaat:",
+      "link": "Gegevens van Twake Drive exporteren",
       "server_error": "Er is een fout opgetreden. Probeer het opnieuw of neem contact met ons op.",
       "fetch_error": "Er is een fout opgetreden tijdens het opvragen van je gegevens. Probeer het opnieuw of neem contact met ons op.",
       "missing_error": "Het archief ontbreekt of is verouderd. Probeer het opnieuw of neem contact met ons op.",
@@ -212,7 +212,7 @@
       }
     },
     "import": {
-      "link": "Twake importeren",
+      "link": "Gegevens van Twake Drive importeren",
       "server_error": "Er is een fout opgetreden. Probeer het opnieuw of neem contact met ons op.",
       "invalid_url": "De link verwijst niet naar een downloadlink van een Twake.",
       "quota_too_small": "Je hebt onvoldoende opslagruimte op je Twake om alle gegevens te importeren. Er zijn hiervoor 2 oplossingen: vergroot de opslagruimte of verwijder onbelangrijke gegevens uit de import.",
