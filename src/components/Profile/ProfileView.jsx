@@ -11,6 +11,7 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import '../../styles/twakeProducts/profile.css'
 
 import TwoFA from '@/components/2FA'
+import EmailReadOnlySection from '@/components/Email/EmailReadOnlySection'
 import EmailSection from '@/components/Email/EmailSection'
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
@@ -47,6 +48,7 @@ const ProfileView = ({
   const isTwoFAEnabled = flag('settings.2fa.enabled')
   const isMatrixEnabled = flag('settings.matrix.enabled')
   const isDeleteEnabled = flag('settings.delete.enabled')
+  const isEmailReadOnly = flag('settings.email.readonly')
 
   return (
     <Page narrow>
@@ -57,7 +59,7 @@ const ProfileView = ({
         <>
           <Stack spacing="l">
             <AvatarSection />
-            <EmailSection />
+            {isEmailReadOnly ? <EmailReadOnlySection /> : <EmailSection />}
             <PublicNameSection />
             {isMatrixEnabled && <MatrixIdSection />}
             <PhoneNumberSection />

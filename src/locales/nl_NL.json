@@ -521,6 +521,10 @@
       "resend_success": "Er is een e-mail verstuurd naar %{pendingEmail}"
     }
   },
+  "EmailReadOnlySection": {
+    "title": "E-mail",
+    "subtitle": "The email address is fixed and used for authentication within the Matrix network."
+  },
   "EmailModal": {
     "title": "Nieuwe e-mail",
     "cancel": "Annuleren",
