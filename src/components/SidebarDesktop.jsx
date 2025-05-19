@@ -38,7 +38,7 @@ import { useLogout } from '@/hooks/useLogout'
 export const SidebarDesktop = () => {
   const { t } = useI18n()
   const logout = useLogout()
-  const { isLoaded, instance, diskUsage } = useInstanceInfo()
+  const { isLoaded, instance, context, diskUsage } = useInstanceInfo()
   const { canOpenPremiumLink, premiumLink } = usePremium()
 
   const NavLink = genNavLinkForV6(RouterLink)
@@ -154,7 +154,7 @@ export const SidebarDesktop = () => {
           />
         </ListItem>
         <NavItem>
-          <NavLink to={routes.external_faq} target="_blank">
+          <NavLink to={context?.data?.help_link} target="_blank">
             <NavIcon icon={HelpOutlinedIcon} />
             <NavText className="u-flex-grow-1">{t('Nav.primary_faq')}</NavText>
             <NavIcon icon={OpenwithIcon} />
