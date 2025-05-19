@@ -71,24 +71,6 @@ export const buildSettingsInstanceQuery = () => ({
   }
 })
 
-export const buildDiskUsageQuery = () => ({
-  definition: () => Q(SETTINGS_DOCTYPE).getById('disk-usage'),
-  options: {
-    as: `${SETTINGS_DOCTYPE}/disk-usage`,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES),
-    singleDocData: true
-  }
-})
-
-export const buildContextQuery = () => ({
-  definition: () => Q(SETTINGS_DOCTYPE).getById('context'),
-  options: {
-    as: `${SETTINGS_DOCTYPE}/context`,
-    fetchPolicy: CozyClient.fetchPolicies.olderThan(FIVE_MINUTES),
-    singleDocData: true
-  }
-})
-
 const DEVICES_QUERY_LIMIT = 1000
 export const buildDevicesQuery = () => ({
   definition: () => Q(OAUTH_CLIENTS_DOCTYPE).limitBy(DEVICES_QUERY_LIMIT),
