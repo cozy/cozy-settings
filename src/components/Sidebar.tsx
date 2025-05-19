@@ -34,7 +34,7 @@ export const Sidebar = (): JSX.Element => {
 
   const { t } = useI18n()
 
-  const { isLoaded, instance, diskUsage } = useInstanceInfo()
+  const { isLoaded, instance, context, diskUsage } = useInstanceInfo()
 
   const percent = isLoaded
     ? makeDiskInfos(diskUsage.data.used, diskUsage.data.quota).percentUsage
@@ -107,7 +107,7 @@ export const Sidebar = (): JSX.Element => {
       <MenuList title={t('Nav.header_other')}>
         <MenuItemAnchor
           primary={t('Nav.primary_faq')}
-          href={routes.external_faq}
+          href={context?.data?.help_link}
           target="_blank"
           icon={HelpOutlinedIcon}
         />
