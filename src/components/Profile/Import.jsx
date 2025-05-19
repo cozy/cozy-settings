@@ -116,6 +116,7 @@ class Import extends Component {
             actions={
               <>
                 <Buttons
+                  variant="secondary"
                   theme="secondary"
                   onClick={this.toggleModal}
                   label={t('ProfileView.import.modal.cancel')}
