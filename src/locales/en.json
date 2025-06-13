@@ -579,7 +579,7 @@
   "Subscription": {
     "title": "Plans and options",
     "included": {
-      "title": "Included in your plan:",
+      "title": "Current plan",
       "flags": {
         "harvest.accounts.max": "Automatic document and data retrieval",
         "mespapiers.papers.max": "Number of papers added manually"
@@ -607,6 +607,7 @@
       "numeric_flag": ": up to %{smart_count}",
       "numeric_flag_unlimited": ": unlimited"
     },
+    "can_be_canceled": "Subscription can be canceled at any time",
     "action": "Manage my plan"
   },
   "AvatarSection": {
