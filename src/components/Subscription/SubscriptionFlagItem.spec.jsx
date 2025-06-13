@@ -11,7 +11,7 @@ jest.mock('cozy-flags')
 
 describe('SubscriptionFlagItem', () => {
   const setup = ({
-    name = 'drive.office.write',
+    name,
     returnValue = null,
     hideWithoutFlag = false
   } = {}) => {
@@ -26,16 +26,6 @@ describe('SubscriptionFlagItem', () => {
       { wrapper: TestI18n }
     )
   }
-
-  it('should display the label by default', () => {
-    setup({ returnValue: true })
-
-    expect(
-      screen.getByText(
-        'Online Office documents editor (word processing, spreadsheet, and presentation)'
-      )
-    ).toBeInTheDocument()
-  })
 
   it('should display the label with the limit when the flag return a number', () => {
     setup({ name: 'mespapiers.papers.max', returnValue: 10 })

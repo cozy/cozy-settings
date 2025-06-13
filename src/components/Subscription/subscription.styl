@@ -1,0 +1,15 @@
+.subscription-background::before
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 600px;
+    border-radius: 100px;
+    opacity: 0.2;
+    background: linear-gradient(137deg, rgba(255, 59, 48, 0.00) 57.39%, #E73B2D 87.06%), linear-gradient(207deg, rgba(255, 214, 0, 0.00) 38.89%, #FFC700 68.23%), linear-gradient(270deg, #A033FF 13%, #0094FF 61.04%, #4FB500 100%);
+    filter: blur(57px);
+
+.subscription
+    z-index: var(--zIndex-low)
