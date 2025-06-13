@@ -583,12 +583,24 @@
       "flags": {
         "harvest.accounts.max": "Automatic document and data retrieval",
         "mespapiers.papers.max": "Number of papers added manually",
-        "drive.office.write": "Online Office documents editor (word processing, spreadsheet, and presentation)",
-        "passwords.can-share-organizations": "Sharing passwords",
-        "cozy.oauthclients.max": "Max authorized devices",
         "coachco2.max-days-to-capture": "Trip recordings"
       },
-      "storage": "Storage: %{humanDiskQuota} GB",
+      "onlyOffice": {
+        "default": "Online Office documents reader",
+        "write": "Online Office documents editor"
+      },
+      "passwords": {
+        "default": "Fill-in automatically saved passwords",
+        "share": "Sharing passwords"
+      },
+      "devices": {
+        "unlimited": "Unlimited authorized devices",
+        "up_to": "Max authorized devices: up to %{smart_count}"
+      },
+      "storage": "%{humanDiskQuota} GB cloud storage",
+      "support": "Advanced support",
+      "notes": "Create simplified and collaborative notes",
+      "store": "Install other apps to increase your Twake",
       "max_days": ": %{smart_count} day max |||| : %{smart_count} days max",
       "accounts": ": %{smart_count} connected service |||| : %{smart_count} connected services",
       "accounts_unlimited": ": unlimited number of connected services",
