@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import React from 'react'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
@@ -9,6 +10,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { SubscriptionAccountsItem } from './SubscriptionAccountsItem'
+import styles from './subscription.styl'
 
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
@@ -32,14 +34,35 @@ const Subscription = () => {
   const linkLang = ['en', 'fr', 'es'].includes(lang) ? lang : 'en'
 
   return (
-    <Page narrow>
+    <Page fullHeight>
       <PageTitle className="u-mb-2">{t('Subscription.title')}</PageTitle>
       {isLoaded ? (
-        <>
-          <Paper variant="outlined">
-            <Typography variant="h5" className="u-ph-1 u-pt-1 u-pb-half">
+        <div
+          className={cx(
+            styles['subscription'],
+            'u-flex',
+            'u-flex-justify-center'
+          )}
+        >
+          <Paper
+            elevation={20}
+            className={cx('u-bdrs-8', styles['subscription'])}
+          >
+            <Typography
+              variant="h5"
+              className="u-ph-1 u-pt-1 u-pb-half u-ta-center"
+            >
               {t('Subscription.included.title')}
             </Typography>
+            <div className="u-p-1">
+              <Button
+                className="u-w-100"
+                component="a"
+                target="_blank"
+                href={`https://cozy.io/${linkLang}/pricing/`}
+                label={t('Subscription.action')}
+              />
+            </div>
             <List dense>
               <SubscriptionStorageItem />
               <SubscriptionSupportItem />
@@ -55,16 +78,13 @@ const Subscription = () => {
                 hideWithoutFlag
               />
             </List>
+            <div className="u-flex u-flex-justify-center">
+              <Typography variant="caption" className="u-mt-1 u-mb-2">
+                {t('Subscription.can_be_canceled')}
+              </Typography>
+            </div>
           </Paper>
-          <Button
-            className="u-mt-1"
-            component="a"
-            target="_blank"
-            href={`https://cozy.io/${linkLang}/pricing/`}
-            label={t('Subscription.action')}
-            fullWidth
-          />
-        </>
+        </div>
       ) : (
         <Spinner
           className="u-pos-fixed-s"
