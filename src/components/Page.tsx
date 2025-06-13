@@ -33,7 +33,7 @@ const Page = ({
       })}
       style={{
         minHeight: fullHeight
-          ? `calc(100vh - ${hasVerticalMargin ? '10' : '6'}rem)`
+          ? `calc(100vh - ${hasVerticalMargin ? '12' : '6'}rem)`
           : ''
       }}
     >

@@ -579,7 +579,7 @@
   "Subscription": {
     "title": "Offres et options",
     "included": {
-      "title": "Inclus dans votre offre :",
+      "title": "Offre actuelle",
       "flags": {
         "harvest.accounts.max": "Récupération automatiques de documents et données",
         "mespapiers.papers.max": "Nombre de Papiers ajoutés manuellement",
@@ -608,6 +608,7 @@
       "numeric_flag": ": jusqu'à %{smart_count}",
       "numeric_flag_unlimited": ": illimité"
     },
+    "can_be_canceled": "L'abonnement peut être résilié à tout moment",
     "action": "Gérer mon offre"
   },
   "AvatarSection": {
