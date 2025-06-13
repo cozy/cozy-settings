@@ -583,8 +583,7 @@
       "flags": {
         "harvest.accounts.max": "Récupération automatiques de documents et données",
         "mespapiers.papers.max": "Nombre de Papiers ajoutés manuellement",
-        "cozy.oauthclients.max": "Nombre maximal d'appareils",
-        "coachco2.max-days-to-capture": "Enregistrement de vos trajets"
+        "cozy.oauthclients.max": "Nombre maximal d'appareils"
       },
       "onlyOffice": {
         "default": "Lecteur de documents Office en ligne",
