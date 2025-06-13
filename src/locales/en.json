@@ -582,8 +582,7 @@
       "title": "Included in your plan:",
       "flags": {
         "harvest.accounts.max": "Automatic document and data retrieval",
-        "mespapiers.papers.max": "Number of papers added manually",
-        "coachco2.max-days-to-capture": "Trip recordings"
+        "mespapiers.papers.max": "Number of papers added manually"
       },
       "onlyOffice": {
         "default": "Online Office documents reader",

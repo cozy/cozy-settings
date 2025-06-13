@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import LocationIcon from 'cozy-ui/transpiled/react/Icons/Location'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import List from 'cozy-ui/transpiled/react/List'
 import Paper from 'cozy-ui/transpiled/react/Paper'
@@ -53,11 +52,6 @@ const Subscription = () => {
               <SubscriptionFlagItem
                 icon={PaperIcon}
                 name="mespapiers.papers.max"
-                hideWithoutFlag
-              />
-              <SubscriptionFlagItem
-                icon={LocationIcon}
-                name="coachco2.max-days-to-capture"
                 hideWithoutFlag
               />
             </List>
