@@ -1,7 +1,6 @@
 import cx from 'classnames'
 import React from 'react'
 
-import Button from 'cozy-ui/transpiled/react/Buttons'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import List from 'cozy-ui/transpiled/react/List'
 import Paper from 'cozy-ui/transpiled/react/Paper'
@@ -15,6 +14,7 @@ import styles from './subscription.styl'
 
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
+import { PremiumLink } from '@/components/Premium/PremiumLink'
 import { usePremium } from '@/components/Premium/PremiumProvider'
 import { SubscriptionDevicesItem } from '@/components/Subscription/SubscriptionDevicesItem'
 import { SubscriptionFlagItem } from '@/components/Subscription/SubscriptionFlagItem'
@@ -29,11 +29,9 @@ import { SubscriptionSupportItem } from '@/components/Subscription/SubscriptionS
  * Page showing the features included in the user plan
  */
 const Subscription = () => {
-  const { t, lang } = useI18n()
-  const { isLoaded } = usePremium()
+  const { t } = useI18n()
+  const { isLoaded, canOpenPremiumLink, premiumLink } = usePremium()
   const { isDesktop } = useBreakpoints()
-
-  const linkLang = ['en', 'fr', 'es'].includes(lang) ? lang : 'en'
 
   return (
     <Page fullHeight>
@@ -48,7 +46,7 @@ const Subscription = () => {
         >
           <Paper
             elevation={20}
-            className={cx('u-bdrs-8', styles['subscription'])}
+            className={cx('u-bdrs-8', 'u-p-1', styles['subscription'])}
           >
             <Typography
               variant="h5"
@@ -56,16 +54,8 @@ const Subscription = () => {
             >
               {t('Subscription.included.title')}
             </Typography>
-            <div className="u-p-1">
-              <Button
-                className="u-w-100"
-                component="a"
-                target="_blank"
-                href={`https://cozy.io/${linkLang}/pricing/`}
-                label={t('Subscription.action')}
-              />
-            </div>
-            <List dense>
+            <PremiumLink label={t('Subscription.action')} />
+            <List dense disabledGutters>
               <SubscriptionStorageItem />
               <SubscriptionSupportItem />
               <SubscriptionPasswordsItem />
@@ -80,11 +70,13 @@ const Subscription = () => {
                 hideWithoutFlag
               />
             </List>
-            <div className="u-flex u-flex-justify-center">
-              <Typography variant="caption" className="u-mt-1 u-mb-2">
-                {t('Subscription.can_be_canceled')}
-              </Typography>
-            </div>
+            {canOpenPremiumLink && premiumLink && (
+              <div className="u-flex u-flex-justify-center">
+                <Typography variant="caption" className="u-mt-1 u-mb-2">
+                  {t('Subscription.can_be_canceled')}
+                </Typography>
+              </div>
+            )}
           </Paper>
         </div>
       ) : (
