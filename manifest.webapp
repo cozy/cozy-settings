@@ -1,0 +1,126 @@
+{
+  "name": "Settings",
+  "name_prefix": "Cozy",
+  "slug": "settings",
+  "icon": "assets/app-icon.svg",
+  "source": "https://github.com/cozy/cozy-settings",
+  "editor": "Cozy",
+  "developer": {
+    "name": "Cozy",
+    "url": "https://cozy.io"
+  },
+  "version": "1.49.0",
+  "licence": "AGPL-3.0",
+  "permissions": {
+    "settings": {
+      "description": "Required to manage your settings",
+      "type": "io.cozy.settings",
+      "verbs": ["GET", "POST", "PUT"]
+    },
+    "exports": {
+      "description": "Required to export the Cozy data",
+      "type": "io.cozy.exports",
+      "verbs": ["GET", "POST"]
+    },
+    "imports": {
+      "description": "Required to import the Cozy data",
+      "type": "io.cozy.imports",
+      "verbs": ["GET", "POST"]
+    },
+    "sessions": {
+      "description": "Required to manage your sessions",
+      "type": "io.cozy.sessions.logins",
+      "verbs": ["GET"]
+    },
+    "current_sessions": {
+      "description": "Required to manage your sessions",
+      "type": "io.cozy.sessions",
+      "verbs": ["GET"]
+    },
+    "oauth": {
+      "description": "Required to manage devices connected to your Cozy",
+      "type": "io.cozy.oauth.clients",
+      "verbs": ["GET", "DELETE"]
+    },
+    "apps": {
+      "description": "Required by the cozy-bar to display the icons of the apps",
+      "type": "io.cozy.apps",
+      "verbs": ["GET", "POST", "PUT"]
+    },
+    "contacts": {
+      "description": "Required by the cozy-bar to display contacts",
+      "type": "io.cozy.contacts",
+      "verbs": ["GET"]
+    },
+     "konnectors": {
+      "description": "Required to get the list of konnectors",
+      "type": "io.cozy.konnectors",
+      "verbs": ["GET"]
+    },
+    "accounts": {
+      "description": "Required to manage accounts associated to konnectors",
+      "type": "io.cozy.accounts",
+      "verbs": ["GET"]
+    },
+    "jobs": {
+      "description": "Required to send emails to support",
+      "type": "io.cozy.jobs",
+      "verbs": ["ALL"]
+    },
+    "files": {
+      "description": "Required to select folders to synchronize on devices",
+      "type": "io.cozy.files",
+      "verbs": ["ALL"]
+    },
+    "remote_request": {
+      "description": "",
+      "type": "io.cozy.remote.requests",
+      "verbs": ["GET"]
+    },
+    "doctypes": {
+      "description": "",
+      "type": "io.cozy.doctypes",
+      "verbs": ["GET"]
+    },
+    "home": {
+      "description": "Required to manage your settings about default redirection",
+      "type": "io.cozy.home.settings",
+      "verbs": ["GET", "POST", "PUT"]
+    }
+  },
+  "routes": {
+    "/": {
+      "folder": "/",
+      "index": "index.html",
+      "public": false
+    },
+    "/services/claudy": {
+      "folder": "/intents",
+      "index": "index.html",
+      "public": false
+    },
+    "/services/support": {
+      "folder": "/intents",
+      "index": "index.html",
+      "public": false
+    }
+  },
+  "intents": [
+    {
+      "action": "CLAUDY",
+      "type": ["io.cozy.settings"],
+      "href": "/services/claudy"
+    },
+    {
+      "action": "SUPPORT",
+      "type": ["io.cozy.settings"],
+      "href": "/services/support"
+    },
+    {
+      "action": "REDIRECT",
+      "type": ["io.cozy.settings"],
+      "href": "/#/redirect"
+    }
+  ],
+  "type": "webapp"
+}
