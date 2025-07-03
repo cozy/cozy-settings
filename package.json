@@ -86,7 +86,7 @@
     "cozy-search": "^0.6.0",
     "cozy-sharing": "^25.4.0",
     "cozy-stack-client": "^57.2.0",
-    "cozy-ui": "^126.1.0",
+    "cozy-ui": "^127.2.0",
     "identity-obj-proxy": "^3.0.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
