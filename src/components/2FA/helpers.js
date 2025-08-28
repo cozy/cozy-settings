@@ -126,7 +126,7 @@ export async function forceSetPassphrase(client, passphrase, hint) {
     key: encryptionKey.cipherString,
     publicKey: publicPrivateKeys.publicKey,
     privateKey: publicPrivateKeys.privateKey,
-    iterations: 650000,
+    iterations: kdfIterations,
     force: true
   })
 }
