@@ -23,7 +23,7 @@ const PhoneNumberSection = () => {
         type="tel"
         title={t('ProfileView.phone_number.title')}
         label={t(`ProfileView.phone_number.label`)}
-        value={instance?.phone_number || '+0000000000 (to be implemented)'}
+        value={instance?.phone}
         copyable={true}
       />
       <Button
