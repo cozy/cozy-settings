@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useQuery } from 'cozy-client'
+import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
@@ -16,6 +17,10 @@ const PhoneNumberSection = () => {
     instanceQuery.definition,
     instanceQuery.options
   )
+
+  const signUpUrl = flag('signup.url')
+  const isPhoneReadonly = flag('settings.phone.readonly') || !signUpUrl
+
   return (
     <Stack spacing="m">
       <Input
@@ -30,8 +35,9 @@ const PhoneNumberSection = () => {
         variant="secondary"
         size="medium"
         label={t('ProfileView.phone_number.change_button')}
-        href="https://sign-up.twake.app/"
-        disabled
+        href={`${signUpUrl}/change-phone`}
+        target="_blank"
+        disabled={isPhoneReadonly}
       />
     </Stack>
   )
