@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useQuery } from 'cozy-client'
 import flag from 'cozy-flags'
+import Alert from 'cozy-ui/transpiled/react/Alert'
+import AlertTitle from 'cozy-ui/transpiled/react/AlertTitle'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import Stack from 'cozy-ui/transpiled/react/Stack'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
@@ -39,6 +41,14 @@ const PhoneNumberSection = () => {
         target="_blank"
         disabled={isPhoneReadonly}
       />
+      {!isPhoneReadonly && !instance?.phone && (
+        <Alert severity="warning">
+          <AlertTitle>
+            {t('ProfileView.phone_number.add_alert_title')}
+          </AlertTitle>
+          {t('ProfileView.phone_number.add_alert_description')}
+        </Alert>
+      )}
     </Stack>
   )
 }

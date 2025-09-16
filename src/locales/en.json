@@ -213,7 +213,9 @@
       "title": "Phone number",
       "label": "Your phone number will be used to send you notifications and to enable you to recover your password.",
       "change_button": "Change the phone number",
-      "invalid": "The phone number is invalid"
+      "invalid": "The phone number is invalid",
+      "add_alert_title": "Stay connected!",
+      "add_alert_description": "Adding your phone number helps secure your account. It only takes a moment to set up."
     },
     "default_redirection": {
       "title": "Home screen",

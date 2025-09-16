@@ -213,7 +213,9 @@
       "title": "Numéro de téléphone",
       "label": "Votre numéro de téléphone est utilisé pour vous envoyer des notifications par SMS.",
       "change_button": "Modifier le numéro de téléphone",
-      "invalid": "Le numéro de téléphone que vous avez entré ne semble pas correct."
+      "invalid": "Le numéro de téléphone que vous avez entré ne semble pas correct.",
+      "add_alert_title": "Restez connecté !",
+      "add_alert_description": "L'ajout de votre numéro de téléphone contribue à sécuriser votre compte. La configuration ne prend que quelques instants."
     },
     "default_redirection": {
       "title": "Écran d'accueil",
