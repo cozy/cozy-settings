@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const cozyClient = new CozyClient({
     uri: `${protocol}//${data.domain}`,
     token: data.token,
-    store: false
+    useCustomStore: true,
+    autoHydrate: true
   })
   const store = createStore(cozyClient)
 
