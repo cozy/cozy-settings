@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useQuery, hasQueryBeenLoaded } from 'cozy-client'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
@@ -44,7 +43,10 @@ const DeleteAccount = () => {
   const onError = error => {
     setStatus(IDLE)
     console.error(error.message) // eslint-disable-line no-console
-    Alerter.error(t('DeleteAccount.error.message'))
+    showAlert({
+      message: t('DeleteAccount.error.message'),
+      type: 'error'
+    })
   }
 
   const onRequested = ({ byEmailOnly }) => {
