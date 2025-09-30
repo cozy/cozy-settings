@@ -91,7 +91,7 @@
     },
     "byEmailOnly": {
       "mail": {
-        "subject": "Request to remove Twake %{domain}"
+        "subject": "Request to remove Twake %{domain} with email %{email}"
       },
       "success": "The request has been sent and will be processed promptly by our teams."
     },

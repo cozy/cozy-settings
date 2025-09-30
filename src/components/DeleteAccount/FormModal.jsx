@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-import { useClient } from 'cozy-client'
+import { useClient, useQuery } from 'cozy-client'
 import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
@@ -14,6 +14,7 @@ import {
   sendDeleteAccountReasonEmail,
   sendDeleteAccountByEmailOnlyEmail
 } from '@/actions/email'
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const DONE = 'done'
 const ERRORED = 'errored'
@@ -28,6 +29,11 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
   const { t } = useI18n()
   const reasonElementRef = useRef()
 
+  const instanceQuery = buildSettingsInstanceQuery()
+  const { data: instance } = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
   const isSending = status === SENDING
 
   const handleSuccess = onSuccessParams => {
@@ -51,7 +57,10 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
       if (flag('settings.delete.byEmailOnly')) {
         await sendDeleteAccountByEmailOnlyEmail(
           client,
-          t('DeleteAccount.byEmailOnly.mail.subject', { domain }),
+          t('DeleteAccount.byEmailOnly.mail.subject', {
+            domain,
+            email: instance.email
+          }),
           reason.substring(0, REASON_MAXLENGTH)
         )
         return handleSuccess({ byEmailOnly: true })

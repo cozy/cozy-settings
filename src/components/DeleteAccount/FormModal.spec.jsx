@@ -5,12 +5,18 @@
 import { render, fireEvent } from '@testing-library/react'
 import React from 'react'
 
+import { useQuery } from 'cozy-client'
 import { I18n } from 'cozy-ui/transpiled/react'
 import { BreakpointsProvider } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 
 import FormModal from './FormModal'
 
 import langEn from '@/locales/en.json'
+
+jest.mock('cozy-client', () => ({
+  ...jest.requireActual('cozy-client'),
+  useQuery: jest.fn()
+}))
 
 jest.mock('@/actions/domUtils', () => ({
   getStackDomain: () => 'http://cozy.tools:8080',
@@ -42,6 +48,11 @@ describe('FormModal component', () => {
 
   it('should read correctly Cozy Domain on send action ', async () => {
     const { sendDeleteAccountReasonEmail } = require('@/actions/email')
+    useQuery.mockReturnValue({
+      data: {
+        email: 'test@example.com'
+      }
+    })
 
     const root = render(
       <BreakpointsProvider>
