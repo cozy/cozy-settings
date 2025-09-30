@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 
 import { useClient } from 'cozy-client'
+import flag from 'cozy-flags'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { ConfirmDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Textarea from 'cozy-ui/transpiled/react/Textarea'
@@ -9,7 +10,10 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { sendDeleteAccountRequest } from './helpers'
 
 import { getStackDomain } from '@/actions/domUtils'
-import { sendDeleteAccountReasonEmail } from '@/actions/email'
+import {
+  sendDeleteAccountReasonEmail,
+  sendDeleteAccountByEmailOnlyEmail
+} from '@/actions/email'
 
 const DONE = 'done'
 const ERRORED = 'errored'
@@ -26,9 +30,9 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
 
   const isSending = status === SENDING
 
-  const handleSuccess = () => {
+  const handleSuccess = onSuccessParams => {
     setStatus(DONE)
-    onSuccess && onSuccess()
+    onSuccess && onSuccess(onSuccessParams)
   }
 
   const handleError = error => {
@@ -44,13 +48,22 @@ const FormModal = ({ onSuccess, onError, onClose }) => {
     setStatus(SENDING)
 
     try {
-      await sendDeleteAccountReasonEmail(
-        client,
-        t('DeleteAccount.request.mail.subject', { domain }),
-        reason.substring(0, REASON_MAXLENGTH)
-      )
-      await sendDeleteAccountRequest(client)
-      return handleSuccess()
+      if (flag('settings.delete.byEmailOnly')) {
+        await sendDeleteAccountByEmailOnlyEmail(
+          client,
+          t('DeleteAccount.byEmailOnly.mail.subject', { domain }),
+          reason.substring(0, REASON_MAXLENGTH)
+        )
+        return handleSuccess({ byEmailOnly: true })
+      } else {
+        await sendDeleteAccountReasonEmail(
+          client,
+          t('DeleteAccount.request.mail.subject', { domain }),
+          reason.substring(0, REASON_MAXLENGTH)
+        )
+        await sendDeleteAccountRequest(client)
+        return handleSuccess({ byEmailOnly: false })
+      }
     } catch (error) {
       return handleError(error)
     }
