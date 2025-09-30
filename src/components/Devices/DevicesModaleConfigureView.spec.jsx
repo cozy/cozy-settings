@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import cloneDeep from 'lodash/cloneDeep'
 
 import { createMockClient } from 'cozy-client'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 
 import DevicesModaleConfigureView from './DevicesModaleConfigureView'
 
@@ -21,10 +21,11 @@ jest.mock('cozy-ui/transpiled/react/Collapse', () => {
   const FakeCollapse = ({ children }) => <>{children}</>
   return FakeCollapse
 })
-jest.mock('cozy-ui/transpiled/react/deprecated/Alerter', () => ({
-  error: jest.fn(),
-  success: jest.fn()
+
+jest.mock('cozy-ui/transpiled/react/providers/Alert', () => ({
+  useAlert: jest.fn()
 }))
+
 jest.mock('@/lib/deviceConfigurationHelper', () => {
   const original = jest.requireActual('@/lib/deviceConfigurationHelper') // Step 2.
   return {
@@ -143,6 +144,9 @@ describe('DevicesModaleConfigureView', () => {
     getByRole(root.getByTestId(`toggle-${folder.name}-inclusion`), 'checkbox')
 
   const setup = () => {
+    const showAlert = jest.fn()
+    useAlert.mockReturnValue({ showAlert })
+
     const root = render(
       <AppLike client={mockClient}>
         <DevicesModaleConfigureView
@@ -152,7 +156,7 @@ describe('DevicesModaleConfigureView', () => {
         />
       </AppLike>
     )
-    return { root }
+    return { root, showAlert }
   }
   beforeEach(() => {
     // eslint-disable-next-line no-console
@@ -216,8 +220,8 @@ describe('DevicesModaleConfigureView', () => {
     })
 
     it('should render an alert notification', () => {
-      setup()
-      expect(Alerter.error).toHaveBeenCalledTimes(1)
+      const { showAlert } = setup()
+      expect(showAlert).toHaveBeenCalledTimes(1)
     })
 
     describe('and the dialog is validated', () => {

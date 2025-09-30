@@ -18,8 +18,8 @@ import RadioGroup from 'cozy-ui/transpiled/react/RadioGroup'
 import Radio from 'cozy-ui/transpiled/react/Radios'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
 import { Media, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { TreeItem, TreeView } from '@/components/CozyTreeView'
@@ -351,10 +351,14 @@ const ConfigureDeviceSyncDialog = ({
   const { folders, loading, failed } = useFolders(client)
   const [hierarchy, setHierarchy] = useState(new Map())
   const hasFolders = useMemo(() => folders.length > 0, [folders])
+  const { showAlert } = useAlert()
 
   useMemo(() => {
     if (failed) {
-      Alerter.error(t('configureDevice.load_error'))
+      showAlert({
+        message: t('configureDevice.load_error'),
+        type: 'error'
+      })
     } else if (!loading) {
       const { areMixed, hierarchy } = initializeHierarchy(folders, device)
 
@@ -365,7 +369,7 @@ const ConfigureDeviceSyncDialog = ({
         setPartialSync(true)
       }
     }
-  }, [device, failed, folders, loading, t])
+  }, [device, failed, folders, loading, showAlert, t])
 
   const onPartialSyncChange = useCallback(
     event => setPartialSync(event.target.value === 'true'),
@@ -408,12 +412,18 @@ const ConfigureDeviceSyncDialog = ({
         client
       })
       onDeviceConfigured()
-      Alerter.success(t('configureDevice.configure_success'))
+      showAlert({
+        message: t('configureDevice.configure_success'),
+        type: 'success'
+      })
     } catch (err) {
       logger.warn(err)
-      return Alerter.error(t('configureDevice.configure_error'))
+      return showAlert({
+        message: t('configureDevice.configure_error'),
+        type: 'error'
+      })
     }
-  }, [partialSync, hierarchy, onDeviceConfigured, device, client, t])
+  }, [partialSync, hierarchy, onDeviceConfigured, device, client, showAlert, t])
 
   return (
     <FixedDialog
