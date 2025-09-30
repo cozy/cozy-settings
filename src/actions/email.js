@@ -5,9 +5,9 @@ export const SEND_EMAIL = 'SEND_EMAIL'
 export const SEND_EMAIL_SUCCESS = 'SEND_EMAIL_SUCCESS'
 export const SEND_EMAIL_FAILURE = 'SEND_EMAIL_FAILURE'
 
-const CONTACT_ADDRESS = 'contact@cozycloud.cc'
+const CONTACT_ADDRESS = 'support@twake.app'
 
-const CONTACT_RECIPIENT_LIST = [{ name: 'Contact', email: CONTACT_ADDRESS }]
+const CONTACT_RECIPIENT_LIST = [{ name: 'Support', email: CONTACT_ADDRESS }]
 
 function textPlainContentParts(message) {
   return [
