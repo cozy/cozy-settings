@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useQuery, hasQueryBeenLoaded } from 'cozy-client'
 import Alerter from 'cozy-ui/transpiled/react/deprecated/Alerter'
+import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import {
@@ -34,6 +35,7 @@ const DeleteAccount = () => {
 
   const [status, setStatus] = useState(IDLE)
   const [isBlockingResumed, setBlockingResumed] = useState(false)
+  const { showAlert } = useAlert()
 
   useEffect(() => {
     setStatus(hasPassword ? CONFIRMING : REQUESTING)
@@ -45,8 +47,16 @@ const DeleteAccount = () => {
     Alerter.error(t('DeleteAccount.error.message'))
   }
 
-  const onRequested = () => {
-    setStatus(EMAIL_CONFIRMATION)
+  const onRequested = ({ byEmailOnly }) => {
+    if (byEmailOnly) {
+      showAlert({
+        message: t('DeleteAccount.byEmailOnly.success'),
+        type: 'success'
+      })
+      handleClose()
+    } else {
+      setStatus(EMAIL_CONFIRMATION)
+    }
   }
 
   const handleClose = () => {

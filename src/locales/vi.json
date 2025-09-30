@@ -89,6 +89,9 @@
           "subject": "Lý do xóa Twake %{domain}"
         }
       },
+      "byEmailOnly": {
+        "success": "Yêu cầu đã được gửi và sẽ được đội ngũ của chúng tôi xử lý nhanh chóng."
+      },
       "success": {
         "message": "Yêu cầu xóa của bạn đã được gửi."
       }

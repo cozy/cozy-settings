@@ -89,6 +89,12 @@
         "subject": "Reasons for removing the Twake %{domain}"
       }
     },
+    "byEmailOnly": {
+      "mail": {
+        "subject": "Request to remove Twake %{domain}"
+      },
+      "success": "The request has been sent and will be processed promptly by our teams."
+    },
     "success": {
       "message": "Your deletion request has been sent."
     }

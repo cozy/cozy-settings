@@ -67,6 +67,9 @@
         "subject": "Motifs de la suppression du Twake %{domain}"
       }
     },
+    "byEmailOnly": {
+      "success": "La demande a été envoyée et sera traitée rapidement par nos équipes."
+    },
     "success": {
       "message": "Votre demande a bien été envoyée."
     },

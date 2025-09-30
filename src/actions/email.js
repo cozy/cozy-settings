@@ -80,6 +80,17 @@ export function sendDeleteAccountReasonEmail(client, subject, message) {
   )
 }
 
+export function sendDeleteAccountByEmailOnlyEmail(client, subject, message) {
+  if (!message) return
+
+  return sendEmail(
+    client,
+    CONTACT_RECIPIENT_LIST,
+    textPlainContentParts(message),
+    subject
+  )
+}
+
 export function sendEmail(
   client,
   recipientsList,
