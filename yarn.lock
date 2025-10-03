@@ -4503,10 +4503,10 @@ cozy-client@^60.8.0:
     sift "^6.0.0"
     url-search-params-polyfill "^8.0.0"
 
-cozy-dataproxy-lib@^4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/cozy-dataproxy-lib/-/cozy-dataproxy-lib-4.9.0.tgz#622eed2782438c36eb1c50a3c263db4c12bd3026"
-  integrity sha512-KHz7RLXxSVvB3z9Ix6zh9nKy7GBULJFGabWCRDzTjrc/nGNahSBuyANDN1w+8u2OHJLJvGJc+xaTWPZ8CrayXg==
+cozy-dataproxy-lib@^4.11.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/cozy-dataproxy-lib/-/cozy-dataproxy-lib-4.11.0.tgz#89cd935486517574ce1e648aab62209638afa4ab"
+  integrity sha512-4XMP8axtvpOnwlmBHug8obGCt5zU/gXABt4RLqCLi4FlsVryAGw9QYZibUPNsirGrHiMdwXrC5rrDPWAFMUUvA==
   dependencies:
     comlink "4.4.1"
     flexsearch "0.7.43"
