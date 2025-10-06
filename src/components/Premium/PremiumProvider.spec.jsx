@@ -87,7 +87,7 @@ describe('PremiumProvider', () => {
     expect(screen.getByText('Can open premium link: true')).toBeInTheDocument()
     expect(
       screen.getByText(
-        'Premium link: http://mycozy.cloud/cozy/instances/1223/premium'
+        'Premium link: http://mycozy.cloud/cozy/instances/1223/premium?lang=en'
       )
     ).toBeInTheDocument()
   })
