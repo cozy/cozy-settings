@@ -21,7 +21,9 @@ const isCozyDesktopApp = device =>
 
 export const canConfigureDevice = device =>
   isCozyDesktopApp(device) &&
-  semver.gte(device.software_version, '3.32.0-beta.3')
+  (device.software_version
+    ? semver.gte(device.software_version, '3.32.0-beta.3')
+    : false)
 
 /**
  * Get subtitle translation key with interpolation value
