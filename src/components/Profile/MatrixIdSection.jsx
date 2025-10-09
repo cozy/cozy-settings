@@ -41,6 +41,7 @@ const MatrixIdSection = () => {
         label={t(`ProfileView.matrix_id.label`)}
         value={generatedMatrixId}
         copyable={true}
+        readOnly
       />
     </Stack>
   )

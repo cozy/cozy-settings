@@ -27,6 +27,7 @@ const EmailReadOnlySection = () => {
       label={t('EmailReadOnlySection.subtitle')}
       value={instance.email}
       copyable={true}
+      readOnly
     />
   )
 }

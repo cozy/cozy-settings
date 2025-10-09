@@ -32,6 +32,7 @@ const PhoneNumberSection = () => {
         label={t(`ProfileView.phone_number.label`)}
         value={instance?.phone}
         copyable={true}
+        readOnly
       />
       <Button
         variant="secondary"
