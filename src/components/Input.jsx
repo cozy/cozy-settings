@@ -13,7 +13,8 @@ const Input = ({
   submitting,
   errors,
   onChange,
-  onBlur
+  onBlur,
+  readOnly
 }) => {
   return (
     <div className="u-pos-relative">
@@ -27,6 +28,7 @@ const Input = ({
         onBlur={onBlur && (e => onBlur(name, e.target.value))}
         className={errors && errors.length !== 0 ? 'u-error' : ''}
         aria-busy={submitting}
+        readOnly={readOnly}
       />
     </div>
   )
