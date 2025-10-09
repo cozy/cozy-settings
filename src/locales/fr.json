@@ -206,15 +206,15 @@
     },
     "public_name": {
       "title": "Nom d'usage",
-      "label": "Votre nom d'usage est utilisé lorsque vous partagez des fichiers avec d'autres utilisateurs de Twake."
+      "label": "Affiché lorsque vous partagez des fichiers avec d'autres utilisateurs de Twake."
     },
     "matrix_id": {
       "title": "Matrix ID",
-      "label": "Matrix ID est un identifiant unique dans la plateforme Twake utilisé pour la messagerie en temps réel dans le protocole open-source Matrix."
+      "label": "Identifiant unique dans la plateforme Twake utilisé pour la messagerie en temps réel dans le protocole open-source Matrix."
     },
     "phone_number": {
       "title": "Numéro de téléphone",
-      "label": "Votre numéro de téléphone est utilisé pour vous envoyer des notifications par SMS.",
+      "label": "Utilisé pour vous envoyer des notifications et vous permettre de récupérer votre mot de passe.",
       "change_button": "Modifier le numéro de téléphone",
       "invalid": "Le numéro de téléphone que vous avez entré ne semble pas correct.",
       "add_alert_title": "Restez connecté !",
@@ -570,7 +570,7 @@
   },
   "EmailReadOnlySection": {
     "title": "E-mail",
-    "subtitle": "L'adresse email est fixe et utilisée pour l'authentification au sein du réseau Matrix."
+    "subtitle": "Fixe et utilisée pour l'authentification au sein du réseau Matrix."
   },
   "EmailModal": {
     "title": "Nouvel email",

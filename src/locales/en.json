@@ -209,15 +209,15 @@
     },
     "public_name": {
       "title": "Username",
-      "label": "Your username will be displayed when you share files with Twake users."
+      "label": "Displayed when you share files with Twake users."
     },
     "matrix_id": {
       "title": "Matrix ID",
-      "label": "Matrix ID is a unique identifier in the Twake platform used for real-time messaging in the open-source Matrix protocol."
+      "label": "A unique identifier in the Twake platform used for real-time messaging in the open-source Matrix protocol."
     },
     "phone_number": {
       "title": "Phone number",
-      "label": "Your phone number will be used to send you notifications and to enable you to recover your password.",
+      "label": "Used to send you notifications and to enable you to recover your password.",
       "change_button": "Change the phone number",
       "invalid": "The phone number is invalid",
       "add_alert_title": "Stay connected!",
@@ -573,7 +573,7 @@
   },
   "EmailReadOnlySection": {
     "title": "E-mail",
-    "subtitle": "The email address is fixed and used for authentication within the Matrix network."
+    "subtitle": "Fixed and used for authentication within the Matrix network."
   },
   "EmailModal": {
     "title": "New email",

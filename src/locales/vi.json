@@ -206,15 +206,15 @@
       },
       "public_name": {
         "title": "Tên người dùng",
-        "label": "Tên người dùng sẽ hiển thị khi bạn chia sẻ tệp với người dùng Twake."
+        "label": "Hiển thị khi bạn chia sẻ tệp với người dùng Twake."
       },
       "matrix_id": {
         "title": "Matrix ID",
-        "label": "Matrix ID là định danh duy nhất trong nền tảng Twake dùng cho nhắn tin thời gian thực trong giao thức Matrix mã nguồn mở."
+        "label": "Định danh duy nhất trong nền tảng Twake dùng cho nhắn tin thời gian thực trong giao thức Matrix mã nguồn mở."
       },
       "phone_number": {
         "title": "Số điện thoại",
-        "label": "Số điện thoại sẽ được dùng để gửi thông báo và cho phép khôi phục mật khẩu.",
+        "label": "Được dùng để gửi thông báo và cho phép khôi phục mật khẩu.",
         "change_button": "Thay đổi số điện thoại",
         "invalid": "Số điện thoại không hợp lệ"
       },
@@ -568,7 +568,7 @@
  },
  "EmailReadOnlySection": {
    "title": "Email",
-   "subtitle": "Địa chỉ email cố định và được sử dụng để xác thực trong mạng Matrix."
+   "subtitle": "Cố định và được sử dụng để xác thực trong mạng Matrix."
  },
  "EmailModal": {
    "title": "Email mới",
