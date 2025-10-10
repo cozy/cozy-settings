@@ -2,6 +2,7 @@ import React from 'react'
 
 import UIInput from 'cozy-ui/transpiled/react/Input'
 import Switch from 'cozy-ui/transpiled/react/Switch'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 
 import Field from '@/components/Field'
 
@@ -16,6 +17,18 @@ const Input = ({
   onBlur,
   readOnly
 }) => {
+  if (readOnly) {
+    if (value) {
+      return (
+        <div className="u-pv-half u-h-2 u-flex u-flex-items-center">
+          <Typography variant="button">{value}</Typography>
+        </div>
+      )
+    }
+
+    return null
+  }
+
   return (
     <div className="u-pos-relative">
       <UIInput
