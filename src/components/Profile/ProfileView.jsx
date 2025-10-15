@@ -8,8 +8,6 @@ import Stack from 'cozy-ui/transpiled/react/Stack'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
-import '../../styles/twakeProducts/profile.css'
-
 import TwoFA from '@/components/2FA'
 import EmailReadOnlySection from '@/components/Email/EmailReadOnlySection'
 import EmailSection from '@/components/Email/EmailSection'
@@ -59,7 +57,9 @@ const ProfileView = ({
       {hasQueryBeenLoaded(instanceResult) ? (
         <>
           <Stack spacing="l">
-            <AvatarSection />
+            <div className="u-mv-1-half">
+              <AvatarSection />
+            </div>
             <PublicNameSection />
             {isEmailReadOnly ? <EmailReadOnlySection /> : <EmailSection />}
             {isMatrixEnabled && <MatrixIdSection />}
