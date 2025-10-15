@@ -16,7 +16,7 @@ import {
 } from 'cozy-ui/transpiled/react/styles'
 
 import { PremiumProvider } from '@/components/Premium/PremiumProvider'
-import { AvatarProvider } from '@/components/Profile/AvatarContext'
+import { AvatarProvider } from '@/components/Profile/AvatarSection/AvatarContext'
 import { FILES_DOCTYPE, CONTACTS_DOCTYPE, APPS_DOCTYPE } from '@/doctypes'
 
 /*
