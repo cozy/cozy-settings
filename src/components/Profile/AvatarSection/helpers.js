@@ -5,7 +5,7 @@ export const handleUploadAvatar = async ({
   t,
   fileInputRef,
   avatarStatus,
-  uploadAvatar,
+  onUpload,
   setAvatarStatus,
   setAvatarTimestamp,
   setShowMenu,
@@ -38,7 +38,7 @@ export const handleUploadAvatar = async ({
   setAvatarStatus('LOADING')
 
   try {
-    await uploadAvatar(file)
+    await onUpload(file)
     clearTimeout(timeoutId)
 
     const newTimestamp = Date.now()
@@ -69,7 +69,7 @@ export const handleUploadAvatar = async ({
 export const handleDeleteAvatar = async ({
   t,
   avatarStatus,
-  deleteAvatar,
+  onDelete,
   setShowMenu,
   setAvatarStatus,
   setAvatarTimestamp,
@@ -83,7 +83,7 @@ export const handleDeleteAvatar = async ({
   setAvatarStatus('LOADING')
 
   try {
-    await deleteAvatar()
+    await onDelete()
     clearTimeout(timeoutId)
 
     const checkTimestamp = Date.now()
