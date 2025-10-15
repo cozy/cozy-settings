@@ -19,6 +19,49 @@ import { useAvatar } from './AvatarContext'
 
 import { buildSettingsInstanceQuery } from '@/lib/queries'
 
+const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
+  const instanceQuery = buildSettingsInstanceQuery()
+  const { data: instance } = useQuery(
+    instanceQuery.definition,
+    instanceQuery.options
+  )
+  const client = useClient()
+  const rootURL = client.getStackClient().uri
+
+  const commonAvatarProps = {
+    size: 'xl',
+    style: { width: '94px', height: '94px' }
+  }
+
+  if (avatarStatus === 'LOADING') {
+    return (
+      <div className="avatar-loading-container">
+        <Avatar
+          {...commonAvatarProps}
+          style={{ ...commonAvatarProps.style, opacity: '0.5' }}
+        />
+        <Spinner className="avatar-spinner" size="large" />
+      </div>
+    )
+  }
+
+  const additionalProps = {
+    alt: instance?.public_name || 'Avatar',
+    key: avatarTimestamp,
+    onError: () => {
+      if (avatarStatus === 'PRESENT') {
+        setAvatarStatus('ABSENT')
+      }
+    }
+  }
+
+  if (avatarStatus === 'PRESENT') {
+    additionalProps.src = `${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`
+  }
+
+  return <Avatar {...commonAvatarProps} {...additionalProps} />
+}
+
 const AvatarSection = () => {
   const { t } = useI18n()
   const { showAlert } = useAlert()
@@ -30,13 +73,6 @@ const AvatarSection = () => {
   const fileInputRef = useRef(null)
   const menuAnchorRef = useRef(null)
   const client = useClient()
-  const rootURL = client.getStackClient().uri
-
-  const instanceQuery = buildSettingsInstanceQuery()
-  const { data: instance } = useQuery(
-    instanceQuery.definition,
-    instanceQuery.options
-  )
 
   const handleFileChange = async event => {
     const file = event.target.files[0]
@@ -151,40 +187,11 @@ const AvatarSection = () => {
           />
 
           <div className="avatar">
-            {(() => {
-              const commonAvatarProps = {
-                size: 'xl',
-                style: { width: '94px', height: '94px' }
-              }
-
-              if (avatarStatus === 'LOADING') {
-                return (
-                  <div className="avatar-loading-container">
-                    <Avatar
-                      {...commonAvatarProps}
-                      style={{ ...commonAvatarProps.style, opacity: '0.5' }}
-                    />
-                    <Spinner className="avatar-spinner" size="large" />
-                  </div>
-                )
-              }
-
-              const additionalProps = {
-                alt: instance?.public_name || 'Avatar',
-                key: avatarTimestamp,
-                onError: () => {
-                  if (avatarStatus === 'PRESENT') {
-                    setAvatarStatus('ABSENT')
-                  }
-                }
-              }
-
-              if (avatarStatus === 'PRESENT') {
-                additionalProps.src = `${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`
-              }
-
-              return <Avatar {...commonAvatarProps} {...additionalProps} />
-            })()}
+            <AvatarWrapper
+              avatarStatus={avatarStatus}
+              setAvatarStatus={setAvatarStatus}
+              avatarTimestamp={avatarTimestamp}
+            />
           </div>
 
           <div className="edit-button-container" ref={menuAnchorRef}>
