@@ -25,10 +25,6 @@ const AvatarSection = () => {
   const fileInputRef = useRef(null)
   const menuAnchorRef = useRef(null)
 
-  const toggleMenu = () => {
-    setShowMenu(prev => !prev)
-  }
-
   return (
     <>
       <input
@@ -68,7 +64,7 @@ const AvatarSection = () => {
               }}
               label={<Icon icon={PenIcon} />}
               size="small"
-              onClick={toggleMenu}
+              onClick={() => setShowMenu(v => !v)}
             />
             {showMenu && (
               <AvatarMenu
