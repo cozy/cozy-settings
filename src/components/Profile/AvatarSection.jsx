@@ -2,9 +2,10 @@ import React, { useState, useRef } from 'react'
 
 import { useQuery, useClient } from 'cozy-client'
 import Avatar from 'cozy-ui/transpiled/react/Avatar'
+import Badge from 'cozy-ui/transpiled/react/Badge'
+import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import CameraIcon from 'cozy-ui/transpiled/react/Icons/Camera'
 import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
@@ -30,10 +31,10 @@ const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
 
   if (avatarStatus === 'LOADING') {
     return (
-      <div className="avatar-loading-container">
+      <>
         <Avatar className="u-o-50" size={94} />
-        <Spinner className="avatar-spinner" size="large" />
-      </div>
+        <Spinner className="u-m-0" middle size="large" />
+      </>
     )
   }
 
@@ -169,65 +170,76 @@ const AvatarSection = () => {
   }
 
   return (
-    <div>
-      <div className="u-mv-1-half">
-        <div className="avatar-container">
-          <input
-            type="file"
-            ref={fileInputRef}
-            style={{ display: 'none' }}
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-
-          <div className="avatar">
-            <AvatarWrapper
-              avatarStatus={avatarStatus}
-              setAvatarStatus={setAvatarStatus}
-              avatarTimestamp={avatarTimestamp}
+    <>
+      <input
+        type="file"
+        ref={fileInputRef}
+        style={{ display: 'none' }}
+        accept="image/*"
+        onChange={handleFileChange}
+      />
+      <Badge
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right'
+        }}
+        badgeContent={
+          <>
+            <Button
+              ref={menuAnchorRef}
+              component="div"
+              className="u-miw-auto u-w-2-half u-h-2-half u-bdrs-circle"
+              classes={{ label: 'u-flex u-w-auto' }}
+              style={{
+                outline: '4px solid var(--paperBackgroundColor)'
+              }}
+              label={<Icon icon={PenIcon} />}
+              size="small"
+              onClick={toggleMenu}
             />
-          </div>
-
-          <div className="edit-button-container" ref={menuAnchorRef}>
-            <IconButton onClick={toggleMenu} size="medium">
-              <Icon icon={PenIcon} />
-            </IconButton>
-
-            <Menu
-              open={showMenu}
-              anchorEl={menuAnchorRef.current}
-              onClose={closeMenu}
-              getContentAnchorEl={null}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left'
-              }}
-            >
-              <MenuItem onClick={handleUpdateAvatar}>
-                <ListItemIcon>
-                  <Icon icon={CameraIcon} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={t('AvatarSection.menu.update', 'Update avatar')}
-                />
-              </MenuItem>
-              <MenuItem onClick={handleDeleteAvatar}>
-                <ListItemIcon>
-                  <Icon icon={TrashIcon} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={t('AvatarSection.menu.delete', 'Delete avatar')}
-                />
-              </MenuItem>
-            </Menu>
-          </div>
-        </div>
-      </div>
-    </div>
+            {showMenu && (
+              <Menu
+                open
+                anchorEl={menuAnchorRef.current}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left'
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left'
+                }}
+                onClose={closeMenu}
+              >
+                <MenuItem onClick={handleUpdateAvatar}>
+                  <ListItemIcon>
+                    <Icon icon={CameraIcon} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={t('AvatarSection.menu.update', 'Update avatar')}
+                  />
+                </MenuItem>
+                <MenuItem onClick={handleDeleteAvatar}>
+                  <ListItemIcon>
+                    <Icon icon={TrashIcon} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={t('AvatarSection.menu.delete', 'Delete avatar')}
+                  />
+                </MenuItem>
+              </Menu>
+            )}
+          </>
+        }
+      >
+        <AvatarWrapper
+          avatarStatus={avatarStatus}
+          setAvatarStatus={setAvatarStatus}
+          avatarTimestamp={avatarTimestamp}
+        />
+      </Badge>
+    </>
   )
 }
 
