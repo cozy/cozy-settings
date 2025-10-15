@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { useClient } from 'cozy-client'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
@@ -12,11 +12,12 @@ import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 
 import { useAvatar } from './AvatarContext'
+import { handleFileChange } from './helpers'
 
 const AvatarMenu = ({
-  fileInputRef,
   anchorRef,
   avatarStatus,
+  showMenu,
   setShowMenu,
   setAvatarStatus,
   setAvatarTimestamp
@@ -24,7 +25,9 @@ const AvatarMenu = ({
   const { t } = useI18n()
   const client = useClient()
   const { showAlert } = useAlert()
-  const { deleteAvatar } = useAvatar()
+  const { uploadAvatar, deleteAvatar } = useAvatar()
+
+  const fileInputRef = useRef(null)
 
   const handleUpdateAvatar = () => {
     setShowMenu(false)
@@ -62,37 +65,61 @@ const AvatarMenu = ({
   }
 
   return (
-    <Menu
-      open
-      anchorEl={anchorRef}
-      getContentAnchorEl={null}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'left'
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'left'
-      }}
-      onClose={() => setShowMenu(false)}
-    >
-      <MenuItem onClick={handleUpdateAvatar}>
-        <ListItemIcon>
-          <Icon icon={CameraIcon} />
-        </ListItemIcon>
-        <ListItemText
-          primary={t('AvatarSection.menu.update', 'Update avatar')}
-        />
-      </MenuItem>
-      <MenuItem onClick={handleDeleteAvatar}>
-        <ListItemIcon>
-          <Icon icon={TrashIcon} />
-        </ListItemIcon>
-        <ListItemText
-          primary={t('AvatarSection.menu.delete', 'Delete avatar')}
-        />
-      </MenuItem>
-    </Menu>
+    <>
+      <input
+        className="u-dn"
+        type="file"
+        ref={fileInputRef}
+        accept="image/*"
+        onChange={event =>
+          handleFileChange({
+            event,
+            client,
+            t,
+            fileInputRef,
+            avatarStatus,
+            uploadAvatar,
+            setAvatarStatus,
+            setAvatarTimestamp,
+            setShowMenu,
+            showAlert
+          })
+        }
+      />
+      {showMenu && (
+        <Menu
+          open
+          anchorEl={anchorRef}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left'
+          }}
+          onClose={() => setShowMenu(false)}
+        >
+          <MenuItem onClick={handleUpdateAvatar}>
+            <ListItemIcon>
+              <Icon icon={CameraIcon} />
+            </ListItemIcon>
+            <ListItemText
+              primary={t('AvatarSection.menu.update', 'Update avatar')}
+            />
+          </MenuItem>
+          <MenuItem onClick={handleDeleteAvatar}>
+            <ListItemIcon>
+              <Icon icon={TrashIcon} />
+            </ListItemIcon>
+            <ListItemText
+              primary={t('AvatarSection.menu.delete', 'Delete avatar')}
+            />
+          </MenuItem>
+        </Menu>
+      )}
+    </>
   )
 }
 
