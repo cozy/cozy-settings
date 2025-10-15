@@ -28,38 +28,32 @@ const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
   const client = useClient()
   const rootURL = client.getStackClient().uri
 
-  const commonAvatarProps = {
-    size: 'xl',
-    style: { width: '94px', height: '94px' }
-  }
-
   if (avatarStatus === 'LOADING') {
     return (
       <div className="avatar-loading-container">
-        <Avatar
-          {...commonAvatarProps}
-          style={{ ...commonAvatarProps.style, opacity: '0.5' }}
-        />
+        <Avatar className="u-o-50" size={94} />
         <Spinner className="avatar-spinner" size="large" />
       </div>
     )
   }
 
-  const additionalProps = {
-    alt: instance?.public_name || 'Avatar',
-    key: avatarTimestamp,
-    onError: () => {
-      if (avatarStatus === 'PRESENT') {
-        setAvatarStatus('ABSENT')
-      }
-    }
-  }
+  const alt = instance?.public_name || 'Avatar'
 
   if (avatarStatus === 'PRESENT') {
-    additionalProps.src = `${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`
+    return (
+      <Avatar
+        key={avatarTimestamp}
+        size={94}
+        src={`${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`}
+        alt={alt}
+        onError={() => {
+          setAvatarStatus('ABSENT')
+        }}
+      />
+    )
   }
 
-  return <Avatar {...commonAvatarProps} {...additionalProps} />
+  return <Avatar key={avatarTimestamp} size={94} alt={alt} />
 }
 
 const AvatarSection = () => {
@@ -67,7 +61,7 @@ const AvatarSection = () => {
   const { showAlert } = useAlert()
   const { uploadAvatar, deleteAvatar } = useAvatar()
   const [showMenu, setShowMenu] = useState(false)
-  const [avatarStatus, setAvatarStatus] = useState('PRESENT')
+  const [avatarStatus, setAvatarStatus] = useState('PRESENT') // PRESENT || ABSENT || LOADING
   const [avatarTimestamp, setAvatarTimestamp] = useState(Date.now())
 
   const fileInputRef = useRef(null)
