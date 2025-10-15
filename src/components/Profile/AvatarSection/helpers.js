@@ -1,6 +1,6 @@
 const MAX_FILE_SIZE = 5 * 1024 * 1024
 
-export const handleFileChange = async ({
+export const handleUploadAvatar = async ({
   event,
   client,
   t,

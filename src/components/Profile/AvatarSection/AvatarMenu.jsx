@@ -12,7 +12,7 @@ import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 
 import { useAvatar } from './AvatarContext'
-import { handleFileChange } from './helpers'
+import { handleUploadAvatar } from './helpers'
 
 const AvatarMenu = ({
   anchorRef,
@@ -28,11 +28,6 @@ const AvatarMenu = ({
   const { uploadAvatar, deleteAvatar } = useAvatar()
 
   const fileInputRef = useRef(null)
-
-  const handleUpdateAvatar = () => {
-    setShowMenu(false)
-    fileInputRef.current.click()
-  }
 
   const handleDeleteAvatar = async () => {
     setShowMenu(false)
@@ -72,7 +67,7 @@ const AvatarMenu = ({
         ref={fileInputRef}
         accept="image/*"
         onChange={event =>
-          handleFileChange({
+          handleUploadAvatar({
             event,
             client,
             t,
@@ -101,7 +96,12 @@ const AvatarMenu = ({
           }}
           onClose={() => setShowMenu(false)}
         >
-          <MenuItem onClick={handleUpdateAvatar}>
+          <MenuItem
+            onClick={() => {
+              setShowMenu(false)
+              fileInputRef.current.click() // triggers onChange of the input
+            }}
+          >
             <ListItemIcon>
               <Icon icon={CameraIcon} />
             </ListItemIcon>
