@@ -1,18 +1,11 @@
 import React from 'react'
 
-import { useQuery, useClient } from 'cozy-client'
+import { useClient } from 'cozy-client'
 import Avatar from 'cozy-ui/transpiled/react/Avatar'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
-import { buildSettingsInstanceQuery } from '@/lib/queries'
-
 const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
   const client = useClient()
-  const instanceQuery = buildSettingsInstanceQuery()
-  const { data: instance } = useQuery(
-    instanceQuery.definition,
-    instanceQuery.options
-  )
   const rootURL = client.getStackClient().uri
 
   if (avatarStatus === 'LOADING') {
@@ -24,15 +17,13 @@ const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
     )
   }
 
-  const alt = instance?.public_name || 'Avatar'
-
   if (avatarStatus === 'PRESENT') {
     return (
       <Avatar
         key={avatarTimestamp}
         size={94}
         src={`${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`}
-        alt={alt}
+        alt="Avatar"
         onError={() => {
           setAvatarStatus('ABSENT')
         }}
@@ -40,7 +31,7 @@ const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
     )
   }
 
-  return <Avatar key={avatarTimestamp} size={94} alt={alt} />
+  return <Avatar key={avatarTimestamp} size={94} alt="Avatar" />
 }
 
 export default AvatarWrapper
