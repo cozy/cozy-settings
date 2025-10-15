@@ -11,75 +11,19 @@ import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 import { useAvatar } from './AvatarContext'
 import AvatarMenu from './AvatarMenu'
 import AvatarWrapper from './AvatarWrapper'
+import { handleFileChange } from './helpers'
 
 const AvatarSection = () => {
-  const { t } = useI18n()
-  const { showAlert } = useAlert()
-  const { uploadAvatar } = useAvatar()
   const [showMenu, setShowMenu] = useState(false)
   const [avatarStatus, setAvatarStatus] = useState('PRESENT') // PRESENT || ABSENT || LOADING
   const [avatarTimestamp, setAvatarTimestamp] = useState(Date.now())
+  const client = useClient()
+  const { t } = useI18n()
+  const { showAlert } = useAlert()
+  const { uploadAvatar } = useAvatar()
 
   const fileInputRef = useRef(null)
   const menuAnchorRef = useRef(null)
-  const client = useClient()
-
-  const handleFileChange = async event => {
-    const file = event.target.files[0]
-    if (!file) return
-
-    const MAX_FILE_SIZE = 5 * 1024 * 1024
-    if (file.size > MAX_FILE_SIZE) {
-      showAlert({
-        message: t('AvatarSection.error.fileSizeLimit'),
-        type: 'error'
-      })
-      return
-    }
-
-    const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
-    if (!ALLOWED_TYPES.includes(file.type)) {
-      showAlert({
-        message: t('AvatarSection.error.fileType'),
-        type: 'error'
-      })
-      return
-    }
-
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 30000)
-
-    const previousAvatarStatus = avatarStatus
-    setAvatarStatus('LOADING')
-
-    try {
-      await uploadAvatar(client, file)
-      clearTimeout(timeoutId)
-
-      const newTimestamp = Date.now()
-      setAvatarStatus('PRESENT')
-      setAvatarTimestamp(newTimestamp)
-      showAlert({
-        message: t('AvatarSection.success.updated', 'Updated successful'),
-        type: 'success'
-      })
-    } catch (error) {
-      clearTimeout(timeoutId)
-      setAvatarStatus(previousAvatarStatus)
-      showAlert({
-        message: t(
-          'AvatarSection.error.uploadFailed',
-          'Upload failed. Please try again.'
-        ),
-        type: 'error'
-      })
-    } finally {
-      setShowMenu(false)
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ''
-      }
-    }
-  }
 
   const toggleMenu = () => {
     setShowMenu(prev => !prev)
@@ -92,7 +36,20 @@ const AvatarSection = () => {
         ref={fileInputRef}
         style={{ display: 'none' }}
         accept="image/*"
-        onChange={handleFileChange}
+        onChange={event =>
+          handleFileChange({
+            event,
+            client,
+            t,
+            fileInputRef,
+            avatarStatus,
+            uploadAvatar,
+            setAvatarStatus,
+            setAvatarTimestamp,
+            setShowMenu,
+            showAlert
+          })
+        }
       />
       <Badge
         anchorOrigin={{
