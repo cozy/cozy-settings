@@ -20,6 +20,89 @@ import { useAvatar } from './AvatarContext'
 
 import { buildSettingsInstanceQuery } from '@/lib/queries'
 
+const AvatarMenu = ({
+  fileInputRef,
+  anchorRef,
+  avatarStatus,
+  setShowMenu,
+  setAvatarStatus,
+  setAvatarTimestamp
+}) => {
+  const { t } = useI18n()
+  const client = useClient()
+  const { showAlert } = useAlert()
+  const { deleteAvatar } = useAvatar()
+
+  const handleUpdateAvatar = () => {
+    setShowMenu(false)
+    fileInputRef.current.click()
+  }
+
+  const handleDeleteAvatar = async () => {
+    setShowMenu(false)
+
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 30000)
+    const previousAvatarStatus = avatarStatus
+    setAvatarStatus('LOADING')
+
+    try {
+      await deleteAvatar(client)
+      clearTimeout(timeoutId)
+
+      const checkTimestamp = Date.now()
+
+      setAvatarStatus('ABSENT')
+      setAvatarTimestamp(checkTimestamp)
+      showAlert({
+        message: t('AvatarSection.success.deleted', 'Avatar deleted'),
+        type: 'success'
+      })
+    } catch (error) {
+      clearTimeout(timeoutId)
+      setAvatarStatus(previousAvatarStatus)
+      showAlert({
+        message: t('AvatarSection.error.deleteFailed'),
+        type: 'error'
+      })
+    }
+  }
+
+  return (
+    <Menu
+      open
+      anchorEl={anchorRef}
+      getContentAnchorEl={null}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left'
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left'
+      }}
+      onClose={() => setShowMenu(false)}
+    >
+      <MenuItem onClick={handleUpdateAvatar}>
+        <ListItemIcon>
+          <Icon icon={CameraIcon} />
+        </ListItemIcon>
+        <ListItemText
+          primary={t('AvatarSection.menu.update', 'Update avatar')}
+        />
+      </MenuItem>
+      <MenuItem onClick={handleDeleteAvatar}>
+        <ListItemIcon>
+          <Icon icon={TrashIcon} />
+        </ListItemIcon>
+        <ListItemText
+          primary={t('AvatarSection.menu.delete', 'Delete avatar')}
+        />
+      </MenuItem>
+    </Menu>
+  )
+}
+
 const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
   const instanceQuery = buildSettingsInstanceQuery()
   const { data: instance } = useQuery(
@@ -60,7 +143,7 @@ const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
 const AvatarSection = () => {
   const { t } = useI18n()
   const { showAlert } = useAlert()
-  const { uploadAvatar, deleteAvatar } = useAvatar()
+  const { uploadAvatar } = useAvatar()
   const [showMenu, setShowMenu] = useState(false)
   const [avatarStatus, setAvatarStatus] = useState('PRESENT') // PRESENT || ABSENT || LOADING
   const [avatarTimestamp, setAvatarTimestamp] = useState(Date.now())
@@ -126,47 +209,8 @@ const AvatarSection = () => {
     }
   }
 
-  const handleUpdateAvatar = () => {
-    setShowMenu(false)
-    fileInputRef.current.click()
-  }
-
   const toggleMenu = () => {
     setShowMenu(prev => !prev)
-  }
-
-  const closeMenu = () => {
-    setShowMenu(false)
-  }
-
-  const handleDeleteAvatar = async () => {
-    closeMenu()
-
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 30000)
-    const previousAvatarStatus = avatarStatus
-    setAvatarStatus('LOADING')
-
-    try {
-      await deleteAvatar(client)
-      clearTimeout(timeoutId)
-
-      const checkTimestamp = Date.now()
-
-      setAvatarStatus('ABSENT')
-      setAvatarTimestamp(checkTimestamp)
-      showAlert({
-        message: t('AvatarSection.success.deleted', 'Avatar deleted'),
-        type: 'success'
-      })
-    } catch (error) {
-      clearTimeout(timeoutId)
-      setAvatarStatus(previousAvatarStatus)
-      showAlert({
-        message: t('AvatarSection.error.deleteFailed'),
-        type: 'error'
-      })
-    }
   }
 
   return (
@@ -198,37 +242,14 @@ const AvatarSection = () => {
               onClick={toggleMenu}
             />
             {showMenu && (
-              <Menu
-                open
-                anchorEl={menuAnchorRef.current}
-                getContentAnchorEl={null}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left'
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left'
-                }}
-                onClose={closeMenu}
-              >
-                <MenuItem onClick={handleUpdateAvatar}>
-                  <ListItemIcon>
-                    <Icon icon={CameraIcon} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={t('AvatarSection.menu.update', 'Update avatar')}
-                  />
-                </MenuItem>
-                <MenuItem onClick={handleDeleteAvatar}>
-                  <ListItemIcon>
-                    <Icon icon={TrashIcon} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={t('AvatarSection.menu.delete', 'Delete avatar')}
-                  />
-                </MenuItem>
-              </Menu>
+              <AvatarMenu
+                fileInputRef={fileInputRef}
+                anchorRef={menuAnchorRef.current}
+                avatarStatus={avatarStatus}
+                setShowMenu={setShowMenu}
+                setAvatarStatus={setAvatarStatus}
+                setAvatarTimestamp={setAvatarTimestamp}
+              />
             )}
           </>
         }
