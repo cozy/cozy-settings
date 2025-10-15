@@ -1,20 +1,23 @@
 import React, { useState, useRef } from 'react'
+
 import { useQuery, useClient } from 'cozy-client'
+import Avatar from 'cozy-ui/transpiled/react/Avatar'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
-import Avatar from 'cozy-ui/transpiled/react/Avatar'
-import Menu from 'cozy-ui/transpiled/react/Menu'
-import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
+import IconButton from 'cozy-ui/transpiled/react/IconButton'
+import CameraIcon from 'cozy-ui/transpiled/react/Icons/Camera'
+import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
+import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
 import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import IconButton from 'cozy-ui/transpiled/react/IconButton'
-import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
-import CameraIcon from 'cozy-ui/transpiled/react/Icons/Camera'
-import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
+import Menu from 'cozy-ui/transpiled/react/Menu'
+import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
+import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
-import { buildSettingsInstanceQuery } from '@/lib/queries'
+
 import { useAvatar } from './AvatarContext'
+
+import { buildSettingsInstanceQuery } from '@/lib/queries'
 
 const AvatarSection = () => {
   const { t } = useI18n()
