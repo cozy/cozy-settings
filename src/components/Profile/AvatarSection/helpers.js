@@ -2,7 +2,6 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024
 
 export const handleUploadAvatar = async ({
   event,
-  client,
   t,
   fileInputRef,
   avatarStatus,
@@ -39,7 +38,7 @@ export const handleUploadAvatar = async ({
   setAvatarStatus('LOADING')
 
   try {
-    await uploadAvatar(client, file)
+    await uploadAvatar(file)
     clearTimeout(timeoutId)
 
     const newTimestamp = Date.now()
@@ -68,7 +67,6 @@ export const handleUploadAvatar = async ({
 }
 
 export const handleDeleteAvatar = async ({
-  client,
   t,
   avatarStatus,
   deleteAvatar,
@@ -85,7 +83,7 @@ export const handleDeleteAvatar = async ({
   setAvatarStatus('LOADING')
 
   try {
-    await deleteAvatar(client)
+    await deleteAvatar()
     clearTimeout(timeoutId)
 
     const checkTimestamp = Date.now()

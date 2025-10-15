@@ -1,13 +1,14 @@
 import React from 'react'
 
-import { useClient } from 'cozy-client'
 import Avatar from 'cozy-ui/transpiled/react/Avatar'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
-const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
-  const client = useClient()
-  const rootURL = client.getStackClient().uri
-
+const AvatarWrapper = ({
+  avatarStatus,
+  setAvatarStatus,
+  avatarTimestamp,
+  src
+}) => {
   if (avatarStatus === 'LOADING') {
     return (
       <>
@@ -22,7 +23,7 @@ const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
       <Avatar
         key={avatarTimestamp}
         size={94}
-        src={`${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`}
+        src={src}
         alt="Avatar"
         onError={() => {
           setAvatarStatus('ABSENT')

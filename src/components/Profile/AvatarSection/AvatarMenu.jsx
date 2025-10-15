@@ -11,7 +11,6 @@ import Menu from 'cozy-ui/transpiled/react/Menu'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 
-import { useAvatar } from './AvatarContext'
 import { handleDeleteAvatar, handleUploadAvatar } from './helpers'
 
 const AvatarMenu = ({
@@ -20,12 +19,13 @@ const AvatarMenu = ({
   showMenu,
   setShowMenu,
   setAvatarStatus,
-  setAvatarTimestamp
+  setAvatarTimestamp,
+  onUpload,
+  onDelete
 }) => {
   const { t } = useI18n()
   const client = useClient()
   const { showAlert } = useAlert()
-  const { uploadAvatar, deleteAvatar } = useAvatar()
 
   const fileInputRef = useRef(null)
 
@@ -43,7 +43,7 @@ const AvatarMenu = ({
             t,
             fileInputRef,
             avatarStatus,
-            uploadAvatar,
+            uploadAvatar: onUpload,
             setAvatarStatus,
             setAvatarTimestamp,
             setShowMenu,
@@ -85,7 +85,7 @@ const AvatarMenu = ({
                 client,
                 t,
                 avatarStatus,
-                deleteAvatar,
+                deleteAvatar: onDelete,
                 setShowMenu,
                 setAvatarStatus,
                 setAvatarTimestamp,
