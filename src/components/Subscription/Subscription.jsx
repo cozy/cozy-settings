@@ -1,6 +1,7 @@
 import cx from 'classnames'
 import React from 'react'
 
+import flag from 'cozy-flags'
 import PaperIcon from 'cozy-ui/transpiled/react/Icons/Paper'
 import List from 'cozy-ui/transpiled/react/List'
 import Paper from 'cozy-ui/transpiled/react/Paper'
@@ -59,7 +60,7 @@ const Subscription = () => {
               <SubscriptionStorageItem />
               <SubscriptionSupportItem />
               <SubscriptionPasswordsItem />
-              <SubscriptionOnlyOfficeItem />
+              {flag('drive.office.enabled') && <SubscriptionOnlyOfficeItem />}
               <SubscriptionNotesItem />
               <SubscriptionStoreItem />
               <SubscriptionDevicesItem />
