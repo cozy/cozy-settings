@@ -1,144 +1,16 @@
 import React, { useState, useRef } from 'react'
 
-import { useQuery, useClient } from 'cozy-client'
-import Avatar from 'cozy-ui/transpiled/react/Avatar'
+import { useClient } from 'cozy-client'
 import Badge from 'cozy-ui/transpiled/react/Badge'
 import Button from 'cozy-ui/transpiled/react/Buttons'
 import { useI18n } from 'cozy-ui/transpiled/react/I18n'
 import Icon from 'cozy-ui/transpiled/react/Icon'
-import CameraIcon from 'cozy-ui/transpiled/react/Icons/Camera'
 import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
-import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
-import ListItemIcon from 'cozy-ui/transpiled/react/ListItemIcon'
-import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
-import Menu from 'cozy-ui/transpiled/react/Menu'
-import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 
 import { useAvatar } from './AvatarContext'
-
-import { buildSettingsInstanceQuery } from '@/lib/queries'
-
-const AvatarMenu = ({
-  fileInputRef,
-  anchorRef,
-  avatarStatus,
-  setShowMenu,
-  setAvatarStatus,
-  setAvatarTimestamp
-}) => {
-  const { t } = useI18n()
-  const client = useClient()
-  const { showAlert } = useAlert()
-  const { deleteAvatar } = useAvatar()
-
-  const handleUpdateAvatar = () => {
-    setShowMenu(false)
-    fileInputRef.current.click()
-  }
-
-  const handleDeleteAvatar = async () => {
-    setShowMenu(false)
-
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 30000)
-    const previousAvatarStatus = avatarStatus
-    setAvatarStatus('LOADING')
-
-    try {
-      await deleteAvatar(client)
-      clearTimeout(timeoutId)
-
-      const checkTimestamp = Date.now()
-
-      setAvatarStatus('ABSENT')
-      setAvatarTimestamp(checkTimestamp)
-      showAlert({
-        message: t('AvatarSection.success.deleted', 'Avatar deleted'),
-        type: 'success'
-      })
-    } catch (error) {
-      clearTimeout(timeoutId)
-      setAvatarStatus(previousAvatarStatus)
-      showAlert({
-        message: t('AvatarSection.error.deleteFailed'),
-        type: 'error'
-      })
-    }
-  }
-
-  return (
-    <Menu
-      open
-      anchorEl={anchorRef}
-      getContentAnchorEl={null}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'left'
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'left'
-      }}
-      onClose={() => setShowMenu(false)}
-    >
-      <MenuItem onClick={handleUpdateAvatar}>
-        <ListItemIcon>
-          <Icon icon={CameraIcon} />
-        </ListItemIcon>
-        <ListItemText
-          primary={t('AvatarSection.menu.update', 'Update avatar')}
-        />
-      </MenuItem>
-      <MenuItem onClick={handleDeleteAvatar}>
-        <ListItemIcon>
-          <Icon icon={TrashIcon} />
-        </ListItemIcon>
-        <ListItemText
-          primary={t('AvatarSection.menu.delete', 'Delete avatar')}
-        />
-      </MenuItem>
-    </Menu>
-  )
-}
-
-const AvatarWrapper = ({ avatarStatus, setAvatarStatus, avatarTimestamp }) => {
-  const instanceQuery = buildSettingsInstanceQuery()
-  const { data: instance } = useQuery(
-    instanceQuery.definition,
-    instanceQuery.options
-  )
-  const client = useClient()
-  const rootURL = client.getStackClient().uri
-
-  if (avatarStatus === 'LOADING') {
-    return (
-      <>
-        <Avatar className="u-o-50" size={94} />
-        <Spinner className="u-m-0" middle size="large" />
-      </>
-    )
-  }
-
-  const alt = instance?.public_name || 'Avatar'
-
-  if (avatarStatus === 'PRESENT') {
-    return (
-      <Avatar
-        key={avatarTimestamp}
-        size={94}
-        src={`${rootURL}/public/avatar?t=${avatarTimestamp}&fallback=initials`}
-        alt={alt}
-        onError={() => {
-          setAvatarStatus('ABSENT')
-        }}
-      />
-    )
-  }
-
-  return <Avatar key={avatarTimestamp} size={94} alt={alt} />
-}
+import AvatarMenu from './AvatarMenu'
+import AvatarWrapper from './AvatarWrapper'
 
 const AvatarSection = () => {
   const { t } = useI18n()
