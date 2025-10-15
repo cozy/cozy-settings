@@ -12,7 +12,7 @@ import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
 
 import { useAvatar } from './AvatarContext'
-import { handleUploadAvatar } from './helpers'
+import { handleDeleteAvatar, handleUploadAvatar } from './helpers'
 
 const AvatarMenu = ({
   anchorRef,
@@ -28,36 +28,6 @@ const AvatarMenu = ({
   const { uploadAvatar, deleteAvatar } = useAvatar()
 
   const fileInputRef = useRef(null)
-
-  const handleDeleteAvatar = async () => {
-    setShowMenu(false)
-
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 30000)
-    const previousAvatarStatus = avatarStatus
-    setAvatarStatus('LOADING')
-
-    try {
-      await deleteAvatar(client)
-      clearTimeout(timeoutId)
-
-      const checkTimestamp = Date.now()
-
-      setAvatarStatus('ABSENT')
-      setAvatarTimestamp(checkTimestamp)
-      showAlert({
-        message: t('AvatarSection.success.deleted', 'Avatar deleted'),
-        type: 'success'
-      })
-    } catch (error) {
-      clearTimeout(timeoutId)
-      setAvatarStatus(previousAvatarStatus)
-      showAlert({
-        message: t('AvatarSection.error.deleteFailed'),
-        type: 'error'
-      })
-    }
-  }
 
   return (
     <>
@@ -109,7 +79,20 @@ const AvatarMenu = ({
               primary={t('AvatarSection.menu.update', 'Update avatar')}
             />
           </MenuItem>
-          <MenuItem onClick={handleDeleteAvatar}>
+          <MenuItem
+            onClick={() =>
+              handleDeleteAvatar({
+                client,
+                t,
+                avatarStatus,
+                deleteAvatar,
+                setShowMenu,
+                setAvatarStatus,
+                setAvatarTimestamp,
+                showAlert
+              })
+            }
+          >
             <ListItemIcon>
               <Icon icon={TrashIcon} />
             </ListItemIcon>
