@@ -7,9 +7,9 @@ import Button from 'cozy-ui/transpiled/react/Buttons'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
 
-import { useAvatar } from './AvatarContext'
 import AvatarMenu from './AvatarMenu'
 import AvatarWrapper from './AvatarWrapper'
+import { uploadAvatar, deleteAvatar } from './helpers'
 
 const AvatarSection = ({ src, onUpload, onDelete }) => {
   const [showMenu, setShowMenu] = useState(false)
@@ -69,7 +69,6 @@ AvatarSection.propTypes = {
 
 const AvatarSectionWrapper = () => {
   const client = useClient()
-  const { uploadAvatar, deleteAvatar } = useAvatar()
 
   const rootURL = client.getStackClient().uri
 
