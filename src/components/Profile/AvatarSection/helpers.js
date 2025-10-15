@@ -66,3 +66,42 @@ export const handleUploadAvatar = async ({
     }
   }
 }
+
+export const handleDeleteAvatar = async ({
+  client,
+  t,
+  avatarStatus,
+  deleteAvatar,
+  setShowMenu,
+  setAvatarStatus,
+  setAvatarTimestamp,
+  showAlert
+}) => {
+  setShowMenu(false)
+
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 30000)
+  const previousAvatarStatus = avatarStatus
+  setAvatarStatus('LOADING')
+
+  try {
+    await deleteAvatar(client)
+    clearTimeout(timeoutId)
+
+    const checkTimestamp = Date.now()
+
+    setAvatarStatus('ABSENT')
+    setAvatarTimestamp(checkTimestamp)
+    showAlert({
+      message: t('AvatarSection.success.deleted', 'Avatar deleted'),
+      type: 'success'
+    })
+  } catch (error) {
+    clearTimeout(timeoutId)
+    setAvatarStatus(previousAvatarStatus)
+    showAlert({
+      message: t('AvatarSection.error.deleteFailed'),
+      type: 'error'
+    })
+  }
+}
