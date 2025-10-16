@@ -1,86 +1,26 @@
-import PropTypes from 'prop-types'
-import React, { useState, useRef } from 'react'
+import React from 'react'
 
 import { useClient } from 'cozy-client'
-import Badge from 'cozy-ui/transpiled/react/Badge'
-import Button from 'cozy-ui/transpiled/react/Buttons'
-import Icon from 'cozy-ui/transpiled/react/Icon'
-import PenIcon from 'cozy-ui/transpiled/react/Icons/Pen'
+import Avatar from 'cozy-ui/transpiled/react/Avatar'
+import EditBadge from 'cozy-ui/transpiled/react/EditBadge'
 
-import AvatarMenu from './AvatarMenu'
-import AvatarWrapper from './AvatarWrapper'
 import { uploadAvatar, deleteAvatar } from './helpers'
 
-const AvatarSection = ({ src, onUpload, onDelete }) => {
-  const [showMenu, setShowMenu] = useState(false)
-  const [avatarStatus, setAvatarStatus] = useState('PRESENT') // PRESENT || ABSENT || LOADING
-  const [avatarTimestamp, setAvatarTimestamp] = useState(Date.now())
-
-  const menuAnchorRef = useRef(null)
-
-  return (
-    <Badge
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'right'
-      }}
-      badgeContent={
-        <>
-          <Button
-            ref={menuAnchorRef}
-            component="div"
-            className="u-miw-auto u-w-2-half u-h-2-half u-bdrs-circle"
-            classes={{ label: 'u-flex u-w-auto' }}
-            style={{
-              outline: '4px solid var(--paperBackgroundColor)'
-            }}
-            label={<Icon icon={PenIcon} />}
-            size="small"
-            onClick={() => setShowMenu(v => !v)}
-          />
-          <AvatarMenu
-            anchorRef={menuAnchorRef.current}
-            avatarStatus={avatarStatus}
-            showMenu={showMenu}
-            setShowMenu={setShowMenu}
-            setAvatarStatus={setAvatarStatus}
-            setAvatarTimestamp={setAvatarTimestamp}
-            onUpload={onUpload}
-            onDelete={onDelete}
-          />
-        </>
-      }
-    >
-      <AvatarWrapper
-        src={src(avatarTimestamp)}
-        avatarStatus={avatarStatus}
-        setAvatarStatus={setAvatarStatus}
-        avatarTimestamp={avatarTimestamp}
-      />
-    </Badge>
-  )
-}
-
-AvatarSection.propTypes = {
-  src: PropTypes.func.isRequired,
-  onUpload: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
-}
-
-const AvatarSectionWrapper = () => {
+const AvatarSection = () => {
   const client = useClient()
-
   const rootURL = client.getStackClient().uri
 
   return (
-    <AvatarSection
+    <EditBadge
       src={timestamp =>
         `${rootURL}/public/avatar?t=${timestamp}&fallback=initials`
       }
       onUpload={file => uploadAvatar(client, file)}
       onDelete={() => deleteAvatar(client)}
-    />
+    >
+      <Avatar size={94} alt="Avatar" />
+    </EditBadge>
   )
 }
 
-export default AvatarSectionWrapper
+export default AvatarSection
