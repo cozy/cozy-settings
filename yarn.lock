@@ -4762,10 +4762,10 @@ cozy-stack-client@^60.6.0:
     mime "^2.4.0"
     qs "^6.7.0"
 
-cozy-ui@^130.8.1:
-  version "130.8.1"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-130.8.1.tgz#ec990e7f57a3b7391440b7293c5f1bd110ae7069"
-  integrity sha512-wYJFBywSAZ9otTDPtWBfRKGtSEVRTQaiBhiG+3vEDeNskeEh/ga8vLbZZZ6A6yT+9wRE3mqMnevPMBqI6SglcA==
+cozy-ui@^130.10.0:
+  version "130.10.0"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-130.10.0.tgz#4186e649571c7f97d49e0ece4a2a98cecc9526e3"
+  integrity sha512-GFVxkd8eBo+r1v1lNzS57fnyeAbW2+JV3JMsfXj9+cIQYM/QmUCtXozztX/tnb6Bq7KJXTg5OoUfYDLvoksQiQ==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@date-io/date-fns" "1"
