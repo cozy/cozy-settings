@@ -48,15 +48,13 @@ const Run = () => {
   const [accounts, setAccounts] = useState([])
   const [selectedAccountId, setSelectedAccountId] = useState('')
 
-  const [remotePath, setRemotePath] = useState('/') // Nextcloud source path
-  const [targetDirId, setTargetDirId] = useState(ROOT_DIR_ID) // Cozy target dir (not used yet)
+  const [remotePath, setRemotePath] = useState('/') // Nextcloud source
+  const [targetDirId, setTargetDirId] = useState(ROOT_DIR_ID) // Cozy target
 
   const [busy, setBusy] = useState(false)
   const [status, setStatus] = useState('')
   const [error, setError] = useState(null)
   const [remotePreview, setRemotePreview] = useState([])
-
-  const hasAccounts = accounts.length > 0
 
   const resetMsgs = useCallback(() => {
     setError(null)
@@ -75,13 +73,8 @@ const Run = () => {
     ;(async () => {
       setCheckingAccount(true)
       try {
-        const res = await client.stackClient.fetchJSON(
-          'POST',
-          '/data/io.cozy.accounts/_find',
-          { selector: { account_type: 'nextcloud' }, limit: 100 }
-        )
+        const docs = await nextcloudProvider.listAccounts(client)
         if (aborted) return
-        const docs = res?.docs || []
         setAccounts(docs)
         if (docs.length) setSelectedAccountId(docs[0]._id)
       } catch (e) {
@@ -112,8 +105,8 @@ const Run = () => {
 
   const pickAccountId = async () => {
     if (selectedAccountId) return selectedAccountId
-    const acc = await nextcloudProvider.findAccount(client, {}) // fallback to first account
-    return acc?._id
+    const all = await nextcloudProvider.listAccounts(client)
+    return all?.[0]?._id
   }
 
   const handleListRemote = async () => {
@@ -123,18 +116,60 @@ const Run = () => {
     try {
       const accId = await pickAccountId()
       if (!accId) throw new Error('No Nextcloud account configured')
-      const items = await nextcloudProvider.listRemote(
+      const { kind, items, name } = await nextcloudProvider.probePath(
         client,
         accId,
         remotePath || '/'
       )
-      setStatus(`Remote list: ${items.length} item(s) at ${remotePath || '/'}`)
-      const names = (items || [])
-        .slice(0, 10)
-        .map(it => it?.attributes?.name || it?.name || it?.path || 'unknown')
-      setRemotePreview(names)
-      // eslint-disable-next-line no-console
-      console.log('[Nextcloud] list preview', names)
+      if (kind === 'file') {
+        setStatus(`Remote path is a file: ${name}`)
+        setRemotePreview([name])
+      } else {
+        setStatus(
+          `Remote list: ${items.length} item(s) at ${remotePath || '/'}`
+        )
+        const names = (items || [])
+          .slice(0, 10)
+          .map(it => it?.attributes?.name || it?.name || it?.path || 'unknown')
+        // eslint-disable-next-line no-console
+        console.log('[Nextcloud] list preview', names)
+        setRemotePreview(names)
+      }
+    } catch (e) {
+      setError(await readError(e))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const handleImport = async () => {
+    resetMsgs()
+    if (!isNextcloud) return
+    if (!remotePath || !targetDirId) {
+      setError('Missing path or target dir')
+      return
+    }
+    setBusy(true)
+    try {
+      const accId = await pickAccountId()
+      if (!accId) throw new Error('No Nextcloud account configured')
+
+      setStatus('Analyzing path…')
+      const summary = await nextcloudProvider.importPathRecursive(
+        client,
+        accId,
+        remotePath || '/',
+        targetDirId || ROOT_DIR_ID,
+        { copy: true, maxDepth: 20 }
+      )
+      setStatus(
+        `Imported files: ${summary.filesCopied}, folders created: ${summary.foldersCreated}`
+      )
+      if (summary.errors?.length) {
+        setError(`Some items failed: ${summary.errors.length}`)
+        // eslint-disable-next-line no-console
+        console.warn('[Nextcloud] import errors', summary.errors)
+      }
     } catch (e) {
       setError(await readError(e))
     } finally {
@@ -203,7 +238,7 @@ const Run = () => {
             <Spinner size="small" />
             <Typography variant="caption">Checking account…</Typography>
           </div>
-        ) : hasAccounts ? (
+        ) : accounts.length ? (
           <select
             style={{ padding: 8, minWidth: 320 }}
             value={selectedAccountId}
@@ -244,8 +279,8 @@ const Run = () => {
         )}
       </div>
 
-      {/* Nextcloud-only: remote path + target dir + List */}
-      {isNextcloud && hasAccounts && (
+      {/* Params + actions */}
+      {isNextcloud && accounts.length > 0 && (
         <>
           <div
             style={{ display: 'grid', gap: 8, margin: '12px 0', maxWidth: 520 }}
@@ -254,7 +289,7 @@ const Run = () => {
               <Typography variant="caption">Remote path (Nextcloud)</Typography>
               <input
                 type="text"
-                placeholder="/ or /Documents"
+                placeholder="/ or /Documents or /file.pdf"
                 value={remotePath}
                 onChange={e => setRemotePath(e.target.value)}
                 disabled={busy}
@@ -271,7 +306,7 @@ const Run = () => {
                 placeholder={ROOT_DIR_ID}
                 value={targetDirId}
                 onChange={e => setTargetDirId(e.target.value)}
-                disabled
+                disabled={busy}
                 style={{ padding: 8 }}
               />
             </label>
@@ -292,11 +327,18 @@ const Run = () => {
             >
               {busy ? 'Working…' : 'List remote'}
             </Button>
+            <Button
+              variant="primary"
+              disabled={busy || !remotePath || !targetDirId}
+              onClick={handleImport}
+            >
+              {busy ? 'Importing…' : 'Import'}
+            </Button>
           </div>
         </>
       )}
 
-      {/* Preview (first 10) */}
+      {/* Preview */}
       {remotePreview.length > 0 && (
         <div style={{ marginTop: 12 }}>
           <Typography variant="subtitle2" gutterBottom>
