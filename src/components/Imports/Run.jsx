@@ -49,7 +49,6 @@ const Run = () => {
   const [selectedAccountId, setSelectedAccountId] = useState('')
 
   const [remotePath, setRemotePath] = useState('/') // Nextcloud source
-  const [targetDirId, setTargetDirId] = useState(ROOT_DIR_ID) // Cozy target
 
   const [busy, setBusy] = useState(false)
   const [status, setStatus] = useState('')
@@ -145,8 +144,8 @@ const Run = () => {
   const handleImport = async () => {
     resetMsgs()
     if (!isNextcloud) return
-    if (!remotePath || !targetDirId) {
-      setError('Missing path or target dir')
+    if (!remotePath) {
+      setError('Missing remote path')
       return
     }
     setBusy(true)
@@ -154,12 +153,26 @@ const Run = () => {
       const accId = await pickAccountId()
       if (!accId) throw new Error('No Nextcloud account configured')
 
+      let accDoc = accounts.find(a => a._id === accId)
+      if (!accDoc) {
+        const all = await nextcloudProvider.listAccounts(client)
+        accDoc = all.find(a => a._id === accId)
+      }
+      const login = accDoc?.auth?.login || accDoc?.label || accId
+
+      // Enforce destination: /Imports/Nextcloud/<login>
+      const destId = await nextcloudProvider.ensureImportsDestination(
+        client,
+        'Nextcloud',
+        login
+      )
+
       setStatus('Analyzing path…')
       const summary = await nextcloudProvider.importPathRecursive(
         client,
         accId,
         remotePath || '/',
-        targetDirId || ROOT_DIR_ID,
+        destId || ROOT_DIR_ID,
         { copy: true, maxDepth: 20 }
       )
       setStatus(
@@ -296,20 +309,6 @@ const Run = () => {
                 style={{ padding: 8 }}
               />
             </label>
-
-            <label style={{ display: 'grid', gap: 4 }}>
-              <Typography variant="caption">
-                Target Cozy directory id
-              </Typography>
-              <input
-                type="text"
-                placeholder={ROOT_DIR_ID}
-                value={targetDirId}
-                onChange={e => setTargetDirId(e.target.value)}
-                disabled={busy}
-                style={{ padding: 8 }}
-              />
-            </label>
           </div>
 
           <div
@@ -329,7 +328,7 @@ const Run = () => {
             </Button>
             <Button
               variant="primary"
-              disabled={busy || !remotePath || !targetDirId}
+              disabled={busy || !remotePath}
               onClick={handleImport}
             >
               {busy ? 'Importing…' : 'Import'}

@@ -95,6 +95,27 @@ export const nextcloudProvider = {
     return this.createChildDir(client, parentId, name)
   },
 
+  async ensureImportsDestination(
+    client,
+    providerLabel = 'Nextcloud',
+    login = ''
+  ) {
+    const ROOT = 'io.cozy.files.root-dir'
+    const importsDir = await this.ensureChildDir(client, ROOT, 'Imports')
+    const providerDir = await this.ensureChildDir(
+      client,
+      importsDir._id || importsDir.id,
+      providerLabel
+    )
+    const safeLogin = String(login || 'unknown').replace(/[/\\]/g, '_')
+    const finalDir = await this.ensureChildDir(
+      client,
+      providerDir._id || providerDir.id,
+      safeLogin
+    )
+    return finalDir._id || finalDir.id
+  },
+
   // Downstream single FILE
   async downstreamFile(
     client,
