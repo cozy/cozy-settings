@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { useClient, generateWebLink } from 'cozy-client'
-import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import CircleButton from 'cozy-ui/transpiled/react/CircleButton'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import AppLinker from 'cozy-ui-plus/dist/AppLinker'
 
 export const UninstallButton = ({ appData }) => {
   const { t } = useI18n()

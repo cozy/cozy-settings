@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AuthentificationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import AuthentificationDialog from 'cozy-ui-plus/dist/Dialogs/AuthentificationDialog'
 
 import useCheckPassword from '@/hooks/useCheckPassword'
 

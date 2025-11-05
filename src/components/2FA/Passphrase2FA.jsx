@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Input from 'cozy-ui/transpiled/react/Input'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import Input from 'cozy-ui/transpiled/react/legacy/Input'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'

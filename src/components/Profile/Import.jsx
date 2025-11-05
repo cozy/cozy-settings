@@ -10,9 +10,8 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import { STACK_DOMAIN } from '@/actions'
-import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
-
 import importImage from '@/assets/images/import-cozy.svg?url'
+import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 
 class Import extends Component {
   constructor(props) {

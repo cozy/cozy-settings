@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { useClient, generateWebLink } from 'cozy-client'
-import AppLinker from 'cozy-ui/transpiled/react/AppLinker'
 import CircleButton from 'cozy-ui/transpiled/react/CircleButton'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import InfoIcon from 'cozy-ui/transpiled/react/Icons/Info'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import AppLinker from 'cozy-ui-plus/dist/AppLinker'
 
 export const AboutButton = ({ appData }) => {
   const { t } = useI18n()

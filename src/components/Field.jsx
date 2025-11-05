@@ -9,9 +9,9 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { Media, Bd, Img } from 'cozy-ui/transpiled/react/deprecated/Media'
 import { useAlert } from 'cozy-ui/transpiled/react/providers/Alert'
-import { useCozyTheme } from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 import { useTheme } from 'cozy-ui/transpiled/react/styles'
+import { useCozyTheme } from 'cozy-ui-plus/dist/providers/CozyTheme'
 
 import styles from '@/styles/fields.styl'
 

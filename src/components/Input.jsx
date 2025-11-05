@@ -1,8 +1,8 @@
 import React from 'react'
 
-import UIInput from 'cozy-ui/transpiled/react/Input'
 import Switch from 'cozy-ui/transpiled/react/Switch'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import UIInput from 'cozy-ui/transpiled/react/legacy/Input'
 
 import Field from '@/components/Field'
 
