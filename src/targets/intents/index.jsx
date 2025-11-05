@@ -1,4 +1,5 @@
 import 'cozy-ui/transpiled/react/stylesheet.css'
+import 'cozy-ui-plus/dist/stylesheet.css'
 
 import '@/styles/services/index.styl'
 

@@ -40,7 +40,7 @@ exports[`AppPermissions should display slugName when query has been loaded 1`] =
             style="width: 48px;"
           >
             <svg
-              class="styles__c-app-icon___2_O40 styles__c-app-icon-default___3CEmt styles__icon___23x3R"
+              class="styles__c-app-icon___2W1cp styles__c-app-icon-default___1Bus5 styles__icon___23x3R"
               height="100%"
               style="fill: var(--coolGrey);"
               viewBox="0 0 15 16"

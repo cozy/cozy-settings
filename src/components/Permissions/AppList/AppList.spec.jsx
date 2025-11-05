@@ -52,7 +52,7 @@ jest.mock('cozy-ui/transpiled/react/NavigationList', () => {
   }
 })
 
-jest.mock('cozy-ui/transpiled/react/AppIcon', () => {
+jest.mock('cozy-ui-plus/dist/AppIcon', () => {
   // eslint-disable-next-line react/display-name
   return () => <div data-testid="AppIcon"></div>
 })

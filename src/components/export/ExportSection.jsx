@@ -5,10 +5,10 @@ import { IllustrationDialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import exportImage from '@/assets/images/export-cozy-mail.svg?url'
 import ReactMarkdownWrapper from '@/components/ReactMarkdownWrapper'
 import ExportDownload from '@/components/export/ExportDownload'
 import { MoveButton } from '@/components/export/MoveButton'
-import exportImage from '@/assets/images/export-cozy-mail.svg?url'
 
 const ExportSection = ({
   email,

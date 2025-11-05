@@ -1,7 +1,6 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import AppIcon from 'cozy-ui/transpiled/react/AppIcon'
 import Divider from 'cozy-ui/transpiled/react/Divider'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
@@ -19,6 +18,7 @@ import NavigationList, {
 } from 'cozy-ui/transpiled/react/NavigationList'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
+import AppIcon from 'cozy-ui-plus/dist/AppIcon'
 
 import Page from '@/components/Page'
 import PageTitle from '@/components/PageTitle'
