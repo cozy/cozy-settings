@@ -191,6 +191,13 @@ export const SidebarDesktop = () => {
             <NavIcon icon={OpenwithIcon} />
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink to={routes.imports}>
+            <NavText className="u-flex-grow-1">
+              {t('ImportsView.title')}
+            </NavText>
+          </NavLink>
+        </NavItem>
         <NavItem onClick={() => logout()}>
           <NavLink to="" reloadDocument>
             <NavIcon icon={Logout} />
