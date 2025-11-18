@@ -54,11 +54,13 @@ const Run = () => {
   const [status, setStatus] = useState('')
   const [error, setError] = useState(null)
   const [remotePreview, setRemotePreview] = useState([])
+  const [failedItems, setFailedItems] = useState([])
 
   const resetMsgs = useCallback(() => {
     setError(null)
     setStatus('')
     setRemotePreview([])
+    setFailedItems([])
   }, [])
 
   useEffect(() => {
@@ -160,7 +162,6 @@ const Run = () => {
       }
       const login = accDoc?.auth?.login || accDoc?.label || accId
 
-      // Enforce destination: /Imports/Nextcloud/<login>
       const destId = await nextcloudProvider.ensureImportsDestination(
         client,
         'Nextcloud',
@@ -180,8 +181,11 @@ const Run = () => {
       )
       if (summary.errors?.length) {
         setError(`Some items failed: ${summary.errors.length}`)
+        setFailedItems(summary.errors)
         // eslint-disable-next-line no-console
         console.warn('[Nextcloud] import errors', summary.errors)
+      } else {
+        setFailedItems([])
       }
     } catch (e) {
       setError(await readError(e))
@@ -366,6 +370,27 @@ const Run = () => {
           </Typography>
         </div>
       ) : null}
+      {failedItems.length > 0 && (
+        <div style={{ marginTop: 8 }}>
+          <ul style={{ margin: 0, paddingLeft: 18 }}>
+            {failedItems.map((item, idx) => {
+              const nameFromPath = item?.path
+                ? item.path.split('/').filter(Boolean).pop()
+                : ''
+              const name = item?.name || nameFromPath || 'unknown'
+              const status =
+                typeof item?.status === 'number' ? item.status : 'n/a'
+              const reason = item?.reason || item?.error || ''
+              const label = `${name} - ${status} (${reason})`
+              return (
+                <li key={`${name}-${status}-${idx}`} style={{ fontSize: 11 }}>
+                  {label}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      )}
     </Page>
   )
 }
