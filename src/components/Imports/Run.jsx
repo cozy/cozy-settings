@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Button'
+import { LinearProgress } from 'cozy-ui/transpiled/react/Progress'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
@@ -48,7 +49,7 @@ const Run = () => {
   const [accounts, setAccounts] = useState([])
   const [selectedAccountId, setSelectedAccountId] = useState('')
 
-  const [remotePath, setRemotePath] = useState('/') // Nextcloud source
+  const [remotePath, setRemotePath] = useState('/')
 
   const [busy, setBusy] = useState(false)
   const [status, setStatus] = useState('')
@@ -56,11 +57,14 @@ const Run = () => {
   const [remotePreview, setRemotePreview] = useState([])
   const [failedItems, setFailedItems] = useState([])
 
+  const [progress, setProgress] = useState({ total: 0, done: 0, current: '' })
+
   const resetMsgs = useCallback(() => {
     setError(null)
     setStatus('')
     setRemotePreview([])
     setFailedItems([])
+    setProgress({ total: 0, done: 0, current: '' })
   }, [])
 
   useEffect(() => {
@@ -132,8 +136,6 @@ const Run = () => {
         const names = (items || [])
           .slice(0, 10)
           .map(it => it?.attributes?.name || it?.name || it?.path || 'unknown')
-        // eslint-disable-next-line no-console
-        console.log('[Nextcloud] list preview', names)
         setRemotePreview(names)
       }
     } catch (e) {
@@ -169,23 +171,32 @@ const Run = () => {
       )
 
       setStatus('Analyzing path…')
+
       const summary = await nextcloudProvider.importPathRecursive(
         client,
         accId,
         remotePath || '/',
         destId || ROOT_DIR_ID,
-        { copy: true, maxDepth: 20 }
+        {
+          copy: true,
+          maxDepth: 20,
+          onDiscovered: ({ total }) =>
+            setProgress(prev => ({ ...prev, total: total || 0 })),
+          onProcessed: ({ path }) =>
+            setProgress(prev => ({
+              ...prev,
+              done: prev.done + 1,
+              current: path
+            }))
+        }
       )
+
       setStatus(
         `Imported files: ${summary.filesCopied}, folders created: ${summary.foldersCreated}`
       )
       if (summary.errors?.length) {
         setError(`Some items failed: ${summary.errors.length}`)
         setFailedItems(summary.errors)
-        // eslint-disable-next-line no-console
-        console.warn('[Nextcloud] import errors', summary.errors)
-      } else {
-        setFailedItems([])
       }
     } catch (e) {
       setError(await readError(e))
@@ -219,7 +230,6 @@ const Run = () => {
         {t('ImportsRun.helper')}
       </Typography>
 
-      {/* Provider */}
       <div style={{ margin: '12px 0', maxWidth: 320 }}>
         <label style={{ display: 'grid', gap: 4 }}>
           <Typography variant="caption">Provider</Typography>
@@ -240,7 +250,6 @@ const Run = () => {
         </label>
       </div>
 
-      {/* Accounts */}
       <div style={{ margin: '12px 0' }}>
         <Typography variant="subtitle1" gutterBottom>
           Accounts
@@ -296,7 +305,6 @@ const Run = () => {
         )}
       </div>
 
-      {/* Params + actions */}
       {isNextcloud && accounts.length > 0 && (
         <>
           <div
@@ -341,7 +349,28 @@ const Run = () => {
         </>
       )}
 
-      {/* Preview */}
+      {progress.total > 0 && (
+        <div style={{ marginTop: 20, maxWidth: 500 }}>
+          <LinearProgress
+            variant="determinate"
+            value={
+              progress.total === 0
+                ? 0
+                : Math.min(100, (progress.done / progress.total) * 100)
+            }
+            className="u-mv-half u-w-100 u-h-half u-bdrs-6"
+          />
+          <Typography variant="caption">
+            {progress.done}/{progress.total}
+          </Typography>
+          {progress.current && (
+            <Typography variant="caption">
+              Processing: {progress.current}
+            </Typography>
+          )}
+        </div>
+      )}
+
       {remotePreview.length > 0 && (
         <div style={{ marginTop: 12 }}>
           <Typography variant="subtitle2" gutterBottom>
@@ -357,34 +386,31 @@ const Run = () => {
         </div>
       )}
 
-      {/* Status / errors */}
-      {status ? (
+      {status && (
         <div style={{ marginTop: 12 }}>
           <Typography variant="caption">{status}</Typography>
         </div>
-      ) : null}
-      {error ? (
+      )}
+
+      {error && (
         <div style={{ marginTop: 8 }}>
           <Typography variant="caption" color="error">
             {String(error)}
           </Typography>
         </div>
-      ) : null}
+      )}
+
       {failedItems.length > 0 && (
         <div style={{ marginTop: 8 }}>
           <ul style={{ margin: 0, paddingLeft: 18 }}>
             {failedItems.map((item, idx) => {
-              const nameFromPath = item?.path
-                ? item.path.split('/').filter(Boolean).pop()
-                : ''
-              const name = item?.name || nameFromPath || 'unknown'
+              const name = item.name || 'unknown'
               const status =
-                typeof item?.status === 'number' ? item.status : 'n/a'
-              const reason = item?.reason || item?.error || ''
-              const label = `${name} - ${status} (${reason})`
+                typeof item.status === 'number' ? item.status : 'n/a'
+              const reason = item.reason || ''
               return (
-                <li key={`${name}-${status}-${idx}`} style={{ fontSize: 11 }}>
-                  {label}
+                <li key={idx} style={{ fontSize: 11 }}>
+                  {name} - {status} ({reason})
                 </li>
               )
             })}
