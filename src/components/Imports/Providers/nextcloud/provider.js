@@ -2,6 +2,41 @@ export const nextcloudProvider = {
   id: 'nextcloud',
   label: 'Nextcloud',
 
+  _createLimiter(max = 3, isAborted) {
+    let active = 0
+    const queue = []
+
+    const run = fn =>
+      new Promise((resolve, reject) => {
+        const task = async () => {
+          if (isAborted?.()) {
+            resolve()
+            return
+          }
+
+          active += 1
+          try {
+            const result = await fn()
+            resolve(result)
+          } catch (e) {
+            reject(e)
+          } finally {
+            active -= 1
+            const next = queue.shift()
+            if (next) next()
+          }
+        }
+
+        if (active < max) {
+          task()
+        } else {
+          queue.push(task)
+        }
+      })
+
+    return run
+  },
+
   _joinRemotePath(path) {
     if (!path) return '/'
     let p = String(path).trim()
@@ -256,8 +291,11 @@ export const nextcloudProvider = {
       _depth = 0,
       onDiscovered,
       onProcessed,
-      isAborted
+      isAborted,
+      _limiter
     } = opts
+
+    const limiter = _limiter || this._createLimiter(3, isAborted)
 
     const summary = { filesCopied: 0, foldersCreated: 0, errors: [] }
 
@@ -290,34 +328,36 @@ export const nextcloudProvider = {
       return summary
     }
 
-    // Case 1: remotePath is a single file
     if (probe.kind === 'file') {
       onDiscovered?.({ files: 1, path })
 
-      try {
-        if (!isAborted?.()) {
-          await this.downstreamFile(client, accountId, path, targetDirId, {
-            copy
+      const task = limiter(async () => {
+        try {
+          if (!isAborted?.()) {
+            await this.downstreamFile(client, accountId, path, targetDirId, {
+              copy
+            })
+            summary.filesCopied += 1
+          }
+        } catch (e) {
+          summary.errors.push({
+            path,
+            name: this._extractName(path),
+            status: e?.status || null,
+            reason:
+              e?.status === 404
+                ? this._build404Reason(path)
+                : String(e?.message || e)
           })
-          summary.filesCopied += 1
+        } finally {
+          onProcessed?.({ path })
         }
-      } catch (e) {
-        summary.errors.push({
-          path,
-          name: this._extractName(path),
-          status: e?.status || null,
-          reason:
-            e?.status === 404
-              ? this._build404Reason(path)
-              : String(e?.message || e)
-        })
-      }
+      })
 
-      onProcessed?.({ path })
+      await task
       return summary
     }
 
-    // Case 2: remotePath is a directory
     const isRoot = path === '/' && _depth === 0
     let destId = targetDirId
 
@@ -330,7 +370,6 @@ export const nextcloudProvider = {
 
     const children = probe.items || []
 
-    // Count all direct files in this directory and bump total once
     const filesInThisDir = children.reduce((count, child) => {
       const type = child?.attributes?.type || child?.type
       return type === 'directory' ? count : count + 1
@@ -339,6 +378,8 @@ export const nextcloudProvider = {
     if (filesInThisDir > 0) {
       onDiscovered?.({ files: filesInThisDir, path })
     }
+
+    const fileTasks = []
 
     for (const child of children) {
       if (isAborted?.()) {
@@ -364,34 +405,43 @@ export const nextcloudProvider = {
             _depth: _depth + 1,
             onDiscovered,
             onProcessed,
-            isAborted
+            isAborted,
+            _limiter: limiter
           }
         )
         summary.filesCopied += sub.filesCopied
         summary.foldersCreated += sub.foldersCreated
         if (sub.errors?.length) summary.errors.push(...sub.errors)
       } else {
-        try {
-          if (!isAborted?.()) {
-            await this.downstreamFile(client, accountId, childPath, destId, {
-              copy
+        const task = limiter(async () => {
+          try {
+            if (!isAborted?.()) {
+              await this.downstreamFile(client, accountId, childPath, destId, {
+                copy
+              })
+              summary.filesCopied += 1
+            }
+          } catch (e) {
+            summary.errors.push({
+              path: childPath,
+              name: this._extractName(childPath),
+              status: e?.status || null,
+              reason:
+                e?.status === 404
+                  ? this._build404Reason(childPath)
+                  : String(e?.message || e)
             })
-            summary.filesCopied += 1
+          } finally {
+            onProcessed?.({ path: childPath })
           }
-        } catch (e) {
-          summary.errors.push({
-            path: childPath,
-            name: this._extractName(childPath),
-            status: e?.status || null,
-            reason:
-              e?.status === 404
-                ? this._build404Reason(childPath)
-                : String(e?.message || e)
-          })
-        }
+        })
 
-        onProcessed?.({ path: childPath })
+        fileTasks.push(task)
       }
+    }
+
+    if (fileTasks.length > 0) {
+      await Promise.all(fileTasks)
     }
 
     return summary
