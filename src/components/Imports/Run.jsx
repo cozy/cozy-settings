@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -58,6 +58,10 @@ const Run = () => {
   const [failedItems, setFailedItems] = useState([])
 
   const [progress, setProgress] = useState({ total: 0, done: 0, current: '' })
+  const [abortRequested, setAbortRequested] = useState(false)
+  const abortRef = useRef(false)
+
+  const [importSummary, setImportSummary] = useState('')
 
   const resetMsgs = useCallback(() => {
     setError(null)
@@ -65,6 +69,9 @@ const Run = () => {
     setRemotePreview([])
     setFailedItems([])
     setProgress({ total: 0, done: 0, current: '' })
+    setAbortRequested(false)
+    abortRef.current = false
+    setImportSummary('')
   }, [])
 
   useEffect(() => {
@@ -152,7 +159,11 @@ const Run = () => {
       setError('Missing remote path')
       return
     }
+
+    abortRef.current = false
+    setAbortRequested(false)
     setBusy(true)
+
     try {
       const accId = await pickAccountId()
       if (!accId) throw new Error('No Nextcloud account configured')
@@ -180,20 +191,29 @@ const Run = () => {
         {
           copy: true,
           maxDepth: 20,
-          onDiscovered: ({ total }) =>
-            setProgress(prev => ({ ...prev, total: total || 0 })),
+          onDiscovered: ({ files = 0 }) =>
+            setProgress(prev => ({
+              ...prev,
+              total: prev.total + (files || 0)
+            })),
           onProcessed: ({ path }) =>
             setProgress(prev => ({
               ...prev,
               done: prev.done + 1,
               current: path
-            }))
+            })),
+          isAborted: () => abortRef.current
         }
       )
 
-      setStatus(
-        `Imported files: ${summary.filesCopied}, folders created: ${summary.foldersCreated}`
-      )
+      setImportSummary(`Successfully imported ${summary.filesCopied} files.`)
+
+      if (abortRef.current) {
+        setStatus('Import stopped by user.')
+      } else {
+        setStatus('Import success.')
+      }
+
       if (summary.errors?.length) {
         setError(`Some items failed: ${summary.errors.length}`)
         setFailedItems(summary.errors)
@@ -202,6 +222,7 @@ const Run = () => {
       setError(await readError(e))
     } finally {
       setBusy(false)
+      abortRef.current = false
     }
   }
 
@@ -345,6 +366,20 @@ const Run = () => {
             >
               {busy ? 'Importing…' : 'Import'}
             </Button>
+            {busy && progress.total > 0 && (
+              <Button
+                variant="secondary"
+                size="small"
+                disabled={abortRequested}
+                onClick={() => {
+                  abortRef.current = true
+                  setAbortRequested(true)
+                  setStatus('Stopping import…')
+                }}
+              >
+                Stop import
+              </Button>
+            )}
           </div>
         </>
       )}
@@ -360,10 +395,19 @@ const Run = () => {
             }
             className="u-mv-half u-w-100 u-h-half u-bdrs-6"
           />
-          <Typography variant="caption">
-            {progress.done}/{progress.total}
-          </Typography>
-          {progress.current && (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginTop: 4
+            }}
+          >
+            <Typography variant="caption">
+              Processed: {progress.done}
+            </Typography>
+            <Typography variant="caption">Total: {progress.total}</Typography>
+          </div>
+          {busy && progress.current && (
             <Typography variant="caption">
               Processing: {progress.current}
             </Typography>
@@ -392,6 +436,12 @@ const Run = () => {
         </div>
       )}
 
+      {importSummary && (
+        <div style={{ marginTop: 8 }}>
+          <Typography variant="caption">{importSummary}</Typography>
+        </div>
+      )}
+
       {error && (
         <div style={{ marginTop: 8 }}>
           <Typography variant="caption" color="error">
@@ -404,13 +454,13 @@ const Run = () => {
         <div style={{ marginTop: 8 }}>
           <ul style={{ margin: 0, paddingLeft: 18 }}>
             {failedItems.map((item, idx) => {
-              const name = item.name || 'unknown'
-              const status =
+              const path = item.path || item.name || 'unknown'
+              const statusCode =
                 typeof item.status === 'number' ? item.status : 'n/a'
               const reason = item.reason || ''
               return (
                 <li key={idx} style={{ fontSize: 11 }}>
-                  {name} - {status} ({reason})
+                  {path} - {statusCode} ({reason})
                 </li>
               )
             })}

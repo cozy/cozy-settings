@@ -214,21 +214,33 @@ export const nextcloudProvider = {
       accountId
     )}/downstream${encodedPath}?${qs.toString()}`
 
-    const res = await client.stackClient.fetch('POST', url)
+    // Simple retry on 5xx with small backoff
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const res = await client.stackClient.fetch('POST', url)
 
-    if (res.status >= 200 && res.status < 300) return true
+      if (res.status >= 200 && res.status < 300) {
+        return true
+      }
 
-    let message = `Downstream failed: HTTP ${res.status}`
-    if (res.status === 404) {
-      message = `${this._extractName(clean)} - 404, ${this._build404Reason(
-        clean
-      )}`
+      if (res.status >= 500 && res.status < 600 && attempt < 2) {
+        const delay = 200 * Math.pow(2, attempt)
+        await new Promise(resolve => setTimeout(resolve, delay))
+        continue
+      }
+
+      let message = `Downstream failed: HTTP ${res.status}`
+      if (res.status === 404) {
+        message = `${this._extractName(clean)} - 404, ${this._build404Reason(
+          clean
+        )}`
+      }
+
+      const txt = await res.text().catch(() => '')
+      const err = new Error(txt || message)
+      err.status = res.status
+      err.path = clean
+      throw err
     }
-
-    const err = new Error(message)
-    err.status = res.status
-    err.path = clean
-    throw err
   },
 
   async importPathRecursive(
@@ -243,7 +255,8 @@ export const nextcloudProvider = {
       maxDepth = 50,
       _depth = 0,
       onDiscovered,
-      onProcessed
+      onProcessed,
+      isAborted
     } = opts
 
     const summary = { filesCopied: 0, foldersCreated: 0, errors: [] }
@@ -256,10 +269,6 @@ export const nextcloudProvider = {
         status: null,
         reason: 'Max depth reached'
       })
-      if (_depth === 0) {
-        onDiscovered?.({ total: 1 })
-        onProcessed?.({ path })
-      }
       return summary
     }
 
@@ -278,23 +287,20 @@ export const nextcloudProvider = {
             ? this._build404Reason(path)
             : String(e?.message || e)
       })
-      if (_depth === 0) {
-        onDiscovered?.({ total: 1 })
-        onProcessed?.({ path })
-      }
       return summary
     }
 
+    // Case 1: remotePath is a single file
     if (probe.kind === 'file') {
-      if (_depth === 0) {
-        onDiscovered?.({ total: 1 })
-      }
+      onDiscovered?.({ files: 1, path })
 
       try {
-        await this.downstreamFile(client, accountId, path, targetDirId, {
-          copy
-        })
-        summary.filesCopied += 1
+        if (!isAborted?.()) {
+          await this.downstreamFile(client, accountId, path, targetDirId, {
+            copy
+          })
+          summary.filesCopied += 1
+        }
       } catch (e) {
         summary.errors.push({
           path,
@@ -307,13 +313,11 @@ export const nextcloudProvider = {
         })
       }
 
-      if (_depth === 0) {
-        onProcessed?.({ path })
-      }
-
+      onProcessed?.({ path })
       return summary
     }
 
+    // Case 2: remotePath is a directory
     const isRoot = path === '/' && _depth === 0
     let destId = targetDirId
 
@@ -326,11 +330,21 @@ export const nextcloudProvider = {
 
     const children = probe.items || []
 
-    if (_depth === 0) {
-      onDiscovered?.({ total: children.length })
+    // Count all direct files in this directory and bump total once
+    const filesInThisDir = children.reduce((count, child) => {
+      const type = child?.attributes?.type || child?.type
+      return type === 'directory' ? count : count + 1
+    }, 0)
+
+    if (filesInThisDir > 0) {
+      onDiscovered?.({ files: filesInThisDir, path })
     }
 
     for (const child of children) {
+      if (isAborted?.()) {
+        break
+      }
+
       const name = child?.attributes?.name || child?.name
       const type = child?.attributes?.type || child?.type
       const childPath =
@@ -349,7 +363,8 @@ export const nextcloudProvider = {
             maxDepth,
             _depth: _depth + 1,
             onDiscovered,
-            onProcessed
+            onProcessed,
+            isAborted
           }
         )
         summary.filesCopied += sub.filesCopied
@@ -357,10 +372,12 @@ export const nextcloudProvider = {
         if (sub.errors?.length) summary.errors.push(...sub.errors)
       } else {
         try {
-          await this.downstreamFile(client, accountId, childPath, destId, {
-            copy
-          })
-          summary.filesCopied += 1
+          if (!isAborted?.()) {
+            await this.downstreamFile(client, accountId, childPath, destId, {
+              copy
+            })
+            summary.filesCopied += 1
+          }
         } catch (e) {
           summary.errors.push({
             path: childPath,
@@ -372,9 +389,7 @@ export const nextcloudProvider = {
                 : String(e?.message || e)
           })
         }
-      }
 
-      if (_depth === 0) {
         onProcessed?.({ path: childPath })
       }
     }
