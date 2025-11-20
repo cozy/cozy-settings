@@ -127,7 +127,8 @@
     "storage": "Stockage",
     "contact_support": "Nous contacter",
     "terms_of_service": "Conditions générales d'utilisation",
-    "legal_notice": "Mentions légales"
+    "legal_notice": "Mentions légales",
+    "imports": "Imports"
   },
   "loading": {
     "loading": "Chargement"
@@ -351,6 +352,31 @@
     "storage_available": "Disponible : %{spaceAvailable} Go",
     "storage_warning": "Le stockage est presque plein. Vous pouvez libérer de l'espace en supprimant les fichiers inutiles ou en vous abonnant pour obtenir de l'espace supplémentaire.",
     "see_offer": "Mettre à niveau le stockage"
+  },
+  "ImportsView": {
+    "title": "Imports de données",
+    "subtitle": "Importez vos fichiers et données depuis d’autres services.",
+    "helper": "Activez les imports pour autoriser l’exécution des connecteurs communautaires sur votre appareil.",
+    "toggle": "Activer les imports",
+    "primary": "Lancer un import",
+    "secondary": "Historique des imports",
+    "docs": "Documentation",
+    "load_error": "Une erreur s’est produite lors du chargement des paramètres d’import, merci de réessayer plus tard.",
+    "action_run": "Lancer un import",
+    "action_history": "Historique"
+  },
+  "ImportsRun": {
+    "title": "Lancer un import",
+    "helper": "Choisissez un fournisseur pour démarrer un import.",
+    "disabled_helper": "Les imports sont désactivés. Activez-les dans les paramètres pour continuer.",
+    "back_to_settings": "Retour aux paramètres",
+    "providers_placeholder": "Placeholder liste de fournisseurs (à brancher)."
+  },
+  "ImportsHistory": {
+    "title": "Historique des imports",
+    "helper": "Voici l’historique de vos imports.",
+    "disabled_helper": "Les imports sont désactivés. Activez-les pour afficher l’historique.",
+    "placeholder": "Placeholder historique d’exécutions (à brancher)."
   },
   "SessionsView": {
     "title": "Historique de connexions web",

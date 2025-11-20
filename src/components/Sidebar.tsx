@@ -132,6 +132,11 @@ export const Sidebar = (): JSX.Element => {
           target="_blank"
           icon={ContractIcon}
         />
+        <MenuItemNavLink
+          to={routes.imports}
+          primary={t('Nav.imports')}
+          icon={GraphCircle}
+        />
         <MenuItemButton
           primary={t('Nav.primary_logout')}
           icon={Logout}
