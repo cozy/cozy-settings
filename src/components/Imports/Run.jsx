@@ -25,6 +25,38 @@ const SERVICES = [
 ]
 
 const ROOT_DIR_ID = 'io.cozy.files.root-dir'
+const IMPORTS_RUN_STATE_KEY = 'imports.run.state'
+
+const loadRunState = () => {
+  if (typeof window === 'undefined') return null
+  try {
+    const raw = window.sessionStorage.getItem(IMPORTS_RUN_STATE_KEY)
+    if (!raw) return null
+    return JSON.parse(raw)
+  } catch {
+    return null
+  }
+}
+
+const saveRunState = state => {
+  if (typeof window === 'undefined') return
+  try {
+    window.sessionStorage.setItem(IMPORTS_RUN_STATE_KEY, JSON.stringify(state))
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to save imports run state:', err)
+  }
+}
+
+const clearRunState = () => {
+  if (typeof window === 'undefined') return
+  try {
+    window.sessionStorage.removeItem(IMPORTS_RUN_STATE_KEY)
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to clear imports run state:', err)
+  }
+}
 
 const Run = () => {
   const { t } = useI18n()
@@ -32,14 +64,22 @@ const Run = () => {
   const navigate = useNavigate()
   const enabled = useSelector(state => state.importData?.enabled ?? false)
 
-  const [serviceSlug, setServiceSlug] = useState('')
+  const persistedRef = useRef(null)
+  if (persistedRef.current === null) {
+    persistedRef.current = loadRunState() || {}
+  }
+  const persisted = persistedRef.current
+
+  const [serviceSlug, setServiceSlug] = useState(persisted.serviceSlug || '')
   const isNextcloud = serviceSlug === 'nextcloud'
 
   const [checkingAccount, setCheckingAccount] = useState(false)
   const [accounts, setAccounts] = useState([])
-  const [selectedAccountId, setSelectedAccountId] = useState('')
+  const [selectedAccountId, setSelectedAccountId] = useState(
+    persisted.selectedAccountId || ''
+  )
 
-  const [remotePath, setRemotePath] = useState('/')
+  const [remotePath, setRemotePath] = useState(persisted.remotePath || '/')
 
   const [busy, setBusy] = useState(false)
   const [status, setStatus] = useState('')
@@ -96,6 +136,26 @@ const Run = () => {
       aborted = true
     }
   }, [client, enabled, isNextcloud, resetMsgs])
+
+  useEffect(() => {
+    if (!enabled) {
+      clearRunState()
+      abortRef.current = true
+      return
+    }
+
+    saveRunState({
+      serviceSlug,
+      selectedAccountId,
+      remotePath
+    })
+  }, [enabled, serviceSlug, selectedAccountId, remotePath])
+
+  useEffect(() => {
+    return () => {
+      abortRef.current = true
+    }
+  }, [])
 
   const readError = async e => {
     try {
