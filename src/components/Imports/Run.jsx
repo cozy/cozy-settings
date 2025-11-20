@@ -9,6 +9,10 @@ import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import {
+  createNextcloudAccount,
+  listNextcloudAccounts
+} from './Providers/nextcloud/accountService'
 import { nextcloudProvider } from './Providers/nextcloud/provider'
 
 import Page from '@/components/Page'
@@ -21,20 +25,6 @@ const SERVICES = [
 ]
 
 const ROOT_DIR_ID = 'io.cozy.files.root-dir'
-
-const computeStoreURL = slug => {
-  try {
-    const url = new URL(window.location.href)
-    const parts = url.hostname.split('.')
-    if (parts[0] === 'settings') parts[0] = 'store'
-    const origin = `${url.protocol}//${parts.join('.')}${
-      url.port ? ':' + url.port : ''
-    }`
-    return `${origin}/#/discover/${encodeURIComponent(slug)}`
-  } catch {
-    return `/#/discover/${encodeURIComponent(slug)}`
-  }
-}
 
 const Run = () => {
   const { t } = useI18n()
@@ -62,6 +52,13 @@ const Run = () => {
   const abortRef = useRef(false)
 
   const [importSummary, setImportSummary] = useState('')
+
+  const [showNcForm, setShowNcForm] = useState(false)
+  const [ncLogin, setNcLogin] = useState('')
+  const [ncPassword, setNcPassword] = useState('')
+  const [ncUrl, setNcUrl] = useState('https://mynextcloud.example.com')
+  const [ncError, setNcError] = useState(null)
+  const [ncLoading, setNcLoading] = useState(false)
 
   const resetMsgs = useCallback(() => {
     setError(null)
@@ -226,6 +223,33 @@ const Run = () => {
     }
   }
 
+  const handleCreateNcAccount = async e => {
+    e.preventDefault()
+    if (!isNextcloud) return
+    setNcError(null)
+    setNcLoading(true)
+    try {
+      const account = await createNextcloudAccount(client, {
+        login: ncLogin,
+        password: ncPassword,
+        url: ncUrl
+      })
+      const docs = await listNextcloudAccounts(client)
+      setAccounts(docs)
+      const newId =
+        account?._id || (docs && docs.length ? docs[0]._id : '') || ''
+      if (newId) {
+        setSelectedAccountId(newId)
+      }
+      setShowNcForm(false)
+      setNcPassword('')
+    } catch (e2) {
+      setNcError(e2?.message || 'Error while creating Nextcloud account')
+    } finally {
+      setNcLoading(false)
+    }
+  }
+
   if (!enabled) {
     return (
       <Page>
@@ -280,49 +304,159 @@ const Run = () => {
           <Typography variant="caption" color="textSecondary">
             Select Nextcloud to check connection.
           </Typography>
-        ) : checkingAccount ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Spinner size="small" />
-            <Typography variant="caption">Checking account…</Typography>
-          </div>
-        ) : accounts.length ? (
-          <select
-            style={{ padding: 8, minWidth: 320 }}
-            value={selectedAccountId}
-            onChange={e => setSelectedAccountId(e.target.value)}
-            title={selectedAccountId}
-          >
-            {accounts.map(acc => {
-              const label = acc?.auth?.login || acc?.label || acc?._id
-              return (
-                <option key={acc._id} value={acc._id}>
-                  {label}
-                </option>
-              )
-            })}
-          </select>
         ) : (
-          <div
-            style={{
-              display: 'flex',
-              gap: 8,
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}
-          >
-            <Typography variant="caption" color="textSecondary">
-              No Nextcloud account configured.
-            </Typography>
-            <Button
-              size="small"
-              variant="secondary"
-              onClick={() =>
-                window.location.assign(computeStoreURL('nextcloud'))
-              }
-            >
-              Open Store to connect
-            </Button>
-          </div>
+          <>
+            {checkingAccount ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <Spinner size="small" />
+                <Typography variant="caption">Checking account…</Typography>
+              </div>
+            ) : accounts.length ? (
+              <div
+                style={{
+                  display: 'flex',
+                  gap: 8,
+                  alignItems: 'center',
+                  flexWrap: 'wrap'
+                }}
+              >
+                <select
+                  style={{ padding: 8, minWidth: 320 }}
+                  value={selectedAccountId}
+                  onChange={e => setSelectedAccountId(e.target.value)}
+                  title={selectedAccountId}
+                >
+                  {accounts.map(acc => {
+                    const label = acc?.auth?.login || acc?.label || acc?._id
+                    return (
+                      <option key={acc._id} value={acc._id}>
+                        {label}
+                      </option>
+                    )
+                  })}
+                </select>
+                <Button
+                  size="small"
+                  variant="secondary"
+                  onClick={() => {
+                    setShowNcForm(true)
+                    setNcError(null)
+                  }}
+                >
+                  Add account
+                </Button>
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: 'flex',
+                  gap: 8,
+                  alignItems: 'center',
+                  flexWrap: 'wrap'
+                }}
+              >
+                <Typography variant="caption" color="textSecondary">
+                  No Nextcloud account configured.
+                </Typography>
+                <Button
+                  size="small"
+                  variant="secondary"
+                  onClick={() => {
+                    setShowNcForm(true)
+                    setNcError(null)
+                  }}
+                >
+                  Create Nextcloud account
+                </Button>
+              </div>
+            )}
+
+            {showNcForm && (
+              <form
+                onSubmit={handleCreateNcAccount}
+                style={{
+                  marginTop: 12,
+                  maxWidth: 420,
+                  display: 'grid',
+                  gap: 8
+                }}
+              >
+                <label style={{ display: 'grid', gap: 4 }}>
+                  <Typography variant="caption">Identifiant</Typography>
+                  <input
+                    type="text"
+                    value={ncLogin}
+                    onChange={e => setNcLogin(e.target.value)}
+                    disabled={ncLoading}
+                    style={{ padding: 8 }}
+                  />
+                </label>
+
+                <label style={{ display: 'grid', gap: 4 }}>
+                  <Typography variant="caption">Mot de passe</Typography>
+                  <input
+                    type="password"
+                    value={ncPassword}
+                    onChange={e => setNcPassword(e.target.value)}
+                    disabled={ncLoading}
+                    style={{ padding: 8 }}
+                  />
+                </label>
+
+                <label style={{ display: 'grid', gap: 4 }}>
+                  <Typography variant="caption">
+                    Url de l&apos;instance Nextcloud
+                  </Typography>
+                  <input
+                    type="text"
+                    value={ncUrl}
+                    onChange={e => setNcUrl(e.target.value)}
+                    disabled={ncLoading}
+                    placeholder="https://mynextcloud.example.com"
+                    style={{ padding: 8 }}
+                  />
+                </label>
+
+                {ncError && (
+                  <Typography variant="caption" color="error">
+                    {String(ncError)}
+                  </Typography>
+                )}
+
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: 8,
+                    alignItems: 'center',
+                    marginTop: 4
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="small"
+                    disabled={
+                      ncLoading || !ncLogin || !ncPassword || !ncUrl.trim()
+                    }
+                  >
+                    {ncLoading ? 'Connecting…' : 'Save account'}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="small"
+                    disabled={ncLoading}
+                    onClick={() => {
+                      setShowNcForm(false)
+                      setNcError(null)
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            )}
+          </>
         )}
       </div>
 
