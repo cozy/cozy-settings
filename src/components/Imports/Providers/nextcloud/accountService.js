@@ -1,9 +1,11 @@
+import { Q } from 'cozy-client'
+
 export async function createNextcloudAccount(client, { login, password, url }) {
   if (!login || !password || !url) {
     throw new Error('Missing credentials for Nextcloud account creation')
   }
 
-  const accountData = {
+  const account = {
     _type: 'io.cozy.accounts',
     account_type: 'nextcloud',
     auth: {
@@ -16,16 +18,22 @@ export async function createNextcloudAccount(client, { login, password, url }) {
     state: null
   }
 
-  const res = await client.save(accountData)
-  // cozy-client usually returns the saved doc directly, but keep a safe fallback
-  return res && res.data ? res.data : res
+  const { data } = await client.save(account)
+  return data
 }
 
 export async function listNextcloudAccounts(client) {
-  const res = await client.stackClient.fetchJSON(
-    'POST',
-    '/data/io.cozy.accounts/_find',
-    { selector: { account_type: 'nextcloud' }, limit: 100 }
+  const { data } = await client.query(
+    Q('io.cozy.accounts').where({
+      account_type: 'nextcloud'
+    })
   )
-  return res?.docs || []
+
+  return data
+}
+
+export async function deleteNextcloudAccount(client, account) {
+  const collection = client.collection('io.cozy.accounts')
+  const { data } = await collection.destroy(account)
+  return data
 }

@@ -13,7 +13,8 @@ import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
 import {
   createNextcloudAccount,
-  listNextcloudAccounts
+  listNextcloudAccounts,
+  deleteNextcloudAccount
 } from './Providers/nextcloud/accountService'
 import { nextcloudProvider } from './Providers/nextcloud/provider'
 
@@ -313,6 +314,25 @@ const Run = () => {
     }
   }
 
+  const handleDeleteNcAccount = async () => {
+    if (!isNextcloud) return
+    if (!selectedAccountId) return
+    const account = accounts.find(a => a._id === selectedAccountId)
+    if (!account) return
+
+    setError(null)
+
+    try {
+      await deleteNextcloudAccount(client, account)
+      const nextAccounts = accounts.filter(a => a._id !== selectedAccountId)
+      setAccounts(nextAccounts)
+      setSelectedAccountId(nextAccounts[0]?._id || '')
+      setStatus('Nextcloud account deleted.')
+    } catch (e) {
+      setError(e?.message || 'Error while deleting Nextcloud account')
+    }
+  }
+
   const providerOptions = SERVICES.map(s => ({
     value: s.slug,
     label: s.label
@@ -414,16 +434,33 @@ const Run = () => {
                     }}
                     isSearchable={false}
                   />
-                  <Button
-                    size="small"
-                    variant="secondary"
-                    onClick={() => {
-                      setShowNcForm(true)
-                      setNcError(null)
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: 8,
+                      alignItems: 'center',
+                      flexWrap: 'wrap'
                     }}
                   >
-                    Add account
-                  </Button>
+                    <Button
+                      size="small"
+                      variant="secondary"
+                      onClick={() => {
+                        setShowNcForm(true)
+                        setNcError(null)
+                      }}
+                    >
+                      Add account
+                    </Button>
+                    <Button
+                      size="small"
+                      variant="secondary"
+                      disabled={!selectedAccountId}
+                      onClick={handleDeleteNcAccount}
+                    >
+                      Delete selected account
+                    </Button>
+                  </div>
                 </>
               ) : (
                 <div
