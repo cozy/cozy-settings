@@ -1,3 +1,5 @@
+import { Q } from 'cozy-client'
+
 export const nextcloudProvider = {
   id: 'nextcloud',
   label: 'Nextcloud',
@@ -72,12 +74,10 @@ export const nextcloudProvider = {
   },
 
   async listAccounts(client) {
-    const res = await client.stackClient.fetchJSON(
-      'POST',
-      '/data/io.cozy.accounts/_find',
-      { selector: { account_type: 'nextcloud' }, limit: 100 }
+    const { data } = await client.query(
+      Q('io.cozy.accounts').where({ account_type: 'nextcloud' }).limitBy(100)
     )
-    return res?.docs || []
+    return data || []
   },
 
   async probePath(client, accountId, path = '/') {
@@ -177,12 +177,12 @@ export const nextcloudProvider = {
   },
 
   async findChildDirByName(client, parentId, name) {
-    const res = await client.stackClient.fetchJSON(
-      'POST',
-      '/data/io.cozy.files/_find',
-      { selector: { dir_id: parentId, name, type: 'directory' }, limit: 1 }
+    const { data } = await client.query(
+      Q('io.cozy.files')
+        .where({ dir_id: parentId, name, type: 'directory' })
+        .limitBy(1)
     )
-    return res?.docs?.[0] || null
+    return data && data[0] ? data[0] : null
   },
 
   async createChildDir(client, parentId, name) {
@@ -249,15 +249,14 @@ export const nextcloudProvider = {
       accountId
     )}/downstream${encodedPath}?${qs.toString()}`
 
-    // Simple retry on 5xx with small backoff
-    for (let attempt = 0; attempt < 3; attempt++) {
+    for (let attempt = 0; attempt < 2; attempt++) {
       const res = await client.stackClient.fetch('POST', url)
 
       if (res.status >= 200 && res.status < 300) {
         return true
       }
 
-      if (res.status >= 500 && res.status < 600 && attempt < 2) {
+      if (res.status >= 500 && res.status < 600 && attempt < 1) {
         const delay = 200 * Math.pow(2, attempt)
         await new Promise(resolve => setTimeout(resolve, delay))
         continue
