@@ -1,11 +1,5 @@
 import { combineReducers } from 'redux'
 
-export const SET_IMPORTS_ENABLED = 'settings/import/SET_ENABLED'
-export const setImportsEnabled = enabled => ({
-  type: SET_IMPORTS_ENABLED,
-  enabled: !!enabled
-})
-
 import {
   PRECHECK_IMPORT,
   PRECHECK_IMPORT_FAILURE,
@@ -14,15 +8,6 @@ import {
   IMPORT_IMPORT_FAILURE,
   IMPORT_IMPORT_SUCCESS
 } from '@/actions/import'
-
-const enabled = (state = false, action) => {
-  switch (action.type) {
-    case SET_IMPORTS_ENABLED:
-      return !!action.enabled
-    default:
-      return state
-  }
-}
 
 const checking = (state = false, action) => {
   switch (action.type) {
@@ -64,7 +49,6 @@ const error = (state = null, action) => {
 }
 
 const exportReducer = combineReducers({
-  enabled,
   checking,
   submitting,
   error

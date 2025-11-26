@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
@@ -18,6 +17,7 @@ import {
 } from './Providers/nextcloud/accountService'
 import { nextcloudProvider } from './Providers/nextcloud/provider'
 
+import { useImports } from '@/components/Imports/ImportsContext'
 import Page from '@/components/Page'
 import Select from '@/components/Select'
 import { routes } from '@/constants/routes'
@@ -66,7 +66,7 @@ const Run = () => {
   const { t } = useI18n()
   const client = useClient()
   const navigate = useNavigate()
-  const enabled = useSelector(state => state.importData?.enabled ?? false)
+  const { enabled } = useImports()
 
   const persistedRef = useRef(null)
   if (persistedRef.current === null) {
