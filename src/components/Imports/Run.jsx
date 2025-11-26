@@ -227,7 +227,9 @@ const Run = () => {
 
     try {
       const accId = await pickAccountId()
-      if (!accId) throw new Error('No Nextcloud account configured')
+      if (!accId) {
+        throw new Error('No Nextcloud account configured')
+      }
 
       let accDoc = accounts.find(a => a._id === accId)
       if (!accDoc) {
@@ -267,12 +269,18 @@ const Run = () => {
         }
       )
 
-      setImportSummary(`Successfully imported ${summary.filesCopied} files.`)
-
       if (abortRef.current) {
         setStatus('Import stopped by user.')
+        if (summary.filesCopied > 0) {
+          setImportSummary(
+            `Import stopped by user after copying ${summary.filesCopied} files.`
+          )
+        } else {
+          setImportSummary('Import stopped by user.')
+        }
       } else {
         setStatus('Import success.')
+        setImportSummary(`Successfully imported ${summary.filesCopied} files.`)
       }
 
       if (summary.errors?.length) {
@@ -280,10 +288,15 @@ const Run = () => {
         setFailedItems(summary.errors)
       }
     } catch (e) {
-      setError(await readError(e))
+      if (abortRef.current) {
+        setStatus('Import stopped by user.')
+      } else {
+        setError(await readError(e))
+      }
     } finally {
       setBusy(false)
       abortRef.current = false
+      setAbortRequested(false)
     }
   }
 
