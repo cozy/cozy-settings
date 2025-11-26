@@ -1,5 +1,7 @@
 import { Q } from 'cozy-client'
 
+const NEXTCLOUD_FILES_DOCTYPE = 'io.cozy.remote.nextcloud.files'
+
 export const nextcloudProvider = {
   id: 'nextcloud',
   label: 'Nextcloud',
@@ -49,16 +51,6 @@ export const nextcloudProvider = {
     return p
   },
 
-  _encodeRemotePath(path) {
-    const clean = this._joinRemotePath(path || '/')
-    if (clean === '/') return '/'
-    const segments = clean
-      .split('/')
-      .filter(Boolean)
-      .map(seg => encodeURIComponent(seg))
-    return `/${segments.join('/')}`
-  },
-
   _extractName(path) {
     const clean = this._joinRemotePath(path || '/')
     const parts = clean.split('/').filter(Boolean)
@@ -80,100 +72,72 @@ export const nextcloudProvider = {
     return data || []
   },
 
+  async listRemote(client, accountId, path = '/', { trashed = false } = {}) {
+    const clean = this._joinRemotePath(path)
+    const collection = client.collection(NEXTCLOUD_FILES_DOCTYPE)
+
+    const { data } = await collection.find({
+      'cozyMetadata.sourceAccount': accountId,
+      parentPath: clean,
+      trashed
+    })
+
+    return data || []
+  },
+
   async probePath(client, accountId, path = '/') {
     const clean = this._joinRemotePath(path)
-    const encodedPath = this._encodeRemotePath(clean)
-    const url = `/remote/nextcloud/${encodeURIComponent(
-      accountId
-    )}${encodedPath}`
 
-    const res = await client.stackClient.fetch('GET', url)
-
-    if (res.status === 401) {
-      const err = new Error('Unauthorized to Nextcloud')
-      err.status = 401
-      err.path = clean
-      throw err
-    }
-
-    if (res.status === 404) {
-      const txt = await res.text().catch(() => '')
-      const err = new Error(
-        txt ||
-          `${this._extractName(clean)} - 404, ${this._build404Reason(clean)}`
-      )
-      err.status = 404
-      err.path = clean
-      throw err
-    }
-
-    if (res.status !== 200) {
-      const txt = await res.text().catch(() => '')
-      const err = new Error(txt || `Remote probe failed: HTTP ${res.status}`)
-      err.status = res.status
-      err.path = clean
-      throw err
-    }
-
-    const json = await res.json()
-    const data = json?.data
-
-    if (Array.isArray(data)) {
+    if (clean === '/') {
+      const items = await this.listRemote(client, accountId, '/')
       return {
         kind: 'directory',
-        items: data,
-        name: clean.split('/').filter(Boolean).pop() || '/'
+        items,
+        name: '/'
       }
     }
 
-    const name = data?.attributes?.name || data?.name || clean.split('/').pop()
-    const type = data?.attributes?.type || data?.type || 'file'
+    const parentPath = clean.split('/').slice(0, -1).join('/') || '/'
+    const name = this._extractName(clean)
 
-    if (type === 'directory') {
-      const listing = await this.listRemote(client, accountId, clean)
-      return { kind: 'directory', items: listing, name }
-    }
-
-    return { kind: 'file', name }
-  },
-
-  async listRemote(client, accountId, path = '/') {
-    const clean = this._joinRemotePath(path)
-    const encodedPath = this._encodeRemotePath(clean)
-    const url = `/remote/nextcloud/${encodeURIComponent(
-      accountId
-    )}${encodedPath}`
-
-    const res = await client.stackClient.fetch('GET', url)
-
-    if (res.status === 401) {
-      const err = new Error('Unauthorized to Nextcloud')
-      err.status = 401
+    let siblings
+    try {
+      siblings = await this.listRemote(client, accountId, parentPath)
+    } catch (e) {
+      const err = new Error(e?.message || 'Remote probe failed')
+      err.status = e?.status
       err.path = clean
       throw err
     }
 
-    if (res.status === 404) {
-      const txt = await res.text().catch(() => '')
-      const err = new Error(
-        txt ||
-          `${this._extractName(clean)} - 404, ${this._build404Reason(clean)}`
-      )
+    const entry = siblings.find(child => {
+      const childName = child?.name || child?.attributes?.name
+      return childName === name
+    })
+
+    if (!entry) {
+      const err = new Error(`${name} - 404, ${this._build404Reason(clean)}`)
       err.status = 404
       err.path = clean
       throw err
     }
 
-    if (res.status !== 200) {
-      const txt = await res.text().catch(() => '')
-      const err = new Error(txt || `Remote list failed: HTTP ${res.status}`)
-      err.status = res.status
-      err.path = clean
-      throw err
+    const type = entry?.type || entry?.attributes?.type || 'file'
+
+    if (type === 'directory') {
+      const items = await this.listRemote(client, accountId, clean)
+      return {
+        kind: 'directory',
+        items,
+        name
+      }
     }
 
-    const json = await res.json()
-    return json?.data || []
+    return {
+      kind: 'file',
+      name,
+      file: entry
+    }
   },
 
   async findChildDirByName(client, parentId, name) {
@@ -183,6 +147,31 @@ export const nextcloudProvider = {
         .limitBy(1)
     )
     return data && data[0] ? data[0] : null
+  },
+
+  async findChildFileByName(client, parentId, name) {
+    const { data } = await client.query(
+      Q('io.cozy.files')
+        .where({ dir_id: parentId, name, type: 'file' })
+        .limitBy(1)
+    )
+    return data && data[0] ? data[0] : null
+  },
+
+  async _getExistingFileNamesForDir(client, parentId, cache) {
+    if (cache.has(parentId)) {
+      return cache.get(parentId)
+    }
+
+    const { data } = await client.query(
+      Q('io.cozy.files')
+        .where({ dir_id: parentId, type: 'file' })
+        .limitBy(10000)
+    )
+
+    const names = new Set((data || []).map(doc => doc.name).filter(Boolean))
+    cache.set(parentId, names)
+    return names
   },
 
   async createChildDir(client, parentId, name) {
@@ -217,64 +206,18 @@ export const nextcloudProvider = {
     providerLabel = 'Nextcloud',
     login = ''
   ) {
-    const ROOT = 'io.cozy.files.root-dir'
-    const importsDir = await this.ensureChildDir(client, ROOT, 'Imports')
-    const providerDir = await this.ensureChildDir(
-      client,
-      importsDir._id || importsDir.id,
-      providerLabel
-    )
     const safeLogin = String(login || 'unknown').replace(/[/\\]/g, '_')
-    const finalDir = await this.ensureChildDir(
-      client,
-      providerDir._id || providerDir.id,
-      safeLogin
-    )
-    return finalDir._id || finalDir.id
+    const files = client.collection('io.cozy.files')
+    const path = `Imports/${providerLabel}/${safeLogin}`
+    const dirId = await files.ensureDirectoryExists(path)
+    return dirId
   },
 
-  async downstreamFile(
-    client,
-    accountId,
-    filePath,
-    targetDirId,
-    { copy = true } = {}
-  ) {
-    const clean = this._joinRemotePath(filePath)
-    const encodedPath = this._encodeRemotePath(clean)
-    const qs = new URLSearchParams({ To: targetDirId })
-    if (copy) qs.set('Copy', 'true')
-
-    const url = `/remote/nextcloud/${encodeURIComponent(
-      accountId
-    )}/downstream${encodedPath}?${qs.toString()}`
-
-    for (let attempt = 0; attempt < 2; attempt++) {
-      const res = await client.stackClient.fetch('POST', url)
-
-      if (res.status >= 200 && res.status < 300) {
-        return true
-      }
-
-      if (res.status >= 500 && res.status < 600 && attempt < 1) {
-        const delay = 200 * Math.pow(2, attempt)
-        await new Promise(resolve => setTimeout(resolve, delay))
-        continue
-      }
-
-      let message = `Downstream failed: HTTP ${res.status}`
-      if (res.status === 404) {
-        message = `${this._extractName(clean)} - 404, ${this._build404Reason(
-          clean
-        )}`
-      }
-
-      const txt = await res.text().catch(() => '')
-      const err = new Error(txt || message)
-      err.status = res.status
-      err.path = clean
-      throw err
-    }
+  async downstreamFile(client, file, targetDirId, { copy = true } = {}) {
+    const collection = client.collection(NEXTCLOUD_FILES_DOCTYPE)
+    const to = { _id: targetDirId }
+    await collection.moveToCozy(file, to, { copy })
+    return true
   },
 
   async importPathRecursive(
@@ -291,10 +234,14 @@ export const nextcloudProvider = {
       onDiscovered,
       onProcessed,
       isAborted,
-      _limiter
+      _limiter,
+      _existingFilesCache
     } = opts
 
     const limiter = _limiter || this._createLimiter(3, isAborted)
+    const existingFilesCache = _existingFilesCache || new Map()
+    const isTopLevel = _depth === 0
+    const shouldClearCache = isTopLevel && !_existingFilesCache
 
     const summary = { filesCopied: 0, foldersCreated: 0, errors: [] }
 
@@ -306,6 +253,7 @@ export const nextcloudProvider = {
         status: null,
         reason: 'Max depth reached'
       })
+      if (shouldClearCache) existingFilesCache.clear()
       return summary
     }
 
@@ -324,19 +272,33 @@ export const nextcloudProvider = {
             ? this._build404Reason(path)
             : String(e?.message || e)
       })
+      if (shouldClearCache) existingFilesCache.clear()
       return summary
     }
 
     if (probe.kind === 'file') {
       onDiscovered?.({ files: 1, path })
 
+      const fileDoc = probe.file
+      const fileName = fileDoc?.name || this._extractName(path)
+      const existingNames = await this._getExistingFileNamesForDir(
+        client,
+        targetDirId,
+        existingFilesCache
+      )
+
+      if (existingNames.has(fileName)) {
+        onProcessed?.({ path })
+        if (shouldClearCache) existingFilesCache.clear()
+        return summary
+      }
+
       const task = limiter(async () => {
         try {
           if (!isAborted?.()) {
-            await this.downstreamFile(client, accountId, path, targetDirId, {
-              copy
-            })
+            await this.downstreamFile(client, fileDoc, targetDirId, { copy })
             summary.filesCopied += 1
+            existingNames.add(fileName)
           }
         } catch (e) {
           summary.errors.push({
@@ -354,6 +316,7 @@ export const nextcloudProvider = {
       })
 
       await task
+      if (shouldClearCache) existingFilesCache.clear()
       return summary
     }
 
@@ -370,7 +333,7 @@ export const nextcloudProvider = {
     const children = probe.items || []
 
     const filesInThisDir = children.reduce((count, child) => {
-      const type = child?.attributes?.type || child?.type
+      const type = child?.type || child?.attributes?.type
       return type === 'directory' ? count : count + 1
     }, 0)
 
@@ -381,15 +344,13 @@ export const nextcloudProvider = {
     const fileTasks = []
 
     for (const child of children) {
-      if (isAborted?.()) {
-        break
-      }
+      if (isAborted?.()) break
 
-      const name = child?.attributes?.name || child?.name
-      const type = child?.attributes?.type || child?.type
+      const name = child?.name || child?.attributes?.name
+      const type = child?.type || child?.attributes?.type
       const childPath =
-        child?.attributes?.path ||
         child?.path ||
+        child?.attributes?.path ||
         this._joinRemotePath(`${path}/${name}`)
 
       if (type === 'directory') {
@@ -405,20 +366,32 @@ export const nextcloudProvider = {
             onDiscovered,
             onProcessed,
             isAborted,
-            _limiter: limiter
+            _limiter: limiter,
+            _existingFilesCache: existingFilesCache
           }
         )
         summary.filesCopied += sub.filesCopied
         summary.foldersCreated += sub.foldersCreated
         if (sub.errors?.length) summary.errors.push(...sub.errors)
       } else {
+        const fileName = name || this._extractName(childPath)
+        const existingNames = await this._getExistingFileNamesForDir(
+          client,
+          destId,
+          existingFilesCache
+        )
+
+        if (existingNames.has(fileName)) {
+          onProcessed?.({ path: childPath })
+          continue
+        }
+
         const task = limiter(async () => {
           try {
             if (!isAborted?.()) {
-              await this.downstreamFile(client, accountId, childPath, destId, {
-                copy
-              })
+              await this.downstreamFile(client, child, destId, { copy })
               summary.filesCopied += 1
+              existingNames.add(fileName)
             }
           } catch (e) {
             summary.errors.push({
@@ -443,6 +416,7 @@ export const nextcloudProvider = {
       await Promise.all(fileTasks)
     }
 
+    if (shouldClearCache) existingFilesCache.clear()
     return summary
   }
 }
