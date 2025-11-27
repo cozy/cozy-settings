@@ -56,11 +56,13 @@ const AppRouter = () => {
       <Route path="/sessions" element={<Sessions />} />
       <Route path="/storage" element={<Storage />} />
 
-      {/* Imports */}
-      <Route path={routes.imports} element={<Imports />} />
-      <Route path={routes.importsRun} element={<Run />} />
-      <Route path={routes.importsHistory} element={<History />} />
-
+      {flag('settings.imports') && (
+        <>
+          <Route path={routes.imports} element={<Imports />} />
+          <Route path={routes.importsRun} element={<Run />} />
+          <Route path={routes.importsHistory} element={<History />} />
+        </>
+      )}
       <Route path={routes.lockScreen} element={<LockScreen />} />
       <Route path="/permissions/:page" element={<PermissionsTab />} />
       <Route

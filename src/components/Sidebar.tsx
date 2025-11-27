@@ -104,11 +104,13 @@ export const Sidebar = (): JSX.Element => {
           icon={GlobeIcon}
         />
 
-        <MenuItemNavLink
-          to={routes.imports}
-          primary={t('Nav.imports')}
-          icon={ConnectorIcon}
-        />
+        {flag('settings.imports') && (
+          <MenuItemNavLink
+            to={routes.imports}
+            primary={t('Nav.imports')}
+            icon={ConnectorIcon}
+          />
+        )}
       </MenuList>
 
       <MenuList title={t('Nav.header_other')}>

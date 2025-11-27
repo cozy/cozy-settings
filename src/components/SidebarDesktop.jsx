@@ -147,15 +147,16 @@ export const SidebarDesktop = () => {
             <NavText>{t('Nav.sessions')}</NavText>
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink to={routes.imports}>
-            <NavIcon icon={ConnectorIcon} />
-            <NavText className="u-flex-grow-1">
-              {t('ImportsView.title')}
-            </NavText>
-          </NavLink>
-        </NavItem>
-
+        {flag('settings.imports') && (
+          <NavItem>
+            <NavLink to={routes.imports}>
+              <NavIcon icon={ConnectorIcon} />
+              <NavText className="u-flex-grow-1">
+                {t('ImportsView.title')}
+              </NavText>
+            </NavLink>
+          </NavItem>
+        )}
         <ListItem dense>
           <ListItemText
             className="u-uppercase"
