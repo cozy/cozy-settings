@@ -3,23 +3,27 @@ import { useNavigate } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
 import Button from 'cozy-ui/transpiled/react/Button'
-import { LinearProgress } from 'cozy-ui/transpiled/react/Progress'
-import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Stack from 'cozy-ui/transpiled/react/Stack'
-import TextField from 'cozy-ui/transpiled/react/TextField'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
 
+import ImportErrors from './ImportErrors'
+import ImportsProgress from './ImportsProgress'
+import ImportsProviderSelect from './ImportsProviderSelect'
+import ImportsRunHeader from './ImportsRunHeader'
+import NextcloudAccountDialog from './NextcloudAccountDialog'
+import NextcloudAccountSection from './NextcloudAccountSection'
+import NextcloudPathSection from './NextcloudPathSection'
 import {
   createNextcloudAccount,
   listNextcloudAccounts,
   deleteNextcloudAccount
 } from './Providers/nextcloud/accountService'
 import { nextcloudProvider } from './Providers/nextcloud/provider'
+import RemotePreview from './RemotePreview'
 
 import { useImports } from '@/components/Imports/ImportsContext'
 import Page from '@/components/Page'
-import Select from '@/components/Select'
 import { routes } from '@/constants/routes'
 
 const SERVICES = [
@@ -300,8 +304,7 @@ const Run = () => {
     }
   }
 
-  const handleCreateNcAccount = async e => {
-    e.preventDefault()
+  const handleCreateNcAccount = async () => {
     if (!isNextcloud) return
     setNcError(null)
     setNcLoading(true)
@@ -346,6 +349,13 @@ const Run = () => {
     }
   }
 
+  const handleStopImport = () => {
+    if (!busy || abortRequested) return
+    abortRef.current = true
+    setAbortRequested(true)
+    setStatus('Stopping import…')
+  }
+
   const providerOptions = SERVICES.map(s => ({
     value: s.slug,
     label: s.label
@@ -359,14 +369,6 @@ const Run = () => {
       _: 'Choisissez un service à partir duquel importer vos données.'
     })
   }
-
-  const accountOptions = accounts.map(acc => {
-    const label = acc?.auth?.login || acc?.label || acc?._id
-    return { value: acc._id, label }
-  })
-  const accountValue = selectedAccountId
-    ? accountOptions.find(o => o.value === selectedAccountId) || null
-    : null
 
   if (!enabled) {
     return (
@@ -389,271 +391,46 @@ const Run = () => {
   return (
     <Page>
       <Stack spacing="l">
-        <Stack spacing="s">
-          <Typography variant="h3" gutterBottom>
-            {t('ImportsRun.title')}
-          </Typography>
-          <Typography variant="body1">{t('ImportsRun.helper')}</Typography>
-        </Stack>
+        <ImportsRunHeader />
+
         <Stack spacing="m">
-          <Select
-            name="provider"
-            options={providerOptions}
-            fieldProps={providerFieldProps}
-            value={providerValue}
-            onChange={sel => {
-              setServiceSlug(sel ? sel.value : '')
-            }}
-            isSearchable={false}
+          <ImportsProviderSelect
+            providerOptions={providerOptions}
+            providerValue={providerValue}
+            providerFieldProps={providerFieldProps}
+            onChange={setServiceSlug}
           />
         </Stack>
-        <Stack spacing="m">
-          <Stack spacing="xs">
-            <Typography variant="h5">
-              {t('ImportsRun.sections.account.title', {
-                _: 'Compte Nextcloud'
-              })}
-            </Typography>
-            <Typography variant="body1">
-              {t('ImportsRun.sections.account.helper', {
-                _: 'Sélectionnez ou créez un compte Nextcloud pour lancer un import.'
-              })}
-            </Typography>
-          </Stack>
 
-          {!isNextcloud ? (
-            <Typography variant="caption" color="textSecondary">
-              Select Nextcloud to check connection.
-            </Typography>
-          ) : (
-            <Stack spacing="s">
-              {checkingAccount ? (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Spinner size="small" />
-                  <Typography variant="caption">Checking account…</Typography>
-                </div>
-              ) : accounts.length ? (
-                <>
-                  <Select
-                    name="nextcloudAccount"
-                    options={accountOptions}
-                    fieldProps={{
-                      title: '',
-                      label: ''
-                    }}
-                    value={accountValue}
-                    onChange={sel => {
-                      setSelectedAccountId(sel ? sel.value : '')
-                    }}
-                    isSearchable={false}
-                  />
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: 8,
-                      alignItems: 'center',
-                      flexWrap: 'wrap'
-                    }}
-                  >
-                    <Button
-                      size="small"
-                      variant="secondary"
-                      onClick={() => {
-                        setShowNcForm(true)
-                        setNcError(null)
-                      }}
-                    >
-                      Add account
-                    </Button>
-                    <Button
-                      size="small"
-                      variant="secondary"
-                      disabled={!selectedAccountId}
-                      onClick={handleDeleteNcAccount}
-                    >
-                      Delete selected account
-                    </Button>
-                  </div>
-                </>
-              ) : (
-                <div
-                  style={{
-                    display: 'flex',
-                    gap: 8,
-                    alignItems: 'center',
-                    flexWrap: 'wrap'
-                  }}
-                >
-                  <Typography variant="caption" color="textSecondary">
-                    No Nextcloud account configured.
-                  </Typography>
-                  <Button
-                    size="small"
-                    variant="secondary"
-                    onClick={() => {
-                      setShowNcForm(true)
-                      setNcError(null)
-                    }}
-                  >
-                    Create Nextcloud account
-                  </Button>
-                </div>
-              )}
-
-              {showNcForm && (
-                <form
-                  onSubmit={handleCreateNcAccount}
-                  style={{
-                    marginTop: 8,
-                    maxWidth: 420,
-                    display: 'grid',
-                    gap: 8
-                  }}
-                >
-                  <label style={{ display: 'grid', gap: 4 }}>
-                    <Typography variant="caption">Identifiant</Typography>
-                    <input
-                      type="text"
-                      value={ncLogin}
-                      onChange={e => setNcLogin(e.target.value)}
-                      disabled={ncLoading}
-                      style={{ padding: 8 }}
-                    />
-                  </label>
-
-                  <label style={{ display: 'grid', gap: 4 }}>
-                    <Typography variant="caption">Mot de passe</Typography>
-                    <input
-                      type="password"
-                      value={ncPassword}
-                      onChange={e => setNcPassword(e.target.value)}
-                      disabled={ncLoading}
-                      style={{ padding: 8 }}
-                    />
-                  </label>
-
-                  <label style={{ display: 'grid', gap: 4 }}>
-                    <Typography variant="caption">
-                      Url de l&apos;instance Nextcloud
-                    </Typography>
-                    <input
-                      type="text"
-                      value={ncUrl}
-                      onChange={e => setNcUrl(e.target.value)}
-                      disabled={ncLoading}
-                      placeholder="https://mynextcloud.example.com"
-                      style={{ padding: 8 }}
-                    />
-                  </label>
-
-                  {ncError && (
-                    <Typography variant="caption" color="error">
-                      {String(ncError)}
-                    </Typography>
-                  )}
-
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: 8,
-                      alignItems: 'center',
-                      marginTop: 4
-                    }}
-                  >
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      size="small"
-                      disabled={
-                        ncLoading || !ncLogin || !ncPassword || !ncUrl.trim()
-                      }
-                    >
-                      {ncLoading ? 'Connecting…' : 'Save account'}
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="secondary"
-                      size="small"
-                      disabled={ncLoading}
-                      onClick={() => {
-                        setShowNcForm(false)
-                        setNcError(null)
-                      }}
-                    >
-                      Cancel
-                    </Button>
-                  </div>
-                </form>
-              )}
-            </Stack>
-          )}
-        </Stack>
+        <NextcloudAccountSection
+          isNextcloud={isNextcloud}
+          checkingAccount={checkingAccount}
+          accounts={accounts}
+          selectedAccountId={selectedAccountId}
+          onSelectAccount={setSelectedAccountId}
+          onAddAccount={() => {
+            setShowNcForm(true)
+            setNcError(null)
+          }}
+          onDeleteAccount={handleDeleteNcAccount}
+        />
 
         {isNextcloud && accounts.length > 0 && (
-          <Stack spacing="m">
-            <Stack spacing="xs">
-              <Typography variant="h5">
-                {t('ImportsRun.sections.path.title', {
-                  _: 'Chemin à importer'
-                })}
-              </Typography>
-              <Typography variant="body1">
-                {t('ImportsRun.sections.path.helper', {
-                  _: 'Le contenu sera copié dans Imports/Nextcloud/<login> dans Twake Drive.'
-                })}
-              </Typography>
-            </Stack>
-
-            <div style={{ maxWidth: 520 }}>
-              <TextField
-                name="remotePath"
-                fullWidth
-                label="Remote path (Nextcloud)"
-                placeholder="/ or /Documents or /file.pdf"
-                disabled={busy}
-                value={remotePath}
-                onChange={e => setRemotePath(e.target.value)}
-              />
-            </div>
-
-            <div
-              style={{
-                display: 'flex',
-                gap: 8,
-                alignItems: 'center',
-                flexWrap: 'wrap'
-              }}
-            >
-              <Button
-                variant="primary"
-                disabled={busy || !remotePath}
-                onClick={handleImport}
-              >
-                {busy ? 'Importing…' : 'Import'}
-              </Button>
-              <Button
-                variant="secondary"
-                disabled={busy}
-                onClick={handleListRemote}
-              >
-                {busy ? 'Working…' : 'List remote'}
-              </Button>
-              {busy && progress.total > 0 && (
-                <Button
-                  variant="secondary"
-                  size="small"
-                  disabled={abortRequested}
-                  onClick={() => {
-                    abortRef.current = true
-                    setAbortRequested(true)
-                    setStatus('Stopping import…')
-                  }}
-                >
-                  Stop import
-                </Button>
-              )}
-            </div>
-          </Stack>
+          <NextcloudPathSection
+            title={t('ImportsRun.sections.path.title', {
+              _: 'Chemin à importer'
+            })}
+            helper={t('ImportsRun.sections.path.helper', {
+              _: 'Le contenu sera copié dans Imports/Nextcloud/<login> dans Twake Drive.'
+            })}
+            remotePath={remotePath}
+            busy={busy}
+            onChangeRemotePath={setRemotePath}
+            onImport={handleImport}
+            onListRemote={handleListRemote}
+            onStopImport={handleStopImport}
+            canStop={busy && progress.total > 0 && !abortRequested}
+          />
         )}
 
         {(progress.total > 0 ||
@@ -664,100 +441,44 @@ const Run = () => {
           failedItems.length > 0) && (
           <Stack spacing="m">
             {(progress.total > 0 || status || importSummary) && (
-              <Stack spacing="s">
-                <Typography variant="h5">
-                  {t('ImportsRun.sections.progress.title', {
-                    _: 'Progression'
-                  })}
-                </Typography>
-
-                {progress.total > 0 && (
-                  <div style={{ maxWidth: 500 }}>
-                    <LinearProgress
-                      variant="determinate"
-                      value={
-                        progress.total === 0
-                          ? 0
-                          : Math.min(
-                              100,
-                              (progress.done / progress.total) * 100
-                            )
-                      }
-                      className="u-mv-half u-w-100 u-h-half u-bdrs-6"
-                    />
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        marginTop: 4
-                      }}
-                    >
-                      <Typography variant="caption">
-                        Processed: {progress.done}
-                      </Typography>
-                      <Typography variant="caption">
-                        Total: {progress.total}
-                      </Typography>
-                    </div>
-                    {busy && progress.current && (
-                      <Typography variant="caption">
-                        Processing: {progress.current}
-                      </Typography>
-                    )}
-                  </div>
-                )}
-
-                {status && <Typography variant="caption">{status}</Typography>}
-
-                {importSummary && (
-                  <Typography variant="caption">{importSummary}</Typography>
-                )}
-              </Stack>
+              <ImportsProgress
+                title={t('ImportsRun.sections.progress.title', {
+                  _: 'Progression'
+                })}
+                progress={progress}
+                busy={busy}
+                status={status}
+                summary={importSummary}
+              />
             )}
 
             {remotePreview.length > 0 && (
-              <Stack spacing="xs">
-                <Typography variant="subtitle2" gutterBottom>
-                  Preview (first 10)
-                </Typography>
-                <ul style={{ margin: 0, paddingLeft: 18 }}>
-                  {remotePreview.map((name, idx) => (
-                    <li key={`${name}-${idx}`} style={{ fontSize: 12 }}>
-                      {name}
-                    </li>
-                  ))}
-                </ul>
-              </Stack>
+              <RemotePreview items={remotePreview} />
             )}
 
             {(error || failedItems.length > 0) && (
-              <Stack spacing="xs">
-                {error && (
-                  <Typography variant="caption" color="error">
-                    {String(error)}
-                  </Typography>
-                )}
-
-                {failedItems.length > 0 && (
-                  <ul style={{ margin: 0, paddingLeft: 18 }}>
-                    {failedItems.map((item, idx) => {
-                      const path = item.path || item.name || 'unknown'
-                      const statusCode =
-                        typeof item.status === 'number' ? item.status : 'n/a'
-                      const reason = item.reason || ''
-                      return (
-                        <li key={idx} style={{ fontSize: 11 }}>
-                          {path} - {statusCode} ({reason})
-                        </li>
-                      )
-                    })}
-                  </ul>
-                )}
-              </Stack>
+              <ImportErrors error={error} failedItems={failedItems} />
             )}
           </Stack>
         )}
       </Stack>
+
+      <NextcloudAccountDialog
+        open={showNcForm}
+        login={ncLogin}
+        password={ncPassword}
+        url={ncUrl}
+        loading={ncLoading}
+        error={ncError}
+        onChangeLogin={setNcLogin}
+        onChangePassword={setNcPassword}
+        onChangeUrl={setNcUrl}
+        onSubmit={handleCreateNcAccount}
+        onClose={() => {
+          setShowNcForm(false)
+          setNcError(null)
+        }}
+      />
     </Page>
   )
 }
