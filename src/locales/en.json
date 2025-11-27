@@ -358,7 +358,7 @@
   "ImportsView": {
     "title": "Data imports",
     "subtitle": "Bring your files and data from other services.",
-    "helper": "Enable imports to allow community connectors to run on your device.",
+    "helper": "Enable imports to allow import tools to run on your device.",
     "toggle": "Enable imports",
     "primary": "Start an import",
     "secondary": "View history",

@@ -9,9 +9,6 @@ const ImportsRunHeader = () => {
 
   return (
     <Stack spacing="s">
-      <Typography variant="h3" gutterBottom>
-        {t('ImportsRun.title')}
-      </Typography>
       <Typography variant="body1">{t('ImportsRun.helper')}</Typography>
     </Stack>
   )

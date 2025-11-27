@@ -4,6 +4,7 @@ import { useInstanceInfo } from 'cozy-client'
 import { makeDiskInfos } from 'cozy-client/dist/models/instance'
 import { isFlagshipApp } from 'cozy-device-helper'
 import flag from 'cozy-flags'
+import ConnectorIcon from 'cozy-ui/transpiled/react/Icons/Connector'
 import ContractIcon from 'cozy-ui/transpiled/react/Icons/Contract'
 import DevicesIcon from 'cozy-ui/transpiled/react/Icons/Devices'
 import EmailIcon from 'cozy-ui/transpiled/react/Icons/Email'
@@ -102,6 +103,12 @@ export const Sidebar = (): JSX.Element => {
           primary={t('Nav.sessions')}
           icon={GlobeIcon}
         />
+
+        <MenuItemNavLink
+          to={routes.imports}
+          primary={t('Nav.imports')}
+          icon={ConnectorIcon}
+        />
       </MenuList>
 
       <MenuList title={t('Nav.header_other')}>
@@ -131,11 +138,6 @@ export const Sidebar = (): JSX.Element => {
           }.pdf`}
           target="_blank"
           icon={ContractIcon}
-        />
-        <MenuItemNavLink
-          to={routes.imports}
-          primary={t('Nav.imports')}
-          icon={GraphCircle}
         />
         <MenuItemButton
           primary={t('Nav.primary_logout')}

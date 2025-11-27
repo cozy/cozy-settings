@@ -24,6 +24,7 @@ import RemotePreview from './RemotePreview'
 
 import { useImports } from '@/components/Imports/ImportsContext'
 import Page from '@/components/Page'
+import { PageHeader } from '@/components/PageHeader'
 import { routes } from '@/constants/routes'
 
 const SERVICES = [
@@ -231,9 +232,7 @@ const Run = () => {
 
     try {
       const accId = await pickAccountId()
-      if (!accId) {
-        throw new Error('No Nextcloud account configured')
-      }
+      if (!accId) throw new Error('No Nextcloud account configured')
 
       let accDoc = accounts.find(a => a._id === accId)
       if (!accDoc) {
@@ -390,6 +389,8 @@ const Run = () => {
 
   return (
     <Page>
+      <PageHeader title={t('ImportsRun.title')} />
+
       <Stack spacing="l">
         <ImportsRunHeader />
 

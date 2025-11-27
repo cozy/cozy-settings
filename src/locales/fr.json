@@ -356,7 +356,7 @@
   "ImportsView": {
     "title": "Imports de données",
     "subtitle": "Importez vos fichiers et données depuis d’autres services.",
-    "helper": "Activez les imports pour autoriser l’exécution des connecteurs communautaires sur votre appareil.",
+    "helper": "Activez les imports pour autoriser l’exécution des outils d'import sur votre appareil.",
     "toggle": "Activer les imports",
     "primary": "Lancer un import",
     "secondary": "Historique des imports",

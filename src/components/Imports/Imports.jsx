@@ -10,6 +10,7 @@ import { routes } from '../../constants/routes'
 
 import { useImports } from '@/components/Imports/ImportsContext'
 import Page from '@/components/Page'
+import { PageHeader } from '@/components/PageHeader'
 
 const Imports = () => {
   const { t } = useI18n()
@@ -26,12 +27,12 @@ const Imports = () => {
 
   return (
     <Page>
-      <Typography variant="h3" gutterBottom>
-        {t('ImportsView.title')}
-      </Typography>
+      <PageHeader title={t('ImportsView.title')} />
+
       <Typography variant="subtitle1" gutterBottom>
         {t('ImportsView.subtitle')}
       </Typography>
+
       <Typography variant="body2" gutterBottom>
         {t('ImportsView.helper')}
       </Typography>
