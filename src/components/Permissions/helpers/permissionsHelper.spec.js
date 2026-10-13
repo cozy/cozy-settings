@@ -1,7 +1,24 @@
 import {
+  completePermission,
   displayPermissions,
   getPermissionsVerbsByType
 } from './permissionsHelper'
+
+describe('completePermission', () => {
+  it('handles app results while konnectors are still loading', () => {
+    const apps = {
+      data: [{
+        slug: 'contacts-app',
+        permissions: { contacts: { type: 'io.cozy.contacts' } }
+      }]
+    }
+
+    expect(() => completePermission(apps, undefined)).not.toThrow()
+    expect(completePermission(apps, undefined)).toEqual({
+      'io.cozy.contacts': ['contacts-app']
+    })
+  })
+})
 
 describe('displayPermissions', () => {
   it('should return Lecture et Écriture when verbs is undefined', () => {

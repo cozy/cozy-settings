@@ -17,8 +17,8 @@ export const completePermission = (apps, konnectors) => {
   const permissionsToDisplay = {}
   if (apps?.data?.length > 0 || konnectors?.data?.length > 0) {
     const slugs = [
-      ...apps.data.filter(({ slug }) => !hiddenSlugs.includes(slug)),
-      ...konnectors.data
+      ...(apps?.data ?? []).filter(({ slug }) => !hiddenSlugs.includes(slug)),
+      ...(konnectors?.data ?? [])
     ]
 
     for (const { slug, permissions } of slugs) {
