@@ -19,7 +19,7 @@ const PublicNameSection = () => {
   )
 
   const handleBlur = (_, value) => {
-    if (value !== '') {
+    if (value.trim() !== '') {
       mutate({
         _rev: instance.meta.rev,
         ...instance,
@@ -42,7 +42,7 @@ const PublicNameSection = () => {
   }, [mutationStatus, formError])
 
   const handleChange = (_, value) => {
-    setFormError(value === '' ? 'ProfileView.infos.empty' : undefined)
+    setFormError(value.trim() === '' ? 'ProfileView.infos.empty' : undefined)
   }
 
   return (
