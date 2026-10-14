@@ -7,10 +7,12 @@ import {
 describe('completePermission', () => {
   it('handles app results while konnectors are still loading', () => {
     const apps = {
-      data: [{
-        slug: 'contacts-app',
-        permissions: { contacts: { type: 'io.cozy.contacts' } }
-      }]
+      data: [
+        {
+          slug: 'contacts-app',
+          permissions: { contacts: { type: 'io.cozy.contacts' } }
+        }
+      ]
     }
 
     expect(() => completePermission(apps, undefined)).not.toThrow()
