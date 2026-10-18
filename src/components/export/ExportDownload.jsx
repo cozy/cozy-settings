@@ -1,13 +1,14 @@
+import { Download, Icon } from '@linagora/twake-icons'
 import compose from 'lodash/flowRight'
 import React, { Component } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { translate } from 'twake-i18n'
 
 import { withClient } from 'cozy-client'
+import Buttons from 'cozy-ui/transpiled/react/Buttons'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import Typography from 'cozy-ui/transpiled/react/Typography'
-import ButtonAction from 'cozy-ui/transpiled/react/deprecated/ButtonAction'
 
 class ExportDownload extends Component {
   componentDidMount() {
@@ -59,19 +60,19 @@ class ExportDownload extends Component {
               ) : (
                 <div>
                   {t('ProfileView.export.download.description')}
-                  <ButtonAction
+                  <Buttons
                     label={firstElementName}
-                    rightIcon="download"
+                    endIcon={<Icon icon={Download} />}
                     onClick={() => this.download()}
                   />
                   {cursors && cursors.length
                     ? cursors.map((cursor, index) => {
                         return (
-                          <ButtonAction
+                          <Buttons
                             label={t('ProfileView.export.download.CTA_part', {
                               number: index + 1
                             })}
-                            rightIcon="download"
+                            endIcon={<Icon icon={Download} />}
                             onClick={() => this.download(cursor)}
                             key={index}
                           />
